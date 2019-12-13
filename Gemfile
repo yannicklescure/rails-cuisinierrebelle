@@ -18,6 +18,8 @@ gem 'webpacker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener'
+  gem 'postmark-rails'
 end
 
 group :development, :test do
