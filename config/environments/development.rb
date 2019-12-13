@@ -39,9 +39,11 @@ Rails.application.configure do
   # Add this line next to existing config.action_mailer settings
   config.action_mailer.delivery_method = :letter_opener
 
+  # config.action_mailer.delivery_method = :postmark
+  # config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
-  config.action_mailer.default_url_options = { host: "yannicklescure.com" }
+  # config.action_mailer.default_url_options = { host: "yannicklescure.com" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
