@@ -1,2 +1,4 @@
-<%= render 'shared/banner' %>
+<% unless user_signed_in? %>
+  <%= render 'shared/banner' %>
+<% end %>
 <div id="recipes-cards"></div>
