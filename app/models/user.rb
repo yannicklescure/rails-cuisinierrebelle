@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   after_create :send_welcome_email
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   private
 
   def send_welcome_email

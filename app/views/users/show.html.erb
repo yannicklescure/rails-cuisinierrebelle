@@ -1,0 +1,23 @@
+<div class="container py-5">
+  <div class="row justify-content-end p-3">
+    <a class="btn btn-secondary" href="<%= edit_user_registration_path(@user) %>">Edit</a>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <td>Full name</td>
+      <td><%= @user.first_name.capitalize %>&nbsp;<%= @user.last_name.capitalize %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Created at</td>
+      <td><%= @user.created_at %></td>
+    </tr>
+    <tr>
+      <td>Updated at</td>
+      <td><%= @user.updated_at %></td>
+    </tr>
+  </table>
+</div>
