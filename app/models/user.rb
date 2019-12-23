@@ -4,7 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
+  # Override Devise::Confirmable#after_confirmation
+  def after_confirmation
+    send_welcome_email
+  end
 
   extend FriendlyId
   friendly_id :name, use: :slugged
