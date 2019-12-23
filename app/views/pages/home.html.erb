@@ -1,4 +1,20 @@
 <% unless user_signed_in? %>
   <%= render 'shared/banner' %>
 <% end %>
-<div id="recipes-cards"></div>
+<div class="container-fluid">
+  <div id="recipes-cards" class="row py-3">
+    <% @recipes.each do |recipe| %>
+    <div class="col col-md-4 col-lg-2">
+      <div class="card border-0">
+        <img src="<%= recipe.image %>" class="card-img-top rounded" alt="pain-poele">
+        <div class="card-body py-3 px-0">
+          <a href="<%= recipe_path(recipe) %>" class="card-link text-body stretched-link text-uppercase"><%= recipe.title %></a>
+          <!-- <p class="card-title"><%= recipe.title %></p> -->
+          <!-- <p class="card-subtitle mb-2 text-muted"><%= recipe.subtitle %></p> -->
+          <p class="card-text"><%= recipe.description %><br><i class="fas fa-heart text-danger"></i>&nbsp;<span class="text-muted font-weight-lighter">1234</span></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
