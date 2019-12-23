@@ -1,6 +1,12 @@
 import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 
+// console.log(window.innerWidth);
+if(window.innerWidth <= 768) {
+  const navbarBrand = document.querySelector(".navbar-brand");
+  navbarBrand.style.padding = "5px 0";
+}
+
 const userSignedIn = document.querySelector('body').dataset.user;
 console.log(`userSignedIn? ${userSignedIn}`);
 
