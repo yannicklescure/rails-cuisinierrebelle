@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :recipes
+  resources :recipes do
+    resource :bookmarks, only: [:update]
+  end
   get '/recettes', to: 'recipes#index', as: 'recettes'
   resources :users, only: [:show]
+  resources :bookmarks, only: [:index]
 end
