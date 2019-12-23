@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/yannicklescure/cv/master/profile_avatar.jpg", class: "rounded-circle" %>
+    <%#= image_tag "https://raw.githubusercontent.com/yannicklescure/cv/master/profile_avatar.jpg", class: "rounded-circle" %>
+    Cuisinier Rebelle
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,11 +20,23 @@
       <div class="order-0 order-sm-1">
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
-            <li class="nav-item active">
+            <% if @bookmarks.size.positive? %>
+              <li class="nav-item active">
+                <%= link_to raw('<i class="fas fa-bookmark"></i>'), bookmarks_path, class: "nav-link bookmarks" %>
+              </li>
+            <% else %>
+              <li class="nav-item active">
+                <%= link_to raw('<i class="far fa-bookmark"></i>'), bookmarks_path, class: "nav-link bookmarks" %>
+              </li>
+            <% end %>
+            <li class="nav-item active d-none">
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Messages", "#", class: "nav-link" %>
+              <%= link_to "#", class: "nav-link" do %>
+                <i class="far fa-envelope"></i>
+                <i class="fas fa-envelope"></i>
+              <% end %>
             </li>
             <li class="nav-item dropdown">
               <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

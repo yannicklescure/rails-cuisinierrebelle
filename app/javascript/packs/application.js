@@ -1,8 +1,17 @@
 import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 
-scrollToAnchor("#recipes-cards");
+const userSignedIn = document.querySelector('body').dataset.user;
+console.log(`userSignedIn? ${userSignedIn}`);
 
-const bannerCtaBox = document.querySelector('#banner-cta-box');
-const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
-bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
+let currentPage = window.location.pathname.split("/")[1] || null;
+console.log('currentPage ', currentPage);
+let currentAction = window.location.pathname.split("/")[2] || null;
+console.log('currentAction ', currentAction);
+
+if(userSignedIn === "false" && currentPage === null) {
+  scrollToAnchor("#recipes-cards");
+  const bannerCtaBox = document.querySelector('#banner-cta-box');
+  const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
+  bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
+}

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   get '/recettes', to: 'recipes#index', as: 'recettes'
   resources :users, only: [:show]
+  resources :bookmarks, only: [:index]
 end

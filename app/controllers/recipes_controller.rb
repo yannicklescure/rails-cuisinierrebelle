@@ -3,11 +3,14 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def show
     # @recipe = Recipe.find(params[:id])
     @recipe = Recipe.friendly.find(params[:id])
+    @bookmarks = Bookmark.where(user: current_user)
+    @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
   end
 
   def new
