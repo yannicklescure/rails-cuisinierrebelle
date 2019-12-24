@@ -6,12 +6,15 @@
     <% @recipes.each do |recipe| %>
     <div class="col col-md-4 col-lg-2">
       <div class="card border-0">
-        <img src="<%= recipe.image %>" class="card-img-top rounded" alt="pain-poele">
-        <div class="card-body py-3 px-0">
-          <a href="<%= recipe_path(recipe) %>" class="card-link text-body stretched-link text-uppercase"><%= recipe.title %></a>
-          <!-- <p class="card-title"><%= recipe.title %></p> -->
-          <!-- <p class="card-subtitle mb-2 text-muted"><%= recipe.subtitle %></p> -->
-          <p class="card-text"><%= recipe.description %><br><i class="fas fa-heart text-danger"></i>&nbsp;<span class="text-muted font-weight-lighter">1234</span></p>
+        <img src="<%= recipe.image %>" class="card-img-top" alt="pain-poele">
+        <div class="card-body py-2 px-0">
+          <a href="<%= recipe_path(recipe) %>" class="card-link text-body text-uppercase stretched-link"><%= recipe.title %></a>
+          <div class="card-text font-weight-lighter"><%= recipe.description %></div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="text-danger">
+              <i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter">1234</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
