@@ -9,8 +9,10 @@ class RecipesController < ApplicationController
   def show
     # @recipe = Recipe.find(params[:id])
     @recipe = Recipe.friendly.find(params[:id])
-    @bookmarks = Bookmark.where(user: current_user)
     @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
+    @bookmarks = Bookmark.where(user: current_user)
+    @like = Like.find_by(user: current_user, recipe: @recipe)
+    @likes = Like.where(user: current_user, recipe: @recipe)
   end
 
   def new
