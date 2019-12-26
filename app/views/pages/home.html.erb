@@ -8,16 +8,50 @@
       <div class="card border-0">
         <img src="<%= recipe.image %>" class="card-img-top" alt="pain-poele">
         <div class="card-body py-2 px-0">
-          <a href="<%= recipe_path(recipe) %>" class="card-link text-body text-uppercase stretched-link"><%= recipe.title %></a>
-          <div class="card-text font-weight-lighter"><%= recipe.description %></div>
           <div class="d-flex justify-content-between align-items-center">
-            <div class="text-danger">
-              <i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter">1234</span>
-            </div>
+            <% unless user_signed_in? %>
+              <div class="text-danger">
+                <%= link_to new_user_session_path, class: 'btn p-0 text-danger' do %>
+                  <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= recipe.like.count %></span>
+                  <% end %>
+              </div>
+              <div class="text-body">
+                <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0' %>
+                <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0' %>
+              </div>
+            <% else %>
+              <%= link_to recipe_likes_path(recipe), method: :patch, remote: true do %>
+                <% if recipe.like.find_by(user: current_user).nil? %>
+                  <button class="btn p-0 liked text-danger"><i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= recipe.like.count %></span></button>
+                <% else %>
+                  <button class="btn p-0 liked text-danger"><i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= recipe.like.count %></span></button>
+                <% end %>
+              <% end %>
+              <div class="d-flex align-items-center">
+                <div class="ml-2">
+                  <i class="far fa-comment-alt"></i>
+                </div>
+                <div class="ml-2">
+                  <i class="fas fa-share-alt"></i>
+                </div>
+                <div class="ml-2">
+                  <%= link_to recipe_bookmarks_path(recipe), method: :patch, remote: true do %>
+                    <% if @bookmark.nil? %>
+                      <button class="btn p-0 bookmarked"><i class="far fa-bookmark"></i></button>
+                    <% else %>
+                      <button class="btn p-0 bookmarked"><i class="fas fa-bookmark"></i></button>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           </div>
+          <a href="<%= recipe_path(recipe) %>" class="card-link text-body text-uppercase"><%= recipe.title %></a>
+          <div class="card-text font-weight-lighter"><%= recipe.description %></div>
         </div>
       </div>
     </div>
     <% end %>
   </div>
 </div>
+<!-- stretched-link -->

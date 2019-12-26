@@ -1,15 +1,34 @@
 <div class="container py-3">
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-center justify-content-md-end align-items-center">
     <% unless user_signed_in? %>
-      <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn' %>
+      <div class="text-body">
+        <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+        <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+      </div>
+      <div class="text-danger">
+        <%= link_to new_user_session_path, class: 'btn p-0 ml-3 text-danger' do %>
+          <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.like.count %></span>
+          <% end %>
+      </div>
     <% else %>
+      <div class="order-0">
       <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true do %>
-        <% if @bookmark.nil? %>
-          <button class="btn bookmarked"><i class="far fa-bookmark"></i></button>
-        <% else %>
-          <button class="btn bookmarked"><i class="fas fa-bookmark"></i></button>
+          <% if @bookmark.nil? %>
+            <button class="btn p-0 ml-3 bookmarked"><i class="far fa-bookmark"></i></button>
+          <% else %>
+            <button class="btn p-0 ml-3 bookmarked"><i class="fas fa-bookmark"></i></button>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="order-1">
+        <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true do %>
+          <% if @recipe.like.find_by(user: current_user).nil? %>
+            <button class="btn p-0 ml-3 liked text-danger"><i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.like.count %></span></button>
+          <% else %>
+            <button class="btn p-0 ml-3 liked text-danger"><i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.like.count %></span></button>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center">

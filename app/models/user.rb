@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  has_many :recipes
   has_many :bookmarks
+  has_many :like
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
