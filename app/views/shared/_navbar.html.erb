@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to "/", class: "navbar-brand" do %>
     <%#= image_tag "https://raw.githubusercontent.com/yannicklescure/cv/master/profile_avatar.jpg", class: "rounded-circle" %>
-    Cuisinier Rebelle
+    <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,9 +12,9 @@
     <div class="d-flex w-100 justify-content-md-between flex-column flex-md-row">
       <div class="order-1 order-sm-0 d-flex align-items-center">
         <ul class="navbar-nav">
-          <li class="nav-item"><a href="<%= recettes_path %>" class="nav-link">Recettes</a></li>
-          <li class="nav-item"><a href="materiel-cuisine" class="nav-link">Matériel</a></li>
-          <li class="nav-item"><a href="table-conversion" class="nav-link">Table de conversion</a></li>
+          <li class="nav-item"><a href="<%= recipes_path %>" class="nav-link"><%= t(".recipes") %></a></li>
+          <li class="nav-item"><a href="materiel-cuisine" class="nav-link"><%= t(".tools") %></a></li>
+          <li class="nav-item"><a href="table-conversion" class="nav-link"><%= t(".conversion") %></a></li>
         </ul>
       </div>
       <div class="order-0 order-sm-1">
@@ -48,12 +48,21 @@
               </div>
             </li>
           <% else %>
-            <li class="nav-item d-none d-md-block"><a href="https://twitter.com/yannicklescure" target="_blank" class="nav-link p-2"><i class="fab fa-twitter"></i></a></li>
-            <li class="nav-item d-none d-md-block"><a href="https://www.instagram.com/yannicklescure" target="_blank" class="nav-link p-2"><i class="fab fa-instagram"></i></a></li>
-            <li class="nav-item d-none d-md-block"><a href="https://www.youtube.com/c/YannickLescureTV" target="_blank" class="nav-link p-2"><i class="fab fa-youtube"></i></a></li>
+            <li class="nav-item d-none d-md-block">
+              <%= link_to raw("English"), root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item d-none d-md-block">
+              <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "nav-link" %>
+            </li>
+            <li class="nav-item d-none d-md-block">
+              <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "nav-link" %>
+            </li>
+            <!-- <li class="nav-item d-none d-md-block"><a href="https://twitter.com/yannicklescure" target="_blank" class="nav-link p-2"><i class="fab fa-twitter"></i></a></li> -->
+            <!-- <li class="nav-item d-none d-md-block"><a href="https://www.instagram.com/yannicklescure" target="_blank" class="nav-link p-2"><i class="fab fa-instagram"></i></a></li> -->
+            <!-- <li class="nav-item d-none d-md-block"><a href="https://www.youtube.com/c/YannickLescureTV" target="_blank" class="nav-link p-2"><i class="fab fa-youtube"></i></a></li> -->
             <!-- <li class="nav-item d-none d-md-block"><a href="contact" class="nav-link p-2"><i class="far fa-envelope"></i></a></li> -->
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <%= link_to t(".sign_in"), new_user_session_path, class: "nav-link" %>
             </li>
           <% end %>
         </ul>
