@@ -1,5 +1,5 @@
 liked = document.querySelector(".liked");
 console.log(`liked ${<%= @liked %>}`);
 
-if(<%= @liked %>) liked.innerHTML = `<i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.like.count %></span>`;
-else liked.innerHTML = `<i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.like.count %></span>`;
+if(<%= @liked %>) liked.innerHTML = `<i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>`;
+else liked.innerHTML = `<i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>`;
