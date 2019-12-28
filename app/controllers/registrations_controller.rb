@@ -1,4 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+  def edit
+    @bookmarks = Bookmark.where(user: current_user)
+  end
+
   private
 
   def sign_up_params

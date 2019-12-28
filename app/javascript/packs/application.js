@@ -19,12 +19,16 @@ console.log('currentAction ', currentAction);
 
 if(currentPage != null && currentPage.match(/fr|es/)) navbarBrand.href += currentPage;
 
-// if(currentPage === "users") {
-//   const buttons = document.querySelectorAll('.btn');
-//   buttons.forEach(button => {
-//     button.classList.add('btn-secondary');
-//   });
-// }
+if(currentPage === "users") {
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+    button.classList.add('btn-secondary');
+  });
+  const modalMenuLinks = document.querySelectorAll('.modal-menu-link');
+  modalMenuLinks.forEach(modalMenuLink => {
+    modalMenuLink.classList.remove('btn-secondary');
+  });
+}
 
 if(userSignedIn === "false" && (currentPage === null || currentPage.match(/en|fr|es/))) {
   scrollToAnchor("#recipes-cards");
