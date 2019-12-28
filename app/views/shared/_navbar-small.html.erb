@@ -7,24 +7,24 @@
           <button type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <a href="<%= recipes_path %>" class="btn btn-link"><%= t(".recipes") %></a>
-          <a href="<%= tools_path %>" class="btn btn-link"><%= t(".tools") %></a>
-          <a href="<%= conversion_path %>" class="btn btn-link"><%= t(".conversion") %></a>
-          <a class="btn btn-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a href="<%= recipes_path %>" class="btn btn-link modal-menu-link"><%= t(".recipes") %></a>
+          <a href="<%= tools_path %>" class="btn btn-link modal-menu-link"><%= t(".tools") %></a>
+          <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
+          <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <%= t('.languages') %>
           </a>
           <div class="collapse" id="collapseExample">
             <div class="d-flex flex-column align-items-start ml-3">
-              <a class="btn btn-link" href="/">English</a>
-              <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "btn btn-link" %>
-              <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "btn btn-link" %>
+              <a class="btn btn-link modal-menu-link" href="/">English</a>
+              <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "btn btn-link modal-menu-link" %>
             </div>
           </div>
           <% if user_signed_in? %>
-            <%= link_to t(".settings"), user_path(current_user), class: "btn btn-link" %>
-            <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+            <%= link_to t(".settings"), user_path(current_user), class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "btn btn-link modal-menu-link" %>
           <% else %>
-            <%= link_to t(".sign_in"), new_user_session_path, class: "btn btn-link" %>
+            <%= link_to t(".sign_in"), new_user_session_path, class: "btn btn-link modal-menu-link" %>
           <% end %>
         </div>
       </div>
