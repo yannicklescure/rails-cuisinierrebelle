@@ -1,5 +1,8 @@
 ---
 fr:
+  bookmarks:
+    index:
+      no_bookmarks: Aucun favoris...
   devise:
     confirmations:
       new:
@@ -82,20 +85,31 @@ fr:
         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e):'
         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être
           enregistré(e):"
+  pages:
+    conversion:
+      conversion: Table de conversion
+    tools:
+      tools: Matériel de cuisine
   shared:
     banner:
-      banner_subtitle: Banner subtitle
-      recipes: Recipes
-      videos: Videos
-    navbar:
-      conversion: Conversion
-      recipes: Recipes
-      sign_in: Sign in
-      tools: Tools
+      banner_subtitle: Recettes de cuisine et autres choses
+      recipes: Recettes
+      videos: Vidéos
+    navbar-large:
+      bookmarks: Favoris
+      conversion: Table de conversion
+      inbox: Messages
+      languages: Langues
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Se déconnecter
+      recipes: Recettes
+      settings: Paramètres
+      sign_in: Connexion
+      tools: Matériel de cuisine
   users:
     confirmations:
       new:
-        resend_confirmation_instructions: Resend confirmation instructions
+        resend_confirmation_instructions: Renvoyer les instructions de confirmation
     mailer:
       confirmation_instructions:
         action: Confirmer mon courriel

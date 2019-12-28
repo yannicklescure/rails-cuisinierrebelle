@@ -1,5 +1,8 @@
 ---
 en:
+  bookmarks:
+    index:
+      no_bookmarks: No bookmarks...
   devise:
     confirmations:
       new:
@@ -21,7 +24,7 @@ en:
         greeting: Hello %{recipient}!
         instruction: Someone has requested a link to change your password. You can
           do this through the link below.
-        instruction_2: If you didnt request this, please ignore this email.
+        instruction_2: If you didn't request this, please ignore this email.
         instruction_3: Your password wont change until you access the link above and
           create a new one.
       unlock_instructions:
@@ -60,8 +63,8 @@ en:
     shared:
       links:
         back: Back
-        didn_t_receive_confirmation_instructions: Didnt receive confirmation instructions?
-        didn_t_receive_unlock_instructions: Didnt receive unlock instructions?
+        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
+        didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
         forgot_your_password: Forgot your password?
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
@@ -71,26 +74,37 @@ en:
         other: "(%{count} characters minimum)"
     unlocks:
       new:
-        resend_unlock_instructions: resend unlock instructions
+        resend_unlock_instructions: Resend unlock instructions
   errors:
     messages:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  pages:
+    conversion:
+      conversion: Conversion table
+    tools:
+      tools: Kitchen tools
   shared:
     banner:
       banner_subtitle: Cooking recipes and other things
-      recipes: recipes
+      recipes: Recipes
       videos: Videos
-    navbar:
-      conversion: Conversion Table
-      recipes: recipes
-      sign_in: Sign in
-      tools: Kitchen Tools
+    navbar-large:
+      bookmarks: Bookmarks
+      conversion: Conversion table
+      inbox: Inbox
+      languages: Languages
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Log out
+      recipes: Recipes
+      settings: Settings
+      sign_in: Log in
+      tools: Kitchen tools
   users:
     confirmations:
       new:
-        resend_confirmation_instructions: resend confirmation instructions
+        resend_confirmation_instructions: Resend confirmation instructions
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -108,7 +122,7 @@ en:
         greeting: Hello %{recipient}!
         instruction: Someone has requested a link to change your password. You can
           do this through the link below.
-        instruction_2: If you didnt request this, please ignore this email.
+        instruction_2: If you didn't request this, please ignore this email.
         instruction_3: Your password wont change until you access the link above and
           create a new one.
       unlock_instructions:
@@ -146,8 +160,8 @@ en:
         sign_in: Log in
     shared:
       links:
-        didn_t_receive_confirmation_instructions: Didnt receive confirmation instructions
-        didn_t_receive_unlock_instructions: Didnt receive unlock instructions
+        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions
+        didn_t_receive_unlock_instructions: Didn't receive unlock instructions
         forgot_your_password: Forgot your password
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}

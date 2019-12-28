@@ -1,5 +1,8 @@
 ---
 es:
+  bookmarks:
+    index:
+      no_bookmarks: Sin favoritos...
   devise:
     confirmations:
       new:
@@ -81,20 +84,31 @@ es:
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+  pages:
+    conversion:
+      conversion: Tabla de conversión
+    tools:
+      tools: Equipo de cocina
   shared:
     banner:
-      banner_subtitle: Banner subtitle
-      recipes: Recipes
-      videos: Videos
-    navbar:
-      conversion: Conversion
-      recipes: Recipes
+      banner_subtitle: Recetas de cocina y otras cosas
+      recipes: Recetas
+      videos: Vídeos
+    navbar-large:
+      bookmarks: Favoritos
+      conversion: Tabla de conversión
+      inbox: Mensajes
+      languages: Idiomas
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Cerrar sesión
+      recipes: Recetas
+      settings: Configuración
       sign_in: Iniciar sesión
-      tools: Tools
+      tools: Equipo de cocina
   users:
     confirmations:
       new:
-        resend_confirmation_instructions: Resend confirmation instructions
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
