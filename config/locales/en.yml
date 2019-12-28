@@ -1,9 +1,12 @@
 ---
 en:
+  bookmarks:
+    index:
+      no_bookmarks: No bookmarks...
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: Resend confirmation instructions
+        resend_confirmation_instructions: resend confirmation instructions
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -11,23 +14,23 @@ en:
         instruction: 'You can confirm your account email through the link below:'
       email_changed:
         greeting: Hello %{recipient}!
-        message: Message
-      password_change:
-        greeting: Greeting
         message: We're contacting you to notify you that your email has been changed
           to %{email}.
+      password_change:
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your password has been changed.
       reset_password_instructions:
         action: Change my password
         greeting: Hello %{recipient}!
         instruction: Someone has requested a link to change your password. You can
           do this through the link below.
         instruction_2: If you didn't request this, please ignore this email.
-        instruction_3: Your password won't change until you access the link above
-          and create a new one.
+        instruction_3: Your password wont change until you access the link above and
+          create a new one.
       unlock_instructions:
         action: Unlock my account
         greeting: Hello %{recipient}!
-        instruction: Click the link below to unlock your account:'
+        instruction: 'Click the link below to unlock your account:'
         message: Your account has been locked due to an excessive number of unsuccessful
           sign in attempts.
     passwords:
@@ -37,7 +40,7 @@ en:
         confirm_new_password: Confirm new password
         new_password: New password
       new:
-        forgot_your_password: Forgot your password
+        forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
@@ -45,8 +48,8 @@ en:
         cancel_my_account: Cancel my account
         currently_waiting_confirmation_for_email: 'Currently waiting confirmation
           for: %{email}'
-        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want
-          to change it
+        leave_blank_if_you_don_t_want_to_change_it: leave blank if you dont want to
+          change it
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update
@@ -77,16 +80,27 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  pages:
+    conversion:
+      conversion: Conversion table
+    tools:
+      tools: Kitchen tools
   shared:
     banner:
       banner_subtitle: Cooking recipes and other things
       recipes: Recipes
       videos: Videos
-    navbar:
-      conversion: Conversion Table
+    navbar-large:
+      bookmarks: Bookmarks
+      conversion: Conversion table
+      inbox: Inbox
+      languages: Languages
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Log out
       recipes: Recipes
+      settings: Settings
       sign_in: Log in
-      tools: Kitchen Tools
+      tools: Kitchen tools
   users:
     confirmations:
       new:
@@ -104,16 +118,17 @@ en:
         greeting: Hello %{recipient}!
         message: We're contacting you to notify you that your password has been changed.
       reset_password_instructions:
-        action: Action
-        greeting: Greeting
-        instruction: Instruction
-        instruction_2: Instruction 2
-        instruction_3: Instruction 3
-      unlock_instructions:
         action: Change my password
         greeting: Hello %{recipient}!
         instruction: Someone has requested a link to change your password. You can
           do this through the link below.
+        instruction_2: If you didn't request this, please ignore this email.
+        instruction_3: Your password wont change until you access the link above and
+          create a new one.
+      unlock_instructions:
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: 'Click the link below to unlock your account:'
         message: Your account has been locked due to an excessive number of unsuccessful
           sign in attempts.
     passwords:
@@ -129,9 +144,9 @@ en:
       edit:
         are_you_sure: Are you sure?
         cancel_my_account: Cancel my account
-        currently_waiting_confirmation_for_email: 'Currently waiting confirmation
-          for: %{email}'
-        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want
+        currently_waiting_confirmation_for_email: Currently waiting confirmation for
+          %{email}
+        leave_blank_if_you_don_t_want_to_change_it: Leave blank if you don t want
           to change it
         title: Edit %{resource}
         unhappy: Unhappy?
@@ -145,12 +160,12 @@ en:
         sign_in: Log in
     shared:
       links:
-        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
-        didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
-        forgot_your_password: Forgot your password?
+        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions
+        didn_t_receive_unlock_instructions: Didn't receive unlock instructions
+        forgot_your_password: Forgot your password
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
     unlocks:
       new:
-        resend_unlock_instructions: Resend unlock instructions
+        resend_unlock_instructions: resend unlock instructions
