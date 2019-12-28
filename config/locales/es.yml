@@ -105,6 +105,17 @@ es:
       settings: Configuración
       sign_in: Iniciar sesión
       tools: Equipo de cocina
+    navbar-small:
+      bookmarks: Favoritos
+      conversion: Tabla de conversión
+      inbox: Mensajes
+      languages: Idiomas
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Cerrar sesión
+      recipes: Recetas
+      settings: Configuración
+      sign_in: Iniciar sesión
+      tools: Equipo de cocina
   users:
     confirmations:
       new:
