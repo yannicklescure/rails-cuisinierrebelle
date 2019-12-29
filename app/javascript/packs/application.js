@@ -2,16 +2,9 @@ import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 
 // console.log(window.innerWidth);
-const navbarBrand = document.querySelector(".navbar-brand");
-console.log(`navbarBrand ${navbarBrand.href}`);
-
-if(window.innerWidth <= 768) {
-  navbarBrand.style.padding = "5px 0";
-}
 
 const userSignedIn = document.querySelector('body').dataset.user;
 console.log(`userSignedIn? ${userSignedIn}`);
-
 
 let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
 console.log(data.groups.domain);
@@ -27,7 +20,14 @@ console.log('currentLang ', currentLang);
 console.log('currentController ', currentController);
 console.log('currentPage ', currentPage);
 
-if(currentLang != null) navbarBrand.href += currentLang;
+
+const navbarBrand = document.querySelector(".navbar-brand");
+console.log(`navbarBrand ${navbarBrand.href}`);
+
+// if(currentLang != null) navbarBrand.href += currentLang;
+if(window.innerWidth <= 768) {
+  navbarBrand.style.padding = "5px 0";
+}
 
 if(currentController === "users") document.querySelector('.btn').classList.add('btn-secondary');
 if(currentPage === "users") {
