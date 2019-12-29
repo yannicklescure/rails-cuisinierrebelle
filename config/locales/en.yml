@@ -101,6 +101,17 @@ en:
       settings: Settings
       sign_in: Log in
       tools: Kitchen tools
+    navbar-small:
+      bookmarks: Bookmarks
+      conversion: Conversion table
+      inbox: Inbox
+      languages: Languages
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Log out
+      recipes: Recipes
+      settings: Settings
+      sign_in: Log in
+      tools: Kitchen tools
   users:
     confirmations:
       new:

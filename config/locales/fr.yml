@@ -106,6 +106,17 @@ fr:
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
+    navbar-small:
+      bookmarks: Favoris
+      conversion: Table de conversion
+      inbox: Messages
+      languages: Langues
+      languages_html: <i class="fas fa-language"></i>
+      log_out: Se déconnecter
+      recipes: Recettes
+      settings: Paramètres
+      sign_in: Connexion
+      tools: Matériel de cuisine
   users:
     confirmations:
       new:

@@ -30,6 +30,16 @@ console.log('currentPage ', currentPage);
 if(currentLang != null) navbarBrand.href += currentLang;
 
 if(currentController === "users") document.querySelector('.btn').classList.add('btn-secondary');
+if(currentPage === "users") {
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+    button.classList.add('btn-secondary');
+  });
+  const modalMenuLinks = document.querySelectorAll('.modal-menu-link');
+  modalMenuLinks.forEach(modalMenuLink => {
+    modalMenuLink.classList.remove('btn-secondary');
+  });
+}
 
 if(userSignedIn === "false" && (currentController === null || currentController.match(/en|fr|es/))) {
   scrollToAnchor("#recipes-cards");
