@@ -24,13 +24,11 @@ console.log('currentPage ', currentPage);
 const navbarBrand = document.querySelector(".navbar-brand");
 console.log(`navbarBrand ${navbarBrand.href}`);
 
-// if(currentLang != null) navbarBrand.href += currentLang;
 if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
 }
 
-if(currentController === "users") document.querySelector('.btn').classList.add('btn-secondary');
-if(currentPage === "users") {
+if(currentController === "users") {
   const buttons = document.querySelectorAll('.btn');
   buttons.forEach(button => {
     button.classList.add('btn-secondary');
