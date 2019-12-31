@@ -32,21 +32,21 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+                <%= link_to t(".settings"), user_path(current_user), class: "dropdown-item" %>
+                <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= t('.languages_html') %>
               </a>
               <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/">English</a>
                 <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "dropdown-item" %>
                 <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "dropdown-item" %>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-                <%= link_to t(".settings"), user_path(current_user), class: "dropdown-item" %>
-                <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% else %>

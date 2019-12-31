@@ -41,9 +41,37 @@ if(currentPage === "users") {
   });
 }
 
-if(userSignedIn === "false" && (currentController === null || currentController.match(/en|fr|es/))) {
-  scrollToAnchor("#recipes-cards");
-  const bannerCtaBox = document.querySelector('#banner-cta-box');
-  const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
-  bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
+if (currentController === null || currentController.match(/en|fr|es/)) {
+
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    console.log(card.dataset);
+    const element = document.querySelector(`.fa-heart-${card.dataset.recipe}`);
+    element.style.opacity = 0;
+    const cardImgTop = document.querySelector(`.card-img-top-${card.dataset.recipe}`);
+    let clickCount = 0;
+    cardImgTop.addEventListener('click', (event) => {
+      clickCount++;
+      const timeOut = () => {
+        setTimeout(() => {
+          clickCount = 0;
+        }, 400);
+      }
+      if (clickCount === 1) {
+        timeOut();
+      } else if (clickCount === 2) {
+        const liked = document.querySelector(`.liked-${card.dataset.recipe}`);
+        liked.click();
+        clearTimeout(timeOut);
+        clickCount = 0;
+      }
+    });
+  });
+
+  if(userSignedIn === "false") {
+    scrollToAnchor("#recipes-cards");
+    const bannerCtaBox = document.querySelector('#banner-cta-box');
+    const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
+    bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
+  }
 }
