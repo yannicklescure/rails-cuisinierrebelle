@@ -6,8 +6,8 @@
     <% @recipes.each do |recipe| %>
     <div class="col col-md-4 col-lg-2">
       <div class="card border-0" data-recipe="<%= recipe.id %>">
-        <div class="card-img-top card-img-top-<%= recipe.id %> d-flex justify-content-center align-items-center" style="background-image: url(<%= recipe.image %>);">
-          <div class="fa-heart-<%= recipe.id %> text-danger display-1">
+        <div class="card-img-top card-img-top-<%= recipe.id %> d-flex justify-content-center align-items-center" style="background-image: url('<%= cl_image_path recipe.photo.key, height: 300, width: 400, crop: :fill %>');">
+          <div class="fa-heart-<%= recipe.id %> text-danger display-3">
             <i class="fas fa-heart"></i>
           </div>
         </div>

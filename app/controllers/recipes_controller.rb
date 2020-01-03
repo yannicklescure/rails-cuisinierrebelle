@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def create
@@ -30,6 +31,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.friendly.find(params[:id])
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def update
@@ -50,6 +52,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description)
+    params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description, :photo, :image)
   end
 end
