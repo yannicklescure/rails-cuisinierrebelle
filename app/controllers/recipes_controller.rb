@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to recipe_path(@recipe)
@@ -35,6 +36,7 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.friendly.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
