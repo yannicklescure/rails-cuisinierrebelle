@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
 
-gem 'cloudinary', '~> 1.12.0'
+gem 'cloudinary', '~> 1.13', '>= 1.13.1'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
