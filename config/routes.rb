@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :users, only: [:show]
     resources :bookmarks, only: [:index]
+    resources :index, only: [:index], as: 'index'
   end
 end

@@ -1,4 +1,4 @@
-<div class="container py-3">
+<div class="container my-5">
   <div class="d-flex justify-content-center justify-content-md-end align-items-center">
     <% unless user_signed_in? %>
       <div class="text-body">
@@ -49,4 +49,7 @@
       </div>
     </div>
   </div>
+  <% renderer = Redcarpet::Render::HTML.new() %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
+  <%= markdown.render(@recipe.direction).html_safe %>
 </div>
