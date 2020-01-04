@@ -1,10 +1,10 @@
 bookmarked = document.querySelector(".bookmarked");
-console.log(`bookmarked ${<%= @bookmarked %>}`);
+// console.log(`bookmarked ${<%= @bookmarked %>}`);
 
 if(<%= @bookmarked %>) bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
 else bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
 
-bookmarks = document.querySelector(".bookmarks");
-console.log(`bookmarks ${<%= @bookmarks.size %>}`);
-if(<%= @bookmarks.size %> > 0) bookmarks.innerHTML = `<i class="fas fa-bookmark"></i>`;
-else bookmarks.innerHTML = `<i class="far fa-bookmark"></i>`;
+// bookmarks = document.querySelector(".bookmarks");
+// console.log(`bookmarks ${<%= @bookmarks.size %>}`);
+// if(<%= @bookmarks.size %> > 0) bookmarks.innerHTML = `<i class="fas fa-bookmark"></i>`;
+// else bookmarks.innerHTML = `<i class="far fa-bookmark"></i>`;
