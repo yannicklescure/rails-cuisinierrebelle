@@ -1,22 +1,23 @@
 <div class="container py-5">
-  <div class="row justify-content-end p-3">
-    <a class="btn btn-secondary" href="<%= edit_user_registration_path(@user) %>">Edit</a>
+  <div class="row justify-content-between p-3">
+    <%= link_to t('.follower', count: @user.followers.count), followers_path, class: 'text-body ml-1' %>
+    <%= link_to t('.edit_user_registration'), edit_user_registration_path(@user), class: 'text-body' %>
   </div>
-  <table class="table table-bordered">
+  <table class="table table-sm">
     <tr>
-      <td>Full name</td>
+      <th><%= t('.full_name') %></th>
       <td><%= @user.first_name.capitalize %>&nbsp;<%= @user.last_name.capitalize %></td>
     </tr>
     <tr>
-      <td>Email</td>
+      <th><%= t('.email') %></th>
       <td><%= @user.email %></td>
     </tr>
     <tr>
-      <td>Created at</td>
+      <th><%= t('.created_at') %></th>
       <td><%= @user.created_at %></td>
     </tr>
     <tr>
-      <td>Updated at</td>
+      <th><%= t('.updated_at') %></th>
       <td><%= @user.updated_at %></td>
     </tr>
   </table>

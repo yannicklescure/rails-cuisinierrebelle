@@ -120,11 +120,13 @@ fr:
       videos: Vidéos
     footer:
       community: Community
+      cuisinier_rebelle: Cuisinier rebelle
       discover: Discover
       experiences: Experiences
       help: Help
       legal: Legal
-      made_with_love_by_html: Fait avec <i class="fas fa-heart text-danger"></i> par Cuisinier Rebelle
+      made_with_love_by_html: Fait avec <i class="fas fa-heart text-danger"></i> par
+        Cuisinier Rebelle
       news: News
       policies: Policies
       privacy: Privacy
@@ -220,6 +222,12 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
+    show:
+      edit_user_registration: Edit user registration
+      follower:
+        zero: "Pas d'abonné"
+        one: 'Un abonné'
+        other: '%{count} abonnés'
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage

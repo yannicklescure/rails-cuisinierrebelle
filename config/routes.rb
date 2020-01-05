@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     end
     # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :bookmarks, only: [:index]
-    resources :index, only: [:index], as: 'index'
+    resources :index, only: [:index]
+    resources :followers, only: [:index]
+    resources :following, only: [:index]
 
     resources :users, only: [:index, :show] do
       member do

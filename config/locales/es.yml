@@ -119,11 +119,13 @@ es:
       videos: Vídeos
     footer:
       community: Community
+      cuisinier_rebelle: Cuisinier rebelle
       discover: Discover
       experiences: Experiences
       help: Help
       legal: Legal
-      made_with_love_by_html: Hecho con <i class="fas fa-heart text-danger"></i> por Cuisinier Rebelle
+      made_with_love_by_html: Hecho con <i class="fas fa-heart text-danger"></i> por
+        Cuisinier Rebelle
       news: News
       policies: Policies
       privacy: Privacy
@@ -219,6 +221,12 @@ es:
         sign_in: Iniciar sesión
         sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
+    show:
+      edit_user_registration: Edit user registration
+      follower:
+        zero: 'Sin seguidor'
+        one: 'Un seguidor'
+        other: '%{count} seguidores'
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear

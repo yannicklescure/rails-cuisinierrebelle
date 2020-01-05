@@ -1,26 +1,25 @@
 <div class="container mt-3 mb-5">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex justify-content-center align-items-center">
-      <p class="m-0">
-        <%= t('.recipe_published_by') %>
-        <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name}", user_path(@recipe.user), class: 'text-body' %>
-      </p>
+  <div class="d-flex justify-content-md-between align-items-md-center flex-column flex-md-row">
+    <div class="d-flex justify-content-center align-items-center order-1 order-md-0">
+      <div class="d-flex flex-column flex-md-row m-0 align-items-center">
+        <span class="mr-md-1"><%= t('.recipe_published_by') %></span>
+        <%#= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name}", user_path(@recipe.user), class: 'text-body' %>
+        <%= render @recipe.user %>
+      </div>
     </div>
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column align-items-center flex-md-row justify-content-between order-0 order-md-1">
       <% if user_signed_in? %>
-        <p class="m-0 ml-3">
+        <p class="m-0 ml-md-3 order-1 order-md-0">
           <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-body' %>
         </p>
-        <div class="order-0">
+        <div class="order-0 order-md-1">
           <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true do %>
-            <button class="btn p-0 ml-3 bookmarked">
+            <button class="btn p-0 m-1 m-md-0 ml-md-3 bookmarked">
             <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw('<i class="far fa-bookmark"></i>') : raw('<i class="fas fa-bookmark"></i>') %>
             </button>
           <% end %>
-        </div>
-        <div class="order-1">
           <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true do %>
-            <button class="btn p-0 ml-3 liked text-danger">
+            <button class="btn p-0 m-1 m-md-0 ml-md-3 liked text-danger">
               <% if @recipe.likes.find_by(user: current_user).nil? %>
                 <i class="far fa-heart"></i>
               <% else %>

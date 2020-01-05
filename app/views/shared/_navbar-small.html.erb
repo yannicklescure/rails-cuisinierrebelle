@@ -7,7 +7,7 @@
           <button type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <a href="<%= recipes_path %>" class="btn btn-link modal-menu-link"><%= t(".recipes") %></a>
+          <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a>
           <a href="<%= tools_path %>" class="btn btn-link modal-menu-link"><%= t(".tools") %></a>
           <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
           <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -21,6 +21,9 @@
             </div>
           </div>
           <% if user_signed_in? %>
+            <%= link_to t(".new_recipe"), new_recipe_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".recipes"), recipes_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".following"), following_index_path, class: "btn btn-link modal-menu-link" %>
             <%= link_to t(".settings"), user_path(current_user), class: "btn btn-link modal-menu-link" %>
             <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "btn btn-link modal-menu-link" %>
           <% else %>
