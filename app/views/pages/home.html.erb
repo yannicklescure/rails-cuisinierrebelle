@@ -14,18 +14,7 @@
         <!-- <img class="card-img-top" src="<%= recipe.image %>" alt="image"> -->
         <div class="card-body py-2 px-0">
           <div class="d-flex justify-content-between align-items-center">
-            <% unless user_signed_in? %>
-              <div class="text-danger">
-                <%= link_to new_user_session_path, class: 'btn p-0 text-danger' do %>
-                  <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= recipe.likes.count %></span>
-                  <% end %>
-              </div>
-              <div class="d-flex align-items-center">
-                <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-                <%= link_to raw('<i class="fas fa-share-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-                <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-              </div>
-            <% else %>
+            <% if user_signed_in? %>
               <%= link_to recipe_likes_path(recipe), method: :patch, remote: true do %>
                   <button class="btn p-0 liked liked-<%= recipe.id %> text-danger">
                     <% if recipe.likes.find_by(user: current_user).nil? %>
@@ -48,6 +37,17 @@
                     <% end %>
                   </button>
                 <% end %>
+              </div>
+            <% else %>
+              <div class="text-danger">
+                <%= link_to new_user_session_path, class: 'btn p-0 text-danger' do %>
+                  <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= recipe.likes.count %></span>
+                  <% end %>
+              </div>
+              <div class="d-flex align-items-center">
+                <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+                <%= link_to raw('<i class="fas fa-share-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+                <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
               </div>
             <% end %>
           </div>

@@ -85,28 +85,64 @@ en:
       conversion: Conversion table
     tools:
       tools: Kitchen tools
+  recipes:
+    edit:
+      description: Description
+      direction: Direction
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
+    index:
+      comments: Comments
+      date: Date
+      likes: Likes
+      recipe: Recipe
+    new:
+      description: Description
+      direction: Direction
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
+    show:
+      edit_recipe: Edit recipe
+      recipe_published_by: Recipe published by
   shared:
     banner:
       banner_subtitle: Cooking recipes and other things
       recipes: Recipes
       videos: Videos
+    footer:
+      community: Community
+      cuisinier_rebelle: Cuisinier rebelle
+      discover: Discover
+      experiences: Experiences
+      help: Help
+      legal: Legal
+      made_with_love_by_html: Made with <i class="fas fa-heart text-danger"></i> by
+        Cuisinier Rebelle
+      news: News
+      policies: Policies
+      privacy: Privacy
+      recipes: Recipes
+      site_map: Site map
+      terms: Terms
     navbar-large:
       bookmarks: Bookmarks
       conversion: Conversion table
       inbox: Inbox
-      languages: Languages
+      index: Index
       languages_html: <i class="fas fa-language"></i>
       log_out: Log out
+      new_recipe: New recipe
       recipes: Recipes
       settings: Settings
       sign_in: Log in
       tools: Kitchen tools
     navbar-small:
-      bookmarks: Bookmarks
       conversion: Conversion table
-      inbox: Inbox
       languages: Languages
-      languages_html: <i class="fas fa-language"></i>
       log_out: Log out
       recipes: Recipes
       settings: Settings
@@ -177,6 +213,12 @@ en:
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
+    show:
+      edit_user_registration: Edit user registration
+      follower:
+        zero: 'No follower'
+        one: 'One follower'
+        other: '%{count} followers'
     unlocks:
       new:
         resend_unlock_instructions: resend unlock instructions

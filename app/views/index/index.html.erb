@@ -1,0 +1,7 @@
+<div class="container my-5">
+  <ul class="list-unstyled">
+    <% @recipes.sort.each do |recipe| %>
+      <li><a href="<%= recipe_path(recipe) %>"><%= recipe.title %> </a></li>
+    <% end %>
+  </ul>
+</div>

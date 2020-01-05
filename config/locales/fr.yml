@@ -90,28 +90,64 @@ fr:
       conversion: Table de conversion
     tools:
       tools: Matériel de cuisine
+  recipes:
+    edit:
+      description: Description
+      direction: Direction
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
+    index:
+      comments: Comments
+      date: Date
+      likes: Likes
+      recipe: Recipe
+    new:
+      description: Description
+      direction: Direction
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
+    show:
+      edit_recipe: Edit recipe
+      recipe_published_by: Recipe published by
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et autres choses
       recipes: Recettes
       videos: Vidéos
+    footer:
+      community: Community
+      cuisinier_rebelle: Cuisinier rebelle
+      discover: Discover
+      experiences: Experiences
+      help: Help
+      legal: Legal
+      made_with_love_by_html: Fait avec <i class="fas fa-heart text-danger"></i> par
+        Cuisinier Rebelle
+      news: News
+      policies: Policies
+      privacy: Privacy
+      recipes: Recipes
+      site_map: Site map
+      terms: Terms
     navbar-large:
       bookmarks: Favoris
       conversion: Table de conversion
       inbox: Messages
-      languages: Langues
+      index: Index
       languages_html: <i class="fas fa-language"></i>
       log_out: Se déconnecter
+      new_recipe: New recipe
       recipes: Recettes
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
     navbar-small:
-      bookmarks: Favoris
       conversion: Table de conversion
-      inbox: Messages
       languages: Langues
-      languages_html: <i class="fas fa-language"></i>
       log_out: Se déconnecter
       recipes: Recettes
       settings: Paramètres
@@ -186,6 +222,12 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
+    show:
+      edit_user_registration: Edit user registration
+      follower:
+        zero: "Pas d'abonné"
+        one: 'Un abonné'
+        other: '%{count} abonnés'
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage

@@ -1,13 +1,19 @@
 <div class="container my-5">
   <%= simple_form_for(@recipe) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :subtitle %>
-    <%= f.input :video %>
+    <%= f.label :title, t('.title') %>
+    <%= f.input :title, label: false %>
+    <%= f.label :subtitle, t('.subtitle') %>
+    <%= f.input :subtitle, label: false %>
+    <%= f.label :description, t('.description') %>
+    <%= f.input :description, label: false, input_html: { maxlength: 280} %>
+    <%= f.label :video, t('.youtube_video_link') %>
+    <%= f.input :video, label: false %>
     <%#= f.input :image %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :ingredients %>
-    <%= f.input :direction %>
-    <%= f.input :description %>
+    <%= f.label :photo, t('.photo') %>
+    <%= f.input :photo, as: :file, label: false %>
+    <%#= f.input :ingredients %>
+    <%= f.label :direction, t('.direction') %>
+    <%= f.input :direction, label: false %>
     <%= f.submit class: "btn btn-secondary" %>
   <% end %>
 </div>
