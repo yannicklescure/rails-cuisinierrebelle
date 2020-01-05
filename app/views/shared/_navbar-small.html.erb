@@ -8,6 +8,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
           <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a>
+          <% if user_signed_in? %>
+            <%= link_to t(".bookmarks"), bookmarks_path, class: "btn btn-link modal-menu-link" %>
+          <% end %>
           <a href="<%= tools_path %>" class="btn btn-link modal-menu-link"><%= t(".tools") %></a>
           <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
           <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
