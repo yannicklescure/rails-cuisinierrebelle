@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :bookmarks
-  has_many :likes
+  has_many :bookmarks, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_one_attached :photo
 

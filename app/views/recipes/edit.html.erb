@@ -1,4 +1,7 @@
 <div class="container my-5">
+  <div class="d-flex justify-content-end">
+    <%= link_to t('.delete'), recipe_path(@recipe), method: :delete, class: 'text-body' %>
+  </div>
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.label :title, t('.title') %>
     <%= f.input :title, label: false %>

@@ -10,5 +10,6 @@ class LikesController < ApplicationController
       @liked = true
     end
     # @likes = Like.where(user: current_user, recipe: @recipe)
+    authorize @like
   end
 end
