@@ -41,3 +41,4 @@ end
 gem "rspec", "~> 3.9"
 gem 'cloudinary', '~> 1.13', '>= 1.13.1'
 gem 'redcarpet'
+gem 'pundit'
