@@ -31,7 +31,7 @@ if(window.innerWidth <= 768) {
 if(currentController === "users") {
   const buttons = document.querySelectorAll('.btn');
   buttons.forEach(button => {
-    button.classList.add('btn-secondary');
+    // button.classList.add('btn-secondary');
   });
   const modalMenuLinks = document.querySelectorAll('.modal-menu-link');
   modalMenuLinks.forEach(modalMenuLink => {
@@ -39,7 +39,7 @@ if(currentController === "users") {
   });
 }
 
-if (currentController === null || currentController.match(/en|fr|es/)) {
+if ((currentController === null || 'users') || currentController.match(/en|fr|es/)) {
 
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {

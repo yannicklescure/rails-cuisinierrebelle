@@ -3,44 +3,51 @@
     <div class="d-flex justify-content-center align-items-center order-1 order-md-0">
       <div class="d-flex flex-column flex-md-row m-0 align-items-center">
         <span class="mr-md-1"><%= t('.recipe_published_by') %></span>
-        <%#= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name}", user_path(@recipe.user), class: 'text-body' %>
-        <%= render @recipe.user %>
+        <% if user_signed_in? %>
+          <%= render @recipe.user %>
+        <% else %>
+          <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name}", user_path(@recipe.user), class: 'text-body' %>
+        <% end %>
       </div>
     </div>
+    <% if user_signed_in? %>
     <div class="d-flex flex-column align-items-center flex-md-row justify-content-between order-0 order-md-1">
-      <% if user_signed_in? %>
-        <p class="m-0 ml-md-3 order-1 order-md-0">
-          <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-body' %>
-        </p>
-        <div class="order-0 order-md-1">
-          <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true do %>
-            <button class="btn p-0 m-1 m-md-0 ml-md-3 bookmarked">
-            <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw('<i class="far fa-bookmark"></i>') : raw('<i class="fas fa-bookmark"></i>') %>
-            </button>
-          <% end %>
-          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true do %>
-            <button class="btn p-0 m-1 m-md-0 ml-md-3 liked text-danger">
-              <% if @recipe.likes.find_by(user: current_user).nil? %>
-                <i class="far fa-heart"></i>
-              <% else %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-              <span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
-            </button>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="text-body">
-          <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-          <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-        </div>
-        <div class="text-danger">
-          <%= link_to new_user_session_path, class: 'btn p-0 ml-3 text-danger' do %>
-            <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
-            <% end %>
-        </div>
+      <% if @recipe.user == current_user %>
+      <p class="m-0 ml-md-3 order-1 order-md-0">
+        <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-body' %>
+      </p>
       <% end %>
+      <div class="order-0 order-md-1">
+        <% if policy(Bookmark).update? %>
+          <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'btn p-0 m-1 m-md-0 ml-md-3 bookmarked' do %>
+            <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw('<i class="far fa-bookmark"></i>') : raw('<i class="fas fa-bookmark"></i>') %>
+          <% end %>
+        <% end %>
+        <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true do %>
+          <button class="btn p-0 m-1 m-md-0 ml-md-3 liked text-danger">
+            <% if @recipe.likes.find_by(user: current_user).nil? %>
+              <i class="far fa-heart"></i>
+            <% else %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+            <span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
+          </button>
+        <% end %>
+      </div>
     </div>
+    <% else %>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="text-body">
+        <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+        <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+      </div>
+      <div class="text-danger">
+        <%= link_to new_user_session_path, class: 'btn p-0 ml-3 text-danger' do %>
+          <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
   <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
     <div class="d-none d-md-block text-center">
@@ -52,15 +59,20 @@
       <div class="h6 text-secondary"><%= @recipe.subtitle %></div>
     </div>
   </div>
+  <div class="my-5 d-print-none">
+    <%= cl_image_tag @recipe.photo.key, crop: :fill, class: 'img-fluid rounded' %>
+  </div>
+  <% renderer = Redcarpet::Render::HTML.new() %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
+  <%= markdown.render(@recipe.direction).html_safe %>
   <% video = @recipe.video.match(/(.+\/)(.+)/) %>
-  <div class="row my-5 d-print-none">
+  <% unless video.nil? %>
+  <div class="row mt-5 d-print-none">
     <div class="col col-md-8 mx-auto">
       <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video[2] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
-  <% renderer = Redcarpet::Render::HTML.new() %>
-  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
-  <%= markdown.render(@recipe.direction).html_safe %>
+  <% end %>
 </div>

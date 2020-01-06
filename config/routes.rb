@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :followers, only: [:index]
     resources :following, only: [:index]
 
-    resources :users, only: [:index, :show] do
+    resources :users, only: [:show] do
       member do
         post :follow
         post :unfollow

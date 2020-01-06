@@ -1,25 +1,27 @@
-<div class="container my-5">
-  <h2><%= t('.published_recipes') %></h2>
-  <div class="table-responsive">
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col"><%= t('.recipe') %></th>
-          <th scope="col"><%= t('.date') %></th>
-          <th scope="col"><%= t('.likes') %></th>
-          <th scope="col"><%= t('.comments') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @recipes.sort_by { |date| date.created_at }.reverse.each do |recipe| %>
+<% if user_signed_in? %>
+  <div class="container my-5">
+    <h2><%= t('.published_recipes') %></h2>
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <thead>
           <tr>
-            <td scope="row"><a href="<%= recipe_path(recipe) %>"><%= recipe.title %></a></td>
-            <td><%= recipe.created_at %></td>
-            <td><%= recipe.likes.count %></td>
-            <td><%#= recipe.comments.count %>123456</td>
+            <th scope="col"><%= t('.recipe') %></th>
+            <th scope="col"><%= t('.date') %></th>
+            <th scope="col"><%= t('.likes') %></th>
+            <th scope="col"><%= t('.comments') %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @recipes.sort_by { |date| date.created_at }.reverse.each do |recipe| %>
+            <tr>
+              <td scope="row"><a href="<%= recipe_path(recipe) %>"><%= recipe.title %></a></td>
+              <td><%= recipe.created_at %></td>
+              <td><%= recipe.likes.count %></td>
+              <td><%#= recipe.comments.count %>123456</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>

@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   def index
-    @bookmarks = Bookmark.where(user: current_user)
+    # @bookmarks = Bookmark.where(user: current_user)
+    @bookmarks = policy_scope(Bookmark).where(id: current_user.id)
   end
 
   def update
@@ -14,5 +15,6 @@ class BookmarksController < ApplicationController
       @bookmarked = true
     end
     @bookmarks = Bookmark.where(user: current_user)
+    authorize @bookmark
   end
 end
