@@ -11,9 +11,14 @@
     <%= f.input :description, label: false, input_html: { maxlength: 280} %>
     <%= f.label :video, t('.youtube_video_link') %>
     <%= f.input :video, label: false %>
+    <div class="d-flex flex-column">
+      <%= f.label :photo, t('.photo') %>
+      <%= cl_image_tag @recipe.photo.key, id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
+      <%#= f.input :photo, as: :file, label: false %>
+      <%= image_tag "", width: 300, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
+      <%= f.input :photo, input_html: { id: 'photo-input'}, label: false %>
+    </div>
     <%#= f.input :image %>
-    <%= f.label :photo, t('.photo') %>
-    <%= f.input :photo, as: :file, label: false %>
     <%#= f.input :ingredients %>
     <%= f.label :direction, t('.direction') %>
     <%= f.input :direction, label: false, input_html: {rows: 15} %>

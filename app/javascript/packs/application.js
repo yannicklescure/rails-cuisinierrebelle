@@ -1,6 +1,8 @@
 import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
+import { previewImageOnFileSelect } from "../components/photo-preview";
 
+previewImageOnFileSelect();
 // console.log(window.innerWidth);
 
 const userSignedIn = document.querySelector('body').dataset.user;
