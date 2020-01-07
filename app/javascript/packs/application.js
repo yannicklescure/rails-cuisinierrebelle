@@ -58,7 +58,7 @@ if ((currentController === null || 'users') || currentController.match(/en|fr|es
       if (clickCount === 1) {
         timeOut();
       } else if (clickCount === 2) {
-        const liked = document.querySelector(`.liked-${card.dataset.recipe}`);
+        const liked = document.querySelector(`[data-like-recipe="${card.dataset.recipe}"]`);
         liked.click();
         clearTimeout(timeOut);
         clickCount = 0;

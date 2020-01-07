@@ -1,7 +1,7 @@
-liked = document.querySelector(".liked");
+// recipeId = <%= @recipe.id %>;
+liked = document.querySelector("[data-like-recipe='<%= @recipe.id %>']");
 // console.log(`liked ${<%= @liked %>}`);
-recipeId = <%= @recipe.id %>;
-faHeart = document.querySelector(`.fa-heart-${recipeId}`);
+faHeart = document.querySelector(`.fa-heart-${<%= @recipe.id %>}`);
 // console.log(faHeart);
 
 fade = (element) => {

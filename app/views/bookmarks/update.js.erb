@@ -1,5 +1,5 @@
-bookmarked = document.querySelector(".bookmarked");
-// console.log(`bookmarked ${<%= @bookmarked %>}`);
+bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
+console.log(`bookmark-recipe ${<%= @recipe.id %>}`);
 
 if(<%= @bookmarked %>) bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
 else bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
