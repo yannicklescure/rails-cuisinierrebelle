@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
 
   has_one_attached :photo
 
+  acts_as_taggable_on :tags
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
