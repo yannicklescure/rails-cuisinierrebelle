@@ -40,27 +40,23 @@
         <div class="card-body py-2 px-0">
           <div class="d-flex justify-content-between align-items-center">
             <% if user_signed_in? %>
-              <%= link_to recipe_likes_path(recipe), method: :patch, remote: true do %>
-                  <button class="btn p-0 liked liked-<%= recipe.id %> text-danger">
-                    <% if recipe.likes.find_by(user: current_user).nil? %>
-                      <i class="far fa-heart"></i>
-                    <% else %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                    &nbsp;<span class="text-muted font-weight-lighter"><%= recipe.likes.count %></span>
-                  </button>
+              <%= link_to recipe_likes_path(recipe), method: :patch, remote: true, class:"btn p-0 text-danger", 'data-like-recipe': recipe.id do %>
+                <% if recipe.likes.find_by(user: current_user).nil? %>
+                <i class="far fa-heart"></i>
+                <% else %>
+                <i class="fas fa-heart"></i>
+                <% end %>
+                &nbsp;<span class="text-muted font-weight-lighter"><%= recipe.likes.count %></span>
               <% end %>
               <div class="d-flex align-items-center">
                 <%= link_to raw('<i class="far fa-comment-alt"></i>'), '#', class: 'btn p-0 ml-3' %>
                 <%= link_to raw('<i class="fas fa-share-alt"></i>'), '#', class: 'btn p-0 ml-3' %>
-                <%= link_to recipe_bookmarks_path(recipe), method: :patch, remote: true do %>
-                  <button class="btn p-0 ml-3 bookmarked">
-                    <% if recipe.bookmarks.find_by(user: current_user).nil?  %>
-                      <i class="far fa-bookmark"></i>
-                    <% else %>
-                      <i class="fas fa-bookmark"></i>
-                    <% end %>
-                  </button>
+                <%= link_to recipe_bookmarks_path(recipe), method: :patch, remote: true, class: 'btn p-0 ml-3', 'data-bookmark-recipe': recipe.id do %>
+                  <% if recipe.bookmarks.find_by(user: current_user).nil?  %>
+                    <i class="far fa-bookmark"></i>
+                  <% else %>
+                    <i class="fas fa-bookmark"></i>
+                  <% end %>
                 <% end %>
               </div>
             <% else %>
