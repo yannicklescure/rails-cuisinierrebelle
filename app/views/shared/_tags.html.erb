@@ -1,9 +1,14 @@
-<% @recipes.each do |r| %>
-  <h2><%= r.title %></h2>
-  <p>
-    <% r.tag_list.each do |tag| %>
-      <%= link_to tag, tagged_path(tag: tag) %>
-    <% end %>
-  </p>
+<div class="d-flex my-3">
+<p class="m-0"><strong><%= t('.most_used_tags') %></strong><br>
+<% count = 1 %>
+<% tags_list_max = 10 %>
+<% most_used_count = ActsAsTaggableOn::Tag.most_used.count %>
+<% tags_list_max = most_used_count if most_used_count < tags_list_max %>
+<%#= tags_list_max %>
+<% ActsAsTaggableOn::Tag.most_used(tags_list_max).to_a.each do |tag| %>
+  <%#= "##{tag.to_s.gsub(' ', '')}" %>
+  <%= link_to "#{tag.to_s.capitalize}", tagged_path(tag: tag.to_s), class: 'text-body m-0' %><%= raw(",") if count < tags_list_max %>
+  <% count += 1 %>
 <% end %>
-<%= ActsAsTaggableOn::Tag.most_used(10) %>
+</p>
+</div>

@@ -1,7 +1,8 @@
-<%= render 'shared/tags' %>
-<div class="container my-5">
+<div class="container mt-3 mb-5">
+  <%= render 'shared/tags' %>
+  <strong><%= t('.recent_recipes') %></strong><br>
   <ul class="list-unstyled">
-    <% @recipes.sort.each do |recipe| %>
+    <% @recipes.order('created_at DESC').each do |recipe| %>
       <li><a href="<%= recipe_path(recipe) %>"><%= recipe.title %> </a></li>
     <% end %>
   </ul>
