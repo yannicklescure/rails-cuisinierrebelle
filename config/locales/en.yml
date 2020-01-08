@@ -80,6 +80,9 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  following:
+    index:
+      following: Following
   pages:
     conversion:
       conversion: Conversion table
@@ -87,8 +90,12 @@ en:
       tools: Kitchen tools
   recipes:
     edit:
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
+      delete: Delete
       description: Description
       direction: Direction
+      markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle
       title: Title
@@ -97,17 +104,23 @@ en:
       comments: Comments
       date: Date
       likes: Likes
+      published_recipes: Published recipes
       recipe: Recipe
     new:
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
       description: Description
       direction: Direction
+      markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle
       title: Title
       youtube_video_link: Youtube video link
     show:
       edit_recipe: Edit recipe
+      recipe_by: '%{title} by %{user}'
       recipe_published_by: Recipe published by
+      related_recipes: Related recipes
   shared:
     banner:
       banner_subtitle: Cooking recipes and other things
@@ -131,6 +144,8 @@ en:
     navbar-large:
       bookmarks: Bookmarks
       conversion: Conversion table
+      cuisinier_rebelle: Cuisinier rebelle
+      following: Following
       inbox: Inbox
       index: Index
       languages_html: <i class="fas fa-language"></i>
@@ -141,13 +156,21 @@ en:
       sign_in: Log in
       tools: Kitchen tools
     navbar-small:
+      bookmarks: Bookmarks
       conversion: Conversion table
+      following: Following
+      index: Index
       languages: Languages
       log_out: Log out
+      new_recipe: New recipe
       recipes: Recipes
       settings: Settings
       sign_in: Log in
       tools: Kitchen tools
+  user_mailer:
+    welcome:
+      see_ya: See ya
+      welcome_message: Welcome message
   users:
     confirmations:
       new:
@@ -214,11 +237,15 @@ en:
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
     show:
+      created_at: Created at
       edit_user_registration: Edit user registration
+      email: Email
       follower:
-        zero: 'No follower'
-        one: 'One follower'
-        other: '%{count} followers'
+        one: One follower
+        other: "%{count} followers"
+        zero: No follower
+      full_name: Full name
+      updated_at: Updated at
     unlocks:
       new:
         resend_unlock_instructions: resend unlock instructions

@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
   def show
     # @recipe = Recipe.find(params[:id])
     @recipe = Recipe.friendly.find(params[:id])
+    @related_recipes = @recipe.find_related_tags
     authorize @recipe
     @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
     @bookmarks = Bookmark.where(user: current_user)
@@ -62,6 +63,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description, :photo, :image)
+    params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description, :photo, :image, :tag_list)
   end
 end

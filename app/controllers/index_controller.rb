@@ -6,4 +6,15 @@ class IndexController < ApplicationController
     @recipes = policy_scope(Recipe)
     @bookmarks = Bookmark.where(user: current_user)
   end
+
+  def tagged
+    if params[:tag].present?
+      # @recipes = Recipe.tagged_with(params[:tag])
+      @recipes = policy_scope(Recipe).tagged_with(params[:tag])
+    else
+      # @recipes = Recipe.all
+      @recipes = policy_scope(Recipe).where(user: current_user)
+    end
+    authorize @recipes
+  end
 end

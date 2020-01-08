@@ -26,4 +26,8 @@ class RecipePolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def tagged?
+    return true
+  end
 end

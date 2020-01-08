@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/tools', to: 'pages#tools', as: 'tools'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    get '/index/tagged', to: "index#tagged", as: :tagged
     resources :recipes do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]

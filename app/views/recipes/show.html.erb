@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="my-5 d-print-none">
-    <%= cl_image_tag @recipe.photo.key, crop: :fill, class: 'img-fluid rounded' %>
+    <%= cl_image_tag @recipe.photo.url, crop: :fill, class: 'img-fluid rounded' %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new() %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
@@ -72,5 +72,14 @@
       </div>
     </div>
   </div>
+  <% end %>
+  <% if @related_recipes.any? %>
+  <hr>
+  <h4><%= t('.related_recipes') %></h4>
+  <ul>
+    <% @related_recipes.order('created_at DESC').take(5).each do |recipe| %>
+      <li><%= link_to t(".recipe_by", title: recipe.title.capitalize, user: recipe.user.name), recipe_path(recipe) %></li>
+    <% end %>
+  </ul>
   <% end %>
 </div>

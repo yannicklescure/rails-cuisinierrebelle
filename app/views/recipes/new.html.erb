@@ -1,25 +1,21 @@
 <div class="container my-5">
   <%= simple_form_for(@recipe) do |f| %>
-    <%= f.label :title, t('.title') %>
-    <%= f.input :title, label: false %>
-    <%= f.label :subtitle, t('.subtitle') %>
-    <%= f.input :subtitle, label: false %>
-    <%= f.label :description, t('.description') %>
-    <%= f.input :description, label: false, input_html: { maxlength: 280} %>
-    <%= f.label :video, t('.youtube_video_link') %>
-    <%= f.input :video, label: false %>
+    <%= f.input :title, label: t('.title') %>
+    <%= f.input :subtitle, label: t('.subtitle') %>
+    <%= f.input :description, label: t('.description'), input_html: { maxlength: 280} %>
+    <%= f.input :video, label: t('.youtube_video_link') %>
     <%#= f.input :image %>
     <%#= f.label :photo, t('.photo') %>
     <%#= f.input :photo, as: :file, label: false %>
     <div class="d-flex flex-column">
       <%= f.label :photo, t('.photo') %>
-      <%#= cl_image_tag @recipe.photo.key, id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
+      <%#= cl_image_tag @recipe.photo.url, id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
       <%= image_tag "", width: 300, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
       <%= f.input :photo, input_html: { id: 'photo-input'}, label: false %>
     </div>
+    <%= f.input :tag_list, label: t('.add_tags'), hint: t('.add_your_tags_separated_by_commas') %>
     <%#= f.input :ingredients %>
-    <%= f.label :direction, t('.direction') %>
-    <%= f.input :direction, label: false %>
+    <%= f.input :direction, label: t('.direction'), hint: t('.markdown_syntax_friendly_area'), input_html: {rows: 10} %>
     <%= f.submit class: "btn btn-secondary" %>
   <% end %>
 </div>

@@ -84,6 +84,9 @@ es:
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+  following:
+    index:
+      following: Following
   pages:
     conversion:
       conversion: Tabla de conversión
@@ -91,8 +94,12 @@ es:
       tools: Equipo de cocina
   recipes:
     edit:
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
+      delete: Delete
       description: Description
       direction: Direction
+      markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle
       title: Title
@@ -101,17 +108,23 @@ es:
       comments: Comments
       date: Date
       likes: Likes
+      published_recipes: Published recipes
       recipe: Recipe
     new:
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
       description: Description
       direction: Direction
+      markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle
       title: Title
       youtube_video_link: Youtube video link
     show:
       edit_recipe: Edit recipe
+      recipe_by: '%{title} de %{user}'
       recipe_published_by: Recipe published by
+      related_recipes: Related recipes
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
@@ -135,6 +148,8 @@ es:
     navbar-large:
       bookmarks: Favoritos
       conversion: Tabla de conversión
+      cuisinier_rebelle: Cuisinier rebelle
+      following: Following
       inbox: Mensajes
       index: Index
       languages_html: <i class="fas fa-language"></i>
@@ -145,13 +160,21 @@ es:
       sign_in: Iniciar sesión
       tools: Equipo de cocina
     navbar-small:
+      bookmarks: Bookmarks
       conversion: Tabla de conversión
+      following: Following
+      index: Index
       languages: Idiomas
       log_out: Cerrar sesión
+      new_recipe: New recipe
       recipes: Recetas
       settings: Configuración
       sign_in: Iniciar sesión
       tools: Equipo de cocina
+  user_mailer:
+    welcome:
+      see_ya: See ya
+      welcome_message: Welcome message
   users:
     confirmations:
       new:
@@ -222,11 +245,15 @@ es:
         sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
     show:
+      created_at: Created at
       edit_user_registration: Edit user registration
+      email: Email
       follower:
-        zero: 'Sin seguidor'
-        one: 'Un seguidor'
-        other: '%{count} seguidores'
+        one: Un seguidor
+        other: "%{count} seguidores"
+        zero: Sin seguidor
+      full_name: Full name
+      updated_at: Updated at
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
