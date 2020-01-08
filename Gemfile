@@ -39,7 +39,8 @@ group :development, :test do
 end
 
 gem "rspec", "~> 3.9"
-gem 'cloudinary', '~> 1.13', '>= 1.13.1'
+gem 'carrierwave'
+gem 'cloudinary'
 gem 'redcarpet'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 6.0'

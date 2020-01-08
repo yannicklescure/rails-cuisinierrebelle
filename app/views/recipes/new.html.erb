@@ -9,7 +9,7 @@
     <%#= f.input :photo, as: :file, label: false %>
     <div class="d-flex flex-column">
       <%= f.label :photo, t('.photo') %>
-      <%#= cl_image_tag @recipe.photo.key, id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
+      <%#= cl_image_tag @recipe.photo.url, id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
       <%= image_tag "", width: 300, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
       <%= f.input :photo, input_html: { id: 'photo-input'}, label: false %>
     </div>
