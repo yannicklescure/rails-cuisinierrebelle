@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get '/tools', to: 'pages#tools', as: 'tools'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    get '/index/tagged', to: "index#tagged", as: :tagged
     resources :recipes do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
     # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :bookmarks, only: [:index]
     resources :index, only: [:index]
+    get '/index/tagged', to: "index#tagged", as: :tagged
     resources :followers, only: [:index]
     resources :following, only: [:index]
 
