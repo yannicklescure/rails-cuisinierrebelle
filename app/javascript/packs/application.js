@@ -2,6 +2,8 @@ import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 
+$('[data-toggle="tooltip"]').tooltip();
+
 previewImageOnFileSelect();
 // console.log(window.innerWidth);
 
