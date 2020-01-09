@@ -88,6 +88,9 @@ fr:
   following:
     index:
       following: Following
+  index:
+    index:
+      recent_recipes: Recent recipes
   pages:
     conversion:
       conversion: Table de conversion
@@ -123,7 +126,7 @@ fr:
       youtube_video_link: Youtube video link
     show:
       edit_recipe: Edit recipe
-      recipe_by: '%{title} de %{user}'
+      recipe_by: "%{title} de %{user}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   shared:
@@ -146,6 +149,9 @@ fr:
       recipes: Recipes
       site_map: Site map
       terms: Terms
+    header:
+      cooking_recipes_and_more: Recettes de cuisine et autres
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
     navbar-large:
       bookmarks: Favoris
       conversion: Table de conversion
@@ -172,6 +178,8 @@ fr:
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
+    tags:
+      most_used_tags: Most used tags
   user_mailer:
     welcome:
       see_ya: See ya
