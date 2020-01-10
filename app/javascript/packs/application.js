@@ -49,6 +49,7 @@ if ((currentController === null || 'users') || currentController.match(/en|fr|es
   cards.forEach((card) => {
     console.log(card.dataset);
     const element = document.querySelector(`.fa-heart-${card.dataset.recipe}`);
+    element.classList.remove('d-none');
     element.style.opacity = 0;
     const cardImgTop = document.querySelector(`.card-img-top-${card.dataset.recipe}`);
     let clickCount = 0;

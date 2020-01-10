@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="my-5 d-print-none">
-    <%= cl_image_tag @recipe.photo.url, crop: :fill, class: 'img-fluid rounded' %>
+    <%= image_tag @recipe.photo.url(:full), class: 'img-fluid rounded' %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new() %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>

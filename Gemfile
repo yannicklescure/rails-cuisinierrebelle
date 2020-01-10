@@ -40,7 +40,9 @@ end
 
 gem "rspec", "~> 3.9"
 gem 'carrierwave'
-gem 'cloudinary'
+# gem 'cloudinary'
+gem "fog-aws"
+gem "mini_magick"
 gem 'redcarpet'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 6.0'
