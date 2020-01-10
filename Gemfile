@@ -41,6 +41,7 @@ end
 gem "rspec", "~> 3.9"
 gem 'carrierwave'
 # gem 'cloudinary'
+gem "aws-sdk-s3", require: false
 gem "fog-aws"
 gem "mini_magick"
 gem 'redcarpet'
