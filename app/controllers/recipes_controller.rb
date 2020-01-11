@@ -56,6 +56,8 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
+    @recipe.remove_photo
+    @recipe.save
     @recipe.destroy
     redirect_to recipes_path
   end

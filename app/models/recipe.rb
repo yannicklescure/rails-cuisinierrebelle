@@ -3,7 +3,6 @@ class Recipe < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_one_attached :photo
   mount_uploader :photo, PhotoUploader
 
   acts_as_taggable_on :tags
@@ -15,4 +14,5 @@ class Recipe < ApplicationRecord
   validates :subtitle, presence: true
   validates :description, presence: true
   validates :direction, presence: true
+  validates :photo, presence: true
 end

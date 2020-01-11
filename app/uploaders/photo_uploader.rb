@@ -38,19 +38,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process resize_to_limit: [32, 32]
+    process resize_to_fill: [32, 32]
   end
 
   version :preview do
-    process resize_to_limit: [260, 174]
+    process resize_to_fill: [260, 174]
   end
 
   version :card do
-    process resize_to_limit: [400, 300]
+    process resize_to_fill: [400, 300]
   end
 
   version :full do
-    process resize_to_limit: [1920, 1200]
+    process resize_to_fill: [1920, 1200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
