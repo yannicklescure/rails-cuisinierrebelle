@@ -40,6 +40,7 @@ end
 
 gem "rspec", "~> 3.9"
 gem 'carrierwave'
+gem 'carrierwave-i18n'
 # gem 'cloudinary'
 gem "aws-sdk"
 gem "fog-aws"
