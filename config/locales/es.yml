@@ -139,24 +139,16 @@ es:
       youtube_video_link: Youtube video link
     show:
       comments: Comments
-      days_ago: Days ago
       edit_recipe: Edit recipe
-      hours_ago: Hours ago
-      months_ago: Months ago
       recipe_by: "%{title} de %{user}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
-      reply: Reply
-      weeks_ago: Weeks ago
-      years_ago: Years ago
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
       recipes: Recetas
       sign_up: Sign up
       videos: Vídeos
-    comment:
-      add_a_public_comment: Add a public comment
     footer:
       community: Community
       cuisinier_rebelle: Cuisinier rebelle
