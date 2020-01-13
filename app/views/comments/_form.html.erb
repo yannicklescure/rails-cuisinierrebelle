@@ -1,0 +1,4 @@
+<%= simple_form_for([recipe, comment], remote: true) do |f| %>
+  <%= f.input :content, label:false, placeholder: t('.add_a_public_comment') %>
+  <%= f.submit class: 'btn btn-secondary' %>
+<% end %>

@@ -82,4 +82,22 @@
     <% end %>
   </ul>
   <% end %>
+  <hr>
+  <div id="comments">
+    <div class="d-flex">
+      <%= t('.comments', count: @recipe.comments.count) %>
+    </div>
+    <% if user_signed_in? %>
+    <div class="my-3">
+      <%= render 'comments/form', recipe: @recipe, comment: @comment %>
+    </div>
+    <% end %>
+    <div id="comments-list">
+      <div class="d-flex flex-column">
+        <% @recipe.comments.sort_by { |date| date.created_at }.reverse.each do |comment| %>
+          <%= render "comments/show", recipe: @recipe, comment: comment %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

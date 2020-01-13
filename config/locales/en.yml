@@ -3,6 +3,19 @@ en:
   bookmarks:
     index:
       no_bookmarks: No bookmarks...
+  comments:
+    form:
+      add_a_public_comment: Add a public comment
+    show:
+      days_ago: Days ago
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
   devise:
     confirmations:
       new:
@@ -95,6 +108,7 @@ en:
     edit:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
+      are_you_sure: Are you sure
       delete: Delete
       description: Description
       direction: Direction
@@ -104,7 +118,10 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     index:
-      comments: Comments
+      comments:
+        one: One comment
+        other: "%{count} comments"
+        zero: No comment
       date: Date
       likes: Likes
       published_recipes: Published recipes
@@ -120,15 +137,43 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     show:
+      comments:
+        one: One comment
+        other: "%{count} comments"
+        zero: No comment
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
       edit_recipe: Edit recipe
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
       recipe_by: "%{title} by %{user}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
+      reply: Reply
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
   shared:
     banner:
       banner_subtitle: Cooking recipes and other things
       recipes: Recipes
+      sign_up: Sign up
       videos: Videos
+    comment:
+      add_a_public_comment: Add a public comment...
     footer:
       community: Community
       cuisinier_rebelle: Cuisinier rebelle

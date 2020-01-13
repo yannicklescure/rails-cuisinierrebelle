@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @like = Like.find_by(user: current_user, recipe: @recipe)
     @likes = Like.where(user: current_user, recipe: @recipe)
+    @comment = Comment.new
   end
 
   def new

@@ -48,3 +48,4 @@ gem "mini_magick"
 gem 'redcarpet'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'time_difference'
