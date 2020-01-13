@@ -40,6 +40,7 @@ end
 
 gem "rspec", "~> 3.9"
 gem 'carrierwave'
+gem 'carrierwave-i18n'
 # gem 'cloudinary'
 gem "aws-sdk"
 gem "fog-aws"
@@ -47,3 +48,4 @@ gem "mini_magick"
 gem 'redcarpet'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'time_difference'

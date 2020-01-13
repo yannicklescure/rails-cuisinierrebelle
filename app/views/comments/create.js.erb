@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('new_comment');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments-list');
+  comments.insertAdjacentHTML('afterbegin', commentHTML);
+}
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form", recipe: @recipe, comment: @comment %>');
+<% else %>
+  addComment('<%= j render "comments/show", recipe: @recipe, comment: @comment %>');
+  refreshForm('<%= j render "comments/form", recipe: @recipe, comment: Comment.new %>');
+<% end %>

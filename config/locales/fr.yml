@@ -3,6 +3,19 @@ fr:
   bookmarks:
     index:
       no_bookmarks: Aucun favoris...
+  comments:
+    form:
+      add_a_public_comment: Add a public comment
+    show:
+      days_ago: Days ago
+      delete_html: Delete html
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
   devise:
     confirmations:
       new:
@@ -100,6 +113,7 @@ fr:
     edit:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
+      are_you_sure: Are you sure
       delete: Delete
       description: Description
       direction: Direction
@@ -125,15 +139,25 @@ fr:
       title: Title
       youtube_video_link: Youtube video link
     show:
+      comments: Comments
+      days_ago: Days ago
       edit_recipe: Edit recipe
+      hours_ago: Hours ago
+      months_ago: Months ago
       recipe_by: "%{title} de %{user}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
+      reply: Reply
+      weeks_ago: Weeks ago
+      years_ago: Years ago
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et autres choses
       recipes: Recettes
+      sign_up: Sign up
       videos: Vidéos
+    comment:
+      add_a_public_comment: Add a public comment
     footer:
       community: Community
       cuisinier_rebelle: Cuisinier rebelle

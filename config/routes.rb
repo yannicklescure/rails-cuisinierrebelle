@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :recipes do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]
+      resources :comments, except: [:index, :show]
     end
     # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :bookmarks, only: [:index]
