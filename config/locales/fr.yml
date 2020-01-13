@@ -125,6 +125,7 @@ fr:
     index:
       comments: Comments
       date: Date
+      date_format: Date format
       likes: Likes
       published_recipes: Published recipes
       recipe: Recipe

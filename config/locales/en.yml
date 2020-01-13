@@ -139,11 +139,9 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     index:
-      comments:
-        one: One comment
-        other: "%{count} comments"
-        zero: No comment
+      comments: Comments
       date: Date
+      date_format: '%b %d, %Y'
       likes: Likes
       published_recipes: Published recipes
       recipe: Recipe
