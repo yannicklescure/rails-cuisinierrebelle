@@ -22,7 +22,32 @@
     <% end %>
   </div>
   <div class="my-1"><%= comment.content %></div>
-  <% if user_signed_in? %>
-  <div class="text-muted small"><%= t('.reply') %></div>
+  <% if comment.replies.any? %>
+  <div id="replies">
+    <div class="text-muted btn btn-sm p-0 reply" data-comment="<%= comment.id %>">
+      <span id="replies-list-arrow-<%= comment.id %>"><i class="fas fa-sort-down"></i></span>&ensp;<%= t('.replies', count: comment.replies.count) %>
+    </div>
+    <div id="replies-list-<%= comment.id %>" class="d-none" data-comment="<%= comment.id %>">
+      <div id="replies-list-box-<%= comment.id %>" class="d-flex flex-column">
+        <% comment.replies.sort_by { |date| date.created_at }.each do |reply| %>
+          <%= render "replies/show", recipe: recipe, comment: comment, reply: reply %>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+      <div class="text-muted btn btn-sm p-0 reply-reply" data-comment="<%= comment.id %>"><%= t('.add_reply') %></div>
+      <div id="reply-reply-form-<%= comment.id %>" class="my-3 d-none">
+        <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+  <div id="replies">
+    <div class="text-muted btn btn-sm p-0 no-reply" data-comment="<%= comment.id %>"><%= t('.reply') %></div>
+    <div id="replies-list-box-<%= comment.id %>"></div>
+    <div id="reply-form-<%= comment.id %>" class="my-3 d-none">
+      <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
+    </div>
+  </div>
   <% end %>
 </div>

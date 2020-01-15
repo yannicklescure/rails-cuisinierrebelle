@@ -85,7 +85,11 @@
   <hr>
   <div id="comments">
     <div class="d-flex">
-      <%= t('.comments', count: @recipe.comments.count) %>
+      <% count = 0 %>
+      <% count = @recipe.comments.map { |comment| comment.replies.count } %>
+      <% count = count.sum %>
+      <% count += @recipe.comments.count %>
+      <%= t('.comments', count: count) %>
     </div>
     <% if user_signed_in? %>
     <div class="my-3">

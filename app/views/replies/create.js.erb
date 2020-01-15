@@ -1,0 +1,18 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('new_reply_<%= @comment.id %>');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addComment(replyHTML) {
+  const replies = document.getElementById('replies-list-box-<%= @comment.id %>');
+  console.log('comment #<%= @comment.id %>');
+  replies.insertAdjacentHTML('beforeend', replyHTML);
+}
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "replies/form", recipe: @recipe, comment: @comment, reply: @reply %>');
+<% else %>
+  console.log('<%= @reply.id %>')
+  addComment('<%= j render "replies/show", recipe: @recipe, comment: @comment, reply: @reply %>');
+  refreshForm('<%= j render "replies/form", recipe: @recipe, comment: @comment, reply: Reply.new %>');
+<% end %>
