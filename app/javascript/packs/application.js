@@ -43,7 +43,8 @@ if(currentController === "users") {
   });
 }
 
-if ((currentController === null || 'users') || currentController.match(/en|fr|es/)) {
+// if (currentController === null || currentController === 'users' || currentController.match(/en|fr|es/)) {
+if (currentController === null || currentController === 'users') {
 
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
@@ -80,13 +81,37 @@ if ((currentController === null || 'users') || currentController.match(/en|fr|es
 }
 
 if(currentController === 'recipes' && currentPage != null) {
-  const replies = document.querySelectorAll('.replies');
-  console.log(replies);
+  const replyForms = document.querySelectorAll('.no-reply');
+  replyForms.forEach((replyForm) => {
+    replyForm.addEventListener('click', event => {
+      // console.log(event.currentTarget.dataset.comment);
+      const currentForm = document.querySelector(`#reply-form-${event.currentTarget.dataset.comment}`);
+      currentForm.classList.toggle('d-none');
+    });
+  });
+
+  let viewReplies = false;
+  const replies = document.querySelectorAll('.reply');
   replies.forEach((reply) => {
     reply.addEventListener('click', event => {
-      console.log(event.currentTarget.dataset.comment);
+      // console.log(event.currentTarget.dataset.comment);
       const repliesList = document.querySelector(`#replies-list-${event.currentTarget.dataset.comment}`);
       repliesList.classList.toggle('d-none');
+      viewReplies === false ? viewReplies = true : viewReplies = false;
+      const arrowState = document.querySelector(`#replies-list-arrow-${event.currentTarget.dataset.comment}`);
+      if(viewReplies) arrowState.innerHTML = `<i class="fas fa-sort-up"></i>`;
+      else arrowState.innerHTML = `<i class="fas fa-sort-down"></i>`;
+      console.log(`viewReplies: ${viewReplies}`);
+    });
+  });
+
+  const repliesReply = document.querySelectorAll('.reply-reply');
+  console.log(repliesReply);
+  repliesReply.forEach((reply) => {
+    reply.addEventListener('click', event => {
+      // console.log(event.currentTarget.dataset.comment);
+      const replyForm = document.querySelector(`#reply-reply-form-${event.currentTarget.dataset.comment}`);
+      replyForm.classList.toggle('d-none');
     });
   });
 }
