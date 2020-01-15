@@ -78,3 +78,15 @@ if ((currentController === null || 'users') || currentController.match(/en|fr|es
     bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
   }
 }
+
+if(currentController === 'recipes' && currentPage != null) {
+  const replies = document.querySelectorAll('.replies');
+  console.log(replies);
+  replies.forEach((reply) => {
+    reply.addEventListener('click', event => {
+      console.log(event.currentTarget.dataset.comment);
+      const repliesList = document.querySelector(`#replies-list-${event.currentTarget.dataset.comment}`);
+      repliesList.classList.toggle('d-none');
+    });
+  });
+}

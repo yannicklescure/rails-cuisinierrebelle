@@ -6,12 +6,14 @@ fr:
   comments:
     form:
       add_a_public_comment: Add a public comment
+      comment: Comment
     show:
       days_ago: Days ago
       delete_html: Delete html
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
+      replies: Replies
       reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
@@ -145,6 +147,20 @@ fr:
       recipe_by: "%{title} de %{user}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
+  replies:
+    form:
+      add_a_public_reply: Add a public reply
+      reply: Reply
+    show:
+      days_ago: Days ago
+      delete_html: Delete html
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et autres choses
