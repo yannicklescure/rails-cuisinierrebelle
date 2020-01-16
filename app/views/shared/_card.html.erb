@@ -40,8 +40,12 @@
               <% end %>
           </div>
           <div class="d-flex align-items-center">
-            <%= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-            <%= link_to raw('<i class="fas fa-share-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+            <% if recipe.comments.any? %>
+              <%= link_to raw('<i class="fas fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'btn p-0 ml-3' %>
+            <% else %>
+              <%= link_to raw('<i class="far fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'btn p-0 ml-3' %>
+            <% end %>
+            <%#= link_to raw('<i class="fas fa-share-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
             <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
           </div>
         <% end %>
