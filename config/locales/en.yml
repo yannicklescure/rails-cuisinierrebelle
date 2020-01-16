@@ -181,7 +181,8 @@ en:
         other: "%{count} comments"
         zero: No comment
       edit_recipe: Edit recipe
-      recipe_by: "%{title} by %{user}"
+      name: "%{name}"
+      recipe: "%{title}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
@@ -224,11 +225,6 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
