@@ -8,6 +8,10 @@ es:
     index:
       no_bookmarks: Sin favoritos...
   comments:
+    create:
+      comments: Comments
+    destroy:
+      comments: Comments
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
@@ -131,6 +135,7 @@ es:
       comments: Comments
       date: Date
       date_format: Date format
+      edit_recipe_html: Edit recipe html
       likes: Likes
       published_recipes: Published recipes
       recipe: Recipe
@@ -148,13 +153,16 @@ es:
     show:
       comments: Comments
       edit_recipe: Edit recipe
-      recipe_by: "%{title} de %{user}"
+      name: Name
+      recipe: Recipe
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
     create:
+      comments: Comments
       replies: Replies
     destroy:
+      comments: Comments
       replies: Replies
     form:
       add_a_public_reply: Add a public reply
@@ -165,11 +173,6 @@ es:
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago

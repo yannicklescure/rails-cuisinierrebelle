@@ -8,6 +8,16 @@ en:
     index:
       no_bookmarks: No bookmarks...
   comments:
+    create:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
+    destroy:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
@@ -151,9 +161,10 @@ en:
       comments: Comments
       date: Date
       date_format: "%b %d, %Y"
+      edit_recipe_html: <i class="fas fa-pen"></i>
       likes: Likes
       published_recipes: Published recipes
-      recipe: Recipe
+      recipe: "%{title}"
     new:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
@@ -171,16 +182,25 @@ en:
         other: "%{count} comments"
         zero: No comment
       edit_recipe: Edit recipe
-      recipe_by: "%{title} by %{user}"
+      name: "%{name}"
+      recipe: "%{title}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
     create:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
       replies:
         one: 1 reply
         other: "%{count} replies"
         zero: No reply
     destroy:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
       replies:
         one: 1 reply
         other: "%{count} replies"
@@ -206,11 +226,6 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"

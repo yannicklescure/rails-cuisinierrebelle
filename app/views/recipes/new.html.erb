@@ -1,7 +1,7 @@
 <div class="container my-5">
   <%= simple_form_for(@recipe) do |f| %>
-    <%= f.input :title, label: t('.title') %>
-    <%= f.input :subtitle, label: t('.subtitle') %>
+    <%= f.input :title, label: t('.title'), input_html: { maxlength: 100} %>
+    <%= f.input :subtitle, label: t('.subtitle'), input_html: { maxlength: 150}  %>
     <%= f.input :description, label: t('.description'), input_html: { maxlength: 280} %>
     <%= f.input :video, label: t('.youtube_video_link') %>
     <%#= f.input :image %>
