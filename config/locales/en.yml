@@ -1,5 +1,9 @@
 ---
 en:
+  application:
+    user_not_authorized:
+      you_are_not_authorized_to_perform_this_action: You are not authorized to perform
+        this action.
   bookmarks:
     index:
       no_bookmarks: No bookmarks...

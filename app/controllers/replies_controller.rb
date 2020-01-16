@@ -3,18 +3,21 @@ class RepliesController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.find(params[:comment_id])
+    authorize @comment
     @reply = Reply.new
+    authorize @reply
   end
 
   def create
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.find(params[:comment_id])
-    @user = current_user
+    authorize @comment
     @reply = Reply.new(reply_params)
+    authorize @reply
     # @reply.recipe = @recipe
     @reply.comment = @comment
-    @reply.user = @user
+    @reply.user = current_user
     if @reply.save
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
@@ -44,9 +47,9 @@ class RepliesController < ApplicationController
 
   def destroy
     @recipe = Recipe.friendly.find(params[:recipe_id])
-    authorize @recipe
     @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:id])
+    authorize @reply
     @reply.destroy
     # redirect_to recipe_path(@recipe)
     respond_to do |format|

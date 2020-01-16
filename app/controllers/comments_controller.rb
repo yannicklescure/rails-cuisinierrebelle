@@ -3,15 +3,16 @@ class CommentsController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.new
+    authorize @comment
   end
 
   def create
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
-    @user = current_user
     @comment = Comment.new(comment_params)
+    authorize @comment
     @comment.recipe = @recipe
-    @comment.user = @user
+    @comment.user = current_user
     if @comment.save
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
@@ -29,10 +30,12 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    authorize @comment
   end
 
   def update
     @comment = Comment.find(params[:id])
+    authorize @comment
     if @comment.update(comment_params)
       redirect_to recipe_path(@recipe)
     else
@@ -42,8 +45,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @recipe = Recipe.friendly.find(params[:recipe_id])
-    authorize @recipe
     @comment = Comment.find(params[:id])
+    authorize @comment
     @comment.destroy
     # redirect_to recipe_path(@recipe)
     respond_to do |format|
