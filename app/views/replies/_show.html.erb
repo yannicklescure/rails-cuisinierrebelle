@@ -17,7 +17,7 @@
     <% elsif time_since_creation.in_minutes.floor < 1 && time_since_creation.in_seconds.floor.positive? %>
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
     <% end %>&ensp;
-    <% if comment.user == current_user || reply.user == current_user || recipe.user == current_user %>
+    <% if reply.user == current_user || recipe.user == current_user %>
     <%= link_to t('.delete_html'), recipe_comment_reply_path(recipe, comment, reply), method: :delete, remote: true %>
     <% end %>
   </div>
