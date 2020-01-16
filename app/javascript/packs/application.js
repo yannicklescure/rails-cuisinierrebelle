@@ -101,7 +101,7 @@ if(currentController === 'recipes' && currentPage != null) {
       const arrowState = document.querySelector(`#replies-list-arrow-${event.currentTarget.dataset.comment}`);
       if(viewReplies) arrowState.innerHTML = `<i class="fas fa-sort-up"></i>`;
       else arrowState.innerHTML = `<i class="fas fa-sort-down"></i>`;
-      console.log(`viewReplies: ${viewReplies}`);
+      console.log(`viewReplies JS: ${viewReplies}`);
     });
   });
 

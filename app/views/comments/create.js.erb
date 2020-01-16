@@ -13,4 +13,11 @@ function addComment(commentHTML) {
 <% else %>
   addComment('<%= j render "comments/show", recipe: @recipe, comment: @comment %>');
   refreshForm('<%= j render "comments/form", recipe: @recipe, comment: Comment.new %>');
+  replyForms = document.querySelectorAll('.no-reply');
+  replyForms.forEach((replyForm) => {
+    replyForm.addEventListener('click', event => {
+      const currentForm = document.querySelector(`#reply-form-${event.currentTarget.dataset.comment}`);
+      currentForm.classList.toggle('d-none');
+    });
+  });
 <% end %>

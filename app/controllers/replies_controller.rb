@@ -17,8 +17,9 @@ class RepliesController < ApplicationController
     @reply.user = @user
     if @reply.save
       respond_to do |format|
-        format.html { redirect_to recipe_path(@recipe) }
-        format.js  # <-- will render `app/views/replys/create.js.erb`
+        # format.html { redirect_to recipe_path(@recipe) }
+        format.html { render 'replies/show' }
+        format.js  # <-- will render `app/views/replies/create.js.erb`
       end
     else
       respond_to do |format|
@@ -44,9 +45,13 @@ class RepliesController < ApplicationController
   def destroy
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
+    @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:id])
     @reply.destroy
-    redirect_to recipe_path(@recipe)
+    # redirect_to recipe_path(@recipe)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

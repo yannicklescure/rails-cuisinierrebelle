@@ -1,4 +1,4 @@
-<div class="mt-3">
+<div id="comment-<%= comment.id %>" class="mt-3" data-comment="<%= comment.id %>">
   <div class="d-flex small">
     <strong><%= link_to comment.user.name, user_path(comment.user), class: 'text-body' %></strong>&ensp;
     <% time_since_creation = TimeDifference.between(comment.created_at, Time.current) %>
@@ -18,13 +18,13 @@
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
     <% end %>&ensp;
     <% if comment.user == current_user || recipe.user == current_user %>
-    <%= link_to t('.delete_html'), recipe_comment_path(recipe, comment), method: :delete %>
+    <%= link_to t('.delete_html'), recipe_comment_path(recipe, comment), method: :delete, remote: true %>
     <% end %>
   </div>
   <div class="my-1"><%= comment.content %></div>
   <% if comment.replies.any? %>
-  <div id="replies">
-    <div class="text-muted btn btn-sm p-0 reply" data-comment="<%= comment.id %>">
+  <div id="comment-<%= comment.id %>-replies">
+    <div id="comment-<%= comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 reply" data-comment="<%= comment.id %>">
       <span id="replies-list-arrow-<%= comment.id %>"><i class="fas fa-sort-down"></i></span>&ensp;<%= t('.replies', count: comment.replies.count) %>
     </div>
     <div id="replies-list-<%= comment.id %>" class="d-none" data-comment="<%= comment.id %>">
@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <% if user_signed_in? %>
-      <div class="text-muted btn btn-sm p-0 reply-reply" data-comment="<%= comment.id %>"><%= t('.add_reply') %></div>
+      <div class="text-muted btn btn-sm p-0 reply-reply" data-comment="<%= comment.id %>"><%= t('.reply') %></div>
       <div id="reply-reply-form-<%= comment.id %>" class="my-3 d-none">
         <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
       </div>
@@ -42,11 +42,13 @@
     </div>
   </div>
   <% else %>
-  <div id="replies">
-    <div class="text-muted btn btn-sm p-0 no-reply" data-comment="<%= comment.id %>"><%= t('.reply') %></div>
-    <div id="replies-list-box-<%= comment.id %>"></div>
-    <div id="reply-form-<%= comment.id %>" class="my-3 d-none">
-      <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
+  <div id="comment-<%= comment.id %>-replies">
+    <div id="replies-list-<%= comment.id %>" data-comment="<%= comment.id %>">
+      <div id="replies-list-box-<%= comment.id %>"></div>
+      <div class="text-muted btn btn-sm p-0 no-reply" data-comment="<%= comment.id %>"><%= t('.reply') %></div>
+      <div id="reply-form-<%= comment.id %>" class="my-3 d-none">
+        <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
+      </div>
     </div>
   </div>
   <% end %>

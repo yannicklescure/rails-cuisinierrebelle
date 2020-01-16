@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
     @comment.user = @user
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to recipe_path(@recipe) }
+        # format.html { redirect_to recipe_path(@recipe) }
+        format.html { render 'comments/show' }
         format.js  # <-- will render `app/views/comments/create.js.erb`
       end
     else
@@ -44,7 +45,10 @@ class CommentsController < ApplicationController
     authorize @recipe
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to recipe_path(@recipe)
+    # redirect_to recipe_path(@recipe)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

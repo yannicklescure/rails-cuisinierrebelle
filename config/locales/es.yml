@@ -133,6 +133,7 @@ es:
     new:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
+      create_recipe: Create recipe
       description: Description
       direction: Direction
       markdown_syntax_friendly_area: Markdown syntax friendly area
@@ -147,6 +148,10 @@ es:
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
+    create:
+      replies: Replies
+    destroy:
+      replies: Replies
     form:
       add_a_public_reply: Add a public reply
       reply: Reply
@@ -156,6 +161,10 @@ es:
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
       reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago

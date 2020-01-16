@@ -153,6 +153,7 @@ en:
     new:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
+      create_recipe: Create recipe
       description: Description
       direction: Direction
       markdown_syntax_friendly_area: Markdown syntax friendly area
@@ -170,6 +171,16 @@ en:
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
+    create:
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+    destroy:
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
     form:
       add_a_public_reply: Add a public reply
       reply: Reply
