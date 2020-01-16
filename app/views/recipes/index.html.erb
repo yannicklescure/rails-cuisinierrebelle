@@ -17,7 +17,10 @@
               <td scope="row"><a href="<%= recipe_path(recipe) %>"><%= recipe.title %></a></td>
               <td><%= recipe.created_at.strftime(t('.date_format')) %></td>
               <td><%= recipe.likes.count %></td>
-              <td><%= recipe.comments.count %></td>
+              <% count = 0 %>
+              <% count = recipe.comments.map { |comment| comment.replies.count }.sum %>
+              <% count += recipe.comments.count %>
+              <td><%= count %></td>
             </tr>
           <% end %>
         </tbody>

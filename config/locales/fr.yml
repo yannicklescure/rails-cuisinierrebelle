@@ -8,6 +8,10 @@ fr:
     index:
       no_bookmarks: Aucun favoris...
   comments:
+    create:
+      comments: Comments
+    destroy:
+      comments: Comments
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
@@ -154,8 +158,10 @@ fr:
       related_recipes: Related recipes
   replies:
     create:
+      comments: Comments
       replies: Replies
     destroy:
+      comments: Comments
       replies: Replies
     form:
       add_a_public_reply: Add a public reply

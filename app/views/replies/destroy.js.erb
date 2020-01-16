@@ -9,3 +9,8 @@ if(button) button.innerHTML = `<span id="replies-list-arrow-<%= @comment.id %>">
 console.log(`reply count ${<%= @comment.replies.count %>}`);
 if(button) button.classList.add('d-none');
 <% end %>
+commentsCount = document.querySelector('#comments-count');
+<% count = 0 %>
+<% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
+<% count += @recipe.comments.count %>
+commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;

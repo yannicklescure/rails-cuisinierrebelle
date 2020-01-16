@@ -8,6 +8,16 @@ en:
     index:
       no_bookmarks: No bookmarks...
   comments:
+    create:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
+    destroy:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
@@ -176,11 +186,19 @@ en:
       related_recipes: Related recipes
   replies:
     create:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
       replies:
         one: 1 reply
         other: "%{count} replies"
         zero: No reply
     destroy:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comment
       replies:
         one: 1 reply
         other: "%{count} replies"

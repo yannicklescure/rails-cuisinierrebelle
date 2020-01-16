@@ -44,5 +44,10 @@ function addComment(replyHTML) {
         }
       });
     });
+    commentsCount = document.querySelector('#comments-count');
+    <% count = 0 %>
+    <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
+    <% count += @recipe.comments.count %>
+    commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
   }
 <% end %>

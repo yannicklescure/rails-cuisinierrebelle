@@ -84,10 +84,9 @@
   <% end %>
   <hr>
   <div id="comments">
-    <div class="d-flex">
+    <div id="comments-count" class="d-flex">
       <% count = 0 %>
-      <% count = @recipe.comments.map { |comment| comment.replies.count } %>
-      <% count = count.sum %>
+      <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
       <% count += @recipe.comments.count %>
       <%= t('.comments', count: count) %>
     </div>
