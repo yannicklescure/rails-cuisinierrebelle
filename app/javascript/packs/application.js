@@ -81,6 +81,25 @@ if (currentController === null || currentController === 'users') {
 }
 
 if(currentController === 'recipes' && currentPage != null) {
+
+  if(currentPage.match(/#comments/)) {
+    const target = '#comments';
+    let element = document.querySelector(target);
+    let rect = element.getBoundingClientRect();
+    // console.log(rect.top, rect.right, rect.bottom, rect.left);
+    let navbarHeight = document.querySelector('.navbar').offsetHeight;
+    console.log(`navbarHeight ${navbarHeight}`);
+    navbarHeight = 59;
+    const scrollOptions = {
+      top: rect.top - navbarHeight,
+      left: 0,
+      behavior: 'smooth'
+    };
+    window.onload = () => {
+      window.scrollTo(scrollOptions);
+    }
+  }
+
   const replyForms = document.querySelectorAll('.no-reply');
   replyForms.forEach((replyForm) => {
     replyForm.addEventListener('click', event => {
