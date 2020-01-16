@@ -161,9 +161,10 @@ en:
       comments: Comments
       date: Date
       date_format: "%b %d, %Y"
+      edit_recipe_html: <i class="fas fa-pen"></i>
       likes: Likes
       published_recipes: Published recipes
-      recipe: Recipe
+      recipe: "%{title}"
     new:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas

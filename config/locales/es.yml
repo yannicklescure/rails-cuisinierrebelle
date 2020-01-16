@@ -135,6 +135,7 @@ es:
       comments: Comments
       date: Date
       date_format: Date format
+      edit_recipe_html: Edit recipe html
       likes: Likes
       published_recipes: Published recipes
       recipe: Recipe
