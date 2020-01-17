@@ -1,5 +1,7 @@
 ---
 en:
+  '':
+    only_allows_youtube_video: Only allows youtube video
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
@@ -180,7 +182,7 @@ en:
       youtube_video_link: Youtube video link
     show:
       comments:
-        one: One comment
+        one: 1 comment
         other: "%{count} comments"
         zero: No comment
       edit_recipe: Edit recipe
@@ -240,7 +242,7 @@ en:
         zero: No year
   shared:
     banner:
-      banner_subtitle: Cooking recipes and other things
+      banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
       videos: Videos
@@ -264,7 +266,7 @@ en:
       terms: Terms
     header:
       cooking_recipes_and_more: Cooking recipes and more
-      cuisinier_rebelle_social_recipe: Cuisinier rebelle, social recipes!
+      cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
     navbar-large:
       bookmarks: Bookmarks
       conversion: Conversion table
@@ -293,8 +295,10 @@ en:
       tools: Kitchen tools
   user_mailer:
     welcome:
+      greeting: Welcome %{recipient}!
       see_ya: See ya
-      welcome_message: Welcome message
+      welcome_message: We are pleased to welcome you in our family of rebel cooks.
+        Feel free to share some awesomeness with all!
   users:
     confirmations:
       new:
@@ -332,7 +336,7 @@ en:
         confirm_new_password: Confirm new password
         new_password: New password
       new:
-        forgot_your_password: Forgot your password
+        forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
@@ -356,7 +360,7 @@ en:
       links:
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions
-        forgot_your_password: Forgot your password
+        forgot_your_password: Forgot your password?
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up

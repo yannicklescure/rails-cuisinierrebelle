@@ -1,5 +1,7 @@
 ---
 fr:
+  '':
+    only_allows_youtube_video: Only allows youtube video
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
@@ -232,6 +234,7 @@ fr:
       tools: Matériel de cuisine
   user_mailer:
     welcome:
+      greeting: Welcome %{recipient}!
       see_ya: See ya
       welcome_message: Welcome message
   users:
