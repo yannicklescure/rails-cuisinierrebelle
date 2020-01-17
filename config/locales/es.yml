@@ -111,7 +111,11 @@ es:
     index:
       following: Following
   index:
+    form:
+      search: Search
+      search_btn_html: Search btn html
     index:
+      most_used_tags: Most used tags
       recent_recipes: Recent recipes
   pages:
     conversion:
@@ -182,6 +186,9 @@ es:
       recipes: Recetas
       sign_up: Sign up
       videos: Vídeos
+    card-small:
+      name: Name
+      recipe: Recipe
     footer:
       community: Community
       cuisinier_rebelle: Cuisinier rebelle

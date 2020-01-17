@@ -16,4 +16,7 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :direction, presence: true
   validates :photo, presence: true
+
+  include PgSearch::Model
+  multisearchable against: [:title, :description, :direction]
 end

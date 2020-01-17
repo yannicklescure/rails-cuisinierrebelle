@@ -1,10 +1,10 @@
-<div class="container my-5">
+<div class="container-fluid my-5">
   <% if @bookmarks.size.positive? %>
-    <ul class="list-unstyled">
-      <% @bookmarks.sort.each do |bookmark| %>
-        <li><a href="<%= recipe_path(bookmark.recipe) %>"><%= bookmark.recipe.title %> </a></li>
-      <% end %>
-    </ul>
+    <div class="row">
+    <% @bookmarks.sort.each do |bookmark| %>
+    <%= render "shared/card", recipe: bookmark.recipe %>
+    <% end %>
+    </div>
   <% else %>
     <p><%= t('.no_bookmarks') %>&nbsp;<i class="far fa-grin-beam-sweat"></i></p>
   <% end %>
