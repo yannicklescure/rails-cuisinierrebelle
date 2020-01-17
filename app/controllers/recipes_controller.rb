@@ -47,6 +47,16 @@ class RecipesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
+    params_recipe_video = params[:recipe][:video]
+    if params_recipe_video.match?(/(.+\/)(.+)/)
+      share_link = params_recipe_video.match(/(.+\/)(.+)/)
+      params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
+      if share_link[1].match?(/https:\/\/www.youtube.com\//)
+        params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
+      end
+    end
+    params[:recipe][:video] = "https://youtu.be/#{params_recipe_video}"
+    # raise
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else

@@ -16,6 +16,8 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :direction, presence: true
   validates :photo, presence: true
+  validates :video, format: { with: /youtu.?be/,
+    message: "only allows youtube video" }
 
   include PgSearch::Model
   multisearchable against: [:title, :description, :direction]

@@ -59,7 +59,7 @@ en:
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: resend confirmation instructions
+        resend_confirmation_instructions: Resend confirmation instructions
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -143,7 +143,7 @@ en:
     index:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
-      recent_recipes: Recent recipes
+      recent_recipes: Recent published recipes
   pages:
     conversion:
       conversion: Conversion table
@@ -153,7 +153,7 @@ en:
     edit:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
-      are_you_sure: Are you sure
+      are_you_sure: Are you sure?
       delete: Delete
       description: Description
       direction: Direction
