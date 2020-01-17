@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
-    params[:recipe][:video] = normalize_youtube_video_link(params[:recipe][:video])
+    params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
     authorize @recipe
     if @recipe.save
       redirect_to recipe_path(@recipe)
@@ -48,8 +48,7 @@ class RecipesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
-    params[:recipe][:video] = normalize_youtube_video_link(params[:recipe][:video])
-    # raise
+    params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -72,10 +71,10 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description, :photo, :image, :tag_list)
   end
 
-  def normalize_youtube_video_link(params_recipe_video)
+  def sanitize_youtube_video_link(params_recipe_video)
     # params_recipe_video = params[:recipe][:video]
     if params_recipe_video.match?(/(.+\/)(.+)/)
-      share_link = params_recipe_video.match(/(.+\/)(.+)/)
+      share_link = params_recipe_video.match(/(.+\/)(.+(?=&)|.+)/)
       params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
       if share_link[1].match?(/https:\/\/www.youtube.com\//)
         params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
