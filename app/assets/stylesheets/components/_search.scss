@@ -1,0 +1,13 @@
+#search {
+  input, button {
+    border-color: $text-muted;
+  }
+
+  button {
+    color: $text-muted;
+  }
+
+  button:hover {
+    color: $text-body;
+  }
+}

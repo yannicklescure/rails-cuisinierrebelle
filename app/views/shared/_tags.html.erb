@@ -6,11 +6,8 @@
 <%#= tags_list_max %>
 <% ActsAsTaggableOn::Tag.most_used(tags_list_max).to_a.each do |tag| %>
   <%#= "##{tag.to_s.gsub(' ', '')}" %>
-  <%= link_to tagged_path(tag: tag.to_s), class: 'text-body' do %>
-    <% comma = count < tags_list_max ? "&comma;&nbsp;" : "" %>
-    <%# comma.html_safe %>
-    <%= "#{tag.to_s.capitalize}#{comma}".html_safe %>
-  <% end %>
+  <% comma = count < tags_list_max ? "&comma;&nbsp;" : "" %>
+  <%= link_to tag.to_s.capitalize, tagged_path(tag: tag.to_s), class: 'text-body' %><%= comma.html_safe %>
   <% count += 1 %>
 <% end %>
 </p>

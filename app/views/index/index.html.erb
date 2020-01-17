@@ -15,9 +15,13 @@
   </div>
   <% else %>
   <div id="recipes-cards" class="row py-3">
-    <% @results.each do |result| %>
-      <% result.searchable %>
-      <%= render 'shared/card', recipe: result.searchable %>
+    <% if @results.count.positive? %>
+      <% @results.each do |result| %>
+        <% result.searchable %>
+        <%= render 'shared/card', recipe: result.searchable %>
+      <% end %>
+    <% else %>
+    <p class="mx-auto"><%= t('.no_result_html') %></p>
     <% end %>
   </div>
   <% end %>

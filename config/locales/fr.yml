@@ -6,7 +6,7 @@ fr:
         this action
   bookmarks:
     index:
-      no_bookmarks: Aucun favoris...
+      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
       comments: Comments
@@ -117,6 +117,7 @@ fr:
       search_btn_html: Search btn html
     index:
       most_used_tags: Most used tags
+      no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recent recipes
   pages:
     conversion:
@@ -137,11 +138,8 @@ fr:
       title: Title
       youtube_video_link: Youtube video link
     index:
-      comments: Comments
-      date: Date
       date_format: Date format
       edit_recipe_html: Edit recipe html
-      likes: Likes
       published_recipes: Published recipes
       recipe: Recipe
     new:
@@ -158,8 +156,6 @@ fr:
     show:
       comments: Comments
       edit_recipe: Edit recipe
-      name: Name
-      recipe: Recipe
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
@@ -234,8 +230,6 @@ fr:
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
-    tags:
-      most_used_tags: Most used tags
   user_mailer:
     welcome:
       see_ya: See ya
@@ -318,6 +312,7 @@ fr:
         other: "%{count} abonnés"
         zero: Pas d'abonné
       full_name: Full name
+      published_recipes: Published recipes
       updated_at: Updated at
     unlocks:
       new:
