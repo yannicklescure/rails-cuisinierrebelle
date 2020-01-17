@@ -1,8 +1,12 @@
 class IndexController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :tagged]
 
   def index
     # @recipes = Recipe.all
+    if params[:query].present?
+      @results = PgSearch.multisearch(params[:query])
+    else
+    end
     @recipes = policy_scope(Recipe)
     @bookmarks = Bookmark.where(user: current_user)
   end

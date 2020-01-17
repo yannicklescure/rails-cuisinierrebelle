@@ -25,10 +25,16 @@
       <th><%= t('.updated_at') %></th>
       <td><%= @user.updated_at %></td>
     </tr>
+    <tr>
+      <th><%= t('.published_recipes') %></th>
+      <td><%= @user.recipes.count %></td>
+    </tr>
   </table>
   <% else %>
   <div id="recipes-cards" class="row py-3">
-    <%= render 'shared/card' %>
+    <% @recipes.order('created_at DESC').each do |recipe| %>
+      <%= render 'shared/card', recipe: recipe %>
+    <% end %>
   </div>
   <% end %>
 </div>
