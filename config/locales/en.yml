@@ -275,7 +275,7 @@ en:
       cuisinier_rebelle: Cuisinier rebelle
       following: Following
       inbox: Inbox
-      index: Index
+      index: Search recipes
       languages_html: <i class="fas fa-language"></i>
       log_out: Log out
       new_recipe: New recipe
@@ -287,7 +287,7 @@ en:
       bookmarks: Bookmarks
       conversion: Conversion table
       following: Following
-      index: Index
+      index: Search recipes
       languages: Languages
       log_out: Log out
       new_recipe: New recipe
