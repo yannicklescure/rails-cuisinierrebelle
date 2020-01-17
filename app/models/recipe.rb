@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
   validates :direction, presence: true
   validates :photo, presence: true
   validates :video, format: {
-    with: /youtu.?be/,
+    with: /(^$|^.*@.*\..*$)|youtu.?be/,
     message: I18n.t(".only_allows_youtube_video")
   }
 

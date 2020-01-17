@@ -1,7 +1,6 @@
 ---
 en:
-  '':
-    only_allows_youtube_video: Only allows youtube video
+  only_allows_youtube_video: only allows youtube video link
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
