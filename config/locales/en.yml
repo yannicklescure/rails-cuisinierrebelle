@@ -368,7 +368,7 @@ en:
       edit_user_registration: Edit user registration
       email: Email
       follower:
-        one: One follower
+        one: 1 follower
         other: "%{count} followers"
         zero: No follower
       full_name: Full name
