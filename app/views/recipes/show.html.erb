@@ -61,7 +61,8 @@
     <%= image_tag @recipe.photo.url(:full), class: 'img-fluid rounded' %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new() %>
-  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {autolink: true, tables: true, footnotes: true}) %>
+  <%# markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, footnotes: true, autolink: true, tables: true) %>
   <%= markdown.render(@recipe.direction).html_safe %>
   <% unless @recipe.video.nil? %>
   <% share_link = @recipe.video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/).nil? ? nil : @recipe.video.match(/(.+\/)(.+)/)[2] %>
