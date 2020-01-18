@@ -63,8 +63,8 @@
   <% renderer = Redcarpet::Render::HTML.new() %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
   <%= markdown.render(@recipe.direction).html_safe %>
-  <% share_link = @recipe.video.match(/(.+\/)(.+)/).nil? ? nil : @recipe.video.match(/(.+\/)(.+)/)[2] %>
-  <% unless share_link.nil? %>
+  <% unless @recipe.video.nil? %>
+  <% share_link = @recipe.video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/).nil? ? nil : @recipe.video.match(/(.+\/)(.+)/)[2] %>
   <div class="row mt-5 d-print-none">
     <div class="col col-md-8 mx-auto">
       <div class="embed-responsive embed-responsive-16by9">

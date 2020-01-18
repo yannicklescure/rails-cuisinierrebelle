@@ -74,12 +74,16 @@ class RecipesController < ApplicationController
   def sanitize_youtube_video_link(params_recipe_video)
     # params_recipe_video = params[:recipe][:video]
     if params_recipe_video.match?(/(.+\/)(.+)/)
-      share_link = params_recipe_video.match(/(.+\/)(.+(?=&)|.+)/)
-      params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
-      if share_link[1].match?(/https:\/\/www.youtube.com\//)
-        params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
+      share_link = params_recipe_video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
+      if share_link.nil?
+        return ""
+      else
+        params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
+        if share_link[1].match?(/https:\/\/www.youtube.com\//)
+          params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
+        end
+        return "https://youtu.be/#{params_recipe_video}"
       end
     end
-    return "https://youtu.be/#{params_recipe_video}"
   end
 end
