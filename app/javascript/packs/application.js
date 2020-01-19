@@ -1,5 +1,7 @@
 import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
+import { smoothToAnchor } from "../components/smooth-to-anchor";
+import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 
@@ -10,20 +12,14 @@ previewImageOnFileSelect();
 const userSignedIn = document.querySelector('body').dataset.user;
 console.log(`userSignedIn? ${userSignedIn}`);
 
-let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
-console.log(data.groups.domain);
-
-let currentLang = data.groups.lang || null;
-if(currentLang != null) currentLang = currentLang.replace('/','');
-let currentController = data.groups.controller || null;
-if(currentController != null) currentController = currentController.replace('/','');
-let currentPage = data.groups.page || null;
-if(currentPage != null) currentPage = currentPage.replace('/','');
+const returnPositionData = returnPosition();
+let currentLang = returnPositionData[0];
+let currentController = returnPositionData[1];
+let currentPage = returnPositionData[2];
 
 console.log('currentLang ', currentLang);
 console.log('currentController ', currentController);
 console.log('currentPage ', currentPage);
-
 
 const navbarBrand = document.querySelector(".navbar-brand");
 console.log(`navbarBrand ${navbarBrand.href}`);
@@ -31,17 +27,6 @@ console.log(`navbarBrand ${navbarBrand.href}`);
 if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
 }
-
-// if(currentController === "users") {
-//   const buttons = document.querySelectorAll('.btn');
-//   buttons.forEach(button => {
-//     // button.classList.add('btn-secondary');
-//   });
-//   const modalMenuLinks = document.querySelectorAll('.modal-menu-link');
-//   modalMenuLinks.forEach(modalMenuLink => {
-//     modalMenuLink.classList.remove('btn-secondary');
-//   });
-// }
 
 if (currentController === null || currentController.match(/users|bookmarks|index/)) {
   cardHeart();
@@ -56,22 +41,11 @@ if (currentController === null && userSignedIn === "false") {
 
 if(currentController === 'recipes' && currentPage != null) {
 
-  if(currentPage.match(/#comments/)) {
-    const target = '#comments';
-    let element = document.querySelector(target);
-    let rect = element.getBoundingClientRect();
-    // console.log(rect.top, rect.right, rect.bottom, rect.left);
-    let navbarHeight = document.querySelector('.navbar').offsetHeight;
-    console.log(`navbarHeight ${navbarHeight}`);
-    navbarHeight = 59;
-    const scrollOptions = {
-      top: rect.top - navbarHeight,
-      left: 0,
-      behavior: 'smooth'
-    };
-    window.onload = () => {
-      window.scrollTo(scrollOptions);
-    }
+  window.onhashchange = () => {
+    smoothToAnchor();
+  }
+  window.onload = () => {
+    smoothToAnchor();
   }
 
   const replyForms = document.querySelectorAll('.no-reply');
