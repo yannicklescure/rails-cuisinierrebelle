@@ -85,9 +85,8 @@ btnSearch.addEventListener('click', event => {
   console.log(event.currentTarget);
   document.querySelector('#navbar-main').classList.add('d-none');
   document.querySelector('#navbar-search').classList.remove('d-none');
-  const form = document.querySelector('[action="/index"]');
-  console.log(form);
-  form.reset();
+  const formInput = document.querySelector('#query');
+  formInput.value = '';
 });
 const btnSearchBack = document.querySelector('#search-btn-back');
 btnSearchBack.addEventListener('click', event => {

@@ -1,6 +1,7 @@
-<div class="d-none d-md-block">
-  <%= render 'shared/navbar-large' %>
-</div>
+<!-- 'smartphone' -->
+<% client = DeviceDetector.new(request.user_agent) %>
+<%#= client.device_type %>
+<% if client.device_type == 'smartphone' %>
 <div class="d-md-none">
   <div id="navbar-search" class="d-none navbar navbar-expand-sm navbar-light navbar-cuisinierrebelle fixed-top">
     <div class="col pr-0">
@@ -29,3 +30,8 @@
   </div>
   <%= render 'shared/navbar-small' %>
 </div>
+<% else %>
+<div class="d-none d-md-block">
+  <%= render 'shared/navbar-large' %>
+</div>
+<% end %>
