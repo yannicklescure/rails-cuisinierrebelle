@@ -18,7 +18,7 @@ const smoothToAnchor = () => {
     console.log(element.offsetTop);
     let navbarHeight = document.querySelector('.navbar').offsetHeight;
     console.log(`navbarHeight ${navbarHeight}`);
-    navbarHeight = 59;
+    // navbarHeight = 59;
     const scrollOptions = {
       top: element.offsetTop - navbarHeight,
       left: 0,

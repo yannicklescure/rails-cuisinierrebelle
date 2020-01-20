@@ -11,7 +11,7 @@ const scrollToAnchor = (anchor) => {
     let rect = element.getBoundingClientRect();
     // console.log(rect.top, rect.right, rect.bottom, rect.left);
     let navbarHeight = document.querySelector('.navbar').offsetHeight;
-    navbarHeight = 59;
+    // navbarHeight = 59;
     console.log(`navbarHeight ${navbarHeight}`);
     const scrollOptions = {
       top: rect.top - navbarHeight,
