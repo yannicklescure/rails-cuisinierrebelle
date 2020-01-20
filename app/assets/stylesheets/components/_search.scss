@@ -4,10 +4,10 @@
   }
 
   button {
-    color: #d8dce0;
+    color: $text-muted;
   }
 
-  button:hover {
+  button:hover i {
     color: $text-body;
   }
 }

@@ -1,7 +1,7 @@
 <%= form_tag index_index_path, method: :get do %>
   <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search") %>
   <%#= button_tag t(".search_btn_html"), class: "btn" %>
-<div class="input-group">
+<div id="search" class="input-group">
   <%= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search"), 'aria-label': "Recipient's username", 'aria-describedby': "search-btn" %>
   <div class="input-group-append">
     <%= button_tag t(".search_btn_html"), class: "btn", id: "search-btn" %>
