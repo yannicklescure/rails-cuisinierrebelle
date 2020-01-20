@@ -16,6 +16,10 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :direction, presence: true
   validates :photo, presence: true
+  validates :video, format: {
+    with: /(^$|^.*@.*\..*$)|youtu.?be/,
+    message: I18n.t(".only_allows_youtube_video")
+  }
 
   include PgSearch::Model
   multisearchable against: [:title, :description, :direction]

@@ -1,12 +1,13 @@
 ---
 en:
+  only_allows_youtube_video: only allows youtube video link
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
         this action.
   bookmarks:
     index:
-      no_bookmarks: No bookmarks...
+      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
       comments:
@@ -59,7 +60,7 @@ en:
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: resend confirmation instructions
+        resend_confirmation_instructions: Resend confirmation instructions
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -142,7 +143,8 @@ en:
       search_btn_html: <i class="fas fa-search"></i>
     index:
       most_used_tags: Most used tags
-      recent_recipes: Recent recipes
+      no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+      recent_recipes: Recent published recipes
   pages:
     conversion:
       conversion: Conversion table
@@ -152,7 +154,7 @@ en:
     edit:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
-      are_you_sure: Are you sure
+      are_you_sure: Are you sure?
       delete: Delete
       description: Description
       direction: Direction
@@ -162,11 +164,8 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     index:
-      comments: Comments
-      date: Date
       date_format: "%b %d, %Y"
       edit_recipe_html: <i class="fas fa-pen"></i>
-      likes: Likes
       published_recipes: Published recipes
       recipe: "%{title}"
     new:
@@ -182,12 +181,10 @@ en:
       youtube_video_link: Youtube video link
     show:
       comments:
-        one: One comment
+        one: 1 comment
         other: "%{count} comments"
         zero: No comment
       edit_recipe: Edit recipe
-      name: "%{name}"
-      recipe: "%{title}"
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
   replies:
@@ -244,7 +241,7 @@ en:
         zero: No year
   shared:
     banner:
-      banner_subtitle: Cooking recipes and other things
+      banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
       videos: Videos
@@ -268,14 +265,14 @@ en:
       terms: Terms
     header:
       cooking_recipes_and_more: Cooking recipes and more
-      cuisinier_rebelle_social_recipe: Cuisinier rebelle, social recipes!
+      cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
     navbar-large:
       bookmarks: Bookmarks
       conversion: Conversion table
       cuisinier_rebelle: Cuisinier rebelle
       following: Following
       inbox: Inbox
-      index: Index
+      index: Search recipes
       languages_html: <i class="fas fa-language"></i>
       log_out: Log out
       new_recipe: New recipe
@@ -287,7 +284,7 @@ en:
       bookmarks: Bookmarks
       conversion: Conversion table
       following: Following
-      index: Index
+      index: Search recipes
       languages: Languages
       log_out: Log out
       new_recipe: New recipe
@@ -295,12 +292,12 @@ en:
       settings: Settings
       sign_in: Log in
       tools: Kitchen tools
-    tags:
-      most_used_tags: Most used tags
   user_mailer:
     welcome:
+      greeting: Welcome %{recipient}!
       see_ya: See ya
-      welcome_message: Welcome message
+      welcome_message: We are pleased to welcome you in our family of rebel cooks.
+        Feel free to share some awesomeness with all!
   users:
     confirmations:
       new:
@@ -338,7 +335,7 @@ en:
         confirm_new_password: Confirm new password
         new_password: New password
       new:
-        forgot_your_password: Forgot your password
+        forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
@@ -362,7 +359,7 @@ en:
       links:
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions
-        forgot_your_password: Forgot your password
+        forgot_your_password: Forgot your password?
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
@@ -371,10 +368,11 @@ en:
       edit_user_registration: Edit user registration
       email: Email
       follower:
-        one: One follower
+        one: 1 follower
         other: "%{count} followers"
         zero: No follower
       full_name: Full name
+      published_recipes: Published recipes
       updated_at: Updated at
     unlocks:
       new:

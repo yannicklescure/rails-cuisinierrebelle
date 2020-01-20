@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="tags m-0">
 <% count = 1 %>
 <% tags_list_max = 10 %>
 <% most_used_count = ActsAsTaggableOn::Tag.most_used.count %>
@@ -6,7 +6,8 @@
 <%#= tags_list_max %>
 <% ActsAsTaggableOn::Tag.most_used(tags_list_max).to_a.each do |tag| %>
   <%#= "##{tag.to_s.gsub(' ', '')}" %>
-  <%= link_to "#{tag.to_s.capitalize}", tagged_path(tag: tag.to_s), class: 'text-body m-0' %><%= raw("&comma;&nbsp;") if count < tags_list_max %>
+  <% comma = count < tags_list_max ? "&comma;&nbsp;" : "" %>
+  <%= link_to tag.to_s.capitalize, tagged_path(tag: tag.to_s), class: 'text-body' %><%= comma.html_safe %>
   <% count += 1 %>
 <% end %>
 </p>

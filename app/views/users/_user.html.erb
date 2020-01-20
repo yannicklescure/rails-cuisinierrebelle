@@ -1,8 +1,12 @@
 <div data-user="<%= user.id %>">
   <%= link_to "#{user.first_name.capitalize} #{user.last_name.capitalize}", user_path(user), class: "text-body" %>
-  <% if user_signed_in? && current_user.is_following?(user.id) %>
-    <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
+  <% if user_signed_in? %>
+    <% if current_user.is_following?(user.id) %>
+      <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
+    <% else %>
+      <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
+    <% end %>
   <% else %>
-    <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
+      <%= link_to "Follow", new_user_session_path, class: 'text-muted' %>
   <% end %>
 </div>

@@ -6,7 +6,7 @@
     <%= f.input :title, label: t('.title') %>
     <%= f.input :subtitle, label: t('.subtitle'), as: :text %>
     <%= f.input :description, label: t('.description'), as: :text, input_html: { maxlength: 280} %>
-    <%= f.input :video, label: t('.youtube_video_link') %>
+    <%= f.input :video, label: t('.youtube_video_link'), input_html: { value: "#{@recipe.video}" } %>
     <%#= f.input :image %>
     <%#= f.label :photo, t('.photo') %>
     <%#= f.input :photo, as: :file, label: false %>

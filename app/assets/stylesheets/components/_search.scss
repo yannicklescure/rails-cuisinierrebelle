@@ -1,5 +1,13 @@
-.border-muted,
-.border-outline-muted {
-  color: #d8dce0;
-  border-color: #d8dce0;
+#search {
+  input, button {
+    border-color: #d8dce0;
+  }
+
+  button {
+    color: #d8dce0;
+  }
+
+  button:hover {
+    color: $text-body;
+  }
 }
