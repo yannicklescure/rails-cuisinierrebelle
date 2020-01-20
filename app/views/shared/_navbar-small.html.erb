@@ -7,7 +7,7 @@
           <button type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a>
+          <!-- <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a> -->
           <% if user_signed_in? %>
             <%= link_to t(".bookmarks"), bookmarks_path, class: "btn btn-link modal-menu-link" %>
           <% end %>

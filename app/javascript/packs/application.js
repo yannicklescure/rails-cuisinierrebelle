@@ -80,18 +80,24 @@ if(currentController === 'recipes' && currentPage != null) {
   });
 }
 
-const btnSearch = document.querySelector('#search-btn');
-btnSearch.addEventListener('click', event => {
-  console.log(event.currentTarget);
-  document.querySelector('#navbar-main').classList.add('d-none');
-  document.querySelector('#navbar-search').classList.remove('d-none');
-  const formInput = document.querySelector('#query');
-  formInput.value = '';
-});
-const btnSearchBack = document.querySelector('#search-btn-back');
-btnSearchBack.addEventListener('click', event => {
-  console.log(event.currentTarget);
-  document.querySelector('#navbar-main').classList.remove('d-none');
-  document.querySelector('#navbar-search').classList.add('d-none');
-});
+const body = document.querySelector('body');
+const device = body.dataset.device;
+console.log(device);
+
+if(device === 'smartphone') {
+  const btnSearch = document.querySelector('#search-btn');
+  btnSearch.addEventListener('click', event => {
+    console.log(event.currentTarget);
+    document.querySelector('#navbar-main').classList.add('d-none');
+    document.querySelector('#navbar-search').classList.remove('d-none');
+    const formInput = document.querySelector('#query');
+    formInput.value = '';
+  });
+  const btnSearchBack = document.querySelector('#search-btn-back');
+  btnSearchBack.addEventListener('click', event => {
+    console.log(event.currentTarget);
+    document.querySelector('#navbar-main').classList.remove('d-none');
+    document.querySelector('#navbar-search').classList.add('d-none');
+  });
+}
 

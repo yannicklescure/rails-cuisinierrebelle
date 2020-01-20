@@ -3,7 +3,7 @@
   <head>
     <%= render 'shared/header' %>
   </head>
-  <body class="d-flex flex-column" data-user="<%= user_signed_in? %>">
+  <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type %>">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
