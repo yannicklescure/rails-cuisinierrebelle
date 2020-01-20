@@ -83,8 +83,9 @@ if(currentController === 'recipes' && currentPage != null) {
 const body = document.querySelector('body');
 const device = body.dataset.device;
 console.log(device);
+// document.querySelector('#device').innerHTML = device;
 
-if(device.match(/smartphone|tablet/)) {
+if(device.match(/smartphone|phablet/)) {
   const btnSearch = document.querySelector('#search-btn');
   btnSearch.addEventListener('click', event => {
     console.log(event.currentTarget);
