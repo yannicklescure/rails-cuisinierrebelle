@@ -84,7 +84,7 @@ const body = document.querySelector('body');
 const device = body.dataset.device;
 console.log(device);
 
-if(device === 'smartphone') {
+if(device.match(/smartphone|tablet/) {
   const btnSearch = document.querySelector('#search-btn');
   btnSearch.addEventListener('click', event => {
     console.log(event.currentTarget);
