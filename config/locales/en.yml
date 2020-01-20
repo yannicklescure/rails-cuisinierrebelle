@@ -1,6 +1,7 @@
 ---
 en:
-  only_allows_youtube_video: only allows youtube video link
+  '':
+    only_allows_youtube_video: Only allows youtube video
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
@@ -145,6 +146,7 @@ en:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recent published recipes
+  only_allows_youtube_video: only allows youtube video link
   pages:
     conversion:
       conversion: Conversion table
@@ -266,6 +268,9 @@ en:
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
+    navbar:
+      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
+      search_btn_html: <i class="fas fa-search"></i>
     navbar-large:
       bookmarks: Bookmarks
       conversion: Conversion table

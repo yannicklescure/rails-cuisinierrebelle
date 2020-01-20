@@ -121,6 +121,7 @@ fr:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recent recipes
+  only_allows_youtube_video: only allows youtube video link
   pages:
     conversion:
       conversion: Table de conversion
@@ -206,6 +207,9 @@ fr:
     header:
       cooking_recipes_and_more: Recettes de cuisine et autres
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
+    navbar:
+      cuisinier_rebelle_html: Cuisinier rebelle html
+      search_btn_html: Search btn html
     navbar-large:
       bookmarks: Favoris
       conversion: Table de conversion
