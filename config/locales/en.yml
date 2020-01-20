@@ -139,7 +139,7 @@ en:
       following: Following
   index:
     form:
-      search: Search
+      search: Search recipes...
       search_btn_html: <i class="fas fa-search"></i>
     index:
       most_used_tags: Most used tags

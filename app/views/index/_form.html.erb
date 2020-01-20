@@ -3,7 +3,7 @@
   <%#= button_tag t(".search_btn_html"), class: "btn" %>
 <div id="search" class="input-group">
   <%= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search"), 'aria-label': "Recipient's username", 'aria-describedby': "search-btn" %>
-  <div class="input-group-append">
+  <div class="d-none input-group-append">
     <%= button_tag t(".search_btn_html"), class: "btn", id: "search-btn" %>
   </div>
 </div>
