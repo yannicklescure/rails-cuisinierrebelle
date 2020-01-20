@@ -16,11 +16,11 @@ const smoothToAnchor = () => {
     const target = anchorTarget[2];
     let element = document.querySelector(target);
     console.log(element.offsetTop);
-    let navbarHeight = document.querySelector('.navbar').offsetHeight;
+    let navbarHeight = document.querySelector('#navbar-main').offsetHeight;
     console.log(`navbarHeight ${navbarHeight}`);
     // navbarHeight = 59;
     const scrollOptions = {
-      top: element.offsetTop - navbarHeight,
+      top: element.offsetTop - parseInt(navbarHeight),
       left: 0,
       behavior: 'smooth'
     };

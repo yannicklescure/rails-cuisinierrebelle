@@ -8,13 +8,13 @@ const scrollToAnchor = (anchor) => {
     // console.log(`target: ${target}`);
     // @ https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
     let element = document.querySelector(target);
-    let rect = element.getBoundingClientRect();
+    // let rect = element.getBoundingClientRect();
     // console.log(rect.top, rect.right, rect.bottom, rect.left);
-    let navbarHeight = document.querySelector('.navbar').offsetHeight;
-    // navbarHeight = 59;
+    let navbarHeight = document.querySelector('#navbar-main').offsetHeight;
     console.log(`navbarHeight ${navbarHeight}`);
+    // navbarHeight = 56;
     const scrollOptions = {
-      top: rect.top - navbarHeight,
+      top: element.offsetTop - parseInt(navbarHeight),
       left: 0,
       behavior: 'smooth'
     };
