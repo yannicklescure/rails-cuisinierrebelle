@@ -29,4 +29,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :recipes, only: [ :index, :show ]
+    end
+  end
 end
