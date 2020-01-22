@@ -1,12 +1,10 @@
-console.log(`destroy reply #${<%= @reply.id %>}`);
+// console.log(`destroy reply #${<%= @reply.id %>}`);
 reply = document.querySelector(`#reply-${<%= @reply.id %>}`);
 reply.classList.add('d-none');
 button = document.querySelector(`#comment-${<%= @comment.id %>}-replies-list-btn`);
 <% if @comment.replies.any? %>
-console.log(`reply count ${<%= @comment.replies.count %>}`);
 if(button) button.innerHTML = `<span id="replies-list-arrow-<%= @comment.id %>"><i class="fas fa-sort-up"></i></span>&ensp;<%= t('.replies', count: @comment.replies.count) %>`;
 <% else %>
-console.log(`reply count ${<%= @comment.replies.count %>}`);
 if(button) button.classList.add('d-none');
 <% end %>
 commentsCount = document.querySelector('#comments-count');

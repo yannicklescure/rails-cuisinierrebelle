@@ -15,11 +15,9 @@ function addComment(replyHTML) {
   refreshForm('<%= j render "replies/form", recipe: @recipe, comment: @comment, reply: Reply.new %>');
   button = document.querySelector(`#comment-${<%= @comment.id %>}-replies-list-btn`);
   if(button) {
-    console.log('button true');
     button.classList.remove('d-none');
     button.innerHTML = `<span id="replies-list-arrow-<%= @comment.id %>"><i class="fas fa-sort-up"></i></span>&ensp;<%= t('.replies', count: @comment.replies.count) %>`;
   } else {
-    console.log('button false');
     repliesList = document.getElementById('replies-list-<%= @comment.id %>');
     repliesListBtn = `<div id="comment-<%= @comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 reply" data-comment="<%= @comment.id %>">
       <span id="replies-list-arrow-<%= @comment.id %>"><i class="fas fa-sort-up"></i></span>&ensp;<%= t('.replies', count: @comment.replies.count) %>
@@ -32,15 +30,12 @@ function addComment(replyHTML) {
         // console.log(event.currentTarget.dataset.comment);
         const commentId = event.currentTarget.dataset.comment;
         if(parseInt(commentId) === <%= @comment.id %>) {
-          console.log(`commentId #${commentId}`);
           const repliesList = document.querySelector(`#replies-list-${commentId}`);
-          console.log(repliesList.classList.value);
           repliesList.classList.toggle('d-none');
           viewReplies === false ? viewReplies = true : viewReplies = false;
           const arrowState = document.querySelector(`#replies-list-arrow-${event.currentTarget.dataset.comment}`);
           if(viewReplies) arrowState.innerHTML = `<i class="fas fa-sort-down"></i>`;
           else arrowState.innerHTML = `<i class="fas fa-sort-up"></i>`;
-          console.log(`viewReplies Ajax: ${viewReplies}`);
         }
       });
     });

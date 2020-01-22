@@ -13,16 +13,12 @@ const userSignedIn = document.querySelector('body').dataset.user;
 console.log(`userSignedIn? ${userSignedIn}`);
 
 const returnPositionData = returnPosition();
-let currentLang = returnPositionData[0];
-let currentController = returnPositionData[1];
-let currentPage = returnPositionData[2];
-
-console.log('currentLang ', currentLang);
-console.log('currentController ', currentController);
-console.log('currentPage ', currentPage);
+console.log('current ', returnPositionData);
+let currentLang = returnPositionData.currentLang;
+let currentController = returnPositionData.currentController;
+let currentPage = returnPositionData.currentPage;
 
 const navbarBrand = document.querySelector(".navbar-brand");
-console.log(`navbarBrand ${navbarBrand.href}`);
 
 if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
@@ -66,12 +62,10 @@ if(currentController === 'recipes' && currentPage != null) {
       const arrowState = document.querySelector(`#replies-list-arrow-${event.currentTarget.dataset.comment}`);
       if(viewReplies) arrowState.innerHTML = `<i class="fas fa-sort-up"></i>`;
       else arrowState.innerHTML = `<i class="fas fa-sort-down"></i>`;
-      console.log(`viewReplies JS: ${viewReplies}`);
     });
   });
 
   const repliesReply = document.querySelectorAll('.reply-reply');
-  console.log(repliesReply);
   repliesReply.forEach((reply) => {
     reply.addEventListener('click', event => {
       const replyForm = document.querySelector(`#reply-reply-form-${event.currentTarget.dataset.comment}`);
@@ -82,29 +76,22 @@ if(currentController === 'recipes' && currentPage != null) {
 
 const body = document.querySelector('body');
 const device = body.dataset.device;
-console.log(device);
-// document.querySelector('#device').innerHTML = device;
 
 if(device.match(/smartphone|phablet/)) {
   const btnSearch = document.querySelector('#search-btn');
   btnSearch.addEventListener('click', event => {
-    console.log(event.currentTarget);
     document.querySelector('#navbar-main').classList.add('d-none');
     document.querySelector('#navbar-search').classList.remove('d-none');
-    const formInput = document.querySelector('#query');
-    formInput.value = '';
+    document.querySelector('#query').value = '';
   });
   const btnSearchBack = document.querySelector('#search-btn-back');
   btnSearchBack.addEventListener('click', event => {
-    console.log(event.currentTarget);
     document.querySelector('#navbar-main').classList.remove('d-none');
     document.querySelector('#navbar-search').classList.add('d-none');
   });
 }
 
 const url = "https://www.cuisinierrebelle.com/api/v1/recipes";
-
-console.log(url);
 fetch(url)
 .then(response => response.json())
 .then(data => {

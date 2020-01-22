@@ -1,7 +1,6 @@
 const cardHeart = () => {
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
-    console.log(card.dataset);
     const element = document.querySelector(`.fa-heart-${card.dataset.recipe}`);
     element.classList.remove('d-none');
     element.style.opacity = 0;
