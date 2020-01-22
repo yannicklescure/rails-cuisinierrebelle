@@ -111,7 +111,6 @@ fetch(url)
   data.forEach((recipe, index) => {
     console.log('parsed json', data);
   });
-
 })
 .catch(ex => {
   console.log('parsing failed', ex);
