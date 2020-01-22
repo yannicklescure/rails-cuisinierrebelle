@@ -4,6 +4,7 @@ import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
+import { cors } from "../../../src/plugins/init_cors";
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -102,3 +103,16 @@ if(device.match(/smartphone|phablet/)) {
   });
 }
 
+const url = "https://www.cuisinierrebelle.com/api/v1/recipes";
+
+console.log(url);
+fetch(url)
+.then(response => response.json())
+.then(data => {
+  data.forEach((recipe, index) => {
+    console.log('recipe', recipe);
+  });
+})
+.catch(ex => {
+  console.log('parsing failed', ex);
+});
