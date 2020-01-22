@@ -109,7 +109,7 @@ fetch(url)
 .then(response => response.json())
 .then(data => {
   data.forEach((recipe, index) => {
-    console.log('parsed json', data);
+    console.log(`recipe ${recipe.id}`, recipe);
   });
 })
 .catch(ex => {
