@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :subtitle, :video, :ingredients, :direction, :description, :photo, :image, :tag_list)
+    params.require(:recipe).permit(:title, :subtitle, :video, :direction, :description, :photo, :image, :tag_list)
   end
 
   def sanitize_youtube_video_link(params_recipe_video)
