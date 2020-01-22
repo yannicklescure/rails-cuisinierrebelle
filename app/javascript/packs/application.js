@@ -4,9 +4,9 @@ import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
-import { cors } from "../../../src/plugins/init_cors";
+import { initCors } from "../../../src/plugins/init_cors";
 
-cors();
+const cors = initCors();
 
 $('[data-toggle="tooltip"]').tooltip();
 

@@ -1,11 +1,11 @@
-const cors = () => {
-  var express = require('express')
-  var cors = require('cors')
-  var app = express()
+const initCors = () => {
+  const express = require('express')
+  const cors = require('cors')
+  const app = express()
 
-  var whitelist = ['http://localhost:3000']
-  var corsOptions = {
-    origin: function (origin, callback) {
+  const whitelist = ['http://localhost:3000']
+  const corsOptions = {
+    origin: (origin, callback) => {
       if (whitelist.indexOf(origin) !== -1) {
         callback(null, true)
       } else {
@@ -14,13 +14,13 @@ const cors = () => {
     }
   }
 
-  app.get('/products/:id', cors(corsOptions), function (req, res, next) {
+  app.get('/recipes/:id', cors(corsOptions), (req, res, next) => {
     res.json({msg: 'This is CORS-enabled for a whitelisted domain.'})
   })
 
-  app.listen(80, function () {
+  app.listen(80, () => {
     console.log('CORS-enabled web server listening on port 80')
   })
 }
 
-export { cors };
+export { initCors };
