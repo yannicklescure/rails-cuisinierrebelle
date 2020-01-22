@@ -6,6 +6,8 @@ import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { cors } from "../../../src/plugins/init_cors";
 
+cors();
+
 $('[data-toggle="tooltip"]').tooltip();
 
 previewImageOnFileSelect();
