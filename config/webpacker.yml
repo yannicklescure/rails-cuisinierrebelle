@@ -1,4 +1,3 @@
-# Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
   source_path: app/javascript
@@ -70,7 +69,6 @@ development:
     use_local_ip: false
     quiet: false
     pretty: false
-    target: 'node'
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:

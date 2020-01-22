@@ -4,9 +4,6 @@ import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
-import { initCors } from "../../../src/plugins/init_cors";
-
-const cors = initCors();
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -112,8 +109,9 @@ fetch(url)
 .then(response => response.json())
 .then(data => {
   data.forEach((recipe, index) => {
-    console.log('recipe', recipe);
+    console.log('parsed json', data);
   });
+
 })
 .catch(ex => {
   console.log('parsing failed', ex);
