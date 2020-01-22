@@ -14,7 +14,7 @@ const initCors = () => {
     }
   }
 
-  app.get('/recipes/:id', cors(corsOptions), (req, res, next) => {
+  app.get('/', cors(corsOptions), (req, res, next) => {
     res.json({msg: 'This is CORS-enabled for a whitelisted domain.'})
   })
 
