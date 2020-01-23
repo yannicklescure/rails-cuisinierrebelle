@@ -28,10 +28,12 @@ class RecipesController < ApplicationController
   def create
     @bookmarks = Bookmark.where(user: current_user)
     @recipe = Recipe.new(recipe_params)
+    authorize @recipe
     @recipe.user = current_user
     params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
-    authorize @recipe
     if @recipe.save
+      @recipe.video = nil if @recipe.video == ''
+      @recipe.save
       redirect_to recipe_path(@recipe)
     else
       render :new
@@ -76,7 +78,7 @@ class RecipesController < ApplicationController
     if params_recipe_video.match?(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
       share_link = params_recipe_video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
       if share_link.nil?
-        return ""
+        return nil
       else
         params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
         if share_link[1].match?(/https:\/\/www.youtube.com\//)
@@ -84,6 +86,8 @@ class RecipesController < ApplicationController
         end
         return "https://youtu.be/#{params_recipe_video}"
       end
+    else
+      return nil
     end
   end
 end
