@@ -86,7 +86,9 @@ if(device.match(/smartphone|phablet/)) {
     navbarSearch.style.height = `${navbarMain.offsetHeight}px`;
     navbarMain.classList.toggle('d-none');
     navbarSearch.classList.toggle('d-none');
-    document.querySelector('#query').value = '';
+    const query = document.querySelector('#query');
+    query.focus();
+    query.value = '';
   });
   const btnSearchBack = document.querySelector('#search-btn-back');
   btnSearchBack.addEventListener('click', event => {
