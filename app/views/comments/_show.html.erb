@@ -16,6 +16,8 @@
       <%= t(".minutes_ago", count: time_since_creation.in_minutes.floor) %>
     <% elsif time_since_creation.in_minutes.floor < 1 && time_since_creation.in_seconds.floor.positive? %>
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
+    <% else %>
+      <%= t(".seconds_ago", count: 1) %>
     <% end %>&ensp;
     <% if comment.user == current_user || recipe.user == current_user %>
     <%= link_to t('.delete_html'), recipe_comment_path(recipe, comment), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true %>
