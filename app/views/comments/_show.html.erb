@@ -18,7 +18,7 @@
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
     <% end %>&ensp;
     <% if comment.user == current_user || recipe.user == current_user %>
-    <%= link_to t('.delete_html'), recipe_comment_path(recipe, comment), method: :delete, remote: true %>
+    <%= link_to t('.delete_html'), recipe_comment_path(recipe, comment), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true %>
     <% end %>
   </div>
   <div class="my-1"><%= comment.content %></div>

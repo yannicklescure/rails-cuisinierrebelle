@@ -18,6 +18,7 @@ fr:
       add_a_public_comment: Add a public comment
       comment: Comment
     show:
+      are_you_sure: Are you sure
       days_ago: Days ago
       delete_html: Delete html
       hours_ago: Hours ago
@@ -172,6 +173,7 @@ fr:
       add_a_public_reply: Add a public reply
       reply: Reply
     show:
+      are_you_sure: Are you sure
       days_ago: Days ago
       delete_html: Delete html
       hours_ago: Hours ago
@@ -211,6 +213,7 @@ fr:
       cuisinier_rebelle_html: Cuisinier rebelle html
       search_btn_html: Search btn html
     navbar-large:
+      are_you_sure: Are you sure
       bookmarks: Favoris
       conversion: Table de conversion
       cuisinier_rebelle: Cuisinier rebelle
@@ -225,6 +228,7 @@ fr:
       sign_in: Connexion
       tools: Matériel de cuisine
     navbar-small:
+      are_you_sure: Are you sure
       bookmarks: Bookmarks
       conversion: Table de conversion
       following: Following

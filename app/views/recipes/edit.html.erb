@@ -1,7 +1,4 @@
 <div class="container my-5">
-  <div class="d-flex justify-content-end">
-    <%= link_to t('.delete'), recipe_path(@recipe), confirm: t(".are_you_sure"), method: :delete, class: 'text-body' %>
-  </div>
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :title, label: t('.title') %>
     <%= f.input :subtitle, label: t('.subtitle'), as: :text %>
@@ -20,6 +17,9 @@
     <%= f.input :tag_list, label: t('.add_tags'), hint: t('.add_your_tags_separated_by_commas'), as: :text, input_html: {value: @recipe.tag_list.to_s} %>
     <%#= f.input :ingredients %>
     <%= f.input :direction, label: t('.direction'), hint: t('.markdown_syntax_friendly_area'), input_html: {rows: 10} %>
-    <%= f.submit class: "btn btn-secondary" %>
+    <div class="my-3 d-flex justify-content-between align-items-center">
+      <%= f.submit class: "btn btn-secondary" %>
+      <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'text-body' %>
+    </div>
   <% end %>
 </div>

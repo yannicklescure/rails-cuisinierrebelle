@@ -24,6 +24,7 @@ en:
       add_a_public_comment: Add a public comment
       comment: Comment
     show:
+      are_you_sure: Are you sure?
       days_ago:
         one: 1 day ago
         other: "%{count} days ago"
@@ -99,7 +100,7 @@ en:
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
-        are_you_sure: Are you sure?
+        are_you_sure: Are you sure??
         cancel_my_account: Cancel my account
         currently_waiting_confirmation_for_email: 'Currently waiting confirmation
           for: %{email}'
@@ -156,7 +157,7 @@ en:
     edit:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
-      are_you_sure: Are you sure?
+      are_you_sure: Are you sure??
       delete: Delete
       description: Description
       direction: Direction
@@ -212,6 +213,7 @@ en:
       add_a_public_reply: Add a public reply
       reply: Reply
     show:
+      are_you_sure: Are you sure?
       days_ago:
         one: 1 day ago
         other: "%{count} days ago"
@@ -272,6 +274,7 @@ en:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
     navbar-large:
+      are_you_sure: Are you sure?
       bookmarks: Bookmarks
       conversion: Conversion table
       cuisinier_rebelle: Cuisinier rebelle
@@ -286,6 +289,7 @@ en:
       sign_in: Log in
       tools: Kitchen tools
     navbar-small:
+      are_you_sure: Are you sure?
       bookmarks: Bookmarks
       conversion: Conversion table
       following: Following
@@ -344,7 +348,7 @@ en:
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
-        are_you_sure: Are you sure?
+        are_you_sure: Are you sure??
         cancel_my_account: Cancel my account
         currently_waiting_confirmation_for_email: Currently waiting confirmation for
           %{email}
