@@ -78,16 +78,20 @@ const body = document.querySelector('body');
 const device = body.dataset.device;
 
 if(device.match(/smartphone|phablet/)) {
+  const navbarMain = document.querySelector('#navbar-main');
+  const navbarSearch = document.querySelector('#navbar-search');
+
   const btnSearch = document.querySelector('#search-btn');
   btnSearch.addEventListener('click', event => {
-    document.querySelector('#navbar-main').classList.add('d-none');
-    document.querySelector('#navbar-search').classList.remove('d-none');
+    navbarSearch.style.height = `${navbarMain.offsetHeight}px`;
+    navbarMain.classList.toggle('d-none');
+    navbarSearch.classList.toggle('d-none');
     document.querySelector('#query').value = '';
   });
   const btnSearchBack = document.querySelector('#search-btn-back');
   btnSearchBack.addEventListener('click', event => {
-    document.querySelector('#navbar-main').classList.remove('d-none');
-    document.querySelector('#navbar-search').classList.add('d-none');
+    navbarMain.classList.toggle('d-none');
+    navbarSearch.classList.toggle('d-none');
   });
 }
 
