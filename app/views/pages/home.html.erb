@@ -4,9 +4,10 @@
 <% end %>
 <div class="container-fluid">
   <div id="recipes-cards" class="row py-3">
-    <% @recipes.order('created_at DESC').each do |recipe| %>
-      <%= render 'shared/card', recipe: recipe %>
-    <% end %>
+    <div id="root" data-recipes="<%= @recipes.to_json %>"></div>
+    <%# @recipes.order('created_at DESC').each do |recipe| %>
+    <%#= render 'shared/card', recipe: recipe %>
+    <%# end %>
   </div>
 </div>
 <!-- stretched-link -->
