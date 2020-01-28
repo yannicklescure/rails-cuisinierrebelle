@@ -6,7 +6,7 @@ import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 
-if(document.querySelector('.alert') != null) flashes();
+if(document.querySelector('.notice') != null) flashes();
 
 $('[data-toggle="tooltip"]').tooltip();
 
