@@ -100,14 +100,15 @@ if(device.match(/smartphone|phablet/)) {
   });
 }
 
-// const url = "https://www.cuisinierrebelle.com/api/v1/recipes";
-// fetch(url)
-// .then(response => response.json())
-// .then(data => {
-//   data.forEach((recipe, index) => {
-//     console.log(`recipe ${recipe.id}`, recipe);
-//   });
-// })
-// .catch(ex => {
-//   console.log('parsing failed', ex);
-// });
+const url = "/api/v1/recipes";
+fetch(url)
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  // data.forEach((recipe, index) => {
+    // console.log(`recipe ${recipe.id}`, recipe);
+  // });
+})
+.catch(ex => {
+  console.log('parsing failed', ex);
+});
