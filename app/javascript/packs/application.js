@@ -4,6 +4,9 @@ import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
+import { flashes } from "../components/flashes";
+
+if(document.querySelector('.alert') != null) flashes();
 
 $('[data-toggle="tooltip"]').tooltip();
 
