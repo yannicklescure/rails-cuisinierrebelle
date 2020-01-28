@@ -5,6 +5,11 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <script>
+    setTimeout(() => {
+      document.querySelector('.close').click();
+    }, 1500);
+  </script>
 <% end %>
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
