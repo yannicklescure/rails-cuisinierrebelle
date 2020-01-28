@@ -33,13 +33,10 @@ unfade = (element) => {
 if(<%= @liked %>) {
   liked.innerHTML = `<i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>`;
   if(faHeart != null) {
-    // faHeart.classList.remove('d-none');
+    faHeart.classList.remove('d-none');
     unfade(faHeart);
-    setTimeout(() => {
-      // console.log(`faHeart ${faHeart}`);
-      fade(faHeart);
-      // faHeart.classList.add('d-none');
-    }, 500);
+    setTimeout(() => {fade(faHeart)}, 500);
+    setTimeout(() => {faHeart.classList.add('d-none')}, 1000);
   }
 } else {
   liked.innerHTML = `<i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>`;

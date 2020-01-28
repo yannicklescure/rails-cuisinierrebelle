@@ -22,5 +22,5 @@ class Recipe < ApplicationRecord
   }
 
   include PgSearch::Model
-  multisearchable against: [:title, :description, :direction]
+  multisearchable against: [:title, :subtitle, :description, :direction]
 end

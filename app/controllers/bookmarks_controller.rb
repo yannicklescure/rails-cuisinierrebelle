@@ -14,6 +14,9 @@ class BookmarksController < ApplicationController
       @bookmark = Bookmark.create(user: current_user, recipe: @recipe)
       @bookmarked = true
     end
+    @recipe.bookmarks_count = @recipe.bookmarks.count
+    @recipe.save
+    authorize @recipe
     @bookmarks = Bookmark.where(user: current_user)
     authorize @bookmark
   end
