@@ -1,3 +1,46 @@
+// bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
+// if(<%= @bookmarked %>) bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
+// else bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
+
 bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
-if(<%= @bookmarked %>) bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
-else bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
+faBookmark = document.querySelector(".fa-bookmark-<%= @recipe.id %>");
+
+fade = (element) => {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+          clearInterval(timer);
+          element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
+
+unfade = (element) => {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
+
+if(<%= @bookmarked %>) {
+  bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
+  if(faBookmark != null) {
+    faBookmark.classList.remove('d-none');
+    unfade(faBookmark);
+    setTimeout(() => {
+      fade(faBookmark);
+      setTimeout(() => {faBookmark.classList.add('d-none')}, 500);
+    }, 500);
+  }
+} else {
+  bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
+}

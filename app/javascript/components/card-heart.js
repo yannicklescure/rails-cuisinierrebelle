@@ -2,7 +2,7 @@ const cardHeart = () => {
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
     const element = document.querySelector(`.fa-heart-${card.dataset.recipe}`);
-    element.classList.remove('d-none');
+    // element.classList.remove('d-none');
     element.style.opacity = 0;
     const cardImgTop = document.querySelector(`.card-img-top-${card.dataset.recipe}`);
     let clickCount = 0;

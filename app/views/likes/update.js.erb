@@ -1,8 +1,5 @@
-// recipeId = <%= @recipe.id %>;
 liked = document.querySelector("[data-like-recipe='<%= @recipe.id %>']");
-// console.log(`liked ${<%= @liked %>}`);
-faHeart = document.querySelector(`.fa-heart-${<%= @recipe.id %>}`);
-// console.log(faHeart);
+faHeart = document.querySelector(".fa-heart-<%= @recipe.id %>");
 
 fade = (element) => {
     var op = 1;  // initial opacity
@@ -33,12 +30,11 @@ unfade = (element) => {
 if(<%= @liked %>) {
   liked.innerHTML = `<i class="fas fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>`;
   if(faHeart != null) {
-    // faHeart.classList.remove('d-none');
+    faHeart.classList.remove('d-none');
     unfade(faHeart);
     setTimeout(() => {
-      // console.log(`faHeart ${faHeart}`);
       fade(faHeart);
-      // faHeart.classList.add('d-none');
+      setTimeout(() => {faHeart.classList.add('d-none')}, 500);
     }, 500);
   }
 } else {
