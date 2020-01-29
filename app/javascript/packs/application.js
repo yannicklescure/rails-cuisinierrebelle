@@ -5,6 +5,7 @@ import { returnPosition } from "../components/return-position";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
+import { lazyLoad } from "../components/lazy-load";
 
 if(document.querySelector('.notice') != null) flashes();
 
@@ -12,7 +13,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 previewImageOnFileSelect();
 
-const userSignedIn = document.querySelector('body').dataset.user;
+const userSignedIn = document.querySelector('body').dataset.user === 'true';
 console.log(`userSignedIn? ${userSignedIn}`);
 
 const returnPositionData = returnPosition();
@@ -31,12 +32,15 @@ if (currentController === null || currentController.match(/users|bookmarks|index
   cardHeart();
 }
 
-if (currentController === null && userSignedIn === "false") {
+if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
   const bannerCtaBox = document.querySelector('#banner-cta-box');
   const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
   bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
+
+const url = "/api/v1/recipes";
+lazyLoad(url,userSignedIn);
 
 if(currentController === 'recipes' && currentPage != null) {
 
@@ -99,16 +103,3 @@ if(device.match(/smartphone|phablet/)) {
     navbarSearch.classList.toggle('d-none');
   });
 }
-
-const url = "/api/v1/recipes";
-fetch(url)
-.then(response => response.json())
-.then(data => {
-  console.log(data);
-  // data.forEach((recipe, index) => {
-    // console.log(`recipe ${recipe.id}`, recipe);
-  // });
-})
-.catch(ex => {
-  console.log('parsing failed', ex);
-});

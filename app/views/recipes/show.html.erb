@@ -1,6 +1,6 @@
 <div class="container mt-3 mb-5">
   <div class="d-flex flex-column">
-    <div class="d-flex order-1 order-md-0 justify-content-md-between align-items-md-center flex-column flex-md-row">
+    <div class="d-flex order-1 order-md-0 justify-content-md-between align-items-md-center flex-column flex-md-row d-print-none">
       <div class="d-flex justify-content-center align-items-center order-0">
         <div class="d-flex flex-column flex-md-row m-0 align-items-center">
           <span class="mr-md-1"><%= t('.recipe_published_by') %></span>
@@ -77,14 +77,14 @@
   </div>
   <% end %>
   <% if @related_recipes.any? %>
-  <hr>
-  <div class="h4 mb-3"><%= t('.related_recipes') %></div>
+  <hr class="d-print-none">
+  <div class="h4 mb-3 d-print-none"><%= t('.related_recipes') %></div>
   <% @related_recipes.order('created_at DESC').take(5).each do |recipe| %>
     <%= render "shared/card-small", recipe: recipe %>
   <% end %>
   <% end %>
-  <hr>
-  <div id="comments">
+  <hr class="d-print-none">
+  <div id="comments" class="d-print-none">
     <div id="comments-count" class="d-flex">
       <% count = 0 %>
       <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>

@@ -2,7 +2,7 @@
 <%# client = DeviceDetector.new(request.user_agent) %>
 <%#= client.device_type %>
 <% if client.device_type.match(/smartphone|phablet/) %>
-<div class="d-md-none">
+<div class="d-md-none" class="d-print-none">
   <div id="navbar-search" class="d-none navbar navbar-expand-sm navbar-light navbar-cuisinierrebelle fixed-top">
     <div class="col pr-0">
       <%= render 'index/form' %>
@@ -31,7 +31,7 @@
   <%= render 'shared/navbar-small' %>
 </div>
 <% else %>
-<div class="d-none d-md-block">
+<div class="d-none d-md-block d-print-none">
   <%= render 'shared/navbar-large' %>
 </div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_225206) do
+ActiveRecord::Schema.define(version: 2020_01_28_220823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_225206) do
     t.string "slug"
     t.bigint "user_id"
     t.string "photo"
+    t.integer "likes_count", default: 0
     t.index ["slug"], name: "index_recipes_on_slug", unique: true
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
