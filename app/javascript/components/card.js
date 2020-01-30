@@ -1,11 +1,5 @@
 export const card = (data) => {
   const root = document.querySelector('#root');
-  let bookmarkPatchAttributes = '';
-  let likePatchAttributes = '';
-  let faHeart = '<i class="far fa-heart"></i>';
-  let faBookmark = '<i class="far fa-bookmark"></i>';
-  let bookmarkUrl = '/users/sign_in';
-  let likeUrl = '/users/sign_in';
   let bookmarks = [];
   let likes = [];
   if(data.user) {
@@ -13,6 +7,12 @@ export const card = (data) => {
     if(data.user.likes) likes = data.user.likes.map(like => like.recipe_id);
   }
   data.recipes.forEach(recipe => {
+    let bookmarkPatchAttributes = '';
+    let likePatchAttributes = '';
+    let faHeart = '<i class="far fa-heart"></i>';
+    let faBookmark = '<i class="far fa-bookmark"></i>';
+    let bookmarkUrl = '/users/sign_in';
+    let likeUrl = '/users/sign_in';
     if(data.user) {
       bookmarkUrl = `/recipes/${recipe.slug}/bookmarks`;
       bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
