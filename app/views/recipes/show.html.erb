@@ -20,11 +20,11 @@
         <% end %>
         <div class="order-0 order-md-1">
           <% if policy(Bookmark).update? %>
-            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'btn p-0 m-1 m-md-0 ml-md-3', 'data-bookmark-recipe': @recipe.id do %>
+            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-1 m-md-0 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw('<i class="far fa-bookmark"></i>') : raw('<i class="fas fa-bookmark"></i>') %>
             <% end %>
           <% end %>
-          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "btn p-0 m-1 m-md-0 ml-md-3 text-danger", 'data-like-recipe': @recipe.id do %>
+          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-1 m-md-0 ml-md-3 text-danger text-decoration-none", 'data-like-recipe': @recipe.id do %>
             <% if @recipe.likes.find_by(user: current_user).nil? %>
               <i class="far fa-heart"></i>
             <% else %>
@@ -37,11 +37,11 @@
       <% else %>
       <div class="d-flex align-items-center justify-content-center">
         <div class="text-body">
-          <%#= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
-          <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'btn p-0 ml-3' %>
+          <%#= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'p-0 ml-3' %>
+          <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' %>
         </div>
         <div class="text-danger">
-          <%= link_to new_user_session_path, class: 'btn p-0 ml-3 text-danger' do %>
+          <%= link_to new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' do %>
             <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
             <% end %>
         </div>
