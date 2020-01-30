@@ -4,10 +4,11 @@
 <% end %>
 <div class="container-fluid">
   <div id="recipes-cards">
-    <%# @recipes.order('created_at DESC').each do |recipe| %>
-      <%#= render 'shared/card', recipe: recipe %>
-    <%# end %>
-    <div id="root" class="row py-3"></div>
+    <div id="root" class="row py-3">
+    <% @recipes.order('created_at DESC')[0...10].each do |recipe| %>
+      <%= render 'shared/card', recipe: recipe %>
+    <% end %>
+    </div>
   </div>
 </div>
 <!-- stretched-link -->
