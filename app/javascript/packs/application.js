@@ -39,8 +39,10 @@ if (currentController === null && !userSignedIn) {
   bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
 
-const url = "/api/v1/recipes";
-lazyLoad(url,userSignedIn);
+if (currentController === null) {
+  const url = "/api/v1/recipes";
+  lazyLoad(url,userSignedIn);
+}
 
 if(currentController === 'recipes' && currentPage != null) {
 
