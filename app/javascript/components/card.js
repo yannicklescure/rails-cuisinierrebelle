@@ -1,15 +1,16 @@
 export const card = (data) => {
   const root = document.querySelector('#root');
-  let bookmarkPatchAttributes, likePatchAttributes;
+  let bookmarkPatchAttributes = '';
+  let likePatchAttributes = '';
   let faHeart = '<i class="far fa-heart"></i>';
   let faBookmark = '<i class="far fa-bookmark"></i>';
-  let bookmarks = [];
-  let likes = [];
   let bookmarkUrl = '/users/sign_in';
   let likeUrl = '/users/sign_in';
+  let bookmarks = [];
+  let likes = [];
   if(data.user) {
-    if(data.user.bookmarks) data.user.bookmarks.forEach(bookmark => bookmarks.push(bookmark.recipe_id));
-    if(data.user.likes) data.user.likes.forEach(like => likes.push(like.recipe_id));
+    if(data.user.bookmarks) bookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+    if(data.user.likes) likes = data.user.likes.map(like => like.recipe_id);
   }
   data.recipes.forEach(recipe => {
     if(data.user) {
