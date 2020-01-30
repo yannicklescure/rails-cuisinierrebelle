@@ -37,7 +37,7 @@ export const card = (data) => {
               <div class="d-flex justify-content-between align-items-center">
                   <div class="text-danger">
                     <a class="p-0 text-danger text-decoration-none" ${likePatchAttributes}href="${likeUrl}">
-                      ${faHeart}&nbsp;<span class="text-muted font-weight-lighter">${recipe.id}</span>
+                      ${faHeart}&nbsp;<span class="text-muted font-weight-lighter">${recipe.likes_count}</span>
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
