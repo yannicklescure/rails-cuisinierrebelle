@@ -1,5 +1,7 @@
+require "base64"
+
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :authenticate_user!
+  before_action :authenticate_user!, :set_locale, :user_authentication
 
   include Pundit
 
@@ -18,6 +20,13 @@ class ApplicationController < ActionController::Base
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
     I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
+  end
+
+  def user_authentication
+    if user_signed_in?
+      cookies[:user_email] = Base64.encode64(current_user.email)
+      cookies[:user_token] = Base64.encode64(current_user.authentication_token)
+    end
   end
 
   def default_url_options
