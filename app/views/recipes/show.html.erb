@@ -36,15 +36,10 @@
       </div>
       <% else %>
       <div class="d-flex align-items-center justify-content-center">
-        <div class="text-body">
-          <%#= link_to raw('<i class="far fa-comment-alt"></i>'), new_user_session_path, class: 'p-0 ml-3' %>
-          <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' %>
-        </div>
-        <div class="text-danger">
-          <%= link_to new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' do %>
-            <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
-            <% end %>
-        </div>
+        <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' %>
+        <%= link_to new_user_session_path, class: 'p-0 ml-3 text-danger text-decoration-none' do %>
+          <i class="far fa-heart"></i>&nbsp;<span class="text-muted font-weight-lighter"><%= @recipe.likes.count %></span>
+        <% end %>
       </div>
       <% end %>
     </div>
