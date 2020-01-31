@@ -31,7 +31,7 @@ export const card = (init, data) => {
         render = true;
         break;
       case 'users':
-        render = userRecipes.includes(recipe.id).length === 1;
+        render = userRecipes.includes(recipe.id);
         break;
       case 'bookmarks':
         // render = userBookmarks.filter(data => (data.id === recipe.id)).length === 1;
