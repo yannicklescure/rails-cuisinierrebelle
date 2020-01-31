@@ -1,13 +1,33 @@
-export const card = (data) => {
+import { cardHeart } from "./card-heart";
+
+export const card = (init, data) => {
   const root = document.querySelector('#root');
-  let bookmarks = [];
-  let likes = [];
+  let userBookmarks = [];
+  let userLikes = [];
+  let userRecipes = [];
   if(data.user) {
-    if(data.user.bookmarks) bookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
-    if(data.user.likes) likes = data.user.likes.map(like => like.recipe_id);
+    if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+    if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
+    if(data.user.recipes) userRecipes = data.user.recipes.map(recipe => recipe.id);
   }
+  console.log(`init.currentController ${init.currentController}`);
+  console.log(`userRecipes ${userRecipes}`);
+  let render;
   data.recipes.forEach((recipe, index) => {
-    if(index >= 10) {
+    switch(init.currentController) {
+      case null:
+        render = index >= 10;
+        break;
+      case 'users':
+        render = index >= 10 && userRecipes.includes(recipe.id);
+        break;
+      case 'bookmarks':
+        render = index >= 10 && userBookmarks.includes(recipe.id);
+        break;
+      default:
+        render = false;
+    }
+    if(render) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
       let faHeart = '<i class="far fa-heart"></i>';
@@ -19,8 +39,8 @@ export const card = (data) => {
         bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
         likeUrl = `/recipes/${recipe.slug}/likes`;
         likePatchAttributes = `data-like-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
-        if(likes.includes(recipe.id)) faHeart = '<i class="fas fa-heart"></i>';
-        if(bookmarks.includes(recipe.id)) faBookmark = '<i class="fas fa-bookmark"></i>';
+        if(userLikes.includes(recipe.id)) faHeart = '<i class="fas fa-heart"></i>';
+        if(userBookmarks.includes(recipe.id)) faBookmark = '<i class="fas fa-bookmark"></i>';
       }
       const card = `
         <div class="col-md-4 col-lg-3 col-xl-2">
@@ -54,4 +74,5 @@ export const card = (data) => {
       root.insertAdjacentHTML('beforeEnd', card);
     }
   });
+  if(init.userSignedIn) cardHeart();
 }

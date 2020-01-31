@@ -12,6 +12,11 @@ json.data do
           json.extract! bookmark, :recipe_id
         end
       end
+      if current_user.recipes.any?
+        json.recipes current_user.recipes do |recipe|
+          json.extract! recipe, :id
+        end
+      end
     end
   end
   json.recipes do

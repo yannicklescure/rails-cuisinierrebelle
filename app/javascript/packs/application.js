@@ -28,10 +28,6 @@ if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
 }
 
-if (currentController === null || currentController.match(/users|bookmarks|index/)) {
-  cardHeart();
-}
-
 if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
   const bannerCtaBox = document.querySelector('#banner-cta-box');
@@ -39,9 +35,13 @@ if (currentController === null && !userSignedIn) {
   bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
 
-if (currentController === null) {
-  const url = "/api/v1/recipes";
-  lazyLoad(url,userSignedIn);
+if (currentController === null || currentController.match(/bookmarks|users/)) {
+  const init = {
+    url: '/api/v1/recipes',
+    userSignedIn: userSignedIn,
+    currentController: currentController
+  };
+  lazyLoad(init);
 }
 
 if(currentController === 'recipes' && currentPage != null) {
