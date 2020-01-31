@@ -8,8 +8,8 @@ json.data do
         end
       end
       if current_user.bookmarks.any?
-        json.bookmarks current_user.bookmarks do |bookmark|
-          json.extract! bookmark, :recipe_id
+        json.bookmarks current_user.bookmarks.order('created_at DESC') do |bookmark|
+          json.extract! bookmark, :recipe_id, :created_at
         end
       end
       if current_user.recipes.any?
