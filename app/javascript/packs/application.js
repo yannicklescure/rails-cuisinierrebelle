@@ -14,10 +14,8 @@ $('[data-toggle="tooltip"]').tooltip();
 previewImageOnFileSelect();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
-console.log(`userSignedIn? ${userSignedIn}`);
 
 const returnPositionData = returnPosition();
-console.log('current ', returnPositionData);
 let currentLang = returnPositionData.currentLang;
 let currentController = returnPositionData.currentController;
 let currentPage = returnPositionData.currentPage;

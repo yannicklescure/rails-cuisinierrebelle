@@ -10,8 +10,6 @@ export const card = (init, data) => {
     if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
     if(data.user.recipes) userRecipes = data.user.recipes.map(recipe => recipe.id);
   }
-  console.log(`init.currentController ${init.currentController}`);
-  console.log(`userRecipes ${userRecipes}`);
   let render;
   data.recipes.forEach((recipe, index) => {
     switch(init.currentController) {
