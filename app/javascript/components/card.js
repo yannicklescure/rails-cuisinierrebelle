@@ -11,7 +11,6 @@ export const card = (init, data) => {
     if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
     if(data.user.recipes) userRecipes = data.user.recipes.map(recipe => recipe.id);
   }
-  console.log(userBookmarks);
   let render;
   let count = 0;
   let array = data.recipes;
@@ -20,7 +19,9 @@ export const card = (init, data) => {
     const ordered = [];
     userBookmarks.forEach(userBookmark => {
       array.forEach(recipe => {
-        if(userBookmark === recipe.id) ordered.push(recipe);
+        if(userBookmark === recipe.id) {
+          ordered.push(recipe);
+        }
       })
     });
     array = ordered;
@@ -43,7 +44,6 @@ export const card = (init, data) => {
     if(render) {
       count += 1;
       if(count > 10) {
-        console.log(recipe.id);
         let bookmarkPatchAttributes = '';
         let likePatchAttributes = '';
         let faHeart = '<i class="far fa-heart"></i>';
