@@ -126,6 +126,9 @@ fr:
     recipes:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+    users:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
   only_allows_youtube_video: only allows youtube video link
   pages:
     conversion:

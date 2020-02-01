@@ -17,24 +17,24 @@
     <meta name="theme-color" content="#343940">
     <!-- Facebook -->
     <meta property="og:site_name" content="Cuisinier Rebelle" />
-    <meta property="og:title" content="<%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %>" />
-    <meta property="og:description" content="<%= @recipe.description %>" />
+    <meta property="og:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>" />
+    <meta property="og:description" content="<%= t('.cooking_recipes_and_more') %>" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= recipe_url(@recipe) %>" />
-    <meta property="og:image" content="<%= image_url @recipe.photo.url(:open_graph), secure: true %>" />
+    <meta property="og:url" content="https://www.cuisinierrebelle.com/" />
+    <meta property="og:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg" />
     <!-- Twitter -->
     <meta name="twitter:card card-custom" content="summary_large_image">
     <meta name="twitter:site" content="@cuisinierrebelle">
     <meta name="twitter:creator" content="@cuisinierrebelle">
-    <meta name="twitter:title" content="<%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %>">
-    <meta name="twitter:description" content="<%= @recipe.description %>">
-    <meta name="twitter:image" content="<%= image_url @recipe.photo.url(:open_graph), secure: true %>">
+    <meta name="twitter:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>">
+    <meta name="twitter:description" content="<%= t('.cooking_recipes_and_more') %>">
+    <meta name="twitter:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg">
     <!-- Languages for Google SEO -->
-    <link rel="canonical" href="<%= recipe_url(@recipe) %>" />
-    <link rel="alternate" hreflang="en" href="<%= recipe_url(@recipe, locale: :en) %>" />
-    <link rel="alternate" hreflang="fr" href="<%= recipe_url(@recipe, locale: :fr) %>" />
-    <link rel="alternate" hreflang="es" href="<%= recipe_url(@recipe, locale: :es) %>" />
+    <link rel="canonical" href="<%= user_url(@user) %>" />
+    <link rel="alternate" hreflang="en" href="<%= user_url(@user, locale: :en) %>" />
+    <link rel="alternate" hreflang="fr" href="<%= user_url(@user, locale: :fr) %>" />
+    <link rel="alternate" hreflang="es" href="<%= user_url(@user, locale: :es) %>" />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
