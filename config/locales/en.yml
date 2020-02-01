@@ -147,6 +147,10 @@ en:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recent published recipes
+  layouts:
+    recipes:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
   only_allows_youtube_video: only allows youtube video link
   pages:
     conversion:

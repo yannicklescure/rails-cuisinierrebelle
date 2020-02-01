@@ -52,6 +52,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [400, 300]
   end
 
+  version :open_graph do
+    process resize_to_fill: [1200, 1200]
+  end
+
   version :full do
     process resize_to_fill: [1920, 1200]
   end
@@ -59,7 +63,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w(JPG jpg jpeg gif png)
   end
 
   def content_type_whitelist

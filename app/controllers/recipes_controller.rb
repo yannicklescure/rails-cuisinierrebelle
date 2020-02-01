@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  layout 'application'
+
   def index
     # @recipes = Recipe.where(user: current_user)
     @recipes = policy_scope(Recipe).where(user: current_user)
@@ -17,6 +19,7 @@ class RecipesController < ApplicationController
     @like = Like.find_by(user: current_user, recipe: @recipe)
     @likes = Like.where(user: current_user, recipe: @recipe)
     @comment = Comment.new
+    render layout: 'recipes'
   end
 
   def new
