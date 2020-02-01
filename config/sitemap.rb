@@ -26,8 +26,10 @@ SitemapGenerator::Sitemap.create do
   #   end
   add root_path, :changefreq => 'daily'
 
-  Recipe.find_each do |recipe|
-    # binding.pry
-    add recipe_path(recipe), :changefreq => 'weekly', :lastmod => recipe.updated_at
+  [nil, :en].each do |locale|
+    Recipe.find_each do |recipe|
+      # binding.pry
+      add recipe_path(recipe, :locale => locale), :changefreq => 'weekly', :lastmod => recipe.updated_at
+    end
   end
 end
