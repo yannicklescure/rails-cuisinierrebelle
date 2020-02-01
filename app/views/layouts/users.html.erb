@@ -6,22 +6,13 @@
     <title><%= t('.cuisinier_rebelle_social_recipe') %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="https://media.cuisinierrebelle.com/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="https://media.cuisinierrebelle.com/favicon.ico">
-    <meta name="msapplication-config" content="https://media.cuisinierrebelle.com/assets/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#343940">
     <!-- Facebook -->
     <meta property="og:site_name" content="Cuisinier Rebelle" />
     <meta property="og:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>" />
     <meta property="og:description" content="<%= t('.cooking_recipes_and_more') %>" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.cuisinierrebelle.com/" />
+    <meta property="og:url" content="<%= user_url(@user) %>" />
     <meta property="og:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg" />
     <!-- Twitter -->
     <meta name="twitter:card card-custom" content="summary_large_image">
@@ -35,6 +26,15 @@
     <link rel="alternate" hreflang="en" href="<%= user_url(@user, locale: :en) %>" />
     <link rel="alternate" hreflang="fr" href="<%= user_url(@user, locale: :fr) %>" />
     <link rel="alternate" hreflang="es" href="<%= user_url(@user, locale: :es) %>" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="https://media.cuisinierrebelle.com/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="https://media.cuisinierrebelle.com/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="https://media.cuisinierrebelle.com/favicon.ico">
+    <meta name="msapplication-config" content="https://media.cuisinierrebelle.com/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#343940">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
