@@ -356,3 +356,6 @@ es:
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
+    user:
+      follow: Follow
+      unfollow: Unfollow

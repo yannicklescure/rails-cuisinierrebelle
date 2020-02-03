@@ -415,3 +415,6 @@ en:
     unlocks:
       new:
         resend_unlock_instructions: resend unlock instructions
+    user:
+      follow: Follow
+      unfollow: Unfollow
