@@ -142,22 +142,40 @@ en:
   index:
     form:
       search: Search recipes...
-      search_btn_html: <i class="fas fa-search"></i>
     index:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recent published recipes
   layouts:
     recipes:
-      cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
     users:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
-  only_allows_youtube_video: only allows youtube video link
   pages:
     conversion:
+      all_purpose_flour_t55: All purpose flour t55
+      bread_flour_t65: Bread flour t65
+      brown_granulated_sugar: Brown granulated sugar
+      brown_liquid_honey: Miel brun liquide
       conversion: Conversion table
+      cup: Cup
+      ingredients_in_grams: Ingredients in grams
+      margarine: Margarine
+      milk: Lait
+      oat: Avoine
+      pastry_flour_t45: Pastry flour t45
+      powder_milk: Lait en poudre
+      powdered_sugar: Powdered sugar
+      print: Print
+      table_spoon: Table spoon
+      tbsp: Tbsp
+      tea_spoon: Tea spoon
+      tsp: Tsp
+      uncooked_rice: Riz sec, avant cuisson
+      unsalted_butter: Unsalted butter
+      water: Eau
+      white_granulated_sugar: White granulated sugar
     tools:
       tools: Kitchen tools
   recipes:
@@ -174,7 +192,6 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     index:
-      date_format: "%b %d, %Y"
       edit_recipe_html: <i class="fas fa-pen"></i>
       published_recipes: Published recipes
       recipe: "%{title}"
@@ -287,7 +304,6 @@ en:
       cuisinier_rebelle: Cuisinier rebelle
       following: Following
       inbox: Inbox
-      index: Search recipes
       languages_html: <i class="fas fa-language"></i>
       log_out: Log out
       new_recipe: New recipe

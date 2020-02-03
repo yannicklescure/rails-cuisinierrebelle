@@ -7,6 +7,8 @@ import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 import { lazyLoad } from "../components/lazy-load";
 
+if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', () => window.print());
+
 if(document.querySelector('.notice') != null) flashes();
 
 $('[data-toggle="tooltip"]').tooltip();

@@ -7,7 +7,7 @@
         <%= image_tag recipe.photo.url(:thumb), secure: true, height: 64, width: 64, class: 'rounded' %>
         <div class="ml-3 d-flex flex-column">
           <div class="small text-body d-flex justify-content-start">
-            <div class="mr-3"><i class="far fa-calendar-check"></i><span class="ml-1"><%= recipe.created_at.strftime(t('.date_format')) %></span></div>
+            <div class="mr-3"><i class="far fa-calendar-check"></i><span class="ml-1"><%= recipe.created_at.strftime(t('date.formats.default')) %></span></div>
             <div class="mr-3"><i class="fas fa-heart"></i><span class="ml-1"><%= recipe.likes.count %></span></div>
             <% count = 0 %>
             <% count = recipe.comments.map { |comment| comment.replies.count }.sum %>
