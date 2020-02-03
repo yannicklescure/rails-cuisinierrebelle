@@ -29,6 +29,9 @@ es:
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
+  date:
+    formats:
+      default: "%d/%m/%Y"
   devise:
     confirmations:
       new:
@@ -110,6 +113,9 @@ es:
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+  followers:
+    index:
+      followers: Followers
   following:
     index:
       following: Following

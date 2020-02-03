@@ -138,6 +138,9 @@ fr:
         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e):'
         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être
           enregistré(e):"
+  followers:
+    index:
+      followers: Abonnés
   following:
     index:
       following: Abonnements

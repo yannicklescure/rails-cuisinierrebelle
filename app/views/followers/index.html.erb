@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <h1>Followers</h1>
+  <h1><%= t('.followers') %></h1>
   <% @followers.sort_by { |date| date.created_at }.reverse.each do |follower| %>
     <%= render follower %>
   <% end %>

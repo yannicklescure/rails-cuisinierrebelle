@@ -59,6 +59,9 @@ en:
         one: 1 year ago
         other: "%{count} years ago"
         zero: No year
+  date:
+    formats:
+      default: "%Y-%m-%d"
   devise:
     confirmations:
       new:
@@ -136,6 +139,9 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  followers:
+    index:
+      followers: Followers
   following:
     index:
       following: Following
