@@ -53,4 +53,4 @@ gem 'pg_search'
 gem 'device_detector'
 gem 'simple_token_authentication'
 gem 'sitemap_generator'
-gem 'whenever', require: false
+# gem 'whenever', require: false
