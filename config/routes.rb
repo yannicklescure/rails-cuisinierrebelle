@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         post :unfollow
       end
     end
+    get '/:id', to: 'users#show'
   end
 
   namespace :api, defaults: { format: :json } do
