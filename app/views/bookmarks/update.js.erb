@@ -1,3 +1,6 @@
+root = document.querySelector("#root");
+bookmarksCount = parseInt(root.dataset.bookmarksCount);
+// bookmarksCount = document.querySelector(`[data-bookmarks-count="${bookmarksCount}"`);
 card = document.querySelector("[data-recipe='<%= @recipe.id %>']");
 bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
 faBookmark = document.querySelector(".fa-bookmark-<%= @recipe.id %>");
@@ -47,6 +50,8 @@ unfade = (element) => {
 }
 
 if(<%= @bookmarked %>) {
+  bookmarksCount += 1;
+  root.dataset.bookmarksCount = bookmarksCount;
   bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
   if(faBookmark != null) {
     faBookmark.classList.remove('d-none');
@@ -57,6 +62,11 @@ if(<%= @bookmarked %>) {
     }, 500);
   }
 } else {
+  bookmarksCount -= 1;
+  root.dataset.bookmarksCount = bookmarksCount;
   bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
-  if(returnPosition().currentController === 'bookmarks') card.parentElement.remove();
+  if(returnPosition().currentController === 'bookmarks') {
+    card.parentElement.remove();
+    if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
+  }
 }

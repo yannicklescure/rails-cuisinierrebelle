@@ -9,6 +9,8 @@ es:
   bookmarks:
     index:
       no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+    update:
+      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
       comments: Comments
@@ -242,6 +244,7 @@ es:
       cuisinier_rebelle_html: Cuisinier rebelle html
       search_btn_html: Search btn html
     navbar-large:
+      admin: Admin
       are_you_sure: Are you sure
       bookmarks: Favoritos
       conversion: Tabla de conversión

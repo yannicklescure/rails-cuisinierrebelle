@@ -9,6 +9,8 @@ en:
   bookmarks:
     index:
       no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+    update:
+      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
       comments:
@@ -304,6 +306,7 @@ en:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
     navbar-large:
+      admin: Admin
       are_you_sure: Are you sure?
       bookmarks: Bookmarks
       conversion: Conversion table

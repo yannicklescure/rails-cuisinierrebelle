@@ -1,5 +1,5 @@
-<div class="container my-5">
-  <h1><%= t('.following') %></h1>
+<div class="container-fluid my-5">
+  <div class="h1 text-center"><%= t('.following') %></div>
   <% @follows.sort_by { |date| date.created_at }.reverse.each do |following| %>
     <%= render following %>
   <% end %>

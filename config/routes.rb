@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/conversion', to: 'pages#conversion', as: 'conversion'
     get '/tools', to: 'pages#tools', as: 'tools'
+    get '/admin', to: 'admin#index'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :recipes do

@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-  <div class="container my-5">
-    <div class="h2 mb-3"><%= t('.published_recipes') %></div>
+  <div class="container-fluid my-5">
+    <div class="h1 mb-3 text-center"><%= t('.published_recipes') %></div>
     <% @recipes.sort_by { |date| date.created_at }.reverse.each do |recipe| %>
     <div class="card border-0 mb-3">
       <div class="d-flex">

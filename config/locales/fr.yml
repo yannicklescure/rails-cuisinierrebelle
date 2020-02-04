@@ -9,6 +9,8 @@ fr:
   bookmarks:
     index:
       no_bookmarks_html: Aucun favoris...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+    update:
+      no_bookmarks_html: Aucun favoris...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
       comments: Commentaires
@@ -300,6 +302,7 @@ fr:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
     navbar-large:
+      admin: Admin
       are_you_sure: Êtes-vous sûr ?
       bookmarks: Favoris
       conversion: Table de conversion

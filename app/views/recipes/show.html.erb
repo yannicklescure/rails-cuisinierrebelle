@@ -75,12 +75,12 @@
   <div class="d-print-none">
   <hr>
   <div class="h4 mb-3"><%= t('.related_recipes') %></div>
-  <% @related_recipes.order('created_at DESC').take(5).each do |recipe| %>
+    <% @related_recipes.order('created_at DESC').take(5).each do |recipe| %>
     <%= render "shared/card-small", recipe: recipe %>
-  <% end %>
+    <% end %>
+  </div>
   <% end %>
   <hr>
-  </div>
   <div id="comments" class="d-print-none">
     <div id="comments-count" class="d-flex">
       <% count = 0 %>

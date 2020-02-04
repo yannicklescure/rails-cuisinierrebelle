@@ -21,6 +21,9 @@
       <div class="order-0 order-sm-1">
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
+            <% if current_user.admin %>
+            <%= link_to t('.admin'), admin_path(), class: "nav-link" %>
+            <% end %>
             <li class="nav-item"><%= link_to t('.bookmarks'), bookmarks_path, class: "nav-link bookmarks" %></li>
             <!-- <li class="nav-item"><%= link_to t('.inbox'), "#", class: "nav-link" %></li> -->
             <li class="nav-item dropdown">
