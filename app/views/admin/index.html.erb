@@ -1,1 +1,10 @@
-index.html.erb
+<div class="row">
+  <div class="col-2 vh-100 sticky-top border-right">
+
+  </div>
+  <div class="col" style="display:block;height:5000px">
+    <% @users.map do |user| %>
+      <p><%= user.email %></p>
+    <% end %>
+  </div>
+</div>
