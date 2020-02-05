@@ -15,7 +15,7 @@
     <meta property="og:url" content="<%= recipe_url(@recipe) %>" />
     <meta property="og:image" content="<%= image_url @recipe.photo.url(:open_graph), secure: true %>" />
     <!-- Twitter -->
-    <meta name="twitter:card card-custom" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@cuisinierrebelle">
     <meta name="twitter:creator" content="@cuisinierrebelle">
     <meta name="twitter:title" content="<%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %>">
