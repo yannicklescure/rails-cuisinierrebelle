@@ -31,9 +31,9 @@
     </div>
     <%= render 'shared/navbar-small' %>
   </div>
+  <% else %>
+  <div class="d-none d-md-block d-print-none">
+    <%= render 'shared/navbar-large' %>
+  </div>
   <% end %>
-<% else %>
-<div class="d-none d-md-block d-print-none">
-  <%= render 'shared/navbar-large' %>
-</div>
 <% end %>
