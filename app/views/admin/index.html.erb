@@ -1,37 +1,24 @@
-<div class="row m-0 admin-dashboard">
-  <div class="col-2 vh-100 border-right">
-    <!-- MENU -->
+<div class="dashboard">
+  <div class="row bg-white m-0 sticky-top border-top border-bottom font-weight-bold" style="top:59px;">
+    <div class="col-2"><%= t('.full_name') %></div>
+    <div class="col-2"><%= t('.email') %></div>
+    <div class="col text-center"><%= t('.followers') %></div>
+    <div class="col text-center"><%= t('.following') %></div>
+    <div class="col text-center"><%= t('.published_recipes') %></div>
+    <div class="col text-center"><%= t('.comments') %></div>
+    <div class="col text-center"><%= t('.likes') %></div>
+    <div class="col text-center"><%= t('.bookmarks') %></div>
   </div>
-  <div class="col-10">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"><%= t('.full_name') %></th>
-            <th scope="col"><%= t('.email') %></th>
-            <th scope="col"><%= t('.followers') %></th>
-            <th scope="col"><%= t('.following') %></th>
-            <th scope="col"><%= t('.published_recipes') %></th>
-            <th scope="col"><%= t('.comments') %></th>
-            <th scope="col"><%= t('.likes') %></th>
-            <th scope="col"><%= t('.bookmarks') %></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @users.sort_by { |date| date.created_at }.reverse.map do |user| %>
-          <tr>
-            <td><%= link_to user.name.capitalize, user_path(user) %></td>
-            <td><%= user.email %></td>
-            <td><%= user.followers.count %></td>
-            <td><%= user.following.count %></td>
-            <td><%= user.recipes.count %></td>
-            <td><%= user.comments.count + user.replies.count %></td>
-            <td><%= user.likes.count %></td>
-            <td><%= user.bookmarks.count %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+  <% @users.sort_by { |date| date.created_at }.reverse.map do |user| %>
+  <div class="row m-0 border-top">
+    <div class="col-2"><%= link_to user.name.capitalize, user_path(user) %></div>
+    <div class="col-2"><%= user.email %></div>
+    <div class="col text-center"><%= user.followers.count %></div>
+    <div class="col text-center"><%= user.following.count %></div>
+    <div class="col text-center"><%= user.recipes.count %></div>
+    <div class="col text-center"><%= user.comments.count + user.replies.count %></div>
+    <div class="col text-center"><%= user.likes.count %></div>
+    <div class="col text-center"><%= user.bookmarks.count %></div>
   </div>
+  <% end %>
 </div>

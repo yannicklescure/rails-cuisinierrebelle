@@ -6,3 +6,11 @@
     background-color: $white;
   }
 }
+
+.admin {
+  .dashboard {
+    .col-2, .col {
+      padding: 12px;
+    }
+  }
+}
