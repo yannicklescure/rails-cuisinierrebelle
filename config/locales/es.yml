@@ -255,9 +255,6 @@ es:
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recetas sociales!
-    navbar:
-      cuisinier_rebelle_html: Cuisinier rebelle html
-      search_btn_html: Search btn html
     navbar-admin:
       comments: Comments
       dashboard: Dashboard
@@ -279,18 +276,22 @@ es:
       sign_in: Iniciar sesión
       tools: Equipo de cocina
     navbar-small:
+      cuisinier_rebelle_html: Cuisinier rebelle html
+      search_btn_html: Search btn html
+      share_btn_html: Share btn html
+    navbar-small-modal:
       are_you_sure: Are you sure
       bookmarks: Bookmarks
-      conversion: Tabla de conversión
+      conversion: Conversion
       following: Following
       index: Index
-      languages: Idiomas
-      log_out: Cerrar sesión
+      languages: Languages
+      log_out: Log out
       new_recipe: New recipe
-      recipes: Recetas
-      settings: Configuración
-      sign_in: Iniciar sesión
-      tools: Equipo de cocina
+      recipes: Recipes
+      settings: Settings
+      sign_in: Sign in
+      tools: Tools
   user_mailer:
     welcome:
       greeting: Welcome %{recipient}

@@ -317,9 +317,6 @@ en:
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
-    navbar:
-      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
-      search_btn_html: <i class="fas fa-search"></i>
     navbar-admin:
       comments: Comments
       dashboard: Dashboard
@@ -341,18 +338,22 @@ en:
       sign_in: Log in
       tools: Kitchen tools
     navbar-small:
-      are_you_sure: Are you sure?
+      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
+      search_btn_html: <i class="fas fa-search"></i>
+      share_btn_html: <i class="fas fa-share-alt"></i>
+    navbar-small-modal:
+      are_you_sure: Are you sure
       bookmarks: Bookmarks
-      conversion: Conversion table
+      conversion: Conversion
       following: Following
-      index: Search recipes
+      index: Index
       languages: Languages
       log_out: Log out
       new_recipe: New recipe
       recipes: Recipes
       settings: Settings
-      sign_in: Log in
-      tools: Kitchen tools
+      sign_in: Sign in
+      tools: Tools
   user_mailer:
     welcome:
       greeting: Welcome %{recipient}

@@ -313,14 +313,11 @@ fr:
     header:
       cooking_recipes_and_more: Recettes de cuisine et autres
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
-    navbar:
-      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
-      search_btn_html: <i class="fas fa-search"></i>
     navbar-admin:
-      comments: Comments
-      dashboard: Dashboard
-      recipes: Recipes
-      users: Users
+      comments: Commentaires
+      dashboard: Tableau de bord
+      recipes: Recettes
+      users: Utilisateurs
     navbar-large:
       admin: Admin
       are_you_sure: Êtes-vous sûr ?
@@ -337,6 +334,10 @@ fr:
       sign_in: Connexion
       tools: Matériel de cuisine
     navbar-small:
+      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
+      search_btn_html: <i class="fas fa-search"></i>
+      share_btn_html: <i class="fas fa-share-alt"></i>
+    navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?
       bookmarks: Favoris
       conversion: Table de conversion

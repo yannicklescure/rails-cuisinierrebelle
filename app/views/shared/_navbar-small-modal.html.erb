@@ -1,0 +1,44 @@
+<!-- Modal -->
+<div class="modal fade" id="modalMenuCenter" tabindex="-1" role="dialog" aria-labelledby="modalMenuCenter" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="d-flex flex-column align-items-start">
+          <button type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <!-- <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a> -->
+          <% if user_signed_in? %>
+            <%= link_to t(".bookmarks"), bookmarks_path, class: "btn btn-link modal-menu-link" %>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= link_to t(".new_recipe"), new_recipe_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".recipes"), recipes_path, class: "btn btn-link modal-menu-link" %>
+          <% end %>
+          <a href="<%= tools_path %>" class="btn btn-link modal-menu-link"><%= t(".tools") %></a>
+          <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
+          <% if user_signed_in? %>
+            <%= link_to t(".following"), following_index_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".settings"), user_path(current_user), class: "btn btn-link modal-menu-link" %>
+          <% end %>
+          <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= t('.languages') %>
+          </a>
+          <div class="collapse" id="collapseExample">
+            <div class="d-flex flex-column align-items-start ml-3">
+              <!-- <a class="btn btn-link modal-menu-link" href="/">English</a> -->
+              <%= link_to raw("English"), root_path(locale: :en), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "btn btn-link modal-menu-link" %>
+            </div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "btn btn-link modal-menu-link" %>
+          <% else %>
+            <%= link_to t(".sign_in"), new_user_session_path, class: "btn btn-link modal-menu-link" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
