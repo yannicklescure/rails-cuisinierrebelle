@@ -4,15 +4,15 @@
       <div class="d-flex flex-column">
         <div class="d-flex w-100">
           <div class="font-weight-bold"><%= t('.users') %></div>
-          <div><%= @users.count %></div>
+          <div class="ml-3"><%= @users.count %></div>
         </div>
         <div class="d-flex w-100">
           <div class="font-weight-bold"><%= t('.recipes') %></div>
-          <div><%= @recipes.count %></div>
+          <div class="ml-3"><%= @recipes.count %></div>
         </div>
         <div class="d-flex w-100">
           <div class="font-weight-bold"><%= t('.comments') %></div>
-          <div><%= @comments.count + @replies.count %></div>
+          <div class="ml-3"><%= @comments.count + @replies.count %></div>
         </div>
       </div>
     </div>
