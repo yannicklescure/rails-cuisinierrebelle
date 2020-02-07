@@ -1,8 +1,13 @@
-// console.log(`destroy comment #${<%= @comment.id %>}`);
-comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
-comment.classList.add('d-none');
-commentsCount = document.querySelector('#comments-count');
-<% count = 0 %>
-<% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
-<% count += @recipe.comments.count %>
-commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
+if(<%= @admin %>) {
+  console.log(`#comment-${<%= @comment.id %>}`);
+  comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
+  comment.remove();
+} else {
+  comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
+  comment.classList.add('d-none');
+  commentsCount = document.querySelector('#comments-count');
+  <% count = 0 %>
+  <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
+  <% count += @recipe.comments.count %>
+  commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
+}

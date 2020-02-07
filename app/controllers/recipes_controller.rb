@@ -62,12 +62,19 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    @admin = params[:admin] == 'true'
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
     @recipe.remove_photo
     @recipe.save
     @recipe.destroy
-    redirect_to recipes_path
+    if @admin
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to recipes_path
+    end
   end
 
   private

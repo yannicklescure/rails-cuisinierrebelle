@@ -44,6 +44,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @admin = params[:admin] == 'true'
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:id])
     authorize @comment

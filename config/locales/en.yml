@@ -3,10 +3,128 @@ en:
   '':
     only_allows_youtube_video: Only allows youtube video
   admin:
+    comments:
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+        zero: No minute
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+        zero: No second
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
     index:
       comments: Comments
       recipes: Recipes
       users: Users
+    recipes:
+      action: Action
+      are_you_sure: Are you sure
+      bookmarks: Bookmarks
+      comments: Comments
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
+      delete: Delete
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      likes: Likes
+      minutes_ago:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+        zero: No minute
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
+      photo: Photo
+      public: Public
+      published_date: Published date
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+        zero: No second
+      title: Title
+      user: User
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
+    replies:
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+        zero: No minute
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+        zero: No second
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -39,6 +157,42 @@ en:
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
+    replies:
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+        zero: No minute
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+        zero: No second
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
     show:
       are_you_sure: Are you sure?
       days_ago:
@@ -278,6 +432,11 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
@@ -321,6 +480,7 @@ en:
       comments: Comments
       dashboard: Dashboard
       recipes: Recipes
+      replies: Replies
       users: Users
     navbar-large:
       admin: Admin

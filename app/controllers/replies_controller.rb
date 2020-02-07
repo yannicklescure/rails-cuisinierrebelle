@@ -46,6 +46,7 @@ class RepliesController < ApplicationController
   end
 
   def destroy
+    @admin = params[:admin] == 'true'
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:id])

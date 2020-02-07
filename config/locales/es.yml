@@ -3,10 +3,65 @@ es:
   '':
     only_allows_youtube_video: Only allows youtube video
   admin:
+    comments:
+      days_ago: Days ago
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
     index:
       comments: Comments
       recipes: Recipes
       users: Users
+    recipes:
+      action: Action
+      are_you_sure: Are you sure
+      bookmarks: Bookmarks
+      comments: Comments
+      days_ago: Days ago
+      delete: Delete
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago: Hours ago
+      likes: Likes
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      photo: Photo
+      public: Public
+      published_date: Published date
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago: Seconds ago
+      title: Title
+      user: User
+      weeks_ago: Weeks ago
+      years_ago: Years ago
+    replies:
+      days_ago: Days ago
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -33,6 +88,21 @@ es:
     form:
       add_a_public_comment: Add a public comment
       comment: Comment
+    replies:
+      days_ago: Days ago
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      public: Public
+      replies:
+        one: 1 reply
+        other: "%{count} replies"
+        zero: No reply
+      reply: Reply
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
     show:
       are_you_sure: Are you sure
       days_ago: Days ago
@@ -225,6 +295,11 @@ es:
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
@@ -259,6 +334,7 @@ es:
       comments: Comments
       dashboard: Dashboard
       recipes: Recipes
+      replies: Replies
       users: Users
     navbar-large:
       admin: Admin

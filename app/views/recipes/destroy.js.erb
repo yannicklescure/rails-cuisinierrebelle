@@ -1,0 +1,5 @@
+if(<%= @admin %>) {
+  // console.log(`destroy ${<%= @recipe.id %>}`);
+  recipe = document.querySelector(`#recipe-${<%= @recipe.id %>}`);
+  recipe.remove();
+}

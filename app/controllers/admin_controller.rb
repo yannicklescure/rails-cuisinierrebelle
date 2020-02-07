@@ -18,6 +18,9 @@ class AdminController < ApplicationController
 
   def comments
     @comments = Comment.all
+  end
+
+  def replies
     @replies = Reply.all
   end
 end

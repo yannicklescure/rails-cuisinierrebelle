@@ -3,10 +3,128 @@ fr:
   '':
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   admin:
+    comments:
+      days_ago:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
+      minutes_ago:
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
+      months_ago:
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      public: Public
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
+      seconds_ago:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
+      weeks_ago:
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
+      years_ago:
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
     index:
       comments: Commentaires
       recipes: Recettes
       users: Utilisateurs
+    recipes:
+      action: Action
+      are_you_sure: Are you sure
+      bookmarks: Bookmarks
+      comments: Comments
+      days_ago:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
+      delete: Delete
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
+      likes: Likes
+      minutes_ago:
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
+      months_ago:
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      photo: Photo
+      public: Public
+      published_date: Published date
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
+      seconds_ago:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
+      title: Title
+      user: User
+      weeks_ago:
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
+      years_ago:
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
+    replies:
+      days_ago:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
+      minutes_ago:
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
+      months_ago:
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      public: Public
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
+      seconds_ago:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
+      weeks_ago:
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
+      years_ago:
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
     users:
       bookmarks: Favoris
       comments: Commentaires
@@ -33,6 +151,42 @@ fr:
     form:
       add_a_public_comment: Ajouter un commentaire
       comment: Commentaire
+    replies:
+      days_ago:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
+      minutes_ago:
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
+      months_ago:
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      public: Public
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
+      seconds_ago:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
+      weeks_ago:
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
+      years_ago:
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
     show:
       are_you_sure: Êtes-vous sûr ?
       days_ago:
@@ -258,34 +412,39 @@ fr:
     show:
       are_you_sure: Êtes-vous sûr ?
       days_ago:
-        one: 1 day ago
-        other: "%{count} days ago"
-        zero: No day
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
-        one: 1 hour ago
-        other: "%{count} hours ago"
-        zero: No hour
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
       minutes_ago:
-        one: 1 minute ago
-        other: "%{count} minutes ago"
-        zero: No minute
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
       months_ago:
-        one: 1 month ago
-        other: "%{count} months ago"
-        zero: No month
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      replies:
+        one: 1 réponse
+        other: "%{count} réponses"
+        zero: zéro réponse
+      reply: Répondre
       seconds_ago:
-        one: 1 second ago
-        other: "%{count} seconds ago"
-        zero: No second
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
       weeks_ago:
-        one: 1 week ago
-        other: "%{count} weeks ago"
-        zero: No week
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
       years_ago:
-        one: 1 year ago
-        other: "%{count} years ago"
-        zero: No year
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
@@ -317,6 +476,7 @@ fr:
       comments: Commentaires
       dashboard: Tableau de bord
       recipes: Recettes
+      replies: Réponses
       users: Utilisateurs
     navbar-large:
       admin: Admin
