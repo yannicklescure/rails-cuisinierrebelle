@@ -4,7 +4,9 @@ es:
     only_allows_youtube_video: Only allows youtube video
   admin:
     comments:
+      are_you_sure: Are you sure
       days_ago: Days ago
+      delete: Delete
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       minutes_ago: Minutes ago
@@ -48,7 +50,9 @@ es:
       weeks_ago: Weeks ago
       years_ago: Years ago
     replies:
+      are_you_sure: Are you sure
       days_ago: Days ago
+      delete: Delete
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       minutes_ago: Minutes ago

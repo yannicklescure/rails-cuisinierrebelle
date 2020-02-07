@@ -4,10 +4,12 @@ fr:
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   admin:
     comments:
+      are_you_sure: Are you sure?
       days_ago:
         one: il y a 1 jour
         other: il y a %{count} jours
         zero: zéro jour
+      delete: Supprimer
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
@@ -45,14 +47,14 @@ fr:
       users: Utilisateurs
     recipes:
       action: Action
-      are_you_sure: Are you sure
-      bookmarks: Bookmarks
-      comments: Comments
+      are_you_sure: Are you sure?
+      bookmarks: Favoris
+      comments: Commentaires
       days_ago:
         one: il y a 1 jour
         other: il y a %{count} jours
         zero: zéro jour
-      delete: Delete
+      delete: Supprimer
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
@@ -90,10 +92,12 @@ fr:
         other: il y a %{count} ans
         zero: zéro an
     replies:
+      are_you_sure: Are you sure?
       days_ago:
         one: il y a 1 jour
         other: il y a %{count} jours
         zero: zéro jour
+      delete: Supprimer
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure

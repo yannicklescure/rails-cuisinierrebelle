@@ -4,10 +4,12 @@ en:
     only_allows_youtube_video: Only allows youtube video
   admin:
     comments:
+      are_you_sure: Are you sure?
       days_ago:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
+      delete: Delete
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
@@ -45,7 +47,7 @@ en:
       users: Users
     recipes:
       action: Action
-      are_you_sure: Are you sure
+      are_you_sure: Are you sure?
       bookmarks: Bookmarks
       comments: Comments
       days_ago:
@@ -90,10 +92,12 @@ en:
         other: "%{count} years ago"
         zero: No year
     replies:
+      are_you_sure: Are you sure?
       days_ago:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
+      delete: Delete
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
@@ -502,7 +506,7 @@ en:
       search_btn_html: <i class="fas fa-search"></i>
       share_btn_html: <i class="fas fa-share-alt"></i>
     navbar-small-modal:
-      are_you_sure: Are you sure
+      are_you_sure: Are you sure?
       bookmarks: Bookmarks
       conversion: Conversion
       following: Following
