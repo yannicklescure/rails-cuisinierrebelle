@@ -71,7 +71,7 @@ fr:
         zero: zéro mois
       photo: Photo
       public: Public
-      published_date: Published date
+      published_date: Date de publication
       replies:
         one: 1 réponse
         other: "%{count} réponses"
@@ -81,8 +81,8 @@ fr:
         one: il y a 1 seconde
         other: il y a %{count} secondes
         zero: zéro seconde
-      title: Title
-      user: User
+      title: Titre
+      user: Utilisateur
       weeks_ago:
         one: il y a 1 semaine
         other: il y a %{count} semaines
