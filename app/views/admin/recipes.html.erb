@@ -12,7 +12,7 @@
   <% @recipes.sort_by { |date| date.created_at }.reverse.map do |recipe| %>
   <div class="row align-items-center m-0 border-top" id="<%= "recipe-#{recipe.id}" %>">
     <div class="col-1"><%= image_tag recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %></div>
-    <div class="col-2"><%= link_to "#{recipe.title} #{recipe.id}", recipe_path(recipe) %></div>
+    <div class="col-2"><%= link_to recipe.title, recipe_path(recipe) %></div>
     <div class="col text-center"><%= recipe.user.name %></div>
     <div class="col text-center">
       <% time_since_creation = TimeDifference.between(recipe.created_at, Time.current) %>
