@@ -3,15 +3,19 @@ fr:
   '':
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   admin:
+    index:
+      comments: Commentaires
+      recipes: Recettes
+      users: Utilisateurs
     users:
-      bookmarks: Bookmarks
-      comments: Comments
-      email: Email
-      followers: Followers
-      following: Following
-      full_name: Full name
+      bookmarks: Favoris
+      comments: Commentaires
+      email: Courriel
+      followers: Abonnés
+      following: Abonnements
+      full_name: Nom complet
       likes: Likes
-      published_recipes: Published recipes
+      published_recipes: Recettes publiées
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer
@@ -313,7 +317,9 @@ fr:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
     navbar-admin:
+      comments: Comments
       dashboard: Dashboard
+      recipes: Recipes
       users: Users
     navbar-large:
       admin: Admin

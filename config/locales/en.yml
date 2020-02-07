@@ -3,6 +3,10 @@ en:
   '':
     only_allows_youtube_video: Only allows youtube video
   admin:
+    index:
+      comments: Comments
+      recipes: Recipes
+      users: Users
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -317,7 +321,9 @@ en:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
     navbar-admin:
+      comments: Comments
       dashboard: Dashboard
+      recipes: Recipes
       users: Users
     navbar-large:
       admin: Admin

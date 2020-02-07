@@ -3,6 +3,10 @@ es:
   '':
     only_allows_youtube_video: Only allows youtube video
   admin:
+    index:
+      comments: Comments
+      recipes: Recipes
+      users: Users
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -255,7 +259,9 @@ es:
       cuisinier_rebelle_html: Cuisinier rebelle html
       search_btn_html: Search btn html
     navbar-admin:
+      comments: Comments
       dashboard: Dashboard
+      recipes: Recipes
       users: Users
     navbar-large:
       admin: Admin
