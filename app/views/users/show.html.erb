@@ -31,7 +31,7 @@
     </tr>
   </table>
   <% else %>
-  <div id="root" class="row py-3" data-bookmarks-count="<%= @bookmarks.count %>">
+  <div id="root" class="row py-3"<%= " data-bookmarks-count=\"#{@bookmarks.count}\"" if user_signed_in? %>>
     <% if @recipes.any? %>
     <% @recipes.order('created_at DESC').each do |recipe| %>
       <%= render 'shared/card', recipe: recipe %>

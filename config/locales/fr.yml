@@ -2,6 +2,16 @@
 fr:
   '':
     only_allows_youtube_video: Seules les videos de Youtube sont permises
+  admin:
+    users:
+      bookmarks: Bookmarks
+      comments: Comments
+      email: Email
+      followers: Followers
+      following: Following
+      full_name: Full name
+      likes: Likes
+      published_recipes: Published recipes
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer
@@ -166,7 +176,7 @@ fr:
       brown_granulated_sugar: Sucre brun granulé
       brown_liquid_honey: Miel brun liquide
       conversion: Table de conversion
-      cuisinierrebelle_com_html: '&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;'
+      cuisinierrebelle_com_html: "&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;"
       cup: Tasse
       ingredients_in_grams: Poids des ingrédients courants
       margarine: Margarine
@@ -302,6 +312,9 @@ fr:
     navbar:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
+    navbar-admin:
+      dashboard: Dashboard
+      users: Users
     navbar-large:
       admin: Admin
       are_you_sure: Êtes-vous sûr ?
@@ -332,7 +345,7 @@ fr:
       tools: Matériel de cuisine
   user_mailer:
     welcome:
-      greeting: Soyez le bienvenu %{recipient}!
+      greeting: Soyez le bienvenu %{recipient}
       see_ya: À bientôt
       welcome_message: Nous sommes heureux de vous accueillir dans notre famille de
         cuisiniers rebelles. N'hésitez pas à partager quelque chose de génial avec

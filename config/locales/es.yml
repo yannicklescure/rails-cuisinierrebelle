@@ -2,6 +2,16 @@
 es:
   '':
     only_allows_youtube_video: Only allows youtube video
+  admin:
+    users:
+      bookmarks: Bookmarks
+      comments: Comments
+      email: Email
+      followers: Followers
+      following: Following
+      full_name: Full name
+      likes: Likes
+      published_recipes: Published recipes
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
@@ -141,7 +151,7 @@ es:
       brown_granulated_sugar: Brown granulated sugar
       brown_liquid_honey: Miel brun liquide
       conversion: Tabla de conversión
-      cuisinierrebelle_com_html: '&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;'
+      cuisinierrebelle_com_html: "&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;"
       cup: Cup
       ingredients_in_grams: Ingredients in grams
       margarine: Margarine
@@ -244,6 +254,9 @@ es:
     navbar:
       cuisinier_rebelle_html: Cuisinier rebelle html
       search_btn_html: Search btn html
+    navbar-admin:
+      dashboard: Dashboard
+      users: Users
     navbar-large:
       admin: Admin
       are_you_sure: Are you sure
@@ -274,7 +287,7 @@ es:
       tools: Equipo de cocina
   user_mailer:
     welcome:
-      greeting: Welcome %{recipient}!
+      greeting: Welcome %{recipient}
       see_ya: See ya
       welcome_message: Welcome message
   users:

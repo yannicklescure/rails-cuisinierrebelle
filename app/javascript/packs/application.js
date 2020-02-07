@@ -39,7 +39,8 @@ if (currentController === null || currentController.match(/bookmarks|users/)) {
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
-    currentController: currentController
+    currentController: currentController,
+    currentPage: currentPage
   };
   lazyLoad(init);
 }

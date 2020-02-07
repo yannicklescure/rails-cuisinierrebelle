@@ -1,0 +1,24 @@
+<div class="admin-users">
+  <div class="row bg-white m-0 sticky-top border-top border-bottom font-weight-bold" style="top:59px;">
+    <div class="col-2"><%= t('.full_name') %></div>
+    <div class="col-2"><%= t('.email') %></div>
+    <div class="col text-center"><%= t('.followers') %></div>
+    <div class="col text-center"><%= t('.following') %></div>
+    <div class="col text-center"><%= t('.published_recipes') %></div>
+    <div class="col text-center"><%= t('.comments') %></div>
+    <div class="col text-center"><%= t('.likes') %></div>
+    <div class="col text-center"><%= t('.bookmarks') %></div>
+  </div>
+  <% @users.sort_by { |date| date.created_at }.reverse.map do |user| %>
+  <div class="row m-0 border-top">
+    <div class="col-2"><%= link_to user.name.capitalize, user_path(user) %></div>
+    <div class="col-2"><%= user.email %></div>
+    <div class="col text-center"><%= user.followers.count %></div>
+    <div class="col text-center"><%= user.following.count %></div>
+    <div class="col text-center"><%= user.recipes.count %></div>
+    <div class="col text-center"><%= user.comments.count + user.replies.count %></div>
+    <div class="col text-center"><%= user.likes.count %></div>
+    <div class="col text-center"><%= user.bookmarks.count %></div>
+  </div>
+  <% end %>
+</div>

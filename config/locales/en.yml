@@ -2,6 +2,16 @@
 en:
   '':
     only_allows_youtube_video: Only allows youtube video
+  admin:
+    users:
+      bookmarks: Bookmarks
+      comments: Comments
+      email: Email
+      followers: Followers
+      following: Following
+      full_name: Full name
+      likes: Likes
+      published_recipes: Published recipes
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: You are not authorized to perform
@@ -165,25 +175,25 @@ en:
       all_purpose_flour_t55: All purpose flour t55
       bread_flour_t65: Bread flour t65
       brown_granulated_sugar: Brown granulated sugar
-      brown_liquid_honey: Miel brun liquide
+      brown_liquid_honey: Brown liquid honey
       conversion: Conversion table
-      cuisinierrebelle_com_html: '&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;'
+      cuisinierrebelle_com_html: "&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;"
       cup: Cup
       ingredients_in_grams: Ingredients in grams
       margarine: Margarine
-      milk: Lait
-      oat: Avoine
+      milk: Milk
+      oat: Oat
       pastry_flour_t45: Pastry flour t45
-      powder_milk: Lait en poudre
+      powder_milk: Powder milk
       powdered_sugar: Powdered sugar
       print: Print
       table_spoon: Table spoon
       tbsp: Tbsp
       tea_spoon: Tea spoon
       tsp: Tsp
-      uncooked_rice: Riz sec, avant cuisson
+      uncooked_rice: Uncooked rice
       unsalted_butter: Unsalted butter
-      water: Eau
+      water: Water
       white_granulated_sugar: White granulated sugar
     tools:
       tools: Kitchen tools
@@ -306,6 +316,9 @@ en:
     navbar:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
+    navbar-admin:
+      dashboard: Dashboard
+      users: Users
     navbar-large:
       admin: Admin
       are_you_sure: Are you sure?
@@ -336,7 +349,7 @@ en:
       tools: Kitchen tools
   user_mailer:
     welcome:
-      greeting: Welcome %{recipient}!
+      greeting: Welcome %{recipient}
       see_ya: See ya
       welcome_message: We are pleased to welcome you in our family of rebel cooks.
         Feel free to share some awesomeness with all!
