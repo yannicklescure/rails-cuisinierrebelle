@@ -485,6 +485,7 @@ en:
       dashboard: Dashboard
       recipes: Recipes
       replies: Replies
+      spam: Spam
       users: Users
     navbar-large:
       admin: Admin
