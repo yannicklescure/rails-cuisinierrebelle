@@ -28,7 +28,7 @@ export const card = (init, data) => {
     });
     array = ordered;
   }
-  if(data.user.auth.slug != init.currentPage) {
+  if(!data.user || data.user.auth.slug != init.currentPage) {
     array.forEach((recipe, index) => {
       switch(init.currentController) {
         case null:
