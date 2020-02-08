@@ -10,7 +10,6 @@ en:
         other: "%{count} days ago"
         zero: No day
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -24,11 +23,6 @@ en:
         other: "%{count} months ago"
         zero: No month
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
@@ -55,7 +49,6 @@ en:
         other: "%{count} days ago"
         zero: No day
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -70,13 +63,7 @@ en:
         other: "%{count} months ago"
         zero: No month
       photo: Photo
-      public: Public
       published_date: Published date
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
@@ -98,7 +85,6 @@ en:
         other: "%{count} days ago"
         zero: No day
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -112,11 +98,6 @@ en:
         other: "%{count} months ago"
         zero: No month
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
@@ -166,7 +147,6 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -180,11 +160,6 @@ en:
         other: "%{count} months ago"
         zero: No month
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"
@@ -436,11 +411,6 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"

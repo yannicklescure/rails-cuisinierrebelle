@@ -7,16 +7,10 @@ es:
       are_you_sure: Are you sure
       days_ago: Days ago
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
@@ -31,19 +25,12 @@ es:
       comments: Comments
       days_ago: Days ago
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       likes: Likes
       minutes_ago: Minutes ago
       months_ago: Months ago
       photo: Photo
-      public: Public
       published_date: Published date
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago: Seconds ago
       title: Title
       user: User
@@ -53,16 +40,10 @@ es:
       are_you_sure: Are you sure
       days_ago: Days ago
       delete: Delete
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
@@ -94,16 +75,10 @@ es:
       comment: Comment
     replies:
       days_ago: Days ago
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
       public: Public
-      replies:
-        one: 1 reply
-        other: "%{count} replies"
-        zero: No reply
-      reply: Reply
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
@@ -299,11 +274,6 @@ es:
       hours_ago: Hours ago
       minutes_ago: Minutes ago
       months_ago: Months ago
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago

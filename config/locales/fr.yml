@@ -10,7 +10,6 @@ fr:
         other: il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
         other: il y a %{count} heures
@@ -24,11 +23,6 @@ fr:
         other: il y a %{count} mois
         zero: zéro mois
       public: Public
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: il y a 1 seconde
         other: il y a %{count} secondes
@@ -55,7 +49,6 @@ fr:
         other: il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
         other: il y a %{count} heures
@@ -70,13 +63,7 @@ fr:
         other: il y a %{count} mois
         zero: zéro mois
       photo: Photo
-      public: Public
       published_date: Date de publication
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: il y a 1 seconde
         other: il y a %{count} secondes
@@ -98,7 +85,6 @@ fr:
         other: il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
         other: il y a %{count} heures
@@ -112,11 +98,6 @@ fr:
         other: il y a %{count} mois
         zero: zéro mois
       public: Public
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: il y a 1 seconde
         other: il y a %{count} secondes
@@ -160,7 +141,6 @@ fr:
         one: il y a 1 jour
         other: il y a %{count} jours
         zero: zéro jour
-      delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
         one: il y a 1 heure
         other: il y a %{count} heures
@@ -174,11 +154,6 @@ fr:
         other: il y a %{count} mois
         zero: zéro mois
       public: Public
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: il y a 1 seconde
         other: il y a %{count} secondes
@@ -432,11 +407,6 @@ fr:
         one: il y a 1 mois
         other: il y a %{count} mois
         zero: zéro mois
-      replies:
-        one: 1 réponse
-        other: "%{count} réponses"
-        zero: zéro réponse
-      reply: Répondre
       seconds_ago:
         one: il y a 1 seconde
         other: il y a %{count} secondes
