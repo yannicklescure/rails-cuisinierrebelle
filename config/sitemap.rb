@@ -6,7 +6,7 @@
 SitemapGenerator::Sitemap.default_host = "https://www.cuisinierrebelle.com/"
 
 # The remote host where your sitemaps will be hosted
-SitemapGenerator::Sitemap.sitemaps_host = "#{ENV['S3_ASSET_URL']}/#{ENV['S3_BUCKET_NAME_SITEMAP']}"
+SitemapGenerator::Sitemap.sitemaps_host = "https://sitemap.cuisinierrebelle.com/"
 
 # The directory to write sitemaps to locally
 SitemapGenerator::Sitemap.public_path = "public/"
