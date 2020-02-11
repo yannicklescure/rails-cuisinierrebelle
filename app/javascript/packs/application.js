@@ -6,6 +6,7 @@ import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 import { lazyLoad } from "../components/lazy-load";
+import { btnClick } from "../components/button";
 
 if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', () => window.print());
 
@@ -47,12 +48,10 @@ if (currentController === null || currentController.match(/bookmarks|users/)) {
 
 if(currentController === 'recipes' && currentPage != null) {
 
-  window.onhashchange = () => {
-    smoothToAnchor();
-  }
-  window.onload = () => {
-    smoothToAnchor();
-  }
+  window.onhashchange = () => smoothToAnchor();
+  window.onload = () => smoothToAnchor();
+
+  btnClick();
 
   const replyForms = document.querySelectorAll('.no-reply');
   replyForms.forEach((replyForm) => {
