@@ -134,8 +134,8 @@ fr:
     destroy:
       comments: Commentaires
     form:
-      add_a_public_comment: Ajouter un commentaire
-      comment: Commentaire
+      add_a_comment: Ajouter un commentaire
+      add_a_public_comment: Ajouter un commentaire public...
     replies:
       days_ago:
         one: il y a 1 jour

@@ -140,8 +140,8 @@ en:
         other: "%{count} comments"
         zero: No comment
     form:
-      add_a_public_comment: Add a public comment
-      comment: Comment
+      add_a_comment: Comment
+      add_a_public_comment: Add a public comment...
     replies:
       days_ago:
         one: 1 day ago

@@ -71,8 +71,8 @@ es:
     destroy:
       comments: Comments
     form:
+      add_a_comment: Comment
       add_a_public_comment: Add a public comment
-      comment: Comment
     replies:
       days_ago: Days ago
       hours_ago: Hours ago
