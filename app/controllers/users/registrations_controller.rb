@@ -19,10 +19,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def edit
+    @bookmarks = Bookmark.where(user: current_user)
+    super
+  end
+
   # PUT /resource
   # def update
   #   super
   # end
+
+  def update
+    # binding.pry
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+      set_flash_message_for_update(resource, prev_unconfirmed_email)
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+
+      # respond_with resource, location: after_update_path_for(resource)
+      respond_with resource, location: user_path(resource)
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -38,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -60,12 +85,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def edit
-    @bookmarks = Bookmark.where(user: current_user)
-    super
+  # def update
+  #   binding.pry
+  #   super
+  #   redirect_to user_path(resource)
+  # end
+
+  def update_resource(resource, params)
+    # resource.update_without_password(params)
+    if resource.provider == "facebook"
+      # binding.pry
+      params.delete("current_password")
+      resource.update_without_password(edit_params_without_password)
+    else
+      resource.update_with_password(edit_params_with_password)
+    end
   end
 
   private
+
+  def edit_params_without_password
+    params.require(:user).permit(:first_name, :last_name, :email)
+  end
+
+  def edit_params_with_password
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+  end
 
   def sign_up_params
     params["user"]["name"] = "#{params["user"]["first_name"]} #{params["user"]["last_name"]}"

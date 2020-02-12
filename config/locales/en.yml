@@ -218,7 +218,7 @@ en:
     mailer:
       confirmation_instructions:
         action: Confirm my account
-        greeting: Welcome %{recipient}!
+        greeting: Welcome %{recipient},
         instruction: 'You can confirm your account email through the link below:'
       email_changed:
         greeting: Hello %{recipient}!
@@ -491,7 +491,7 @@ en:
       tools: Tools
   user_mailer:
     welcome:
-      greeting: Welcome %{recipient}
+      greeting: Welcome %{recipient},
       see_ya: See ya
       welcome_message: We are pleased to welcome you in our family of rebel cooks.
         Feel free to share some awesomeness with all!
@@ -502,7 +502,7 @@ en:
     mailer:
       confirmation_instructions:
         action: Confirm my account
-        greeting: Welcome %{recipient}!
+        greeting: Welcome %{recipient},
         instruction: 'You can confirm your account email through the link below:'
       email_changed:
         greeting: Hello %{recipient}!

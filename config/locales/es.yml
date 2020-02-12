@@ -104,7 +104,7 @@ es:
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
-        greeting: "¡Bienvenido %{recipient}!"
+        greeting: "Bienvenido %{recipient},"
         instruction: 'Usted puede confirmar el correo electrónico de su cuenta a través
           de este enlace:'
       email_changed:
@@ -355,7 +355,7 @@ es:
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
-        greeting: "¡Bienvenido %{recipient}!"
+        greeting: "Bienvenido %{recipient},"
         instruction: 'Usted puede confirmar el correo electrónico de su cuenta a través
           de este enlace:'
       email_changed:
