@@ -36,7 +36,7 @@ if (currentController === null && !userSignedIn) {
   bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
 
-if (currentController === null || currentController.match(/bookmarks|users/)) {
+if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
