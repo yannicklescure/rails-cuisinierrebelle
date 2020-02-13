@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/admin/comments', to: 'admin#comments'
     get '/admin/replies', to: 'admin#replies'
 
+    resources :pages, except: [:index]
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :recipes do
       resource :bookmarks, only: [:update]
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
         post :unfollow
       end
     end
-    get '/:id', to: 'users#show'
+    # get '/:id', to: 'users#show'
   end
 
   namespace :api, defaults: { format: :json } do
@@ -42,5 +44,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/privacy-policy', to: redirect('pages/privacy-policy')
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 end

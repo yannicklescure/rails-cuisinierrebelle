@@ -4,24 +4,24 @@
       <div class="col-md-4 col-lg-3 col-xl-2">
         <span class="h6"><%= t('.cuisinier_rebelle') %></span>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-muted"><%= t('.news') %></a></li>
-          <li><a href="#" class="text-muted"><%= t('.policies') %></a></li>
-          <li><a href="#" class="text-muted"><%= t('.help') %></a></li>
+          <li><a href="/pages/<%= t('.news_link') %>" class="text-muted"><%= t('.news') %></a></li>
+          <li><a href="/pages/<%= t('.policies_link') %>" class="text-muted"><%= t('.policies') %></a></li>
+          <li><a href="/pages/<%= t('.help_link') %>" class="text-muted"><%= t('.help') %></a></li>
         </ul>
       </div>
       <div class="col-md-4 col-lg-3 col-xl-2">
         <span class="h6"><%= t('.discover') %></span>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-muted"><%= t('.experiences') %></a></li>
-          <li><a href="#" class="text-muted"><%= t('.recipes') %></a></li>
-          <li><a href="#" class="text-muted"><%= t('.community') %></a></li>
+          <li><a href="/pages/<%= t('.experiences_link') %>" class="text-muted"><%= t('.experiences') %></a></li>
+          <li><a href="/" class="text-muted"><%= t('.recipes') %></a></li>
+          <li><a href="/pages/<%= t('.community_link') %>" class="text-muted"><%= t('.community') %></a></li>
         </ul> </div>
       <div class="col-md-4 col-lg-3 col-xl-2">
         <span class="h6"><%= t('.legal') %></span>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-muted"><%= t('.terms') %></a></li>
-          <li><a href="#" class="text-muted"><%= t('.privacy') %></a></li>
-          <li><a href="sitemap.xml" class="text-muted"><%= t('.site_map') %></a></li>
+          <li><a href="/pages/<%= t('.terms_link') %>" class="text-muted"><%= t('.terms') %></a></li>
+          <li><a href="/pages/<%= t('.privacy_link') %>" class="text-muted"><%= t('.privacy') %></a></li>
+          <li><a href="/sitemap.xml" class="text-muted"><%= t('.site_map') %></a></li>
         </ul>
       </div>
     </div>

@@ -11,15 +11,19 @@ class RecipesController < ApplicationController
 
   def show
     # @recipe = Recipe.find(params[:id])
-    @recipe = Recipe.friendly.find(params[:id])
-    @related_recipes = @recipe.find_related_tags
-    authorize @recipe
-    @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
-    @bookmarks = Bookmark.where(user: current_user)
-    @like = Like.find_by(user: current_user, recipe: @recipe)
-    @likes = Like.where(user: current_user, recipe: @recipe)
-    @comment = Comment.new
-    render layout: 'recipes'
+    if Recipe.friendly.exists? params[:id]
+      @recipe = Recipe.friendly.find(params[:id])
+      @related_recipes = @recipe.find_related_tags
+      authorize @recipe
+      @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
+      @bookmarks = Bookmark.where(user: current_user)
+      @like = Like.find_by(user: current_user, recipe: @recipe)
+      @likes = Like.where(user: current_user, recipe: @recipe)
+      @comment = Comment.new
+      render layout: 'recipes'
+    else
+      not_found
+    end
   end
 
   def new
@@ -81,6 +85,10 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :subtitle, :video, :direction, :description, :photo, :image, :tag_list)
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
   def sanitize_youtube_video_link(params_recipe_video)

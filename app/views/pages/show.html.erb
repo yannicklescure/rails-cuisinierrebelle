@@ -1,0 +1,9 @@
+<div class="container mt-3 mb-5">
+  <% if user_signed_in? && current_user.admin %>
+  <%= link_to t('.edit'), edit_page_path(@page) %>
+  <% end %>
+  <% renderer = Redcarpet::Render::HTML.new() %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions = {autolink: true, tables: true, footnotes: true}) %>
+  <%# markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, footnotes: true, autolink: true, tables: true) %>
+  <%= markdown.render(@page.content).html_safe %>
+</div>

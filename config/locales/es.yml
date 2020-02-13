@@ -104,7 +104,7 @@ es:
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
-        greeting: "Bienvenido %{recipient},"
+        greeting: Bienvenido %{recipient},
         instruction: 'Usted puede confirmar el correo electrónico de su cuenta a través
           de este enlace:'
       email_changed:
@@ -222,6 +222,12 @@ es:
       unsalted_butter: Unsalted butter
       water: Eau
       white_granulated_sugar: White granulated sugar
+    form:
+      content: Content
+      create_page: Create page
+      title: Title
+    show:
+      edit: Edit
     tools:
       tools: Equipo de cocina
   recipes:
@@ -288,25 +294,33 @@ es:
       recipe: Recipe
     footer:
       community: Community
+      community_link: Community link
       cuisinier_rebelle: Cuisinier rebelle
       discover: Discover
       experiences: Experiences
+      experiences_link: Experiences link
       help: Help
+      help_link: Help link
       legal: Legal
       made_with_love_by_html: Hecho con <i class="fas fa-heart text-danger"></i> por
         Cuisinier Rebelle
       news: News
+      news_link: News link
       policies: Policies
+      policies_link: Policies link
       privacy: Privacy
+      privacy_link: Privacy link
       recipes: Recipes
       site_map: Site map
       terms: Terms
+      terms_link: Terms link
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recetas sociales!
     navbar-admin:
       comments: Comments
       dashboard: Dashboard
+      new_page: New page
       recipes: Recipes
       replies: Replies
       spam: Spam
@@ -355,7 +369,7 @@ es:
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
-        greeting: "Bienvenido %{recipient},"
+        greeting: Bienvenido %{recipient},
         instruction: 'Usted puede confirmar el correo electrónico de su cuenta a través
           de este enlace:'
       email_changed:

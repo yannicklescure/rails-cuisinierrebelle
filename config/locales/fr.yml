@@ -331,6 +331,12 @@ fr:
       unsalted_butter: Beurre sans sel
       water: Eau
       white_granulated_sugar: Sucre blanc granulé
+    form:
+      content: Content
+      create_page: Create page
+      title: Title
+    show:
+      edit: Edit
     tools:
       tools: Matériel de cuisine
   recipes:
@@ -430,25 +436,33 @@ fr:
       recipe: "%{title}"
     footer:
       community: Communauté
+      community_link: Community link
       cuisinier_rebelle: Cuisinier rebelle
       discover: Découvrir
       experiences: Expériences
+      experiences_link: Experiences link
       help: Aide
+      help_link: Help link
       legal: Légal
       made_with_love_by_html: Fait avec <i class="fas fa-heart text-danger"></i> par
         Cuisinier Rebelle
       news: Nouvelles
+      news_link: News link
       policies: Charte
+      policies_link: Policies link
       privacy: Confidentialité
+      privacy_link: Privacy link
       recipes: Recettes
       site_map: Plan du site
       terms: Conditions
+      terms_link: Terms link
     header:
       cooking_recipes_and_more: Recettes de cuisine et autres
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
     navbar-admin:
       comments: Commentaires
       dashboard: Tableau de bord
+      new_page: New page
       recipes: Recettes
       replies: Réponses
       spam: Spam

@@ -8,10 +8,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.friendly.find(params[:id])
-    authorize @user
-    @bookmarks = Bookmark.where(user: current_user)
-    @recipes = Recipe.where(user: @user)
+    if User.friendly.exists? params[:id]
+      @user = User.friendly.find(params[:id])
+      @bookmarks = Bookmark.where(user: current_user)
+      @recipes = Recipe.where(user: @user)
+      authorize @user
+    else
+      not_found
+    end
   end
 
   def follow
@@ -38,5 +42,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 end

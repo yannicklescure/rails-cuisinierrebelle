@@ -332,6 +332,12 @@ en:
       unsalted_butter: Unsalted butter
       water: Water
       white_granulated_sugar: White granulated sugar
+    form:
+      content: Content
+      create_page: Create page
+      title: Title
+    show:
+      edit: Edit
     tools:
       tools: Kitchen tools
   recipes:
@@ -434,25 +440,33 @@ en:
       recipe: "%{title}"
     footer:
       community: Community
+      community_link: community
       cuisinier_rebelle: Cuisinier rebelle
       discover: Discover
       experiences: Experiences
+      experiences_link: experiences
       help: Help
+      help_link: help
       legal: Legal
       made_with_love_by_html: Made with <i class="fas fa-heart text-danger"></i> by
         Cuisinier Rebelle
       news: News
+      news_link: news
       policies: Policies
+      policies_link: policies
       privacy: Privacy
+      privacy_link: privacy-policy
       recipes: Recipes
       site_map: Site map
       terms: Terms
+      terms_link: terms
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
     navbar-admin:
       comments: Comments
       dashboard: Dashboard
+      new_page: New page
       recipes: Recipes
       replies: Replies
       spam: Spam
