@@ -4,7 +4,7 @@
 <%= csrf_meta_tags %>
 <%= action_cable_meta_tag %>
 <!-- Facebook -->
-<meta property="fb:app_id" content="570259036897585" />
+<meta property="fb:app_id" content="<%= ENV['FB_APP_ID'] %>" />
 <meta property="og:site_name" content="Cuisinier Rebelle" />
 <meta property="og:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>" />
 <meta property="og:description" content="<%= t('.cooking_recipes_and_more') %>" />
@@ -33,5 +33,8 @@
 <link rel="icon" href="https://media.cuisinierrebelle.com/favicon.ico">
 <meta name="msapplication-config" content="https://media.cuisinierrebelle.com/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#343940">
-<%= stylesheet_link_tag 'application', media: 'all' %>
+<%#= stylesheet_link_tag 'application', media: 'all' %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= render 'layouts/google_analytics' %>
+<%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->

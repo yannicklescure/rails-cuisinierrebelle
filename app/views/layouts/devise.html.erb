@@ -4,6 +4,7 @@
     <%= render 'shared/header' %>
   </head>
   <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type %>">
+    <%= render 'layouts/facebook' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container mt-5">
@@ -11,7 +12,8 @@
     </div>
     <%= render 'shared/footer' %>
 
-    <%= javascript_include_tag 'application' %>
+    <%#= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

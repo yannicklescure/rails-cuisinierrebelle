@@ -40,21 +40,14 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type %>">
+    <%= render 'layouts/facebook' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%#= @recipe.title %>
     <%= yield %>
     <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'application' %>
+    <%#= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155962082-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-155962082-1');
-    </script>
   </body>
 </html>
