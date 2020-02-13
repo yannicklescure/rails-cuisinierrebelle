@@ -96,19 +96,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.provider == "facebook"
       # binding.pry
       params.delete("current_password")
-      resource.update_without_password(edit_params_without_password)
+      resource.update_without_password(edit_params)
     else
-      resource.update_with_password(edit_params_with_password)
+      resource.update_with_password(edit_params)
     end
   end
 
   private
 
-  def edit_params_without_password
-    params.require(:user).permit(:first_name, :last_name, :email)
-  end
-
-  def edit_params_with_password
+  def edit_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 
