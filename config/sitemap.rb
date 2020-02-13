@@ -9,7 +9,7 @@ SitemapGenerator::Sitemap.default_host = "https://www.cuisinierrebelle.com/"
 SitemapGenerator::Sitemap.sitemaps_host = "https://sitemap.cuisinierrebelle.com/"
 
 # The directory to write sitemaps to locally
-SitemapGenerator::Sitemap.public_path = "../public/"
+# SitemapGenerator::Sitemap.public_path = "../public/"
 
 # Set this to a directory/path if you don't want to upload to the root of your `sitemaps_host`
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
