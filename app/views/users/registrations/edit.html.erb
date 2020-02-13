@@ -1,6 +1,6 @@
 <h2><%= t(".title", resource: resource.model_name.human) %></h2>
 
-<%= simple_form_for(resource, url: registration_path(resource).sub(/\.[\w]*\z/, ''), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, url: registration_path(resource), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
