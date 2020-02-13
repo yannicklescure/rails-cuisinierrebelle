@@ -22,12 +22,7 @@
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
             <% if current_user.admin %>
-            <div
-              class="fb-like"
-              data-share="true"
-              data-width="450"
-              data-show-faces="true">
-            </div>
+            <!-- <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div> -->
             <%= link_to t('.admin'), admin_path(), class: "nav-link" %>
             <% end %>
             <li class="nav-item"><%= link_to t('.bookmarks'), bookmarks_path, class: "nav-link bookmarks" %></li>
