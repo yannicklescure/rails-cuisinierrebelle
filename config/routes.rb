@@ -41,4 +41,6 @@ Rails.application.routes.draw do
       resources :recipes, only: [ :index, :show, :update ]
     end
   end
+
+  get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 end
