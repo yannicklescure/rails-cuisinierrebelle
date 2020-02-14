@@ -38,6 +38,8 @@
     <meta name="theme-color" content="#343940">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/google_analytics' %>
   </head>
   <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type %>">
     <%= render 'layouts/facebook' %>

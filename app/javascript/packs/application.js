@@ -51,7 +51,7 @@ if(currentController === 'recipes' && currentPage != null) {
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();
 
-  btnClick();
+  if(userSignedIn) btnClick();
 
   const replyForms = document.querySelectorAll('.no-reply');
   replyForms.forEach((replyForm) => {
