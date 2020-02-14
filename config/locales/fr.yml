@@ -436,26 +436,26 @@ fr:
       recipe: "%{title}"
     footer:
       community: Communauté
-      community_link: Community link
+      community_link: communaute
       cuisinier_rebelle: Cuisinier rebelle
       discover: Découvrir
       experiences: Expériences
-      experiences_link: Experiences link
+      experiences_link: experiences-fr
       help: Aide
-      help_link: Help link
+      help_link: aide
       legal: Légal
       made_with_love_by_html: Fait avec <i class="fas fa-heart text-danger"></i> par
         Cuisinier Rebelle
       news: Nouvelles
-      news_link: News link
+      news_link: nouvelles
       policies: Charte
-      policies_link: Policies link
+      policies_link: charte
       privacy: Confidentialité
-      privacy_link: Privacy link
+      privacy_link: confidentialite
       recipes: Recettes
       site_map: Plan du site
       terms: Conditions
-      terms_link: Terms link
+      terms_link: conditions
     header:
       cooking_recipes_and_more: Recettes de cuisine et autres
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
