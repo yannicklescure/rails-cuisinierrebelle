@@ -31,9 +31,9 @@ if(window.innerWidth <= 768) {
 
 if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
-  const bannerCtaBox = document.querySelector('#banner-cta-box');
-  const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
-  bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
+  // const bannerCtaBox = document.querySelector('#banner-cta-box');
+  // const bannerCtaBoxBtn = document.querySelector('#banner-cta-box-btn');
+  // bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
 
 if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {
