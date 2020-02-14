@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :home]
+  skip_before_action :authenticate_user!, only: [:show, :home, :tools, :conversion]
 
   def show
     if Page.friendly.exists? params[:id]
