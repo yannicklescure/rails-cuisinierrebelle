@@ -11,7 +11,7 @@
       <% end %>
       <% if client.device_type != nil %>
         <% if client.device_type.match(/smartphone|phablet/) %>
-        <a href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a>
+        <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a>
         <% end %>
       <% end %>
     </div>
