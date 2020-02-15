@@ -22,7 +22,9 @@
   <%#- resource_class.omniauth_providers.each do |provider| %>
     <!-- <%#= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), method: :post %><br /> -->
   <%# end %>
-    <%= link_to omniauth_authorize_path(resource_name, 'facebook'), method: :post do %>
-      <button class="btn btn-primary"><i class="fab fa-facebook-f"></i>&emsp;<%= t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize('facebook')) %></button>
-    <% end %><br />
+    <div class="d-flex mt-3">
+      <%= link_to omniauth_authorize_path(resource_name, 'facebook'), method: :post do %>
+        <button class="btn btn-primary"><i class="fab fa-facebook-f"></i>&emsp;<%= t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize('facebook')) %></button>
+      <% end %>
+    </div>
 <% end %>
