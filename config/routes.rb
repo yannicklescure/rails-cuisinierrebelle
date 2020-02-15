@@ -44,6 +44,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/privacy-policy', to: redirect('pages/privacy-policy')
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 end
