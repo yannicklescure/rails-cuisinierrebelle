@@ -1,5 +1,9 @@
 import { cardHeart } from "./card-heart";
 
+const capitalize_Words = (str) => {
+ return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 export const card = (init, data) => {
   const root = document.querySelector('#root');
   let userBookmarks = [];
@@ -86,7 +90,7 @@ export const card = (init, data) => {
                         <a class="p-0 ml-3 text-body text-decoration-none" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                       </div>
                   </div>
-                  <a href="${locale}/users/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${recipe.user.slug}</a><br>
+                  <a href="${locale}/users/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
                   <a href="${locale}/recipes/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
                   <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
                 </div>
