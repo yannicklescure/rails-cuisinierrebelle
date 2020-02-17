@@ -11,7 +11,11 @@
   <table class="table table-sm">
     <tr>
       <th><%= t('.full_name') %></th>
-      <td><%= @user.first_name.capitalize %>&nbsp;<%= @user.last_name.capitalize %></td>
+      <td><%= @user.first_name.capitalize %>&nbsp;<%= @user.last_name.capitalize %>
+        <% if @user.checked %>
+          <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>"><%= t('.verified_html') %></span>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th><%= t('.email') %></th>

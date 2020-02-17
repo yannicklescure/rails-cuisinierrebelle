@@ -443,9 +443,13 @@ es:
       full_name: Full name
       published_recipes: Published recipes
       updated_at: Updated at
+      verified: Auditado
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
     user:
       follow: Follow
       unfollow: Unfollow
+      verified: Auditado
+      verified_html: <i class="fas fa-check-circle text-muted"></i>

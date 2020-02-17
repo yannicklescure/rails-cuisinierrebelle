@@ -586,9 +586,13 @@ en:
       full_name: Full name
       published_recipes: Published recipes
       updated_at: Updated at
+      verified: Checked
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: resend unlock instructions
     user:
       follow: Follow
       unfollow: Unfollow
+      verified: Checked
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
