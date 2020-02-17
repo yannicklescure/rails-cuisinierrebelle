@@ -1,6 +1,6 @@
 <div data-user="<%= user.id %>">
   <%= link_to "#{user.first_name.capitalize} #{user.last_name.capitalize}", user_path(user), class: "text-body" %>
-  <% if @user.checked %>
+  <% if user.checked %>
     <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>"><%= t('.verified_html') %></span>
   <% end %>
   <% if user_signed_in? %>
