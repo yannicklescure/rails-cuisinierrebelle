@@ -6,7 +6,7 @@ export const card = (init, data) => {
   let userLikes = [];
   let userRecipes = [];
   let locale = init.locale;
-  locale != 'en' ? locale = `${locale}/` : locale = '';
+  locale != 'en' ? locale = `/${locale}` : locale = '';
   if(data.user) {
     // if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => ({'id': bookmark.recipe_id, 'created_at': bookmark.created_at}));
     if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
