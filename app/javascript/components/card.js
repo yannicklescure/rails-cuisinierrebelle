@@ -84,8 +84,9 @@ export const card = (init, data) => {
                         <a class="p-0 ml-3 text-body text-decoration-none" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                       </div>
                   </div>
+                  <a href="/users/${recipe.user.slug}" class="card-link text-body text-decoration-none">${recipe.user.slug}</a>
                   <a href="/recipes/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
-                  <div class="card-text font-weight-lighter">${recipe.description}</div>
+                  <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
                 </div>
               </div>
             </div>

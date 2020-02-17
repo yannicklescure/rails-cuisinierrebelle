@@ -52,7 +52,7 @@
           </div>
         <% end %>
       </div>
-      <%= link_to recipe.user.name, user_path(recipe.user), class: 'text-body text-decoration-none', style: 'font-size: 90%' %><br>
+      <%= link_to recipe.user.name, user_path(recipe.user), class: 'card-link text-body', style: 'font-size: 90%' %><br>
       <a href="<%= recipe_path(recipe) %>" class="card-link text-body text-uppercase"><%= recipe.title %></a>
       <div class="card-text font-weight-lighter" style="font-size: 90%"><%= recipe.description %></div>
     </div>
