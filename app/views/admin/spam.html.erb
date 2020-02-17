@@ -2,13 +2,13 @@
   <div class="row bg-white m-0 sticky-top border-top border-bottom font-weight-bold" style="top:59px;">
     <div class="col"><%= t('.public') %></div>
   </div>
-  <% @comments.sort_by { |date| date.created_at }.reverse.map do |comment| %>
-  <div class="row align-items-center m-0 border-top" id="<%= "comment-#{comment.id}" %>">
+  <% @spams.sort_by { |date| date.created_at }.reverse.map do |message| %>
+  <div class="row align-items-center m-0 border-top" id="<%= "#{message.class.name.downcase}-#{message.id}" %>">
     <div class="col-9">
       <div class="d-flex flex-column w-100">
         <div class="text-muted" style="font-size: 90%;">
-          <strong><%= link_to comment.user.name, user_path(comment.user), class: 'text-muted' %></strong>&ensp;
-          <% time_since_creation = TimeDifference.between(comment.created_at, Time.current) %>
+          <strong><%= link_to message.user.name, user_path(message.user), class: 'text-muted' %></strong>&ensp;
+          <% time_since_creation = TimeDifference.between(message.created_at, Time.current) %>
           <% if time_since_creation.in_years.floor >= 2 %>
             <%= t(".years_ago", count: time_since_creation.in_years.floor) %>
           <% elsif time_since_creation.in_years.floor < 1 && time_since_creation.in_months.floor.positive? %>
@@ -26,18 +26,30 @@
           <% else %>
             <%= t(".seconds_ago", count: 1) %>
           <% end %>
+          &ensp;<em><%= message.class.name %></em>
         </div>
         <div>
-          <%= comment.content %>
+          <%= message.content %>
         </div>
       </div>
     </div>
     <div class="col-2">
-      <%= image_tag comment.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
-      <%= link_to comment.recipe.title, recipe_path(comment.recipe), class: 'text-body' %>
+    <% if message.class.name == "Reply" %>
+      <%= image_tag message.comment.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
+      <%= link_to message.comment.recipe.title, recipe_path(message.comment.recipe), class: 'text-body' %>
+    <% else %>
+      <%= image_tag message.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
+      <%= link_to message.recipe.title, recipe_path(message.recipe), class: 'text-body' %>
+    <% end %>
     </div>
     <div class="col-1">
-      <%= link_to t('.delete'), recipe_comment_path(comment.recipe, comment, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+    <% if message.class.name == "Reply" %>
+      <%= link_to t('.not_spam'), reply_spam_path(message), method: :post, data: { confirm: t(".are_you_sure") }, remote: true, class: 'text-body' %><br>
+      <%= link_to t('.delete'), recipe_comment_reply_path(message.comment.recipe, message.comment, message, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+    <% else %>
+      <%= link_to t('.not_spam'), comment_spam_path(message), method: :post, data: { confirm: t(".are_you_sure") }, remote: true, class: 'text-body' %><br>
+      <%= link_to t('.delete'), recipe_comment_path(message.recipe, message, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+    <% end %>
     </div>
   </div>
   <% end %>

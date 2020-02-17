@@ -16,4 +16,8 @@ class CommentPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def spam?
+    record.user.admin
+  end
 end

@@ -32,7 +32,7 @@
     <div id="replies-list-<%= comment.id %>" class="d-none" data-comment="<%= comment.id %>">
       <div id="replies-list-box-<%= comment.id %>" class="d-flex flex-column">
         <% comment.replies.sort_by { |date| date.created_at }.each do |reply| %>
-          <%= render "replies/show", recipe: recipe, comment: comment, reply: reply %>
+          <%= render "replies/show", recipe: recipe, comment: comment, reply: reply if !reply.spam %>
         <% end %>
       </div>
       <% if user_signed_in? %>

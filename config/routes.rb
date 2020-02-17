@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get '/admin/comments', to: 'admin#comments'
     get '/admin/replies', to: 'admin#replies'
 
+    get '/admin/spam', to: 'admin#spam'
+    post 'comments/:id/spam', to: 'comments#spam', as: :comment_spam
+    post 'replies/:id/spam', to: 'replies#spam', as: :reply_spam
+
     resources :pages, except: [:index]
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

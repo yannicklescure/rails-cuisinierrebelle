@@ -110,6 +110,47 @@ fr:
         one: il y a 1 an
         other: il y a %{count} ans
         zero: zéro an
+    shared:
+      navbar-admin:
+        comments: Commentaires
+        dashboard: Tableau de bord
+        new_page: Créer page
+        recipes: Recettes
+        replies: Réponses
+        spam: Spam
+        users: Utilisateurs
+    spam:
+      are_you_sure: Are you sure?
+      days_ago:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+        zero: zéro jour
+      delete: Supprimer
+      hours_ago:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+        zero: zéro heure
+      minutes_ago:
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+        zero: zéro minute
+      months_ago:
+        one: il y a 1 mois
+        other: il y a %{count} mois
+        zero: zéro mois
+      public: Public
+      seconds_ago:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+        zero: zéro seconde
+      weeks_ago:
+        one: il y a 1 semaine
+        other: il y a %{count} semaines
+        zero: zéro semaine
+      years_ago:
+        one: il y a 1 an
+        other: il y a %{count} ans
+        zero: zéro an
     users:
       bookmarks: Favoris
       comments: Commentaires
@@ -430,7 +471,6 @@ fr:
       banner_subtitle: Recettes de cuisine et plus
       recipes: Recettes
       sign_up: Inscription
-      videos: Vidéos
     card-small:
       name: "%{name}"
       recipe: "%{title}"
@@ -460,14 +500,6 @@ fr:
     header:
       cooking_recipes_and_more: Recettes de cuisine et autres
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales!
-    navbar-admin:
-      comments: Commentaires
-      dashboard: Tableau de bord
-      new_page: New page
-      recipes: Recettes
-      replies: Réponses
-      spam: Spam
-      users: Utilisateurs
     navbar-large:
       admin: Admin
       are_you_sure: Êtes-vous sûr ?

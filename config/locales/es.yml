@@ -47,6 +47,27 @@ es:
       seconds_ago: Seconds ago
       weeks_ago: Weeks ago
       years_ago: Years ago
+    shared:
+      navbar-admin:
+        comments: Comments
+        dashboard: Dashboard
+        new_page: New page
+        recipes: Recipes
+        replies: Replies
+        spam: Spam
+        users: Users
+    spam:
+      are_you_sure: Are you sure
+      days_ago: Days ago
+      delete: Delete
+      hours_ago: Hours ago
+      minutes_ago: Minutes ago
+      months_ago: Months ago
+      not_spam: Not spam
+      public: Public
+      seconds_ago: Seconds ago
+      weeks_ago: Weeks ago
+      years_ago: Years ago
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -288,7 +309,6 @@ es:
       banner_subtitle: Recetas de cocina y otras cosas
       recipes: Recetas
       sign_up: Sign up
-      videos: Vídeos
     card-small:
       name: Name
       recipe: Recipe
@@ -318,14 +338,6 @@ es:
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recetas sociales!
-    navbar-admin:
-      comments: Comments
-      dashboard: Dashboard
-      new_page: New page
-      recipes: Recipes
-      replies: Replies
-      spam: Spam
-      users: Users
     navbar-large:
       admin: Admin
       are_you_sure: Are you sure

@@ -13,6 +13,10 @@ class CommentsController < ApplicationController
     authorize @comment
     @comment.recipe = @recipe
     @comment.user = current_user
+    if @comment.content.match?(/https?/)
+      @comment.spam = true
+      # binding.pry
+    end
     if @comment.save
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
@@ -50,6 +54,16 @@ class CommentsController < ApplicationController
     authorize @comment
     @comment.destroy
     # redirect_to recipe_path(@recipe)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def spam
+    @comment = Comment.find(params[:id])
+    authorize @comment
+    @comment.spam = false
+    @comment.save
     respond_to do |format|
       format.js
     end

@@ -84,8 +84,16 @@
   <div id="comments" class="d-print-none">
     <div id="comments-count" class="d-flex">
       <% count = 0 %>
-      <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
-      <% count += @recipe.comments.count %>
+      <%# count_comments = @recipe.comments.map { |comment| comment.spam ? 0 : count += 1 }.sum %>
+      <%# count_replies = @recipe.comments.map { |comment| comment.spam ? 0 : comment.replies.count }.sum %>
+      <%# count = count_comments + count_replies %>
+      <% @recipe.comments.each do |comment| %>
+        <% if !comment.spam %>
+          <% count_replies = comment.replies.map { |reply| reply.spam ? 0 : count += 1 }.sum %>
+          <% count += 1 %>
+        <% end %>
+      <% end %>
+
       <%= t('.comments', count: count) %>
     </div>
     <% if user_signed_in? %>
@@ -96,7 +104,9 @@
     <div id="comments-list">
       <div class="d-flex flex-column">
         <% @recipe.comments.sort_by { |date| date.created_at }.reverse.each do |comment| %>
-          <%= render "comments/show", recipe: @recipe, comment: comment %>
+          <% if !comment.spam %>
+            <%= render "comments/show", recipe: @recipe, comment: comment %>
+          <% end %>
         <% end %>
       </div>
     </div>

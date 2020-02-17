@@ -18,6 +18,10 @@ class RepliesController < ApplicationController
     # @reply.recipe = @recipe
     @reply.comment = @comment
     @reply.user = current_user
+    if @reply.content.match?(/https?/)
+      @reply.spam = true
+      # binding.pry
+    end
     if @reply.save
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
@@ -53,6 +57,16 @@ class RepliesController < ApplicationController
     authorize @reply
     @reply.destroy
     # redirect_to recipe_path(@recipe)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def spam
+    @reply = Reply.find(params[:id])
+    authorize @reply
+    @reply.spam = false
+    @reply.save
     respond_to do |format|
       format.js
     end

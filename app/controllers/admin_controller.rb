@@ -23,4 +23,12 @@ class AdminController < ApplicationController
   def replies
     @replies = Reply.all
   end
+
+  def spam
+    @spams = []
+    comments = Comment.where(spam: true)
+    @spams += comments.map { |comment| comment }
+    replies = Reply.where(spam: true)
+    @spams += replies.map { |comment| comment }
+  end
 end

@@ -110,6 +110,47 @@ en:
         one: 1 year ago
         other: "%{count} years ago"
         zero: No year
+    shared:
+      navbar-admin:
+        comments: Comments
+        dashboard: Dashboard
+        new_page: New page
+        recipes: Recipes
+        replies: Replies
+        spam: Spam
+        users: Users
+    spam:
+      are_you_sure: Are you sure?
+      days_ago:
+        one: 1 day ago
+        other: "%{count} days ago"
+        zero: No day
+      delete: Delete
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+        zero: No minute
+      months_ago:
+        one: 1 month ago
+        other: "%{count} months ago"
+        zero: No month
+      public: Public
+      seconds_ago:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+        zero: No second
+      weeks_ago:
+        one: 1 week ago
+        other: "%{count} weeks ago"
+        zero: No week
+      years_ago:
+        one: 1 year ago
+        other: "%{count} years ago"
+        zero: No year
     users:
       bookmarks: Bookmarks
       comments: Comments
@@ -434,7 +475,6 @@ en:
       banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
-      videos: Videos
     card-small:
       name: "%{name}"
       recipe: "%{title}"
@@ -464,14 +504,6 @@ en:
     header:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
-    navbar-admin:
-      comments: Comments
-      dashboard: Dashboard
-      new_page: New page
-      recipes: Recipes
-      replies: Replies
-      spam: Spam
-      users: Users
     navbar-large:
       admin: Admin
       are_you_sure: Are you sure?
