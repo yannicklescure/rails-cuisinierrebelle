@@ -1,4 +1,5 @@
 import "bootstrap";
+import { cookiesToObject } from "../components/cookies";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { returnPosition } from "../components/return-position";
@@ -37,11 +38,15 @@ if (currentController === null && !userSignedIn) {
 }
 
 if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {
+  const cookies = cookiesToObject(document.cookie);
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
     currentController: currentController,
-    currentPage: currentPage
+    currentPage: currentPage,
+    user_email: cookies.user_email,
+    user_token: cookies.user_token,
+    locale: cookies.locale,
   };
   lazyLoad(init);
 }

@@ -5,5 +5,7 @@ export const cookiesToObject = (str) => {
     var cur = str[i].split('=');
     result[cur[0]] = cur[1];
   }
+  // console.log(result);
+
   return result;
 }

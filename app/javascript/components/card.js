@@ -5,6 +5,8 @@ export const card = (init, data) => {
   let userBookmarks = [];
   let userLikes = [];
   let userRecipes = [];
+  let locale = init.locale;
+  locale != 'en' ? locale = `${locale}/` : locale = '';
   if(data.user) {
     // if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => ({'id': bookmark.recipe_id, 'created_at': bookmark.created_at}));
     if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
@@ -80,12 +82,12 @@ export const card = (init, data) => {
                         </a>
                       </div>
                       <div class="d-flex align-items-center">
-                        <a class="p-0 ml-3 text-body text-decoration-none" href="/recipes/${recipe.slug}#comments"><i class="far fa-comment-alt"></i></a>
+                        <a class="p-0 ml-3 text-body text-decoration-none" href="${locale}/recipes/${recipe.slug}#comments"><i class="far fa-comment-alt"></i></a>
                         <a class="p-0 ml-3 text-body text-decoration-none" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                       </div>
                   </div>
-                  <a href="/users/${recipe.user.slug}" class="card-link text-body text-decoration-none">${recipe.user.slug}</a>
-                  <a href="/recipes/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
+                  <a href="${locale}/users/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${recipe.user.slug}</a><br>
+                  <a href="${locale}/recipes/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
                   <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
                 </div>
               </div>

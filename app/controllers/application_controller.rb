@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       cookies[:user_email] = Base64.encode64(current_user.email)
       cookies[:user_token] = Base64.encode64(current_user.authentication_token)
+      cookies[:locale] = session[:locale]
     end
   end
 
