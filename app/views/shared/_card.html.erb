@@ -21,11 +21,11 @@
             &nbsp;<span class="text-muted font-weight-lighter"><%= recipe.likes.count %></span>
           <% end %>
           <div class="d-flex align-items-center">
-            <% if recipe.comments.any? %>
-              <%= link_to raw('<i class="fas fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
-            <% else %>
+            <%# if recipe.comments.any? %>
+              <%#= link_to raw('<i class="fas fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
+            <%# else %>
               <%= link_to raw('<i class="far fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
-            <% end %>
+            <%# end %>
             <%#= link_to raw('<i class="fas fa-share-alt"></i>'), '#', class: 'p-0 ml-3 text-body text-decoration-none' %>
             <%= link_to recipe_bookmarks_path(recipe), method: :patch, remote: true, class: 'p-0 ml-3 text-body text-decoration-none', 'data-bookmark-recipe': recipe.id do %>
               <% if recipe.bookmarks.find_by(user: current_user).nil?  %>
