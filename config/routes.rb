@@ -49,4 +49,10 @@ Rails.application.routes.draw do
   end
 
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
+
+  # Sidekiq Web UI, only for admins.
+  # require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

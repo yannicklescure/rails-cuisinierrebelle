@@ -23,5 +23,7 @@ module RailsCuisinierRebelle
 
     # force tags to be saved downcased
     ActsAsTaggableOn.force_lowercase = true
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

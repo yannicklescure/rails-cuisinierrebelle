@@ -959,6 +959,7 @@ GEM
     carrierwave-i18n (0.2.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.6)
     device_detector (1.0.3)
     devise (4.7.1)
@@ -1002,6 +1003,9 @@ GEM
     formatador (0.2.5)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
+    gibbon (3.3.3)
+      faraday (>= 0.16.0)
+      multi_json (>= 1.11.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -1088,6 +1092,8 @@ GEM
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.1.1)
+    rack-protection (2.0.8.1)
+      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -1154,6 +1160,13 @@ GEM
     seed_dump (3.3.1)
       activerecord (>= 4)
       activesupport (>= 4)
+    sidekiq (6.0.5)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -1216,6 +1229,7 @@ DEPENDENCIES
   fog-aws
   font-awesome-sass (~> 5.12.0)
   friendly_id (~> 5.2.4)
+  gibbon
   jbuilder (~> 2.0)
   letter_opener
   listen (~> 3.0.5)
@@ -1237,6 +1251,8 @@ DEPENDENCIES
   rspec (~> 3.9)
   sassc-rails
   seed_dump
+  sidekiq
+  sidekiq-failures (~> 1.0)
   simple_form
   simple_token_authentication
   sitemap_generator
