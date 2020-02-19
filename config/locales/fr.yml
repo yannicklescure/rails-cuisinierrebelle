@@ -138,6 +138,7 @@ fr:
         one: il y a 1 mois
         other: il y a %{count} mois
         zero: zéro mois
+      not_spam: Not spam
       public: Public
       seconds_ago:
         one: il y a 1 seconde
@@ -618,6 +619,7 @@ fr:
         zero: Pas d'abonné
       full_name: Nom complet
       published_recipes: Recettes publiées
+      subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Dernière mise à jour
       verified: Vérifié
       verified_html: <i class="fas fa-check-circle text-muted"></i>

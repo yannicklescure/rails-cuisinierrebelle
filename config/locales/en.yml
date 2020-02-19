@@ -138,6 +138,7 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
+      not_spam: Not spam
       public: Public
       seconds_ago:
         one: 1 second ago
@@ -617,6 +618,7 @@ en:
         zero: No follower
       full_name: Full name
       published_recipes: Published recipes
+      subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Checked
       verified_html: <i class="fas fa-check-circle text-muted"></i>

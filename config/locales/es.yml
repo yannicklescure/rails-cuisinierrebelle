@@ -454,6 +454,7 @@ es:
         zero: Sin seguidor
       full_name: Full name
       published_recipes: Published recipes
+      subscribe_to_newsletter: Suscríbase al boletín
       updated_at: Updated at
       verified: Auditado
       verified_html: <i class="fas fa-check-circle text-muted"></i>
