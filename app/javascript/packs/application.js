@@ -8,6 +8,7 @@ import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 import { lazyLoad } from "../components/lazy-load";
 import { btnClick } from "../components/button";
+import { mailchimp } from "../services/mailchimp";
 
 if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', () => window.print());
 
@@ -25,6 +26,7 @@ let currentController = returnPositionData.currentController;
 let currentPage = returnPositionData.currentPage;
 
 const navbarBrand = document.querySelector(".navbar-brand");
+const cookies = cookiesToObject(document.cookie);
 
 if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
@@ -37,8 +39,17 @@ if (currentController === null && !userSignedIn) {
   // bannerCtaBoxBtn.style.width = `${bannerCtaBox.offsetWidth}px`;
 }
 
+if(currentController != null && currentController === 'users' && userSignedIn) {
+  const init = {
+    url: '/api/v1/mailchimp',
+    user_id: parseInt(document.querySelector('body').dataset.userId),
+    user_email: cookies.user_email,
+    user_token: cookies.user_token
+  }
+  mailchimp(init);
+}
+
 if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {
-  const cookies = cookiesToObject(document.cookie);
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,

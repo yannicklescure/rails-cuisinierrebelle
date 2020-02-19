@@ -41,12 +41,13 @@ class User < ApplicationRecord
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
     send_welcome_email
+    async_update
   end
 
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  after_commit :async_update # Run on create & update
+  # after_commit :async_update # Run on create & update
 
   private
 
@@ -56,6 +57,8 @@ class User < ApplicationRecord
 
   def async_update
     MailchimpSubscribeUser.perform_later(self)
+    self.mailchimp = true
+    self.save
   end
 
   def self.from_omniauth(auth)
