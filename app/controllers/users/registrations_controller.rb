@@ -1,3 +1,4 @@
+# See: https://github.com/heartcombo/devise/blob/master/app/controllers/devise/registrations_controller.rb
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -54,6 +55,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def destroy
+    async_update(resource)
+    resource.destroy
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message! :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+  end
+
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
@@ -104,6 +114,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def async_update(resource)
+    MailchimpUnsubscribeUser.perform_later(resource)
+  end
 
   def edit_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
