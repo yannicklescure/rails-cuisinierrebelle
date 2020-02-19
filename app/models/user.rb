@@ -46,10 +46,16 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  after_commit :async_update # Run on create & update
+
   private
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
+  end
+
+  def async_update
+    MailchimpSubscribeUser.perform_later(self)
   end
 
   def self.from_omniauth(auth)
