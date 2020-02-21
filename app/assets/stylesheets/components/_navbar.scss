@@ -16,3 +16,16 @@
 .navbar-cuisinierrebelle .navbar-brand {
   padding-bottom: 8px;
 }
+
+.admin {
+  .nav-item {
+    color: $text-muted;
+  }
+  .nav-item:hover {
+    color: $text-body;
+  }
+
+  .nav-item.active {
+    color: $text-body;
+  }
+}

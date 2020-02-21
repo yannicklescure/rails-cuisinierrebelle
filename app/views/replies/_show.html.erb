@@ -1,4 +1,4 @@
-<div id="reply-<%= reply.id %>" class="mt-3 pl-3" data-reply="<%= reply.id %>">
+<div id="reply-<%= reply.id %>" class="mt-3 pl-3" data-reply="<%= reply.id %>" data-comment="<%= reply.comment.id %>">
   <div class="d-flex small">
     <strong><%= link_to reply.user.name, user_path(reply.user), class: 'text-body' %></strong>&ensp;
     <% time_since_creation = TimeDifference.between(reply.created_at, Time.current) %>

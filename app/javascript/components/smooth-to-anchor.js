@@ -1,4 +1,5 @@
 import { returnPosition } from "../components/return-position";
+// import { viewReplies } from "../components/reply";
 
 const smoothToAnchor = () => {
   const returnPositionData = returnPosition();
@@ -10,6 +11,11 @@ const smoothToAnchor = () => {
     const anchorTarget = currentPage.match(/(.+)(#.+)/);
     const target = anchorTarget[2];
     let element = document.querySelector(target);
+    if(/reply/.test(target)) {
+      console.log(element.dataset.comment);
+      const replyBtn = document.querySelector(`#comment-${element.dataset.comment}-replies-list-btn`);
+      replyBtn.click();
+    }
     let navbarHeight = document.querySelector('#navbar-main').offsetHeight;
     // navbarHeight = 59;
     const scrollOptions = {
