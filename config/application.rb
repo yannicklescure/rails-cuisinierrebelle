@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module RailsCuisinierRebelle
   class Application < Rails::Application
+
+    # Set the locale used for i18n
+    # https://github.com/iain/http_accept_language
+    config.i18n.available_locales = %w(en es fr)
+
     config.generators do |generate|
           generate.assets false
           generate.helper false

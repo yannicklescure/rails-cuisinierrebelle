@@ -1,9 +1,10 @@
 require "base64"
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, :set_locale, :user_authentication
+  before_action :authenticate_user!, :user_authentication, :set_locale
 
   include Pundit
+  include HttpAcceptLanguage::AutoLocale
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -17,8 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
+    I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
-    I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+    # I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
   end
 

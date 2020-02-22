@@ -38,6 +38,8 @@
     <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
     <label class="custom-control-label" for="mailchimpSwitch"><%= t('.subscribe_to_newsletter') %></label>
   </div>
+
+  <%= @langs %>
   <% else %>
   <div id="root" class="row py-3"<%= " data-bookmarks-count=\"#{@bookmarks.count}\"" if user_signed_in? %>>
     <% if @recipes.any? %>
