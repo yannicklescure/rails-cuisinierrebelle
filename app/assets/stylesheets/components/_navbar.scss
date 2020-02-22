@@ -21,7 +21,7 @@
   .nav-item {
     color: $text-muted;
   }
-  .nav-item:hover {
+  .nav-item:hover > * {
     color: $text-body;
   }
 
