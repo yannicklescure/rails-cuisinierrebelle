@@ -23,6 +23,7 @@
   }
   .nav-item:hover > * {
     color: $text-body;
+    cursor: pointer;
   }
 
   .nav-item.active {
