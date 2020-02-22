@@ -1,120 +1,155 @@
 ---
 es:
   '':
-    only_allows_youtube_video: Only allows youtube video
+    only_allows_youtube_video: Solo permite videos de youtube
   admin:
     comments:
-      are_you_sure: Are you sure
-      days_ago: Days ago
-      delete: Delete
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      public: Public
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      are_you_sure: "¿Estas seguro?"
+      days_ago: Hace días
+      delete: Eliminar
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      public: Público
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
     index:
-      comments: Comments
-      recipes: Recipes
-      users: Users
+      comments: Comentarios
+      recipes: Recetas
+      users: Usuarios
     recipes:
-      action: Action
-      are_you_sure: Are you sure
-      bookmarks: Bookmarks
-      comments: Comments
-      days_ago: Days ago
-      delete: Delete
-      hours_ago: Hours ago
-      likes: Likes
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      photo: Photo
-      published_date: Published date
-      seconds_ago: Seconds ago
-      title: Title
-      user: User
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      action: Acción
+      are_you_sure: "¿Estas seguro?"
+      bookmarks: Favoritos
+      comments: Comentarios
+      days_ago:
+        one: Hace 1 día
+        other: Hace %{count} días
+        zero: Sin días
+      delete: Eliminar
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      likes: Gustos
+      minutes_ago:
+        one: Hace 1 minuto
+        other: Hace %{count} minutos
+        zero: Sin minutos
+      months_ago:
+        one: Hace 1 mes
+        other: Hace %{count} meses
+        zero: Sin meses
+      photo: Foto
+      published_date: Fecha de Publicación
+      seconds_ago:
+        one: Hace 1 segundo
+        other: Hace %{count} segundos
+        zero: Sin segundos
+      title: Título
+      user: Usuario
+      weeks_ago:
+        one: Hace 1 semana
+        other: Hace %{count} semanas
+        zero: Sin semanas
+      years_ago:
+        one: hace 1 año
+        other: Hace %{count} años
+        zero: Sin años
     replies:
-      are_you_sure: Are you sure
-      days_ago: Days ago
-      delete: Delete
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      public: Public
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      are_you_sure: "¿Estas seguro?"
+      days_ago: Hace días
+      delete: Eliminar
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      public: Público
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
     shared:
       navbar-admin:
-        comments: Comments
-        dashboard: Dashboard
-        new_page: New page
-        recipes: Recipes
-        replies: Replies
+        comments: Comentarios
+        dashboard: Tablero
+        new_page: Nueva pagina
+        recipes: Recetas
         spam: Spam
-        users: Users
+        users: Usuarios
     spam:
-      are_you_sure: Are you sure
-      days_ago: Days ago
-      delete: Delete
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      not_spam: Not spam
-      public: Public
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      are_you_sure: "¿Estas seguro?"
+      days_ago: Hace días
+      delete: Eliminar
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      not_spam: Sin spam
+      public: Público
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
     users:
-      bookmarks: Bookmarks
-      comments: Comments
+      bookmarks: Favoritos
+      comments: Comentarios
       email: Email
-      followers: Followers
-      following: Following
-      full_name: Full name
-      likes: Likes
-      published_recipes: Published recipes
+      followers: Seguidores
+      following: Siguiendo
+      full_name: Nombre completo
+      likes: Gustos
+      published_recipes: Recetas publicadas
   application:
     user_not_authorized:
-      you_are_not_authorized_to_perform_this_action: You are not authorized to perform
-        this action
+      you_are_not_authorized_to_perform_this_action: No tienes autorización para realizar
+        esta acción
   bookmarks:
     index:
-      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+      no_bookmarks_html: Sin favoritos...&nbsp;<i class="far fa-grin-beam-sweat"></i>
     update:
-      no_bookmarks_html: No bookmarks...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+      no_bookmarks_html: Sin favoritos...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   comments:
     create:
-      comments: Comments
+      comments: Comentarios
     destroy:
-      comments: Comments
+      comments: Comentarios
     form:
-      add_a_comment: Comment
-      add_a_public_comment: Add a public comment
+      add_a_comment: Comentario
+      add_a_public_comment: Agregar un comentario público
     replies:
-      days_ago: Days ago
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      public: Public
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      days_ago: Hace días
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      public: Público
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
     show:
-      are_you_sure: Are you sure
-      days_ago: Days ago
-      delete_html: Delete html
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      replies: Replies
-      reply: Reply
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      are_you_sure: "¿Estas seguro?"
+      days_ago: Hace días
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      replies: Respuestas
+      reply: Respuesta
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
   date:
     formats:
       default: "%d/%m/%Y"
@@ -168,7 +203,7 @@ es:
         currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion
           de: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea cambiarla
-        title: Editar %{resource}
+        title: Editarar %{resource}
         unhappy: "¿Disconforme?"
         update: Actualizar
         we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña
@@ -201,180 +236,187 @@ es:
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
   followers:
     index:
-      followers: Followers
+      followers: Seguidores
   following:
     index:
-      following: Following
+      following: Siguiendo
   index:
     form:
-      search: Search
+      search: Buscar
     index:
-      most_used_tags: Most used tags
-      no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
-      recent_recipes: Recent recipes
+      most_used_tags: Etiquetas más utilizadas
+      no_result_html: Sin resultados...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+      recent_recipes: Recetas publicadas recientemente
   layouts:
     recipes:
-      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
     users:
-      cooking_recipes_and_more: Cooking recipes and more
-      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+      cooking_recipes_and_more: Recetas de cocina y más
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
   pages:
     conversion:
-      all_purpose_flour_t55: All purpose flour t55
-      bread_flour_t65: Bread flour t65
-      brown_granulated_sugar: Brown granulated sugar
-      brown_liquid_honey: Miel brun liquide
+      all_purpose_flour_t55: Harina para todo uso t55
+      bread_flour_t65: Harina de pan t65
+      brown_granulated_sugar: Azúcar moreno integral
+      brown_liquid_honey: Miel marrón líquida
       conversion: Tabla de conversión
       cuisinierrebelle_com_html: "&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;"
-      cup: Cup
-      ingredients_in_grams: Ingredients in grams
-      margarine: Margarine
-      milk: Lait
-      oat: Avoine
-      pastry_flour_t45: Pastry flour t45
-      powder_milk: Lait en poudre
-      powdered_sugar: Powdered sugar
-      print: Print
-      table_spoon: Table spoon
-      tbsp: Tbsp
-      tea_spoon: Tea spoon
-      tsp: Tsp
-      uncooked_rice: Riz sec, avant cuisson
-      unsalted_butter: Unsalted butter
-      water: Eau
-      white_granulated_sugar: White granulated sugar
+      cup: taza
+      ingredients_in_grams: Ingredientes en gramos
+      margarine: Margarina
+      milk: Leche
+      oat: Avena
+      pastry_flour_t45: Harina de hojaldre t45
+      powder_milk: Leche en polvo
+      powdered_sugar: Azúcar en polvo
+      print: Impresión
+      table_spoon: Mesa cuchara
+      tbsp: cucharadas
+      tea_spoon: Cuchara de té
+      tsp: cucharadita
+      uncooked_rice: Arroz seco, antes de cocinar
+      unsalted_butter: Mantequilla sin sal
+      water: Agua
+      white_granulated_sugar: Azúcar blanca granulada
     form:
-      content: Content
-      create_page: Create page
-      title: Title
+      content: Contenido
+      create_page: Crear página
+      title: Título
     show:
-      edit: Edit
+      edit: Editar
     tools:
       tools: Equipo de cocina
   recipes:
     edit:
-      add_tags: Add tags
-      add_your_tags_separated_by_commas: Add your tags separated by commas
-      are_you_sure: Are you sure
-      delete: Delete
-      description: Description
-      direction: Direction
-      markdown_syntax_friendly_area: Markdown syntax friendly area
-      photo: Photo
-      subtitle: Subtitle
-      title: Title
-      youtube_video_link: Youtube video link
+      add_tags: Agregar etiquetas
+      add_your_tags_separated_by_commas: Agregue sus etiquetas separadas por comas
+      are_you_sure: "¿Estas seguro?"
+      delete: Eliminar
+      description: Descripción
+      direction: Dirección
+      markdown_syntax_friendly_area: Área amigable de sintaxis de Markdown
+      photo: Foto
+      subtitle: Subtitular
+      title: Título
+      youtube_video_link: Enlace de video de Youtube
     index:
-      edit_recipe_html: Edit recipe html
-      published_recipes: Published recipes
-      recipe: Recipe
+      edit_recipe_html: <i class="fas fa-pen"></i>
+      published_recipes: Recetas publicadas
+      recipe: "%{title}"
     new:
-      add_tags: Add tags
-      add_your_tags_separated_by_commas: Add your tags separated by commas
-      create_recipe: Create recipe
-      description: Description
-      direction: Direction
-      markdown_syntax_friendly_area: Markdown syntax friendly area
-      photo: Photo
-      subtitle: Subtitle
-      title: Title
-      youtube_video_link: Youtube video link
+      add_tags: Agregar etiquetas
+      add_your_tags_separated_by_commas: Agregue sus etiquetas separadas por comas
+      create_recipe: Crear receta
+      description: Descripción
+      direction: Dirección
+      markdown_syntax_friendly_area: Área amigable de sintaxis de Markdown
+      photo: Foto
+      subtitle: Subtitular
+      title: Título
+      youtube_video_link: Enlace de video de Youtube
     show:
-      comments: Comments
-      edit_recipe: Edit recipe
-      recipe_published_by: Recipe published by
-      related_recipes: Related recipes
+      comments:
+        one: 1 comentario
+        other: "%{count} comentarios"
+        zero: Sin comentarios
+      edit_recipe: Editar receta
+      recipe_published_by: Receta publicada por
+      related_recipes: Recetas relacionadas
   replies:
     create:
-      comments: Comments
-      replies: Replies
+      comments: Comentarios
+      replies: Respuestas
     destroy:
-      comments: Comments
-      replies: Replies
+      comments: Comentarios
+      replies: Respuestas
     form:
-      add_a_public_reply: Add a public reply
-      reply: Reply
+      add_a_public_reply: Agregar una respuesta pública
+      reply: Respuesta
     show:
-      are_you_sure: Are you sure
-      days_ago: Days ago
-      delete_html: Delete html
-      hours_ago: Hours ago
-      minutes_ago: Minutes ago
-      months_ago: Months ago
-      seconds_ago: Seconds ago
-      weeks_ago: Weeks ago
-      years_ago: Years ago
+      are_you_sure: "¿Estas seguro?"
+      days_ago: Hace días
+      delete_html: <i class="far fa-trash-alt text-body"></i>
+      hours_ago:
+        one: 1 hour ago
+        other: "%{count} hours ago"
+        zero: No hour
+      minutes_ago: Hace minutos
+      months_ago: Hace meses
+      seconds_ago: Hace segundos
+      weeks_ago: Hace semanas
+      years_ago: Hace años que
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
       recipes: Recetas
-      sign_up: Sign up
+      sign_up: Regístrate
     card-small:
-      name: Name
-      recipe: Recipe
+      name: Nombre
+      recipe: "%{title}"
     footer:
-      community: Community
-      community_link: Community link
+      community: Comunidad
+      community_link: comunidad
       cuisinier_rebelle: Cuisinier rebelle
-      discover: Discover
-      experiences: Experiences
-      experiences_link: Experiences link
-      help: Help
-      help_link: Help link
+      discover: Descubrir
+      experiences: Experiencias
+      experiences_link: experiencias
+      help: Ayuda
+      help_link: ayuda
       legal: Legal
       made_with_love_by_html: Hecho con <i class="fas fa-heart text-danger"></i> por
         Cuisinier Rebelle
-      news: News
-      news_link: News link
-      policies: Policies
-      policies_link: Policies link
-      privacy: Privacy
-      privacy_link: Privacy link
-      recipes: Recipes
-      site_map: Site map
-      site_map_link: Site map link
-      terms: Terms
-      terms_link: Terms link
+      news: Noticias
+      news_link: noticias
+      policies: Políticas
+      policies_link: politicas
+      privacy: Intimidad
+      privacy_link: intimidad
+      recipes: Recetas
+      site_map: Mapa del sitio
+      site_map_link: mapa-del-sitio
+      terms: Condiciones
+      terms_link: condiciones
     header:
-      cooking_recipes_and_more: Cooking recipes and more
-      cuisinier_rebelle_social_recipe: Cuisinier rebelle, recetas sociales!
+      cooking_recipes_and_more: Recetas de cocina y más
+      cuisinier_rebelle_social_recipe: cuisinier rebelle, receta socials!
     navbar-large:
       admin: Admin
-      are_you_sure: Are you sure
+      are_you_sure: "¿Estas seguro?"
       bookmarks: Favoritos
       conversion: Tabla de conversión
       cuisinier_rebelle: Cuisinier rebelle
-      following: Following
+      following: Siguiendo
       inbox: Mensajes
       languages_html: <i class="fas fa-language"></i>
       log_out: Cerrar sesión
-      new_recipe: New recipe
+      new_recipe: Nueva receta
       recipes: Recetas
       settings: Configuración
       sign_in: Iniciar sesión
       tools: Equipo de cocina
     navbar-small:
-      cuisinier_rebelle_html: Cuisinier rebelle html
-      search_btn_html: Search btn html
-      share_btn_html: Share btn html
+      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
+      search_btn_html: <i class="fas fa-search"></i>
+      share_btn_html: <i class="fas fa-share-alt"></i>
     navbar-small-modal:
-      are_you_sure: Are you sure
-      bookmarks: Bookmarks
-      conversion: Conversion
-      following: Following
+      are_you_sure: "¿Estas seguro?"
+      bookmarks: Favoritos
+      conversion: Tabla de conversión
+      following: Siguiendo
       index: Index
-      languages: Languages
-      log_out: Log out
-      new_recipe: New recipe
-      recipes: Recipes
-      settings: Settings
-      sign_in: Sign in
-      tools: Tools
+      languages: Idiomas
+      log_out: Cerrar sesión
+      new_recipe: Nueva receta
+      recipes: Recetas
+      settings: Configuraciones
+      sign_in: Registrarse
+      tools: Herramientas de cocina
   user_mailer:
     welcome:
-      greeting: Welcome %{recipient}
-      see_ya: See ya
-      welcome_message: Welcome message
+      greeting: Bienvenido %{recipient}
+      see_ya: Nos vemos
+      welcome_message: Nos complace darle la bienvenida a nuestra familia de cocineros
+        rebeldes. Siéntete libre de compartir algo genial con todo!
   users:
     confirmations:
       new:
@@ -425,7 +467,7 @@ es:
         currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion
           de: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea cambiarla
-        title: Editar %{resource}
+        title: Editarar %{resource}
         unhappy: "¿Disconforme?"
         update: Actualizar
         we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña
@@ -445,24 +487,24 @@ es:
         sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
     show:
-      created_at: Created at
-      edit_user_registration: Edit user registration
+      created_at: Creado en
+      edit_user_registration: Editar user registration
       email: Email
       follower:
         one: Un seguidor
         other: "%{count} seguidores"
         zero: Sin seguidor
-      full_name: Full name
-      published_recipes: Published recipes
+      full_name: Nombre completo
+      published_recipes: Recetas publicadas
       subscribe_to_newsletter: Suscríbase al boletín
-      updated_at: Updated at
+      updated_at: Actualizado en
       verified: Auditado
       verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
     user:
-      follow: Follow
-      unfollow: Unfollow
+      follow: Seguir
+      unfollow: Dejar de seguir
       verified: Auditado
       verified_html: <i class="fas fa-check-circle text-muted"></i>

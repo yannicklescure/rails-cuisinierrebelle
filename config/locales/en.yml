@@ -116,7 +116,6 @@ en:
         dashboard: Dashboard
         new_page: New page
         recipes: Recipes
-        replies: Replies
         spam: Spam
         users: Users
     spam:
@@ -527,7 +526,7 @@ en:
     navbar-small-modal:
       are_you_sure: Are you sure?
       bookmarks: Bookmarks
-      conversion: Conversion
+      conversion: Conversion table
       following: Following
       index: Index
       languages: Languages

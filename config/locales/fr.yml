@@ -4,111 +4,111 @@ fr:
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   admin:
     comments:
-      are_you_sure: Are you sure?
+      are_you_sure: Êtes-vous sûr?
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       public: Public
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
     index:
       comments: Commentaires
       recipes: Recettes
-      users: Utilisateurs
+      users: UtIlisateurs
     recipes:
       action: Action
-      are_you_sure: Are you sure?
+      are_you_sure: Êtes-vous sûr?
       bookmarks: Favoris
       comments: Commentaires
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
-      likes: Likes
+      likes: J'aime
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       photo: Photo
       published_date: Date de publication
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       title: Titre
-      user: Utilisateur
+      user: UtIlisateur
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
     replies:
-      are_you_sure: Are you sure?
+      are_you_sure: Êtes-vous sûr?
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       public: Public
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
     shared:
       navbar-admin:
@@ -116,50 +116,49 @@ fr:
         dashboard: Tableau de bord
         new_page: Créer page
         recipes: Recettes
-        replies: Réponses
         spam: Spam
-        users: Utilisateurs
+        users: UtIlisateurs
     spam:
-      are_you_sure: Are you sure?
+      are_you_sure: Êtes-vous sûr?
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       not_spam: Not spam
       public: Public
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
     users:
       bookmarks: Favoris
       comments: Commentaires
-      email: Courriel
+      email: Email
       followers: Abonnés
       following: Abonnements
       full_name: Nom complet
-      likes: Likes
+      likes: J'aime
       published_recipes: Recettes publiées
   application:
     user_not_authorized:
@@ -180,52 +179,52 @@ fr:
       add_a_public_comment: Ajouter un commentaire public...
     replies:
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       public: Public
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
     show:
       are_you_sure: Êtes-vous sûr ?
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       replies:
         one: 1 réponse
@@ -233,16 +232,16 @@ fr:
         zero: zéro réponse
       reply: Répondre
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
   date:
     formats:
@@ -253,32 +252,30 @@ fr:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
     mailer:
       confirmation_instructions:
-        action: Confirmer mon courriel
-        greeting: Bienvenue %{recipient},
-        instruction: 'Vous pouvez confirmer votre courriel grâce au lien ci-dessous
-          :'
+        action: Confirm my account
+        greeting: Welcome %{recipient},
+        instruction: 'You can confirm your account email through the link below:'
       email_changed:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous notifier que votre adresse de courriel
-          a été changée en %{email}.
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your email has been changed
+          to %{email}.
       password_change:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous notifier que votre mot de passe a
-          été modifié.
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your password has been changed.
       reset_password_instructions:
-        action: Changer mon mot de passe
-        greeting: Bonjour %{recipient} !
-        instruction: 'Quelqu''un a demandé un lien pour changer votre mot de passe,
-          le voici :'
-        instruction_2: Si vous n'avez pas émis cette demande, merci d'ignorer ce courriel.
-        instruction_3: Votre mot de passe ne changera pas tant que vous n'aurez pas
-          cliqué sur ce lien et renseigné un nouveau mot de passe.
+        action: Change my password
+        greeting: Hello %{recipient}!
+        instruction: Someone has requested a link to change your password. You can
+          do this through the link below.
+        instruction_2: If you didn't request this, please ignore this email.
+        instruction_3: Your password wont change until you access the link above and
+          create a new one.
       unlock_instructions:
-        action: Débloquer mon compte
-        greeting: Bonjour %{recipient} !
-        instruction: 'Suivez ce lien pour débloquer votre compte :'
-        message: Votre compte a été bloqué suite à un nombre d'essais de connexions
-          manquées trop important.
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: 'Click the link below to unlock your account:'
+        message: Your account has been locked due to an excessive number of unsuccessful
+          sign in attempts.
     passwords:
       edit:
         change_my_password: Changer mon mot de passe
@@ -293,7 +290,8 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
+        currently_waiting_confirmation_for_email: 'Currently waiting confirmation
+          for: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le
           laisser inchangé
         title: Éditer %{resource}
@@ -339,7 +337,7 @@ fr:
     form:
       search: Rechercher
     index:
-      most_used_tags: Tags les plus utilisés
+      most_used_tags: Tags les plus utIlisés
       no_result_html: Aucun résultat...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recettes récentes
   layouts:
@@ -359,15 +357,15 @@ fr:
       cup: Tasse
       ingredients_in_grams: Poids des ingrédients courants
       margarine: Margarine
-      milk: Lait
+      milk: Milk
       oat: Avoine
       pastry_flour_t45: Farine à patisserie T45
-      powder_milk: Lait en poudre
+      powder_milk: Powder milk
       powdered_sugar: Sucre glace non tamisé
       print: Imprimer
-      table_spoon: Cuillière à soupe
+      table_spoon: CuIllière à soupe
       tbsp: Cas
-      tea_spoon: Cuillière à café
+      tea_spoon: CuIllière à café
       tsp: Cac
       uncooked_rice: Riz sec, avant cuisson
       unsalted_butter: Beurre sans sel
@@ -439,33 +437,33 @@ fr:
     show:
       are_you_sure: Êtes-vous sûr ?
       days_ago:
-        one: il y a 1 jour
-        other: il y a %{count} jours
+        one: Il y a 1 jour
+        other: Il y a %{count} jours
         zero: zéro jour
       delete_html: <i class="far fa-trash-alt text-body"></i>
       hours_ago:
-        one: il y a 1 heure
-        other: il y a %{count} heures
+        one: Il y a 1 heure
+        other: Il y a %{count} heures
         zero: zéro heure
       minutes_ago:
-        one: il y a 1 minute
-        other: il y a %{count} minutes
+        one: Il y a 1 minute
+        other: Il y a %{count} minutes
         zero: zéro minute
       months_ago:
-        one: il y a 1 mois
-        other: il y a %{count} mois
+        one: Il y a 1 mois
+        other: Il y a %{count} mois
         zero: zéro mois
       seconds_ago:
-        one: il y a 1 seconde
-        other: il y a %{count} secondes
+        one: Il y a 1 seconde
+        other: Il y a %{count} secondes
         zero: zéro seconde
       weeks_ago:
-        one: il y a 1 semaine
-        other: il y a %{count} semaines
+        one: Il y a 1 semaine
+        other: Il y a %{count} semaines
         zero: zéro semaine
       years_ago:
-        one: il y a 1 an
-        other: il y a %{count} ans
+        one: Il y a 1 an
+        other: Il y a %{count} ans
         zero: zéro an
   shared:
     banner:
@@ -517,7 +515,7 @@ fr:
       sign_in: Connexion
       tools: Matériel de cuisine
     navbar-small:
-      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
+      cuisinier_rebelle_html: <i class="fas fa-utensIls"></i>&nbsp;Cuisinier Rebelle
       search_btn_html: <i class="fas fa-search"></i>
       share_btn_html: <i class="fas fa-share-alt"></i>
     navbar-small-modal:
@@ -535,43 +533,40 @@ fr:
       tools: Matériel de cuisine
   user_mailer:
     welcome:
-      greeting: Soyez le bienvenu %{recipient}
-      see_ya: À bientôt
-      welcome_message: Nous sommes heureux de vous accueillir dans notre famille de
-        cuisiniers rebelles. N'hésitez pas à partager quelque chose de génial avec
-        tous!
+      greeting: Welcome %{recipient},
+      see_ya: See ya
+      welcome_message: We are pleased to welcome you in our family of rebel cooks.
+        Feel free to share some awesomeness with all!
   users:
     confirmations:
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
     mailer:
       confirmation_instructions:
-        action: Confirmer mon courriel
-        greeting: Bienvenue %{recipient},
-        instruction: 'Vous pouvez confirmer votre courriel grâce au lien ci-dessous
-          :'
+        action: Confirm my account
+        greeting: Welcome %{recipient},
+        instruction: 'You can confirm your account email through the link below:'
       email_changed:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous notifier que votre adresse de courriel
-          a été changée en %{email}.
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your email has been changed
+          to %{email}.
       password_change:
-        greeting: Bonjour %{recipient} !
-        message: Nous vous contactons pour vous notifier que votre mot de passe a
-          été modifié.
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your password has been changed.
       reset_password_instructions:
-        action: Changer mon mot de passe
-        greeting: Bonjour %{recipient} !
-        instruction: 'Quelqu''un a demandé un lien pour changer votre mot de passe,
-          le voici :'
-        instruction_2: Si vous n'avez pas émis cette demande, merci d'ignorer ce courriel.
-        instruction_3: Votre mot de passe ne changera pas tant que vous n'aurez pas
-          cliqué sur ce lien et renseigné un nouveau mot de passe.
+        action: Change my password
+        greeting: Hello %{recipient}!
+        instruction: Someone has requested a link to change your password. You can
+          do this through the link below.
+        instruction_2: If you didn't request this, please ignore this email.
+        instruction_3: Your password wont change until you access the link above and
+          create a new one.
       unlock_instructions:
-        action: Débloquer mon compte
-        greeting: Bonjour %{recipient} !
-        instruction: 'Suivez ce lien pour débloquer votre compte :'
-        message: Votre compte a été bloqué suite à un nombre d'essais de connexions
-          manquées trop important.
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: 'Click the link below to unlock your account:'
+        message: Your account has been locked due to an excessive number of unsuccessful
+          sign in attempts.
     passwords:
       edit:
         change_my_password: Changer mon mot de passe
@@ -586,7 +581,8 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
+        currently_waiting_confirmation_for_email: Currently waiting confirmation for
+          %{email}
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le
           laisser inchangé
         title: Éditer %{resource}
@@ -611,8 +607,8 @@ fr:
         sign_up: Inscription
     show:
       created_at: Date de création
-      edit_user_registration: Éditer Utilisateur
-      email: Adresse courriel
+      edit_user_registration: Éditer UtIlisateur
+      email: Email
       follower:
         one: Un abonné
         other: "%{count} abonnés"
