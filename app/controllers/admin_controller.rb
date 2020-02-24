@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :set_spam
 
   def index
     # @users = policy_scope(User).where.not(id: current_user.id)
@@ -29,6 +30,11 @@ class AdminController < ApplicationController
   end
 
   def spam
+  end
+
+  private
+
+  def set_spam
     @spams = []
     comments = Comment.where(spam: true)
     @spams += comments.map { |message| message }

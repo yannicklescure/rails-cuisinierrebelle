@@ -37,7 +37,7 @@
       <%= link_to reply.comment.recipe.title, recipe_path(reply.comment.recipe), class: 'text-body' %>
     </div>
     <div class="col-1">
-      <%= link_to t('.delete'), recipe_comment_reply_path(reply.comment.recipe, reply.comment, reply, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+      <%= link_to t('.delete'), recipe_comment_reply_path(reply.comment.recipe, reply.comment, reply, data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
     </div>
   </div>
   <% end %>

@@ -45,10 +45,10 @@
     <div class="col-1">
     <% if message.class.name == "Reply" %>
       <%= link_to t('.not_spam'), reply_spam_path(message), method: :post, data: { confirm: t(".are_you_sure") }, remote: true, class: 'text-body' %><br>
-      <%= link_to t('.delete'), recipe_comment_reply_path(message.comment.recipe, message.comment, message, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+      <%= link_to t('.delete'), recipe_comment_reply_path(message.comment.recipe, message.comment, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
     <% else %>
       <%= link_to t('.not_spam'), comment_spam_path(message), method: :post, data: { confirm: t(".are_you_sure") }, remote: true, class: 'text-body' %><br>
-      <%= link_to t('.delete'), recipe_comment_path(message.recipe, message, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+      <%= link_to t('.delete'), recipe_comment_path(message.recipe, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
     <% end %>
     </div>
   </div>

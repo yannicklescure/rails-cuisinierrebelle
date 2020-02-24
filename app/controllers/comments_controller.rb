@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_admin, :set_spam, only: [:destroy]
+
   def new
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
@@ -49,12 +51,15 @@ class CommentsController < ApplicationController
 
   def destroy
     # @admin = params[:admin] == 'true'
-    @admin = current_user.admin
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:id])
     authorize @comment
-    @comment.destroy
     # redirect_to recipe_path(@recipe)
+    # binding.pry
+    if @comment.replies.any?
+      @replies_spam = @comment.replies.map { |reply| reply if reply.spam }
+    end
+    @comment.destroy
     respond_to do |format|
       format.js
     end
@@ -71,6 +76,19 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def set_admin
+    @admin = current_user.admin
+  end
+
+  def set_spam
+    @spams = []
+    comments = Comment.where(spam: true)
+    @spams += comments.map { |message| message }
+    replies = Reply.where(spam: true)
+    @spams += replies.map { |message| message }
+  end
+
   def comment_params
     params.require(:comment).permit(:content)
   end

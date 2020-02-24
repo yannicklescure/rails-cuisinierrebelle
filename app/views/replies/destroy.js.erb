@@ -2,6 +2,10 @@ if(<%= @admin %>) {
   // console.log(`destroy ${<%= @reply.id %>}`);
   reply = document.querySelector(`#reply-${<%= @reply.id %>}`);
   reply.remove();
+  <% if @spams.count == 1 %>
+  navbarBtn = document.querySelector('#spam');
+  navbarBtn.classList.remove('text-danger');
+  <% end %>
 } else {
   // console.log(`destroy reply #${<%= @reply.id %>}`);
   reply = document.querySelector(`#reply-${<%= @reply.id %>}`);

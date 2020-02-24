@@ -1,4 +1,6 @@
 class RepliesController < ApplicationController
+  before_action :set_admin, :set_spam, only: [:destroy]
+
   def new
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
@@ -74,6 +76,19 @@ class RepliesController < ApplicationController
   end
 
   private
+
+  def set_spam
+    @spams = []
+    comments = Comment.where(spam: true)
+    @spams += comments.map { |message| message }
+    replies = Reply.where(spam: true)
+    @spams += replies.map { |message| message }
+  end
+
+  def set_admin
+    @admin = current_user.admin
+  end
+
   def reply_params
     params.require(:reply).permit(:content)
   end
