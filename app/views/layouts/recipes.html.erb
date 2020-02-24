@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= t('.cuisinier_rebelle_social_recipe') %></title>
+    <title><%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <!-- Facebook -->
     <meta property="fb:app_id" content="570259036897585" />
     <meta property="og:site_name" content="Cuisinier Rebelle" />
-    <meta property="og:title" content="<%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %>" />
+    <meta property="og:title" content="<%= @recipe.title.capitalize %>" />
     <meta property="og:description" content="<%= @recipe.description %>" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
@@ -19,7 +19,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@cuisinierrebelle">
     <meta name="twitter:creator" content="@cuisinierrebelle">
-    <meta name="twitter:title" content="<%= "#{t('.cuisinier_rebelle_social_recipe')} - #{@recipe.title.capitalize}" %>">
+    <meta name="twitter:title" content="<%= @recipe.title.capitalize %>">
     <meta name="twitter:description" content="<%= @recipe.description %>">
     <meta name="twitter:image" content="<%= image_url @recipe.photo.url(:open_graph), secure: true %>">
     <!-- Languages for Google SEO -->
