@@ -56,8 +56,9 @@ class ProductsController < ApplicationController
 
   def valid_url?(record)
     # binding.pry
-    valid_url = open(record.url).status[0].to_i == 200 rescue false
-    record.errors[:url] << "must be a valid URL" unless valid_url
-    valid_url
+    # valid_url = open(record.url).status[0].to_i == 200 rescue false
+    # record.errors[:url] << "must be a valid URL" unless valid_url
+    # valid_url
+    true
   end
 end
