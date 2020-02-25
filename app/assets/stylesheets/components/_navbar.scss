@@ -21,9 +21,12 @@
   .nav-item {
     color: $text-muted;
   }
-  .nav-item:hover > * {
+
+  a {
+    text-decoration: none;
+  }
+  .nav-item:hover {
     color: $text-body;
-    cursor: pointer;
   }
 
   .nav-item.active {

@@ -1,40 +1,43 @@
 <div class="navbar navbar-light sticky-top p-0 pt-3" style="top:59px">
   <div class="navbar-nav d-flex w-100 flex-column align-items-start admin">
-    <div id="dashboard" class="d-flex w-100 align-items-center nav-item" style="padding-bottom: 12px;">
-      <div class="text-center" style="width:32px">
+    <% link_class = 'd-flex w-100 nav-item align-items-center' %>
+    <%= link_to admin_path(), id: 'dashboard', class: link_class, style: 'padding: 0 0 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-cog"></i>
       </div>
-      <%= link_to t('.dashboard'), admin_path(), class: 'nav-link p-0' %>
-    </div>
-    <div id="users" class="d-flex w-100 align-items-center nav-item" style="padding: 12px 0;">
-      <div class="text-center" style="width:32px">
+      <%= t('.dashboard') %>
+    <% end %>
+    <%= link_to admin_users_path(), id: 'users', class: link_class, style: 'padding: 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-users"></i>
       </div>
-      <%= link_to t('.users'), admin_users_path(), class: 'nav-link p-0' %>
-    </div>
-    <div id="recipes" class="d-flex w-100 align-items-center nav-item" style="padding: 12px 0;">
-      <div class="text-center" style="width:32px">
+      <%= t('.users') %>
+    <% end %>
+    <%= link_to admin_recipes_path(), id: 'recipes', class: link_class, style: 'padding: 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-utensils"></i>
       </div>
-      <%= link_to t('.recipes'), admin_recipes_path(), class: 'nav-link p-0' %>
-    </div>
-    <div id="comments" class="d-flex w-100 align-items-center nav-item" style="padding: 12px 0;">
-      <div class="text-center" style="width:32px">
+      <%= t('.recipes') %>
+    <% end %>
+    <%= link_to admin_comments_path(), id: 'comments', class: link_class, style: 'padding: 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-comment-alt"></i>
       </div>
-      <%= link_to t('.comments'), admin_comments_path(), class: 'nav-link p-0' %>
-    </div>
-    <div id="spam" class="d-flex w-100 align-items-center nav-item <%= "text-danger" if @spams.count.positive? %>" style="padding: 12px 0;">
-      <div class="text-center" style="width:32px">
+      <%= t('.comments') %>
+    <% end %>
+    <% spam_class = link_class %>
+    <% spam_class += ' text-danger' if @spams.count.positive? %>
+    <%= link_to admin_spam_path(), id: 'spam', class: spam_class, style: 'padding: 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-times-circle"></i>
       </div>
-      <%= link_to t('.spam'), admin_spam_path(), class: 'nav-link p-0' %>
-    </div>
-    <div class="d-flex w-100 align-items-center nav-item" style="padding: 12px 0;">
-      <div class="text-center" style="width:32px">
+      <%= t('.spam') %>
+    <% end %>
+    <%= link_to new_page_path(), id: 'spam', class: link_class, style: 'padding: 12px 0;' do %>
+      <div class="text-center" style="width: 32px">
         <i class="fas fa-file-alt"></i>
       </div>
-      <%= link_to t('.new_page'), new_page_path(), class: 'nav-link p-0' %>
-    </div>
+      <%= t('.new_page') %>
+    <% end %>
   </div>
 </div>
