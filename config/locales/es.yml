@@ -79,6 +79,7 @@ es:
         comments: Comentarios
         dashboard: Tablero
         new_page: Nueva pagina
+        new_product: New product
         recipes: Recetas
         spam: Spam
         users: Usuarios
@@ -285,7 +286,19 @@ es:
     show:
       edit: Editar
     tools:
+      disclaimer: Descargo de responsabilidad
+      disclaimer_html: Esta página contiene enlaces de afiliados. Si hace clic y realiza
+        una compra, podemos recibir una comisión (sin costo adicional para usted).
+        Gracias por su apoyo de esta manera.
       tools: Equipo de cocina
+  products:
+    form:
+      create_page: Create page
+      description: Description
+      link: Link
+      photo: Photo
+      title: Title
+      url: Url
   recipes:
     edit:
       add_tags: Agregar etiquetas
@@ -350,6 +363,10 @@ es:
       banner_subtitle: Recetas de cocina y otras cosas
       recipes: Recetas
       sign_up: Regístrate
+    card-product:
+      edit: Edit
+      more_details_html: Más detalles <i class="fas fa-external-link-alt"></i>
+      purchase: Comprar
     card-small:
       name: Nombre
       recipe: "%{title}"

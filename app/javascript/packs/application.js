@@ -8,10 +8,11 @@ import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 import { lazyLoad } from "../components/lazy-load";
 import { btnClick } from "../components/button";
-import { mailchimp } from "../services/mailchimp";
 import { replyForms } from "../components/reply";
 import { viewReplies } from "../components/reply";
 import { repliesReply } from "../components/reply";
+import { alerts } from "../components/alerts";
+import { mailchimp } from "../services/mailchimp";
 
 if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', () => window.print());
 if(document.querySelector('.notice') != null) flashes();
@@ -31,6 +32,10 @@ const cookies = cookiesToObject(document.cookie);
 const navbarBrand = document.querySelector(".navbar-brand");
 if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
+}
+
+if (currentController === 'tools') {
+  alerts();
 }
 
 if (currentController === 'admin' && userSignedIn) {

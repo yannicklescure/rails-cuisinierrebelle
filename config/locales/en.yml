@@ -115,6 +115,7 @@ en:
         comments: Comments
         dashboard: Dashboard
         new_page: New page
+        new_product: New product
         recipes: Recipes
         spam: Spam
         users: Users
@@ -380,7 +381,19 @@ en:
     show:
       edit: Edit
     tools:
+      disclaimer: Disclaimer
+      disclaimer_html: This page contains affiliate links. If you click through and
+        make a purchase, we may receive a commission (at no additional cost to you).
+        Thanks for your support in this way.
       tools: Kitchen tools
+  products:
+    form:
+      create_page: Create page
+      description: Description
+      link: Link
+      photo: Photo
+      title: Title
+      url: Url
   recipes:
     edit:
       add_tags: Add tags
@@ -475,6 +488,10 @@ en:
       banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
+    card-product:
+      edit: Edit
+      more_details_html: More details <i class="fas fa-external-link-alt"></i>
+      purchase: Purchase
     card-small:
       name: "%{name}"
       recipe: "%{title}"

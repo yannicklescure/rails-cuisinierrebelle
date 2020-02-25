@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post 'replies/:id/spam', to: 'replies#spam', as: :reply_spam
 
     resources :pages, except: [:index]
+    resources :products, except: [:index, :show]
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :recipes do

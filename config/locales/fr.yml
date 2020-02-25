@@ -115,6 +115,7 @@ fr:
         comments: Commentaires
         dashboard: Tableau de bord
         new_page: Créer page
+        new_product: New product
         recipes: Recettes
         spam: Spam
         users: UtIlisateurs
@@ -378,7 +379,19 @@ fr:
     show:
       edit: Edit
     tools:
+      disclaimer: Avertissement
+      disclaimer_html: Cette page contient des liens d'affiliation. Si vous cliquez
+        et effectuez un achat, nous pouvons recevoir une commission (sans frais supplémentaires
+        pour vous). Merci pour votre soutien de cette manière.
       tools: Matériel de cuisine
+  products:
+    form:
+      create_page: Create page
+      description: Description
+      link: Link
+      photo: Photo
+      title: Title
+      url: Url
   recipes:
     edit:
       add_tags: Ajouter des tags
@@ -470,6 +483,10 @@ fr:
       banner_subtitle: Recettes de cuisine et plus
       recipes: Recettes
       sign_up: Inscription
+    card-product:
+      edit: Edit
+      more_details_html: Voir détails <i class="fas fa-external-link-alt"></i>
+      purchase: Acheter
     card-small:
       name: "%{name}"
       recipe: "%{title}"

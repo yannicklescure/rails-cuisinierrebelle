@@ -57,6 +57,7 @@ class PagesController < ApplicationController
 
   def tools
     @bookmarks = Bookmark.where(user: current_user)
+    @products = Product.all
   end
 
   private

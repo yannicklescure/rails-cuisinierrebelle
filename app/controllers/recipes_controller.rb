@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @admin = params[:admin] == 'true'
+    @admin = current_user.admin
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
     @recipe.remove_photo
