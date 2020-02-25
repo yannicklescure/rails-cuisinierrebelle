@@ -9,7 +9,7 @@
       <% if user_signed_in? && current_user.admin %>
         <%= link_to t('.edit'), edit_product_path(product), class: 'btn btn-sm btn-warning' %>
       <% else %>
-        <%= link_to t('.more_details_html'), product.url, class: 'btn btn-sm btn-info', target: '_blank' %>
+        <%= link_to t('.more_details_html').html_safe, product.url, class: 'btn btn-sm btn-info', target: '_blank' %>
       <% end %>
     </div>
   </div>
