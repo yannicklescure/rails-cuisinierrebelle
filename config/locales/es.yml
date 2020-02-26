@@ -365,7 +365,7 @@ es:
       sign_up: Regístrate
     card-product:
       edit: Edit
-      more_details_html: Más detalles
+      more_details_html: "Más detalles <span style=\"font-size: 90%;\"><i class=\"fas fa-external-link-alt\"></i></span>"
       purchase: Comprar
     card-small:
       name: Nombre

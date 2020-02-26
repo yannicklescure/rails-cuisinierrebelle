@@ -490,7 +490,7 @@ en:
       sign_up: Sign up
     card-product:
       edit: Edit
-      more_details_html: More details
+      more_details_html: "More details <span style=\"font-size: 90%;\"><i class=\"fas fa-external-link-alt\"></i></span>"
       purchase: Purchase
     card-small:
       name: "%{name}"
