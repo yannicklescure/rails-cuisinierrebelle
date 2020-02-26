@@ -42,11 +42,11 @@
               <% end %>
           </div>
           <div class="d-flex align-items-center">
-            <% if recipe.comments.any? %>
-              <%= link_to raw('<i class="fas fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
-            <% else %>
+            <%# if recipe.comments.any? %>
+              <%#= link_to raw('<i class="fas fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
+            <%# else %>
               <%= link_to raw('<i class="far fa-comment-alt"></i>'), "#{recipe_path(recipe)}#comments", class: 'p-0 ml-3 text-body text-decoration-none' %>
-            <% end %>
+            <%# end %>
             <%#= link_to raw('<i class="fas fa-share-alt"></i>'), new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' %>
             <%= link_to raw('<i class="far fa-bookmark"></i>'), new_user_session_path, class: 'p-0 ml-3 text-body text-decoration-none' %>
           </div>
