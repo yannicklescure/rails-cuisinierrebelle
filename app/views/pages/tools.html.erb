@@ -18,7 +18,7 @@
   </div>
 
   <div class="row py-3 m-0">
-    <% @products.order('created_at DESC').each do |product| %>
+    <% @products.order('updated_at DESC').each do |product| %>
       <%= render 'shared/card-product', product: product %>
     <% end %>
   </div>
