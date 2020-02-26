@@ -485,7 +485,7 @@ fr:
       sign_up: Inscription
     card-product:
       edit: Edit
-      more_details_html: Voir&nbsp;détails&nbsp;<i class="fas fa-external-link-alt"></i>
+      more_details_html: Voir détails
       purchase: Acheter
     card-small:
       name: "%{name}"

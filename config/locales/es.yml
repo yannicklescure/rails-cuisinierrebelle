@@ -365,7 +365,7 @@ es:
       sign_up: Regístrate
     card-product:
       edit: Edit
-      more_details_html: Más&nbsp;detalles&nbsp;<i class="fas fa-external-link-alt"></i>
+      more_details_html: Más detalles
       purchase: Comprar
     card-small:
       name: Nombre
