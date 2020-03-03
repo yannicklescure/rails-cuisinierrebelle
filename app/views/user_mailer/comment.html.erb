@@ -14,7 +14,6 @@
   <div style="padding: 12px 0;"><%= link_to t('.reply'), "#{recipe_url(id: @recipe)}#comment-#{@comment.id}", style: "text-decoration: none" %></div>
 </p>
 <p>
-  <% binding.pry %>
   <small>
     <%= t('.disable_comment_html', url: user_url(id: @recipe.user)) %><br>
     <%= t('.copyright_html', year: Date.current.year) %>
