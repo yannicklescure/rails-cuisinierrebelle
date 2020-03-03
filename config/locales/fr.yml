@@ -551,13 +551,13 @@ fr:
       tools: Matériel de cuisine
   user_mailer:
     comment:
-      author: Author
+      author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Disable comment html
-      greeting: Greeting
-      new_comment: New comment
-      new_comment_content: New comment content
-      reply: Reply
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les paramètres de votre compte</a>.
+      greeting: Bonjour %{recipient},
+      new_comment: "%{author} a ajouté un commentaire à votre recette :"
+      new_comment_content: "%{content}"
+      reply: Répondre
     welcome:
       greeting: Welcome %{recipient},
       see_ya: See ya

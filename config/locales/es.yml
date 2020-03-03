@@ -431,13 +431,13 @@ es:
       tools: Herramientas de cocina
   user_mailer:
     comment:
-      author: Author
+      author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Disable comment html
-      greeting: Greeting
-      new_comment: New comment
-      new_comment_content: New comment content
-      reply: Reply
+      disable_comment_html: Si ya no desea recibir comentarios y correos electrónicos de respuesta, puede administrarlos en <a href="%{url}" target="_blank">la configuración de su cuenta</a>.
+      greeting: Hola %{recipient},
+      new_comment: "%{author} agregó un comentario a su receta :"
+      new_comment_content: "%{content}"
+      reply: Respuesta
     welcome:
       greeting: Bienvenido %{recipient}
       see_ya: Nos vemos
