@@ -1,5 +1,6 @@
-export const mailchimp = (init) => {
-  const btnSwitches = document.querySelectorAll('.mailchimp-switch');
+export const notification = (init) => {
+  // notification({url: 'api/v1/notification', user_id: userId});
+  const btnSwitches = document.querySelectorAll('.notification-switch');
   console.log(init);
   btnSwitches.forEach((btnSwitch) => {
     btnSwitch.addEventListener('change', (event)=> {
@@ -13,7 +14,7 @@ export const mailchimp = (init) => {
         }
       };
 
-      fetch(`${init.url}/${init.user_id}?user_subscription=${event.target.checked}`, options)
+      fetch(`${init.url}/${init.user_id}?notification=${event.target.checked}`, options)
       .then(response => response.json())
       .then(result => {
         // console.log(result);

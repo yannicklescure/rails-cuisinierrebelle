@@ -388,9 +388,10 @@ en:
       tools: Kitchen tools
   products:
     form:
+      are_you_sure: Are you sure
       create_page: Create page
+      delete: Delete
       description: Description
-      link: Link
       photo: Photo
       title: Title
       url: Url
@@ -490,8 +491,8 @@ en:
       sign_up: Sign up
     card-product:
       edit: Edit
-      more_details_html: "More details <span style=\"font-size: 90%;\"><i class=\"fas fa-external-link-alt\"></i></span>"
-      purchase: Purchase
+      more_details_html: 'More details <span style="font-size: 90%;"><i class="fas
+        fa-external-link-alt"></i></span>'
     card-small:
       name: "%{name}"
       recipe: "%{title}"
@@ -554,6 +555,16 @@ en:
       sign_in: Sign in
       tools: Tools
   user_mailer:
+    comment:
+      author: "%{author}:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: If you no longer wish to receive emails about comments
+        and replies, you can manage it in <a href="%{url}" target="_blank">your account
+        settings</a>.
+      greeting: Hello %{recipient},
+      new_comment: "%{author} commented on your recipe:"
+      new_comment_content: "%{content}"
+      reply: Reply
     welcome:
       greeting: Welcome %{recipient},
       see_ya: See ya
@@ -634,6 +645,8 @@ en:
         zero: No follower
       full_name: Full name
       published_recipes: Published recipes
+      receive_emails_about_comments_and_replies: Receive emails about comments and
+        replies
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Checked

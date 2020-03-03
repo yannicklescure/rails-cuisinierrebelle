@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
       # binding.pry
     end
     if @comment.save
+      UserMailer.with(recipe: @recipe, comment: @comment).comment.deliver_now if @recipe.user.notification
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
         format.html { render 'comments/show' }

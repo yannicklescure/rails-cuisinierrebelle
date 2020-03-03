@@ -13,6 +13,7 @@ import { viewReplies } from "../components/reply";
 import { repliesReply } from "../components/reply";
 import { alerts } from "../components/alerts";
 import { mailchimp } from "../services/mailchimp";
+import { notification } from "../services/notification";
 
 if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', () => window.print());
 if(document.querySelector('.notice') != null) flashes();
@@ -66,13 +67,16 @@ if (currentController === null && !userSignedIn) {
 }
 
 if(currentController != null && currentController === 'users' && userSignedIn) {
-  const init = {
-    url: '/api/v1/mailchimp',
-    user_id: parseInt(document.querySelector('body').dataset.userId),
+  const userId = parseInt(document.querySelector('body').dataset.userId);
+  let init = {
+    user_id: userId,
     user_email: cookies.user_email,
     user_token: cookies.user_token
   }
+  init.url = '/api/v1/mailchimp';
   mailchimp(init);
+  init.url = '/api/v1/notification';
+  notification(init);
 }
 
 if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {

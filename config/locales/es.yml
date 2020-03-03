@@ -293,9 +293,10 @@ es:
       tools: Equipo de cocina
   products:
     form:
+      are_you_sure: Are you sure
       create_page: Create page
+      delete: Delete
       description: Description
-      link: Link
       photo: Photo
       title: Title
       url: Url
@@ -365,8 +366,8 @@ es:
       sign_up: Regístrate
     card-product:
       edit: Edit
-      more_details_html: "Más detalles <span style=\"font-size: 90%;\"><i class=\"fas fa-external-link-alt\"></i></span>"
-      purchase: Comprar
+      more_details_html: 'Más detalles <span style="font-size: 90%;"><i class="fas
+        fa-external-link-alt"></i></span>'
     card-small:
       name: Nombre
       recipe: "%{title}"
@@ -429,6 +430,14 @@ es:
       sign_in: Registrarse
       tools: Herramientas de cocina
   user_mailer:
+    comment:
+      author: Author
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: Disable comment html
+      greeting: Greeting
+      new_comment: New comment
+      new_comment_content: New comment content
+      reply: Reply
     welcome:
       greeting: Bienvenido %{recipient}
       see_ya: Nos vemos
@@ -513,6 +522,8 @@ es:
         zero: Sin seguidor
       full_name: Nombre completo
       published_recipes: Recetas publicadas
+      receive_emails_about_comments_and_replies: Receive emails about comments and
+        replies
       subscribe_to_newsletter: Suscríbase al boletín
       updated_at: Actualizado en
       verified: Auditado

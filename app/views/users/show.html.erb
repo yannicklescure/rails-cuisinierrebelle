@@ -34,11 +34,14 @@
       <td><%= @user.recipes.count %></td>
     </tr>
   </table>
-  <div class="custom-control custom-switch">
+  <div class="custom-control custom-switch mailchimp-switch">
     <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
     <label class="custom-control-label" for="mailchimpSwitch"><%= t('.subscribe_to_newsletter') %></label>
   </div>
-
+  <div class="custom-control custom-switch notification-switch">
+    <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
+    <label class="custom-control-label" for="notificationSwitch"><%= t('.receive_emails_about_comments_and_replies') %></label>
+  </div>
   <%= @langs %>
   <% else %>
   <div id="root" class="row py-3"<%= " data-bookmarks-count=\"#{@bookmarks.count}\"" if user_signed_in? %>>
