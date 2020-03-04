@@ -575,7 +575,7 @@ fr:
       new_reply: New reply
       new_reply_content: "%{content}"
       reply: Répondre
-      subject: "%{user} vous a repondu"
+      subject: "%{user} vous a répondu"
     welcome:
       greeting: Bienvenue %{recipient},
       see_ya: À bientôt
