@@ -1,21 +1,21 @@
 if(<%= @admin %>) {
-  // console.log(`#comment-${<%= @comment.id %>}`);
-  comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
-  comment.remove();
-  <% if @replies_spam %>
+  <% unless @replies_spam.nil? %>
     <% @replies_spam.each do |reply| %>
-    console.log(`#reply-${<%= reply.id %>}`);
+      // console.log(`#reply-${<%= reply.id %>}`);
       reply = document.querySelector(`#reply-${<%= reply.id %>}`);
-      reply.remove();
+      if(reply) reply.remove();
     <% end %>
   <% end %>
   <% if @spams.count == 1 %>
   navbarBtn = document.querySelector('#spam');
-  navbarBtn.classList.remove('text-danger');
+  if(navbarBtn) navbarBtn.classList.remove('text-danger');
   <% end %>
+  // console.log(`#comment-${<%= @comment.id %>}`);
+  comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
+  comment.remove();
 } else {
   comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
-  comment.classList.add('d-none');
+  if(comment) comment.remove();
   commentsCount = document.querySelector('#comments-count');
   <% count = 0 %>
   <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>

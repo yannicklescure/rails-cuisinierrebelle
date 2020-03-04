@@ -89,11 +89,10 @@
       <%# count = count_comments + count_replies %>
       <% @recipe.comments.each do |comment| %>
         <% if !comment.spam %>
-          <% count_replies = comment.replies.map { |reply| reply.spam ? 0 : count += 1 }.sum %>
+          <% comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
           <% count += 1 %>
         <% end %>
       <% end %>
-
       <%= t('.comments', count: count) %>
     </div>
     <% if user_signed_in? %>

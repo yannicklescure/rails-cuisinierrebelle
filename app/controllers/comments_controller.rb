@@ -58,7 +58,7 @@ class CommentsController < ApplicationController
     # redirect_to recipe_path(@recipe)
     # binding.pry
     if @comment.replies.any?
-      @replies_spam = @comment.replies.map { |reply| reply if reply.spam }
+      @replies_spam = @comment.replies.select{ |reply| reply.spam }.map { |r| r }
     end
     @comment.destroy
     respond_to do |format|

@@ -425,7 +425,10 @@ fr:
       title: Titre
       youtube_video_link: Lien video Youtube
     show:
-      comments: Commentaires
+      comments:
+        one: 1 commentaire
+        other: "%{count} commentaires"
+        zero: aucun commentaire
       edit_recipe: Editer la recette
       recipe_published_by: Recette publiée par
       related_recipes: Recettes associées
