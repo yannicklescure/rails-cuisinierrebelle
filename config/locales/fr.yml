@@ -247,6 +247,8 @@ fr:
   date:
     formats:
       default: "%d/%m/%Y"
+  destroy:
+    you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer cette action
   devise:
     confirmations:
       new:
