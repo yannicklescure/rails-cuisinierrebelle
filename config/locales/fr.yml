@@ -560,6 +560,15 @@ fr:
       new_comment: "%{author} a ajouté un commentaire à votre recette :"
       new_comment_content: "%{content}"
       reply: Répondre
+    reply:
+      author: Author
+      copyright_html: Copyright html
+      disable_comment_html: Disable comment html
+      greeting: Greeting
+      new_reply: New reply
+      new_reply_content: New reply content
+      replied_to_you: Replied to you
+      reply: Reply
     welcome:
       greeting: Welcome %{recipient},
       see_ya: See ya

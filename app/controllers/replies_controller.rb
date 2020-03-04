@@ -25,6 +25,13 @@ class RepliesController < ApplicationController
       # binding.pry
     end
     if @reply.save
+      users = []
+      users << @reply.comment.user
+      @reply.comment.replies.each { |reply| users << reply.user unless users.include?(reply.user) }
+      # binding.pry
+      users.each do |user|
+        UserMailer.with(recipe: @recipe, reply: @reply).reply.deliver_now if user.notification
+      end
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
         format.html { render 'replies/show' }

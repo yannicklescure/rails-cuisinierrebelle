@@ -10,7 +10,7 @@
     </div>
   </div>
   <strong><%= t('.author', author: @comment.user.name) %></strong>
-  <div style="padding: 12px;"><%= t('.new_comment_content', content: @comment.content) %></div>
+  <div style="padding: 12px 0;"><%= t('.new_comment_content', content: @comment.content) %></div>
   <div style="padding: 12px 0;"><%= link_to t('.reply'), "#{recipe_url(id: @recipe)}#comment-#{@comment.id}", style: "text-decoration: none" %></div>
 </p>
 <p>

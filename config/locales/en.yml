@@ -565,6 +565,17 @@ en:
       new_comment: "%{author} commented on your recipe:"
       new_comment_content: "%{content}"
       reply: Reply
+    reply:
+      author: "%{author}:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: If you no longer wish to receive emails about comments
+        and replies, you can manage it in <a href="%{url}" target="_blank">your account
+        settings</a>.
+      greeting: Hello %{recipient},
+      new_reply: "%{user} replied to your reply on %{author}'s comment"
+      new_reply_content: New reply content
+      replied_to_you: "%{user} replied to you"
+      reply: Reply
     welcome:
       greeting: Welcome %{recipient},
       see_ya: See ya
