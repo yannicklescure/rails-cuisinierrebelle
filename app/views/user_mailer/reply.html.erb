@@ -4,7 +4,8 @@
     <span style="margin-bottom: 12px;"><%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %></span><br>
     <%#= root_url[0...-1] + @recipe.photo.url(:full) %>
     <div style="padding: 16px 0;">
-      <%= image_tag root_url[0...-1] + @recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %>
+      <%#= image_tag root_url[0...-1] + @recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %>
+      <%= image_tag @recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %>
       <span style="padding: 0 16px;"><%= @recipe.title %></span>
     </div>
   </div>
