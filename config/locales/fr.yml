@@ -553,7 +553,9 @@ fr:
     comment:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les paramètres de votre compte</a>.
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires
+        et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les
+        paramètres de votre compte</a>.
       greeting: Bonjour %{recipient},
       new_comment: "%{author} a ajouté un commentaire à votre recette :"
       new_comment_content: "%{content}"
@@ -641,8 +643,8 @@ fr:
         zero: Pas d'abonné
       full_name: Nom complet
       published_recipes: Recettes publiées
-      receive_emails_about_comments_and_replies: Receive emails about comments and
-        replies
+      receive_emails_about_comments_and_replies: Être notifié par courriel des commentaires
+        et réponses
       subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Dernière mise à jour
       verified: Vérifié
