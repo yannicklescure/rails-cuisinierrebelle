@@ -254,7 +254,8 @@ en:
     formats:
       default: "%Y-%m-%d"
   destroy:
-    you_are_not_authorized_to_perform_this_action: You are not authorized to perform this action
+    you_are_not_authorized_to_perform_this_action: You are not authorized to perform
+      this action
   devise:
     confirmations:
       new:
@@ -567,6 +568,7 @@ en:
       new_comment: "%{author} commented on your recipe:"
       new_comment_content: "%{content}"
       reply: Reply
+      subject: New comment on "%{recipe}"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
@@ -576,8 +578,8 @@ en:
       greeting: Hello %{recipient},
       new_reply: "%{user} replied to your reply on %{author}'s comment"
       new_reply_content: New reply content
-      replied_to_you: "%{user} replied to you"
       reply: Reply
+      subject: "%{user} replied to you"
     welcome:
       greeting: Welcome %{recipient},
       see_ya: See ya

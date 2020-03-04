@@ -51,12 +51,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    # binding.pry
     # @admin = params[:admin] == 'true'
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:id])
     authorize @comment
     # redirect_to recipe_path(@recipe)
-    # binding.pry
     if @comment.replies.any?
       @replies_spam = @comment.replies.select{ |reply| reply.spam }.map { |r| r }
     end

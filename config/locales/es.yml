@@ -155,7 +155,8 @@ es:
     formats:
       default: "%d/%m/%Y"
   destroy:
-    you_are_not_authorized_to_perform_this_action: No tiene autorización para realizar esta acción
+    you_are_not_authorized_to_perform_this_action: No tiene autorización para realizar
+      esta acción
   devise:
     confirmations:
       new:
@@ -442,6 +443,7 @@ es:
       new_comment: "%{author} agregó un comentario a su receta :"
       new_comment_content: "%{content}"
       reply: Respuesta
+      subject: Nuevo comentario en "%{recipe}"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
@@ -451,8 +453,8 @@ es:
       greeting: Hola %{recipient},
       new_reply: "%{author} agregó un comentario a su receta :"
       new_reply_content: "%{content}"
-      replied_to_you: "%{user} te respondió"
       reply: Respuesta
+      subject: "%{user} te respondió"
     welcome:
       greeting: Bienvenido %{recipient}
       see_ya: Nos vemos

@@ -14,10 +14,10 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user.admin || record.user == user
+    user.admin || record.user == user
   end
 
   def spam?
-    record.user.admin
+    user.admin
   end
 end

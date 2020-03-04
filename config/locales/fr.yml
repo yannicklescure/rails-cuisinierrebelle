@@ -248,7 +248,8 @@ fr:
     formats:
       default: "%d/%m/%Y"
   destroy:
-    you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer cette action
+    you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer
+      cette action
   devise:
     confirmations:
       new:
@@ -566,6 +567,7 @@ fr:
       new_comment: "%{author} a ajouté un commentaire à votre recette :"
       new_comment_content: "%{content}"
       reply: Répondre
+      subject: Nouveau commentaire dans "%{recipe}"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
@@ -575,8 +577,8 @@ fr:
       greeting: Bonjour %{recipient},
       new_reply: New reply
       new_reply_content: "%{content}"
-      replied_to_you: "%{user} vous a repondu"
       reply: Répondre
+      subject: "%{user} vous a repondu"
     welcome:
       greeting: Bienvenue %{recipient},
       see_ya: À bientôt
