@@ -253,30 +253,31 @@ fr:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
     mailer:
       confirmation_instructions:
-        action: Confirm my account
-        greeting: Welcome %{recipient},
-        instruction: 'You can confirm your account email through the link below:'
+        action: Confirmer mon compte
+        greeting: Bienvenue %{recipient},
+        instruction: 'Vous pouvez confirmer l''email de votre compte via le lien ci-dessous:'
       email_changed:
-        greeting: Hello %{recipient}!
-        message: We're contacting you to notify you that your email has been changed
-          to %{email}.
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre adresse courriel
+          a été remplacée par %{email}.
       password_change:
-        greeting: Hello %{recipient}!
-        message: We're contacting you to notify you that your password has been changed.
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre mot de passe a
+          été modifié.
       reset_password_instructions:
-        action: Change my password
-        greeting: Hello %{recipient}!
-        instruction: Someone has requested a link to change your password. You can
-          do this through the link below.
-        instruction_2: If you didn't request this, please ignore this email.
-        instruction_3: Your password wont change until you access the link above and
-          create a new one.
+        action: Changer mon mot de passe
+        greeting: Bonjour %{recipient}!
+        instruction: Quelqu'un a demandé un lien pour changer votre mot de passe.
+          Vous pouvez le faire via le lien ci-dessous.
+        instruction_2: Si vous ne l'avez pas demandé, veuillez ignorer ce courriel.
+        instruction_3: Votre mot de passe ne changera pas jusqu'à ce que vous accédiez
+          au lien ci-dessus et que vous en créiez un nouveau.
       unlock_instructions:
-        action: Unlock my account
-        greeting: Hello %{recipient}!
-        instruction: 'Click the link below to unlock your account:'
-        message: Your account has been locked due to an excessive number of unsuccessful
-          sign in attempts.
+        action: Débloquer mon compte
+        greeting: Bonjour %{recipient}!
+        instruction: 'Cliquez sur le lien ci-dessous pour déverrouiller votre compte:'
+        message: Votre compte a été verrouillé en raison d'un nombre excessif de tentatives
+          de connexion infructueuses.
     passwords:
       edit:
         change_my_password: Changer mon mot de passe
@@ -291,8 +292,8 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        currently_waiting_confirmation_for_email: 'Currently waiting confirmation
-          for: %{email}'
+        currently_waiting_confirmation_for_email: 'En attente de confirmation pour:
+          %{email}'
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le
           laisser inchangé
         title: Éditer %{resource}
@@ -561,49 +562,53 @@ fr:
       new_comment_content: "%{content}"
       reply: Répondre
     reply:
-      author: Author
-      copyright_html: Copyright html
-      disable_comment_html: Disable comment html
-      greeting: Greeting
+      author: "%{author}:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires
+        et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les
+        paramètres de votre compte</a>.
+      greeting: Bonjour %{recipient},
       new_reply: New reply
-      new_reply_content: New reply content
-      replied_to_you: Replied to you
-      reply: Reply
+      new_reply_content: "%{content}"
+      replied_to_you: "%{user} vous a repondu"
+      reply: Répondre
     welcome:
-      greeting: Welcome %{recipient},
-      see_ya: See ya
-      welcome_message: We are pleased to welcome you in our family of rebel cooks.
-        Feel free to share some awesomeness with all!
+      greeting: Bienvenue %{recipient},
+      see_ya: À bientôt
+      welcome_message: Nous sommes heureux de vous accueillir dans notre famille de
+        cuisiniers rebelles. N'hésitez pas à partager quelque chose de génial avec
+        tous !
   users:
     confirmations:
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
     mailer:
       confirmation_instructions:
-        action: Confirm my account
-        greeting: Welcome %{recipient},
-        instruction: 'You can confirm your account email through the link below:'
+        action: Confirmer mon compte
+        greeting: Bienvenue %{recipient},
+        instruction: 'Vous pouvez confirmer l''email de votre compte via le lien ci-dessous:'
       email_changed:
-        greeting: Hello %{recipient}!
-        message: We're contacting you to notify you that your email has been changed
-          to %{email}.
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre adresse courriel
+          a été remplacée par %{email}.
       password_change:
-        greeting: Hello %{recipient}!
-        message: We're contacting you to notify you that your password has been changed.
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre mot de passe a
+          été modifié.
       reset_password_instructions:
-        action: Change my password
-        greeting: Hello %{recipient}!
-        instruction: Someone has requested a link to change your password. You can
-          do this through the link below.
-        instruction_2: If you didn't request this, please ignore this email.
-        instruction_3: Your password wont change until you access the link above and
-          create a new one.
+        action: Changer mon mot de passe
+        greeting: Bonjour %{recipient}!
+        instruction: Quelqu'un a demandé un lien pour changer votre mot de passe.
+          Vous pouvez le faire via le lien ci-dessous.
+        instruction_2: Si vous ne l'avez pas demandé, veuillez ignorer ce courriel.
+        instruction_3: Votre mot de passe ne changera pas jusqu'à ce que vous accédiez
+          au lien ci-dessus et que vous en créiez un nouveau.
       unlock_instructions:
-        action: Unlock my account
-        greeting: Hello %{recipient}!
-        instruction: 'Click the link below to unlock your account:'
-        message: Your account has been locked due to an excessive number of unsuccessful
-          sign in attempts.
+        action: Débloquer mon compte
+        greeting: Bonjour %{recipient}!
+        instruction: 'Cliquez sur le lien ci-dessous pour déverrouiller votre compte:'
+        message: Votre compte a été verrouillé en raison d'un nombre excessif de tentatives
+          de connexion infructueuses.
     passwords:
       edit:
         change_my_password: Changer mon mot de passe

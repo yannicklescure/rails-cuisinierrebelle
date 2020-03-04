@@ -441,14 +441,16 @@ es:
       new_comment_content: "%{content}"
       reply: Respuesta
     reply:
-      author: Author
-      copyright_html: Copyright html
-      disable_comment_html: Disable comment html
-      greeting: Greeting
-      new_reply: New reply
-      new_reply_content: New reply content
-      replied_to_you: Replied to you
-      reply: Reply
+      author: "%{author}:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: Si ya no desea recibir comentarios y correos electrónicos
+        de respuesta, puede administrarlos en <a href="%{url}" target="_blank">la
+        configuración de su cuenta</a>.
+      greeting: Hola %{recipient},
+      new_reply: "%{author} agregó un comentario a su receta :"
+      new_reply_content: "%{content}"
+      replied_to_you: "%{user} te respondió"
+      reply: Respuesta
     welcome:
       greeting: Bienvenido %{recipient}
       see_ya: Nos vemos
