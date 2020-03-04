@@ -28,7 +28,7 @@ class UserMailer < ApplicationMailer
     @recipe = params[:recipe]
     @reply = params[:reply]
     @url = root_url
-    mail(to: @recipe.user.email, subject: t('.replied_to_you', user: @reply.user.name))
+    mail(to: @recipe.user.email, subject: t('.subject', user: @reply.user.name))
     # This will render a view in `app/views/user_mailer`!
   end
 end
