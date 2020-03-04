@@ -247,9 +247,6 @@ fr:
   date:
     formats:
       default: "%d/%m/%Y"
-  destroy:
-    you_are_not_authorized_to_perform_this_action: Vous n'êtes pas autorisé à effectuer
-      cette action
   devise:
     confirmations:
       new:
@@ -429,7 +426,7 @@ fr:
       comments:
         one: 1 commentaire
         other: "%{count} commentaires"
-        zero: aucun commentaire
+        zero: Aucun commentaire
       edit_recipe: Editer la recette
       recipe_published_by: Recette publiée par
       related_recipes: Recettes associées

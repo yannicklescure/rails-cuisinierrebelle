@@ -253,9 +253,6 @@ en:
   date:
     formats:
       default: "%Y-%m-%d"
-  destroy:
-    you_are_not_authorized_to_perform_this_action: You are not authorized to perform
-      this action
   devise:
     confirmations:
       new:

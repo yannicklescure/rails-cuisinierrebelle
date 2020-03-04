@@ -154,9 +154,6 @@ es:
   date:
     formats:
       default: "%d/%m/%Y"
-  destroy:
-    you_are_not_authorized_to_perform_this_action: No tiene autorización para realizar
-      esta acción
   devise:
     confirmations:
       new:
