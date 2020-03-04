@@ -448,7 +448,7 @@ es:
         de respuesta, puede administrarlos en <a href="%{url}" target="_blank">la
         configuración de su cuenta</a>.
       greeting: Hola %{recipient},
-      new_reply: "%{author} agregó un comentario a su receta :"
+      new_reply: "%{user} respondió al comentario de %{author}"
       new_reply_content: "%{content}"
       reply: Respuesta
       subject: "%{user} te respondió"

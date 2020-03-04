@@ -572,7 +572,7 @@ fr:
         et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les
         paramètres de votre compte</a>.
       greeting: Bonjour %{recipient},
-      new_reply: New reply
+      new_reply: "%{user} a répondu au commentaire de %{author}"
       new_reply_content: "%{content}"
       reply: Répondre
       subject: "%{user} vous a répondu"

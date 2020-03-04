@@ -573,8 +573,8 @@ en:
         and replies, you can manage it in <a href="%{url}" target="_blank">your account
         settings</a>.
       greeting: Hello %{recipient},
-      new_reply: "%{user} replied to your reply on %{author}'s comment"
-      new_reply_content: New reply content
+      new_reply: "%{user} replied on %{author}'s comment"
+      new_reply_content: "%{content}"
       reply: Reply
       subject: "%{user} replied to you"
     welcome:
