@@ -1,7 +1,7 @@
 if(<%= @admin %>) {
   // console.log(`destroy ${<%= @reply.id %>}`);
   reply = document.querySelector(`#reply-${<%= @reply.id %>}`);
-  reply.remove();
+  if(reply) reply.remove();
   <% if @spams.count == 1 %>
   navbarBtn = document.querySelector('#spam');
   navbarBtn.classList.remove('text-danger');
@@ -9,7 +9,7 @@ if(<%= @admin %>) {
 } else {
   // console.log(`destroy reply #${<%= @reply.id %>}`);
   reply = document.querySelector(`#reply-${<%= @reply.id %>}`);
-  reply.classList.add('d-none');
+  if(reply) reply.classList.add('d-none');
   button = document.querySelector(`#comment-${<%= @comment.id %>}-replies-list-btn`);
   <% if @comment.replies.any? %>
   if(button) button.innerHTML = `<span id="replies-list-arrow-<%= @comment.id %>"><i class="fas fa-sort-up"></i></span>&ensp;<%= t('.replies', count: @comment.replies.count) %>`;
@@ -18,7 +18,7 @@ if(<%= @admin %>) {
   <% end %>
   commentsCount = document.querySelector('#comments-count');
   <% count = 0 %>
-  <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
-  <% count += @recipe.comments.count %>
-  commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
+  <% @comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
+  <% count += 1 %>
+  if(commentsCount) commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
 }

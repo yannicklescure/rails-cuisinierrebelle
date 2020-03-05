@@ -61,6 +61,7 @@ class CommentsController < ApplicationController
       @replies_spam = @comment.replies.select{ |reply| reply.spam }.map { |r| r }
     end
     @comment.destroy
+    # binding.pry
     respond_to do |format|
       format.js
     end
