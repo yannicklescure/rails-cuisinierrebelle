@@ -17,8 +17,10 @@ if(<%= @admin %>) {
   if(button) button.classList.add('d-none');
   <% end %>
   commentsCount = document.querySelector('#comments-count');
-  <% count = 0 %>
-  <% @comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
-  <% count += 1 %>
+  <% count = -1 %>
+  <% @comment.recipe.comments.each do |comment| %>
+    <% comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
+    <% count += 1 %>
+  <% end %>
   if(commentsCount) commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
 }

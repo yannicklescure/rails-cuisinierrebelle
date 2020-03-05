@@ -14,13 +14,14 @@ if(<%= @admin %>) {
   comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
   if(comment) comment.remove();
 } else {
-  <% binding.pry %>
-  commentsCount = document.querySelector('#comments-count');
-  <% count = 0 %>
-  <% @comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
-  <% count += 1 %>
-  console.log(`count: ${<%= count %>}`);
-  if(commentsCount) commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
   comment = document.querySelector(`#comment-${<%= @comment.id %>}`);
   if(comment) comment.remove();
+  commentsCount = document.querySelector('#comments-count');
+  <% count = -1 %>
+  <% @comment.recipe.comments.each do |comment| %>
+    <% comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
+    <% count += 1 %>
+  <% end %>
+  console.log(`count: ${<%= count %>}`);
+  if(commentsCount) commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
 }

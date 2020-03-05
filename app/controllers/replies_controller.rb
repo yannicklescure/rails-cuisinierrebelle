@@ -60,7 +60,6 @@ class RepliesController < ApplicationController
 
   def destroy
     # @admin = params[:admin] == 'true'
-    @admin = current_user.admin
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:id])
@@ -94,6 +93,8 @@ class RepliesController < ApplicationController
 
   def set_admin
     @admin = current_user.admin
+    @admin = false if @admin.nil?
+    # binding.pry
   end
 
   def reply_params

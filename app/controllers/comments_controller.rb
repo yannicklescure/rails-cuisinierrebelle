@@ -81,6 +81,8 @@ class CommentsController < ApplicationController
 
   def set_admin
     @admin = current_user.admin
+    @admin = false if @admin.nil?
+    # binding.pry
   end
 
   def set_spam
