@@ -558,20 +558,28 @@ en:
     comment:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: If you no longer wish to receive emails about comments
-        and replies, you can manage it in <a href="%{url}" target="_blank">your account
-        settings</a>.
+      disable_comment_html: If you no longer wish to receive email notifications,
+        you can manage it in <a href="%{url}" target="_blank">your account settings</a>.
       greeting: Hello %{recipient},
       new_comment: "%{author} commented on your recipe:"
       new_comment_content: "%{content}"
       reply: Reply
       subject: New comment on "%{recipe}"
+    recipe:
+      author: "%{author} has published a new recipe:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: If you no longer wish to receive email notifications,
+        you can manage it in <a href="%{url}" target="_blank">your account settings</a>.
+      greeting: Hello %{recipient},
+      new_recipe: "%{title}"
+      new_recipe_content: "%{content}"
+      see_recipe: See recipe
+      subject: "%{author} has published a new recipe"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: If you no longer wish to receive emails about comments
-        and replies, you can manage it in <a href="%{url}" target="_blank">your account
-        settings</a>.
+      disable_comment_html: If you no longer wish to receive email notifications,
+        you can manage it in <a href="%{url}" target="_blank">your account settings</a>.
       greeting: Hello %{recipient},
       new_reply: "%{user} replied on %{author}'s comment"
       new_reply_content: "%{content}"

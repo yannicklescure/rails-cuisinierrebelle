@@ -19,17 +19,22 @@ class UserMailer < ApplicationMailer
   def comment
     @recipe = params[:recipe]
     @comment = params[:comment]
-    @url = root_url
     mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
-    # This will render a view in `app/views/user_mailer`!
+    # This will render a view in `app/views/comment`!
   end
 
   def reply
     @user = params[:user]
     @recipe = params[:recipe]
     @reply = params[:reply]
-    @url = root_url
     mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
-    # This will render a view in `app/views/user_mailer`!
+    # This will render a view in `app/views/reply`!
+  end
+
+  def recipe
+    @user = params[:user]
+    @recipe = params[:recipe]
+    mail(to: @user.email, subject: t('.subject', author: @recipe.user))
+    # This will render a view in `app/views/recipe`!
   end
 end

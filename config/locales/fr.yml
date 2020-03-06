@@ -557,20 +557,31 @@ fr:
     comment:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires
-        et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les
-        paramètres de votre compte</a>.
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels, vous
+        pouvez gérer vos notifications dans <a href="%{url}" target="_blank">les paramètres
+        de votre compte</a>.
       greeting: Bonjour %{recipient},
       new_comment: "%{author} a ajouté un commentaire à votre recette :"
       new_comment_content: "%{content}"
       reply: Répondre
       subject: Nouveau commentaire dans "%{recipe}"
+    recipe:
+      author: "%{author} a publié une nouvelle recette:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels, vous
+        pouvez gérer vos notifications dans <a href="%{url}" target="_blank">les paramètres
+        de votre compte</a>.
+      greeting: Bonjour %{recipient},
+      new_recipe: "%{title}"
+      new_recipe_content: "%{content}"
+      see_recipe: Voir la recette
+      subject: "%{author} a publié une nouvelle recette"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels de commentaires
-        et réponses, vous pouvez le gérer dans <a href="%{url}" target="_blank">les
-        paramètres de votre compte</a>.
+      disable_comment_html: Si vous ne souhaitez plus recevoir de courriels, vous
+        pouvez gérer vos notifications dans <a href="%{url}" target="_blank">les paramètres
+        de votre compte</a>.
       greeting: Bonjour %{recipient},
       new_reply: "%{user} a répondu au commentaire de %{author}"
       new_reply_content: "%{content}"

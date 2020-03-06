@@ -1,0 +1,7 @@
+<%= t('.greeting', recipient: @recipe.user.first_name.capitalize) %>
+
+<%= t('.author', author: @recipe.user.name) %> <%= t('.new_recipe', title: @recipe.title) %>
+
+<%= t('.new_recipe_content', content: @recipe.description) %>
+
+<%= recipe_url(id: @recipe) %>

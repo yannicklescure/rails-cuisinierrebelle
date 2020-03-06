@@ -433,20 +433,31 @@ es:
     comment:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Si ya no desea recibir comentarios y correos electrónicos
-        de respuesta, puede administrarlos en <a href="%{url}" target="_blank">la
-        configuración de su cuenta</a>.
+      disable_comment_html: Si ya no desea recibir electrónicos de respuesta, puede
+        administrarlos en <a href="%{url}" target="_blank">la configuración de su
+        cuenta</a>.
       greeting: Hola %{recipient},
       new_comment: "%{author} agregó un comentario a su receta :"
       new_comment_content: "%{content}"
       reply: Respuesta
       subject: Nuevo comentario en "%{recipe}"
+    recipe:
+      author: "%{author} publicado una nueva receta:"
+      copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
+      disable_comment_html: Si ya no desea recibir electrónicos de respuesta, puede
+        administrarlos en <a href="%{url}" target="_blank">la configuración de su
+        cuenta</a>.
+      greeting: Hola %{recipient},
+      new_recipe: "%{title}"
+      new_recipe_content: "%{content}"
+      see_recipe: Ver receta
+      subject: "%{author} publicado una nueva receta"
     reply:
       author: "%{author}:"
       copyright_html: "&copy; %{year} Cuisinier Rebelle, Paris, France"
-      disable_comment_html: Si ya no desea recibir comentarios y correos electrónicos
-        de respuesta, puede administrarlos en <a href="%{url}" target="_blank">la
-        configuración de su cuenta</a>.
+      disable_comment_html: Si ya no desea recibir electrónicos de respuesta, puede
+        administrarlos en <a href="%{url}" target="_blank">la configuración de su
+        cuenta</a>.
       greeting: Hola %{recipient},
       new_reply: "%{user} respondió al comentario de %{author}"
       new_reply_content: "%{content}"

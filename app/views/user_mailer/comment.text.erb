@@ -1,0 +1,11 @@
+<%= t('.greeting', recipient: @recipe.user.first_name.capitalize) %>
+
+<%= t('.new_comment', author: @comment.user.name) %>
+<%= @recipe.title %>
+
+<%= t('.author', author: @comment.user.name) %>
+
+<%= t('.new_comment_content', content: @comment.content) %>
+
+<%= "#{recipe_url(id: @recipe)}#comment-#{@comment.id}" %>
+

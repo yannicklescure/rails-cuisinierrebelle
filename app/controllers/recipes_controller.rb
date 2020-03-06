@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_admin, only: [:destroy]
 
   layout 'application'
 
@@ -41,7 +42,12 @@ class RecipesController < ApplicationController
     # @recipe.video = nil if @recipe.video == ''
     @recipe.video = sanitize_youtube_video_link(params[:recipe][:video])
     if @recipe.save
-      binding.pry
+      # binding.pry
+      users = @recipe.user.followers
+      users.where(notification: true).each do |user|
+        # binding.pry
+        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_now
+      end
       redirect_to recipe_path(@recipe)
     else
       render :new
@@ -68,13 +74,12 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @admin = current_user.admin
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
     @recipe.remove_photo
     @recipe.save
     @recipe.destroy
-    if @admin
+    if @admin && params[:admin] == 'true'
       respond_to do |format|
         format.js
       end
@@ -84,6 +89,12 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def set_admin
+    @admin = current_user.admin
+    @admin = false if @admin.nil?
+    # binding.pry
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title, :subtitle, :video, :direction, :description, :photo, :image, :tag_list)
