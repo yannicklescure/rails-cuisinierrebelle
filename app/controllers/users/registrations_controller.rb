@@ -41,6 +41,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_flash_message_for_update(resource, prev_unconfirmed_email)
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
+      # binding.pry
+      resource.slug = nil
+      resource.save!
       # respond_with resource, location: after_update_path_for(resource)
       respond_with resource, location: user_path(resource)
     else
@@ -108,6 +111,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       params.delete("current_password")
       resource.update_without_password(edit_params)
     else
+      # binding.pry
       # resource.update_with_password(edit_params)
       super
     end

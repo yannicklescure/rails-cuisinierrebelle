@@ -44,10 +44,10 @@ class User < ApplicationRecord
     async_update
   end
 
+  # after_commit :async_update # Run on create & update
+
   extend FriendlyId
   friendly_id :name, use: :slugged
-
-  # after_commit :async_update # Run on create & update
 
   private
 
