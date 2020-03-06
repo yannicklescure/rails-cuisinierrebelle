@@ -665,8 +665,7 @@ en:
         zero: No follower
       full_name: Full name
       published_recipes: Published recipes
-      receive_emails_about_comments_and_replies: Receive emails about comments and
-        replies
+      receive_emails_about_comments_and_replies: Receive email notifications
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Checked
