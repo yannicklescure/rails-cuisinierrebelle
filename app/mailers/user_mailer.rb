@@ -34,7 +34,7 @@ class UserMailer < ApplicationMailer
   def recipe
     @user = params[:user]
     @recipe = params[:recipe]
-    mail(to: @user.email, subject: t('.subject', author: @recipe.user))
+    mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
     # This will render a view in `app/views/recipe`!
   end
 end
