@@ -97,10 +97,11 @@ if(currentController === 'recipes' && currentPage != null) {
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();
 
+  viewReplies();
+
   if(userSignedIn) {
     btnClick();
     replyForms();
-    viewReplies();
     repliesReply();
   }
 }
