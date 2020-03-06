@@ -63,3 +63,4 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'http_accept_language'
 gem "nokogiri", ">= 1.10.8"
+gem 'bootstrap-email'

@@ -947,6 +947,11 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    bootstrap-email (0.3.1)
+      actionmailer (>= 3)
+      nokogiri (~> 1.6)
+      premailer-rails (~> 1.9)
+      rails (>= 3)
     builder (3.2.4)
     byebug (11.1.1)
     carrierwave (2.1.0)
@@ -961,6 +966,8 @@ GEM
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
+    css_parser (1.7.1)
+      addressable
     device_detector (1.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -1009,6 +1016,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
+    htmlentities (4.3.4)
     http_accept_language (2.1.1)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
@@ -1079,6 +1087,13 @@ GEM
     postmark-rails (0.19.0)
       actionmailer (>= 3.0.0)
       postmark (~> 1.15.0)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.3)
+      actionmailer (>= 3)
+      premailer (~> 1.7, >= 1.7.9)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -1220,6 +1235,7 @@ DEPENDENCIES
   autoprefixer-rails
   aws-sdk
   bootsnap
+  bootstrap-email
   carrierwave
   carrierwave-i18n
   device_detector

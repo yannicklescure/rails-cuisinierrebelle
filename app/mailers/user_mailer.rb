@@ -12,14 +12,16 @@ class UserMailer < ApplicationMailer
   # end
   def welcome
     @user = params[:user] # Instance variable => available in view
-    mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
+    # mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
+    make_bootstrap_mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
     # This will render a view in `app/views/user_mailer`!
   end
 
   def comment
     @recipe = params[:recipe]
     @comment = params[:comment]
-    mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
+    # mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
+    make_bootstrap_mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
     # This will render a view in `app/views/comment`!
   end
 
@@ -27,14 +29,16 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     @recipe = params[:recipe]
     @reply = params[:reply]
-    mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
+    # mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
+    make_bootstrap_mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
     # This will render a view in `app/views/reply`!
   end
 
   def recipe
     @user = params[:user]
     @recipe = params[:recipe]
-    mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
+    # mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
+    make_bootstrap_mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
     # This will render a view in `app/views/recipe`!
   end
 end

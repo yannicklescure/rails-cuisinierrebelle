@@ -1,45 +1,21 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="container">
-      <p><%= t('.greeting', recipient: @user.first_name.capitalize) %></p>
-      <p>
-        <div style="padding: 12px 0;">
-          <span style="margin-bottom: 12px;"><%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %></span><br>
-          <div style="padding: 16px 0;">
-            <% image_url = '' %>
-            <% image_url += root_url[0...-1] if Rails.env.development? %>
-            <% image_url += @recipe.photo.url(:full) %>
-            <%= image_tag image_url, style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %>
-            <span style="padding: 0 16px;"><%= @recipe.title %></span>
-          </div>
-        </div>
-        <strong><%= t('.author', author: @reply.user.name) %></strong>
-        <div style="padding: 12px 0;"><%= t('.new_reply_content', content: @reply.content) %></div>
-        <div style="padding: 12px 0;"><%= link_to t('.reply'), "#{recipe_url(id: @recipe)}#reply-#{@reply.id}", style: "text-decoration: none" %></div>
-      </p>
-      <p>
-        <small>
-          <%= t('.disable_comment_html', url: user_url(id: @user)) %><br>
-          <%= t('.copyright_html', year: Date.current.year) %>
-        </small>
-      </p>
+<div class="container">
+  <div class="pb-3"><%= t('.greeting', recipient: @user.first_name.capitalize) %></div>
+  <div class="pb-3">
+    <div class="pb-3">
+      <span class="pb-3"><%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %></span><br>
+      <div class="row pb-3">
+        <% image_url = '' %>
+        <% image_url += root_url[0...-1] if Rails.env.development? %>
+        <% image_url += @recipe.photo.url(:full) %>
+        <%= image_tag image_url, style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @recipe.title %>
+      </div>
     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+    <strong><%= t('.author', author: @reply.user.name) %></strong>
+    <div class="pb-3"><%= t('.new_reply_content', content: @reply.content) %></div>
+    <div class="pb-3"><%= link_to t('.reply'), "#{recipe_url(id: @recipe)}#reply-#{@reply.id}", class: 'btn btn-primary' %></div>
+  </div>
+  <div class="py-5 text-center">
+    <div class="text-muted"><small><%= t('.disable_comment_html', url: user_url(id: @user)) %></small></div>
+    <div class="text-muted"><small><%= t('.copyright_html', year: Date.current.year) %></small></div>
+  </div>
+</div>
