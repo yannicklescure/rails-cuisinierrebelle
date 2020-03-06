@@ -37,10 +37,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     authorize @recipe
     @recipe.user = current_user
-    params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
+    # params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
+    # @recipe.video = nil if @recipe.video == ''
+    @recipe.video = sanitize_youtube_video_link(params[:recipe][:video])
     if @recipe.save
-      @recipe.video = nil if @recipe.video == ''
-      @recipe.save
+      binding.pry
       redirect_to recipe_path(@recipe)
     else
       render :new
@@ -58,6 +59,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
     params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
+    # binding.pry
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -93,21 +95,18 @@ class RecipesController < ApplicationController
 
   def sanitize_youtube_video_link(params_recipe_video)
     # params_recipe_video = params[:recipe][:video]
-    if params_recipe_video.match?(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
-      share_link = params_recipe_video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
-      if share_link.nil?
-        return nil
-      else
-        params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
-        if share_link[1].match?(/https:\/\/www.youtube.com\//)
-          params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
-        end
-        params_recipe_video = params_recipe_video.match(/(.+(?=\?))/)[1] if params_recipe_video.match(/(.+(?=\?))/)
-        # binding.pry
-        return "https://youtu.be/#{params_recipe_video}"
-      end
-    else
+    return nil if params_recipe_video == ''
+    share_link = params_recipe_video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
+    if share_link.nil?
       return nil
+    else
+      params_recipe_video = share_link[2] if share_link[1].match?(/https:\/\/youtu.be\//)
+      if share_link[1].match?(/https:\/\/www.youtube.com\//)
+        params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
+      end
+      params_recipe_video = params_recipe_video.match(/(.+(?=\?))/)[1] if params_recipe_video.match(/(.+(?=\?))/)
+      # binding.pry
+      return "https://youtu.be/#{params_recipe_video}"
     end
   end
 end
