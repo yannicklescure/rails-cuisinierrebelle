@@ -1,26 +1,30 @@
 <div class="container mt-3 mb-5">
   <div class="d-flex flex-column">
-    <div class="d-flex order-1 order-md-0 justify-content-md-between align-items-md-center flex-column flex-md-row d-print-none">
-      <div class="d-flex justify-content-center align-items-center order-0">
-        <div class="d-flex flex-column flex-md-row m-0 align-items-center">
-          <span class="mr-md-1"><%= t('.recipe_published_by') %></span>
+    <div class="d-flex order-0 order-md-0 justify-content-between align-items-start mb-3 mb-md-0 d-print-none">
+      <div class="d-flex flex-grow-1 justify-md-content-start align-items-center order-0">
+        <div class="d-flex flex-grow-1 m-0 align-items-center">
+          <span class="mr-md-1">
+            <% if client.device_type == 'desktop' %>
+            <%= t('.recipe_published_by') %>
+            <% end %>
+          </span>
           <% if user_signed_in? %>
             <%= render @recipe.user %>
           <% else %>
-            <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name}", user_path(@recipe.user), class: 'text-body' %>
+            <%= link_to "#{user.first_name.capitalize} #{user.last_name.capitalize}", user_path(@recipe.user), class: 'text-body' %>
           <% end %>
         </div>
       </div>
       <% if user_signed_in? %>
-      <div class="d-flex flex-column align-items-center flex-md-row justify-content-between order-1">
-        <% if @recipe.user == current_user %>
-        <p class="m-0 ml-md-3 order-1 order-md-0">
-          <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-body' %>
-        </p>
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between order-1">
+        <% if @recipe.user != current_user %>
+        <div class="m-0 ml-md-3 order-1 order-md-0">
+          <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'btn btn-sm btn-secondary' %>
+        </div>
         <% end %>
         <div class="order-0 order-md-1">
           <% if policy(Bookmark).update? %>
-            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-1 m-md-0 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
+            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-1 m-md-0 ml-3 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw('<i class="far fa-bookmark"></i>') : raw('<i class="fas fa-bookmark"></i>') %>
             <% end %>
           <% end %>
@@ -43,7 +47,7 @@
       </div>
       <% end %>
     </div>
-    <div class="mt-md-5 order-0 order-md-1 d-flex flex-column justify-content-center align-items-center">
+    <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
       <div class="d-none d-md-block text-center">
         <div class="h1"><%= @recipe.title %></div>
         <div class="h2 text-secondary"><%= @recipe.subtitle %></div>
@@ -54,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="my-5 d-print-none">
+  <div class="my-3 d-print-none">
     <%= image_tag @recipe.photo.url(:full), class: 'img-fluid rounded' %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new() %>
