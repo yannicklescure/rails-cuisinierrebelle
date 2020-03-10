@@ -1,27 +1,12 @@
 <% if user_signed_in? %>
-  <div class="container-fluid my-5">
-    <div class="h1 mb-3 text-center"><%= t('.published_recipes') %></div>
-    <% @recipes.sort_by { |date| date.created_at }.reverse.each do |recipe| %>
-    <div class="card border-0 mb-3">
-      <div class="d-flex">
-        <%= image_tag recipe.photo.url(:thumb), secure: true, height: 64, width: 64, class: 'rounded' %>
-        <div class="ml-3 d-flex flex-column">
-          <div class="small text-body d-flex justify-content-start">
-            <div class="mr-3"><i class="far fa-calendar-check"></i><span class="ml-1"><%= recipe.created_at.strftime(t('date.formats.default')) %></span></div>
-            <div class="mr-3"><i class="fas fa-heart"></i><span class="ml-1"><%= recipe.likes.count %></span></div>
-            <% count = 0 %>
-            <% count = recipe.comments.map { |comment| comment.replies.count }.sum %>
-            <% count += recipe.comments.count %>
-            <div class="mr-3"><i class="fas fa-comment-alt"></i><span class="ml-1"><%= count %></span></div>
-            <%= link_to t('.edit_recipe_html'), edit_recipe_path(recipe), class: 'text-body' %>
-          </div>
-          <div class="d-flex">
-            <%= link_to t(".recipe", title: recipe.title.upcase), recipe_path(recipe), class: 'text-body' %>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid mb-5">
+  <div id="root" class="row py-3"<%= " data-bookmarks-count=\"#{@bookmarks.count}\"" if user_signed_in? %>>
+    <% if @recipes.any? %>
+      <% @recipes.order('created_at DESC').each do |recipe| %>
+        <%= render 'shared/card', recipe: recipe %>
+      <% end %>
     <% end %>
-    </div>
   </div>
+</div>
 <% end %>
+

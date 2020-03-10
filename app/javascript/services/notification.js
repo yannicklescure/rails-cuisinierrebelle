@@ -1,5 +1,4 @@
 export const notification = (init) => {
-  // notification({url: 'api/v1/notification', user_id: userId});
   const btnSwitches = document.querySelectorAll('.notification-switch');
   console.log(init);
   btnSwitches.forEach((btnSwitch) => {

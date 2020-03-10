@@ -244,9 +244,6 @@ fr:
         one: Il y a 1 an
         other: Il y a %{count} ans
         zero: zéro an
-  date:
-    formats:
-      default: "%d/%m/%Y"
   devise:
     confirmations:
       new:
@@ -407,10 +404,6 @@ fr:
       subtitle: Sous-titre
       title: Titre
       youtube_video_link: Lien video Youtube
-    index:
-      edit_recipe_html: <i class="fas fa-pen"></i>
-      published_recipes: Recettes publiées
-      recipe: "%{title}"
     new:
       add_tags: Ajouter des tags
       add_your_tags_separated_by_commas: Ajoutez vos tags séparés par des virgules
@@ -483,6 +476,22 @@ fr:
         one: Il y a 1 an
         other: Il y a %{count} ans
         zero: zéro an
+  settings:
+    index:
+      created_at: Date de création
+      edit_user_registration: Éditer UtIlisateur
+      email: Email
+      follower:
+        one: 1 abonné
+        other: "%{count} abonnés"
+        zero: Pas d'abonné
+      full_name: Nom complet
+      published_recipes: "%{count} recettes publiées"
+      receive_emails_about_comments_and_replies: Recevoir les notifications par courriel
+      subscribe_to_newsletter: Recevoir l'infolettre
+      updated_at: Dernière mise à jour
+      verified: Vérifié
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
@@ -662,21 +671,6 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
-    show:
-      created_at: Date de création
-      edit_user_registration: Éditer UtIlisateur
-      email: Email
-      follower:
-        one: Un abonné
-        other: "%{count} abonnés"
-        zero: Pas d'abonné
-      full_name: Nom complet
-      published_recipes: Recettes publiées
-      receive_emails_about_comments_and_replies: Recevoir les notifications par courriel
-      subscribe_to_newsletter: Recevoir l'infolettre
-      updated_at: Dernière mise à jour
-      verified: Vérifié
-      verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage

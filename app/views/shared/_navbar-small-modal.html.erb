@@ -19,7 +19,7 @@
           <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
           <% if user_signed_in? %>
             <%= link_to t(".following"), following_index_path, class: "btn btn-link modal-menu-link" %>
-            <%= link_to t(".settings"), user_path(current_user), class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".settings"), settings_path, class: "btn btn-link modal-menu-link" %>
           <% end %>
           <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <%= t('.languages') %>
@@ -27,9 +27,9 @@
           <div class="collapse" id="collapseExample">
             <div class="d-flex flex-column align-items-start ml-3">
               <!-- <a class="btn btn-link modal-menu-link" href="/">English</a> -->
-              <%= link_to raw("English"), root_path(locale: :en), class: "btn btn-link modal-menu-link" %>
-              <%= link_to raw("Fran&ccedil;ais"), root_path(locale: :fr), class: "btn btn-link modal-menu-link" %>
-              <%= link_to raw("Espa&ntilde;ol"), root_path(locale: :es), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("English"), current_page_params.merge(locale: :en), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("Fran&ccedil;ais"), current_page_params.merge(locale: :fr), class: "btn btn-link modal-menu-link" %>
+              <%= link_to raw("Espa&ntilde;ol"), current_page_params.merge(locale: :es), class: "btn btn-link modal-menu-link" %>
             </div>
           </div>
           <% if user_signed_in? %>

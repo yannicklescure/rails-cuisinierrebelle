@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     resources :pages, except: [:index]
     resources :products, except: [:index, :show]
+    resources :settings, only: [:index]
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :recipes do

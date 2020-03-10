@@ -151,9 +151,6 @@ es:
       seconds_ago: Hace segundos
       weeks_ago: Hace semanas
       years_ago: Hace años que
-  date:
-    formats:
-      default: "%d/%m/%Y"
   devise:
     confirmations:
       new:
@@ -313,10 +310,6 @@ es:
       subtitle: Subtitular
       title: Título
       youtube_video_link: Enlace de video de Youtube
-    index:
-      edit_recipe_html: <i class="fas fa-pen"></i>
-      published_recipes: Recetas publicadas
-      recipe: "%{title}"
     new:
       add_tags: Agregar etiquetas
       add_your_tags_separated_by_commas: Agregue sus etiquetas separadas por comas
@@ -359,6 +352,23 @@ es:
       seconds_ago: Hace segundos
       weeks_ago: Hace semanas
       years_ago: Hace años que
+  settings:
+    index:
+      created_at: Creado en
+      edit_user_registration: Editar user registration
+      email: Email
+      follower:
+        one: 1 seguidor
+        other: "%{count} seguidores"
+        zero: Sin seguidor
+      full_name: Nombre completo
+      published_recipes: "%{count} recetas publicadas"
+      receive_emails_about_comments_and_replies: Reciba notificaciones por correo
+        electrónico
+      subscribe_to_newsletter: Suscríbase al boletín
+      updated_at: Actualizado en
+      verified: Auditado
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
@@ -537,22 +547,6 @@ es:
         sign_in: Iniciar sesión
         sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
-    show:
-      created_at: Creado en
-      edit_user_registration: Editar user registration
-      email: Email
-      follower:
-        one: Un seguidor
-        other: "%{count} seguidores"
-        zero: Sin seguidor
-      full_name: Nombre completo
-      published_recipes: Recetas publicadas
-      receive_emails_about_comments_and_replies: Reciba notificaciones por correo
-        electrónico
-      subscribe_to_newsletter: Suscríbase al boletín
-      updated_at: Actualizado en
-      verified: Auditado
-      verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear

@@ -250,9 +250,6 @@ en:
         one: 1 year ago
         other: "%{count} years ago"
         zero: No year
-  date:
-    formats:
-      default: "%Y-%m-%d"
   devise:
     confirmations:
       new:
@@ -408,10 +405,6 @@ en:
       subtitle: Subtitle
       title: Title
       youtube_video_link: Youtube video link
-    index:
-      edit_recipe_html: <i class="fas fa-pen"></i>
-      published_recipes: Published recipes
-      recipe: "%{title}"
     new:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
@@ -484,6 +477,22 @@ en:
         one: 1 year ago
         other: "%{count} years ago"
         zero: No year
+  settings:
+    index:
+      created_at: Created at
+      edit_user_registration: Edit user registration
+      email: Email
+      follower:
+        one: 1 follower
+        other: "%{count} followers"
+        zero: No follower
+      full_name: Full name
+      published_recipes: "%{count} published recipes"
+      receive_emails_about_comments_and_replies: Receive email notifications
+      subscribe_to_newsletter: Subscribe to newsletter
+      updated_at: Updated at
+      verified: Checked
+      verified_html: <i class="fas fa-check-circle text-muted"></i>
   shared:
     banner:
       banner_subtitle: cuisinier rebelle, social recipes!
@@ -655,21 +664,6 @@ en:
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
-    show:
-      created_at: Created at
-      edit_user_registration: Edit user registration
-      email: Email
-      follower:
-        one: 1 follower
-        other: "%{count} followers"
-        zero: No follower
-      full_name: Full name
-      published_recipes: Published recipes
-      receive_emails_about_comments_and_replies: Receive email notifications
-      subscribe_to_newsletter: Subscribe to newsletter
-      updated_at: Updated at
-      verified: Checked
-      verified_html: <i class="fas fa-check-circle text-muted"></i>
     unlocks:
       new:
         resend_unlock_instructions: resend unlock instructions

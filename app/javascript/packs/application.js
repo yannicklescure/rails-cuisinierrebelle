@@ -66,7 +66,7 @@ if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
 }
 
-if(currentController != null && currentController === 'users' && userSignedIn) {
+if(currentController != null && currentController === 'settings' && userSignedIn) {
   const userId = parseInt(document.querySelector('body').dataset.userId);
   let init = {
     user_id: userId,
@@ -79,7 +79,7 @@ if(currentController != null && currentController === 'users' && userSignedIn) {
   notification(init);
 }
 
-if (currentController === null || currentController.match(/bookmarks|users/) && document.querySelector('.card')) {
+if (currentController === null || currentController.match(/recipes|bookmarks|users/) && document.querySelector('.card')) {
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
