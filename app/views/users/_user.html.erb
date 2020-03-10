@@ -8,7 +8,7 @@
   <% if user_signed_in? %>
     <% if current_user.is_following?(user.id) %>
       <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
-    <% else %>
+    <% elsif user != current_user %>
       <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
     <% end %>
   <% else %>
