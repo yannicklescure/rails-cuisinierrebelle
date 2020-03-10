@@ -17,7 +17,7 @@
       </div>
       <% if user_signed_in? %>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between order-1">
-        <% if @recipe.user != current_user %>
+        <% if @recipe.user == current_user %>
         <div class="m-0 ml-md-3 order-1 order-md-0">
           <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'btn btn-sm btn-secondary' %>
         </div>
