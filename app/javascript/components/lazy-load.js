@@ -2,6 +2,7 @@ import { card } from "./card";
 
 export const lazyLoad = (init) => {
 
+  // console.log(init);
   // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
   let options;
   if(init.userSignedIn) {
@@ -18,6 +19,7 @@ export const lazyLoad = (init) => {
   fetch(init.url, options)
   .then(response => response.json())
   .then(result => {
+    // console.log(result.data);
     card(init, result.data);
   })
   .catch(ex => {

@@ -15,9 +15,7 @@ export const card = (init, data) => {
     // if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => ({'id': bookmark.recipe_id, 'created_at': bookmark.created_at}));
     if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
-    if(data.user.recipes && data.user.auth.slug === init.currentPage) userRecipes = data.user.recipes.map(recipe => recipe.id);
-    // console.log(`current_user ${data.user.auth.slug}`);
-    // console.log(`user_recipes ${init.currentPage}`);
+    if(data.user.recipes && data.user.auth.slug === init.currentPage || init.currentController === 'recipes') userRecipes = data.user.recipes.map(recipe => recipe.id);
   }
   let render = false;
   let count = 0;
@@ -34,7 +32,7 @@ export const card = (init, data) => {
     });
     array = ordered;
   }
-  if(!data.user || data.user.auth.slug != init.currentPage) {
+  if(array) {
     array.forEach((recipe, index) => {
       switch(init.currentController) {
         case null:
@@ -43,8 +41,10 @@ export const card = (init, data) => {
         case 'users':
           render = userRecipes.includes(recipe.id);
           break;
+        case 'recipes':
+          render = userRecipes.includes(recipe.id);
+          break;
         case 'bookmarks':
-          // render = userBookmarks.filter(data => (data.id === recipe.id)).length === 1;
           render = userBookmarks.includes(recipe.id);
           break;
         default:
