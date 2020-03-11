@@ -79,7 +79,6 @@ if(currentController != null && currentController === 'settings' && userSignedIn
   notification(init);
 }
 
-console.log(currentPage);
 if ((currentController === null || 'users' || 'bookmarks') || currentController === 'recipes' && currentPage === null) {
   const init = {
     url: '/api/v1/recipes',
@@ -88,7 +87,7 @@ if ((currentController === null || 'users' || 'bookmarks') || currentController 
     currentPage: currentPage,
     user_email: cookies.user_email,
     user_token: cookies.user_token,
-    locale: cookies.locale,
+    locale: currentLang,
   };
   lazyLoad(init);
 }

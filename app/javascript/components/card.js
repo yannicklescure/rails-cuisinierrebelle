@@ -4,33 +4,42 @@ const capitalize_Words = (str) => {
  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
+const setUserRecipes = (el, recipes) => {
+  return recipes.filter(recipe => {
+    if(recipe.user.slug === el) return recipe;
+  });
+}
+
 export const card = (init, data) => {
-  console.log(data);
   const root = document.querySelector('#root');
   let userBookmarks = [];
   let userLikes = [];
   let userRecipes = [];
-  let locale = init.locale;
-  locale != 'en' ? locale = `/${locale}` : locale = '';
-  if(data.user) {
-    if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
-    if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
-    if(data.user.recipes && data.user.auth.slug === init.currentPage || init.currentController === 'recipes') userRecipes = data.user.recipes.map(recipe => recipe.id);
-  }
+  let locale = init.locale != 'en' ? `/${init.locale}` : '';
   let render = false;
   let count = 0;
   let array = data.recipes;
+  if(init.userSignedIn && data.user) {
+    if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+    if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
+    if(data.user.recipes && init.currentController === 'recipes') {
+      userRecipes = setUserRecipes(data.user.auth.slug, data.recipes);
+    }
+  }
+  if(init.currentController === 'users' && init.currentPage != null) {
+    userRecipes = setUserRecipes(init.currentPage, data.recipes);
+  }
   if(init.currentController === 'bookmarks') {
     array = data.recipes.filter(recipe => userBookmarks.includes(recipe.id));
-    const ordered = [];
+    const temp = [];
     userBookmarks.forEach(userBookmark => {
       array.forEach(recipe => {
         if(userBookmark === recipe.id) {
-          ordered.push(recipe);
+          temp.push(recipe);
         }
       })
     });
-    array = ordered;
+    array = temp;
   }
   if(array) {
     array.forEach((recipe, index) => {
@@ -39,10 +48,10 @@ export const card = (init, data) => {
           render = true;
           break;
         case 'users':
-          render = userRecipes.includes(recipe.id);
+          render = userRecipes.includes(recipe);
           break;
         case 'recipes':
-          render = userRecipes.includes(recipe.id);
+          render = userRecipes.includes(recipe);
           break;
         case 'bookmarks':
           render = userBookmarks.includes(recipe.id);

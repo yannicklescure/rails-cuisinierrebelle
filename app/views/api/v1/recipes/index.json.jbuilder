@@ -14,7 +14,7 @@ json.data do
       end
       if current_user.recipes.any?
         json.recipes current_user.recipes do |recipe|
-          json.extract! recipe, :id
+          json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :photo, :likes_count
         end
       end
     end
