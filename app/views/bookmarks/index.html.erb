@@ -1,12 +1,6 @@
 <div class="container-fluid">
   <% if @bookmarks.size.positive? %>
-    <div id="recipes-cards">
-      <div id="root" class="row py-3" data-bookmarks-count="<%= @bookmarks.count %>">
-      <% @bookmarks.order('created_at DESC')[0...10].each do |bookmark| %>
-        <%= render 'shared/card', recipe: bookmark.recipe %>
-      <% end %>
-      </div>
-    </div>
+    <%= render 'shared/recipes', recipes: @bookmarks %>
   <% else %>
   <div class="row py-3">
     <p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>

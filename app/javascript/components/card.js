@@ -5,6 +5,7 @@ const capitalize_Words = (str) => {
 }
 
 export const card = (init, data) => {
+  console.log(data);
   const root = document.querySelector('#root');
   let userBookmarks = [];
   let userLikes = [];
@@ -12,7 +13,6 @@ export const card = (init, data) => {
   let locale = init.locale;
   locale != 'en' ? locale = `/${locale}` : locale = '';
   if(data.user) {
-    // if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => ({'id': bookmark.recipe_id, 'created_at': bookmark.created_at}));
     if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
     if(data.user.recipes && data.user.auth.slug === init.currentPage || init.currentController === 'recipes') userRecipes = data.user.recipes.map(recipe => recipe.id);
@@ -52,7 +52,7 @@ export const card = (init, data) => {
       }
       if(render) {
         count += 1;
-        if(count > 10) {
+        if(count > 0) {
           let bookmarkPatchAttributes = '';
           let likePatchAttributes = '';
           let faHeart = '<i class="far fa-heart"></i>';

@@ -19,7 +19,7 @@ export const lazyLoad = (init) => {
   fetch(init.url, options)
   .then(response => response.json())
   .then(result => {
-    // console.log(result.data);
+    console.log(result);
     card(init, result.data);
   })
   .catch(ex => {

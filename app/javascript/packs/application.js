@@ -79,7 +79,8 @@ if(currentController != null && currentController === 'settings' && userSignedIn
   notification(init);
 }
 
-if (currentController === null || currentController.match(/recipes|bookmarks|users/) && document.querySelector('.card')) {
+console.log(currentPage);
+if ((currentController === null || 'users' || 'bookmarks') || currentController === 'recipes' && currentPage === null) {
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
