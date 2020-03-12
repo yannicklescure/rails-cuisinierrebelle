@@ -66,17 +66,22 @@ if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
 }
 
-if(currentController != null && currentController === 'settings' && userSignedIn) {
+if(currentController === 'settings' && userSignedIn) {
   const userId = parseInt(document.querySelector('body').dataset.userId);
-  let init = {
+  const initMailchimp = {
     user_id: userId,
     user_email: cookies.user_email,
-    user_token: cookies.user_token
-  }
-  init.url = '/api/v1/mailchimp';
-  mailchimp(init);
-  init.url = '/api/v1/notification';
-  notification(init);
+    user_token: cookies.user_token,
+    url: '/api/v1/mailchimp'
+  };
+  mailchimp(initMailchimp);
+  const initNotification = {
+    user_id: userId,
+    user_email: cookies.user_email,
+    user_token: cookies.user_token,
+    url: '/api/v1/notification'
+  };
+  notification(initNotification);
 }
 
 if ((currentController === null || 'users' || 'bookmarks') || currentController === 'recipes' && currentPage === null) {

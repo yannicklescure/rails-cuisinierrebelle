@@ -1,9 +1,7 @@
 export const notification = (init) => {
   const btnSwitches = document.querySelectorAll('.notification-switch');
-  console.log(init);
   btnSwitches.forEach((btnSwitch) => {
     btnSwitch.addEventListener('change', (event)=> {
-      console.log(event.target.checked);
       const options = {
         method: 'PUT',
         // credentials: 'same-origin',
@@ -12,7 +10,6 @@ export const notification = (init) => {
           'X-User-Token': atob(decodeURIComponent(init.user_token))
         }
       };
-
       fetch(`${init.url}/${init.user_id}?notification=${event.target.checked}`, options)
       .then(response => response.json())
       .then(result => {
