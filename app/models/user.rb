@@ -42,10 +42,11 @@ class User < ApplicationRecord
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
     send_welcome_email
+    create_default_image
     async_update
   end
 
-  after_commit :create_default_image
+  # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
 
   extend FriendlyId
