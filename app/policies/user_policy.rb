@@ -13,11 +13,19 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def followers?
+    true
+  end
+
+  def following?
+    true
+  end
+
   def follow?
-    return true
+    true
   end
 
   def unfollow?
-    return true
+    true
   end
 end

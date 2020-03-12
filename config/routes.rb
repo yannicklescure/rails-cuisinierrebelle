@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     resources :pages, except: [:index]
     resources :products, except: [:index, :show]
-    resources :settings, only: [:index]
+    resources :settings, only: [:index], as: :settings
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :recipes do
@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     get '/index/tagged', to: "index#tagged", as: :tagged
     resources :followers, only: [:index]
     resources :following, only: [:index]
+
+    get '/:id/followers', to: 'users#followers', as: :user_followers
+    get '/:id/following', to: 'users#following', as: :user_following
 
     resources :users, only: [:show] do
       member do

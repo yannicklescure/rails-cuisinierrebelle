@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
+  mount_uploader :image, ImageUploader
+
   def follow(user_id)
     following_relationships.create(following_id: user_id)
   end
@@ -37,13 +39,13 @@ class User < ApplicationRecord
     return true if relationship
   end
 
-  # after_create :send_welcome_email
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
     send_welcome_email
     async_update
   end
 
+  after_commit :create_default_image
   # after_commit :async_update # Run on create & update
 
   extend FriendlyId
@@ -53,6 +55,13 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
+  end
+
+  def create_default_image
+    if self.image.url.nil?
+      self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
+      self.save
+    end
   end
 
   def async_update
@@ -69,7 +78,7 @@ class User < ApplicationRecord
       name = Namae::Name.parse(user.name)
       user.first_name = name.given
       user.last_name = name.family
-      user.image = auth.info.image # assuming the user model has an image
+      # user.image = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!

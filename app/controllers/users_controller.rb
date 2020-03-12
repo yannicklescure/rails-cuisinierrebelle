@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def followers
+    @user = User.friendly.find(params[:id])
+    authorize @user
+  end
+
+  def following
+    @user = User.friendly.find(params[:id])
+    authorize @user
+  end
+
   def follow
     authorize @user
     if current_user.follow(@user.id)
@@ -42,6 +52,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:id, :image)
   end
 
   def not_found

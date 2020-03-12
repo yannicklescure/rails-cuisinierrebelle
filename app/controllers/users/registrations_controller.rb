@@ -45,7 +45,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.slug = nil
       resource.save!
       # respond_with resource, location: after_update_path_for(resource)
-      respond_with resource, location: user_path(resource)
+      # respond_with resource, location: user_path(resource)
+      respond_with resource, location: settings_path
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -124,7 +125,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :image)
   end
 
   def sign_up_params
@@ -134,6 +135,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params["user"]["name"] = "#{params["user"]["first_name"]} #{params["user"]["last_name"]}"
-    params.require(:user).permit(:first_name, :last_name, :name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:first_name, :last_name, :name, :email, :password, :password_confirmation, :current_password, :image)
   end
 end
