@@ -12,6 +12,7 @@ import { replyForms } from "../components/reply";
 import { viewReplies } from "../components/reply";
 import { repliesReply } from "../components/reply";
 import { alerts } from "../components/alerts";
+import { userBanner } from "../components/user-banner";
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
 
@@ -109,6 +110,10 @@ if(currentController === 'recipes' && currentPage != null) {
     replyForms();
     repliesReply();
   }
+}
+
+if(currentController === 'users' && currentPage != null) {
+  userBanner();
 }
 
 const body = document.querySelector('body');

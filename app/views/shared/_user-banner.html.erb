@@ -1,15 +1,15 @@
-<div class="container-fluid">
+<div id="user-banner" class="container-fluid">
   <div class="d-flex flex-row bg-light justify-content-center" style="border-radius: 4px;">
     <div class="d-flex flex-grow-1 flex-md-grow-0 p-3">
       <div class="d-flex align-items-center">
         <img src="<%= user.image %>" alt="" class="d-md-none rounded" width="64px" height="64px">
       </div>
-      <div class="d-flex flex-column flex-md-row align-items-md-end flex-grow-1 flex-md-grow-0 pl-3">
-        <div class="order-md-1 pl-md-3 d-flex align-items-center">
+      <div class="d-flex flex-column flex-md-row align-items-md-end flex-grow-1 flex-md-grow-0 pl-3 pl-md-0">
+        <div class="order-md-1 px-md-3 d-flex align-items-center">
           <img src="<%= user.image %>" alt="" class="d-none d-md-block rounded" width="64px" height="64px">
         </div>
-        <div class="order-1 order-md-2 d-flex flex-grow-1 flex-md-grow-0 pl-md-3 flex-md-column"><%= render user %></div>
-        <div class="order-0 order-md-0 d-flex flex-grow-1 flex-md-grow-0 justify-content-between">
+        <div id="user-name" class="order-1 order-md-2 d-flex flex-grow-1 flex-md-grow-0 flex-md-column"><%= render user %></div>
+        <div id="user-stats" class="order-0 order-md-0 d-flex flex-grow-1 flex-md-grow-0 justify-content-between">
           <%= link_to user_path(user), class: 'btn p-0' do %>
           <div class="d-flex flex-column align-items-center">
             <strong class="mb-n1"><%= user.recipes.count %></strong>
