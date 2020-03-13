@@ -1,72 +1,81 @@
 root = document.querySelector("#root");
-bookmarksCount = parseInt(root.dataset.bookmarksCount);
-// bookmarksCount = document.querySelector(`[data-bookmarks-count="${bookmarksCount}"`);
-card = document.querySelector("[data-recipe='<%= @recipe.id %>']");
-bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
-faBookmark = document.querySelector(".fa-bookmark-<%= @recipe.id %>");
+if (root) {
+  bookmarksCount = parseInt(root.dataset.bookmarksCount);
+  // bookmarksCount = document.querySelector(`[data-bookmarks-count="${bookmarksCount}"`);
+  card = document.querySelector("[data-recipe='<%= @recipe.id %>']");
+  bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
+  faBookmark = document.querySelector(".fa-bookmark-<%= @recipe.id %>");
 
-returnPosition = () => {
-  let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
-  // console.log(data.groups.domain);
-  let currentLang = data.groups.lang || null;
-  if(currentLang != null) currentLang = currentLang.replace('/','');
-  let currentController = data.groups.controller || null;
-  if(currentController != null) currentController = currentController.replace('/','');
-  let currentPage = data.groups.page || null;
-  if(currentPage != null) currentPage = currentPage.replace('/','');
-  return {
-    currentLang: currentLang,
-    currentController: currentController,
-    currentPage: currentPage
+  returnPosition = () => {
+    let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
+    // console.log(data.groups.domain);
+    let currentLang = data.groups.lang || null;
+    if(currentLang != null) currentLang = currentLang.replace('/','');
+    let currentController = data.groups.controller || null;
+    if(currentController != null) currentController = currentController.replace('/','');
+    let currentPage = data.groups.page || null;
+    if(currentPage != null) currentPage = currentPage.replace('/','');
+    return {
+      currentLang: currentLang,
+      currentController: currentController,
+      currentPage: currentPage
+    }
   }
-}
 
-fade = (element) => {
-  var op = 1;  // initial opacity
-  var timer = setInterval(function () {
-      if (op <= 0.1){
-        clearInterval(timer);
-        element.style.display = 'none';
-      }
-      element.style.opacity = op;
-      element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-      op -= op * 0.1;
-  }, 50);
-  return true;
-}
-
-unfade = (element) => {
-  var op = 0.1;  // initial opacity
-  element.style.display = 'block';
-  var timer = setInterval(function () {
-      if (op >= 1){
+  fade = (element) => {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
           clearInterval(timer);
-      }
-      element.style.opacity = op;
-      element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-      op += op * 0.1;
-  }, 10);
-  return true;
-}
+          element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+    return true;
+  }
 
-if(<%= @bookmarked %>) {
-  bookmarksCount += 1;
-  root.dataset.bookmarksCount = bookmarksCount;
-  bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
-  if(faBookmark != null) {
-    faBookmark.classList.remove('d-none');
-    unfade(faBookmark);
-    setTimeout(() => {
-      fade(faBookmark);
-      setTimeout(() => {faBookmark.classList.add('d-none')}, 500);
-    }, 500);
+  unfade = (element) => {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+    return true;
+  }
+
+  if(<%= @bookmarked %>) {
+    bookmarksCount += 1;
+    root.dataset.bookmarksCount = bookmarksCount;
+    bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
+    if(faBookmark != null) {
+      faBookmark.classList.remove('d-none');
+      unfade(faBookmark);
+      setTimeout(() => {
+        fade(faBookmark);
+        setTimeout(() => {faBookmark.classList.add('d-none')}, 500);
+      }, 500);
+    }
+  } else {
+    bookmarksCount -= 1;
+    root.dataset.bookmarksCount = bookmarksCount;
+    bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
+    if(returnPosition().currentController === 'bookmarks') {
+      card.parentElement.remove();
+      if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
+    }
   }
 } else {
-  bookmarksCount -= 1;
-  root.dataset.bookmarksCount = bookmarksCount;
-  bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
-  if(returnPosition().currentController === 'bookmarks') {
-    card.parentElement.remove();
-    if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
+  bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
+  if(<%= @bookmarked %>) {
+    bookmarked.innerHTML = `<i class="fas fa-bookmark"></i>`;
+  } else {
+    bookmarked.innerHTML = `<i class="far fa-bookmark"></i>`;
   }
 }

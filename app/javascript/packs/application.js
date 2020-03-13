@@ -84,7 +84,7 @@ if(currentController === 'settings' && userSignedIn) {
   notification(initNotification);
 }
 
-if ((currentController === null || 'users' || 'bookmarks') || currentController === 'recipes' && currentPage === null) {
+if (currentController === null || currentController === 'users' || currentController === 'bookmarks' || (currentController === 'recipes' && currentPage === null)) {
   const init = {
     url: '/api/v1/recipes',
     userSignedIn: userSignedIn,
