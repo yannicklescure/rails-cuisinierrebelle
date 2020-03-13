@@ -563,6 +563,10 @@ en:
       settings: Settings
       sign_in: Sign in
       tools: Tools
+    user-banner:
+      followers: Followers
+      following: Following
+      recipes: Recipes
   user_mailer:
     comment:
       author: "%{author}:"
@@ -646,6 +650,7 @@ en:
           %{email}
         leave_blank_if_you_don_t_want_to_change_it: Leave blank if you don t want
           to change it
+        photo: Photo
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update

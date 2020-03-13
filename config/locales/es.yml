@@ -294,7 +294,7 @@ es:
       create_page: Create page
       delete: Delete
       description: Description
-      photo: Photo
+      photo: Foto
       title: Title
       url: Url
   recipes:
@@ -439,6 +439,10 @@ es:
       settings: Configuraciones
       sign_in: Registrarse
       tools: Herramientas de cocina
+    user-banner:
+      followers: Seguidores
+      following: Siguiendo
+      recipes: Recetas
   user_mailer:
     comment:
       author: "%{author}:"
@@ -528,6 +532,7 @@ es:
         currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion
           de: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea cambiarla
+        photo: Foto
         title: Editarar %{resource}
         unhappy: "¿Disconforme?"
         update: Actualizar
