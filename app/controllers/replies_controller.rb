@@ -26,10 +26,10 @@ class RepliesController < ApplicationController
     end
     if @reply.save
       users = []
-      users << @reply.comment.user if @reply.user != current_user
+      users << @reply.comment.user if @reply.comment.user != current_user
       @reply.comment.replies.each { |reply| users << reply.user unless users.include?(reply.user) || reply.user == current_user }
+      # binding.pry
       users.each do |user|
-        # binding.pry
         UserMailer.with(user: user, recipe: @recipe, reply: @reply).reply.deliver_now if user.notification
       end
       respond_to do |format|
