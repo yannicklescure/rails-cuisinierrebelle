@@ -160,6 +160,7 @@ en:
       following: Following
       full_name: Full name
       likes: Likes
+      locale: Language
       published_recipes: Published recipes
   application:
     user_not_authorized:

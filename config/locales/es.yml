@@ -106,6 +106,7 @@ es:
       following: Siguiendo
       full_name: Nombre completo
       likes: Gustos
+      locale: Idioma
       published_recipes: Recetas publicadas
   application:
     user_not_authorized:

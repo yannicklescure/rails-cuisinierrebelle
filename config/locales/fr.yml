@@ -160,6 +160,7 @@ fr:
       following: Abonnements
       full_name: Nom complet
       likes: J'aime
+      locale: Language
       published_recipes: Recettes publiées
   application:
     user_not_authorized:
