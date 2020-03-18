@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
     else
       I18n.locale = params[:locale] ? params[:locale] : session[:locale]
     end
+    # binding.pry
     session[:locale] = I18n.locale
   end
 
