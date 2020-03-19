@@ -2,6 +2,9 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
 
+gem 'rails', '6.0.0'
+gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+gem 'puma'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
@@ -9,9 +12,6 @@ gem 'devise-i18n-views'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
-gem 'puma'
-gem 'rails', '5.2.3'
-gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem 'redis'
 
 gem 'autoprefixer-rails'
