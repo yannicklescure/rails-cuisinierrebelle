@@ -15,23 +15,13 @@ class Users::SessionsController < Devise::SessionsController
     # binding.pry
     I18n.locale = resource.locale.nil? ? session[:locale] : resource.locale
     session[:locale] = I18n.locale
-    # set_user_locale(resource)
   end
 
   # DELETE /resource/sign_out
   def destroy
     # binding.pry
-    set_user_locale(current_user)
     super
     session.delete :locale
-  end
-
-  private
-
-  def set_user_locale(resource)
-    # binding.pry
-    resource.locale = I18n.locale
-    resource.save
   end
 
   # protected

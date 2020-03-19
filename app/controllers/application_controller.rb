@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :set_user_locale
 
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -19,14 +20,20 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
-    # binding.pry
     if session[:locale].nil?
       I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
     else
       I18n.locale = params[:locale] ? params[:locale] : session[:locale]
     end
-    # binding.pry
     session[:locale] = I18n.locale
+  end
+
+  def set_user_locale
+    if user_signed_in?
+      @user = current_user
+      @user.locale = I18n.locale
+      @user.save
+    end
   end
 
   def user_authentication

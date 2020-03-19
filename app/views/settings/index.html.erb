@@ -1,12 +1,11 @@
 <div class="container mt-3 mb-5">
 <% if user_signed_in? && @user == current_user %>
-  <div class="d-flex justify-content-between align-items-end align-items-md-start pb-3">
+  <div class="d-flex justify-content-start align-items-center pb-3">
     <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px">
-    <%= link_to t('.edit_user_registration'), edit_user_registration_path(@user), class: 'text-body' %>
-  </div>
-  <div class="d-flex flex-column mb-3">
-    <%= link_to t('.follower', count: @user.followers.count), followers_path, class: 'text-body' %>
-    <%= link_to t('.published_recipes', count: @user.recipes.count), recipes_path, class: 'text-body' %>
+    <div class="d-flex flex-column ml-3">
+      <%= link_to t('.follower', count: @user.followers.count), followers_path, class: 'text-body' %>
+      <%= link_to t('.published_recipes', count: @user.recipes.count), recipes_path, class: 'text-body' %>
+    </div>
   </div>
   <div class="d-flex flex-row justify-content-between justify-content-md-start">
     <strong><%= t('.full_name') %></strong>
@@ -38,6 +37,9 @@
       <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
       <label class="custom-control-label" for="notificationSwitch"><%= t('.receive_emails_about_comments_and_replies') %></label>
     </div>
+  </div>
+  <div class="d-flex flex-column align-items-end">
+    <%= link_to t('.edit_user_registration'), edit_user_registration_path(@user), class: 'btn btn-secondary' %>
   </div>
 <% end %>
 </div>

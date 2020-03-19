@@ -22,6 +22,10 @@
       <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
     <% end %>
 
+    <%= f.label :locale, t('.locale') %>
+
+    <%#= f.select :locale, I18n.available_locales.map(&:to_s) %>
+
     <div class="d-flex flex-column">
       <%= f.label :image, t('.photo') %>
       <% unless @user.image.url.nil? %>
