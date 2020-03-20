@@ -6,6 +6,6 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def update?
-    return true
+    true
   end
 end
