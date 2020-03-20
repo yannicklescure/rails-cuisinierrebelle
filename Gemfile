@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
 
-gem 'rails', '6.0.0'
+gem 'rails', '6.0.2.2'
 gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem 'puma'
 gem 'bootsnap', require: false
@@ -64,3 +64,4 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'http_accept_language'
 gem "nokogiri", ">= 1.10.8"
 gem 'bootstrap-email'
+gem "actionview", ">= 6.0.2.2"
