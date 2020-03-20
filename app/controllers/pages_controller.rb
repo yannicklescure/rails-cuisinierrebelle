@@ -58,6 +58,7 @@ class PagesController < ApplicationController
   def tools
     @bookmarks = Bookmark.where(user: current_user)
     @products = Product.all
+    @user_view = params[:user_view] == 'true' || params[:user_view].nil?
   end
 
   private

@@ -1,6 +1,12 @@
 <div class="tools">
   <div class="d-flex flex-column align-items-center mt-5 mb-3">
-    <h5 class="d-none d-print-block">&#8766;&nbsp;Cusinierrebelle.com&nbsp;&#8766;</h5>
+    <% if current_user.admin %>
+    <%= link_to t('.switch_view'), "#{tools_path()}?user_view=#{!@user_view}", class: 'text-decoration-none' %>
+      <% if !@user_view %>
+      <%= link_to t('.new_product'), new_product_path(), id: 'new_product', class: 'btn btn-secondary' %>
+      <% end %>
+    <% end %>
+    <% if @user_view %>
     <h1><%= t('.tools') %></h1>
     <div id="tools-alert" class="row justify-content-center p-3 m-0">
       <div class="col col-md-6">
@@ -15,11 +21,11 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-
   <div class="row py-3 m-0">
     <% @products.order('updated_at DESC').each do |product| %>
-      <%= render 'shared/card-product', product: product %>
+      <%= render 'shared/card-product', product: product, user_view: @user_view %>
     <% end %>
   </div>
 </div>
