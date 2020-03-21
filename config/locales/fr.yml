@@ -499,7 +499,7 @@ fr:
       recipes: Recettes
       sign_up: Inscription
     card-product:
-      edit: Edit
+      edit_html: 'Editer <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: 'Voir détails <span style="font-size: 90%;"><i class="fas
         fa-external-link-alt"></i></span>'
     card-small:

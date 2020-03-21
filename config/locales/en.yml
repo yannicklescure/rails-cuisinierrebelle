@@ -500,7 +500,7 @@ en:
       recipes: Recipes
       sign_up: Sign up
     card-product:
-      edit: Edit
+      edit_html: 'Edit <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: 'More details <span style="font-size: 90%;"><i class="fas
         fa-external-link-alt"></i></span>'
     card-small:

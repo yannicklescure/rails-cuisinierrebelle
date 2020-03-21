@@ -376,7 +376,7 @@ es:
       recipes: Recetas
       sign_up: Regístrate
     card-product:
-      edit: Edit
+      edit: 'Editar <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: 'Más detalles <span style="font-size: 90%;"><i class="fas
         fa-external-link-alt"></i></span>'
     card-small:
