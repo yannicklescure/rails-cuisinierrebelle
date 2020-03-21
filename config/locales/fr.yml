@@ -518,9 +518,10 @@ fr:
       help: Aide
       help_link: aide
       legal: Légal
-      made_with_love_by_html: 'Fait avec <svg class="bi bi-heart-fill mb-1 text-danger" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
-            </svg> par Cuisinier Rebelle'
+      made_with_love_by_html: Fait avec <svg class="bi bi-heart-fill mb-1 text-danger"
+        width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534
+        4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/> </svg> par Cuisinier Rebelle
       news: Nouvelles
       news_link: nouvelles
       policies: Charte
@@ -545,6 +546,11 @@ fr:
       inbox: Messages
       languages_html: <i class="fas fa-language"></i>
       log_out: Se déconnecter
+      menu_modal_html: <svg class="bi bi-three-dots-vertical mb-1 text-body" width="1em"
+        height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5
+        1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
+        </svg>
       new_recipe: Nouvelle recette
       recipes: Recettes
       settings: Paramètres
@@ -552,25 +558,29 @@ fr:
       tools: Matériel de cuisine
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensIls"></i>&nbsp;Cuisinier Rebelle
-      menu_modal_html: '<svg class="bi bi-three-dots-vertical mb-1 text-body" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
-      </svg>'
-      search_btn_html: <svg class="bi bi-search mb-1 text-body" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
-        d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1
-        1 0 010-1.415z" clip-rule="evenodd"/> <path fill-rule="evenodd" d="M6.5 12a5.5
-        5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-        clip-rule="evenodd"/> </svg>
-      share_btn_html: '<svg class="bi bi-link-45deg mb-1 text-body" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.715 6.542L3.343 7.914a3 3 0 104.243 4.243l1.828-1.829A3 3 0 008.586 5.5L8 6.086a1.001 1.001 0 00-.154.199 2 2 0 01.861 3.337L6.88 11.45a2 2 0 11-2.83-2.83l.793-.792a4.018 4.018 0 01-.128-1.287z"/>
-        <path d="M5.712 6.96l.167-.167a1.99 1.99 0 01.896-.518 1.99 1.99 0 01.518-.896l.167-.167A3.004 3.004 0 006 5.499c-.22.46-.316.963-.288 1.46z"/>
-        <path d="M6.586 4.672A3 3 0 007.414 9.5l.775-.776a2 2 0 01-.896-3.346L9.12 3.55a2 2 0 012.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 00-4.243-4.243L6.586 4.672z"/>
-        <path d="M10 9.5a2.99 2.99 0 00.288-1.46l-.167.167a1.99 1.99 0 01-.896.518 1.99 1.99 0 01-.518.896l-.167.167A3.004 3.004 0 0010 9.501z"/>
-      </svg>'
-      search_btn_back_html: '<svg class="bi bi-arrow-counterclockwise mb-1 text-body" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 00-7.103-3.16.5.5 0 11-.454-.892A6 6 0 112.545 5.5a.5.5 0 11.91.417 5 5 0 109.375.789z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M7.854.146a.5.5 0 00-.708 0l-2.5 2.5a.5.5 0 000 .708l2.5 2.5a.5.5 0 10.708-.708L5.707 3 7.854.854a.5.5 0 000-.708z" clip-rule="evenodd"/>
-      </svg>'
+      menu_modal_html: <svg class="bi bi-three-dots-vertical mb-1 text-body" width="1em"
+        height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5
+        1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
+        </svg>
+      search_btn_back_html: <svg class="bi bi-arrow-counterclockwise mb-1 text-body"
+        width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 00-7.103-3.16.5.5 0 11-.454-.892A6
+        6 0 112.545 5.5a.5.5 0 11.91.417 5 5 0 109.375.789z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M7.854.146a.5.5 0 00-.708 0l-2.5 2.5a.5.5 0 000
+        .708l2.5 2.5a.5.5 0 10.708-.708L5.707 3 7.854.854a.5.5 0 000-.708z" clip-rule="evenodd"/>
+        </svg>
+      search_btn_html: <svg class="bi bi-search mb-1 text-body" width="1em" height="1em"
+        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1
+        0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/> <path
+        fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5
+        6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/> </svg>
+      share_btn_html: '<svg style="font-size: 110%" class="bi bi-reply-fill mb-1 text-body"
+        width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.079 11.9l4.568-3.281a.719.719 0 000-1.238L9.079 4.1A.716.716 0
+        008 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+        </svg>'
     navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?
       bookmarks: Favoris
