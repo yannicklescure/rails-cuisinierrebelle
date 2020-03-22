@@ -71,10 +71,10 @@ export const card = (init, data) => {
               <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
             </svg>`;
           let faHeart = heart;
-          const bookmark = `<svg style="font-size: 110%;" class="bi bi-bookmark mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          const bookmark = `<svg class="bi bi-bookmark mb-1" width="1.1em" height="1.1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 00-2-2H5a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 00-1-1H5a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/>
           </svg>`;
-          const bookmarkFill = `<svg style="font-size: 110%;" class="bi bi-bookmark-fill mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          const bookmarkFill = `<svg class="bi bi-bookmark-fill mb-1" width="1.1em" height="1.1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M3 3a2 2 0 012-2h6a2 2 0 012 2v12l-5-3-5 3V3z" clip-rule="evenodd"/>
           </svg>`;
           let faBookmark = bookmark;
@@ -122,6 +122,11 @@ export const card = (init, data) => {
             </div>
           `;
           root.insertAdjacentHTML('beforeEnd', card);
+          const cardNodeElement = document.querySelector(`[data-recipe*="${recipe.id}"]`);
+          const svgElements = cardNodeElement.querySelectorAll('svg');
+          svgElements.forEach(svgElement => {
+            svgElement.style.fontSize = '115%';
+          });
         }
       }
     });
