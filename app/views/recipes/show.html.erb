@@ -28,14 +28,14 @@
           <% bookmark = '<svg style="font-size: 110%;" class="bi bi-bookmark mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 00-2-2H5a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 00-1-1H5a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/></svg>' %>
           <% bookmarkFill = '<svg style="font-size: 110%;" class="bi bi-bookmark-fill mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h6a2 2 0 012 2v12l-5-3-5 3V3z" clip-rule="evenodd"/></svg>' %>
           <% if policy(Bookmark).update? %>
-            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-1 m-md-0 ml-3 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
+            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-0 m-md-0 ml-3 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw(bookmark) : raw(bookmarkFill) %>
             <% end %>
           <% end %>
           <% if client.device_type.match(/smartphone|phablet/) %>
-          <span id="share-btn" class="mx-1 text-muted"><%= t('.share_btn_html') %></span>
+          <span id="share-btn" class="mx-3 text-muted"><%= t('.share_btn_html') %></span>
           <% end %>
-          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-1 m-md-0 ml-md-3 text-danger text-decoration-none", 'data-like-recipe': @recipe.id do %>
+          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 m-md-0 ml-md-3 text-danger text-decoration-none", 'data-like-recipe': @recipe.id do %>
             <% if @recipe.likes.find_by(user: current_user).nil? %>
               <%= raw(heart) %>
             <% else %>
