@@ -10,17 +10,19 @@ const setUserRecipes = (el, recipes) => {
   });
 }
 
-export const card = (init, data) => {
+export const cards = (params) => {
+  const init = params.init;
+  const data = params.data;
+  const array = params.array;
+  const userBookmarks = params.userBookmarks;
+  let cardsQty = params.cardsQty;
   const root = document.querySelector('#root');
-  let userBookmarks = [];
+  let render = false;
   let userLikes = [];
   let userRecipes = [];
   let locale = init.locale != 'en' ? `/${init.locale}` : '';
-  let render = false;
   let count = 0;
-  let array = data.recipes;
   if(init.userSignedIn && data.user) {
-    if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
     if(data.user.recipes && init.currentController === 'recipes') {
       userRecipes = setUserRecipes(data.user.auth.slug, data.recipes);
@@ -29,19 +31,8 @@ export const card = (init, data) => {
   if(init.currentController === 'users' && init.currentPage != null) {
     userRecipes = setUserRecipes(init.currentPage, data.recipes);
   }
-  if(init.currentController === 'bookmarks') {
-    array = data.recipes.filter(recipe => userBookmarks.includes(recipe.id));
-    const temp = [];
-    userBookmarks.forEach(userBookmark => {
-      array.forEach(recipe => {
-        if(userBookmark === recipe.id) {
-          temp.push(recipe);
-        }
-      })
-    });
-    array = temp;
-  }
   if(array) {
+    // console.log(`array: ${array.length}`);
     array.forEach((recipe, index) => {
       switch(init.currentController) {
         case null:
@@ -60,8 +51,9 @@ export const card = (init, data) => {
           render = false;
       }
       if(render) {
-        count += 1;
-        if(count > 0) {
+        // console.log(cardsQty);
+        // if(index + 1 <= cardsQty) {
+        if(index +1 >= params.start && index + 1 <= params.end) {
           let bookmarkPatchAttributes = '';
           let likePatchAttributes = '';
           const heart = `<svg class="bi bi-heart mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +75,7 @@ export const card = (init, data) => {
           </svg>`;
           let bookmarkUrl = '/users/sign_in';
           let likeUrl = '/users/sign_in';
-          if(data.user) {
+          if(init.userSignedIn) {
             bookmarkUrl = `/recipes/${recipe.slug}/bookmarks`;
             bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
             likeUrl = `/recipes/${recipe.slug}/likes`;
@@ -122,11 +114,11 @@ export const card = (init, data) => {
             </div>
           `;
           root.insertAdjacentHTML('beforeEnd', card);
-          const cardNodeElement = document.querySelector(`[data-recipe*="${recipe.id}"]`);
-          const svgElements = cardNodeElement.querySelectorAll('svg');
-          svgElements.forEach(svgElement => {
-            svgElement.style.fontSize = '100%';
-          });
+          // const cardNodeElement = document.querySelector(`[data-recipe*="${recipe.id}"]`);
+          // const svgElements = cardNodeElement.querySelectorAll('svg');
+          // svgElements.forEach(svgElement => {
+          //   svgElement.style.fontSize = '100%';
+          // });
         }
       }
     });
