@@ -125,7 +125,7 @@ export const card = (init, data) => {
           const cardNodeElement = document.querySelector(`[data-recipe*="${recipe.id}"]`);
           const svgElements = cardNodeElement.querySelectorAll('svg');
           svgElements.forEach(svgElement => {
-            svgElement.style.fontSize = '115%';
+            svgElement.style.fontSize = '100%';
           });
         }
       }
