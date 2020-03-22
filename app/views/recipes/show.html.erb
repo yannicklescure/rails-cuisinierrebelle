@@ -4,7 +4,7 @@
       <div class="d-flex flex-grow-1 justify-md-content-start align-items-center order-0">
         <div class="d-flex flex-grow-1 m-0 align-items-center">
           <span class="mr-md-1">
-            <% if client.device_type == 'desktop' %>
+            <% if client.device_type.match(/desktop/) %>
             <%= t('.recipe_published_by') %>
             <% end %>
           </span>
@@ -17,7 +17,7 @@
       </div>
       <% if user_signed_in? %>
       <% if @recipe.user == current_user %>
-      <div class="d-flex flex-row justify-content-center m-0 ml-md-3 order-1 order-md-0">
+      <div class="d-flex flex-row justify-content-center m-0 ml-md-3 order-0">
         <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-muted' %>
       </div>
       <% end %>
@@ -31,6 +31,9 @@
             <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-1 m-md-0 ml-3 ml-md-3 text-body text-decoration-none', 'data-bookmark-recipe': @recipe.id do %>
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw(bookmark) : raw(bookmarkFill) %>
             <% end %>
+          <% end %>
+          <% if client.device_type.match(/smartphone|phablet/) %>
+          <span id="share-btn" class="mx-1 text-muted"><%= t('.share_btn_html') %></span>
           <% end %>
           <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-1 m-md-0 ml-md-3 text-danger text-decoration-none", 'data-like-recipe': @recipe.id do %>
             <% if @recipe.likes.find_by(user: current_user).nil? %>

@@ -166,7 +166,7 @@ if(device.match(/smartphone|phablet/)) {
     shareBtn.addEventListener('click', async () => {
       try {
         await navigator.share(shareData)
-      } catch(err) {
+      } catch(e) {
         console.log('Error: ' + e);
       }
       console.log('MDN shared successfully');
