@@ -49,9 +49,11 @@ export const lazyLoad = (init) => {
     });
     let cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
     let cardNodeElementTop = cardNodeElement.getBoundingClientRect().top;
+    const banner = document.querySelector('.banner');
     window.addEventListener('scroll', (event) => {
       if (cardNodeElement) {
         let trigger = Math.round(window.scrollY + window.innerHeight);
+        trigger = banner ? trigger + banner.offsetHeight : trigger;
         if (trigger >= cardNodeElementTop && renderCards) {
           let newCardsQty = cardsQty + cardsMax <= array.length ? cardsQty + cardsMax : array.length;
           cards({
