@@ -53,7 +53,7 @@ export const cards = (params) => {
       if(render) {
         // console.log(cardsQty);
         // if(index + 1 <= cardsQty) {
-        if(index +1 >= params.start && index + 1 <= params.end) {
+        if(index + 1 > params.start && index + 1 <= params.end) {
           let bookmarkPatchAttributes = '';
           let likePatchAttributes = '';
           const heart = `<svg class="bi bi-heart mb-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -123,5 +123,6 @@ export const cards = (params) => {
       }
     });
     if(init.userSignedIn) cardHeart();
+    return true;
   }
 }

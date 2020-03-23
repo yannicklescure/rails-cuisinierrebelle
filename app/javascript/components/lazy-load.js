@@ -35,9 +35,9 @@ export const lazyLoad = (init) => {
       });
       array = temp;
     }
-    let cardsQty = array.length > 24 ? 24 : array.length;
+    const cardsMax = 24;
+    let cardsQty = array.length > cardsMax ? cardsMax : array.length;
     let renderCards = true;
-    // console.log(array);
     cards({
       init: init,
       data: data,
@@ -47,35 +47,28 @@ export const lazyLoad = (init) => {
       start: 0,
       end: cardsQty
     });
+    let cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
+    let cardNodeElementTop = cardNodeElement.getBoundingClientRect().top;
     window.addEventListener('scroll', (event) => {
-      const cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
       if (cardNodeElement) {
-      // console.log(cardNodeElement);
-      let rect = cardNodeElement.getBoundingClientRect();
-        // cardNodeElement.classList.add('bg-danger');
-        if (event.target.defaultView.scrollY >= rect.top - 500) {
-          let newCardsQty = cardsQty + 24 <= array.length ? cardsQty + 24 : array.length;
-          if (renderCards) {
-            // console.log(`scrollTop: ${event.target.defaultView.scrollY}`);
-            // console.log(`rectTop: ${rect.top}`);
-            // // console.log(rect.top, rect.right, rect.bottom, rect.left);
-            // console.log(`cardsQty: ${cardsQty}`);
-            cards({
-              init: init,
-              data: data,
-              array: array,
-              userBookmarks: userBookmarks,
-              cardsQty: cardsQty,
-              start: cardsQty,
-              end: newCardsQty
-            });
-            cardsQty = newCardsQty;
-            // console.log(`newCardsQty: ${newCardsQty}`);
-            if (newCardsQty == array.length) {
-              // console.log('finished');
-              renderCards = false;
-            }
-          }
+        let trigger = Math.round(window.scrollY + window.innerHeight);
+        if (trigger >= cardNodeElementTop && renderCards) {
+          let newCardsQty = cardsQty + cardsMax <= array.length ? cardsQty + cardsMax : array.length;
+          cards({
+            init: init,
+            data: data,
+            array: array,
+            userBookmarks: userBookmarks,
+            cardsQty: cardsQty,
+            start: cardsQty,
+            end: newCardsQty
+          });
+          cardsQty = newCardsQty;
+          cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
+          cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+        }
+        if (cardsQty == array.length) {
+          renderCards = false;
         }
       }
     });
