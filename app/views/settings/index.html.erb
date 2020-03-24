@@ -29,13 +29,19 @@
     <div class="pl-md-2"><%= @user.updated_at %></div>
   </div>
   <div class="d-flex flex-column py-3">
-    <div class="custom-control custom-switch mailchimp-switch">
-      <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
-      <label class="custom-control-label" for="mailchimpSwitch"><%= t('.subscribe_to_newsletter') %></label>
+    <div class="d-flex <% if client.device_type.match(/desktop/) %>w-25<% else %>w-100<% end %> justify-content-between">
+      <div class="pr-3"><%= t('.subscribe_to_newsletter') %></div>
+      <div class="custom-control custom-switch mailchimp-switch">
+        <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
+        <label class="custom-control-label" for="mailchimpSwitch"><%#= t('.subscribe_to_newsletter') %></label>
+      </div>
     </div>
-    <div class="custom-control custom-switch notification-switch">
-      <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
-      <label class="custom-control-label" for="notificationSwitch"><%= t('.receive_emails_about_comments_and_replies') %></label>
+    <div class="d-flex <% if client.device_type.match(/desktop/) %>w-25<% else %>w-100<% end %> justify-content-between">
+      <div class="pr-3"><%= t('.receive_emails_about_comments_and_replies') %></div>
+      <div class="custom-control custom-switch notification-switch">
+        <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
+        <label class="custom-control-label" for="notificationSwitch"><%#= t('.receive_emails_about_comments_and_replies') %></label>
+      </div>
     </div>
   </div>
   <div class="d-flex flex-column align-items-start">
