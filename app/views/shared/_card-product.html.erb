@@ -10,7 +10,7 @@
       <% if user_signed_in? && !user_view %>
         <%= link_to t('.edit_html'), edit_product_path(product), class: 'small text-nowrap text-decoration-none text-body' %>
       <% else %>
-        <%= link_to t('.more_details_html'), product.url, class: 'small text-nowrap text-decoration-none text-body', target: '_blank' %>
+        <%= link_to t('.more_details_html'), product.url, class: 'btn btn-sm btn-info text-nowrap text-decoration-none text-body', target: '_blank' %>
       <% end %>
       </div>
     </div>
