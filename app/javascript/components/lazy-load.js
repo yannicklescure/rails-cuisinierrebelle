@@ -1,5 +1,11 @@
 import { cards } from "./cards";
 
+const setUserRecipes = (el, recipes) => {
+  return recipes.filter(recipe => {
+    if(recipe.user.slug === el) return recipe;
+  });
+}
+
 export const lazyLoad = (init) => {
 
   // console.log(init);
@@ -21,58 +27,81 @@ export const lazyLoad = (init) => {
   .then(result => {
     const data = result.data;
     let array = data.recipes;
-    let userBookmarks = [];
-    if(init.currentController === 'bookmarks') {
-      if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
-      array = data.recipes.filter(recipe => userBookmarks.includes(recipe.id));
-      const temp = [];
-      userBookmarks.forEach(userBookmark => {
-        array.forEach(recipe => {
-          if(userBookmark === recipe.id) {
-            temp.push(recipe);
-          }
-        })
-      });
-      array = temp;
-    }
     const cardsMax = 24;
-    let cardsQty = array.length > cardsMax ? cardsMax : array.length;
     let renderCards = true;
-    cards({
-      init: init,
-      data: data,
-      array: array,
-      userBookmarks: userBookmarks,
-      cardsQty: cardsQty,
-      start: 0,
-      end: cardsQty
-    });
-    let cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
-    let cardNodeElementTop = cardNodeElement.getBoundingClientRect().top;
-    const banner = document.querySelector('.banner');
-    window.addEventListener('scroll', (event) => {
-      if (cardNodeElement) {
-        let trigger = Math.round(window.scrollY + window.innerHeight);
-        if (trigger >= cardNodeElementTop && renderCards) {
-          let newCardsQty = cardsQty + cardsMax <= array.length ? cardsQty + cardsMax : array.length;
-          cards({
-            init: init,
-            data: data,
-            array: array,
-            userBookmarks: userBookmarks,
-            cardsQty: cardsQty,
-            start: cardsQty,
-            end: newCardsQty
-          });
-          cardsQty = newCardsQty;
-          cardNodeElement = document.querySelector(`[data-recipe="${array[cardsQty-1].id}"]`);
-          cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+    let recipes = [];
+    let userLikes = [];
+    let userBookmarks = [];
+    if(init.userSignedIn && data.user) {
+      if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
+      if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+    }
+    let render = false;
+    switch(init.currentController) {
+      case null:
+        recipes = array;
+        render = true;
+        break;
+      case 'users':
+        if (init.currentPage != null) recipes = setUserRecipes(init.currentPage, data.recipes);
+        render = true;
+        break;
+      case 'recipes':
+        if (data.user.recipes) recipes = setUserRecipes(data.user.auth.slug, data.recipes);
+        render = true;
+        break;
+      case 'bookmarks':
+        recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
+        render = true;
+        break;
+      default:
+        recipes = [];
+        render = false;
+    }
+    let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
+    if (render) {
+      cards({
+        init: init,
+        data: data,
+        array: recipes,
+        bookmarks: userBookmarks,
+        likes: userLikes,
+        cardsQty: cardsQty,
+        start: 0,
+        end: cardsQty
+      });
+      let cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
+      console.log(cardNodeElement);
+      let cardNodeElementTop = cardNodeElement ? cardNodeElement.getBoundingClientRect().top : 75;
+      console.log(cardNodeElementTop);
+      const banner = document.querySelector('.banner');
+      window.addEventListener('scroll', (event) => {
+        if (cardNodeElement) {
+          let trigger = Math.round(window.scrollY + window.innerHeight);
+          if (trigger >= cardNodeElementTop && renderCards) {
+            let newCardsQty = cardsQty + cardsMax <= recipes.length ? cardsQty + cardsMax : recipes.length;
+            cards({
+              init: init,
+              data: data,
+              array: recipes,
+              bookmarks: userBookmarks,
+              likes: userLikes,
+              cardsQty: cardsQty,
+              start: cardsQty,
+              end: newCardsQty
+            });
+            cardsQty = newCardsQty;
+            cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
+            cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+            console.log(cardNodeElementTop);
+            // cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+          }
+          if (cardsQty == recipes.length) {
+            renderCards = false;
+          }
         }
-        if (cardsQty == array.length) {
-          renderCards = false;
-        }
-      }
-    });
+      });
+    }
   })
   .catch(ex => {
     console.log('parsing failed', ex);
