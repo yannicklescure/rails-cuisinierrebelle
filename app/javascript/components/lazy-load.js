@@ -71,9 +71,7 @@ export const lazyLoad = (init) => {
         end: cardsQty
       });
       let cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
-      console.log(cardNodeElement);
       let cardNodeElementTop = cardNodeElement ? cardNodeElement.getBoundingClientRect().top : 75;
-      console.log(cardNodeElementTop);
       const banner = document.querySelector('.banner');
       window.addEventListener('scroll', (event) => {
         if (cardNodeElement) {
@@ -93,8 +91,6 @@ export const lazyLoad = (init) => {
             cardsQty = newCardsQty;
             cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
             cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
-            console.log(cardNodeElementTop);
-            // cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
           }
           if (cardsQty == recipes.length) {
             renderCards = false;
