@@ -23,5 +23,9 @@
     <%= link_to t('.delete_html'), recipe_comment_reply_path(recipe, comment, reply), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true %>
     <% end %>
   </div>
-  <div class="my-1"><%= reply.content %></div>
+
+  <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
+  <% extensions = {autolink: true} %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
+  <div class="my-1"><%= markdown.render(reply.content).html_safe %></div>
 </div>
