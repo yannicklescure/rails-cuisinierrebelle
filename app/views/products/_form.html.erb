@@ -1,7 +1,7 @@
 <div class="container my-5">
   <%= simple_form_for(@product) do |f| %>
     <%= f.input :title, label: t('.title'), input_html: { maxlength: 100 } %>
-    <%= f.input :description, label: t('.description'), input_html: { maxlength: 280 } %>
+    <%= f.input :description, label: t('.description'), as: :text, input_html: { maxlength: 280, rows: 5 } %>
     <%= f.input :url, label: t('.url') %>
     <div class="d-flex flex-column">
       <%= f.label :photo, t('.photo') %>
