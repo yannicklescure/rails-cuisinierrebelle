@@ -21,13 +21,22 @@ Rails.application.routes.draw do
     resources :settings, only: [:index], as: :settings
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    resources :recipes do
+    resources :recipes, except: [:show] do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]
       resources :comments, except: [:index, :show] do
         resources :replies, except: [:index, :show]
       end
     end
+    resources :recipes, only: [:show], path: '/r' do
+      resource :bookmarks, only: [:update]
+      resource :likes, only: [:update]
+      resources :comments, except: [:index, :show] do
+        resources :replies, except: [:index, :show]
+      end
+    end
+    get '/recipes/:id', to: redirect('/r/%{id}')
+
     # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :bookmarks, only: [:index]
     resources :index, only: [:index]
@@ -38,13 +47,14 @@ Rails.application.routes.draw do
     get '/:id/followers', to: 'users#followers', as: :user_followers
     get '/:id/following', to: 'users#following', as: :user_following
 
-    resources :users, only: [:show] do
+    resources :users, only: [:show], path: '/u' do
       member do
         post :follow
         post :unfollow
       end
     end
-    # get '/:id', to: 'users#show'
+    get '/users/:id', to: redirect('/u/%{id}')
+
   end
 
   namespace :api, defaults: { format: :json } do

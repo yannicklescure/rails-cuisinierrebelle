@@ -42,7 +42,7 @@ export const lazyLoad = (init) => {
         recipes = array;
         render = true;
         break;
-      case 'users':
+      case 'u':
         if (init.currentPage != null) recipes = setUserRecipes(init.currentPage, data.recipes);
         render = true;
         break;

@@ -35,9 +35,9 @@ export const cards = (params) => {
         let faHeart = heart;
         let faBookmark = bookmark;
         if(init.userSignedIn) {
-          bookmarkUrl = `/recipes/${recipe.slug}/bookmarks`;
+          bookmarkUrl = `/r/${recipe.slug}/bookmarks`;
           bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
-          likeUrl = `/recipes/${recipe.slug}/likes`;
+          likeUrl = `/r/${recipe.slug}/likes`;
           likePatchAttributes = `data-like-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
           if(params.likes.includes(recipe.id)) faHeart = heartFill;
           if(params.bookmarks.includes(recipe.id)) faBookmark = bookmarkFill;
@@ -61,12 +61,12 @@ export const cards = (params) => {
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
-                    <a class="p-0 ml-3 text-body text-decoration-none" href="${locale}/recipes/${recipe.slug}#comments">${comment}</a>
+                    <a class="p-0 ml-3 text-body text-decoration-none" href="${locale}/r/${recipe.slug}#comments">${comment}</a>
                     <a class="p-0 ml-3 text-body text-decoration-none" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                   </div>
                 </div>
-                <a href="${locale}/users/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
-                <a href="${locale}/recipes/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
+                <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
+                <a href="${locale}/r/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
                 <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
               </div>
             </div>
