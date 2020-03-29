@@ -45,14 +45,14 @@ export const cards = (params) => {
         const card = `
           <div class="col-md-4 col-lg-3 col-xl-2">
             <div class="card border-0" data-recipe="${recipe.id}">
-              <div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
+              <a href="${locale}/u/${recipe.user.slug}"><div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
                 <div class="fa-heart-${recipe.id} d-none text-danger display-3">
                   ${heartFill}
                 </div>
                 <div class="fa-bookmark-${recipe.id} d-none text-body display-3">
                   ${bookmarkFill}
                 </div>
-              </div>
+              </div></a>
               <div class="card-body py-2 px-0">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center text-danger">
