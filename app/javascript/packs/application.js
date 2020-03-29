@@ -110,7 +110,7 @@ if (root) {
   lazyLoad(init);
 }
 
-if(currentController === 'recipes' && currentPage != null) {
+if(currentController === 'r' && currentPage != null) {
 
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();
@@ -124,7 +124,7 @@ if(currentController === 'recipes' && currentPage != null) {
   }
 }
 
-if(currentController === 'users' && currentPage != null) {
+if(currentController === 'u' && currentPage != null) {
   userBanner();
 }
 
