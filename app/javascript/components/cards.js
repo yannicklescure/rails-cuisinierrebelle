@@ -46,7 +46,7 @@ export const cards = (params) => {
         const card = `
           <div class="col-md-4 col-lg-3 col-xl-2">
             <div class="card border-0" data-recipe="${recipe.id}">
-              <div class="card-header py-1 px-0">
+              <div class="card-header py-1 px-0 border-0 bg-white rounded">
                 <div class="d-flex justify-content-start align-items-center">
                   <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
                 </div>
