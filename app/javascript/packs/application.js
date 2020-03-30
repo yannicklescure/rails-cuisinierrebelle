@@ -38,7 +38,7 @@ const returnPositionData = returnPosition();
 let currentLang = returnPositionData.currentLang;
 let currentController = returnPositionData.currentController;
 let currentPage = returnPositionData.currentPage;
-
+const device = document.querySelector('body').dataset.device;
 const cookies = cookiesToObject(document.cookie);
 
 const navbarBrand = document.querySelector(".navbar-brand");
@@ -106,6 +106,7 @@ if (root) {
     user_email: cookies.user_email,
     user_token: cookies.user_token,
     locale: currentLang,
+    device: device
   };
   lazyLoad(init);
 }
@@ -128,8 +129,6 @@ if(currentController === 'u' && currentPage != null) {
   userBanner();
 }
 
-const body = document.querySelector('body');
-const device = body.dataset.device;
 if(device.match(/smartphone|phablet/)) {
   const navbarMain = document.querySelector('#navbar-main');
   const navbarSearch = document.querySelector('#navbar-search');

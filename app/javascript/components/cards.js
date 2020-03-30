@@ -42,9 +42,15 @@ export const cards = (params) => {
           if(params.likes.includes(recipe.id)) faHeart = heartFill;
           if(params.bookmarks.includes(recipe.id)) faBookmark = bookmarkFill;
         }
+
         const card = `
           <div class="col-md-4 col-lg-3 col-xl-2">
             <div class="card border-0" data-recipe="${recipe.id}">
+              <div class="card-header py-1 px-0">
+                <div class="d-flex justify-content-start align-items-center">
+                  <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
+                </div>
+              </div>
               <a href="${locale}/r/${recipe.slug}">
                 <div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
                   <div class="fa-heart-${recipe.id} d-none text-danger display-3">
@@ -67,7 +73,6 @@ export const cards = (params) => {
                     <a class="p-0 ml-3 text-body text-decoration-none" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                   </div>
                 </div>
-                <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%">${capitalize_Words((recipe.user.slug).replace('-',' '))}</a><br>
                 <a href="${locale}/r/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
                 <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
               </div>

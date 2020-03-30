@@ -9,6 +9,7 @@ const setUserRecipes = (el, recipes) => {
 export const lazyLoad = (init) => {
 
   // console.log(init);
+  // console.log(init.device);
   // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
   let options;
   if(init.userSignedIn) {
