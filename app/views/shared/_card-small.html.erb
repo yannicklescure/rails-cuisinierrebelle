@@ -1,6 +1,6 @@
 <div class="card border-0 mb-3">
   <div class="d-flex">
-    <%= image_tag recipe.photo.url(:thumb), secure: true, height: 48, width: 48, class: 'rounded' %>
+    <%= image_tag recipe.photo.url(:thumb), secure: true, height: '48px', width: '48px', class: 'rounded' %>
     <div class="ml-3 d-flex flex-column">
       <%= link_to t(".recipe", title: recipe.title.upcase), recipe_path(recipe), class: 'text-body stretched-link' %>
       <div class="card-text text-body font-weight-lighter" style="font-size: 90%"><%= t(".name", name: recipe.description) %></div>
