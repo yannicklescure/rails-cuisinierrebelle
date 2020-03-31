@@ -6,7 +6,8 @@
   <div class="row align-items-center m-0 border-top" id="<%= "#{message.class.name.downcase}-#{message.id}" %>">
     <div class="col-9">
       <div class="d-flex flex-column w-100">
-        <div class="text-muted" style="font-size: 90%;">
+        <div class="d-flex align-items-center text-muted" style="font-size: 90%;">
+          <img src="<%= message.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2">
           <strong><%= link_to message.user.name, user_path(message.user), class: 'text-muted' %></strong>&ensp;
           <% time_since_creation = TimeDifference.between(message.created_at, Time.current) %>
           <% if time_since_creation.in_years.floor >= 2 %>

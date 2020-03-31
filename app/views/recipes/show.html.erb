@@ -5,14 +5,17 @@
         <div class="d-flex flex-grow-1 m-0 align-items-center">
           <span class="mr-md-1">
             <% if client.device_type.match(/desktop/) %>
-            <%= t('.recipe_published_by') %>
+            <% t('.recipe_published_by') %>
             <% end %>
           </span>
-          <% if user_signed_in? %>
-            <%= render @recipe.user %>
-          <% else %>
-            <%= link_to "#{@recipe.user.first_name.capitalize} #{@recipe.user.last_name.capitalize}", user_path(@recipe.user), class: 'text-body' %>
-          <% end %>
+          <div class="d-flex align-items-center">
+            <img src="<%= @recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2">
+            <% if user_signed_in? %>
+              <%= render @recipe.user %>
+            <% else %>
+                <%= link_to "#{@recipe.user.first_name.capitalize} #{@recipe.user.last_name.capitalize}", user_path(@recipe.user), class: 'text-body' %>
+            <% end %>
+          </div>
         </div>
       </div>
       <% if user_signed_in? %>
