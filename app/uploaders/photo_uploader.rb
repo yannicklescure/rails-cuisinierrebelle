@@ -1,8 +1,8 @@
 class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # if Rails.env.development? || Rails.env.test?
@@ -81,7 +81,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   def filename
-    "#{secure_token}.#{file.extension.downcase}" if original_filename.present?
+    # super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
+    # "#{secure_token}.#{file.extension.downcase}" if original_filename.present?
+    "#{secure_token}.jpg" if original_filename.present?
   end
 
   protected
