@@ -47,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :preview do
     # process resize_to_fill: [256, 256]
-    process efficient_conversion: 256, 256]
+    process efficient_conversion: [256, 256]
   end
 
   version :full do
