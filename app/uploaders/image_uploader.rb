@@ -33,7 +33,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # process eager: true
-  process convert: 'jpg'
+  # process convert: 'jpg'
 
   # Create different versions of your uploaded files:
   # version :thumb do
