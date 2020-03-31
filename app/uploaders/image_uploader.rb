@@ -74,7 +74,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def filename
     # super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
-    "#{secure_token}.#{file.extension.downcase}" if original_filename.present?
+    # "#{secure_token}.#{file.extension.downcase}" if original_filename.present?
     "#{secure_token}.jpg" if original_filename.present?
   end
 
