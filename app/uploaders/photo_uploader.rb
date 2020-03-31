@@ -33,7 +33,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # process eager: true
-  process convert: 'jpg'
+  # process convert: 'jpg'
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -41,23 +41,28 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process resize_to_fill: [64, 64]
+    # process resize_to_fill: [64, 64]
+    process efficient_conversion: [64, 64]
   end
 
   version :preview do
-    process resize_to_fill: [260, 174]
+    # process resize_to_fill: [260, 174]
+    process efficient_conversion: [260, 174]
   end
 
   version :card do
-    process resize_to_fill: [400, 300]
+    # process resize_to_fill: [400, 300]
+    process efficient_conversion: [400, 300]
   end
 
   version :open_graph do
-    process resize_to_fill: [1200, 1200]
+    # process resize_to_fill: [1200, 1200]
+    process efficient_conversion: [1200, 1200]
   end
 
   version :full do
-    process resize_to_fill: [1920, 1200]
+    # process resize_to_fill: [1920, 1200]
+    process efficient_conversion: [1920, 1200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -87,8 +92,21 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   protected
+
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
+  def efficient_conversion(width, height)
+    manipulate! do |img|
+      img.format("jpg") do |c|
+        c.fuzz        "3%"
+        c.trim
+        c.resize      "#{width}x#{height}>"
+        c.resize      "#{width}x#{height}<"
+      end
+      img
+    end
   end
 end
