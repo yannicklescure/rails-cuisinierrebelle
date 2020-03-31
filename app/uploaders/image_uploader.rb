@@ -33,7 +33,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # process eager: true
-  process convert: 'jpg'
+  # process convert: 'jpg'
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -41,15 +41,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process resize_to_fill: [64, 64]
+    # process resize_to_fill: [64, 64]
+    process efficient_conversion: [64, 64]
   end
 
   version :preview do
-    process resize_to_fill: [256, 256]
+    # process resize_to_fill: [256, 256]
+    process efficient_conversion: 256, 256]
   end
 
   version :full do
-    process resize_to_fill: [512, 512]
+    # process resize_to_fill: [512, 512]
+    process efficient_conversion: [512, 512]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -79,8 +82,21 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   protected
+
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
+  def efficient_conversion(width, height)
+    manipulate! do |img|
+      img.format("jpg") do |c|
+        c.fuzz        "3%"
+        c.trim
+        c.resize      "#{width}x#{height}>"
+        c.resize      "#{width}x#{height}<"
+      end
+      img
+    end
   end
 end
