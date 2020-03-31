@@ -1,4 +1,4 @@
-<div class="d-flex flex-grow-1 justify-content-between align-items-center" data-user="<%= user.id %>">
+<div class="d-flex justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>">
   <div class="mr-md-1">
     <%= link_to "#{user.first_name.capitalize} #{user.last_name.capitalize}", user_path(user), class: "text-body" %>
     <% if user.checked %>
