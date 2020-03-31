@@ -1,0 +1,41 @@
+<div class="admin-replies">
+  <div class="row bg-white m-0 sticky-top border-top border-bottom font-weight-bold" style="top:59px;">
+    <div class="col"><%= t('.public') %></div>
+  </div>
+  <% @replies.sort_by { |date| date.created_at }.reverse.map do |reply| %>
+  <div class="row align-items-center m-0 border-top">
+    <div class="col-10">
+      <div class="d-flex flex-column w-100">
+        <div class="text-muted">
+          <strong><%= link_to reply.user.name, user_path(reply.user), class: 'text-muted' %></strong>&ensp;
+          <% time_since_creation = TimeDifference.between(reply.created_at, Time.current) %>
+          <% if time_since_creation.in_years.floor >= 2 %>
+            <%= t(".years_ago", count: time_since_creation.in_years.floor) %>
+          <% elsif time_since_creation.in_years.floor < 1 && time_since_creation.in_months.floor.positive? %>
+            <%= t(".months_ago", count: time_since_creation.in_months.floor) %>
+          <% elsif time_since_creation.in_months.floor < 1 && time_since_creation.in_weeks.floor.positive? %>
+            <%= t(".weeks_ago", count: time_since_creation.in_weeks.floor) %>
+          <% elsif time_since_creation.in_weeks.floor.floor < 1 && time_since_creation.in_days.floor.positive? %>
+            <%= t(".days_ago", count: time_since_creation.in_days.floor) %>
+          <% elsif time_since_creation.in_days.floor < 1 && time_since_creation.in_hours.floor.positive? %>
+            <%= t(".hours_ago", count: time_since_creation.in_hours.floor) %>
+          <% elsif time_since_creation.in_hours.floor < 1 && time_since_creation.in_minutes.floor.positive? %>
+            <%= t(".minutes_ago", count: time_since_creation.in_minutes.floor) %>
+          <% elsif time_since_creation.in_minutes.floor < 1 && time_since_creation.in_seconds.floor.positive? %>
+            <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
+          <% else %>
+            <%= t(".seconds_ago", count: 1) %>
+          <% end %>
+        </div>
+        <div>
+          <%= reply.content %>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= image_tag reply.comment.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
+      <%= link_to reply.comment.recipe.title, recipe_path(reply.comment.recipe), class: 'text-body' %>
+    </div>
+  </div>
+  <% end %>
+</div>
