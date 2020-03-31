@@ -1,8 +1,8 @@
 class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # if Rails.env.development? || Rails.env.test?
@@ -33,7 +33,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # process eager: true
-  # process convert: 'jpg'
+  process convert: 'jpg'
 
   # Create different versions of your uploaded files:
   # version :thumb do
