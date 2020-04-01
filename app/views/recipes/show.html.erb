@@ -13,7 +13,7 @@
             <% if user_signed_in? %>
               <%= render @recipe.user %>
             <% else %>
-                <%= link_to "#{@recipe.user.first_name.capitalize} #{@recipe.user.last_name.capitalize}", user_path(@recipe.user), class: 'text-body' %>
+                <%= link_to @recipe.user.name.titlecase, user_path(@recipe.user), class: 'text-body' %>
             <% end %>
           </div>
         </div>
