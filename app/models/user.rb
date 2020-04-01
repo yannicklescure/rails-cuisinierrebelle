@@ -60,11 +60,7 @@ class User < ApplicationRecord
 
   def create_default_image
     if self.image.url.nil?
-      if self.provider == 'facebook'
-        self.remote_image_url = "http://graph.facebook.com/#{self.uid}/picture?type=normal"
-      else
-        self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
-      end
+      self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
       self.save
     end
   end
@@ -84,6 +80,7 @@ class User < ApplicationRecord
       user.first_name = name.given
       user.last_name = name.family
       # user.image = auth.info.image # assuming the user model has an image
+      user.remote_image_url = "http://graph.facebook.com/#{user.uid}/picture?type=normal"
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
