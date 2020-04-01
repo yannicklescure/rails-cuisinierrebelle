@@ -48,6 +48,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    authorize @user
+    # @user.destroy
+
+    if @user.destroy
+      # redirect_to root_url, notice: "User deleted."
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
 
   def set_user

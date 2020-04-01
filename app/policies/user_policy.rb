@@ -28,4 +28,8 @@ class UserPolicy < ApplicationPolicy
   def unfollow?
     true
   end
+
+  def destroy?
+    user.admin
+  end
 end
