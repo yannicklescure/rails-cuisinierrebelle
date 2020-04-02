@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :set_spam
+  before_action :set_spam, :set_menu
 
   def index
     # @users = policy_scope(User).where.not(id: current_user.id)
@@ -40,5 +40,9 @@ class AdminController < ApplicationController
     @spams += comments.map { |message| message }
     replies = Reply.where(spam: true)
     @spams += replies.map { |message| message }
+  end
+
+  def set_menu
+    @menu = params[:menu] == 'true'
   end
 end

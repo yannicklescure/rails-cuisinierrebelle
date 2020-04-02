@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/conversion', to: 'pages#conversion', as: 'conversion'
     get '/tools', to: 'pages#tools', as: 'tools'
-    get '/admin', to: 'admin#index'
-    get '/admin/users', to: 'admin#users'
-    get '/admin/recipes', to: 'admin#recipes'
-    get '/admin/comments', to: 'admin#comments'
+    get '/admin', to: 'admin#index', as: 'admin'
+    get '/admin/users', to: 'admin#users', as: 'admin_users'
+    get '/admin/recipes', to: 'admin#recipes', as: 'admin_recipes'
+    get '/admin/comments', to: 'admin#comments', as: 'admin_comments'
     # get '/admin/replies', to: 'admin#replies'
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
