@@ -6,8 +6,10 @@ const returnPosition = () => {
   let currentController = data.groups.controller || null;
   if(currentController != null) currentController = currentController.replace('/','');
   let currentPage = data.groups.page || null;
-  if(currentPage != null) currentPage = currentPage.replace('/','');
-  if(currentPage.match(/.*?.*/)) currentPage = currentPage.split('?')[0];
+  if(currentPage != null) {
+    currentPage = currentPage.replace('/','');
+    if(currentPage.match(/.*?.*/)) currentPage = currentPage.split('?')[0];
+  }
   return {
     currentLang: currentLang,
     currentController: currentController,
