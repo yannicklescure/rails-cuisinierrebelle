@@ -43,12 +43,28 @@ export const cards = (params) => {
           if(params.bookmarks.includes(recipe.id)) faBookmark = bookmarkFill;
         }
 
+        const userCheckedStatus = recipe.user.checked;
+        let userChecked = '';
+        let verifiedText = '';
+        switch(init.locale) {
+          case 'fr':
+            verifiedText = `Vérifié`;
+            break;
+          case 'es':
+            verifiedText = `Auditado`;
+            break;
+          default:
+            verifiedText = `Verified`;
+        }
+        if (userCheckedStatus) userChecked = `<span data-toggle="tooltip" data-placement="top" title="${verifiedText}" style="font-size: 90%;margin-left: 2px"><svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/></svg></span>`;
+
         const card = `
           <div class="col-md-4 col-lg-3 col-xl-2">
             <div class="card border-0" data-recipe="${recipe.id}">
               <div class="card-header py-1 px-0 border-0 bg-white rounded">
                 <div class="d-flex justify-content-start align-items-center">
-                  <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2">${capitalize_Words(recipe.user.name)}</a><br>
+                  <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
+                  ${userChecked}
                 </div>
               </div>
               <a href="${locale}/r/${recipe.slug}">

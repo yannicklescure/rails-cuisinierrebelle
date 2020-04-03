@@ -1,7 +1,7 @@
 json.data do
   if user_signed_in?
     json.user do
-      json.auth current_user, :email, :slug, :name, :image
+      json.auth current_user, :email, :slug, :name, :image, :checked
       if current_user.likes.any?
         json.likes current_user.likes do |like|
           json.extract! like, :recipe_id
@@ -23,7 +23,7 @@ json.data do
   json.array! @recipes.order('created_at DESC') do |recipe|
     json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :photo, :likes_count
     json.user do
-      json.extract! recipe.user, :id, :slug, :name, :image
+      json.extract! recipe.user, :id, :slug, :name, :image, :checked
     end
     if recipe.comments.any?
       json.comments recipe.comments do |comment|

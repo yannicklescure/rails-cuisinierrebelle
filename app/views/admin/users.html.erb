@@ -15,7 +15,7 @@
   <div class="row m-0 border-top" id="user-<%= user.id %>">
     <div class="col-2 d-flex align-items-center">
       <%= link_to user_path(user), target: '_blank', data: {toggle: "tooltip",  placement: "top"}, title: user.email, class: 'd-flex align-items-center' do %>
-        <img src="<%= user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2">
+        <img src="<%= user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
         <div class="<%= user.confirmed? ? 'text-body' : 'text-danger' %>"><%= user.name.titlecase %></div>
       <% end %>
     </div>

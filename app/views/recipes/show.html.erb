@@ -9,7 +9,7 @@
             <% end %>
           </span>
           <div class="d-flex align-items-center">
-            <img src="<%= @recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2">
+            <img src="<%= @recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
             <% if user_signed_in? %>
               <%= render @recipe.user %>
             <% else %>
