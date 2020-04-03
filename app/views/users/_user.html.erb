@@ -9,9 +9,9 @@
     <% if current_user.is_following?(user.id) %>
       <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'btn btn-light btn-sm' %>
     <% elsif user != current_user %>
-      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'text-muted' %>
+      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'btn btn-light btn-sm' %>
     <% end %>
   <% else %>
-      <%= link_to t('.follow'), new_user_session_path, class: 'text-muted' %>
+      <%= link_to t('.follow'), new_user_session_path, class: 'btn btn-light btn-sm' %>
   <% end %>
 </div>
