@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>" <%= 'style="margin-top: 20px;"'.html_safe if client.device_type.match(/desktop/) %>>
+<div class="d-flex justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>">
   <div class="mr-md-1">
     <%= link_to user.name.titlecase, user_path(user), class: "text-body" %>
     <% if user.checked %>
