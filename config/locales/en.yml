@@ -111,14 +111,6 @@ en:
         other: "%{count} years ago"
         zero: No year
     shared:
-      navbar-admin:
-        comments: Comments
-        dashboard: Dashboard
-        new_page: New page
-        new_product: New product
-        recipes: Recipes
-        spam: Spam
-        users: Users
       navbar-large:
         comments: Comments
         dashboard: Dashboard
@@ -541,16 +533,16 @@ en:
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Verified
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>'
+      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
   shared:
     banner:
       banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
     card-product:
-      edit: 'Editar <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       edit_html: 'Edit <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: More details <svg class="bi bi-box-arrow-up-right mb-1" width="1em"
         height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -669,7 +661,11 @@ en:
       settings: Settings
       sign_in: Sign in
       tools: Tools
-    user-banner:
+    user-banner-large:
+      followers: Followers
+      following: Following
+      recipes: Recipes
+    user-banner-small:
       followers: Followers
       following: Following
       recipes: Recipes
@@ -783,7 +779,7 @@ en:
       follow: Follow
       unfollow: Unfollow
       verified: Verified
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>
-      '
+      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg> '

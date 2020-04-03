@@ -75,20 +75,12 @@ es:
       weeks_ago: Hace semanas
       years_ago: Hace años que
     shared:
-      navbar-admin:
-        comments: Comentarios
-        dashboard: Tablero
-        new_page: Nueva pagina
-        new_product: New product
-        recipes: Recetas
-        spam: Spam
-        users: Usuarios
       navbar-large:
         comments: Comments
         dashboard: Dashboard
         new_page: New page
         new_product: New product
-        recipes: Recipes
+        recipes: Recetas
         spam: Spam
         users: Users
       navbar-small:
@@ -96,7 +88,7 @@ es:
         dashboard: Dashboard
         new_page: New page
         new_product: New product
-        recipes: Recipes
+        recipes: Recetas
         spam: Spam
         users: Users
     spam:
@@ -417,16 +409,16 @@ es:
       subscribe_to_newsletter: Suscríbase al boletín
       updated_at: Actualizado en
       verified: Auditado
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>'
+      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
       recipes: Recetas
       sign_up: Regístrate
     card-product:
-      edit: 'Editar <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       edit_html: 'Edit <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: Más detalles <svg class="bi bi-box-arrow-up-right mb-1" width="1em"
         height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -545,7 +537,11 @@ es:
       settings: Configuraciones
       sign_in: Registrarse
       tools: Herramientas de cocina
-    user-banner:
+    user-banner-large:
+      followers: Seguidores
+      following: Siguiendo
+      recipes: Recetas
+    user-banner-small:
       followers: Seguidores
       following: Siguiendo
       recipes: Recetas
@@ -666,6 +662,7 @@ es:
       follow: Seguir
       unfollow: Dejar de seguir
       verified: Auditado
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>'
+      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>

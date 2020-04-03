@@ -41,19 +41,19 @@ export const lazyLoad = (init) => {
     switch(init.currentController) {
       case null:
         recipes = array;
-        render = true;
+        render = recipes.length > 0;
         break;
       case 'u':
         if (init.currentPage != null) recipes = setUserRecipes(init.currentPage, data.recipes);
-        render = true;
+        render = recipes.length > 0;
         break;
       case 'recipes':
         if (data.user.recipes) recipes = setUserRecipes(data.user.auth.slug, data.recipes);
-        render = true;
+        render = recipes.length > 0;
         break;
       case 'bookmarks':
         recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
-        render = true;
+        render = recipes.length > 0;
         break;
       default:
         recipes = [];

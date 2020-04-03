@@ -111,20 +111,12 @@ fr:
         other: Il y a %{count} ans
         zero: zéro an
     shared:
-      navbar-admin:
-        comments: Commentaires
-        dashboard: Tableau de bord
-        new_page: Créer page
-        new_product: New product
-        recipes: Recettes
-        spam: Spam
-        users: UtIlisateurs
       navbar-large:
         comments: Comments
         dashboard: Dashboard
         new_page: New page
         new_product: New product
-        recipes: Recipes
+        recipes: Recettes
         spam: Spam
         users: Users
       navbar-small:
@@ -132,7 +124,7 @@ fr:
         dashboard: Dashboard
         new_page: New page
         new_product: New product
-        recipes: Recipes
+        recipes: Recettes
         spam: Spam
         users: Users
     spam:
@@ -540,16 +532,16 @@ fr:
       subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Dernière mise à jour
       verified: Vérifié
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>'
+      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
       recipes: Recettes
       sign_up: Inscription
     card-product:
-      edit: 'Editar <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       edit_html: 'Editer <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
       more_details_html: Voir détails <svg class="bi bi-box-arrow-up-right mb-1" width="1em"
         height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -668,7 +660,11 @@ fr:
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
-    user-banner:
+    user-banner-large:
+      followers: Abonnés
+      following: Abonnements
+      recipes: Recettes
+    user-banner-small:
       followers: Abonnés
       following: Abonnements
       recipes: Recettes
@@ -790,6 +786,7 @@ fr:
       follow: Suivre
       unfollow: Ne plus suivre
       verified: Vérifié
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-      </svg>'
+      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
+        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
+        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
+        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
