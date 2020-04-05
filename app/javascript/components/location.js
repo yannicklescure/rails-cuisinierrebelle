@@ -1,4 +1,4 @@
-const returnPosition = () => {
+export const currentLocation = () => {
   let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
   // console.log(data.groups);
   let currentLang = data.groups.lang || 'en';
@@ -16,5 +16,3 @@ const returnPosition = () => {
     currentPage: currentPage
   }
 }
-
-export { returnPosition };

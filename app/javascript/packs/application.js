@@ -12,7 +12,7 @@ import "bootstrap";
 import { cookiesToObject } from "../components/cookies";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { smoothToAnchor } from "../components/smooth-to-anchor";
-import { returnPosition } from "../components/return-position";
+import { currentLocation } from "../components/location";
 import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
@@ -37,7 +37,7 @@ previewImageOnFileSelect();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
-const returnPositionData = returnPosition();
+const returnPositionData = currentLocation();
 let currentLang = returnPositionData.currentLang;
 let currentController = returnPositionData.currentController;
 let currentPage = returnPositionData.currentPage;
@@ -62,7 +62,7 @@ if (currentController === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
 }
 
-if(currentController === 'settings' && userSignedIn) {
+if(currentPage && currentPage.match(/\/settings/) && userSignedIn) {
   const userId = parseInt(document.querySelector('body').dataset.userId);
   const initMailchimp = {
     user_id: userId,

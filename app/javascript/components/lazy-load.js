@@ -2,6 +2,7 @@ import { cards } from "./cards";
 
 const setUserRecipes = (el, recipes) => {
   return recipes.filter(recipe => {
+    if (el.match('recipes')) el = el.split('/')[0];
     if(recipe.user.slug === el) return recipe;
   });
 }
@@ -44,6 +45,7 @@ export const lazyLoad = (init) => {
         render = recipes.length > 0;
         break;
       case 'u':
+        // console.log(init.currentPage);
         if (init.currentPage != null) recipes = setUserRecipes(init.currentPage, data.recipes);
         render = recipes.length > 0;
         break;

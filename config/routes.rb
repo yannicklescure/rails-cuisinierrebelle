@@ -6,30 +6,25 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/conversion', to: 'pages#conversion', as: 'conversion'
     get '/tools', to: 'pages#tools', as: 'tools'
+
+    # namespace :admin, only: [:index] do
+    #   resources :users, :recipes, :comments, :spam
+    # end
     get '/admin', to: 'admin#index', as: 'admin'
     get '/admin/users', to: 'admin#users', as: 'admin_users'
     get '/admin/recipes', to: 'admin#recipes', as: 'admin_recipes'
     get '/admin/comments', to: 'admin#comments', as: 'admin_comments'
-    # get '/admin/replies', to: 'admin#replies'
+    get '/admin/spam', to: 'admin#spam'
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
-    get '/admin/spam', to: 'admin#spam'
     post 'comments/:id/spam', to: 'comments#spam', as: :comment_spam
     post 'replies/:id/spam', to: 'replies#spam', as: :reply_spam
 
     resources :pages, except: [:index]
     resources :products, except: [:index, :show]
-    resources :settings, only: [:index], as: :settings
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    resources :recipes, except: [:show] do
-      resource :bookmarks, only: [:update]
-      resource :likes, only: [:update]
-      resources :comments, except: [:index, :show] do
-        resources :replies, except: [:index, :show]
-      end
-    end
-    resources :recipes, only: [:show], path: '/r' do
+    resources :recipes, expect: [:index], path: '/r' do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]
       resources :comments, except: [:index, :show] do
@@ -38,7 +33,6 @@ Rails.application.routes.draw do
     end
     get '/recipes/:id', to: redirect('/r/%{id}')
 
-    # get '/recettes', to: 'recipes#index', as: 'recettes'
     resources :bookmarks, only: [:index]
     resources :index, only: [:index]
     get '/index/tagged', to: "index#tagged", as: :tagged
@@ -53,8 +47,13 @@ Rails.application.routes.draw do
         post :follow
         post :unfollow
       end
+      resources :recipes, :settings, only: [:index]
     end
     get '/users/:id', to: redirect('/u/%{id}')
+    # get '/u/:id/recipes', to: 'recipes#index'
+
+    # resources :settings, only: [:index], as: :settings
+
 
   end
 

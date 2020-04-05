@@ -1,8 +1,8 @@
-import { returnPosition } from "../components/return-position";
+import { currentLocation } from "../components/location";
 // import { viewReplies } from "../components/reply";
 
 const smoothToAnchor = () => {
-  const returnPositionData = returnPosition();
+  const returnPositionData = currentLocation();
   const currentLang = returnPositionData.currentLang;
   const currentController = returnPositionData.currentController;
   const currentPage = returnPositionData.currentPage;
@@ -12,7 +12,7 @@ const smoothToAnchor = () => {
     const target = anchorTarget[2];
     let element = document.querySelector(target);
     if(/reply/.test(target)) {
-      console.log(element.dataset.comment);
+      // console.log(element.dataset.comment);
       const replyBtn = document.querySelector(`#comment-${element.dataset.comment}-replies-list-btn`);
       replyBtn.click();
     }
