@@ -3,8 +3,8 @@
   <div class="d-flex justify-content-start align-items-center pb-3">
     <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px">
     <div class="d-flex flex-column ml-3">
-      <%= link_to t('.follower', count: @user.followers.count), followers_path, class: 'text-body' %>
-      <%= link_to t('.published_recipes', count: @user.recipes.count), recipes_path, class: 'text-body' %>
+      <%= link_to t('.follower', count: @user.followers.count), user_followers_path(@user), class: 'text-body' %>
+      <%= link_to t('.published_recipes', count: @user.recipes.count), user_recipes_path(@user), class: 'text-body' %>
     </div>
   </div>
   <div class="d-flex flex-row justify-content-between justify-content-md-start">

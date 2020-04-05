@@ -33,21 +33,21 @@ Rails.application.routes.draw do
     end
     get '/recipes/:id', to: redirect('/r/%{id}')
 
-    resources :bookmarks, only: [:index]
+    # resources :bookmarks, only: [:index]
     resources :index, only: [:index]
     get '/index/tagged', to: "index#tagged", as: :tagged
-    resources :followers, only: [:index]
-    resources :following, only: [:index]
+    # resources :followers, only: [:index]
+    # resources :following, only: [:index]
 
-    get '/:id/followers', to: 'users#followers', as: :user_followers
-    get '/:id/following', to: 'users#following', as: :user_following
+    get '/u/:id/followers', to: 'users#followers', as: :user_followers
+    get '/u/:id/following', to: 'users#following', as: :user_following
 
     resources :users, only: [:show], path: '/u' do
       member do
         post :follow
         post :unfollow
       end
-      resources :recipes, :settings, only: [:index]
+      resources :recipes, :bookmarks, :settings, only: [:index]
     end
     get '/users/:id', to: redirect('/u/%{id}')
     # get '/u/:id/recipes', to: 'recipes#index'

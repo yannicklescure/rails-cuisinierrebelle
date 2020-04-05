@@ -25,7 +25,7 @@
             <!-- <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div> -->
             <%= link_to t('.admin_html'), admin_path(), class: "nav-link" %>
             <% end %>
-            <li class="nav-item"><%= link_to t('.bookmarks_html'), bookmarks_path, class: "nav-link bookmarks" %></li>
+            <li class="nav-item"><%= link_to t('.bookmarks_html'), user_bookmarks_path(current_user), class: "nav-link bookmarks" %></li>
             <!-- <li class="nav-item"><%= link_to t('.inbox'), "#", class: "nav-link" %></li> -->
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,8 +45,8 @@
                 <%= link_to t(".new_recipe"), new_recipe_path, class: "dropdown-item" %>
                 <%= link_to t(".recipes"), user_recipes_path(current_user), class: "dropdown-item" %>
                 <%#= link_to t(".index"), index_index_path, class: "dropdown-item" %>
-                <%#= link_to t(".followers"), followers_path, class: "dropdown-item" %>
-                <%= link_to t(".following"), following_index_path, class: "dropdown-item" %>
+                <%#= link_to t(".followers"), user_followers_path(current_user), class: "dropdown-item" %>
+                <%= link_to t(".following"), user_following_path(current_user), class: "dropdown-item" %>
                 <%= link_to t(".settings"), user_settings_path(current_user), class: "dropdown-item" %>
                 <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "dropdown-item" %>
               </div>

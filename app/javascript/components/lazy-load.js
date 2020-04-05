@@ -2,7 +2,6 @@ import { cards } from "./cards";
 
 const setUserRecipes = (el, recipes) => {
   return recipes.filter(recipe => {
-    if (el.match('recipes')) el = el.split('/')[0];
     if(recipe.user.slug === el) return recipe;
   });
 }
@@ -39,21 +38,21 @@ export const lazyLoad = (init) => {
       if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     }
     let render = false;
-    switch(init.currentController) {
+    console.log(init.currentPage);
+    switch(init.currentPage) {
       case null:
         recipes = array;
         render = recipes.length > 0;
         break;
-      case 'u':
-        // console.log(init.currentPage);
-        if (init.currentPage != null) recipes = setUserRecipes(init.currentPage, data.recipes);
+      case `${data.user.auth.slug}`:
+        if (init.currentPage != null) recipes = setUserRecipes(data.user.auth.slug, data.recipes);
         render = recipes.length > 0;
         break;
-      case 'recipes':
+      case `${data.user.auth.slug}/recipes`:
         if (data.user.recipes) recipes = setUserRecipes(data.user.auth.slug, data.recipes);
         render = recipes.length > 0;
         break;
-      case 'bookmarks':
+      case `${data.user.auth.slug}/bookmarks`:
         recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
         render = recipes.length > 0;
         break;

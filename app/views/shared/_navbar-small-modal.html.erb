@@ -9,7 +9,7 @@
           </button>
           <!-- <a href="<%= index_index_path %>" class="btn btn-link modal-menu-link"><%= t(".index") %></a> -->
           <% if user_signed_in? %>
-            <%= link_to t(".bookmarks"), bookmarks_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".bookmarks"), user_bookmarks_path(current_user), class: "btn btn-link modal-menu-link" %>
           <% end %>
           <% if user_signed_in? %>
             <%= link_to t(".new_recipe"), new_recipe_path, class: "btn btn-link modal-menu-link" %>
@@ -18,7 +18,7 @@
           <a href="<%= tools_path %>" class="btn btn-link modal-menu-link"><%= t(".tools") %></a>
           <a href="<%= conversion_path %>" class="btn btn-link modal-menu-link"><%= t(".conversion") %></a>
           <% if user_signed_in? %>
-            <%= link_to t(".following"), following_index_path, class: "btn btn-link modal-menu-link" %>
+            <%= link_to t(".following"), user_following_path(current_user), class: "btn btn-link modal-menu-link" %>
             <%= link_to t(".settings"), user_settings_path(current_user), class: "btn btn-link modal-menu-link" %>
           <% end %>
           <a class="btn btn-link modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
