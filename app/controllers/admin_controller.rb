@@ -43,6 +43,6 @@ class AdminController < ApplicationController
   end
 
   def set_menu
-    @menu = params[:menu] == 'true'
+    @menu = params[:menu] == 'true' || params[:menu].nil?
   end
 end

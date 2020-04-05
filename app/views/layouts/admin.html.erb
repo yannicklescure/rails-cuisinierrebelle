@@ -9,11 +9,7 @@
     <%= render 'shared/flashes' %>
     <div class="row m-0 admin">
       <!-- MENU -->
-      <% if @menu %>
-        <%= render 'admin/shared/navbar-large' %>
-      <% else %>
-        <%= render 'admin/shared/navbar-small' %>
-      <% end %>
+      <%= render 'admin/shared/navbar' %>
       <div class="col">
         <%= yield %>
       </div>

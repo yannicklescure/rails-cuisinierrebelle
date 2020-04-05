@@ -23,6 +23,9 @@ import { viewReplies } from "../components/reply";
 import { repliesReply } from "../components/reply";
 import { alerts } from "../components/alerts";
 import { userBanner } from "../components/user-banner";
+import { adminNavItem } from "../components/admin-nav-item";
+import { adminNav } from "../components/admin-nav";
+
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
 
@@ -51,26 +54,8 @@ if (currentController === 'tools') {
 }
 
 if (currentController === 'admin' && userSignedIn) {
-  const navItemActive = (id) => {
-    const item = document.querySelector(`#${id}`);
-    item.classList.add('active');
-  }
-  switch(currentPage) {
-    case 'users':
-      navItemActive('users');
-      break;
-    case 'recipes':
-      navItemActive('recipes');
-      break;
-    case 'comments':
-      navItemActive('comments');
-      break;
-    case 'spam':
-      navItemActive('spam');
-      break;
-    default:
-      navItemActive('dashboard');
-  }
+  adminNavItem(currentPage);
+  adminNav();
 }
 
 if (currentController === null && !userSignedIn) {
