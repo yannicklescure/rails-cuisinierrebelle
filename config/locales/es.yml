@@ -75,22 +75,14 @@ es:
       weeks_ago: Hace semanas
       years_ago: Hace años que
     shared:
-      navbar-large:
-        comments: Comments
+      navbar:
+        comments: Comentarios
         dashboard: Dashboard
-        new_page: New page
-        new_product: New product
+        new_page: Nueva pagina
+        new_product: Nuevo producto
         recipes: Recetas
         spam: Spam
-        users: Users
-      navbar-small:
-        comments: Comments
-        dashboard: Dashboard
-        new_page: New page
-        new_product: New product
-        recipes: Recetas
-        spam: Spam
-        users: Users
+        users: Usuarios
     spam:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días

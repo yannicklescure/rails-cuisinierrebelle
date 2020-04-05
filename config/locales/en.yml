@@ -111,15 +111,7 @@ en:
         other: "%{count} years ago"
         zero: No year
     shared:
-      navbar-large:
-        comments: Comments
-        dashboard: Dashboard
-        new_page: New page
-        new_product: New product
-        recipes: Recipes
-        spam: Spam
-        users: Users
-      navbar-small:
+      navbar:
         comments: Comments
         dashboard: Dashboard
         new_page: New page

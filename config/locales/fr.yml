@@ -111,22 +111,14 @@ fr:
         other: Il y a %{count} ans
         zero: zéro an
     shared:
-      navbar-large:
-        comments: Comments
+      navbar:
+        comments: Commentaires
         dashboard: Dashboard
-        new_page: New page
-        new_product: New product
+        new_page: Nouvelle page
+        new_product: Nouveau produit
         recipes: Recettes
         spam: Spam
-        users: Users
-      navbar-small:
-        comments: Comments
-        dashboard: Dashboard
-        new_page: New page
-        new_product: New product
-        recipes: Recettes
-        spam: Spam
-        users: Users
+        users: Utilisateurs
     spam:
       are_you_sure: Êtes-vous sûr?
       days_ago:
