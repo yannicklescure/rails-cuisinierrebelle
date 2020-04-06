@@ -3,14 +3,14 @@ class AdminController < ApplicationController
 
   def index
     # @users = policy_scope(User).where.not(id: current_user.id)
-    @users = policy_scope(User)
+    @users = policy_scope(User).map{ |user| user if user.confirmed? }.compact
     @recipes = Recipe.all
     @comments = Comment.all
     @replies = Reply.all
   end
 
   def users
-    @users = User.all
+    @users = User.all.map{ |user| user if user.confirmed? }.compact
   end
 
   def recipes
