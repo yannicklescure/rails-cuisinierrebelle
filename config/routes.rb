@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :replies, except: [:index, :show]
       end
     end
+    get '/:locale/recipes/:id', to: redirect('/%{locale}/r/%{id}')
     get '/recipes/:id', to: redirect('/r/%{id}')
 
     # resources :bookmarks, only: [:index]
