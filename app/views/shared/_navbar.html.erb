@@ -1,12 +1,10 @@
 <!-- 'smartphone' -->
 <%# client = DeviceDetector.new(request.user_agent) %>
 <%#= client.device_type %>
-<% if client.device_type != nil %>
-  <% if client.device_type.match(/smartphone|phablet/) %>
-    <%= render 'shared/navbar-small' %>
-  <% else %>
-  <div class="d-none d-md-block d-print-none">
-    <%= render 'shared/navbar-large' %>
-  </div>
-  <% end %>
+<% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
+  <%= render 'shared/navbar-small' %>
+<% else %>
+<div class="d-none d-md-block d-print-none">
+  <%= render 'shared/navbar-large' %>
+</div>
 <% end %>

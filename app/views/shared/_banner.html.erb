@@ -9,10 +9,8 @@
       <%= link_to new_user_registration_path, class: 'btn btn-info mt-3 mx-3 mt-md-0' do %>
         <i class="fas fa-sign-in-alt"></i>&ensp;<%= t('.sign_up') %>
       <% end %>
-      <% if client.device_type != nil %>
-        <% if client.device_type.match(/smartphone|phablet/) %>
-        <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a>
-        <% end %>
+      <% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
+      <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a>
       <% end %>
     </div>
   </div>

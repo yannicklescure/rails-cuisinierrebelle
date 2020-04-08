@@ -4,7 +4,7 @@
       <div class="d-flex flex-grow-1 justify-md-content-start align-items-center order-0">
         <div class="d-flex flex-grow-1 m-0 align-items-center">
           <span class="mr-md-1">
-            <% if client.device_type.match(/desktop/) %>
+            <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
             <% t('.recipe_published_by') %>
             <% end %>
           </span>
@@ -35,7 +35,7 @@
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw(bookmark) : raw(bookmarkFill) %>
             <% end %>
           <% end %>
-          <% if client.device_type.match(/smartphone|phablet/) %>
+          <% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
           <span id="share-btn" class="mx-3 text-muted"><%= t('.share_btn_html') %></span>
           <% end %>
           <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 m-md-0 ml-md-3 text-danger text-decoration-none", 'data-like-recipe': @recipe.id do %>

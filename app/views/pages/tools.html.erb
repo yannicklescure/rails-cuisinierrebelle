@@ -1,7 +1,7 @@
 <div class="tools">
   <div class="d-flex flex-column align-items-center mt-5 mb-3">
     <% if user_signed_in? && current_user.admin %>
-      <% if client.device_type.match(/desktop/) %>
+      <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
         <%= link_to t('.switch_view_html'), "#{tools_path()}?user_view=#{!@user_view}", class: 'text-decoration-none' %>
       <% end %>
       <% if !@user_view %>

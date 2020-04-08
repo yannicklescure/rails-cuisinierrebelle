@@ -1,9 +1,7 @@
 <div class="container mt-3 mb-5">
-  <% if client.device_type != nil %>
-    <% if client.device_type.match(/desktop/) %>
-      <% if user_signed_in? && current_user.admin %>
-      <%= link_to t('.edit'), edit_page_path(@page) %>
-      <% end %>
+  <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+    <% if user_signed_in? && current_user.admin %>
+    <%= link_to t('.edit'), edit_page_path(@page) %>
     <% end %>
   <% end %>
   <% renderer = Redcarpet::Render::HTML.new() %>

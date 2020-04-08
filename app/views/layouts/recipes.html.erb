@@ -41,7 +41,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/google_analytics' %>
   </head>
-  <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type %>">
+  <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type.nil? ? 'robot' : client.device_type %>">
     <%= render 'layouts/facebook' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
