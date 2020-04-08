@@ -66,3 +66,4 @@ gem 'http_accept_language'
 gem "nokogiri", ">= 1.10.8"
 gem 'bootstrap-email'
 gem "actionview", ">= 6.0.2.2"
+gem 'material_icons'

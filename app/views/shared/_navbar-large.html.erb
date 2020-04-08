@@ -32,9 +32,9 @@
                 <%= t('.languages_html') %>
               </a>
               <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-                <%= link_to raw("English"), current_page_params.merge(locale: :en), class: "dropdown-item" %>
-                <%= link_to raw("Fran&ccedil;ais"), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
-                <%= link_to raw("Espa&ntilde;ol"), current_page_params.merge(locale: :es), class: "dropdown-item" %>
+                <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
+                <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
+                <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -52,9 +52,9 @@
               </div>
             </li>
           <% else %>
-            <li class="nav-item"><%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "nav-link" %></li>
+            <li class="nav-item"><em><%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "nav-link" %></em></li>
+            <li class="nav-item"><em><%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "nav-link" %></em></li>
+            <li class="nav-item"><em><%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "nav-link" %></em></li>
             <li class="nav-item"><%= link_to t(".sign_in"), new_user_session_path, class: "nav-link" %></li>
           <% end %>
         </ul>
