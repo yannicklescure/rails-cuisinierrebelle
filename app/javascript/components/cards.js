@@ -76,7 +76,7 @@ export const cards = (params) => {
                 <div class="d-flex justify-content-between align-items-center mb-1">
                   <div class="d-flex align-items-center text-danger">
                     <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
-                      ${faHeart}<span class="text-muted font-weight-lighter ml-1 mb-n1">${recipe.likes_count}</span>
+                      ${faHeart}<span class="text-muted font-weight-lighter ml-1 mb-md-n1">${recipe.likes_count}</span>
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
