@@ -9,10 +9,10 @@
   </div>
   <div class="d-flex flex-row justify-content-between justify-content-md-start">
     <strong><%= t('.full_name') %></strong>
-    <div class="pl-md-2">
+    <div class="pl-md-2 d-flex align-items-center">
       <%= link_to @user.name.titlecase, user_path(@user), class: 'text-body' %>
       <% if @user.checked %>
-        <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>"><%= t('.verified_html') %></span>
+        <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex pl-1"><%= t('.verified_html') %></span>
       <% end %>
     </div>
   </div>

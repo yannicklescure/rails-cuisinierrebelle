@@ -10,6 +10,7 @@ en:
         other: "%{count} days ago"
         zero: No day
       delete: Delete
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -49,6 +50,7 @@ en:
         other: "%{count} days ago"
         zero: No day
       delete: Delete
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -120,12 +122,14 @@ en:
         spam: Spam
         users: Users
     spam:
+      approve_html: <i class="material-icons md-18">check</i>
       are_you_sure: Are you sure?
       days_ago:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
       delete: Delete
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -156,22 +160,8 @@ en:
       are_you_sure: Are you sure
       bookmarks: Bookmarks
       comments: Comments
-      destroy_account_html: <svg class="bi bi-trash" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path d="M5.5
-        5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5
-        0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/> <path fill-rule="evenodd"
-        d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1
-        1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1
-        1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
-        </svg>
-      destroy_html: <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0
-        16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path d="M5.5
-        5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5
-        0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/> <path fill-rule="evenodd"
-        d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1
-        1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1
-        1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
-        </svg>
+      destroy_account_html: <i class="material-icons md-18">delete_forever</i>
+      destroy_html: <i class="material-icons md-18">delete</i>
       email: Email
       followers: Followers
       following: Following
@@ -401,15 +391,7 @@ en:
         make a purchase, we may receive a commission (at no additional cost to you).
         Thanks for your support in this way.
       new_product: New product
-      switch_view_html: <svg class="bi bi-arrow-left-right" width="1em" height="1em"
-        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10.146 7.646a.5.5 0 01.708 0l3 3a.5.5 0 010
-        .708l-3 3a.5.5 0 01-.708-.708L12.793 11l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M2 11a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5
-        0 012 11zm3.854-9.354a.5.5 0 010 .708L3.207 5l2.647 2.646a.5.5 0 11-.708.708l-3-3a.5.5
-        0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/> <path fill-rule="evenodd"
-        d="M2.5 5a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
-        </svg>
+      switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Kitchen tools
   products:
     form:
@@ -513,7 +495,7 @@ en:
   settings:
     index:
       created_at: Created at
-      edit_user_registration: 'Edit'
+      edit_user_registration: Edit
       email: Email
       follower:
         one: 1 follower
@@ -525,25 +507,15 @@ en:
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Verified
-      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
-        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
-        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
+      verified_html: <i class="material-icons md-16">check_circle</i>
   shared:
     banner:
       banner_subtitle: cuisinier rebelle, social recipes!
       recipes: Recipes
       sign_up: Sign up
     card-product:
-      edit_html: 'Edit <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
-      more_details_html: More details <svg class="bi bi-box-arrow-up-right mb-1" width="1em"
-        height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 003 14.5h8a1.5 1.5 0 001.5-1.5V9a.5.5
-        0 00-1 0v4a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h4a.5.5 0 000-1H3A1.5
-        1.5 0 001.5 5v8zm7-11a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V2.5H9a.5.5
-        0 01-.5-.5z" clip-rule="evenodd"/> <path fill-rule="evenodd" d="M14.354 1.646a.5.5
-        0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-        </svg>
+      edit_html: 'Edit'
+      more_details_html: More details <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
     card-small:
       name: "%{name}"
       recipe: "%{title}"
@@ -557,7 +529,8 @@ en:
       help: Help
       help_link: help
       legal: Legal
-      made_with_love_by_html: <div class="d-flex align-items-center">Made with <i class="material-icons md-18 px-1 text-danger">favorite</i> by Cuisinier Rebelle</div>
+      made_with_love_by_html: <div class="d-flex align-items-center">Made with <i
+        class="material-icons md-18 px-1 text-danger">favorite</i> by Cuisinier Rebelle</div>
       news: News
       news_link: news
       policies: Policies
@@ -579,9 +552,8 @@ en:
       conversion: Conversion table
       cuisinier_rebelle: Cuisinier rebelle
       english_html: English
-      french_html: Français
-      spanish_html: Español
       following: Following
+      french_html: Français
       inbox: Inbox
       languages_html: <i class="material-icons md-18">translate</i>
       log_out: Log out
@@ -590,6 +562,7 @@ en:
       recipes: Recipes
       settings: Settings
       sign_in: Log in
+      spanish_html: Español
       tools: Kitchen tools
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
@@ -728,7 +701,4 @@ en:
       follow: Follow
       unfollow: Unfollow
       verified: Verified
-      verified_html: '<svg class="bi bi-check" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
-        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
-        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg> '
+      verified_html: <i class="material-icons md-16">check_circle</i>

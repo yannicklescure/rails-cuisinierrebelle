@@ -10,6 +10,7 @@ fr:
         other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
         other: Il y a %{count} heures
@@ -49,6 +50,7 @@ fr:
         other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
         other: Il y a %{count} heures
@@ -120,12 +122,14 @@ fr:
         spam: Spam
         users: Utilisateurs
     spam:
+      approve_html: <i class="material-icons md-18">check</i>
       are_you_sure: Êtes-vous sûr?
       days_ago:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
       delete: Supprimer
+      destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
         other: Il y a %{count} heures
@@ -164,14 +168,7 @@ fr:
         1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1
         1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
         </svg>
-      destroy_html: <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0
-        16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path d="M5.5
-        5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5
-        0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/> <path fill-rule="evenodd"
-        d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1
-        1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1
-        1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
-        </svg>
+      destroy_html: <i class="material-icons md-18">delete</i>
       email: Email
       followers: Abonnés
       following: Abonnements
@@ -400,15 +397,7 @@ fr:
         et effectuez un achat, nous pouvons recevoir une commission (sans frais supplémentaires
         pour vous). Merci pour votre soutien de cette manière.
       new_product: New product
-      switch_view_html: <svg class="bi bi-arrow-left-right" width="1em" height="1em"
-        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10.146 7.646a.5.5 0 01.708 0l3 3a.5.5 0 010
-        .708l-3 3a.5.5 0 01-.708-.708L12.793 11l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M2 11a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5
-        0 012 11zm3.854-9.354a.5.5 0 010 .708L3.207 5l2.647 2.646a.5.5 0 11-.708.708l-3-3a.5.5
-        0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/> <path fill-rule="evenodd"
-        d="M2.5 5a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
-        </svg>
+      switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Matériel de cuisine
   products:
     form:
@@ -524,25 +513,15 @@ fr:
       subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Dernière mise à jour
       verified: Vérifié
-      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
-        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
-        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
+      verified_html: <i class="material-icons md-16">check_circle</i>
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
       recipes: Recettes
       sign_up: Inscription
     card-product:
-      edit_html: 'Editer <span style="font-size: 90%;"><i class="fas fa-pen"></i></span>'
-      more_details_html: Voir détails <svg class="bi bi-box-arrow-up-right mb-1" width="1em"
-        height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 003 14.5h8a1.5 1.5 0 001.5-1.5V9a.5.5
-        0 00-1 0v4a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h4a.5.5 0 000-1H3A1.5
-        1.5 0 001.5 5v8zm7-11a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V2.5H9a.5.5
-        0 01-.5-.5z" clip-rule="evenodd"/> <path fill-rule="evenodd" d="M14.354 1.646a.5.5
-        0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-        </svg>
+      edit_html: 'Editer'
+      more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
     card-small:
       name: "%{name}"
       recipe: "%{title}"
@@ -556,7 +535,8 @@ fr:
       help: Aide
       help_link: aide
       legal: Légal
-      made_with_love_by_html: <div class="d-flex align-items-center">Fait avec <i class="material-icons md-18 px-1 text-danger">favorite</i> par Cuisinier Rebelle</div>
+      made_with_love_by_html: <div class="d-flex align-items-center">Fait avec <i
+        class="material-icons md-18 px-1 text-danger">favorite</i> par Cuisinier Rebelle</div>
       news: Nouvelles
       news_link: nouvelles
       policies: Charte
@@ -578,9 +558,8 @@ fr:
       conversion: Table de conversion
       cuisinier_rebelle: Cuisinier rebelle
       english_html: English
-      french_html: Français
-      spanish_html: Español
       following: Abonnements
+      french_html: Français
       inbox: Messages
       languages_html: <i class="material-icons md-18">translate</i>
       log_out: Se déconnecter
@@ -589,6 +568,7 @@ fr:
       recipes: Recettes
       settings: Paramètres
       sign_in: Connexion
+      spanish_html: Español
       tools: Matériel de cuisine
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensIls"></i>&nbsp;Cuisinier Rebelle
@@ -735,7 +715,4 @@ fr:
       follow: Suivre
       unfollow: Ne plus suivre
       verified: Vérifié
-      verified_html: <svg class="bi bi-check" width="1em" height="1em" viewBox="0
-        0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd"
-        d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5
-        10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/> </svg>
+      verified_html: <i class="material-icons md-16">check_circle</i>

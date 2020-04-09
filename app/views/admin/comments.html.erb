@@ -34,22 +34,22 @@
         </div>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-2 d-flex align-items-center">
     <% if message.class.name == "Reply" %>
-      <%= image_tag message.comment.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
-      <%= link_to message.comment.recipe.title, recipe_path(message.comment.recipe), class: 'text-body' %>
-      <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, "#{recipe_path(message.comment.recipe)}#reply-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
+      <%= image_tag message.comment.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded mr-3' %>
+      <%= link_to truncate(message.comment.recipe.title, length: 20), recipe_path(message.comment.recipe), class: 'text-body' %>
+      <%= link_to '<i class="material-icons md-16 d-flex">open_in_new</i>'.html_safe, "#{recipe_path(message.comment.recipe)}#reply-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
     <% else %>
-      <%= image_tag message.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %>
-      <%= link_to message.recipe.title, recipe_path(message.recipe), class: 'text-body' %>
-      <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, "#{recipe_path(message.recipe)}#comment-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
+      <%= image_tag message.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded mr-3' %>
+      <%= link_to truncate(message.recipe.title, length: 20), recipe_path(message.recipe), class: 'text-body' %>
+      <%= link_to '<i class="material-icons md-16 d-flex">open_in_new</i>'.html_safe, "#{recipe_path(message.recipe)}#comment-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
     <% end %>
     </div>
     <div class="col-1">
     <% if message.class.name == "Reply" %>
-      <%= link_to t('.delete'), recipe_comment_reply_path(message.comment.recipe, message.comment, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+      <%= link_to t('.destroy_html'), recipe_comment_reply_path(message.comment.recipe, message.comment, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
     <% else %>
-      <%= link_to t('.delete'), recipe_comment_path(message.recipe, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
+      <%= link_to t('.destroy_html'), recipe_comment_path(message.recipe, message), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %>
     <% end %>
     </div>
   </div>

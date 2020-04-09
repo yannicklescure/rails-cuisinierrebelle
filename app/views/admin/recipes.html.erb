@@ -7,12 +7,12 @@
     <div class="col text-center"><%= t('.comments') %></div>
     <div class="col text-center"><%= t('.likes') %></div>
     <div class="col text-center"><%= t('.bookmarks') %></div>
-    <div class="col text-center"><%= t('.action') %></div>
+    <div class="col text-center"><%= t('.destroy_html') %></div>
   </div>
   <% @recipes.sort_by { |date| date.created_at }.reverse.map do |recipe| %>
   <div class="row align-items-center m-0 border-top" id="<%= "recipe-#{recipe.id}" %>">
     <div class="col-1"><%= image_tag recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded' %></div>
-    <div class="col-2"><%= link_to recipe.title, recipe_path(recipe) %></div>
+    <div class="col-2"><%= link_to truncate(recipe.title, length: 20), recipe_path(recipe) %></div>
     <div class="col d-flex align-items-center justify-content-center text-center"><img src="<%= recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2"><%= recipe.user.name %></div>
     <div class="col text-center">
       <% time_since_creation = TimeDifference.between(recipe.created_at, Time.current) %>
@@ -41,7 +41,7 @@
     <div class="col text-center"><%= recipe.comments.count + replies_count %></div>
     <div class="col text-center"><%= recipe.likes.count %></div>
     <div class="col text-center"><%= recipe.bookmarks.count %></div>
-    <div class="col text-center"><%= link_to t('.delete'), recipe_path(:id => recipe.slug, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %></div>
+    <div class="col text-center"><%= link_to t('.destroy_html'), recipe_path(:id => recipe.slug, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %></div>
   </div>
   <% end %>
 </div>

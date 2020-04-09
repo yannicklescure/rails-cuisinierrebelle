@@ -1,7 +1,7 @@
 <div class="col-0 border-right">
   <div class="navbar navbar-light sticky-top p-0 pt-3" style="top:59px">
     <div class="navbar-nav d-flex w-100 flex-column align-items-start admin">
-      <% link_class = 'd-flex w-100 nav-item align-items-center pb-3' %>
+      <% link_class = 'd-flex w-100 nav-item align-items-center mb-3' %>
       <a href="<%= "#{admin_path}" %>" id="admin-nav" data-menu-open="<%= @menu %>" class="<%= link_class %> justify-content-end" style="padding: 0 0 8px 0;">
         <div id="admin-nav-btn-icon" class="d-flex align-items-center justify-content-center text-body" style="width: 32px">
           <i class="material-icons md-18 mb-1">keyboard_arrow_right</i>
@@ -31,9 +31,8 @@
         </div>
         <div class="admin-nav-item pr-3"><%= t('.comments') %></div>
       <% end %>
-      <% spam_class = link_class %>
-      <% spam_class += ' text-danger' if @spams.count.positive? %>
-      <%= link_to "#{admin_spam_path}", id: 'spam', class: "#{link_class} admin-nav-item-link" do %>
+      <% spam_class = @spams.count.positive? ? 'text-danger' : '' %>
+      <%= link_to "#{admin_spam_path}", id: 'spam', class: "#{link_class} admin-nav-item-link #{spam_class}" do %>
         <div class="d-flex align-items-center justify-content-center" style="width: 32px">
           <i class="material-icons md-18 mb-1">feedback</i>
         </div>
