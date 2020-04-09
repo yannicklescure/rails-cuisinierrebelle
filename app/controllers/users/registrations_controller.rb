@@ -46,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.save!
       # respond_with resource, location: after_update_path_for(resource)
       # respond_with resource, location: user_path(resource)
-      respond_with resource, location: settings_path
+      respond_with resource, location: user_settings_path(resource)
     else
       clean_up_passwords resource
       set_minimum_password_length

@@ -1,7 +1,7 @@
 <div class="container mt-3 mb-5">
 <% if user_signed_in? && @user == current_user %>
   <div class="d-flex justify-content-start align-items-center pb-3">
-    <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px">
+    <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px" style="object-fit: cover;">
     <div class="d-flex flex-column ml-3">
       <%= link_to t('.follower', count: @user.followers.count), user_followers_path(@user), class: 'text-body' %>
       <%= link_to t('.published_recipes', count: @user.recipes.count), user_recipes_path(@user), class: 'text-body' %>
