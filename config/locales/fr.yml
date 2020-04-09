@@ -9,7 +9,6 @@ fr:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
-      delete: Supprimer
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
@@ -41,7 +40,6 @@ fr:
       recipes: Recettes
       users: UtIlisateurs
     recipes:
-      action: Action
       are_you_sure: Êtes-vous sûr?
       bookmarks: Favoris
       comments: Commentaires
@@ -49,7 +47,6 @@ fr:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
-      delete: Supprimer
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
@@ -117,7 +114,6 @@ fr:
         comments: Commentaires
         dashboard: Dashboard
         new_page: Nouvelle page
-        new_product: Nouveau produit
         recipes: Recettes
         spam: Spam
         users: Utilisateurs
@@ -128,7 +124,6 @@ fr:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
-      delete: Supprimer
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: Il y a 1 heure
@@ -142,7 +137,6 @@ fr:
         one: Il y a 1 mois
         other: Il y a %{count} mois
         zero: zéro mois
-      not_spam: Not spam
       public: Public
       seconds_ago:
         one: Il y a 1 seconde
@@ -229,7 +223,7 @@ fr:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: Il y a 1 heure
         other: Il y a %{count} heures
@@ -469,7 +463,7 @@ fr:
         one: Il y a 1 jour
         other: Il y a %{count} jours
         zero: zéro jour
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: Il y a 1 heure
         other: Il y a %{count} heures
@@ -516,7 +510,7 @@ fr:
       recipes: Recettes
       sign_up: Inscription
     card-product:
-      edit_html: 'Editer'
+      edit_html: Editer
       more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
     card-small:
       name: "%{name}"

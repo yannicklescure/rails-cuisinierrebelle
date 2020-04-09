@@ -17,8 +17,8 @@ export const viewReplies = () => {
       repliesList.classList.toggle('d-none');
       viewReplies === false ? viewReplies = true : viewReplies = false;
       const arrowState = document.querySelector(`#replies-list-arrow-${event.currentTarget.dataset.comment}`);
-      if(viewReplies) arrowState.innerHTML = `<i class="fas fa-sort-up"></i>`;
-      else arrowState.innerHTML = `<i class="fas fa-sort-down"></i>`;
+      if(viewReplies) arrowState.innerHTML = `<i class="material-icons md-16">keyboard_arrow_up</i>`;
+      else arrowState.innerHTML = `<i class="material-icons md-16">keyboard_arrow_down</i>`;
     });
   });
 }

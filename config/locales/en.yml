@@ -9,7 +9,6 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete: Delete
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -41,7 +40,6 @@ en:
       recipes: Recipes
       users: Users
     recipes:
-      action: Action
       are_you_sure: Are you sure?
       bookmarks: Bookmarks
       comments: Comments
@@ -49,7 +47,6 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete: Delete
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -117,7 +114,6 @@ en:
         comments: Comments
         dashboard: Dashboard
         new_page: New page
-        new_product: New product
         recipes: Recipes
         spam: Spam
         users: Users
@@ -128,7 +124,6 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete: Delete
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -142,7 +137,6 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
-      not_spam: Not spam
       public: Public
       seconds_ago:
         one: 1 second ago
@@ -228,7 +222,7 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -463,7 +457,7 @@ en:
         one: 1 day ago
         other: "%{count} days ago"
         zero: No day
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -510,7 +504,7 @@ en:
       recipes: Recipes
       sign_up: Sign up
     card-product:
-      edit_html: 'Edit'
+      edit_html: Edit
       more_details_html: More details <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
     card-small:
       name: "%{name}"

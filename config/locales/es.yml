@@ -6,7 +6,6 @@ es:
     comments:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
-      delete: Eliminar
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -23,7 +22,6 @@ es:
       recipes: Recetas
       users: Usuarios
     recipes:
-      action: Acción
       are_you_sure: "¿Estas seguro?"
       bookmarks: Favoritos
       comments: Comentarios
@@ -31,7 +29,6 @@ es:
         one: Hace 1 día
         other: Hace %{count} días
         zero: Sin días
-      delete: Eliminar
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -81,7 +78,6 @@ es:
         comments: Comentarios
         dashboard: Dashboard
         new_page: Nueva pagina
-        new_product: Nuevo producto
         recipes: Recetas
         spam: Spam
         users: Usuarios
@@ -89,7 +85,6 @@ es:
       approve_html: <i class="material-icons md-18">check</i>
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
-      delete: Eliminar
       destroy_html: <i class="material-icons md-18">delete</i>
       hours_ago:
         one: 1 hour ago
@@ -97,7 +92,6 @@ es:
         zero: No hour
       minutes_ago: Hace minutos
       months_ago: Hace meses
-      not_spam: Sin spam
       public: Público
       seconds_ago: Hace segundos
       weeks_ago: Hace semanas
@@ -154,7 +148,7 @@ es:
     show:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -360,7 +354,7 @@ es:
     show:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
-      delete_html: <i class="far fa-trash-alt text-body"></i>
+      destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -393,7 +387,7 @@ es:
       recipes: Recetas
       sign_up: Regístrate
     card-product:
-      edit_html: 'Editar'
+      edit_html: Editar
       more_details_html: Más detalles <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
     card-small:
       name: Nombre
