@@ -513,7 +513,7 @@ en:
   settings:
     index:
       created_at: Created at
-      edit_user_registration: Edit user registration
+      edit_user_registration: 'Edit'
       email: Email
       follower:
         one: 1 follower
