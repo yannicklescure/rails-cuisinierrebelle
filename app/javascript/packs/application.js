@@ -96,7 +96,8 @@ if (root) {
   lazyLoad(init);
 }
 
-if(currentController === 'r' && currentPage != null) {
+if (currentPage && currentPage.match(/edit\..*/)) btnClick();
+if (currentPage && currentPage.match(/new/)) {
 
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();
