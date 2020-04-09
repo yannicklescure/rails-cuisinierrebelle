@@ -3,18 +3,24 @@
   // align-items: center;
   // justify-content: space-between;
   background: white;
-}
 
-.navbar-cuisinierrebelle .navbar-collapse {
-  // flex-grow: 0;
-}
+  .navbar-collapse {
+    // flex-grow: 0;
+  }
 
-.navbar-cuisinierrebelle .navbar-brand img {
-  width: 40px;
-}
+  .navbar-brand img {
+    width: 40px;
+  }
 
-.navbar-cuisinierrebelle .navbar-brand {
-  padding-bottom: 8px;
+  .navbar-brand {
+    padding-bottom: 8px;
+  }
+
+  a.nav-link {
+    color: red;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .admin {

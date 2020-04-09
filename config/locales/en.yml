@@ -557,10 +557,7 @@ en:
       help: Help
       help_link: help
       legal: Legal
-      made_with_love_by_html: Made with <svg class="bi bi-heart-fill mb-1 text-danger"
-        width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534
-        4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/> </svg> by Cuisinier Rebelle
+      made_with_love_by_html: <div class="d-flex align-items-center">Made with <i class="material-icons md-18 text-danger">favorite</i> by Cuisinier Rebelle</div>
       news: News
       news_link: news
       policies: Policies
@@ -576,9 +573,9 @@ en:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: cuisinier rebelle, social recipes!
     navbar-large:
-      admin_html: <i class="material-icons md-16">settings</i>
+      admin_html: <i class="material-icons md-18">settings</i>
       are_you_sure: Are you sure?
-      bookmarks_html: <i class="material-icons md-16">bookmarks</i>
+      bookmarks_html: <i class="material-icons md-18">bookmarks</i>
       conversion: Conversion table
       cuisinier_rebelle: Cuisinier rebelle
       english_html: English
@@ -586,9 +583,9 @@ en:
       spanish_html: Español
       following: Following
       inbox: Inbox
-      languages_html: <i class="material-icons md-16">translate</i>
+      languages_html: <i class="material-icons md-18">translate</i>
       log_out: Log out
-      menu_modal_html: <i class="material-icons md-16">menu</i>
+      menu_modal_html: <i class="material-icons md-18">menu</i>
       new_recipe: New recipe
       recipes: Recipes
       settings: Settings
@@ -596,7 +593,7 @@ en:
       tools: Kitchen tools
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
-      menu_modal_html: <i class="material-icons md-16">menu</i>
+      menu_modal_html: <i class="material-icons md-18">menu</i>
       search_btn_back_html: <svg class="bi bi-arrow-counterclockwise mb-1 text-body"
         width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 00-7.103-3.16.5.5 0 11-.454-.892A6
