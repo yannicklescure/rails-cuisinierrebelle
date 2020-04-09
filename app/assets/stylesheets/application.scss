@@ -1,11 +1,8 @@
-/*
-*= require material_icons
-*/
-
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import 'material-icons/iconfont/material-icons.scss';
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -15,3 +12,4 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
