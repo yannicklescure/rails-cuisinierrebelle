@@ -38,7 +38,7 @@ export const lazyLoad = (init) => {
       if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     }
     let render = false;
-    console.log(init.currentPage);
+    // console.log(init.currentPage);
     switch(init.currentPage) {
       case null:
         recipes = array;
