@@ -557,7 +557,7 @@ en:
       help: Help
       help_link: help
       legal: Legal
-      made_with_love_by_html: <div class="d-flex align-items-center">Made with <i class="material-icons md-18 text-danger">favorite</i> by Cuisinier Rebelle</div>
+      made_with_love_by_html: <div class="d-flex align-items-center">Made with <i class="material-icons md-18 px-1 text-danger">favorite</i> by Cuisinier Rebelle</div>
       news: News
       news_link: news
       policies: Policies
