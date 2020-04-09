@@ -585,7 +585,7 @@ en:
       inbox: Inbox
       languages_html: <i class="material-icons md-18">translate</i>
       log_out: Log out
-      menu_modal_html: <i class="material-icons md-18">menu</i>
+      menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: New recipe
       recipes: Recipes
       settings: Settings
