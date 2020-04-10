@@ -7,7 +7,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @query = params[:query]
     if @query.present?
       @results = PgSearch.multisearch(@query)
-      @recipes = @results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| v}.reverse
+      @recipes = @results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id}.reverse
       #.order('created_at DESC')
     end
   end
