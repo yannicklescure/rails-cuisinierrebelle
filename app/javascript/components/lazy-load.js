@@ -105,6 +105,7 @@ const renderRecipes = (init, options) => {
           }
         }
       });
+      document.querySelector('#spinner').remove();
     }
   })
   .catch(ex => {
