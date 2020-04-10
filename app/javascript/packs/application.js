@@ -94,7 +94,7 @@ if (root) {
     device: device
   };
   if (location.query) {
-    console.log(location.query);
+    // console.log(location.query);
     init.url = `/api/v1/recipes?query=${location.query}`;
   }
   lazyLoad(init);

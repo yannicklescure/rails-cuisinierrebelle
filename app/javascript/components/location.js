@@ -1,5 +1,5 @@
 export const currentLocation = (options) => {
-  let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<query>\/index.+)?(?<lang>\/en|\/es|\/fr)?(?<controller>\/\w+)?(?<page>\/.+)?/);
+  let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<query>\/index.+)?(?<controller>\/\w+)?(?<page>\/.+)?/);
   // console.log(data.groups);
   let currentLang = data.groups.lang || 'en';
   if (currentLang) currentLang = currentLang.replace('/','');
@@ -14,11 +14,8 @@ export const currentLocation = (options) => {
     }
   } else {
     if(query && query.match(/.*?.*/)) {
-      console.log(data.groups);
       currentPage = query.split('?')[0].replace('/','');
-      console.log(currentPage);
       query = query.split('?query=')[1];
-      console.log(query);
     }
   }
   return {
