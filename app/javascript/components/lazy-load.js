@@ -105,8 +105,8 @@ const renderRecipes = (init, options) => {
           }
         }
       });
-      document.querySelector('#spinner').remove();
     }
+    document.querySelector('#spinner').remove();
   })
   .catch(ex => {
     console.log('parsing failed', ex);

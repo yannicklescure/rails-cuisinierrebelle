@@ -7,11 +7,9 @@
     <div><%= t('.result_not_found', query: @query) %></div>
   </div>
   <div class="mt-3"><strong><%= t('.recent_recipes') %></strong></div>
-  <div class="container-fluid p-0">
-    <div id="recipes-cards">
-      <div class="row">
-        <%= render 'shared/recipes', recipes: @recipes %>
-      </div>
+  <div id="recipes-cards">
+    <div class="row">
+      <%= render 'shared/recipes', recipes: @recipes %>
     </div>
   </div>
 </div>
