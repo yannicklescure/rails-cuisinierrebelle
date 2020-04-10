@@ -53,6 +53,20 @@ export const cards = (params) => {
             <i class="material-icons md-16 d-flex" style="font-size: 90%">check_circle</i>
           </span>`;
         }
+
+        let commentsCount = 0;
+        if (recipe.comments) {
+          // console.log(`recipe ${recipe.id} comments ${recipe.comments.length}`);
+          recipe.comments.forEach(comment => {
+            commentsCount += 1;
+            if (comment.replies) {
+              commentsCount += comment.replies.length;
+              // console.log(`replies ${comment.replies.length}`)
+            }
+          })
+        }
+        // console.log(`count ${commentsCount}`);
+
         const card = `
           <div class="col-md-4 col-lg-3 col-xl-2">
             <div class="card border-0" data-recipe="${recipe.id}">
@@ -80,7 +94,9 @@ export const cards = (params) => {
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
-                    <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${recipe.slug}#comments">${comment}</a>
+                    <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${recipe.slug}#comments">
+                      ${comment}<span class="text-muted font-weight-lighter ml-1 mb-md-n1">${commentsCount}</span>
+                    </a>
                     <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                   </div>
                 </div>
