@@ -17,35 +17,49 @@ const renderRecipes = (init, options) => {
     let recipes = [];
     let userLikes = [];
     let userBookmarks = [];
+    let render = false;
     if(init.userSignedIn && data.user) {
       if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
       if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+      switch(init.currentPage) {
+        case null:
+          recipes = array;
+          render = recipes.length > 0;
+          console.log(render);
+          break;
+        case `${data.user.auth.slug}/recipes`:
+          if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
+          render = recipes.length > 0;
+          break;
+        case `${data.user.auth.slug}/bookmarks`:
+          recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
+          render = recipes.length > 0;
+          break;
+        case `${init.currentPage}`:
+          if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+          render = recipes.length > 0;
+          break;
+        default:
+          recipes = [];
+          render = false;
+      }
+    } else {
+      switch(init.currentPage) {
+        case null:
+          recipes = array;
+          render = recipes.length > 0;
+          console.log(render);
+          break;
+        case `${init.currentPage}`:
+          if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+          render = recipes.length > 0;
+          break;
+        default:
+          recipes = [];
+          render = false;
+      }
     }
-    let render = false;
-    console.log(init.url);
-    // console.log(data.user.auth.slug);
-    switch(init.currentPage) {
-      case null:
-        recipes = array;
-        render = recipes.length > 0;
-        console.log(render);
-        break;
-      case `${data.user.auth.slug}/recipes`:
-        if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
-        render = recipes.length > 0;
-        break;
-      case `${data.user.auth.slug}/bookmarks`:
-        recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
-        render = recipes.length > 0;
-        break;
-      case `${init.currentPage}`:
-        if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
-        render = recipes.length > 0;
-        break;
-      default:
-        recipes = [];
-        render = false;
-    }
+
     let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
     if (render) {
       cards({
