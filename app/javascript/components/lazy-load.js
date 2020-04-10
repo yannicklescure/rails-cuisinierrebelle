@@ -25,7 +25,10 @@ const renderRecipes = (init, options) => {
         case null:
           recipes = array;
           render = recipes.length > 0;
-          console.log(render);
+          break;
+        case 'index':
+          recipes = array;
+          render = recipes.length > 0;
           break;
         case `${data.user.auth.slug}/recipes`:
           if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
@@ -48,7 +51,10 @@ const renderRecipes = (init, options) => {
         case null:
           recipes = array;
           render = recipes.length > 0;
-          console.log(render);
+          break;
+        case 'index':
+          recipes = array;
+          render = recipes.length > 0;
           break;
         case `${init.currentPage}`:
           if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);

@@ -15,7 +15,7 @@ export const currentLocation = (options) => {
   } else {
     if(query && query.match(/.*?.*/)) {
       console.log(data.groups);
-      // currentPage = query.split('?')[0].replace('/','');
+      currentPage = query.split('?')[0].replace('/','');
       console.log(currentPage);
       query = query.split('?query=')[1];
       console.log(query);

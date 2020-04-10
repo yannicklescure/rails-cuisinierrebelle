@@ -58,7 +58,7 @@ if (currentController === 'admin' && userSignedIn) {
   adminNav();
 }
 
-if (currentController === null && !userSignedIn) {
+if (currentPage === null && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
 }
 
