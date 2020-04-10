@@ -254,6 +254,7 @@ es:
       most_used_tags: Etiquetas más utilizadas
       no_result_html: Sin resultados...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recetas publicadas recientemente
+      result_not_found: "Lo sentimos, no pudimos encontrar ningún resultado que coincida con \"%{query}\". Por favor intente con otra palabra clave"
   layouts:
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social

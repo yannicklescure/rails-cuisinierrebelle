@@ -1,23 +1,18 @@
-<div class="container-fluid mt-3 mb-5">
-  <% if @results.nil? %>
-  <div class="container">
-    <div class="my-3"><strong><%= t('.most_used_tags') %></strong></div>
-    <%= render 'shared/tags' %>
-    <div class="my-3"><strong><%= t('.recent_recipes') %></strong></div>
-    <% @recipes.order('created_at DESC').each do |recipe| %>
-      <%= render "shared/card-small", recipe: recipe %>
-    <% end %>
+<% if @recipes.count.positive? %>
+<%= render 'shared/recipes', recipes: @recipes %>
+<% else %>
+<div class="container-fluid">
+  <div class="py-3 d-flex align-items-center">
+    <i class="material-icons md-24 mt-n1 pr-3">error</i>
+    <div><%= t('.result_not_found', query: @query) %></div>
   </div>
-  <% else %>
-  <div id="recipes-cards" class="row py-3">
-    <% if @results.count.positive? %>
-      <% @results.each do |result| %>
-        <% result.searchable %>
-        <%= render 'shared/card', recipe: result.searchable %>
-      <% end %>
-    <% else %>
-    <p class="mx-auto"><%= t('.no_result_html') %></p>
-    <% end %>
+  <div class="mt-3"><strong><%= t('.recent_recipes') %></strong></div>
+  <div class="container-fluid p-0">
+    <div id="recipes-cards">
+      <div class="row">
+        <%= render 'shared/recipes', recipes: @recipes %>
+      </div>
+    </div>
   </div>
-  <% end %>
 </div>
+<% end %>

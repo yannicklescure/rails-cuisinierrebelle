@@ -348,6 +348,7 @@ fr:
       most_used_tags: Tags les plus utIlisés
       no_result_html: Aucun résultat...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recettes récentes
+      result_not_found: "Désolé, nous n'avons trouvé aucun résultat correspondant à \"%{query}\". Veuillez essayer un autre mot-clé"
   layouts:
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales

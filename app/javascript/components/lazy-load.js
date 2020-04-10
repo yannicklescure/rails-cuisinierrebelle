@@ -6,23 +6,7 @@ const filterRecipes = (el, recipes) => {
   });
 }
 
-export const lazyLoad = (init) => {
-
-  // console.log(init);
-  // console.log(init.device);
-  // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
-  let options;
-  if(init.userSignedIn) {
-    options = {
-      headers: {
-        'X-User-Email': atob(decodeURIComponent(init.user_email)),
-        'X-User-Token': atob(decodeURIComponent(init.user_token))
-      }
-    };
-  } else {
-    options = {};
-  }
-
+const renderRecipes = (init, options) => {
   fetch(init.url, options)
   .then(response => response.json())
   .then(result => {
@@ -38,13 +22,13 @@ export const lazyLoad = (init) => {
       if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     }
     let render = false;
-    // console.log(init.currentPage);
+    console.log(init.url);
     // console.log(data.user.auth.slug);
     switch(init.currentPage) {
       case null:
-        if (init.currentController && init.currentController.match(/index.*/)) console.log('index');
         recipes = array;
         render = recipes.length > 0;
+        console.log(render);
         break;
       case `${data.user.auth.slug}/recipes`:
         if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
@@ -106,4 +90,30 @@ export const lazyLoad = (init) => {
   .catch(ex => {
     console.log('parsing failed', ex);
   });
+}
+
+export const lazyLoad = (init) => {
+
+  // console.log(init);
+  // console.log(init.device);
+  // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
+  let options;
+  if(init.userSignedIn) {
+    options = {
+      headers: {
+        'X-User-Email': atob(decodeURIComponent(init.user_email)),
+        'X-User-Token': atob(decodeURIComponent(init.user_token))
+      }
+    };
+  } else {
+    options = {};
+  }
+
+  const root = document.querySelector('#root');
+
+  if (init.url.match(/.+?query=.+/) && parseInt(root.dataset.recipes) == 0) {
+    init.url = `/api/v1/recipes`;
+  }
+
+  renderRecipes(init, options);
 }

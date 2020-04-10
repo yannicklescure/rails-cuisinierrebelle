@@ -37,10 +37,10 @@ previewImageOnFileSelect();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
-const returnPositionData = currentLocation();
-let currentLang = returnPositionData.currentLang;
-let currentController = returnPositionData.currentController;
-let currentPage = returnPositionData.currentPage;
+const location = currentLocation();
+let currentLang = location.currentLang;
+let currentController = location.currentController;
+let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
 const cookies = cookiesToObject(document.cookie);
 
@@ -93,11 +93,15 @@ if (root) {
     locale: currentLang,
     device: device
   };
+  if (location.query) {
+    console.log(location.query);
+    init.url = `/api/v1/recipes?query=${location.query}`;
+  }
   lazyLoad(init);
 }
 
 if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-if (currentPage && currentController.match(/r/)) {
+if (currentController && currentController.match(/r/)) {
 
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();

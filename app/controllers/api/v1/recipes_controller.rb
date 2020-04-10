@@ -3,7 +3,10 @@ class Api::V1::RecipesController < Api::V1::BaseController
   before_action :set_recipe, only: [ :show, :update ]
 
   def index
-    @recipes = policy_scope(Recipe)
+    @recipes = policy_scope(Recipe).order('created_at DESC')
+    if params[:query].present?
+      @recipes = PgSearch.multisearch(params[:query]).order('created_at DESC').map { |r| Recipe.find(r.id) }
+    end
   end
 
   def show
