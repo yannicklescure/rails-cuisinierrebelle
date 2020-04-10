@@ -7,7 +7,7 @@ class IndexController < ApplicationController
     @query = params[:query]
     if @query.present?
       @results = PgSearch.multisearch(@query)
-      @recipes = @results.order('created_at DESC').map { |r| Recipe.find(r.searchable_id) }
+      @recipes = @results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id}.reverse
     end
   end
 
