@@ -28,5 +28,5 @@
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
-  <div class="my-1 bg-light rounded p-3"><%= markdown.render(reply.content).html_safe %></div>
+  <div class="my-1 bg-light rounded d-flex px-3 pt-3"><%= markdown.render(reply.content).html_safe %></div>
 </div>
