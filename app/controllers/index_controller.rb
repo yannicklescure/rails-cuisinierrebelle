@@ -4,8 +4,9 @@ class IndexController < ApplicationController
   def index
     @recipes = policy_scope(Recipe)
     @bookmarks = Bookmark.where(user: current_user)
+    @query = params[:query]
     if @query.present?
-      @results = PgSearch.multisearch(params[:query])
+      @results = PgSearch.multisearch(@query)
       @recipes = @results.order('created_at DESC').map { |r| Recipe.find(r.searchable_id) }
     end
   end
