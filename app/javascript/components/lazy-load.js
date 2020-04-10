@@ -38,8 +38,8 @@ export const lazyLoad = (init) => {
       if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
     }
     let render = false;
-    console.log(init.currentPage);
-    console.log(data.user.auth.slug);
+    // console.log(init.currentPage);
+    // console.log(data.user.auth.slug);
     switch(init.currentPage) {
       case null:
         if (init.currentController && init.currentController.match(/index.*/)) console.log('index');
