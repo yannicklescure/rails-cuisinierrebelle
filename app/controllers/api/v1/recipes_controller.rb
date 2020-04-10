@@ -6,7 +6,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @recipes = policy_scope(Recipe).order('created_at DESC')
     if params[:query].present?
       # @recipes = PgSearch.multisearch(params[:query]).order('created_at DESC').map { |r| Recipe.find(r.id) }
-      @recipes = PgSearch.multisearch(params[:query]).map { |r| Recipe.find(r.id) }
+      @results = PgSearch.multisearch(params[:query])
+      @recipes = @results.order('created_at DESC').map { |r| Recipe.find(r.searchable_id) }
+      # binding.pry
     end
   end
 

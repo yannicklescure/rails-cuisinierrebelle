@@ -6,7 +6,7 @@ class IndexController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     if @query.present?
       @results = PgSearch.multisearch(params[:query])
-      @recipes = PgSearch.multisearch(params[:query]).order('created_at DESC').map { |r| Recipe.find(r.id) }
+      @recipes = @results.order('created_at DESC').map { |r| Recipe.find(r.searchable_id) }
     end
   end
 
