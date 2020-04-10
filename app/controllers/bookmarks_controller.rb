@@ -2,6 +2,7 @@ class BookmarksController < ApplicationController
   def index
     # @bookmarks = Bookmark.where(user: current_user)
     @bookmarks = policy_scope(Bookmark).where(user_id: current_user.id)
+    @recipes = @bookmarks.map { |b| Recipe.find(b.recipe_id) }
   end
 
   def update
