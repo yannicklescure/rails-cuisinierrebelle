@@ -20,7 +20,7 @@
     <% else %>
       <%= t(".seconds_ago", count: 1) %>
     <% end %>&ensp;
-    <% if comment.user == current_user || recipe.user == current_user %>
+    <% if comment.user == current_user || recipe.user == current_user || current_user.admin %>
     <%= link_to t('.destroy_html'), recipe_comment_path(recipe, comment), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true, class: 'text-decoration-none' %>
     <% end %>
   </div>

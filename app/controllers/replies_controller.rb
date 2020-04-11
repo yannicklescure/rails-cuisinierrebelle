@@ -63,11 +63,13 @@ class RepliesController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:id])
+    # binding.pry
     authorize @reply
-    @reply.destroy
-    # redirect_to recipe_path(@recipe)
-    respond_to do |format|
-      format.js
+    if @reply.destroy
+      # redirect_to recipe_path(@recipe)
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
