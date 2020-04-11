@@ -40,6 +40,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/google_analytics' %>
+    <%= render 'layouts/google_adsense' %>
   </head>
   <body class="d-flex flex-column" data-user="<%= user_signed_in? %>" data-device="<%= client.device_type.nil? ? 'robot' : client.device_type %>">
     <%= render 'layouts/facebook' %>
