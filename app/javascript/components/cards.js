@@ -15,13 +15,13 @@ export const cards = (params) => {
       if(index + 1 > params.start && index + 1 <= params.end) {
         let bookmarkPatchAttributes = '';
         let likePatchAttributes = '';
-        const heart = `<i class="material-icons md-18" style="margin-top: -3px;">favorite_border</i>`;
-        const heartFill = `<i class="material-icons md-18" style="margin-top: -3px;">favorite</i>`;
+        const heart = `<i class="material-icons md-18 align-icons">favorite_border</i>`;
+        const heartFill = `<i class="material-icons md-18 align-icons">favorite</i>`;
         const heartFillBig = `<i class="material-icons md-132">favorite</i>`;
-        const bookmark = `<i class="material-icons md-18" style="margin-top: -3px;">bookmark_border</i>`;
-        const bookmarkFill = `<i class="material-icons md-18" style="margin-top: -3px;">bookmark</i>`;
+        const bookmark = `<i class="material-icons md-18 align-icons">bookmark_border</i>`;
+        const bookmarkFill = `<i class="material-icons md-18 align-icons">bookmark</i>`;
         const bookmarkFillBig = `<i class="material-icons md-132">bookmark</i>`;
-        const comment = `<i class="material-icons md-18" style="margin-top: -3px;">comment</i>`;
+        const comment = `<i class="material-icons md-18">comment</i>`;
         let likeUrl = '/users/sign_in';
         let bookmarkUrl = '/users/sign_in';
         let faHeart = heart;

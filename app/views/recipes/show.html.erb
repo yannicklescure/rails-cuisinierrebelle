@@ -14,10 +14,10 @@
           </div>
         </div>
       </div>
-      <% heart = '<i class="material-icons md-18">favorite_border</i>' %>
-      <% heartFill = '<i class="material-icons md-18">favorite</i>' %>
-      <% bookmark = '<i class="material-icons md-18">bookmark_border</i>' %>
-      <% bookmarkFill = '<i class="material-icons md-18">bookmark</i>' %>
+      <% heart = '<i class="material-icons md-18 align-icons">favorite_border</i>' %>
+      <% heartFill = '<i class="material-icons md-18 align-icons">favorite</i>' %>
+      <% bookmark = '<i class="material-icons md-18 align-icons">bookmark_border</i>' %>
+      <% bookmarkFill = '<i class="material-icons md-18 align-icons">bookmark</i>' %>
       <% if user_signed_in? %>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0" style="<%= 'margin-bottom: 2px;' if !client.device_type.nil? && client.device_type.match(/desktop/) %>">
@@ -28,7 +28,7 @@
           <% end %>
           <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 ml-md-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
             <%= @recipe.likes.find_by(user: current_user).nil? ? raw(heart) : raw(heartFill) %>
-            <span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;"><%= @recipe.likes.count %></span>
+            <span class="text-muted font-weight-lighter ml-1"><%= @recipe.likes.count %></span>
           <% end %>
         </div>
         <% if @recipe.user == current_user %>
