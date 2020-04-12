@@ -15,13 +15,13 @@ export const cards = (params) => {
       if(index + 1 > params.start && index + 1 <= params.end) {
         let bookmarkPatchAttributes = '';
         let likePatchAttributes = '';
-        const heart = `<i class="material-icons md-18">favorite_border</i>`;
-        const heartFill = `<i class="material-icons md-18">favorite</i>`;
+        const heart = `<i class="material-icons md-18" style="margin-top: -3px;">favorite_border</i>`;
+        const heartFill = `<i class="material-icons md-18" style="margin-top: -3px;">favorite</i>`;
         const heartFillBig = `<i class="material-icons md-132">favorite</i>`;
-        const bookmark = `<i class="material-icons md-18">bookmark_border</i>`;
-        const bookmarkFill = `<i class="material-icons md-18">bookmark</i>`;
+        const bookmark = `<i class="material-icons md-18" style="margin-top: -3px;">bookmark_border</i>`;
+        const bookmarkFill = `<i class="material-icons md-18" style="margin-top: -3px;">bookmark</i>`;
         const bookmarkFillBig = `<i class="material-icons md-132">bookmark</i>`;
-        const comment = `<i class="material-icons md-18">comment</i>`;
+        const comment = `<i class="material-icons md-18" style="margin-top: -3px;">comment</i>`;
         let likeUrl = '/users/sign_in';
         let bookmarkUrl = '/users/sign_in';
         let faHeart = heart;
@@ -90,12 +90,12 @@ export const cards = (params) => {
                 <div class="d-flex justify-content-between align-items-center mb-1">
                   <div class="d-flex align-items-center text-danger">
                     <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
-                      ${faHeart}<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;">${recipe.likes_count}</span>
+                      ${faHeart}<span class="text-muted font-weight-lighter ml-1">${recipe.likes_count}</span>
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
                     <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${recipe.slug}#comments">
-                      ${comment}<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;">${commentsCount}</span>
+                      ${comment}<span class="text-muted font-weight-lighter ml-1">${commentsCount}</span>
                     </a>
                     <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                   </div>

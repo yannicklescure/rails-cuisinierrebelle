@@ -1,9 +1,9 @@
 liked = document.querySelector("[data-like-recipe='<%= @recipe.id %>']");
 faHeart = document.querySelector(".fa-heart-<%= @recipe.id %>");
 
-likes_count = `<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;"><%= @recipe.likes.count %></span>`;
-heart = `<i class="material-icons md-18">favorite_border</i>`;
-heartFill = `<i class="material-icons md-18">favorite</i>`;
+likes_count = `<span class="text-muted font-weight-lighter ml-1"><%= @recipe.likes.count %></span>`;
+heart = `<i class="material-icons md-18" style="margin-top: -3px;">favorite_border</i>`;
+heartFill = `<i class="material-icons md-18" style="margin-top: -3px;">favorite</i>`;
 
 fade = (element) => {
     var op = 1;  // initial opacity
