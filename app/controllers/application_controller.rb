@@ -11,11 +11,28 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   after_action :set_user_locale
 
+  after_action :store_action
+
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   def user_not_authorized
     flash[:alert] = t(".you_are_not_authorized_to_perform_this_action")
     redirect_to(root_path)
+  end
+
+  # Redirecting back to the "current page"
+  # https://github.com/heartcombo/devise/wiki/How-To:-Redirect-back-to-current-page-after-sign-in,-sign-out,-sign-up,-update
+  def store_action
+    return unless request.get?
+    if (request.path != "/users/sign_in" &&
+        request.path != "/users/sign_up" &&
+        request.path != "/users/password/new" &&
+        request.path != "/users/password/edit" &&
+        request.path != "/users/confirmation" &&
+        request.path != "/users/sign_out" &&
+        !request.xhr?) # don't store ajax calls
+      store_location_for(:user, request.fullpath)
+    end
   end
 
   def set_locale
