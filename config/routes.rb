@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     post 'comments/:id/spam', to: 'comments#spam', as: :comment_spam
     post 'replies/:id/spam', to: 'replies#spam', as: :reply_spam
 
-    resources :pages, except: [:index]
+    resources :pages, except: [:index], path: '/pg'
+    get '/:locale/pages/:id', to: redirect('/%{locale}/pg/%{id}')
+    get '/pages/:id', to: redirect('/pg/%{id}')
+
     resources :products, except: [:index, :show]
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
