@@ -31,7 +31,7 @@ unfade = (element) => {
 }
 
 if(<%= @liked %>) {
-  liked.innerHTML = `${heartFill}<span class="text-muted font-weight-lighter ml-1 mb-md-n1"><%= @recipe.likes.count %></span>`;
+  liked.innerHTML = `${heartFill}<span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>`;
   if(faHeart != null) {
     faHeart.classList.remove('d-none');
     unfade(faHeart);
@@ -41,5 +41,5 @@ if(<%= @liked %>) {
     }, 500);
   }
 } else {
-  liked.innerHTML = `${heart}<span class="text-muted font-weight-lighter ml-1 mb-md-n1"><%= @recipe.likes.count %></span>`;
+  liked.innerHTML = `${heart}<span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>`;
 }
