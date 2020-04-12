@@ -47,7 +47,7 @@
           <% end %>
           <%= link_to new_user_session_path, class: "p-0 m-0 ml-md-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
             <%= raw(heart) %>
-            <span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>
+            <span class="text-muted font-weight-lighter ml-1"><%= @recipe.likes.count %></span>
           <% end %>
         </div>
         <% if @recipe.user == current_user %>
