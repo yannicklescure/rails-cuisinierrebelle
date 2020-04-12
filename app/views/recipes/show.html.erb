@@ -19,14 +19,14 @@
       <% bookmark = '<i class="material-icons md-18">bookmark_border</i>' %>
       <% bookmarkFill = '<i class="material-icons md-18">bookmark</i>' %>
       <% if user_signed_in? %>
-      <div class="d-flex flex-column flex-md-row align-items-end justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0" style="<%= 'margin-bottom: 2px;' if !client.device_type.nil? && client.device_type.match(/desktop/) %>">
           <% if policy(Bookmark).update? %>
-            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-0 ml-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
+            <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-0 mr-3 mr-md-0 ml-md-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
               <%= @recipe.bookmarks.find_by(user: current_user).nil? ? raw(bookmark) : raw(bookmarkFill) %>
             <% end %>
           <% end %>
-          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 ml-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
+          <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 ml-md-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
             <%= @recipe.likes.find_by(user: current_user).nil? ? raw(heart) : raw(heartFill) %>
             <span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>
           <% end %>
@@ -41,11 +41,11 @@
       <div class="d-flex flex-column flex-md-row align-items-end justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0" style="<%= 'margin-bottom: 2px;' if !client.device_type.nil? && client.device_type.match(/desktop/) %>">
           <% if policy(Bookmark).update? %>
-            <%= link_to new_user_session_path, class: 'p-0 m-0 ml-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
+            <%= link_to new_user_session_path, class: 'p-0 m-0 mr-3 mr-md-0 ml-md-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
               <%= raw(bookmark) %>
             <% end %>
           <% end %>
-          <%= link_to new_user_session_path, class: "p-0 m-0 ml-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
+          <%= link_to new_user_session_path, class: "p-0 m-0 ml-md-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
             <%= raw(heart) %>
             <span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>
           <% end %>
