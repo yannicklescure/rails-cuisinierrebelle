@@ -28,7 +28,7 @@
           <% end %>
           <%= link_to recipe_likes_path(@recipe), method: :patch, remote: true, class: "p-0 m-0 ml-md-3 text-danger text-decoration-none d-flex align-items-center", 'data-like-recipe': @recipe.id do %>
             <%= @recipe.likes.find_by(user: current_user).nil? ? raw(heart) : raw(heartFill) %>
-            <span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>
+            <span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;"><%= @recipe.likes.count %></span>
           <% end %>
         </div>
         <% if @recipe.user == current_user %>

@@ -1,6 +1,7 @@
 liked = document.querySelector("[data-like-recipe='<%= @recipe.id %>']");
 faHeart = document.querySelector(".fa-heart-<%= @recipe.id %>");
 
+likes_count = `<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;"><%= @recipe.likes.count %></span>`;
 heart = `<i class="material-icons md-18">favorite_border</i>`;
 heartFill = `<i class="material-icons md-18">favorite</i>`;
 
@@ -31,7 +32,7 @@ unfade = (element) => {
 }
 
 if(<%= @liked %>) {
-  liked.innerHTML = `${heartFill}<span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>`;
+  liked.innerHTML = `${heartFill}${likes_count}`;
   if(faHeart != null) {
     faHeart.classList.remove('d-none');
     unfade(faHeart);
@@ -41,5 +42,5 @@ if(<%= @liked %>) {
     }, 500);
   }
 } else {
-  liked.innerHTML = `${heart}<span class="text-muted font-weight-lighter ml-1 mb-n1"><%= @recipe.likes.count %></span>`;
+  liked.innerHTML = `${heart}${likes_count}`;
 }

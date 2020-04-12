@@ -90,12 +90,12 @@ export const cards = (params) => {
                 <div class="d-flex justify-content-between align-items-center mb-1">
                   <div class="d-flex align-items-center text-danger">
                     <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
-                      ${faHeart}<span class="text-muted font-weight-lighter ml-1 mb-md-n1">${recipe.likes_count}</span>
+                      ${faHeart}<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;">${recipe.likes_count}</span>
                     </a>
                   </div>
                   <div class="d-flex align-items-center">
                     <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${recipe.slug}#comments">
-                      ${comment}<span class="text-muted font-weight-lighter ml-1 mb-md-n1">${commentsCount}</span>
+                      ${comment}<span class="text-muted font-weight-lighter ml-1" style="margin-bottom: -2px;">${commentsCount}</span>
                     </a>
                     <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                   </div>
