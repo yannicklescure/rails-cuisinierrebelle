@@ -40,19 +40,19 @@
         <% end %>
       </div>
       <% if user_signed_in? %>
-      <div style="margin: 0 1em 0 2em;">
+      <div class="ml-3">
         <div class="text-muted btn btn-sm p-0 reply-reply" data-comment="<%= comment.id %>"><%= t('.reply') %></div>
         <div id="reply-reply-form-<%= comment.id %>" class="my-3 d-none">
           <%= render 'replies/form', recipe: recipe, comment: comment, reply: Reply.new %>
         </div>
       </div>
       <% else %>
-        <%= link_to t('.reply'), new_user_session_path, class: "text-muted btn btn-sm p-0" %>
+        <%= link_to t('.reply'), new_user_session_path, class: "text-muted btn btn-sm p-0 ml-3" %>
       <% end %>
     </div>
   </div>
   <% else %>
-  <div id="comment-<%= comment.id %>-replies" class="mx-3">
+  <div id="comment-<%= comment.id %>-replies" class="ml-3">
     <div id="replies-list-<%= comment.id %>" data-comment="<%= comment.id %>">
       <% if user_signed_in? %>
       <div id="replies-list-box-<%= comment.id %>"></div>
