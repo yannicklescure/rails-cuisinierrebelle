@@ -13,7 +13,6 @@ const renderRecipes = (init, options) => {
     const data = result.data;
     let array = data.recipes;
     const cardsMax = 24;
-    let renderCards = true;
     let recipes = [];
     let userLikes = [];
     let userBookmarks = [];
@@ -78,12 +77,13 @@ const renderRecipes = (init, options) => {
         start: 0,
         end: cardsQty
       });
-      let cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
-      let cardNodeElementTop = cardNodeElement ? cardNodeElement.getBoundingClientRect().top : 75;
-      const banner = document.querySelector('.banner');
       window.addEventListener('scroll', (event) => {
+        let cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
+        let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
+        const banner = document.querySelector('.banner');
+        let renderCards = true;
+        let trigger = Math.round(window.scrollY + window.innerHeight);
         if (cardNodeElement) {
-          let trigger = Math.round(window.scrollY + window.innerHeight);
           if (trigger >= cardNodeElementTop && renderCards) {
             let newCardsQty = cardsQty + cardsMax <= recipes.length ? cardsQty + cardsMax : recipes.length;
             cards({
