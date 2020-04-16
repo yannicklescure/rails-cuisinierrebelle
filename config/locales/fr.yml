@@ -396,7 +396,7 @@ fr:
       switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Matériel de cuisine
     top_100:
-      heart_html: <i class="material-icons md-18 text-danger d-flex mb-1">favorite</i>
+      heart_html: <i class="material-icons md-18 text-danger d-flex mb-1 justify-content-center">favorite</i>
       title: Titre
       top_100: Top 100
   products:
