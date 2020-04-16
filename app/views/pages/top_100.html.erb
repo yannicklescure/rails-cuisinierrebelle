@@ -1,0 +1,26 @@
+<div class="top-100">
+  <div class="container">
+    <div class="h1 mt-5 mb-3"><%= t('.top_100') %></div>
+    <div class="mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col"><%= t('.heart_html') %></th>
+            <th scope="col"><%= t('.title') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipes.each_with_index do |recipe, index| %>
+            <tr id="<%= "recipe-top-#{index+1}" %>">
+              <!-- <th scope="row"><%= index + 1 %></th> -->
+              <td><span class="ml-1"><%= recipe.likes_count %></span></td>
+              <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

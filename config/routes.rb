@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/conversion', to: 'pages#conversion', as: 'conversion'
     get '/tools', to: 'pages#tools', as: 'tools'
+    get '/top100', to: 'pages#top_100', as: 'top_100'
 
     # namespace :admin, only: [:index] do
     #   resources :users, :recipes, :comments, :spam

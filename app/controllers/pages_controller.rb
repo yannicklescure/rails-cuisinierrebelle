@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :home, :tools, :conversion]
+  skip_before_action :authenticate_user!, only: [:show, :home, :tools, :conversion, :top_100]
 
   def show
     if Page.friendly.exists? params[:id]
@@ -63,6 +63,12 @@ class PagesController < ApplicationController
     else
       @user_view = true
     end
+  end
+
+  def top_100
+    @top_100 = "top 100"
+    @recipes = Recipe.all.sort_by {|k,v| k.likes_count}.reverse[0...100]
+    # binding.pry
   end
 
   private

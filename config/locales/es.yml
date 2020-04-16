@@ -254,7 +254,8 @@ es:
       most_used_tags: Etiquetas más utilizadas
       no_result_html: Sin resultados...&nbsp;<i class="far fa-grin-beam-sweat"></i>
       recent_recipes: Recetas publicadas recientemente
-      result_not_found: "Lo sentimos, no pudimos encontrar ningún resultado que coincida con \"%{query}\". Por favor intente con otra palabra clave"
+      result_not_found: Lo sentimos, no pudimos encontrar ningún resultado que coincida
+        con "%{query}". Por favor intente con otra palabra clave
   layouts:
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
@@ -300,6 +301,10 @@ es:
       new_product: New product
       switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Equipo de cocina
+    top_100:
+      heart_html: <i class="material-icons md-18 text-danger d-flex mb-1">favorite</i>
+      title: Titulo
+      top_100: Top 100
   products:
     form:
       are_you_sure: Are you sure
@@ -438,6 +443,7 @@ es:
       sign_in: Iniciar sesión
       spanish_html: Español
       tools: Equipo de cocina
+      top_100: Top 100
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
