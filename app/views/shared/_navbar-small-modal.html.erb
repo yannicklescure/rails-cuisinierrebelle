@@ -15,6 +15,7 @@
             <%= link_to t(".new_recipe"), new_recipe_path, class: "d-flex py-2 w-100 modal-menu-link" %>
             <%= link_to t(".recipes"), user_recipes_path(current_user), class: "d-flex py-2 w-100 modal-menu-link" %>
           <% end %>
+          <a href="<%= top_100_path %>" class="d-flex py-2 w-100 modal-menu-link"><%= t(".top_100") %></a>
           <a href="<%= tools_path %>" class="d-flex py-2 w-100 modal-menu-link"><%= t(".tools") %></a>
           <a href="<%= conversion_path %>" class="d-flex py-2 w-100 modal-menu-link"><%= t(".conversion") %></a>
           <% if user_signed_in? %>
