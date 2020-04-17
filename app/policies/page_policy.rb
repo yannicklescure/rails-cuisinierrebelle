@@ -10,18 +10,18 @@ class PagePolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    user.admin || user.moderator
   end
 
   def create?
-    user.admin
+    user.admin || user.moderator
   end
 
   def edit?
-    user.admin
+    user.admin || user.moderator
   end
 
   def update?
-    user.admin
+    user.admin || user.moderator
   end
 end
