@@ -450,6 +450,7 @@ es:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
+      whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: "¿Estas seguro?"
       bookmarks: Favoritos
@@ -463,6 +464,7 @@ es:
       settings: Configuraciones
       sign_in: Registrarse
       tools: Herramientas de cocina
+      top_100: Top 100
     user-banner-large:
       followers: Seguidores
       following: Siguiendo

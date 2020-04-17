@@ -573,6 +573,7 @@ fr:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
+      whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?
       bookmarks: Favoris
@@ -586,6 +587,7 @@ fr:
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
+      top_100: Top 100
     user-banner-large:
       followers: Abonnés
       following: Abonnements

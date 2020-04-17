@@ -58,8 +58,13 @@ if (currentController === 'admin' && userSignedIn) {
   adminNav();
 }
 
-if (currentPage === null && !userSignedIn) {
+if (!currentController && !currentPage && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
+  const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
+  if (window.innerWidth > 375) {
+    bannerCtaBoxTitle.classList.remove('h2');
+    bannerCtaBoxTitle.classList.add('h1');
+  }
 }
 
 if(currentPage && currentPage.match(/\/settings/) && userSignedIn) {

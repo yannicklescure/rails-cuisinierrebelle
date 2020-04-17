@@ -567,6 +567,7 @@ en:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
+      whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: Are you sure?
       bookmarks: Bookmarks
@@ -580,6 +581,7 @@ en:
       settings: Settings
       sign_in: Sign in
       tools: Tools
+      top_100: Top 100
     user-banner-large:
       followers: Followers
       following: Following
