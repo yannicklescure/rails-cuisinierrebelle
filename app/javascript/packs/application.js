@@ -106,7 +106,7 @@ if (root) {
 }
 
 if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-if (currentController && currentController.match(/r/)) {
+if (currentController && currentController === 'r') {
 
   window.onhashchange = () => smoothToAnchor();
   window.onload = () => smoothToAnchor();
