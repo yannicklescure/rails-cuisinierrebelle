@@ -1,0 +1,16 @@
+.like {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  background-position: center;
+
+  .like-heart {
+    position: relative;
+    top: 6px;
+    left: 12px;
+  }
+}

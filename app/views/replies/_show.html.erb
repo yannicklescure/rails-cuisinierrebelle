@@ -33,6 +33,11 @@
         <%= reply.reply_likes.count %>
       </div>
     </div>
+    <% if reply.reply_likes.find_by(user: recipe.user) %>
+      <div id="<%= "user-recipe-like-#{reply.id}" %>" class="like ml-2" style="background-image: url(<%= recipe.user.image.thumb.url %>);">
+        <i class="material-icons text-danger like-heart" style="font-size: 12px;">favorite</i>
+      </div>
+    <% end %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true} %>
