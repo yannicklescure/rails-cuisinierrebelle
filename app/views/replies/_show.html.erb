@@ -21,10 +21,19 @@
       <%= t(".seconds_ago", count: 1) %>
     <% end %>&ensp;
     <% if reply.user == current_user || recipe.user == current_user || !current_user.nil? && current_user.admin %>
-    <%= link_to t('.destroy_html'), recipe_comment_reply_path(recipe, comment, reply), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true, class: 'text-decoration-none' %>
+    <%= link_to t('.destroy_html'), recipe_comment_reply_path(recipe, comment, reply), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true, class: 'text-decoration-none mr-2' %>
     <% end %>
+    <div class="d-flex">
+      <% if user_signed_in? %>
+        <%= link_to t('.recipe_comment_reply_likes_html'), recipe_comment_reply_likes_path(recipe, reply.comment, reply), method: :patch, remote: true, class: 'text-decoration-none mr-1' %>
+      <% else %>
+        <%= link_to t('.recipe_comment_reply_likes_html'), new_user_session_path, class: 'text-decoration-none mr-1' %>
+      <% end %>
+      <div id="<%= "reply-#{reply.id}-likes" %>">
+        <%= reply.reply_likes.count %>
+      </div>
+    </div>
   </div>
-
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>

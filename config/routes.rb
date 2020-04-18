@@ -32,7 +32,10 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:update]
       resource :likes, only: [:update]
       resources :comments, except: [:index, :show] do
-        resources :replies, except: [:index, :show]
+        resource :likes, only: [:update]
+        resources :replies, except: [:index, :show] do
+          resource :likes, only: [:update]
+        end
       end
     end
     get '/:locale/recipes/:id', to: redirect('/%{locale}/r/%{id}')

@@ -235,6 +235,7 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
+      recipe_comment_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       replies:
         one: 1 reply
         other: "%{count} replies"
@@ -476,6 +477,7 @@ en:
         one: 1 month ago
         other: "%{count} months ago"
         zero: No month
+      recipe_comment_reply_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       seconds_ago:
         one: 1 second ago
         other: "%{count} seconds ago"

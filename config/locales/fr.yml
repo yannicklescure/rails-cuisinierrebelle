@@ -236,6 +236,7 @@ fr:
         one: Il y a 1 mois
         other: Il y a %{count} mois
         zero: zéro mois
+      recipe_comment_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       replies:
         one: 1 réponse
         other: "%{count} réponses"
@@ -482,6 +483,7 @@ fr:
         one: Il y a 1 mois
         other: Il y a %{count} mois
         zero: zéro mois
+      recipe_comment_reply_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       seconds_ago:
         one: Il y a 1 seconde
         other: Il y a %{count} secondes

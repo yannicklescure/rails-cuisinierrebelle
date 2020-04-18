@@ -155,6 +155,7 @@ es:
         zero: No hour
       minutes_ago: Hace minutos
       months_ago: Hace meses
+      recipe_comment_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       replies: Respuestas
       reply: Respuesta
       seconds_ago: Hace segundos
@@ -367,6 +368,7 @@ es:
         zero: No hour
       minutes_ago: Hace minutos
       months_ago: Hace meses
+      recipe_comment_reply_likes_html: <i class="material-icons md-16 d-flex text-body">thumb_up</i>
       seconds_ago: Hace segundos
       weeks_ago: Hace semanas
       years_ago: Hace años que

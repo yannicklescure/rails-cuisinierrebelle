@@ -5,6 +5,15 @@ likes_count = `<span class="text-muted font-weight-lighter ml-1"><%= @recipe.lik
 heart = `<i class="material-icons md-18 align-icons">favorite_border</i>`;
 heartFill = `<i class="material-icons md-18 align-icons">favorite</i>`;
 
+<% @comment_id = @comment.nil? ? 0 : @comment.id %>
+commentLikes = document.querySelector('#comment-<%= @comment_id %>-likes');
+if (commentLikes) commentLikes.innerHTML = <%= @comment.nil? ? 0 : @comment.comment_likes.count %>;
+
+
+<% @reply_id = @reply.nil? ? 0 : @reply.id %>
+replyLikes = document.querySelector('#reply-<%= @reply_id %>-likes');
+if (replyLikes) replyLikes.innerHTML = <%= @reply.nil? ? 0 : @reply.reply_likes.count %>;
+
 fade = (element) => {
     var op = 1;  // initial opacity
     var timer = setInterval(function () {
@@ -32,7 +41,7 @@ unfade = (element) => {
 }
 
 if(<%= @liked %>) {
-  liked.innerHTML = `${heartFill}${likes_count}`;
+  if (liked) liked.innerHTML = `${heartFill}${likes_count}`;
   if(faHeart != null) {
     faHeart.classList.remove('d-none');
     unfade(faHeart);

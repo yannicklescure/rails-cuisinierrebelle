@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_170118) do
+ActiveRecord::Schema.define(version: 2020_04_17_224141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2020_04_17_170118) do
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_bookmarks_on_recipe_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "comment_likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_likes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -129,6 +138,15 @@ ActiveRecord::Schema.define(version: 2020_04_17_170118) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "reply_likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "reply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reply_id"], name: "index_reply_likes_on_reply_id"
+    t.index ["user_id"], name: "index_reply_likes_on_user_id"
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -191,6 +209,8 @@ ActiveRecord::Schema.define(version: 2020_04_17_170118) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "recipes"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "comment_likes", "comments"
+  add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "recipes"
@@ -198,5 +218,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_170118) do
   add_foreign_key "recipes", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
+  add_foreign_key "reply_likes", "replies"
+  add_foreign_key "reply_likes", "users"
   add_foreign_key "taggings", "tags"
 end
