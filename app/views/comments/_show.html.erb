@@ -37,7 +37,7 @@
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
-  <div class="my-1 bg-light rounded px-3 pt-3"><%= markdown.render(comment.content).html_safe %></div>
+  <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
   <% if comment.replies.where(spam: false).any? %>
   <div id="comment-<%= comment.id %>-replies">
     <div id="comment-<%= comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 reply d-flex" data-comment="<%= comment.id %>">
