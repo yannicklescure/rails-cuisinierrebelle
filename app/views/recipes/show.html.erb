@@ -115,6 +115,8 @@
       <div class="d-flex flex-column">
         <% @recipe.comments.sort_by { |date| date.created_at }.reverse.each do |comment| %>
           <% if !comment.spam %>
+            <%# comment.content = comment.content.gsub(/\w+/) { |e| e.length > 50 ? e.truncate(50) : e } %>
+            <% comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(50)}](#{e})" } %>
             <%= render "comments/show", recipe: @recipe, comment: comment %>
           <% end %>
         <% end %>
