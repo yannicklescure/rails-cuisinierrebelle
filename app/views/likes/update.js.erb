@@ -12,7 +12,7 @@ if (commentLikes) {
   commentLikes.innerHTML = <%= @comment.nil? ? 0 : @comment.comment_likes.count %>;
   userRecipeLikeElement = document.querySelector('#user-recipe-like-<%= @comment_id %>');
   if (userRecipeLikeElement) userRecipeLikeElement.remove();
-  <% if !@comment.nil? && @comment.comment_likes.find_by(user: @recipe.user) %>
+  <% if !@comment.nil? && @comment.comment_likes.find_by(user: @recipe.user).present? %>
     userRecipeLike = `<div id="<%= "user-recipe-like-#{@comment_id}" %>" class="like ml-2" style="margin-top: 2px; background-image: url(<%= @comment.recipe.user.image.thumb.url %>);"><i class="material-icons text-danger like-heart" style="font-size: 12px;">favorite</i></div>`;
     commentLikes.insertAdjacentHTML('afterEnd', userRecipeLike);
   <% end %>
@@ -26,8 +26,8 @@ if (replyLikes) {
   replyLikes.innerHTML = <%= @reply.nil? ? 0 : @reply.reply_likes.count %>;
   userRecipeLikeElement = document.querySelector('#user-recipe-like-<%= @reply_id %>');
   if (userRecipeLikeElement) userRecipeLikeElement.remove();
-  <% if !@reply.nil? && @reply.reply_likes.find_by(user: @recipe.user) %>
-    userRecipeLike = `<div id="<%= "user-recipe-like-#{@reply_id}" %>" class="like ml-2" style="style="margin-top: 2px; background-image: url(<%= @reply.comment.recipe.user.image.thumb.url %>);"><i class="material-icons text-danger like-heart" style="font-size: 12px;">favorite</i></div>`;
+  <% if !@reply.nil? && @reply.reply_likes.find_by(user: @recipe.user).present? %>
+    userRecipeLike = `<div id="<%= "user-recipe-like-#{@reply_id}" %>" class="like ml-2" style="margin-top: 2px; background-image: url(<%= @reply.comment.recipe.user.image.thumb.url %>);"><i class="material-icons text-danger like-heart" style="font-size: 12px;">favorite</i></div>`;
     replyLikes.insertAdjacentHTML('afterEnd', userRecipeLike);
   <% end %>
 }
