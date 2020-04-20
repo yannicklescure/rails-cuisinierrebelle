@@ -384,7 +384,7 @@ fr:
       white_granulated_sugar: Sucre blanc granulé
     form:
       content: Content
-      create_page: Create page
+      create_page: Valider
       title: Title
     show:
       edit: Edit

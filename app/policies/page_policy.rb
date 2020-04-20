@@ -24,4 +24,8 @@ class PagePolicy < ApplicationPolicy
   def update?
     user.admin || user.moderator
   end
+
+  def destroy?
+    user.admin
+  end
 end

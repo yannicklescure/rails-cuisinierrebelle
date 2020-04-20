@@ -41,8 +41,14 @@ class PagesController < ApplicationController
 
   end
 
-  def delete
+  def destroy
+    @page = Page.friendly.find(params[:id])
     authorize @page
+    if @page.destroy
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def home

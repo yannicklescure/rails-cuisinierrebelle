@@ -378,7 +378,7 @@ en:
       white_granulated_sugar: White granulated sugar
     form:
       content: Content
-      create_page: Create page
+      create_page: Save
       title: Title
     show:
       edit: Edit

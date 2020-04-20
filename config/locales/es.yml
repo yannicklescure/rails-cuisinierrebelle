@@ -290,7 +290,7 @@ es:
       white_granulated_sugar: Azúcar blanca granulada
     form:
       content: Contenido
-      create_page: Crear página
+      create_page: Guardar
       title: Título
     show:
       edit: Editar
