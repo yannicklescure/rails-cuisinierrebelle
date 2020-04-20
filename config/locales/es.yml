@@ -416,13 +416,13 @@ es:
       news_link: noticias
       policies: Políticas
       policies_link: politicas
-      privacy: Intimidad
-      privacy_link: intimidad
+      privacy: Privacidad
+      privacy_link: politica-de-privacidad
       recipes: Recetas
       site_map: Mapa del sitio
       site_map_link: mapa-del-sitio
-      terms: Condiciones
-      terms_link: condiciones
+      terms: Términos
+      terms_link: terminos-de-uso
     header:
       cooking_recipes_and_more: Recetas de cocina y más
       cuisinier_rebelle_social_recipe: cuisinier rebelle, receta socials!
