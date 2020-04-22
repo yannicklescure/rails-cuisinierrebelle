@@ -26,6 +26,7 @@ import { alerts } from "../components/alerts";
 import { userBanner } from "../components/user-banner";
 import { adminNavItem } from "../components/admin-nav-item";
 import { adminNav } from "../components/admin-nav";
+import { googleAdsNoPrint } from "../components/google-ads";
 
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
@@ -34,6 +35,7 @@ if(document.querySelector('#print')) document.querySelector('#print').addEventLi
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
+googleAdsNoPrint();
 previewImageOnFileSelect();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
