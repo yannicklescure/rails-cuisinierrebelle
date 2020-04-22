@@ -31,11 +31,16 @@ import { googleAdsNoPrint } from "../components/google-ads";
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
 
-if(document.querySelector('#print')) document.querySelector('#print').addEventListener('click', (event) => { event.preventDefault(); window.print(); });
+if(document.querySelector('#print')) {
+  document.querySelector('#print').addEventListener('click', (event) => {
+    event.preventDefault();
+    googleAdsNoPrint();
+    window.print();
+  });
+}
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
-googleAdsNoPrint();
 previewImageOnFileSelect();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
