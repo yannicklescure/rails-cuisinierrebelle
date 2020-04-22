@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.new(comment_params)
-    @comment.content = @comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[(.+)\)$/) }
+    @comment.content = @comment.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
     authorize @comment
     @comment.recipe = @recipe
     @comment.user = current_user

@@ -52,7 +52,8 @@
     <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
     <% extensions = {autolink: true} %>
     <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
-    <% comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
+    <%# comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
+    <% comment.content = comment.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) } %>
     <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
   </div>
   <% if comment.replies.where(spam: false).any? %>
