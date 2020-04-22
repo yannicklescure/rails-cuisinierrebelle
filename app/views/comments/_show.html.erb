@@ -19,7 +19,10 @@
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
     <% else %>
       <%= t(".seconds_ago", count: 1) %>
-    <% end %>&ensp;
+    <% end %>&nbsp;<%= t('.edited') if comment.created_at != comment.updated_at %>&ensp;
+    <% if comment.user == current_user %>
+    <a href="" id="edit-comment-<%= comment.id %>" class="text-decoration-none mr-2"><%= t('.edit_html') %></a>
+    <% end %>
     <% if comment.user == current_user || recipe.user == current_user || !current_user.nil? && current_user.admin %>
     <%= link_to t('.destroy_html'), recipe_comment_path(recipe, comment), data: { confirm: t(".are_you_sure") }, method: :delete, remote: true, class: 'text-decoration-none mr-2' %>
     <% end %>
@@ -39,10 +42,19 @@
       </div>
     <% end %>
   </div>
-  <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
-  <% extensions = {autolink: true} %>
-  <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
-  <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
+  <% if comment.user == current_user %>
+  <div id="edit-comment-<%= comment.id %>-form" class="d-none my-3">
+    <% comment.content = comment.content.gsub(/\[(http.*)\)$/) { |e| e.match(/\((http.*)\)$/)[1] } %>
+    <%= render "comments/form", recipe: comment.recipe, comment: comment %>
+  </div>
+  <% end %>
+  <div id="comment-<%= comment.id %>-content" class="comment" data-comment="<%= comment.id %>">
+    <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
+    <% extensions = {autolink: true} %>
+    <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
+    <% comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
+    <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
+  </div>
   <% if comment.replies.where(spam: false).any? %>
   <div id="comment-<%= comment.id %>-replies">
     <div id="comment-<%= comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 reply d-flex" data-comment="<%= comment.id %>">

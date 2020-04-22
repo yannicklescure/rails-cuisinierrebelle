@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.new(comment_params)
+    @comment.content = @comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[(.+)\)$/) }
     authorize @comment
     @comment.recipe = @recipe
     @comment.user = current_user
@@ -38,15 +39,28 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     authorize @comment
+    @recipe = @comment.recipe
   end
 
   def update
     @comment = Comment.find(params[:id])
+    @comment.content = @comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[(.+)\)$/) }
     authorize @comment
+    @recipe = @comment.recipe
     if @comment.update(comment_params)
-      redirect_to recipe_path(@recipe)
+      # redirect_to recipe_path(@recipe)
+      respond_to do |format|
+        # format.html { redirect_to recipe_path(@recipe) }
+        format.html { render 'comments/show' }
+        format.js  # <-- will render `app/views/comments/create.js.erb`
+      end
     else
-      render :edit
+      # render :edit
+      respond_to do |format|
+        # format.html { redirect_to recipe_path(@recipe) }
+        format.html { render 'comments/form' }
+        format.js  # <-- will render `app/views/comments/create.js.erb`
+      end
     end
   end
 

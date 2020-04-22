@@ -149,6 +149,8 @@ es:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
       destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
+      edit_html: <i class="material-icons md-16 d-flex text-body">edit</i>
+      edited: (Editado)
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -161,6 +163,8 @@ es:
       seconds_ago: Hace segundos
       weeks_ago: Hace semanas
       years_ago: Hace años que
+    update:
+      comments: Comments
   devise:
     confirmations:
       new:
@@ -289,8 +293,10 @@ es:
       water: Agua
       white_granulated_sugar: Azúcar blanca granulada
     form:
+      are_you_sure: Are you sure
       content: Contenido
       create_page: Guardar
+      delete: Delete
       title: Título
     show:
       edit: Editar

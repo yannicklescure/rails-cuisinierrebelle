@@ -223,6 +223,8 @@ en:
         other: "%{count} days ago"
         zero: No day
       destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
+      edit_html: <i class="material-icons md-16 d-flex text-body">edit</i>
+      edited: (Edited)
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -253,6 +255,8 @@ en:
         one: 1 year ago
         other: "%{count} years ago"
         zero: No year
+    update:
+      comments: Comments
   devise:
     confirmations:
       new:
@@ -377,8 +381,10 @@ en:
       water: Water
       white_granulated_sugar: White granulated sugar
     form:
+      are_you_sure: Are you sure
       content: Content
       create_page: Save
+      delete: Delete
       title: Title
     show:
       edit: Edit

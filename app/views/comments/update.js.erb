@@ -1,0 +1,39 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('new_comment');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments-list');
+  comments.insertAdjacentHTML('afterbegin', commentHTML);
+}
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form", recipe: @recipe, comment: @comment %>');
+<% else %>
+  document.querySelector(`#edit-comment-${<%= @comment.id %>}-form`).classList.add('d-none');
+  comment = document.querySelector(`#comment-${<%= @comment.id %>}-content`);
+  <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
+  <% extensions = {autolink: true} %>
+  <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
+  comment.innerHTML = `<div class="my-1 bg-light rounded p-3"><%= markdown.render(@comment.content).html_safe %></div>`;
+  comment.classList.remove('d-none');
+  comments = document.querySelectorAll('.comment');
+  comments.forEach(comment => {
+    editCommentId = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
+    if (editCommentId) {
+      editCommentId.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
+        document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
+      });
+    }
+  });
+  commentsCount = document.querySelector('#comments-count');
+  <% count = 0 %>
+  <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
+  <% count += @recipe.comments.count %>
+  commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
+<% end %>
+
+

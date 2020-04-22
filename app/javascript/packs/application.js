@@ -20,6 +20,7 @@ import { lazyLoad } from "../components/lazy-load";
 import { btnClick } from "../components/button";
 import { replyForms } from "../components/reply";
 import { viewReplies } from "../components/reply";
+import { editComment } from "../components/edit-comment";
 import { repliesReply } from "../components/reply";
 import { alerts } from "../components/alerts";
 import { userBanner } from "../components/user-banner";
@@ -112,6 +113,7 @@ if (currentController && currentController === 'r') {
   window.onload = () => smoothToAnchor();
 
   viewReplies();
+  editComment();
 
   if(userSignedIn) {
     btnClick();
