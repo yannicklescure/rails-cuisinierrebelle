@@ -19,7 +19,7 @@
       <%= t(".seconds_ago", count: time_since_creation.in_seconds.floor) %>
     <% else %>
       <%= t(".seconds_ago", count: 1) %>
-    <% end %>&nbsp;<%= t('.edited') if comment.created_at != comment.updated_at %>&ensp;
+    <% end %><%= "&nbsp;#{t('.edited')}".html_safe if comment.created_at != comment.updated_at && !client.device_type.nil? && client.device_type.match(/desktop/) %>&ensp;
     <% if comment.user == current_user %>
     <a href="" id="edit-comment-<%= comment.id %>" class="text-decoration-none mr-2"><%= t('.edit_html') %></a>
     <% end %>
