@@ -17,6 +17,7 @@ class RepliesController < ApplicationController
     authorize @comment
     @reply = Reply.new(reply_params)
     authorize @reply
+    @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
     # @reply.recipe = @recipe
     @reply.comment = @comment
     @reply.user = current_user
@@ -51,6 +52,7 @@ class RepliesController < ApplicationController
 
   def update
     @reply = Reply.find(params[:id])
+    @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
     if @reply.update(reply_params)
       redirect_to recipe_path(@recipe)
     else

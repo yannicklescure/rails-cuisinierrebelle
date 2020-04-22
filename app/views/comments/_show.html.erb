@@ -65,7 +65,8 @@
       <div id="replies-list-box-<%= comment.id %>" class="d-flex flex-column">
         <% comment.replies.sort_by { |date| date.created_at }.each do |reply| %>
           <%# reply.content = reply.content.gsub(/\w+/) { |e| e.length > 50 ? e.truncate(50) : e } %>
-          <% reply.content = reply.content.gsub(/http.+/) { |e| "[#{e.truncate(30)}](#{e})" } %>
+          <%# reply.content = reply.content.gsub(/http.+/) { |e| "[#{e.truncate(30)}](#{e})" } %>
+          <% reply.content = reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) } %>
           <%= render "replies/show", recipe: recipe, comment: comment, reply: reply if !reply.spam %>
         <% end %>
       </div>
