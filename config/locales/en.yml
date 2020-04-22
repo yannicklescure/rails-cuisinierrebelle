@@ -224,7 +224,7 @@ en:
         zero: No day
       destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       edit_html: <i class="material-icons md-16 d-flex text-body">edit</i>
-      edited: (Edited)
+      edited: "(Edited)"
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
@@ -439,9 +439,9 @@ en:
         other: "%{count} comments"
         zero: No comment
       edit_recipe: Edit recipe
+      print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recipe published by
       related_recipes: Related recipes
-      share_btn_html: <i class="material-icons md-18 text-body">share</i>
   replies:
     create:
       comments:

@@ -18,8 +18,11 @@
       <% heartFill = '<i class="material-icons md-18 align-icons">favorite</i>' %>
       <% bookmark = '<i class="material-icons md-18 align-icons">bookmark_border</i>' %>
       <% bookmarkFill = '<i class="material-icons md-18 align-icons">bookmark</i>' %>
-      <% if user_signed_in? %>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
+      <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+      <a href="" id="print" class="text-decoration-none text-body" style="margin-bottom: 2px;"><%= t('.print_html') %></a>
+      <% end %>
+      <% if user_signed_in? %>
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0" style="<%= 'margin-bottom: 2px;' if !client.device_type.nil? && client.device_type.match(/desktop/) %>">
           <% if policy(Bookmark).update? %>
             <%= link_to recipe_bookmarks_path(@recipe), method: :patch, remote: true, class: 'p-0 m-0 mr-3 mr-md-0 ml-md-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
@@ -36,9 +39,7 @@
           <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-muted' %>
         </div>
         <% end %>
-      </div>
       <% else %>
-      <div class="d-flex flex-column flex-md-row align-items-end justify-content-center order-1 flex-grow-1 flex-md-grow-0" style="<%= 'padding-top: 2px;' if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0" style="<%= 'margin-bottom: 2px;' if !client.device_type.nil? && client.device_type.match(/desktop/) %>">
           <% if policy(Bookmark).update? %>
             <%= link_to new_user_session_path, class: 'p-0 m-0 mr-3 mr-md-0 ml-md-3 text-body text-decoration-none d-flex align-items-center', 'data-bookmark-recipe': @recipe.id do %>
@@ -55,8 +56,8 @@
           <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'text-muted' %>
         </div>
         <% end %>
-      </div>
       <% end %>
+      </div>
     </div>
     <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
       <div class="text-center">
@@ -91,8 +92,8 @@
     <% end %>
   </div>
   <% end %>
-  <hr>
   <div id="comments" class="d-print-none">
+  <hr>
     <div id="comments-count" class="d-flex">
       <% count = 0 %>
       <%# count_comments = @recipe.comments.map { |comment| comment.spam ? 0 : count += 1 }.sum %>
