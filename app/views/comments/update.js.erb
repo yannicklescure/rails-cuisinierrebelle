@@ -26,6 +26,11 @@ function addComment(commentHTML) {
         event.preventDefault();
         document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
         document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
+        const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
+        if (spinner) {
+          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
+          spinner.remove();
+        }
       });
     }
   });

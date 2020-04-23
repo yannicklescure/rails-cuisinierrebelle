@@ -52,11 +52,20 @@ class RepliesController < ApplicationController
 
   def update
     @reply = Reply.find(params[:id])
+    authorize @reply
+    @recipe = @reply.comment.recipe
     @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
     if @reply.update(reply_params)
-      redirect_to recipe_path(@recipe)
+      respond_to do |format|
+        # format.html { redirect_to recipe_path(@recipe) }
+        format.html { render 'replies/show' }
+        format.js  # <-- will render `app/views/replies/update.js.erb`
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render 'replies/form' }
+        format.js  # <-- will render `app/views/replies/update.js.erb`
+      end
     end
   end
 

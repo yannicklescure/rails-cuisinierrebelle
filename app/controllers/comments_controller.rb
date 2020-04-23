@@ -52,14 +52,14 @@ class CommentsController < ApplicationController
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
         format.html { render 'comments/show' }
-        format.js  # <-- will render `app/views/comments/create.js.erb`
+        format.js  # <-- will render `app/views/comments/update.js.erb`
       end
     else
       # render :edit
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
         format.html { render 'comments/form' }
-        format.js  # <-- will render `app/views/comments/create.js.erb`
+        format.js  # <-- will render `app/views/comments/update.js.erb`
       end
     end
   end

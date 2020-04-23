@@ -58,7 +58,7 @@
   </div>
   <% if comment.replies.where(spam: false).any? %>
   <div id="comment-<%= comment.id %>-replies">
-    <div id="comment-<%= comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 reply d-flex" data-comment="<%= comment.id %>">
+    <div id="comment-<%= comment.id %>-replies-list-btn" class="text-muted btn btn-sm p-0 replies d-flex" data-comment="<%= comment.id %>">
       <span id="replies-list-arrow-<%= comment.id %>" class="d-flex align-items-center"><i class="material-icons md-16">keyboard_arrow_down</i></span>&ensp;<%= t('.replies', count: comment.replies.where(spam: false).count) %>
     </div>
     <div id="replies-list-<%= comment.id %>" class="d-none" data-comment="<%= comment.id %>">

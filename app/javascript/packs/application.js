@@ -21,6 +21,7 @@ import { btnClick } from "../components/button";
 import { replyForms } from "../components/reply";
 import { viewReplies } from "../components/reply";
 import { editComment } from "../components/edit-comment";
+import { editReply } from "../components/edit-reply";
 import { repliesReply } from "../components/reply";
 import { alerts } from "../components/alerts";
 import { userBanner } from "../components/user-banner";
@@ -120,13 +121,15 @@ if (currentController && currentController === 'r') {
   window.onload = () => smoothToAnchor();
 
   viewReplies();
-  editComment();
 
   if(userSignedIn) {
     btnClick();
     replyForms();
     repliesReply();
+    editComment();
+    editReply();
   }
+
 }
 
 if(currentController === 'u' && currentPage != null) {

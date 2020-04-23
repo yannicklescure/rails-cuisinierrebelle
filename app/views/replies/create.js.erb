@@ -1,11 +1,49 @@
-function refreshForm(innerHTML) {
-  const newCommentForm = document.getElementById('new_reply_<%= @comment.id %>');
-  newCommentForm.innerHTML = innerHTML;
+btnClick = () => {
+  const buttons = document.querySelectorAll('input[type="submit"]');
+  buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      // console.log(event.currentTarget);
+      const el = event.currentTarget;
+      const form = el.closest('form');
+      form.addEventListener('submit', (event) => {
+        // event.preventDefault();
+        if (el.parentElement) {
+          console.log('spin');
+          console.log(el.parentElement.parentElement);
+          const commentID = el.parentElement.dataset.comment;
+          console.log(commentID);
+          const replyID = el.parentElement.dataset.reply;
+          console.log(replyID);
+          if (commentID) {
+            const newEl = document.createElement('button');
+            newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
+            el.replaceWith(newEl);
+          }
+          if (replyID) {
+            const newEl = document.createElement('button');
+            newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
+            el.replaceWith(newEl);
+          }
+        }
+      });
+    });
+  });
 }
 
-function addComment(replyHTML) {
-  const replies = document.getElementById('replies-list-box-<%= @comment.id %>');
-  replies.insertAdjacentHTML('beforeend', replyHTML);
+function refreshForm(innerHTML) {
+  const newReplyReplyForm = document.querySelector('#reply-reply-form-<%= @reply.comment.id %>');
+  if (newReplyReplyForm) newReplyReplyForm.innerHTML = innerHTML;
+  const newReplyForm = document.querySelector('#reply-form-<%= @reply.comment.id %>');
+  if (newReplyForm) newReplyForm.innerHTML = innerHTML;
+}
+
+function addComment(innerHTML) {
+  const replies = document.querySelector('#replies-list-box-<%= @comment.id %>');
+  replies.insertAdjacentHTML('beforeend', innerHTML);
 }
 
 <% if @reply.errors.any? %>
@@ -24,7 +62,7 @@ function addComment(replyHTML) {
     </div>`;
     repliesList.insertAdjacentHTML('beforebegin', repliesListBtn);
     let viewReplies = false;
-    const replies = document.querySelectorAll('.reply');
+    replies = document.querySelectorAll('.replies');
     replies.forEach((reply) => {
       reply.addEventListener('click', event => {
         // console.log(event.currentTarget.dataset.comment);
@@ -45,4 +83,16 @@ function addComment(replyHTML) {
     <% count += @recipe.comments.count %>
     commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
   }
+  repliesContent = document.querySelectorAll('.reply-content');
+  repliesContent.forEach(replyContent => {
+    const editReplyId = document.querySelector(`#edit-reply-${replyContent.dataset.reply}`);
+    if (editReplyId) {
+      editReplyId.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(`#reply-${replyContent.dataset.reply}-content`).classList.add('d-none');
+        document.querySelector(`#edit-reply-${replyContent.dataset.reply}-form`).classList.remove('d-none');
+      });
+    }
+  });
+  btnClick();
 <% end %>

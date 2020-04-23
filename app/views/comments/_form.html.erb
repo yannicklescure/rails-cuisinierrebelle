@@ -1,4 +1,4 @@
-<%= simple_form_for([recipe, comment], remote: true) do |f| %>
+<%= simple_form_for([recipe, comment], remote: true, html: ({id: "new_comment_#{comment.id}", data: { comment: comment.id }})) do |f| %>
   <%= f.input :content, label:false, placeholder: t('.add_a_public_comment') %>
   <%= f.button :submit, t('.add_a_comment'), class: 'btn btn-secondary' %>
 <% end %>

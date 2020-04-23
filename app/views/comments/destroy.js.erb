@@ -22,6 +22,7 @@ if(<%= @admin %>) {
     <% comment.replies.select{ |reply| !reply.spam }.each { |r| count += 1 } %>
     <% count += 1 %>
   <% end %>
-  console.log(`count: ${<%= count %>}`);
+  // console.log(`count: ${<%= count %>}`);
+  <% count = count.positive? ? count : 0 %>
   if(commentsCount) commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
 }

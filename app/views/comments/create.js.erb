@@ -1,11 +1,47 @@
+btnClick = () => {
+  const buttons = document.querySelectorAll('input[type="submit"]');
+  buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      // console.log(event.currentTarget);
+      const el = event.currentTarget;
+      const form = el.closest('form');
+      form.addEventListener('submit', (event) => {
+        // event.preventDefault();
+        if (el.parentElement) {
+          console.log('spin');
+          console.log(el.parentElement.parentElement);
+          const commentID = el.parentElement.dataset.comment;
+          console.log(commentID);
+          const replyID = el.parentElement.dataset.reply;
+          console.log(replyID);
+          if (commentID) {
+            const newEl = document.createElement('button');
+            newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
+            el.replaceWith(newEl);
+          }
+          if (replyID) {
+            const newEl = document.createElement('button');
+            newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
+            el.replaceWith(newEl);
+          }
+        }
+      });
+    });
+  });
+}
+
 function refreshForm(innerHTML) {
-  const newCommentForm = document.getElementById('new_comment');
+  const newCommentForm = document.getElementById('new_comment_');
   newCommentForm.innerHTML = innerHTML;
 }
 
-function addComment(commentHTML) {
+function addComment(innerHTML) {
   const comments = document.getElementById('comments-list');
-  comments.insertAdjacentHTML('afterbegin', commentHTML);
+  comments.insertAdjacentHTML('afterbegin', innerHTML);
 }
 
 <% if @comment.errors.any? %>
@@ -20,9 +56,26 @@ function addComment(commentHTML) {
       currentForm.classList.toggle('d-none');
     });
   });
+  comments = document.querySelectorAll('.comment');
+  comments.forEach(comment => {
+    editCommentId = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
+    if (editCommentId) {
+      editCommentId.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
+        document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
+        const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
+        if (spinner) {
+          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
+          spinner.remove();
+        }
+      });
+    }
+  });
   commentsCount = document.querySelector('#comments-count');
   <% count = 0 %>
   <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
   <% count += @recipe.comments.count %>
   commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
+  btnClick();
 <% end %>
