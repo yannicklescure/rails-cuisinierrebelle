@@ -137,6 +137,7 @@ Rails.application.routes.draw do
         post :unfollow
       end
       resources :recipes, :bookmarks, :settings, only: [:index]
+      resources :about, only: [:index]
     end
     get '/users/:id', to: redirect('/u/%{id}')
     # get '/u/:id/recipes', to: 'recipes#index'
