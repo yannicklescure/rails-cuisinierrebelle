@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>">
+<div class="d-flex order-0 justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>">
   <div class="mr-md-1 d-flex align-items-center">
     <%= link_to user.name.titlecase, user_path(user), class: "text-body" %>
     <% if user.checked %>
@@ -7,11 +7,21 @@
   </div>
   <% if user_signed_in? %>
     <% if current_user.is_following?(user.id) %>
-      <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'btn btn-white btn-sm py-0' %>
+      <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'btn btn-dark btn-sm py-0' %>
     <% elsif user != current_user %>
-      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'btn btn-white btn-sm py-0' %>
+      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'btn btn-dark btn-sm py-0' %>
     <% end %>
   <% else %>
-      <%= link_to t('.follow'), new_user_session_path, class: 'btn btn-white btn-sm py-0' %>
+      <%= link_to t('.follow'), new_user_session_path, class: 'btn btn-dark btn-sm py-0' %>
   <% end %>
 </div>
+<% if current_user == User.first %>
+<% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+<div class="d-flex order-1 flex-grow-1 flex-md-grow-0 justify-content-center align-items-center mx-3">
+  <div class="btn btn-sm"><i class="fab fa-facebook" style="color: #4367b1;font-size: 18px;margin-top: 2px;"></i></div>
+  <div class="btn btn-sm"><i class="fab fa-instagram" style="color: #ed4956;font-size: 18px;margin-top: 2px;"></i></div>
+  <div class="btn btn-sm"><i class="fab fa-twitter" style="color: #2ea1f1;font-size: 18px;margin-top: 2px;"></i></div>
+  <div class="btn btn-sm"><i class="fab fa-youtube" style="color: #f30f05;font-size: 18px;margin-top: 2px;"></i></div>
+</div>
+<% end %>
+<% end %>
