@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="<%= t('.cooking_recipes_and_more') %>">
     <meta name="twitter:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg">
     <!-- Languages for Google SEO -->
-    <link rel="canonical" href="<%= user_url(@user) %>" />
+    <link rel="canonical" href="<%= user_about_index_url(@user) %>" />
     <link rel="alternate" hreflang="en" href="<%= user_about_index_url(@user, locale: :en) %>" />
     <link rel="alternate" hreflang="fr" href="<%= user_about_index_url(@user, locale: :fr) %>" />
     <link rel="alternate" hreflang="es" href="<%= user_about_index_url(@user, locale: :es) %>" />
