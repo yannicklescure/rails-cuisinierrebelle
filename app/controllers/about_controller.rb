@@ -17,10 +17,10 @@ class AboutController < ApplicationController
     @about = About.new(about_params)
     authorize @about
     @about.user = @user
-    params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') unless params[:about][:facebook].nil?
-    params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') unless params[:about][:instagram].nil?
-    params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') unless params[:about][:twitter].nil?
-    params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') unless params[:about][:youtube].nil?
+    params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') if params[:about][:facebook].present?
+    params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') if params[:about][:instagram].present?
+    params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') if params[:about][:twitter].present?
+    params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') if params[:about][:youtube].present?
     if @about.save
       redirect_to user_about_index_path(@user)
     else
@@ -37,10 +37,11 @@ class AboutController < ApplicationController
   def update
     @about = About.find_by(user: @user)
     authorize @about
-    params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') unless params[:about][:facebook].nil?
-    params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') unless params[:about][:instagram].nil?
-    params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') unless params[:about][:twitter].nil?
-    params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') unless params[:about][:youtube].nil?
+    # binding.pry
+    params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') if params[:about][:facebook].present?
+    params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') if params[:about][:instagram].present?
+    params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') if params[:about][:twitter].present?
+    params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') if params[:about][:youtube].present?
     if @about.update(about_params)
       # binding.pry
       # raise

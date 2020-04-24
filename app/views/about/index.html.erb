@@ -5,25 +5,25 @@
     <%= @about.content %>
   </div>
   <div class="d-flex flex-column order-1 flex-grow-1 flex-md-grow-0 justify-content-center align-items-start">
-    <% unless @about.facebook.nil? %>
+    <% if @about.facebook.present? %>
     <a href="<%= @about.facebook %>" target="_blank" class="btn btn-sm d-flex align-items-center">
       <div style="display:block;width: 32px;"><i class="fab fa-facebook" style="color: #4367b1;font-size: 18px;margin-top: 2px;"></i></div>
       <%= @about.facebook.gsub('https://facebook.com', '') %>
     </a>
     <% end %>
-    <% unless @about.instagram.nil? %>
+    <% if @about.instagram.present? %>
     <a href="<%= @about.instagram %>" target="_blank" class="btn btn-sm d-flex align-items-center">
       <div style="display:block;width: 32px;"><i class="fab fa-instagram" style="color: #ed4956;font-size: 18px;margin-top: 2px;"></i></div>
       <%= @about.instagram.gsub('https://instagram.com', '') %>
     </a>
     <% end %>
-    <% unless @about.twitter.nil? %>
+    <% if @about.twitter.present? %>
     <a href="<%= @about.twitter %>" target="_blank" class="btn btn-sm d-flex align-items-center">
       <div style="display:block;width: 32px;"><i class="fab fa-twitter" style="color: #2ea1f1;font-size: 18px;margin-top: 2px;"></i></div>
       <%= @about.twitter.gsub('https://twitter.com', '') %>
     </a>
     <% end %>
-    <% unless @about.youtube.nil? %>
+    <% if @about.youtube.present? %>
     <a href="<%= @about.youtube %>" target="_blank" class="btn btn-sm d-flex align-items-center">
       <div style="display:block;width: 32px;"><i class="fab fa-youtube" style="color: #f30f05;font-size: 18px;margin-top: 2px;"></i></div>
       <%= @about.youtube.gsub('https://youtube.com/channel', '').gsub('https://youtube.com/c', '') %>
