@@ -17,6 +17,10 @@ class AboutController < ApplicationController
     @about = About.new(about_params)
     authorize @about
     @about.user = @user
+    params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') unless params[:about][:facebook].nil?
+    params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') unless params[:about][:instagram].nil?
+    params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') unless params[:about][:twitter].nil?
+    params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') unless params[:about][:youtube].nil?
     if @about.save
       redirect_to user_about_index_path(@user)
     else
