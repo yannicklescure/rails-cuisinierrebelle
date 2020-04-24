@@ -70,7 +70,7 @@ class AboutController < ApplicationController
         social_url = "#{social}.com/channel"
       # elsif url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
       else
-        str = url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
+        str = url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)?(.+)/)
         social_url = "#{social}.com/c"
       end
     else
