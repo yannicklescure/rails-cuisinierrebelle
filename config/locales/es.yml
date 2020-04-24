@@ -6,6 +6,7 @@ es:
   about:
     edit:
       add_a_public_content: Add a public content
+      content: Content
       save: Save
     index:
       edit: Edit
@@ -272,6 +273,9 @@ es:
       result_not_found: Lo sentimos, no pudimos encontrar ningún resultado que coincida
         con "%{query}". Por favor intente con otra palabra clave
   layouts:
+    about:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
     users:

@@ -6,6 +6,7 @@ fr:
   about:
     edit:
       add_a_public_content: Add a public content
+      content: Content
       save: Save
     index:
       edit: Edit
@@ -366,6 +367,9 @@ fr:
       result_not_found: Désolé, nous n'avons trouvé aucun résultat correspondant à
         "%{query}". Veuillez essayer un autre mot-clé
   layouts:
+    about:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales
     users:
