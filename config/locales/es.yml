@@ -1,7 +1,17 @@
 ---
 es:
   '':
+    only_allows_url: Only allows url
     only_allows_youtube_video: Solo permite videos de youtube
+  about:
+    edit:
+      add_a_public_content: Add a public content
+      save: Save
+    index:
+      edit: Edit
+    new:
+      add_a_public_content: Add a public content
+      save: Save
   admin:
     comments:
       are_you_sure: "¿Estas seguro?"

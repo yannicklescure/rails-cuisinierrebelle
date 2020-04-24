@@ -1,6 +1,6 @@
 <div class="d-flex order-0 justify-content-between flex-grow-1 align-items-center" data-user="<%= user.id %>">
   <div class="mr-md-1 d-flex align-items-center">
-    <%= link_to user.name.titlecase, user_path(user), class: "text-body" %>
+    <%= link_to user.name.titlecase, user_about_index_path(user), class: "text-body" %>
     <% if user.checked %>
       <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex px-1"><%= t('.verified_html') %></span>
     <% end %>

@@ -1,7 +1,17 @@
 ---
 en:
   '':
+    only_allows_url: Only allows url
     only_allows_youtube_video: Only allows youtube video
+  about:
+    edit:
+      add_a_public_content: Add a public content
+      save: Save
+    index:
+      edit: Edit
+    new:
+      add_a_public_content: Add a public content
+      save: Save
   admin:
     comments:
       are_you_sure: Are you sure?
@@ -472,7 +482,7 @@ en:
         zero: No day
       destroy_html: <i class="material-icons md-16 d-flex text-body">delete</i>
       edit_html: <i class="material-icons md-16 d-flex text-body">edit</i>
-      edited: (Edited)
+      edited: "(Edited)"
       hours_ago:
         one: 1 hour ago
         other: "%{count} hours ago"
