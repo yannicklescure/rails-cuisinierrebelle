@@ -65,12 +65,13 @@ class AboutController < ApplicationController
     if social == 'youtube'
       # https://www.youtube.com/channel/UCYVsOcXtLDkEZ38ASZpsSxQ/about
       # binding.pry
-      if url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
-        str = url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
-        social_url = "#{social}.com/c"
-      elsif url.match(/(https?:\/\/)?(www.)?(youtube.com\/channel\/)(.+\/)(.+)?/)
+      if url.match(/(https?:\/\/)?(www.)?(youtube.com\/channel\/)(.+\/)(.+)?/)
         str = url.match(/(https?:\/\/)?(www.)?(youtube.com\/channel\/)(.+\/)(.+)?/)
         social_url = "#{social}.com/channel"
+      # elsif url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
+      else
+        str = url.match(/(https?:\/\/)?(www.)?(youtube.com\/c\/)(.+)/)
+        social_url = "#{social}.com/c"
       end
     else
       str = url.match(/(https?:\/\/)?(www.)?(#{social}.com\/)?(.+)/)
