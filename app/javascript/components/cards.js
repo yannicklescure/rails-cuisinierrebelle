@@ -72,7 +72,7 @@ export const cards = (params) => {
             <div class="card border-0" data-recipe="${recipe.id}">
               <div class="card-header py-1 px-0 border-0 bg-white rounded">
                 <div class="d-flex justify-content-start align-items-center">
-                  <a href="${locale}/u/${recipe.user.slug}" class="card-link text-body text-decoration-none d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
+                  <a href="${locale}/u/${recipe.user.slug}/about" class="card-link text-body d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
                   ${userChecked}
                 </div>
               </div>
