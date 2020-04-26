@@ -87,7 +87,7 @@
   <div class="d-print-none">
   <hr>
   <div class="h4 mb-3"><%= t('.related_recipes') %></div>
-    <% @related_recipes.order('created_at DESC').take(5).each do |recipe| %>
+    <% @related_recipes.each do |recipe| %>
     <%= render "shared/card-small", recipe: recipe %>
     <% end %>
   </div>

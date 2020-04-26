@@ -364,6 +364,7 @@ es:
         one: 1 comentario
         other: "%{count} comentarios"
         zero: Sin comentarios
+      comments_title: Comments title
       edit_recipe: Editar receta
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Receta publicada por

@@ -452,6 +452,7 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comment
+      comments_title: Comments
       edit_recipe: Edit recipe
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recipe published by

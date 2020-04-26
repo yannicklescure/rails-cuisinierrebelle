@@ -14,7 +14,13 @@ class RecipesController < ApplicationController
     # @recipe = Recipe.find(params[:id])
     if Recipe.friendly.exists? params[:id]
       @recipe = Recipe.friendly.find(params[:id])
-      @related_recipes = @recipe.find_related_tags
+      @related_recipes = []
+      max = 4
+      @recipe.find_related_tags.order('created_at DESC').take(max).map{ |e| @related_recipes << e }
+      if @related_recipes.count < max
+        Recipe.all.shuffle.take(max - @related_recipes.count).map{ |e| @related_recipes << e }
+      end
+      # binding.pry
       authorize @recipe
       @bookmark = Bookmark.find_by(user: current_user, recipe: @recipe)
       @bookmarks = Bookmark.where(user: current_user)
