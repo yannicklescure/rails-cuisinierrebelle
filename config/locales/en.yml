@@ -456,7 +456,7 @@ en:
       edit_recipe: Edit recipe
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recipe published by
-      related_recipes: Related recipes
+      related_recipes: Other recipes
   replies:
     create:
       comments:

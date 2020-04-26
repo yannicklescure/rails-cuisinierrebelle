@@ -368,7 +368,7 @@ es:
       edit_recipe: Editar receta
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Receta publicada por
-      related_recipes: Recetas relacionadas
+      related_recipes: Otras recetas
   replies:
     create:
       comments: Comentarios

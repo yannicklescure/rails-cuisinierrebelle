@@ -462,7 +462,7 @@ fr:
       edit_recipe: Editer la recette
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recette publiée par
-      related_recipes: Recettes associées
+      related_recipes: Autres recettes
   replies:
     create:
       comments:
