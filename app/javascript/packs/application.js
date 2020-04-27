@@ -187,10 +187,10 @@ if (top100TitleBar) {
     const navbarHeight = parseInt(document.querySelector('#navbar-main').offsetHeight);
     const top100TitleMarginBottom = parseInt(window.getComputedStyle(top100Title).getPropertyValue('margin-bottom').replace('px',''));
     if (window.scrollY > navbarHeight + top100Title.offsetHeight + top100TitleMarginBottom) {
-      console.log();
       top100TitleBar.style.top = `${navbarHeight}px`;
       top100TitleBar.classList.add('fixed-top');
     } else {
+      top100TitleBar.style.top = null;
       top100TitleBar.classList.remove('fixed-top');
     }
   });
