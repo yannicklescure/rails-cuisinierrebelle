@@ -1,20 +1,22 @@
 <div class="top-100">
-  <div class="container">
+  <div id="top-100-title" class="container">
     <div class="h1 mt-5 mb-3 text-center"><%= t('.top_100') %></div>
-    <div class="my-3">
-      <div class="row p-3 border-bottom border-top bg-light">
-        <div class="col-1 d-flex align-items-center justify-content-center" style="padding-bottom: 2px;"><%= t('.heart_html') %></div>
-        <div class="col"><strong><%= t('.title') %></strong></div>
-      </div>
-      <% @recipes.each_with_index do |recipe, index| %>
-      <div class="row px-3 align-items-center <%= 'bg-light' if index.odd? %>" style="height: 48px;">
-        <tr id="<%= "recipe-top-#{index+1}" %>">
-          <!-- <th scope="row"><%= index + 1 %></th> -->
-          <div class="col-1 d-flex justify-content-center"><%= recipe.likes_count %></div>
-          <div class="col"><%= link_to recipe.title, recipe_path(recipe), class: 'd-flex w-100' %></div>
-        </tr>
-      </div>
-      <% end %>
+  </div>
+  <div id="top-100-title-bar" class="container">
+    <div class="row p-3 border-bottom border-top bg-light">
+      <div class="col-1 d-flex align-items-center justify-content-center" style="padding-bottom: 2px;"><%= t('.heart_html') %></div>
+      <div class="col"><strong><%= t('.title') %></strong></div>
     </div>
+  </div>
+  <div class="container">
+    <% @recipes.each_with_index do |recipe, index| %>
+    <div class="row px-3 align-items-center <%= 'bg-light' if index.odd? %>" style="height: 48px;">
+      <tr id="<%= "recipe-top-#{index+1}" %>">
+        <!-- <th scope="row"><%= index + 1 %></th> -->
+        <div class="col-1 d-flex justify-content-center"><%= recipe.likes_count %></div>
+        <div class="col"><%= link_to recipe.title, recipe_path(recipe), class: 'd-flex w-100' %></div>
+      </tr>
+    </div>
+    <% end %>
   </div>
 </div>

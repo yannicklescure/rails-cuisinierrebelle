@@ -179,3 +179,17 @@ if(device.match(/smartphone|phablet/)) {
     });
   }
 }
+
+const top100Title = document.querySelector('#top-100-title');
+const top100TitleBar = document.querySelector('#top-100-title-bar');
+if (top100TitleBar) {
+  window.addEventListener('scroll', () => {
+    const navbarHeight = parseInt(document.querySelector('#navbar-main').offsetHeight);
+    if (window.scrollY > navbarHeight + top100Title.offsetHeight) {
+      top100TitleBar.style.top = `${navbarHeight}px`;
+      top100TitleBar.classList.add('fixed-top');
+    } else {
+      top100TitleBar.classList.remove('fixed-top');
+    }
+  });
+}
