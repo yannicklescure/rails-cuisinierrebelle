@@ -49,12 +49,12 @@ class RecipesController < ApplicationController
     @recipe.video = sanitize_youtube_video_link(params[:recipe][:video])
     if @recipe.save
       # binding.pry
-      users = @recipe.user.followers
-      users.where(notification: true).each do |user|
+      # binding.pry
+      @recipe.user.followers.where(notification: true).each do |user|
         # binding.pry
         UserMailer.with(user: user, recipe: @recipe).recipe.deliver_now
       end
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_url(@recipe)
     else
       render :new
     end

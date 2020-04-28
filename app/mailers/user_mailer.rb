@@ -43,6 +43,7 @@ class UserMailer < ApplicationMailer
   def recipe
     @user = params[:user]
     @recipe = params[:recipe]
+    # binding.pry
     I18n.with_locale(@user.locale) do
       # mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
       make_bootstrap_mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))

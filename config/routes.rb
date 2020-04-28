@@ -128,17 +128,17 @@ Rails.application.routes.draw do
     # resources :followers, only: [:index]
     # resources :following, only: [:index]
 
-    get '/u/:id/followers', to: 'users#followers', as: :user_followers
-    get '/u/:id/following', to: 'users#following', as: :user_following
-
     resources :users, only: [:show], path: '/u' do
+      resources :recipes, :bookmarks, :settings, only: [:index]
+      resources :about, path: '/about'
       member do
         post :follow
         post :unfollow
       end
-      resources :recipes, :bookmarks, :settings, only: [:index]
-      resources :about, path: '/about'
     end
+
+    get '/u/:id/followers', to: 'users#followers', as: :user_followers
+    get '/u/:id/following', to: 'users#following', as: :user_following
     get '/users/:id', to: redirect('/u/%{id}')
     # get '/u/:id/recipes', to: 'recipes#index'
 
