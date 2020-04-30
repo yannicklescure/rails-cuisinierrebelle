@@ -17,7 +17,8 @@ class RepliesController < ApplicationController
     authorize @comment
     @reply = Reply.new(reply_params)
     authorize @reply
-    @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
+    # @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
+    # @reply.content = @reply.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" }
     # @reply.recipe = @recipe
     @reply.comment = @comment
     @reply.user = current_user
@@ -54,7 +55,8 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
     authorize @reply
     @recipe = @reply.comment.recipe
-    @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
+    # @reply.content = @reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
+    # @reply.content = @reply.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" }
     if @reply.update(reply_params)
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }

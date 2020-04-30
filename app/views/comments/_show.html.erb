@@ -53,7 +53,7 @@
     <% extensions = {autolink: true} %>
     <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
     <%# comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
-    <% comment.content = comment.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) } %>
+    <% comment.content = comment.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" } %>
     <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
   </div>
   <% if comment.replies.where(spam: false).any? %>
@@ -66,7 +66,7 @@
         <% comment.replies.sort_by { |date| date.created_at }.each do |reply| %>
           <%# reply.content = reply.content.gsub(/\w+/) { |e| e.length > 50 ? e.truncate(50) : e } %>
           <%# reply.content = reply.content.gsub(/http.+/) { |e| "[#{e.truncate(30)}](#{e})" } %>
-          <% reply.content = reply.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) } %>
+          <% reply.content = reply.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" } %>
           <%= render "replies/show", recipe: recipe, comment: comment, reply: reply if !reply.spam %>
         <% end %>
       </div>

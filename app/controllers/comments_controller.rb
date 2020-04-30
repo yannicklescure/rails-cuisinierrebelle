@@ -12,7 +12,9 @@ class CommentsController < ApplicationController
     @recipe = Recipe.friendly.find(params[:recipe_id])
     authorize @recipe
     @comment = Comment.new(comment_params)
-    @comment.content = @comment.content.gsub(/http.*/) { |e| e.split(' ').map { |el| el.match(/http.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match(/\[(.+)\)$/) }
+    # binding.pry
+    # @comment.content = @comment.content.gsub(/http.*/) { |e| e.split(/\s/).map { |el| el.match?(/\Ahttp.*/) ? "[#{el.truncate(30)}](#{el})" : el }.join(' ') unless e.match?(/\[.+\)/) }
+    #@comment.content = @comment.content.gsub(/http.+\s/) { |e| e.match(/http.+\)/) ? e : e.split(' ').map { |el| el.match(/http.+/) ? "[#{el.truncate(30)}](#{el})" : el }.join(/\s/) }
     authorize @comment
     @comment.recipe = @recipe
     @comment.user = current_user
@@ -44,7 +46,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.content = @comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[(.+)\)$/) }
+    # @comment.content = @comment.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" }
     authorize @comment
     @recipe = @comment.recipe
     if @comment.update(comment_params)
