@@ -66,7 +66,7 @@
       </div>
     </div>
   </div>
-  <div class="my-3 d-print-none">
+  <div class="my-5 d-print-none">
     <%= image_tag @recipe.photo.url(:full), class: 'img-fluid rounded' %>
   </div>
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
