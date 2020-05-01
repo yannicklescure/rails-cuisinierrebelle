@@ -84,6 +84,9 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /en|fr|es/ do
     root to: 'pages#home'
+
+    get '/:locale/r/faire-son-pain-a-la-maison-dbda3253-e38e-491b-b338-313805d27311', to: redirect('/%{locale}/r/pain-maison-sans-petrissage-et-sans-faconnage')
+
     get '/conversion', to: 'pages#conversion', as: 'conversion'
     get '/tools', to: 'pages#tools', as: 'tools'
     get '/top100', to: 'pages#top_100', as: 'top_100'
