@@ -1,32 +1,6 @@
-puts 'cleaning database...'
-User.destroy_all
-Recipe.destroy_all
-
-first_name = 'Yannick'
-last_name = 'Lescure'
 User.create!([
-  {
-    first_name: first_name,
-    last_name: last_name,
-    name: "#{first_name} #{last_name}",
-    email: 'yannick.lescure@gmail.com',
-    password: '123456'
-  }
+  {email: "marcel@email.com", encrypted_password: "$2a$11$1nOG2OrB3rjakULgqAlqS.tgl1z6XUY6.Gi83O.MFveteOW9Y9M6e", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "8rdT9o8j3zgU4msM1tyv", confirmed_at: "2020-04-09 21:34:12", confirmation_sent_at: "2020-04-09 21:34:08", unconfirmed_email: nil, slug: "marcel-test", first_name: "marcel", last_name: "test", name: "marcel test", admin: nil, authentication_token: "mJysjHRGFkixmyyJemxz", provider: nil, uid: nil, image: "d9a0155d-d8f4-4893-8647-a4b67a0fe48e.jpg", checked: nil, mailchimp: true, notification: true, locale: "en", moderator: true},
+  {email: "yannick@email.com", encrypted_password: "$2a$11$.syeabxaV1qZDupy1ZsqTuKDNAqAhiNK3xnbDedrWj5RQsC/cQdIK", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "X3fmzTiftYWej2BHyZo6", confirmed_at: "2020-04-01 15:56:08", confirmation_sent_at: "2020-04-01 15:56:05", unconfirmed_email: nil, slug: "yannick-la-reunion", first_name: "Yannick", last_name: "la réunion", name: "Yannick la réunion", admin: true, authentication_token: "Z8kDPuEyqu77sx1tCZPU", provider: nil, uid: nil, image: "241eb135-77c4-4a91-9bfb-0e28fb0ef0bb.jpg", checked: true, mailchimp: true, notification: true, locale: "en", moderator: false},
+  {email: "yannick.lescure@gmail.com", encrypted_password: "$2a$11$7iMh9niSm0jXwD.MabT1F.01tGsqgSu6D7z6wN03RTVnEnotmoJQG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: nil, confirmed_at: "2020-02-12 21:33:51", confirmation_sent_at: nil, unconfirmed_email: nil, slug: "yannick-lescure", first_name: "Yannick", last_name: "Lescure", name: "Yannick Lescure", admin: nil, authentication_token: "qAUQXcwRFxvEFczDmM-u", provider: "facebook", uid: "10157468000688110", image: "fd1d1a5c-d1ad-428a-b6d1-41402d465edc.jpg", checked: nil, mailchimp: false, notification: true, locale: "fr", moderator: false},
+  {email: "dumb@email.com", encrypted_password: "$2a$11$XPOMfYCF.yYlzJSOfyah4OASO.edxBON3odqCg9WirKI6Fn5dIiPe", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, confirmation_token: "AAzdf5fCaKkNksBiXD8x", confirmed_at: nil, confirmation_sent_at: "2020-04-06 13:25:38", unconfirmed_email: nil, slug: "dumb-test", first_name: "dumb", last_name: "test", name: "dumb test", admin: nil, authentication_token: "9p29h_v4CotJSsb9odBs", provider: nil, uid: nil, image: nil, checked: nil, mailchimp: false, notification: true, locale: "fr", moderator: false}
 ])
-
-user_one = User.find_by(email: 'yannick.lescure@gmail.com')
-
-recipe = Recipe.create!([
-  {
-    title: "Pain rapide, cuisson à la poêle",
-    subtitle: "Recette à partir de bicarbonate de soude",
-    video: "https://youtu.be/d7SIQcNk3Wo",
-    direction: "Quantités pour 4 petits pains\r\n\r\nFarine de blé 1 1/2 tasse / 225 g\r\nSel 1/4 cuillère à café / 1 g\r\nLevure chimique (bicarbonate de soude) 2 cuillère à café / 5 g\r\nLait 1/2 tasse / 120 g", direction: "Dans un grand bol, mélanger tous les ingrédients secs.\r\nAjouter le lait.\r\nÀ l'aide d'une fourchette (ou autre), mélanger le tout jusqu'à obtention d'une «boule».\r\nPétrissez votre pâte 2 à 3 minutes, en commençant dans votre bol puis en continuant sur votre plan de travail.\r\nCoupez votre pâte en 4 morceaux égaux et formez 4 boules.\r\nAplatissez chacune des boules jusque obtenir une épaisseur de 1 cm.\r\nÀ l'aide d'une pinceau, badigeonnez d'huile végétale la surface qui sera en contact avec votre poêle.\r\nPlacez vos pains dans une poêle préchauffée sur un feu moyen.\r\nBadigeonnez d'huile végétale la surface apparente et couvrez votre poêle d'un couvercle et laissez cuire vos pains pendant 10 minutes.\r\nTournez vos pains et laissez continuer de cuire pendant 7 à 8 minutes.\r\nSortez vos pains, déposez-les sur une grille et laissez-les refroidir 2 à 3 minutes avant de les manger.",
-    description: "Une recette originale pour des petits pains rapides et tout chaud",
-    image: 'https://media.cuisinierrebelle.com/20190904_084514.jpg',
-    remote_photo_url: 'https://media.cuisinierrebelle.com/20190904_084514.jpg',
-    user: user_one
-  }
-])
-
-puts 'finished!'

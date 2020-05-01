@@ -14,13 +14,14 @@ class AboutController < ApplicationController
   end
 
   def create
-    @about = About.new(about_params)
-    authorize @about
-    @about.user = @user
     params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') if params[:about][:facebook].present?
     params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') if params[:about][:instagram].present?
     params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') if params[:about][:twitter].present?
     params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') if params[:about][:youtube].present?
+    @about = About.new(about_params)
+    authorize @about
+    @about.user = @user
+    # binding.pry
     if @about.save
       redirect_to user_about_index_path(@user)
     else
@@ -35,13 +36,13 @@ class AboutController < ApplicationController
   end
 
   def update
-    @about = About.find_by(user: @user)
-    authorize @about
-    # binding.pry
     params[:about][:facebook] = sanitize_social_link(params[:about][:facebook], 'facebook') if params[:about][:facebook].present?
     params[:about][:instagram] = sanitize_social_link(params[:about][:instagram], 'instagram') if params[:about][:instagram].present?
     params[:about][:twitter] = sanitize_social_link(params[:about][:twitter], 'twitter') if params[:about][:twitter].present?
     params[:about][:youtube] = sanitize_social_link(params[:about][:youtube], 'youtube') if params[:about][:youtube].present?
+    @about = About.find_by(user: @user)
+    authorize @about
+    # binding.pry
     if @about.update(about_params)
       # binding.pry
       # raise
