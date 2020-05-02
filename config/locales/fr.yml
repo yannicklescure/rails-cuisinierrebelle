@@ -596,7 +596,7 @@ fr:
       tools: Matériel de cuisine
       top_100: Top 100
     navbar-small:
-      cuisinier_rebelle_html: <i class="fas fa-utensIls"></i>&nbsp;Cuisinier Rebelle
+      cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier&nbsp;Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
