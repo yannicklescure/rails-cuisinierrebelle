@@ -54,7 +54,10 @@ let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
 const cookies = cookiesToObject(document.cookie);
 
-searchInput(location);
+searchInput({
+  location: location,
+  device: device
+});
 
 const navbarBrand = document.querySelector(".navbar-brand");
 if(window.innerWidth <= 768) {
@@ -137,50 +140,6 @@ if (currentController && currentController === 'r') {
 
 if(currentController === 'u' && currentPage != null) {
   userBanner();
-}
-
-if(device.match(/smartphone|phablet/)) {
-  const navbarMain = document.querySelector('#navbar-main');
-  const navbarSearch = document.querySelector('#navbar-search');
-
-  const btnSearch = document.querySelector('#search-btn');
-  btnSearch.addEventListener('click', event => {
-    navbarSearch.style.height = `${navbarMain.offsetHeight}px`;
-    navbarMain.classList.toggle('d-none');
-    navbarSearch.classList.toggle('d-none');
-    const query = document.querySelector('#query');
-    query.focus();
-    query.value = '';
-  });
-  const btnSearchBack = document.querySelector('#search-btn-back');
-  btnSearchBack.addEventListener('click', event => {
-    navbarMain.classList.toggle('d-none');
-    navbarSearch.classList.toggle('d-none');
-  });
-
-  const shareBtn = document.querySelector('#share-btn');
-  if(shareBtn) {
-    let url = document.location.href;
-    const canonicalElement = document.querySelector('link[rel=canonical]');
-    if (canonicalElement !== null) {
-        url = canonicalElement.href;
-    }
-    const shareData = {
-      // title: 'MDN',
-      // text: 'Learn web development on MDN!',
-      url: url,
-    }
-
-    // Must be triggered some kind of "user activation"
-    shareBtn.addEventListener('click', async () => {
-      try {
-        await navigator.share(shareData)
-      } catch(e) {
-        console.log('Error: ' + e);
-      }
-      console.log('MDN shared successfully');
-    });
-  }
 }
 
 const top100Title = document.querySelector('#top-100-title');
