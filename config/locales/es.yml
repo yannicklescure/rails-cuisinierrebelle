@@ -266,6 +266,7 @@ es:
   index:
     form:
       search: Buscar
+      search_html: '&#xe8b6'
     index:
       most_used_tags: Etiquetas más utilizadas
       no_result_html: Sin resultados...&nbsp;<i class="far fa-grin-beam-sweat"></i>

@@ -11,8 +11,8 @@ module RailsCuisinierRebelle
 
     # Set the locale used for i18n
     # https://github.com/iain/http_accept_language
-    # set the default locale to English
-    config.i18n.default_locale = :en
+    # set the default locale to French
+    config.i18n.default_locale = :fr
     # if a locale isn't found fall back to this default locale
     config.i18n.fallbacks = true
     # set the possible locales to English and Brazilian-Portuguese

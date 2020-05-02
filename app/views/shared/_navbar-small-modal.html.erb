@@ -27,8 +27,8 @@
             <div class="d-flex flex-column align-items-start ml-3">
               <!-- <a class="d-flex py-2 w-100 modal-menu-link" href="/">English</a> -->
               <%= link_to raw("English"), current_page_params.merge(locale: :en), class: "d-flex py-2 w-100 modal-menu-link" %>
-              <%= link_to raw("Fran&ccedil;ais"), current_page_params.merge(locale: :fr), class: "d-flex py-2 w-100 modal-menu-link" %>
               <%= link_to raw("Espa&ntilde;ol"), current_page_params.merge(locale: :es), class: "d-flex py-2 w-100 modal-menu-link" %>
+              <%= link_to raw("Fran&ccedil;ais"), current_page_params.merge(locale: :fr), class: "d-flex py-2 w-100 modal-menu-link" %>
             </div>
           </div>
           <% if user_signed_in? %>

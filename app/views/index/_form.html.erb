@@ -1,7 +1,8 @@
-<%= form_tag index_index_path, method: :get do %>
+
+<%= form_tag index_index_path, method: :get, class: !client.device_type.nil? && client.device_type.match(/desktop/) ? "w-75":"w-100" do %>
   <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search") %>
   <%#= button_tag t(".search_btn_html"), class: "btn" %>
-<div id="search" class="input-group">
-  <%= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search"), 'aria-label': t(".search"), 'aria-describedby': "search-btn" %>
-</div>
+  <div id="search" class="input-group">
+    <%= text_field_tag :query, params[:query], class: "form-control material-icons md-16", placeholder: t(".search_html"), 'aria-label': t(".search"), 'aria-describedby': "search-btn" %>
+  </div>
 <% end %>

@@ -354,6 +354,7 @@ en:
   index:
     form:
       search: Search recipes...
+      search_html: '&#xe8b6'
     index:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>
