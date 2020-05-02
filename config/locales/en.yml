@@ -353,8 +353,8 @@ en:
       following: Following
   index:
     form:
-      search: Search recipes...
-      search_html: '&#xe8b6'
+      search: Search
+      search_html: Search
     index:
       most_used_tags: Most used tags
       no_result_html: No result...&nbsp;<i class="far fa-grin-beam-sweat"></i>

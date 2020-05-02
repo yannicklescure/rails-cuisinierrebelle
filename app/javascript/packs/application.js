@@ -28,6 +28,7 @@ import { userBanner } from "../components/user-banner";
 import { adminNavItem } from "../components/admin-nav-item";
 import { adminNav } from "../components/admin-nav";
 import { googleAdsNoPrint } from "../components/google-ads";
+import { searchInput } from "../components/search-input";
 
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
@@ -52,6 +53,8 @@ let currentController = location.currentController;
 let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
 const cookies = cookiesToObject(document.cookie);
+
+searchInput(location);
 
 const navbarBrand = document.querySelector(".navbar-brand");
 if(window.innerWidth <= 768) {

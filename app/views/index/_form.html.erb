@@ -3,6 +3,6 @@
   <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: t(".search") %>
   <%#= button_tag t(".search_btn_html"), class: "btn" %>
   <div id="search" class="input-group">
-    <%= text_field_tag :query, params[:query], class: "form-control material-icons md-16", placeholder: t(".search_html"), 'aria-label': t(".search"), 'aria-describedby': "search-btn" %>
+    <%= text_field_tag :query, params[:query], id:"search-input", class: "form-control", placeholder: t(".search_html"), 'aria-label': t(".search"), 'aria-describedby': "search-btn" %>
   </div>
 <% end %>

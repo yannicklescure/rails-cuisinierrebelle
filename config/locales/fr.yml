@@ -360,7 +360,7 @@ fr:
   index:
     form:
       search: Rechercher
-      search_html: '&#xe8b6'
+      search_html: Rechercher
     index:
       most_used_tags: Tags les plus utIlisés
       no_result_html: Aucun résultat...&nbsp;<i class="far fa-grin-beam-sweat"></i>
