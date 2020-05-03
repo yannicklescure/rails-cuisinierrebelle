@@ -739,7 +739,7 @@ fr:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage
     user:
-      follow: Suivre
-      unfollow: Ne plus suivre
+      follow: S'abonner
+      unfollow: Abonné
       verified: Vérifié
       verified_html: <i class="material-icons md-16">check_circle</i>
