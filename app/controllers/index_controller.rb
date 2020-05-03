@@ -8,6 +8,8 @@ class IndexController < ApplicationController
     if @query.present?
       @results = PgSearch.multisearch(@query)
       @recipes = @results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id}.reverse
+      # binding.pry
+      Search.new(query: @query, user: current_user).save
     end
   end
 
