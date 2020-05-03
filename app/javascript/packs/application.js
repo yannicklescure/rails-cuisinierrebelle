@@ -8,6 +8,10 @@
 // This is a must
 //= require i18n/translations
 
+jQuery.htmlPrefilter = function( html ) {
+  return html;
+};
+
 import "bootstrap";
 import { cookiesToObject } from "../components/cookies";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
