@@ -84,6 +84,16 @@ if (!currentController && !currentPage && !userSignedIn) {
     bannerCtaBoxTitle.classList.remove('h2');
     bannerCtaBoxTitle.classList.add('h1');
   }
+  const navbarBrand = document.querySelector('.navbar-brand');
+  navbarBrand.addEventListener('click', (event) => {
+    event.preventDefault();
+    const scrollOptions = {
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    };
+    window.scrollTo(scrollOptions);
+  });
 }
 
 if(currentPage && currentPage.match(/\/settings/) && userSignedIn) {
@@ -122,17 +132,6 @@ if (root) {
     init.url = `/api/v1/recipes?query=${location.query}`;
   }
   lazyLoad(init);
-
-  const navbarBrand = document.querySelector('.navbar-brand');
-  navbarBrand.addEventListener('click', (event) => {
-    event.preventDefault();
-    const scrollOptions = {
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    };
-    window.scrollTo(scrollOptions);
-  });
 }
 
 if (currentPage && currentPage.match(/edit\..*/)) btnClick();
