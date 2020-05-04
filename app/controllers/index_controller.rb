@@ -9,7 +9,9 @@ class IndexController < ApplicationController
       @results = PgSearch.multisearch(@query)
       @recipes = @results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id}.reverse
       # binding.pry
-      Search.new(query: @query, user: current_user).save
+      @user = current_user.nil? ? nil : current_user.id
+      @device = DeviceDetector.new(request.user_agent).device_type
+      Search.new(query: @query, user: @user, device: @device).save
     end
   end
 

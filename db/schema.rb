@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_154146) do
+ActiveRecord::Schema.define(version: 2020_05_04_001208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_154146) do
     t.string "user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "device"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -209,7 +210,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_154146) do
     t.string "first_name"
     t.string "last_name"
     t.string "name"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "authentication_token", limit: 30
     t.string "provider"
     t.string "uid"
