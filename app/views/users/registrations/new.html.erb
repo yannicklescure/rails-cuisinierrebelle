@@ -1,4 +1,7 @@
+<%= render "users/shared/providers" %>
+
 <h2><%= t(".sign_up") %></h2>
+
 <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 <%= simple_form_for(resource, url: registration_path(resource)) do |f| %>
   <%= f.error_notification %>

@@ -735,6 +735,8 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
+      providers:
+        sign_in_with_provider: Connexion avec %{provider}
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage

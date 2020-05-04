@@ -611,6 +611,8 @@ es:
         sign_in: Iniciar sesión
         sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
+      providers:
+        sign_in_with_provider: Iniciar sesión con %{provider}
     unlocks:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
