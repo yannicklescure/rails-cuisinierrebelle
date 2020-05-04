@@ -77,13 +77,7 @@ if (currentController === 'admin' && userSignedIn) {
   adminNav();
 }
 
-if (!currentController && !currentPage && !userSignedIn) {
-  scrollToAnchor("#recipes-cards");
-  const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
-  if (window.innerWidth > 375) {
-    bannerCtaBoxTitle.classList.remove('h2');
-    bannerCtaBoxTitle.classList.add('h1');
-  }
+if (!currentController && !currentPage) {
   const navbarBrand = document.querySelector('.navbar-brand');
   navbarBrand.addEventListener('click', (event) => {
     event.preventDefault();
@@ -94,6 +88,15 @@ if (!currentController && !currentPage && !userSignedIn) {
     };
     window.scrollTo(scrollOptions);
   });
+}
+
+if (!currentController && !currentPage && !userSignedIn) {
+  scrollToAnchor("#recipes-cards");
+  const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
+  if (window.innerWidth > 375) {
+    bannerCtaBoxTitle.classList.remove('h2');
+    bannerCtaBoxTitle.classList.add('h1');
+  }
 }
 
 if(currentPage && currentPage.match(/\/settings/) && userSignedIn) {
