@@ -23,11 +23,11 @@ class Api::V1::RecipesController < Api::V1::BaseController
         # binding.pry
       end
 
-      max = 48
+      max = 4
       @recipes = @search_results
       if @recipes.count < max
         # binding.pry
-        Recipe.all.shuffle.map{ |e| e unless @recipes.include? e }.take((max - @recipes.count).positive? ? max - @recipes.count : max).each { |e| @recipes << e }
+        # Recipe.all.shuffle.map{ |e| e unless @recipes.include? e }.take((max - @recipes.count).positive? ? max - @recipes.count : max).each { |e| @recipes << e }
       end
 
       @user = current_user.nil? ? nil : current_user.id
