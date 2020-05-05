@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
       max = 4
       @recipe.find_related_tags.order('created_at DESC').take(max).map{ |e| @related_recipes << e }
       if @related_recipes.count < max
-        Recipe.all.map{ |e| @related_recipes << e unless @related_recipes.include? e }.shuffle.take(max - @related_recipes.count)
+        Recipe.all.map{ |e| @related_recipes << e unless @related_recipes.include? e }.shuffle.take((max - @related_recipes.count).positive? ? max - @related_recipes.count : max)
       end
       # binding.pry
       authorize @recipe
