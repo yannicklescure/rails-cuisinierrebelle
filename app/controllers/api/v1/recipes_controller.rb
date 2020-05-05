@@ -23,13 +23,13 @@ class Api::V1::RecipesController < Api::V1::BaseController
         # binding.pry
       end
 
-      max = 50
+      max = 48
       @recipes = @search_results
       if @recipes.count < max
-        Recipe.all.map{ |e| e unless @recipes.include? e }.shuffle.take(max - @recipes.count).map { |e| @recipes << e }
+        # binding.pry
+        Recipe.all.shuffle.map{ |e| e unless @recipes.include? e }.take((max - @recipes.count).positive? ? max - @recipes.count : max).each { |e| @recipes << e }
       end
 
-      # binding.pry
       @user = current_user.nil? ? nil : current_user.id
       @device = DeviceDetector.new(request.user_agent).device_type
       Search.new(query: @query, user: @user, device: @device).save
