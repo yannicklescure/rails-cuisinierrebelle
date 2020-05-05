@@ -26,7 +26,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
       max = 50
       @recipes = @search_results
       if @recipes.count < max
-        Recipe.all.shuffle.take(max - @recipes.count).map{ |e| @recipes << e unless @recipes.include? e }
+        Recipe.all.shuffle.map{ |e| @recipes << e unless @recipes.include? e }.take(max - @recipes.count)
       end
 
       # binding.pry
