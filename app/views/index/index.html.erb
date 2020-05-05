@@ -1,5 +1,17 @@
-<% if @recipes.count.positive? %>
-<%= render 'shared/recipes', recipes: @recipes %>
+<% if @pg_search_results.any? %>
+  <% case @pg_search_results[0].searchable_type %>
+  <% when 'User' %>
+    <div class="container mt-3 mb-5">
+      <% @search_results.sort_by { |date| date.created_at }.reverse.each do |user| %>
+        <div class="d-flex <%= 'w-50 mx-auto' if !client.device_type.nil? && client.device_type.match(/desktop/) %> align-items-center mb-3">
+          <img src="<%= user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;"><%= render user %>
+        </div>
+      <% end %>
+    </div>
+    <%#= render @search_results %>
+  <% when 'Recipe' %>
+    <%= render 'shared/recipes', recipes: @search_results %>
+  <% end %>
 <% else %>
 <div class="container-fluid">
   <div class="py-3 d-flex align-items-center">

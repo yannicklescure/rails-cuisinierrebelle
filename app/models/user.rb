@@ -54,6 +54,9 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  include PgSearch::Model
+  multisearchable against: [:name, :first_name, :last_name]
+
   private
 
   def send_welcome_email
