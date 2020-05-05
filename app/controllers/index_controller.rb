@@ -18,6 +18,8 @@ class IndexController < ApplicationController
         else
           @search_results = []
         end
+      else
+        @search_results = Recipe.tagged_with(@query)
       end
       @user = current_user.nil? ? nil : current_user.id
       @device = DeviceDetector.new(request.user_agent).device_type
