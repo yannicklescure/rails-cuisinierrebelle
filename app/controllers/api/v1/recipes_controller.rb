@@ -22,6 +22,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
         @search_results = Recipe.tagged_with(@query).map { |r| r }.sort_by {|k,v| k.id}.reverse
         # binding.pry
       end
+      @recipes = @search_results
       # binding.pry
       @user = current_user.nil? ? nil : current_user.id
       @device = DeviceDetector.new(request.user_agent).device_type
