@@ -11,11 +11,12 @@ class AdminController < ApplicationController
 
   def users
     # @users = User.all.map{ |user| user if user.confirmed? }.compact
-    @users = User.order(:name).page params[:page]
+    @users = User.all.page params[:page]
   end
 
   def recipes
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
+    @recipes = Recipe.all.page params[:page]
   end
 
   def comments
@@ -24,13 +25,15 @@ class AdminController < ApplicationController
     @messages += comments.map { |message| message }
     replies = Reply.where(spam: false)
     @messages += replies.map { |message| message }
+    @messages = Kaminari.paginate_array(@messages).page(params[:page]).per(25)
   end
 
   def replies
-    @replies = Reply.all
+    @replies = Reply.all.page params[:page]
   end
 
   def spam
+    @spams = Kaminari.paginate_array(@spams).page(params[:page]).per(25)
   end
 
   private

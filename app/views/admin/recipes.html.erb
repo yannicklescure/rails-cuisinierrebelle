@@ -44,4 +44,5 @@
     <div class="col text-center"><%= link_to t('.destroy_html'), recipe_path(:id => recipe.slug, :admin => 'true'), data: { confirm: t(".are_you_sure") }, remote: true, method: :delete, class: 'text-body' %></div>
   </div>
   <% end %>
+  <%= paginate @recipes %>
 </div>
