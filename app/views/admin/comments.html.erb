@@ -40,7 +40,7 @@
       <%= link_to truncate(message.comment.recipe.title, length: 20), recipe_path(message.comment.recipe), class: 'text-body' %>
       <%= link_to '<i class="material-icons md-16 d-flex">open_in_new</i>'.html_safe, "#{recipe_path(message.comment.recipe)}#reply-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
     <% else %>
-      <%= image_tag message.recipe.photo.url(:thumb), secure: true, height: 32, width: 32, class: 'rounded mr-3' %>
+      <%= image_tag message.recipe.photo.url(:preview), secure: true, height: '32px', width: '32px', class: 'rounded mr-3', style: "object-fit: cover;" %>
       <%= link_to truncate(message.recipe.title, length: 20), recipe_path(message.recipe), class: 'text-body' %>
       <%= link_to '<i class="material-icons md-16 d-flex">open_in_new</i>'.html_safe, "#{recipe_path(message.recipe)}#comment-#{message.id}", class: 'text-body', target: '_blank', style: 'font-size: 90%' %>
     <% end %>
