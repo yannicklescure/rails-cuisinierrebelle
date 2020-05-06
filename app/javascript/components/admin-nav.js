@@ -17,7 +17,8 @@ const adminNavItemLink = (menuOpenData) => {
   adminNavBtn.href = `${adminNavBtn.href.split('?')[0]}?menu=${!menuOpenData.state}${menuOpenData.params}`;
   let adminNavItemLinks = document.querySelectorAll('.admin-nav-item-link');
   adminNavItemLinks.forEach(adminNavItemLink => {
-    adminNavItemLink.href = `${adminNavItemLink.href.split('?')[0]}?menu=${menuOpenData.state}${menuOpenData.params}`;
+    // adminNavItemLink.href = `${adminNavItemLink.href.split('?')[0]}?menu=${menuOpenData.state}${menuOpenData.params}`;
+    adminNavItemLink.href = `${adminNavItemLink.href.split('?')[0]}?menu=${menuOpenData.state}`;
   });
   const pagination = document.querySelector('.pagination');
   if (pagination) {
