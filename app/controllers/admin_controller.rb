@@ -23,9 +23,9 @@ class AdminController < ApplicationController
   def comments
     @messages = []
     comments = Comment.where(spam: false)
-    @messages += comments.map { |message| message }
+    @messages += comments.map { |message| message }.sort_by {|u| u.id}.reverse
     replies = Reply.where(spam: false)
-    @messages += replies.map { |message| message }
+    @messages += replies.map { |message| message }.sort_by {|u| u.id}.reverse
     @messages = Kaminari.paginate_array(@messages).page(params[:page])
   end
 
@@ -42,9 +42,9 @@ class AdminController < ApplicationController
   def set_spam
     @spams = []
     comments = Comment.where(spam: true)
-    @spams += comments.map { |message| message }
+    @spams += comments.map { |message| message }.sort_by {|u| u.id}.reverse
     replies = Reply.where(spam: true)
-    @spams += replies.map { |message| message }
+    @spams += replies.map { |message| message }.sort_by {|u| u.id}.reverse
   end
 
   def set_menu
