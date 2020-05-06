@@ -745,3 +745,10 @@ fr:
       unfollow: Abonné
       verified: Vérifié
       verified_html: <i class="material-icons md-16">check_circle</i>
+  views:
+    pagination:
+      first: Début
+      last: Fin
+      next: Suivante
+      previous: Précédente
+      truncate: Tronquer

@@ -731,3 +731,10 @@ en:
       unfollow: Unfollow
       verified: Verified
       verified_html: <i class="material-icons md-16">check_circle</i>
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate
