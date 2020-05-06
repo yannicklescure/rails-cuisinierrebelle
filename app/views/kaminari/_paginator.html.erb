@@ -13,8 +13,8 @@
       <div class="mx-1"><%= prev_page_tag unless current_page.first? %></div>
       <div class="d-flex">
       <% each_page do |page| -%>
-        <% if page.display_tag? -%></div>
-          <div class="mx-1"><%= page_tag page %>
+        <% if page.display_tag? -%>
+          <div class="mx-1"><%= page_tag page %></div>
         <% elsif !page.was_truncated? -%>
           <div class="mx-1"><%= gap_tag %></div>
         <% end -%>
