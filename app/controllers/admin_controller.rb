@@ -17,7 +17,8 @@ class AdminController < ApplicationController
 
   def recipes
     # @recipes = Recipe.all
-    @recipes = Recipe.all.page params[:page]
+    @recipes = Recipe.all.map{ |r| r }.compact.sort_by {|r| r.id}.reverse
+    @recipes = Kaminari.paginate_array(@recipes).page(params[:page])
   end
 
   def comments
