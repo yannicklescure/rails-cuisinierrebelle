@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   end
 
   def users
-    @users = User.all.map{ |user| user if user.confirmed? }.compact
+    @users = User.all.map{ |user| user if user.confirmed? }.compact.sort_by {|u| u.id}.reverse
     # @users = User.all.page params[:page]
     @users = Kaminari.paginate_array(@users).page(params[:page])
   end
