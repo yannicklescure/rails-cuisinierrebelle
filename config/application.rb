@@ -32,8 +32,12 @@ module RailsCuisinierRebelle
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # ActsAsTaggableOn
+    # https://github.com/mbleigh/acts-as-taggable-on
     # force tags to be saved downcased
     ActsAsTaggableOn.force_lowercase = true
+    # remove unused tag objects after removing taggings
+    ActsAsTaggableOn.remove_unused_tags = true
 
     config.active_job.queue_adapter = :sidekiq
   end
