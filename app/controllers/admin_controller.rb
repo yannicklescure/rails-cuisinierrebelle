@@ -10,7 +10,8 @@ class AdminController < ApplicationController
   end
 
   def users
-    @users = User.all.map{ |user| user if user.confirmed? }.compact
+    # @users = User.all.map{ |user| user if user.confirmed? }.compact
+    @users = User.order(:name).page params[:page]
   end
 
   def recipes
