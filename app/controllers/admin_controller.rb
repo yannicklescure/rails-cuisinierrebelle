@@ -50,7 +50,7 @@ class AdminController < ApplicationController
 
     arr= []
     @search_words.each do |search_word|
-      arr << { query: search_word, count: @searches.select { |s| s.query == search_word }.count }
+      arr << { query: search_word, count: @searches.select { |s| s.query == search_word && s.user != '1' }.count }
     end
     @search_words = arr.sort_by {|obj| obj[:count] }.reverse.take(10)
     # binding.pry
