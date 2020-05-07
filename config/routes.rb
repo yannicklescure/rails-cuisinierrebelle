@@ -101,6 +101,7 @@ Rails.application.routes.draw do
     get '/admin/recipes', to: 'admin#recipes', as: 'admin_recipes'
     get '/admin/comments', to: 'admin#comments', as: 'admin_comments'
     get '/admin/spam', to: 'admin#spam'
+    get '/admin/analytics', to: 'admin#analytics'
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
     post 'comments/:id/spam', to: 'comments#spam', as: :comment_spam

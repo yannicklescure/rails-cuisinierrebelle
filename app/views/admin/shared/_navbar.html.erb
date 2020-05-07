@@ -13,32 +13,38 @@
         </div>
         <div class="admin-nav-item pr-3"><%= t('.dashboard') %></div>
       <% end %>
+      <%= link_to "#{admin_analytics_path}", id: 'analytics', class: "#{link_class} admin-nav-item-link" do %>
+        <div class="d-flex align-items-center justify-content-center px-2">
+          <i class="material-icons md-24 mb-1">assessment</i>
+        </div>
+        <div class="admin-nav-item pr-3"><%= t('.analytics') %></div>
+      <% end %>
       <% if current_user.admin %>
-      <%= link_to "#{admin_users_path}", id: 'users', class: "#{link_class} admin-nav-item-link" do %>
-        <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">account_circle</i>
-        </div>
-        <div class="admin-nav-item pr-3"><%= t('.users') %></div>
-      <% end %>
-      <%= link_to "#{admin_recipes_path}", id: 'recipes', class: "#{link_class} admin-nav-item-link" do %>
-        <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">fastfood</i>
-        </div>
-        <div class="admin-nav-item pr-3"><%= t('.recipes') %></div>
-      <% end %>
-      <%= link_to "#{admin_comments_path}", id: 'comments', class: "#{link_class} admin-nav-item-link" do %>
-        <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">forum</i>
-        </div>
-        <div class="admin-nav-item pr-3"><%= t('.comments') %></div>
-      <% end %>
-      <% spam_class = @spams.count.positive? ? 'text-danger' : '' %>
-      <%= link_to "#{admin_spam_path}", id: 'spam', class: "#{link_class} admin-nav-item-link #{spam_class}" do %>
-        <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">report</i>
-        </div>
-        <div class="admin-nav-item pr-3"><%= t('.spam') %></div>
-      <% end %>
+        <%= link_to "#{admin_users_path}", id: 'users', class: "#{link_class} admin-nav-item-link" do %>
+          <div class="d-flex align-items-center justify-content-center px-2">
+            <i class="material-icons md-24 mb-1">account_circle</i>
+          </div>
+          <div class="admin-nav-item pr-3"><%= t('.users') %></div>
+        <% end %>
+        <%= link_to "#{admin_recipes_path}", id: 'recipes', class: "#{link_class} admin-nav-item-link" do %>
+          <div class="d-flex align-items-center justify-content-center px-2">
+            <i class="material-icons md-24 mb-1">fastfood</i>
+          </div>
+          <div class="admin-nav-item pr-3"><%= t('.recipes') %></div>
+        <% end %>
+        <%= link_to "#{admin_comments_path}", id: 'comments', class: "#{link_class} admin-nav-item-link" do %>
+          <div class="d-flex align-items-center justify-content-center px-2">
+            <i class="material-icons md-24 mb-1">forum</i>
+          </div>
+          <div class="admin-nav-item pr-3"><%= t('.comments') %></div>
+        <% end %>
+        <% spam_class = @spams.count.positive? ? 'text-danger' : '' %>
+        <%= link_to "#{admin_spam_path}", id: 'spam', class: "#{link_class} admin-nav-item-link #{spam_class}" do %>
+          <div class="d-flex align-items-center justify-content-center px-2">
+            <i class="material-icons md-24 mb-1">report</i>
+          </div>
+          <div class="admin-nav-item pr-3"><%= t('.spam') %></div>
+        <% end %>
       <% end %>
       <div class="d-flex w-100 border-bottom mb-3"></div>
       <%= link_to "#{new_page_path}", id: 'new_page', class: "#{link_class}" do %>

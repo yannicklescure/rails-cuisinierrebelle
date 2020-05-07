@@ -1,0 +1,22 @@
+<div class="admin-analytics">
+  <div class="row">
+    <div class="col-2">
+      <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+              <th scope="col"><%= t('.word') %></th>
+              <th scope="col"><%= t('.count') %></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @search_words.each do |search_word| %>
+            <tr>
+              <td><%= search_word[:query] %></td>
+              <td><%= search_word[:count] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -38,6 +38,24 @@ class AdminController < ApplicationController
     @spams = Kaminari.paginate_array(@spams).page(params[:page])
   end
 
+  def analytics
+    @search_words = []
+    @searches = Search.all
+    @searches.map do |search|
+      # @searches.select { |s| s.query == search.query }
+      unless @search_words.include? search.query
+        @search_words << search.query
+      end
+    end
+
+    arr= []
+    @search_words.each do |search_word|
+      arr << { query: search_word, count: @searches.select { |s| s.query == search_word }.count }
+    end
+    @search_words = arr.sort_by {|obj| obj[:count] }.reverse.take(10)
+    # binding.pry
+  end
+
   private
 
   def set_spam
