@@ -43,8 +43,8 @@ class AdminController < ApplicationController
     @searches = Search.all
     @searches.map do |search|
       # @searches.select { |s| s.query == search.query }
-      unless @search_words.include? search.query
-        @search_words << search.query
+      unless @search_words.include? search.query.downcase
+        @search_words << search.query.downcase
       end
     end
 
