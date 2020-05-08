@@ -4,44 +4,44 @@
       <% link_class = 'd-flex w-100 nav-item align-items-center mb-3' %>
       <a href="<%= "#{admin_path}" %>" id="admin-nav" data-menu-open="<%= @menu %>" class="<%= link_class %> justify-content-end" style="padding: 0 0 8px 0;">
         <div id="admin-nav-btn-icon" class="d-flex align-items-center justify-content-center text-body px-2">
-          <i class="material-icons md-24 mb-1">keyboard_arrow_right</i>
+          <i class="material-icons md-24">keyboard_arrow_right</i>
         </div>
       </a>
       <%= link_to "#{admin_path}", id: 'dashboard', class: "#{link_class} admin-nav-item-link" do %>
         <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">dashboard</i>
+          <i class="material-icons md-24">dashboard</i>
         </div>
         <div class="admin-nav-item pr-3"><%= t('.dashboard') %></div>
       <% end %>
       <%= link_to "#{admin_analytics_path}", id: 'analytics', class: "#{link_class} admin-nav-item-link" do %>
         <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">assessment</i>
+          <i class="material-icons md-24">assessment</i>
         </div>
         <div class="admin-nav-item pr-3"><%= t('.analytics') %></div>
       <% end %>
       <% if current_user.admin %>
         <%= link_to "#{admin_users_path}", id: 'users', class: "#{link_class} admin-nav-item-link" do %>
           <div class="d-flex align-items-center justify-content-center px-2">
-            <i class="material-icons md-24 mb-1">account_circle</i>
+            <i class="material-icons md-24">account_circle</i>
           </div>
           <div class="admin-nav-item pr-3"><%= t('.users') %></div>
         <% end %>
         <%= link_to "#{admin_recipes_path}", id: 'recipes', class: "#{link_class} admin-nav-item-link" do %>
           <div class="d-flex align-items-center justify-content-center px-2">
-            <i class="material-icons md-24 mb-1">fastfood</i>
+            <i class="material-icons md-24">fastfood</i>
           </div>
           <div class="admin-nav-item pr-3"><%= t('.recipes') %></div>
         <% end %>
         <%= link_to "#{admin_comments_path}", id: 'comments', class: "#{link_class} admin-nav-item-link" do %>
           <div class="d-flex align-items-center justify-content-center px-2">
-            <i class="material-icons md-24 mb-1">comment</i>
+            <i class="material-icons md-24">comment</i>
           </div>
           <div class="admin-nav-item pr-3"><%= t('.comments') %></div>
         <% end %>
         <% spam_class = @spams.count.positive? ? 'text-danger' : '' %>
         <%= link_to "#{admin_spam_path}", id: 'spam', class: "#{link_class} admin-nav-item-link #{spam_class}" do %>
           <div class="d-flex align-items-center justify-content-center px-2">
-            <i class="material-icons md-24 mb-1">report</i>
+            <i class="material-icons md-24">report</i>
           </div>
           <div class="admin-nav-item pr-3"><%= t('.spam') %></div>
         <% end %>
@@ -49,7 +49,7 @@
       <div class="d-flex w-100 border-bottom mb-3"></div>
       <%= link_to "#{new_page_path}", id: 'new_page', class: "#{link_class}" do %>
         <div class="d-flex align-items-center justify-content-center px-2">
-          <i class="material-icons md-24 mb-1">create</i>
+          <i class="material-icons md-24">create</i>
         </div>
         <div class="admin-nav-item pr-3"><%= t('.new_page') %></div>
       <% end %>
