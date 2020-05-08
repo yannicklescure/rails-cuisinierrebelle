@@ -80,7 +80,6 @@ if (currentController === 'admin' && userSignedIn) {
 if (!currentController && !currentPage) {
   const navbarBrand = document.querySelector('.navbar-brand');
   navbarBrand.addEventListener('click', (event) => {
-    console.log(window.scrollY);
     if (window.scrollY > 0) {
       event.preventDefault();
       const scrollOptions = {
