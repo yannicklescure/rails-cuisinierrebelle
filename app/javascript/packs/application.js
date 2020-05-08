@@ -80,13 +80,16 @@ if (currentController === 'admin' && userSignedIn) {
 if (!currentController && !currentPage) {
   const navbarBrand = document.querySelector('.navbar-brand');
   navbarBrand.addEventListener('click', (event) => {
-    event.preventDefault();
-    const scrollOptions = {
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    };
-    window.scrollTo(scrollOptions);
+    console.log(window.scrollY);
+    if (window.scrollY > 0) {
+      event.preventDefault();
+      const scrollOptions = {
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      };
+      window.scrollTo(scrollOptions);
+    }
   });
 }
 
