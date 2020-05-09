@@ -72,6 +72,7 @@
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true, tables: true, footnotes: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
+  <% @recipe.direction = @recipe.direction.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" } %>
   <%= markdown.render(@recipe.direction).html_safe %>
   <% unless @recipe.video.nil? %>
   <% share_link = @recipe.video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/).nil? ? nil : @recipe.video.match(/(.+\/)(.+)/)[2] %>
