@@ -713,7 +713,7 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        change_password: Change password
+        change_my_password: Changer mon mot de passe
         currently_waiting_confirmation_for_email: Currently waiting confirmation for
           %{email}
         english_html: English
