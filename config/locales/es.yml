@@ -1,19 +1,22 @@
 ---
 es:
   '':
-    only_allows_url: Only allows url
+    only_allows_url: Solo permite URL
     only_allows_youtube_video: Solo permite videos de youtube
   about:
     edit:
-      add_a_public_content: Add a public content
-      content: Content
-      save: Save
+      add_a_public_content: Agregar un contenido público
+      content: Contenido
+      save: Salvar
     index:
-      edit: Edit
+      edit: Editar
     new:
-      add_a_public_content: Add a public content
-      save: Save
+      add_a_public_content: Agregar un contenido público
+      save: Salvar
   admin:
+    analytics:
+      count: Recuento
+      word: Palabra
     comments:
       are_you_sure: "¿Estas seguro?"
       days_ago: Hace días
@@ -86,6 +89,7 @@ es:
       years_ago: Hace años que
     shared:
       navbar:
+        analytics: Analytics
         comments: Comentarios
         dashboard: Dashboard
         new_page: Nueva pagina
@@ -587,11 +591,16 @@ es:
       edit:
         are_you_sure: "¿Está usted seguro?"
         cancel_my_account: Anular mi cuenta
+        change_password: Change password
         currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion
           de: %{email}'
+        english_html: English
+        french_html: Français
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea cambiarla
         locale: Locale
+        open_this_select_menu: Abrir menú de selección
         photo: Foto
+        spanish_html: Español
         title: Editarar %{resource}
         unhappy: "¿Disconforme?"
         update: Actualizar
@@ -627,4 +636,4 @@ es:
       last: Last
       next: Next
       previous: Previous
-      truncate: '...'
+      truncate: "..."

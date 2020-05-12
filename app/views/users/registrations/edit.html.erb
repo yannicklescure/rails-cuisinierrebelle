@@ -22,9 +22,17 @@
       <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
     <% end %>
 
-    <%= f.label :locale, t('.locale') %>
 
-    <%#= f.select :locale, I18n.available_locales.map(&:to_s) %>
+    <div class="my-3">
+      <%= f.label :locale, t('.locale') %>
+      <%#= f.select :locale, I18n.available_locales.map(&:to_s), class: "custom-select" %>
+      <select name="user[locale]" id="user_locale" class="custom-select">
+        <option selected><%= t('.open_this_select_menu') %></option>
+        <option value="en"><%= t('.english_html') %></option>
+        <option value="es"><%= t('.spanish_html') %></option>
+        <option value="fr"><%= t('.french_html') %></option>
+      </select>
+    </div>
 
     <div class="d-flex flex-column">
       <%= f.label :image, t('.photo') %>
@@ -34,18 +42,24 @@
       <%= image_tag "", width: 300, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
       <%= f.input :image, input_html: { id: 'photo-input'}, label: false %>
     </div>
-
-    <%= f.input :password,
-                hint: t(".leave_blank_if_you_don_t_want_to_change_it"),
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
                 hint: t(".we_need_your_current_password_to_confirm_your_changes"),
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <div class="my-3">
+      <a href="javascript:void(0)" class="text-body" type="button" data-toggle="collapse" data-target="#collapsePwd" aria-expanded="false" aria-controls="collapsePwd">
+        <%= t('.change_password') %>
+      </a>
+    </div>
+    <div class="collapse" id="collapsePwd">
+      <%= f.input :password,
+                  hint: t(".leave_blank_if_you_don_t_want_to_change_it"),
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
     <% end %>
   </div>
 

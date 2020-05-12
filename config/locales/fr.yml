@@ -1,19 +1,22 @@
 ---
 fr:
   '':
-    only_allows_url: Only allows url
+    only_allows_url: Autorise uniquement URL
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   about:
     edit:
-      add_a_public_content: Add a public content
+      add_a_public_content: Ajouter un contenu public
       content: Content
-      save: Save
+      save: Enregistrer
     index:
-      edit: Edit
+      edit: Editer
     new:
-      add_a_public_content: Add a public content
-      save: Save
+      add_a_public_content: Ajouter un contenu public
+      save: Enregistrer
   admin:
+    analytics:
+      count: Compte
+      word: Mots
     comments:
       are_you_sure: Êtes-vous sûr?
       days_ago:
@@ -122,6 +125,7 @@ fr:
         zero: zéro an
     shared:
       navbar:
+        analytics: Analytics
         comments: Commentaires
         dashboard: Dashboard
         new_page: Nouvelle page
@@ -709,12 +713,17 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
+        change_password: Change password
         currently_waiting_confirmation_for_email: Currently waiting confirmation for
           %{email}
+        english_html: English
+        french_html: Français
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le
           laisser inchangé
-        locale: Locale
+        locale: Language
+        open_this_select_menu: Ouvrir menu de sélection
         photo: Photo
+        spanish_html: Español
         title: Éditer %{resource}
         unhappy: Pas content ?
         update: Modifier
@@ -751,4 +760,4 @@ fr:
       last: Fin
       next: Suivante
       previous: Précédente
-      truncate: '...'
+      truncate: "..."

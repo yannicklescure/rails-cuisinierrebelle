@@ -14,6 +14,9 @@ en:
       add_a_public_content: Add a public content
       save: Save
   admin:
+    analytics:
+      count: Count
+      word: Word
     comments:
       are_you_sure: Are you sure?
       days_ago:
@@ -122,6 +125,7 @@ en:
         zero: No year
     shared:
       navbar:
+        analytics: Analytics
         comments: Comments
         dashboard: Dashboard
         new_page: New page
@@ -697,12 +701,17 @@ en:
       edit:
         are_you_sure: Are you sure?
         cancel_my_account: Cancel my account
+        change_password: Change password
         currently_waiting_confirmation_for_email: Currently waiting confirmation for
           %{email}
+        english_html: English html
+        french_html: French html
         leave_blank_if_you_don_t_want_to_change_it: Leave blank if you don t want
           to change it
         locale: Locale
+        open_this_select_menu: Open this select menu
         photo: Photo
+        spanish_html: Spanish html
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update
@@ -737,4 +746,4 @@ en:
       last: Last
       next: Next
       previous: Previous
-      truncate: '...'
+      truncate: "..."

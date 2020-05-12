@@ -37,8 +37,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
+    # binding.pry
     if session[:locale].nil?
-      I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+      I18n.locale = params[:locale] ? params[:locale] : http_accept_language.compatible_language_from(I18n.available_locales)
     else
       I18n.locale = params[:locale] ? params[:locale] : session[:locale]
     end
@@ -48,8 +49,15 @@ class ApplicationController < ActionController::Base
   def set_user_locale
     if user_signed_in?
       @user = current_user
-      @user.locale = I18n.locale
-      @user.save
+      if @user.locale.nil?
+        @user.locale = I18n.locale
+        @user.save
+      else
+        session[:locale] = @user.locale
+        I18n.locale = @user.locale
+        # binding.pry
+        # set_locale
+      end
     end
   end
 

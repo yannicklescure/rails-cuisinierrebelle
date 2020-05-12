@@ -42,11 +42,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
       # binding.pry
+      resource.locale = params[:user][:locale]
       resource.slug = nil
       resource.save!
+
       # respond_with resource, location: after_update_path_for(resource)
       # respond_with resource, location: user_path(resource)
-      respond_with resource, location: user_settings_path(resource)
+      # I18n.with_locale(locale, &action)
+
+      # params[:locale] = resource.locale
+      # session[:locale] = resource.locale
+      # I18n.locale = resource.locale
+
+      # binding.pry
+      respond_with resource, location: user_settings_path(resource, locale: resource.locale)
     else
       clean_up_passwords resource
       set_minimum_password_length

@@ -22,6 +22,7 @@
       <div class="order-0 order-sm-1 d-flex align-items-center">
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
+            <% if current_user.locale.nil? %>
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= t('.languages_html') %>
@@ -32,6 +33,7 @@
                 <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
               </div>
             </li>
+            <% end %>
             <li class="nav-item"><%= link_to t('.bookmarks_html'), user_bookmarks_path(current_user), class: "nav-link bookmarks" %></li>
             <!-- <li class="nav-item"><%= link_to t('.inbox'), "#", class: "nav-link" %></li> -->
             <% if current_user.admin || current_user.moderator %>
