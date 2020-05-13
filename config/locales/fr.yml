@@ -14,7 +14,7 @@ fr:
       save: Enregistrer
   admin:
     analytics:
-      count: Compte
+      count: Total
       word: Mots
     comments:
       are_you_sure: Êtes-vous sûr?

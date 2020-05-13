@@ -14,7 +14,7 @@ es:
       save: Salvar
   admin:
     analytics:
-      count: Recuento
+      count: Total
       word: Palabra
     comments:
       are_you_sure: "¿Estas seguro?"
