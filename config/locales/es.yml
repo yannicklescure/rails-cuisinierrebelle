@@ -1,7 +1,6 @@
 ---
 es:
   '':
-    only_allows_url: Solo permite URL
     only_allows_youtube_video: Solo permite videos de youtube
   about:
     edit:
@@ -369,7 +368,6 @@ es:
         one: 1 comentario
         other: "%{count} comentarios"
         zero: Sin comentarios
-      comments_title: Comments title
       edit_recipe: Editar receta
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Receta publicada por
@@ -618,7 +616,6 @@ es:
         didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear?"
         forgot_your_password: "¿Ha olvidado su contraseña?"
         sign_in: Iniciar sesión
-        sign_in_with_provider: Iniciar sesión con %{provider}
         sign_up: Registrarse
       providers:
         sign_in_with_provider: Iniciar sesión con %{provider}

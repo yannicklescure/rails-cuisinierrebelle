@@ -1,7 +1,6 @@
 ---
 fr:
   '':
-    only_allows_url: Autorise uniquement URL
     only_allows_youtube_video: Seules les videos de Youtube sont permises
   about:
     edit:
@@ -463,7 +462,6 @@ fr:
         one: 1 commentaire
         other: "%{count} commentaires"
         zero: Aucun commentaire
-      comments_title: Comments title
       edit_recipe: Editer la recette
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recette publiée par
@@ -742,7 +740,6 @@ fr:
           ?
         forgot_your_password: Mot de passe oublié ?
         sign_in: Connexion
-        sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
       providers:
         sign_in_with_provider: Connexion avec %{provider}

@@ -1,7 +1,6 @@
 ---
 en:
   '':
-    only_allows_url: Only allows url
     only_allows_youtube_video: Only allows youtube video
   about:
     edit:
@@ -457,7 +456,6 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comment
-      comments_title: Comments
       edit_recipe: Edit recipe
       print_html: <i class="material-icons md-18 d-flex text-body">print</i>
       recipe_published_by: Recipe published by
@@ -701,17 +699,17 @@ en:
       edit:
         are_you_sure: Are you sure?
         cancel_my_account: Cancel my account
-        change_password: Change password
+        change_my_password: Change my password
         currently_waiting_confirmation_for_email: Currently waiting confirmation for
           %{email}
-        english_html: English html
-        french_html: French html
+        english_html: English
+        french_html: Français
         leave_blank_if_you_don_t_want_to_change_it: Leave blank if you don t want
           to change it
         locale: Locale
         open_this_select_menu: Open this select menu
         photo: Photo
-        spanish_html: Spanish html
+        spanish_html: Español
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update
@@ -728,7 +726,6 @@ en:
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions
         forgot_your_password: Forgot your password?
         sign_in: Log in
-        sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
       providers:
         sign_in_with_provider: Sign in with %{provider}
