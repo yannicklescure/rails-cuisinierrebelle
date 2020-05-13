@@ -27,7 +27,7 @@
       <%= f.label :locale, t('.locale') %>
       <%#= f.select :locale, I18n.available_locales.map(&:to_s), class: "custom-select" %>
       <select name="user[locale]" id="user_locale" class="custom-select">
-        <option selected><%= t('.open_this_select_menu') %></option>
+        <option value="nil" selected><%= t('.open_this_select_menu') %></option>
         <option value="en"><%= t('.english_html') %></option>
         <option value="es"><%= t('.spanish_html') %></option>
         <option value="fr"><%= t('.french_html') %></option>

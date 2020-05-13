@@ -42,7 +42,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
       # binding.pry
-      resource.locale = params[:user][:locale]
+      if I18n.available_locales.include?(params[:user][:locale].to_sym)
+        resource.locale = params[:user][:locale]
+      end
       resource.slug = nil
       resource.save!
 
