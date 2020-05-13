@@ -623,8 +623,8 @@ es:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
     user:
-      follow: Seguir
-      unfollow: Dejar de seguir
+      follow: Suscribirse
+      unfollow: Sucrito
       verified: Auditado
       verified_html: <i class="material-icons md-16">check_circle</i>
   views:

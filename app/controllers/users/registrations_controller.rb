@@ -1,4 +1,4 @@
-# See: https://github.com/heartcombo/devise/blob/master/app/controllers/devise/registrations_controller.rb
+# Source: https://github.com/heartcombo/devise/blob/master/app/controllers/devise/registrations_controller.rb
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController

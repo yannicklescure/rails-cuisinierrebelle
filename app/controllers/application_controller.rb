@@ -2,6 +2,7 @@ require "base64"
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :user_authentication, :set_locale
+  # before_filter :set_locale # get locale directly from the user model
 
   include Pundit
   include HttpAcceptLanguage::AutoLocale
@@ -35,6 +36,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def set_locale
+  #   I18n.locale = user_signed_in? ? current_user.locale.to_sym : I18n.default_locale
+  # end
+
   def set_locale
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
     # binding.pry
@@ -50,12 +55,14 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       @user = current_user
       if @user.locale.nil?
-        @user.locale = I18n.locale
+        binding.pry
+        @user.locale = params.fetch(:locale, I18n.default_locale).to_sym
         @user.save
       else
-        session[:locale] = @user.locale
         I18n.locale = @user.locale
-        # binding.pry
+        session[:locale] = @user.locale
+        # request.params[:locale] = @user.locale
+        # respond_with resource, location: user_settings_path(resource, locale: resource.locale)
         # set_locale
       end
     end
