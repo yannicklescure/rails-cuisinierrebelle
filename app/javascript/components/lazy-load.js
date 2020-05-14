@@ -152,7 +152,13 @@ export const lazyLoad = (init) => {
           if (cardNodeElement && renderCards) {
             if (trigger >= cardNodeElementTop) {
               let newCardsQty = cardsQty + data.recipes.length;
-              init.url = `/api/v1/recipes?cards=${newCardsQty}`;
+              // init.url = `/api/v1/recipes?cards=${newCardsQty}`;
+              const initUrl = init.url.match(/(.*)(&|\?)cards=(.*)/);
+              if (initUrl) {
+                init.url = `${initUrl[1]}${initUrl[2]}cards=${newCardsQty}`
+              } else {
+                init.url += `&cards=${newCardsQty}`
+              }
               root.dataset.recipes = newCardsQty;
               renderCards = false;
               fetchRecipes(init, options).then(data => {
