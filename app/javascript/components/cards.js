@@ -4,7 +4,7 @@ const capitalize_Words = (str) => {
  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
-export const cards = (params) => {
+export const cards = (params, callback = () => {}) => {
 
   const init = params.init;
   const array = params.array;
@@ -116,6 +116,7 @@ export const cards = (params) => {
       }
     });
     if(init.userSignedIn) cardHeart();
+    callback();
     return true;
   }
 }

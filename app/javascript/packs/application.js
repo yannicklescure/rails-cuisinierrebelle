@@ -122,8 +122,9 @@ if(currentPage && currentPage.match(/\/settings/) && userSignedIn) {
 const root = document.querySelector('#root');
 if (root) {
 // if (currentController === null || currentController === 'users' || currentController === 'bookmarks' || (currentController === 'recipes' && currentPage === null)) {
+  // console.log(root.dataset.recipes);
   const init = {
-    url: '/api/v1/recipes',
+    url: `/api/v1/recipes?cards=${root.dataset.recipes}`,
     userSignedIn: userSignedIn,
     currentController: currentController,
     currentPage: currentPage,

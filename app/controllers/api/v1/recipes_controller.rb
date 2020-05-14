@@ -4,6 +4,15 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
+    @user_recipes = params[:recipes]
+    if @user_recipes.present?
+      # binding.pry
+      @recipes = @recipes.filter { |r| r.user_id == current_user.id }
+    end
+    @bookmarks = params[:bookmarks]
+    if @bookmarks.present?
+      @recipes = current_user.bookmarks.map { |r| Recipe.find(r.recipe_id) }.compact.reverse
+    end
     @query = params[:query]
     if @query.present?
       @pg_search_results = PgSearch.multisearch(@query)
@@ -34,6 +43,14 @@ class Api::V1::RecipesController < Api::V1::BaseController
       @user = current_user.nil? ? nil : current_user.id
       @device = DeviceDetector.new(request.user_agent).device_type
       Search.new(query: @query, user: @user, device: @device).save
+    end
+    @cards = params[:cards]
+    if @cards.present?
+      @cards = params[:cards].to_i > @recipes.count ? @recipes.count : params[:cards].to_i
+      @recipes = @recipes.take(@cards)
+    else
+      # binding.pry
+      @recipes = @recipes.take(24)
     end
   end
 

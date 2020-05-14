@@ -6,107 +6,102 @@ const filterRecipes = (el, recipes) => {
   });
 }
 
-const renderRecipes = (init, options) => {
-  fetch(init.url, options)
+const arrRecipes = (init, options, data) => {
+  let recipes = [];
+  let userLikes = [];
+  let userBookmarks = [];
+  let render = false;
+  if(init.userSignedIn && data.user) {
+    if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
+    if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
+    switch(init.currentPage) {
+      case null:
+        recipes = data.recipes;
+        render = recipes.length > 0;
+        break;
+      case 'index':
+        recipes = data.recipes;
+        render = recipes.length > 0;
+        break;
+      case `${data.user.auth.slug}/recipes`:
+        if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
+        render = recipes.length > 0;
+        break;
+      case `${data.user.auth.slug}/bookmarks`:
+        recipes = data.recipes.filter(recipe => userBookmarks.includes(recipe.id));
+        render = recipes.length > 0;
+        break;
+      case `${init.currentPage}`:
+        if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+        render = recipes.length > 0;
+        break;
+      default:
+        recipes = [];
+        render = false;
+    }
+  } else {
+    switch(init.currentPage) {
+      case null:
+        recipes = data.recipes;
+        render = recipes.length > 0;
+        break;
+      case 'index':
+        recipes = data.recipes;
+        render = recipes.length > 0;
+        break;
+      case `${init.currentPage}`:
+        if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+        render = recipes.length > 0;
+        break;
+      default:
+        recipes = [];
+        render = false;
+    }
+  }
+  const result = {
+    recipes: recipes,
+    userLikes: userLikes,
+    userBookmarks: userBookmarks,
+    render: render
+  };
+  return result;
+}
+
+const renderRecipes = (init, options, data, callback = () => {}) => {
+  const cardsMax = 24;
+
+  const arrRecipesObj = arrRecipes(init, options, data)
+  let recipes = arrRecipesObj.recipes;
+  let render = arrRecipesObj.render;
+  let userLikes = arrRecipesObj.userLikes;
+  let userBookmarks = arrRecipesObj.userBookmarks;
+
+  let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
+  const root = document.querySelector('#root');
+  let start = parseInt(root.dataset.recipes) - 24 > 0 ? parseInt(root.dataset.recipes) - 24 : 0;
+  let end = recipes.length;
+  if (render) {
+    const initCards = {
+      init: init,
+      data: data,
+      array: recipes,
+      bookmarks: userBookmarks,
+      likes: userLikes,
+      cardsQty: cardsQty,
+      start: start,
+      end: end
+    };
+    cards(initCards);
+  }
+  callback();
+}
+
+const fetchRecipes = (init, options) => {
+  return fetch(init.url, options)
   .then(response => response.json())
   .then(result => {
     const data = result.data;
-    let array = data.recipes;
-    const cardsMax = 24;
-    let recipes = [];
-    let userLikes = [];
-    let userBookmarks = [];
-    let render = false;
-    if(init.userSignedIn && data.user) {
-      if(data.user.likes) userLikes = data.user.likes.map(like => like.recipe_id);
-      if(data.user.bookmarks) userBookmarks = data.user.bookmarks.map(bookmark => bookmark.recipe_id);
-      switch(init.currentPage) {
-        case null:
-          recipes = array;
-          render = recipes.length > 0;
-          break;
-        case 'index':
-          recipes = array;
-          render = recipes.length > 0;
-          break;
-        case `${data.user.auth.slug}/recipes`:
-          if (data.user.recipes) recipes = filterRecipes(data.user.auth.slug, data.recipes);
-          render = recipes.length > 0;
-          break;
-        case `${data.user.auth.slug}/bookmarks`:
-          recipes = array.filter(recipe => userBookmarks.includes(recipe.id));
-          render = recipes.length > 0;
-          break;
-        case `${init.currentPage}`:
-          if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
-          render = recipes.length > 0;
-          break;
-        default:
-          recipes = [];
-          render = false;
-      }
-    } else {
-      switch(init.currentPage) {
-        case null:
-          recipes = array;
-          render = recipes.length > 0;
-          break;
-        case 'index':
-          recipes = array;
-          render = recipes.length > 0;
-          break;
-        case `${init.currentPage}`:
-          if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
-          render = recipes.length > 0;
-          break;
-        default:
-          recipes = [];
-          render = false;
-      }
-    }
-
-    let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
-    if (render) {
-      cards({
-        init: init,
-        data: data,
-        array: recipes,
-        bookmarks: userBookmarks,
-        likes: userLikes,
-        cardsQty: cardsQty,
-        start: 0,
-        end: cardsQty
-      });
-      window.addEventListener('scroll', (event) => {
-        let cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
-        let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
-        const banner = document.querySelector('.banner');
-        let renderCards = true;
-        let trigger = Math.round(window.scrollY + window.innerHeight);
-        if (cardNodeElement) {
-          if (trigger >= cardNodeElementTop && renderCards) {
-            let newCardsQty = cardsQty + cardsMax <= recipes.length ? cardsQty + cardsMax : recipes.length;
-            cards({
-              init: init,
-              data: data,
-              array: recipes,
-              bookmarks: userBookmarks,
-              likes: userLikes,
-              cardsQty: cardsQty,
-              start: cardsQty,
-              end: newCardsQty
-            });
-            cardsQty = newCardsQty;
-            cardNodeElement = document.querySelector(`[data-recipe="${recipes[cardsQty-1].id}"]`);
-            cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
-          }
-          if (cardsQty == recipes.length) {
-            renderCards = false;
-          }
-        }
-      });
-    }
-    document.querySelector('#spinner').remove();
+    return data;
   })
   .catch(ex => {
     console.log('parsing failed', ex);
@@ -136,5 +131,46 @@ export const lazyLoad = (init) => {
     init.url = `/api/v1/recipes`;
   }
 
-  renderRecipes(init, options);
+  if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {
+    init.url = `/api/v1/recipes?bookmarks=true`;
+  }
+  if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
+    init.url = `/api/v1/recipes?recipes=true`;
+  }
+
+  fetchRecipes(init, options).then(data => {
+    if (data.recipes.length > 0) {
+      renderRecipes(init, options, data, () => {
+        document.querySelector('#spinner').remove();
+        const cardsMax = 24;
+        let renderCards = data.recipes.length % cardsMax === 0;
+        let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
+        let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
+        let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
+        window.addEventListener('scroll', () => {
+          let trigger = Math.round(window.scrollY + window.innerHeight);
+          if (cardNodeElement && renderCards) {
+            if (trigger >= cardNodeElementTop) {
+              let newCardsQty = cardsQty + data.recipes.length;
+              init.url = `/api/v1/recipes?cards=${newCardsQty}`;
+              root.dataset.recipes = newCardsQty;
+              renderCards = false;
+              fetchRecipes(init, options).then(data => {
+                if (data.recipes) {
+                  renderRecipes(init, options, data, () => {
+                    cardsQty = newCardsQty;
+                    cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
+                    if (cardNodeElement) cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+                    renderCards = data.recipes.length % cardsMax === 0;
+                  });
+                }
+              });
+            }
+          }
+        });
+      });
+    } else {
+      document.querySelector('#spinner').remove();
+    }
+  });
 }

@@ -70,7 +70,7 @@ if (root) {
     bookmarksCount -= 1;
     root.dataset.bookmarksCount = bookmarksCount;
     bookmarked.innerHTML = bookmark;
-    if(returnPosition().currentPage.match(/\/bookmarks/)) {
+    if(returnPosition().currentPage && returnPosition().currentPage.match(/\/bookmarks/)) {
       card.parentElement.remove();
       if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
     }
