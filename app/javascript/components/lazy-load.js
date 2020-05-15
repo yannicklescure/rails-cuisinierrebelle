@@ -32,6 +32,7 @@ const arrRecipes = (init, options, data) => {
         render = recipes.length > 0;
         break;
       case `${init.currentPage}`:
+        // if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
         if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
         render = recipes.length > 0;
         break;
@@ -129,6 +130,11 @@ export const lazyLoad = (init) => {
 
   if (init.url.match(/.+?query=.+/) && parseInt(root.dataset.recipes) == 0) {
     init.url = `/api/v1/recipes`;
+  }
+
+  // console.log(init);
+  if (init.currentController === 'u') {
+    init.url = `/api/v1/recipes?slug=${init.currentPage}`;
   }
 
   if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {

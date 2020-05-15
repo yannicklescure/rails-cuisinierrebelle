@@ -4,6 +4,12 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
+    @slug = params[:slug]
+    if @slug.present?
+      # binding.pry
+      user = User.find_by(slug: @slug)
+      @recipes = @recipes.filter { |r| r.user_id == user.id }
+    end
     @user_recipes = params[:recipes]
     if @user_recipes.present?
       # binding.pry
