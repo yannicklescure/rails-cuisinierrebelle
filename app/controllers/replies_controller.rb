@@ -32,7 +32,7 @@ class RepliesController < ApplicationController
       @reply.comment.replies.each { |reply| users << reply.user unless users.include?(reply.user) || reply.user == current_user }
       # binding.pry
       users.each do |user|
-        UserMailer.with(user: user, recipe: @recipe, reply: @reply).reply.deliver_now if user.notification
+        UserMailer.with(user: user, recipe: @recipe, reply: @reply).reply.deliver_later if user.notification
       end
       respond_to do |format|
         # format.html { redirect_to recipe_path(@recipe) }
