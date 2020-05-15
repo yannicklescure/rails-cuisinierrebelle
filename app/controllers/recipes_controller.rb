@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
       # binding.pry
       @recipe.user.followers.where(notification: true).each do |user|
         # binding.pry
-        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_now
+        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
       end
       redirect_to recipe_url(@recipe)
     else
