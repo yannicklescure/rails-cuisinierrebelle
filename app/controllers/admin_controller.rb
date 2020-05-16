@@ -50,7 +50,12 @@ class AdminController < ApplicationController
 
     arr= []
     @search_words.each do |search_word|
-      arr << { query: search_word, count: @searches.select { |s| s.query == search_word && s.user != ('1' || '2') }.count }
+      search_word_count = @searches.select { |s| s.query == search_word && s.user != ('1' || '2') }.count
+      arr << {
+        query: search_word,
+        count: search_word_count,
+        percent: ((search_word_count.to_f / @search_words.count) * 100).round(2)
+      }
     end
     @search_words = arr.sort_by {|obj| obj[:count] }.reverse.take(10)
     # binding.pry
