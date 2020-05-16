@@ -32,6 +32,7 @@ import { userBanner } from "../components/user-banner";
 import { adminNavItem } from "../components/admin-nav-item";
 import { adminNav } from "../components/admin-nav";
 import { googleAdsNoPrint } from "../components/google-ads";
+import { googleAdsNoNavbar } from "../components/google-ads";
 import { searchInput } from "../components/search-input";
 
 import { mailchimp } from "../services/mailchimp";
@@ -48,6 +49,7 @@ if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
 previewImageOnFileSelect();
+googleAdsNoNavbar();
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 

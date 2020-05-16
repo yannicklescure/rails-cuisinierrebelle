@@ -8,3 +8,12 @@ export const googleAdsNoPrint = () => {
     console.log('no ads');
   }
 }
+
+// KILL Ads in navbar
+// class google-auto-placed
+export const googleAdsNoNavbar = () => {
+  const navbarElements = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;
+  navbarElements.forEach(navbarElement => {
+    if (navbarElement.className === 'google-auto-placed') navbarElement.remove();
+  });
+}
