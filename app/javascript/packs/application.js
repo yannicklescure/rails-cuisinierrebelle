@@ -48,10 +48,10 @@ if(document.querySelector('#print')) {
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
-document.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', (event) => {
   previewImageOnFileSelect();
   googleAdsNoNavbar();
-}, false);
+});
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
