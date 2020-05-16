@@ -19,7 +19,7 @@ export const googleAdsNoNavbar = () => {
   const config = { attributes: true, childList: true, subtree: true };
 
   // Callback function to execute when mutations are observed
-  const callback = function(mutationsList, observer) {
+  const callback = (mutationsList, observer) => {
       // Use traditional 'for loops' for IE 11
       for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
@@ -38,7 +38,7 @@ export const googleAdsNoNavbar = () => {
   observer.observe(targetNode, config);
 
   // Later, you can stop observing
-  observer.disconnect();
+  // observer.disconnect();
 
   // const navbarElements = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;
   // navbarElements.forEach(navbarElement => {
