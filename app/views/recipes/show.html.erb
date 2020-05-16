@@ -3,11 +3,9 @@
     <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start  mb-3 mb-md-0 d-print-none">
       <div id="recipe-user" class="d-flex <%= 'flex-grow-1 flex-grow-md-0 w-100' if !client.device_type.nil? && !client.device_type.match(/desktop/) %> align-items-center order-0">
         <div class="d-flex flex-grow-1 m-0 align-items-center">
-          <span class="mr-md-1">
-            <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
-            <% t('.recipe_published_by') %>
-            <% end %>
-          </span>
+          <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+          <span class="mr-md-1"><% t('.recipe_published_by') %></span>
+          <% end %>
           <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
             <img src="<%= @recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
             <%= render @recipe.user %>
