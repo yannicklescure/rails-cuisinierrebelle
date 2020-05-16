@@ -24,15 +24,15 @@ export const googleAdsNoNavbar = () => {
       // Use traditional 'for loops' for IE 11
       for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
-              console.log('A child node has been added or removed.');
-              console.log(targetNode.firstElementChild.childNodes);
+              // console.log('A child node has been added or removed.');
+              // console.log(targetNode.firstElementChild.childNodes);
               targetNode.firstElementChild.childNodes.forEach(childNode => {
                 if (childNode.className === 'google-auto-placed') childNode.remove();
               });
               observer.disconnect();
           }
           else if (mutation.type === 'attributes') {
-              console.log('The ' + mutation.attributeName + ' attribute was modified.');
+              // console.log('The ' + mutation.attributeName + ' attribute was modified.');
           }
       }
   };
