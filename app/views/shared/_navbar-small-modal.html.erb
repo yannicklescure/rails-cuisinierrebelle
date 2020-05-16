@@ -13,15 +13,15 @@
           <a href="<%= conversion_path %>" class="d-flex py-2 w-100 modal-menu-link"><%= t(".conversion") %></a>
           <% if user_signed_in? %>
             <%= link_to t(".bookmarks"), user_bookmarks_path(current_user), class: "d-flex py-2 w-100 modal-menu-link" %>
-            <%= link_to t(".new_recipe"), new_recipe_path, class: "d-flex py-2 w-100 modal-menu-link" %>
             <%= link_to t(".recipes"), user_recipes_path(current_user), class: "d-flex py-2 w-100 modal-menu-link" %>
+            <%= link_to t(".new_recipe"), new_recipe_path, class: "d-flex py-2 w-100 modal-menu-link" %>
           <% end %>
           <% if user_signed_in? %>
             <%= link_to t(".following"), user_following_path(current_user), class: "d-flex py-2 w-100 modal-menu-link" %>
             <%= link_to t(".settings"), user_settings_path(current_user), class: "d-flex py-2 w-100 modal-menu-link" %>
           <% end %>
-          <% if user_signed_in? %>
-            <% if current_user.locale.nil? %>
+          <% if !user_signed_in? %>
+            <%# if current_user.locale.nil? %>
               <a class="d-flex py-2 w-100 modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <%= t('.languages') %>
               </a>
@@ -33,7 +33,7 @@
                   <%= link_to raw("Fran&ccedil;ais"), current_page_params.merge(locale: :fr), class: "d-flex py-2 w-100 modal-menu-link" %>
                 </div>
               </div>
-            <% end %>
+            <%# end %>
           <% end %>
           <% if user_signed_in? %>
             <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "d-flex py-2 w-100 modal-menu-link" %>

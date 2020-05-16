@@ -5,7 +5,7 @@ es:
   about:
     edit:
       add_a_public_content: Agregar un contenido público
-      content: Contenido
+      content: Contenido público
       save: Salvar
     index:
       edit: Editar
@@ -111,7 +111,7 @@ es:
       weeks_ago: Hace semanas
       years_ago: Hace años que
     users:
-      are_you_sure: Are you sure
+      are_you_sure: "¿Estas seguro?"
       bookmarks: Favoritos
       comments: Comentarios
       destroy_account_html: <svg class="bi bi-trash" width="1em" height="1em" viewBox="0
@@ -311,10 +311,10 @@ es:
       water: Agua
       white_granulated_sugar: Azúcar blanca granulada
     form:
-      are_you_sure: Are you sure
-      content: Contenido
+      are_you_sure: "¿Estas seguro?"
+      content: Contenido público
       create_page: Guardar
-      delete: Delete
+      delete: Eliminar
       title: Título
     show:
       edit: Editar
@@ -332,9 +332,9 @@ es:
       top_100: Top 100
   products:
     form:
-      are_you_sure: Are you sure
-      create_page: Create page
-      delete: Delete
+      are_you_sure: "¿Estas seguro?"
+      create_page: Guardar
+      delete: Eliminar
       description: Description
       photo: Foto
       title: Title

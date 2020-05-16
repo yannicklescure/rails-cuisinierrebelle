@@ -5,7 +5,7 @@ fr:
   about:
     edit:
       add_a_public_content: Ajouter un contenu public
-      content: Content
+      content: Contenu public
       save: Enregistrer
     index:
       edit: Editer
@@ -405,10 +405,10 @@ fr:
       water: Eau
       white_granulated_sugar: Sucre blanc granulé
     form:
-      are_you_sure: Are you sure
-      content: Content
+      are_you_sure: Êtes-vous sûr ?
+      content: Contenu public
       create_page: Valider
-      delete: Delete
+      delete: Supprimer
       title: Title
     show:
       edit: Edit
@@ -426,9 +426,9 @@ fr:
       top_100: Top 100
   products:
     form:
-      are_you_sure: Are you sure
-      create_page: Create page
-      delete: Delete
+      are_you_sure: Êtes-vous sûr ?
+      create_page: Valider
+      delete: Supprimer
       description: Description
       photo: Photo
       title: Title
@@ -606,14 +606,14 @@ fr:
       whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?
-      bookmarks: Favoris
+      bookmarks: Mes favoris
       conversion: Table de conversion
-      following: Abonnements
+      following: Mes abonnements
       index: Index
       languages: Langues
       log_out: Se déconnecter
       new_recipe: Nouvelle recette
-      recipes: Recettes
+      recipes: Mes recettes
       settings: Paramètres
       sign_in: Connexion
       tools: Matériel de cuisine
