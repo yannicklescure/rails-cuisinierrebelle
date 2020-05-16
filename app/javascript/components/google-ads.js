@@ -9,13 +9,7 @@ export const googleAdsNoPrint = () => {
   }
 }
 
-// KILL Ads in navbar
-// class google-auto-placed
-export const googleAdsNoNavbar = () => {
-  // Source: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-  // Select the node that will be observed for mutations
-  const targetNode = document.getElementById('navbarSupportedContent');
-
+const removeTargetNodeAds = (targetNode) => {
   // Options for the observer (which mutations to observe)
   const config = { attributes: true, childList: true, subtree: true };
 
@@ -45,6 +39,24 @@ export const googleAdsNoNavbar = () => {
 
   // Later, you can stop observing
   // observer.disconnect();
+};
+
+// KILL Ads in navbar
+// class google-auto-placed
+export const googleAdsNoNavbar = () => {
+  // Source: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+  // Select the node that will be observed for mutations
+  const device = document.querySelector('body').dataset.device;
+  // console.log(device);
+
+  let targetNodeIds = [];
+  if (device === 'desktop') targetNodeIds = ['navbarSupportedContent'];
+  else targetNodeIds = ['recipe-user'];
+
+  targetNodeIds.forEach((targetNodeId) => {
+    const targetNode = document.getElementById(targetNodeId);
+    removeTargetNodeAds(targetNode);
+  });
 
   // const targetNodes = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;
   // targetNodes.forEach(targetNode => {
