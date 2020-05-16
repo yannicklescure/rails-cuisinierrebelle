@@ -25,7 +25,7 @@ export const googleAdsNoNavbar = () => {
       for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
               console.log('A child node has been added or removed.');
-              console.log(targetNode..firstElementChild.childNodes);
+              console.log(targetNode.firstElementChild.childNodes);
           }
           else if (mutation.type === 'attributes') {
               console.log('The ' + mutation.attributeName + ' attribute was modified.');
