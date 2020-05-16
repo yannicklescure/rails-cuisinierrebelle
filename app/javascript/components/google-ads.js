@@ -26,6 +26,10 @@ export const googleAdsNoNavbar = () => {
           if (mutation.type === 'childList') {
               console.log('A child node has been added or removed.');
               console.log(targetNode.firstElementChild.childNodes);
+              targetNode.firstElementChild.childNodes.forEach(childNode => {
+                if (childNode.className === 'google-auto-placed') childNode.remove();
+              });
+              observer.disconnect();
           }
           else if (mutation.type === 'attributes') {
               console.log('The ' + mutation.attributeName + ' attribute was modified.');
@@ -42,8 +46,8 @@ export const googleAdsNoNavbar = () => {
   // Later, you can stop observing
   // observer.disconnect();
 
-  // const navbarElements = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;
-  // navbarElements.forEach(navbarElement => {
-  //   if (navbarElement.className === 'google-auto-placed') navbarElement.remove();
+  // const targetNodes = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;
+  // targetNodes.forEach(targetNode => {
+  //   if (targetNode.className === 'google-auto-placed') targetNode.remove();
   // });
 }
