@@ -21,7 +21,7 @@ const removeTargetNodeAds = (targetNode) => {
               // console.log('A child node has been added or removed.');
               // console.log(targetNode.firstElementChild.childNodes);
               targetNode.firstElementChild.childNodes.forEach(childNode => {
-                if (childNode.className === 'google-auto-placed') childNode.remove();
+                if (childNode.className === 'google-auto-placed') childNode.classList.add('d-none'); //childNode.remove();
               });
               observer.disconnect();
           }
