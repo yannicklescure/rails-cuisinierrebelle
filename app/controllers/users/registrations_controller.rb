@@ -48,6 +48,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.slug = nil
       resource.save!
 
+      # binding.pry
+
+      # resource.slug.gsub!(/\W/,'')
+      # resource.save!
+
       # respond_with resource, location: after_update_path_for(resource)
       # respond_with resource, location: user_path(resource)
       # I18n.with_locale(locale, &action)

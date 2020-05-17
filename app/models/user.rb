@@ -52,6 +52,7 @@ class User < ApplicationRecord
 
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
+  after_commit :sanitize_user_slug
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -60,6 +61,14 @@ class User < ApplicationRecord
   multisearchable against: [:name, :first_name, :last_name]
 
   private
+
+  def sanitize_user_slug
+    # binding.pry
+    if self.slug.match?(/\W/)
+      self.slug.gsub!(/\W/,'')
+      self.save
+    end
+  end
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now

@@ -85,6 +85,12 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en|fr|es/ do
     root to: 'pages#home'
 
+    get '/:locale/u/yannick-lescure', to: redirect('/%{locale}/u/yannicklescure')
+    get '/u/yannick-lescure', to: redirect('/u/yannicklescure')
+
+    get '/:locale/u/gabby-maracay', to: redirect('/%{locale}/u/gabbymaracay')
+    get '/u/gabby-maracay', to: redirect('/u/gabbymaracay')
+
     # https://www.cuisinierrebelle.com/r/faire-son-pain-a-la-maison-dbda3253-e38e-491b-b338-313805d27311
     get '/:locale/r/faire-son-pain-a-la-maison-dbda3253-e38e-491b-b338-313805d27311', to: redirect('/%{locale}/r/pain-maison-sans-petrissage-et-sans-faconnage')
     get '/r/faire-son-pain-a-la-maison-dbda3253-e38e-491b-b338-313805d27311', to: redirect('/r/pain-maison-sans-petrissage-et-sans-faconnage')
