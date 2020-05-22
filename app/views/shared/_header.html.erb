@@ -10,7 +10,7 @@
 <meta property="og:description" content="<%= t('.cooking_recipes_and_more') %>" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.cuisinierrebelle.com/" />
+<meta property="og:url" content="<%= request.original_url %>" />
 <meta property="og:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg" />
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="<%= t('.cooking_recipes_and_more') %>">
 <meta name="twitter:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg">
 <!-- Languages for Google SEO -->
-<link rel="canonical" href="/" />
+<link rel="canonical" href="<%= request.original_url %>" />
 <link rel="alternate" hreflang="en" href="/en" />
 <link rel="alternate" hreflang="fr" href="/fr" />
 <link rel="alternate" hreflang="es" href="/es" />
