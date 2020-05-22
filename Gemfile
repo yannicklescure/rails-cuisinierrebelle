@@ -5,7 +5,7 @@ ruby '2.6.6'
 gem 'rails', '6.0.2.2'
 gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem "i18n-js"
-gem 'puma'
+gem "puma", ">= 4.3.5"
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
