@@ -58,12 +58,19 @@ class User < ApplicationRecord
   friendly_id :name, use: :slugged
 
   include PgSearch::Model
+  PgSearch.multisearch_options = {
+    using: {
+      tsearch: { prefix: true }
+    }
+  #   using: [:tsearch, :trigram],
+  #   ignoring: :accents
+  }
   multisearchable against: [:name, :first_name, :last_name]
-  pg_search_scope :search_by_query,
-                  against: [:name, :first_name, :last_name],
-                  using: {
-                    tsearch: { prefix: true }
-                  }
+  # pg_search_scope :search_by_query,
+  #                 against: [:name, :first_name, :last_name],
+  #                 using: {
+  #                   tsearch: { prefix: true }
+  #                 }
   private
 
   def sanitize_user_slug
