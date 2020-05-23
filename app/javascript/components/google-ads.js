@@ -55,7 +55,7 @@ export const googleAdsNoNavbar = () => {
 
   targetNodeIds.forEach((targetNodeId) => {
     const targetNode = document.getElementById(targetNodeId);
-    removeTargetNodeAds(targetNode);
+    if (targetNode) removeTargetNodeAds(targetNode);
   });
 
   // const targetNodes = document.querySelector('#navbarSupportedContent').firstElementChild.childNodes;

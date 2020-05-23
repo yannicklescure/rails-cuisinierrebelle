@@ -23,4 +23,9 @@ class Recipe < ApplicationRecord
 
   include PgSearch::Model
   multisearchable against: [:title, :description, :direction]
+  pg_search_scope :search_by_query,
+                  against: [:title, :description, :direction],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

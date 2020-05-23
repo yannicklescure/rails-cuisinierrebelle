@@ -59,7 +59,11 @@ class User < ApplicationRecord
 
   include PgSearch::Model
   multisearchable against: [:name, :first_name, :last_name]
-
+  pg_search_scope :search_by_query,
+                  against: [:name, :first_name, :last_name],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
   private
 
   def sanitize_user_slug

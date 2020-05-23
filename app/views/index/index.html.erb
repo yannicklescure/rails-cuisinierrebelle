@@ -1,6 +1,7 @@
 <% if @search_results.any? %>
   <% if @pg_search_results.any? %>
-    <% case @pg_search_results[0].searchable_type %>
+    <%# case @pg_search_results[0].searchable_type %>
+    <% case @searchable_type %>
     <% when 'User' %>
       <div class="container my-5">
         <% @search_results.sort_by { |date| date.created_at }.reverse.each do |user| %>
