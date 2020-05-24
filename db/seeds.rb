@@ -1,3 +1,0 @@
-User.create!([
-  {email: "yannick@email.com", encrypted_password: "$2a$11$uohLB0i0nuQ7LBb443nSveNninGR71sermlVgLnOkHGynP6BQ0r4m", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: "2020-05-12 16:11:08", confirmation_token: "_ARKxTy2KufQhb31CNQR", confirmed_at: "2020-05-09 15:07:38", confirmation_sent_at: "2020-05-09 15:07:34", unconfirmed_email: nil, slug: "yannick-lescure", first_name: "Yannick", last_name: "lescure", name: "Yannick lescure", admin: false, authentication_token: "TisTYMg2q3CcKLtiV9jZ", provider: nil, uid: nil, image: "d828f41e-56b8-4f1e-9285-328d87bdfd9f.jpg", checked: nil, mailchimp: true, notification: true, locale: "fr", moderator: false}
-])
