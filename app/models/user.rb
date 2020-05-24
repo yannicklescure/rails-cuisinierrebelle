@@ -58,11 +58,10 @@ class User < ApplicationRecord
   friendly_id :name, use: :slugged
 
   include PgSearch::Model
-  PgSearch.multisearch_options = {
+  # PgSearch.multisearch_options = {
     # using: [:tsearch, :trigram],
-    using: [:trigram],
     # ignoring: :accents
-  }
+  # }
   multisearchable against: [:name, :first_name, :last_name]
   private
 
