@@ -6,13 +6,11 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @recipes = policy_scope(Recipe).order('created_at DESC')
     @slug = params[:slug]
     if @slug.present?
-      # binding.pry
       user = User.find_by(slug: @slug)
       @recipes = @recipes.filter { |r| r.user_id == user.id }
     end
     @user_recipes = params[:recipes]
     if @user_recipes.present?
-      # binding.pry
       @recipes = @recipes.filter { |r| r.user_id == current_user.id }
     end
     @bookmarks = params[:bookmarks]
@@ -21,28 +19,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
     end
     @query = params[:query]
     if @query.present?
-      # @pg_search_results = User.search_by_query(@query)
-      # if @pg_search_results.any?
-      #   @searchable_type = 'User'
-      # else
-      #   @pg_search_results = Recipe.search_by_query(@query)
-      #   @searchable_type = 'Recipe'
-      # end
-      # # binding.pry
-      # @search_results = []
-      # if @pg_search_results.any?
-      #   case @searchable_type
-      #   when 'User'
-      #     @search_results = @pg_search_results.map { |r| User.find(r.id) }.sort_by {|k,v| k.id }.reverse
-      #   when 'Recipe'
-      #     @search_results = @pg_search_results.map { |r| Recipe.find(r.id) }.sort_by {|k,v| k.id }.reverse
-      #   else
-      #     @search_results = []
-      #   end
-      # else
-      #   @search_results = Recipe.tagged_with(@query).map { |r| r }.sort_by {|k,v| k.id}.reverse
-      #   # binding.pry
-      # end
       @pg_search_results = PgSearch.multisearch(@query)
       @search_results = []
       if @pg_search_results.any?
@@ -56,7 +32,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
         end
       else
         @search_results = Recipe.tagged_with(@query).map { |r| r }.sort_by {|k,v| k.id}.reverse
-        # binding.pry
       end
 
       @recipes = []
@@ -65,7 +40,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
       if @recipes.count < max
         Recipe.all.select { |r| r unless @recipes.include? r }.shuffle.take(max - @recipes.count).map { |e| @recipes << e }
       end
-      # binding.pry
 
       @user = current_user.nil? ? nil : current_user.id
       @device = DeviceDetector.new(request.user_agent).device_type
@@ -76,7 +50,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
       @cards = params[:cards].to_i > @recipes.count ? @recipes.count : params[:cards].to_i
       @recipes = @recipes.take(@cards)
     else
-      # binding.pry
       @recipes = @recipes.take(24)
     end
   end
