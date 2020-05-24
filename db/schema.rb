@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_001208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_trgm"
 
   create_table "abouts", force: :cascade do |t|
     t.text "content"
