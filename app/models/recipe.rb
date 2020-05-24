@@ -23,8 +23,16 @@ class Recipe < ApplicationRecord
 
   include PgSearch::Model
   PgSearch.multisearch_options = {
-    using: [:tsearch, :trigram],
+    # using: [:tsearch, :trigram],
     # ignoring: :accents
+    using: {
+      tsearch: {
+        only: [:direction]
+      },
+      trigram: {
+        only: [:title, :description]
+      }
+    }
   }
   multisearchable against: [:title, :description, :direction]
   # pg_search_scope :search_by_query,
