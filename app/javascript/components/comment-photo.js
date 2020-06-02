@@ -3,7 +3,7 @@ export const CommentPhoto = () => {
   CommentPhotoButtons.forEach(CommentPhotoButton => {
     // console.log(CommentPhotoButton.dataset.comment);
     CommentPhotoButton.addEventListener('click', event => {
-      const commentId = event.currentTarget.dataset.comment;
+      let commentId = event.currentTarget.dataset.comment;
       if (!commentId) commentId = '';
       document.querySelector(`#comment-photo-input-${commentId}`).click();
     });
