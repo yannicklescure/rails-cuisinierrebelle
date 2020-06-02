@@ -1,5 +1,43 @@
+selectInput = (commentId) => {
+  if (!commentId) commentId = '';
+  const input = document.getElementById(`comment-photo-input-${commentId}`);
+  console.log(input);
+  // we add a listener to know when a new picture is uploaded
+  input.addEventListener('change', () => {
+    // we call the displayPreview function (who retrieve the image url and display it)
+    displayPreview(input, commentId);
+  })
+}
+
+displayPreview = (input, commentId) => {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      document.getElementById(`comment-photo-preview-${commentId}`).src = event.currentTarget.result;
+    }
+    reader.readAsDataURL(input.files[0])
+    const photoActive = document.getElementById(`comment-photo-active-${commentId}`);
+    if(photoActive) photoActive.classList.add('d-none');
+    document.getElementById(`comment-photo-preview-${commentId}`).classList.remove('d-none');
+  }
+}
+
+reviewCommentPhotoOnFileSelect = () => {
+  selectInput();
+  const comments = document.querySelectorAll('.comment');
+  // console.log(comments);
+  comments.forEach(comment => {
+    // we select the photo input
+    const commentId = comment.dataset.comment
+    if (commentId) {
+      selectInput(comment.dataset.comment);
+    }
+  });
+}
+
 btnClick = () => {
   const buttons = document.querySelectorAll('input[type="submit"]');
+  // console.log('btnClick');
   buttons.forEach(button => {
     button.addEventListener('click', (event) => {
       // console.log(event.currentTarget);
@@ -8,40 +46,89 @@ btnClick = () => {
       form.addEventListener('submit', (event) => {
         // event.preventDefault();
         if (el.parentElement) {
-          console.log('spin');
-          console.log(el.parentElement.parentElement);
+          // console.log('spin');
+          // console.log(el.parentElement.parentElement);
           const commentID = el.parentElement.dataset.comment;
-          console.log(commentID);
+          // console.log(commentID);
           const replyID = el.parentElement.dataset.reply;
-          console.log(replyID);
+          // console.log(replyID);
+          let newEl = document.createElement('button');
           if (commentID) {
-            const newEl = document.createElement('button');
+            const commentSpinners = document.querySelectorAll(`.spinner-comment-${commentID}`);
+            if (commentSpinners) {
+              commentSpinners.forEach(commentSpinner => {
+                commentSpinner.parentNode.removeChild(commentSpinner);
+              });
+            }
             newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-            el.replaceWith(newEl);
-          }
-          if (replyID) {
-            const newEl = document.createElement('button');
+          } else if (replyID) {
+            const replySpinners = document.querySelectorAll(`.spinner-reply-${replyID}`);
+            if (replySpinners) {
+              replySpinners.forEach(replySpinner => {
+                replySpinner.parentNode.removeChild(replySpinner);
+              });
+            }
             newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-            el.replaceWith(newEl);
+          } else {
+            newEl.setAttribute('class', `btn btn-secondary`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           }
+          // el.replaceWith(newEl);
+          el.classList.add('d-none');
+          el.insertAdjacentElement('afterEnd', newEl);
         }
       });
     });
   });
 }
 
-function refreshForm(innerHTML) {
+refreshForm = (innerHTML) => {
   const newCommentForm = document.getElementById('new_comment_');
   newCommentForm.innerHTML = innerHTML;
 }
 
-function addComment(innerHTML) {
+addComment = (innerHTML) => {
   const comments = document.getElementById('comments-list');
   comments.insertAdjacentHTML('afterbegin', innerHTML);
+}
+
+commentPhoto = () => {
+  const commentPhotoButtons = document.querySelectorAll('.comment-photo-btn');
+  commentPhotoButtons.forEach(commentPhotoButton => {
+    // console.log(commentPhotoButton.dataset.comment);
+    commentPhotoButton.addEventListener('click', event => {
+      const CommentId = event.currentTarget.dataset.comment || '';
+      document.querySelector(`#comment-photo-input-${CommentId}`).click();
+    });
+  });
+}
+
+editComment = () => {
+  const comments = document.querySelectorAll('.comment');
+  // console.log(comments);
+  comments.forEach(comment => {
+    const EditCommentIdButton = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
+    if (EditCommentIdButton) {
+      EditCommentIdButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
+        document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
+        document.querySelector(`#edit-comment-${comment.dataset.comment}-btn`).classList.remove('d-none');
+        const spinners = document.querySelectorAll(`.spinner-comment-${comment.dataset.comment}`);
+        if (spinners) {
+          console.log(spinners);
+          spinners.forEach(spinner => {
+            spinner.parentNode.removeChild(spinner);
+          });
+        }
+      });
+    }
+  });
 }
 
 <% if @comment.errors.any? %>
@@ -56,26 +143,29 @@ function addComment(innerHTML) {
       currentForm.classList.toggle('d-none');
     });
   });
-  comments = document.querySelectorAll('.comment');
-  comments.forEach(comment => {
-    editCommentId = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
-    if (editCommentId) {
-      editCommentId.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
-        document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
-        const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
-        if (spinner) {
-          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
-          spinner.remove();
-        }
-      });
-    }
-  });
+  // comments = document.querySelectorAll('.comment');
+  // comments.forEach(comment => {
+  //   editCommentId = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
+  //   if (editCommentId) {
+  //     editCommentId.addEventListener('click', (event) => {
+  //       event.preventDefault();
+  //       document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
+  //       document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
+  //       const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
+  //       if (spinner) {
+  //         spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
+  //         spinner.remove();
+  //       }
+  //     });
+  //   }
+  // });
   commentsCount = document.querySelector('#comments-count');
   <% count = 0 %>
   <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>
   <% count += @recipe.comments.count %>
   commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
   btnClick();
+  commentPhoto();
+  editComment();
+  reviewCommentPhotoOnFileSelect();
 <% end %>

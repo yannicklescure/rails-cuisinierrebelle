@@ -15,7 +15,7 @@ fr:
   admin:
     analytics:
       count: Total
-      percent: 'Total %'
+      percent: Total %
       top: Top %{count}
       word: Mots
     comments:
@@ -203,6 +203,8 @@ fr:
     form:
       add_a_comment: Ajouter un commentaire
       add_a_public_comment: Ajouter un commentaire public...
+      photo: Photo
+      save_edit: Sauvegarder
     replies:
       days_ago:
         one: Il y a 1 jour

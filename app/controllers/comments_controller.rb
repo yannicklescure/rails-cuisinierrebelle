@@ -83,6 +83,8 @@ class CommentsController < ApplicationController
     end
   end
 
+  private
+
   def spam
     @comment = Comment.find(params[:id])
     authorize @comment
@@ -92,8 +94,6 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-
-  private
 
   def set_admin
     @admin = current_user.admin
@@ -110,6 +110,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :photo)
   end
 end

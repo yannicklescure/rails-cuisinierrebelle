@@ -1,5 +1,6 @@
 export const btnClick = () => {
   const buttons = document.querySelectorAll('input[type="submit"]');
+  // console.log('btnClick');
   buttons.forEach(button => {
     button.addEventListener('click', (event) => {
       // console.log(event.currentTarget);
@@ -14,25 +15,35 @@ export const btnClick = () => {
           // console.log(commentID);
           const replyID = el.parentElement.dataset.reply;
           // console.log(replyID);
+          let newEl = document.createElement('button');
           if (commentID) {
-            const newEl = document.createElement('button');
+            const commentSpinners = document.querySelectorAll(`.spinner-comment-${commentID}`);
+            if (commentSpinners) {
+              commentSpinners.forEach(commentSpinner => {
+                commentSpinner.parentNode.removeChild(commentSpinner);
+              });
+            }
             newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-            el.replaceWith(newEl);
           } else if (replyID) {
-            const newEl = document.createElement('button');
+            const replySpinners = document.querySelectorAll(`.spinner-reply-${replyID}`);
+            if (replySpinners) {
+              replySpinners.forEach(replySpinner => {
+                replySpinner.parentNode.removeChild(replySpinner);
+              });
+            }
             newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-            el.replaceWith(newEl);
           } else {
-            const newEl = document.createElement('button');
             newEl.setAttribute('class', `btn btn-secondary`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-            el.replaceWith(newEl);
           }
+          // el.replaceWith(newEl);
+          el.classList.add('d-none');
+          el.insertAdjacentElement('afterEnd', newEl);
         }
       });
     });

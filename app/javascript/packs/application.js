@@ -34,6 +34,8 @@ import { adminNav } from "../components/admin-nav";
 import { googleAdsNoPrint } from "../components/google-ads";
 import { googleAdsNoNavbar } from "../components/google-ads";
 import { searchInput } from "../components/search-input";
+import { CommentPhoto } from "../components/comment-photo";
+import { previewCommentPhotoOnFileSelect } from "../components/comment-photo-preview";
 
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
@@ -56,6 +58,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
 const location = currentLocation();
+// console.log(location);
 let currentLang = location.currentLang;
 let currentController = location.currentController;
 let currentPage = location.currentPage;
@@ -158,6 +161,8 @@ if (currentController && currentController === 'r') {
     repliesReply();
     editComment();
     editReply();
+    CommentPhoto();
+    previewCommentPhotoOnFileSelect();
   }
 
 }

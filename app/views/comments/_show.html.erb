@@ -55,6 +55,21 @@
     <%# comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
     <% comment.content = comment.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" } %>
     <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
+    <div class="my-1 p-3">
+      <% if !comment.photo.url.nil? %>
+        <button type="button" class="border-0 m-0 p-0" data-toggle="modal" data-target=".comment-photo-active-<%= comment.id %>">
+          <div class="comment-photo-preview rounded" style="background-image: url('<%= comment.photo.url(:preview) %>')"></div>
+          <%#= image_tag comment.photo.url(:thumb), id: "comment-photo-active-#{comment.id}", height: 64, class: 'img-fluid rounded' %>
+        </button>
+        <div class="modal fade comment-photo-active-<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+              <%= image_tag comment.photo.url(:full), id: "comment-photo-active-#{comment.id}", width: 1920, class: 'img-fluid rounded' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
   <% if comment.replies.where(spam: false).any? %>
   <div id="comment-<%= comment.id %>-replies">

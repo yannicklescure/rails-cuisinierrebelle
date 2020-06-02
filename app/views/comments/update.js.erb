@@ -1,9 +1,20 @@
-function refreshForm(innerHTML) {
-  const newCommentForm = document.getElementById('new_comment');
+CommentPhoto = () => {
+  const CommentPhotoButtons = document.querySelectorAll('.comment-photo-btn');
+  CommentPhotoButtons.forEach(CommentPhotoButton => {
+    // console.log(CommentPhotoButton.dataset.comment);
+    CommentPhotoButton.addEventListener('click', event => {
+      const CommentId = event.currentTarget.dataset.comment || '';
+      document.querySelector(`#comment-photo-input-${CommentId}`).click();
+    });
+  });
+}
+
+refreshForm = (innerHTML) => {
+  const newCommentForm = document.getElementById('new_comment_<%= @comment.id %>');
   newCommentForm.innerHTML = innerHTML;
 }
 
-function addComment(commentHTML) {
+addComment = (commentHTML) => {
   const comments = document.getElementById('comments-list');
   comments.insertAdjacentHTML('afterbegin', commentHTML);
 }
@@ -16,24 +27,45 @@ function addComment(commentHTML) {
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
   <% extensions = {autolink: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
-  comment.innerHTML = `<div class="my-1 bg-light rounded p-3"><%= markdown.render(@comment.content).html_safe %></div>`;
+  commentContent = `<div class="my-1 bg-light rounded p-3"><%= markdown.render(@comment.content).html_safe %></div>`;
+  commentContent += `<div class="my-1 p-3">
+      <% if !@comment.photo.url.nil? %>
+        <button type="button" class="border-0 m-0 p-0" data-toggle="modal" data-target=".comment-photo-active-<%= @comment.id %>">
+          <div class="comment-photo-preview rounded" style="background-image: url('<%= @comment.photo.url(:preview) %>')"></div>
+          <%#= image_tag @comment.photo.url(:thumb), id: "comment-photo-active-#{@comment.id}", crop: :fill, width: 64, class: 'img-fluid rounded' %>
+        </button>
+        <div class="modal fade comment-photo-active-<%= @comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+              <%= image_tag @comment.photo.url(:full), id: "comment-photo-active-#{@comment.id}", crop: :fill, width: 1920, class: 'img-fluid rounded' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>`;
+  comment.innerHTML = commentContent;
   comment.classList.remove('d-none');
-  comments = document.querySelectorAll('.comment');
-  comments.forEach(comment => {
-    editCommentId = document.querySelector(`#edit-comment-${comment.dataset.comment}`);
-    if (editCommentId) {
-      editCommentId.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector(`#comment-${comment.dataset.comment}-content`).classList.add('d-none');
-        document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
-        const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
-        if (spinner) {
-          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
-          spinner.remove();
-        }
-      });
-    }
-  });
+  // editCommentId = document.querySelector(`#edit-comment-<%= @comment.id %>-btn`);
+  // console.log(editCommentId);
+  // if (editCommentId) {
+  //   editCommentId.addEventListener('click', (event) => {
+  //     event.preventDefault();
+  //     document.querySelector(`#comment-<%= @comment.id %>-content`).classList.add('d-none');
+  //     document.querySelector(`#edit-comment-<%= @comment.id %>-form`).classList.remove('d-none');
+      spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
+      // console.log(spinner);
+      spinner.parentNode.removeChild(spinner);
+      // if (spinners) {
+      //   // spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
+      //   // spinner.remove();
+      //   spinners.forEach(spinner => {
+      //     spinner.parentNode.removeChild(spinner);
+      //     console.log(`spinner found`);
+      //     console.log(spinner);
+      //   });
+      // }
+  //   });
+  // }
   commentsCount = document.querySelector('#comments-count');
   <% count = 0 %>
   <% count = @recipe.comments.map { |comment| comment.replies.count }.sum %>

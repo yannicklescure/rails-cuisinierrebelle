@@ -15,7 +15,7 @@ en:
   admin:
     analytics:
       count: Count
-      percent: 'Total %'
+      percent: Total %
       top: Top %{count}
       word: Word
     comments:
@@ -202,6 +202,8 @@ en:
     form:
       add_a_comment: Comment
       add_a_public_comment: Add a public comment...
+      photo: Photo
+      save_edit: Save edit
     replies:
       days_ago:
         one: 1 day ago
