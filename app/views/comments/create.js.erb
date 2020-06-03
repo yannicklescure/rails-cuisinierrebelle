@@ -166,7 +166,7 @@ editComment = () => {
   <% count += @recipe.comments.count %>
   commentsCount.innerHTML = `<%= t('.comments', count: count) %>`;
   btnClick();
-  commentPhoto();
   editComment();
   reviewCommentPhotoOnFileSelect();
 <% end %>
+commentPhoto();
