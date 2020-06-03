@@ -2,11 +2,11 @@
 <%= simple_form_for([recipe, comment], remote: true, html: ({id: "new_comment_#{comment.id}", data: { comment: comment.id }})) do |f| %>
   <%= f.input :content, label:false, placeholder: t('.add_a_public_comment') %>
   <% if comment.id.nil? %>
-    <%= f.button :submit, t('.add_a_comment'), class: 'btn btn-secondary' %>
+    <%= f.button :submit, t('.add_a_comment'), class: 'btn btn-light' %>
   <% else %>
-    <%= f.button :submit, t('.save_edit'), id: "edit-comment-#{comment.id}-btn", class: 'btn btn-secondary' %>
+    <%= f.button :submit, t('.save_edit'), id: "edit-comment-#{comment.id}-btn", class: 'btn btn-light' %>
   <% end %>
-  <div class="btn btn-secondary comment-photo-btn" data-comment="<%= comment.id %>" style="padding: 6px;"><i class="material-icons d-flex">insert_photo</i></div>
+  <div class="btn btn-light comment-photo-btn" data-comment="<%= comment.id %>" style="padding: 6px;"><i class="material-icons d-flex">insert_photo</i></div>
   <div class="d-flex flex-column">
     <% if !comment.photo.url.nil? %>
       <%= image_tag comment.photo.url(:preview), id: "comment-photo-active-#{comment.id}", crop: :fill, width: 300, class: 'img-fluid rounded mt-3' %>

@@ -10,7 +10,7 @@
       <%= f.input :photo, input_html: { id: 'photo-input'}, label: false %>
     </div>
     <div class="my-3 d-flex justify-content-between align-items-center">
-      <%= f.button :submit, t('.create_page'), class: "btn btn-secondary" %>
+      <%= f.button :submit, t('.create_page'), class: "btn btn-light" %>
       <%= link_to t('.delete'), product_path(@product), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'text-body' unless @product.id.nil? %>
     </div>
   <% end %>

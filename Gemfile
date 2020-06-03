@@ -68,3 +68,4 @@ gem 'bootstrap-email'
 gem "actionview", ">= 6.0.2.2"
 # gem 'material_icons'
 gem 'kaminari'
+gem 'fastimage'

@@ -16,14 +16,14 @@ btnClick = () => {
           console.log(replyID);
           if (commentID) {
             const newEl = document.createElement('button');
-            newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
             el.replaceWith(newEl);
           }
           if (replyID) {
             const newEl = document.createElement('button');
-            newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-reply-${replyID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
             el.replaceWith(newEl);

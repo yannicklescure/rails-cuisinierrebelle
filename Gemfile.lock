@@ -1013,6 +1013,7 @@ GEM
     execjs (2.7.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
+    fastimage (2.1.7)
     ffi (1.12.2)
     fog-aws (3.6.5)
       fog-core (~> 2.1)
@@ -1288,6 +1289,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   dotenv-rails
+  fastimage
   fog-aws
   font-awesome-sass (~> 5.12.0)
   friendly_id (~> 5.2.4)

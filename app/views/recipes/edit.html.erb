@@ -18,7 +18,7 @@
     <%#= f.input :ingredients %>
     <%= f.input :direction, label: t('.direction'), hint: t('.markdown_syntax_friendly_area'), input_html: { rows: 10 } %>
     <div class="my-3 d-flex justify-content-between align-items-center">
-      <%= f.submit class: "btn btn-secondary" %>
+      <%= f.submit class: "btn btn-light" %>
       <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'text-body' %>
     </div>
   <% end %>

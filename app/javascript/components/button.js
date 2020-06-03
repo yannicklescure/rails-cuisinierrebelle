@@ -23,7 +23,7 @@ export const btnClick = () => {
                 commentSpinner.parentNode.removeChild(commentSpinner);
               });
             }
-            newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           } else if (replyID) {
@@ -33,11 +33,11 @@ export const btnClick = () => {
                 replySpinner.parentNode.removeChild(replySpinner);
               });
             }
-            newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-reply-${replyID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           } else {
-            newEl.setAttribute('class', `btn btn-secondary`);
+            newEl.setAttribute('class', `btn btn-light`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           }

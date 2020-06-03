@@ -28,7 +28,7 @@ function addComment(replyHTML) {
         document.querySelector(`#edit-reply-${reply.dataset.reply}-form`).classList.remove('d-none');
         const spinner = document.querySelector(`.spinner-reply-<%= @reply.comment.id %>`);
         if (spinner) {
-          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Reply" class="btn btn btn-secondary" data-disable-with="Reply" />`);
+          spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Reply" class="btn btn btn-light" data-disable-with="Reply" />`);
           spinner.remove();
         }
       });

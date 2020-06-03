@@ -60,7 +60,7 @@ btnClick = () => {
                 commentSpinner.parentNode.removeChild(commentSpinner);
               });
             }
-            newEl.setAttribute('class', `btn btn-secondary spinner-comment-${commentID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           } else if (replyID) {
@@ -70,11 +70,11 @@ btnClick = () => {
                 replySpinner.parentNode.removeChild(replySpinner);
               });
             }
-            newEl.setAttribute('class', `btn btn-secondary spinner-reply-${replyID}`);
+            newEl.setAttribute('class', `btn btn-light spinner-reply-${replyID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           } else {
-            newEl.setAttribute('class', `btn btn-secondary`);
+            newEl.setAttribute('class', `btn btn-light`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           }
@@ -154,7 +154,7 @@ editComment = () => {
   //       document.querySelector(`#edit-comment-${comment.dataset.comment}-form`).classList.remove('d-none');
   //       const spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
   //       if (spinner) {
-  //         spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-secondary" data-disable-with="Comment" />`);
+  //         spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-light" data-disable-with="Comment" />`);
   //         spinner.remove();
   //       }
   //     });
