@@ -85,7 +85,7 @@ And add this to `application.html.erb`
   <!-- [...] -->
 
   <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
-  <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
+  <%= javascript_packs_with_chunks_tag "application" %>    <!-- from app/javascript/packs/application.js -->
 </body>
 ```
 ## Adding new `.scss` files
