@@ -1,7 +1,7 @@
 selectInput = (replyId) => {
   if (!replyId) replyId = '';
   const input = document.getElementById(`reply-photo-input-${replyId}`);
-  console.log(input);
+  // console.log(input);
   // we add a listener to know when a new picture is uploaded
   input.addEventListener('change', () => {
     // we call the displayPreview function (who retrieve the image url and display it)
@@ -25,7 +25,7 @@ displayPreview = (input, replyId) => {
 previewReplyPhotoOnFileSelect = () => {
   selectInput();
   const replies = document.querySelectorAll('.reply');
-  console.log(replies);
+  // console.log(replies);
   replies.forEach(reply => {
     // we select the photo input
     const replyId = reply.dataset.reply
@@ -123,7 +123,7 @@ editReply = () => {
         document.querySelector(`#edit-reply-${reply.dataset.reply}-btn`).classList.remove('d-none');
         const spinners = document.querySelectorAll(`.spinner-reply-${reply.dataset.reply}`);
         if (spinners) {
-          console.log(spinners);
+          // console.log(spinners);
           spinners.forEach(spinner => {
             spinner.parentNode.removeChild(spinner);
           });
@@ -148,7 +148,7 @@ editReply = () => {
       <span id="replies-list-arrow-<%= @comment.id %>"><i class="material-icons md-16">keyboard_arrow_up</i></span>&ensp;<%= t('.replies', count: @comment.replies.count) %>
     </div>`;
     repliesList.insertAdjacentHTML('beforebegin', repliesListBtn);
-    let viewReplies = false;
+    viewReplies = false;
     // replies = document.querySelectorAll('.replies');
     // replies.forEach((reply) => {
     //   reply.addEventListener('click', event => {

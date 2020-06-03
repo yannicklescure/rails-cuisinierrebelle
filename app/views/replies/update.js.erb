@@ -50,12 +50,13 @@ function addComment(replyHTML) {
   //       event.preventDefault();
   //       document.querySelector(`#reply-${reply.dataset.reply}-content`).classList.add('d-none');
   //       document.querySelector(`#edit-reply-${reply.dataset.reply}-form`).classList.remove('d-none');
-        spinner = document.querySelector(`.spinner-reply-<%= @reply.comment.id %>`);
-        spinner.parentNode.removeChild(spinner);
-        // if (spinner) {
+        // spinner = document.querySelector(`.spinner-reply-<%= @reply.comment.id %>`);
+        spinner = document.querySelector(`.spinner-reply-<%= @reply.id %>`);
+        if (spinner) {
+          spinner.parentNode.removeChild(spinner);
         //   spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Reply" class="btn btn btn-light" data-disable-with="Reply" />`);
         //   spinner.remove();
-        // }
+        }
   //     });
   //   }
   // });

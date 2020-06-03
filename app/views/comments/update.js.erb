@@ -51,16 +51,11 @@ addComment = (commentHTML) => {
   //     document.querySelector(`#edit-comment-<%= @comment.id %>-form`).classList.remove('d-none');
       spinner = document.querySelector(`.spinner-comment-<%= @comment.id %>`);
       // console.log(spinner);
-      spinner.parentNode.removeChild(spinner);
-      // if (spinners) {
-      //   // spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-light" data-disable-with="Comment" />`);
-      //   // spinner.remove();
-      //   spinners.forEach(spinner => {
-      //     spinner.parentNode.removeChild(spinner);
-      //     console.log(`spinner found`);
-      //     console.log(spinner);
-      //   });
-      // }
+      if (spinner) {
+        spinner.parentNode.removeChild(spinner);
+        // spinner.parentElement.insertAdjacentHTML('beforeEnd', `<input type="submit" name="commit" value="Comment" class="btn btn btn-light" data-disable-with="Comment" />`);
+        // spinner.remove();
+      }
   //   });
   // }
   commentsCount = document.querySelector('#comments-count');

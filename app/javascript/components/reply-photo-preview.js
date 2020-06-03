@@ -2,11 +2,13 @@ const selectInput = (replyId) => {
   if (!replyId) replyId = '';
   const input = document.getElementById(`reply-photo-input-${replyId}`);
   // we add a listener to know when a new picture is uploaded
-  input.addEventListener('change', () => {
-    // console.log(input);
-    // we call the displayPreview function (who retrieve the image url and display it)
-    displayPreview(input, replyId);
-  })
+  if (input) {
+    input.addEventListener('change', () => {
+      // console.log(input);
+      // we call the displayPreview function (who retrieve the image url and display it)
+      displayPreview(input, replyId);
+    });
+  }
 }
 
 const displayPreview = (input, replyId) => {
