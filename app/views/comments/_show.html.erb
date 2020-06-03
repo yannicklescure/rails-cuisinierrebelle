@@ -55,29 +55,29 @@
     <%# comment.content = comment.content.gsub(/http.*/) { |e| "[#{e.truncate(30)}](#{e})" unless e.match(/\[.*\)$/) } %>
     <% comment.content = comment.content.gsub(/http.+/) { |e| e.match?(/http.+\)/) ? e : "[#{e.truncate(30)}](#{e})" } %>
     <div class="my-1 bg-light rounded p-3"><%= markdown.render(comment.content).html_safe %></div>
+    <% if !comment.photo.url.nil? %>
     <div class="my-1 p-3">
-      <% if !comment.photo.url.nil? %>
-        <button type="button" class="border-0 m-0 p-0" data-toggle="modal" data-target=".comment-photo-active-<%= comment.id %>">
-          <div class="comment-photo-preview rounded" style="background-image: url('<%= comment.photo.url(:preview) %>')"></div>
-          <%#= image_tag comment.photo.url(:thumb), id: "comment-photo-active-#{comment.id}", height: 64, class: 'img-fluid rounded' %>
-        </button>
-        <div class="modal fade comment-photo-active-<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content border-0">
-              <div class="d-flex justify-content-end align-items-start position-relative">
-                <%= image_tag comment.photo.url(:full), id: "comment-photo-active-#{comment.id}", class: 'img-fluid rounded' %>
-                <!-- https://github.com/sdsykes/fastimage -->
-                <%# image = image_url comment.photo.url(:full) %>
-                <%# FastImage.size(image) %>
-                <button type="button" class="close p-3 position-absolute btn" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+      <button type="button" class="border-0 m-0 p-0" data-toggle="modal" data-target=".comment-photo-active-<%= comment.id %>">
+        <div class="comment-photo-preview rounded" style="background-image: url('<%= comment.photo.url(:preview) %>')"></div>
+        <%#= image_tag comment.photo.url(:thumb), id: "comment-photo-active-#{comment.id}", height: 64, class: 'img-fluid rounded' %>
+      </button>
+      <div class="modal fade comment-photo-active-<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content border-0">
+            <div class="d-flex justify-content-end align-items-start position-relative">
+              <%= image_tag comment.photo.url(:full), id: "comment-photo-active-#{comment.id}", class: 'img-fluid rounded' %>
+              <!-- https://github.com/sdsykes/fastimage -->
+              <%# image = image_url comment.photo.url(:full) %>
+              <%# FastImage.size(image) %>
+              <button type="button" class="close p-3 position-absolute btn" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
   <% if comment.replies.where(spam: false).any? %>
   <div id="comment-<%= comment.id %>-replies">

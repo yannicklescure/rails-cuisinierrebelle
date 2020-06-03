@@ -486,6 +486,7 @@ en:
     form:
       add_a_public_reply: Add a public reply
       reply: Reply
+      save_edit: Save edit
     show:
       are_you_sure: Are you sure?
       days_ago:

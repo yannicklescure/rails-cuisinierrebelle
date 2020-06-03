@@ -16,17 +16,7 @@ export const btnClick = () => {
           const replyID = el.parentElement.dataset.reply;
           // console.log(replyID);
           let newEl = document.createElement('button');
-          if (commentID) {
-            const commentSpinners = document.querySelectorAll(`.spinner-comment-${commentID}`);
-            if (commentSpinners) {
-              commentSpinners.forEach(commentSpinner => {
-                commentSpinner.parentNode.removeChild(commentSpinner);
-              });
-            }
-            newEl.setAttribute('class', `btn btn-light spinner-comment-${commentID}`);
-            newEl.disabled = true;
-            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
-          } else if (replyID) {
+          if (replyID) {
             const replySpinners = document.querySelectorAll(`.spinner-reply-${replyID}`);
             if (replySpinners) {
               replySpinners.forEach(replySpinner => {
@@ -34,6 +24,16 @@ export const btnClick = () => {
               });
             }
             newEl.setAttribute('class', `btn btn-light spinner-reply-${replyID}`);
+            newEl.disabled = true;
+            newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
+          } else if (commentID) {
+            const commentSpinners = document.querySelectorAll(`.spinner-comment-${commentID}`);
+            if (commentSpinners) {
+              commentSpinners.forEach(commentSpinner => {
+                commentSpinner.parentNode.removeChild(commentSpinner);
+              });
+            }
+            newEl.setAttribute('class', `btn btn-light spinner-comment-${commentID}`);
             newEl.disabled = true;
             newEl.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>`;
           } else {

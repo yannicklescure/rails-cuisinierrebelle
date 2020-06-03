@@ -11,7 +11,7 @@ export const editComment = () => {
         document.querySelector(`#edit-comment-${comment.dataset.comment}-btn`).classList.remove('d-none');
         const spinners = document.querySelectorAll(`.spinner-comment-${comment.dataset.comment}`);
         if (spinners) {
-          console.log(spinners);
+          // console.log(spinners);
           spinners.forEach(spinner => {
             spinner.parentNode.removeChild(spinner);
           });

@@ -492,6 +492,7 @@ fr:
     form:
       add_a_public_reply: Ajouter une réponse
       reply: Répondre
+      save_edit: Sauvegarder
     show:
       are_you_sure: Êtes-vous sûr ?
       days_ago:

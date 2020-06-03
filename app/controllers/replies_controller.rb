@@ -113,6 +113,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:content)
+    params.require(:reply).permit(:content, :photo)
   end
 end

@@ -34,8 +34,10 @@ import { adminNav } from "../components/admin-nav";
 import { googleAdsNoPrint } from "../components/google-ads";
 import { googleAdsNoNavbar } from "../components/google-ads";
 import { searchInput } from "../components/search-input";
-import { CommentPhoto } from "../components/comment-photo";
+import { commentPhoto } from "../components/comment-photo";
 import { previewCommentPhotoOnFileSelect } from "../components/comment-photo-preview";
+import { replyPhoto } from "../components/reply-photo";
+import { previewReplyPhotoOnFileSelect } from "../components/reply-photo-preview";
 
 import { mailchimp } from "../services/mailchimp";
 import { notification } from "../services/notification";
@@ -161,8 +163,10 @@ if (currentController && currentController === 'r') {
     repliesReply();
     editComment();
     editReply();
-    CommentPhoto();
+    commentPhoto();
     previewCommentPhotoOnFileSelect();
+    replyPhoto();
+    previewReplyPhotoOnFileSelect();
   }
 
 }

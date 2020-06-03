@@ -1,14 +1,3 @@
-CommentPhoto = () => {
-  const CommentPhotoButtons = document.querySelectorAll('.comment-photo-btn');
-  CommentPhotoButtons.forEach(CommentPhotoButton => {
-    // console.log(CommentPhotoButton.dataset.comment);
-    CommentPhotoButton.addEventListener('click', event => {
-      const CommentId = event.currentTarget.dataset.comment || '';
-      document.querySelector(`#comment-photo-input-${CommentId}`).click();
-    });
-  });
-}
-
 refreshForm = (innerHTML) => {
   const newCommentForm = document.getElementById('new_comment_<%= @comment.id %>');
   newCommentForm.innerHTML = innerHTML;
@@ -28,8 +17,8 @@ addComment = (commentHTML) => {
   <% extensions = {autolink: true} %>
   <% markdown = Redcarpet::Markdown.new(renderer, extensions) %>
   commentContent = `<div class="my-1 bg-light rounded p-3"><%= markdown.render(@comment.content).html_safe %></div>`;
-  commentContent += `<div class="my-1 p-3">
-      <% if !@comment.photo.url.nil? %>
+  commentContent += `<% if !@comment.photo.url.nil? %>
+      <div class="my-1 p-3">
         <button type="button" class="border-0 m-0 p-0" data-toggle="modal" data-target=".comment-photo-active-<%= @comment.id %>">
           <div class="comment-photo-preview rounded" style="background-image: url('<%= @comment.photo.url(:preview) %>')"></div>
           <%#= image_tag @comment.photo.url(:thumb), id: "comment-photo-active-#{@comment.id}", crop: :fill, width: 64, class: 'img-fluid rounded' %>
@@ -49,8 +38,8 @@ addComment = (commentHTML) => {
             </div>
           </div>
         </div>
-      <% end %>
-    </div>`;
+    </div>
+    <% end %>`;
   comment.innerHTML = commentContent;
   comment.classList.remove('d-none');
   // editCommentId = document.querySelector(`#edit-comment-<%= @comment.id %>-btn`);
