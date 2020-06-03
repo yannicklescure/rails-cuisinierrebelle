@@ -3,7 +3,7 @@ const selectInput = (replyId) => {
   const input = document.getElementById(`reply-photo-input-${replyId}`);
   // we add a listener to know when a new picture is uploaded
   input.addEventListener('change', () => {
-    console.log(input);
+    // console.log(input);
     // we call the displayPreview function (who retrieve the image url and display it)
     displayPreview(input, replyId);
   })
@@ -30,7 +30,7 @@ export const previewReplyPhotoOnFileSelect = () => {
     // we select the photo input
     const replyId = reply.dataset.reply
     if (replyId) {
-      console.log(reply);
+      // console.log(reply);
       selectInput(reply.dataset.reply);
     }
   });
