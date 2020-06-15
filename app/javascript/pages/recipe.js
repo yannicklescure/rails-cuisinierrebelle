@@ -28,5 +28,13 @@ export const recipe = () => {
     previewCommentPhotoOnFileSelect();
     replyPhoto();
     previewReplyPhotoOnFileSelect();
+  } else {
+    const newUserRegistrationBtn = document.querySelector('#new-user-registration');
+    if (newUserRegistrationBtn) {
+      newUserRegistrationBtn.addEventListener('click', ()=> {
+        console.log('newUserRegistrationBtn');
+        location.href = "https://www.cuisinierrebelle.com/users/sign_up";
+      });
+    }
   }
 }

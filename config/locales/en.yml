@@ -456,6 +456,8 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     show:
+      add_a_comment: Comment
+      add_a_public_comment: Add a public comment...
       comments:
         one: 1 comment
         other: "%{count} comments"

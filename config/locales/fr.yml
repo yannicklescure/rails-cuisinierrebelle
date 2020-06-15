@@ -201,7 +201,7 @@ fr:
     destroy:
       comments: Commentaires
     form:
-      add_a_comment: Ajouter un commentaire
+      add_a_comment: Commenter
       add_a_public_comment: Ajouter un commentaire public...
       photo: Photo
       save_edit: Sauvegarder
@@ -462,6 +462,8 @@ fr:
       title: Titre
       youtube_video_link: Lien video Youtube
     show:
+      add_a_comment: Commenter
+      add_a_public_comment: Ajouter un commentaire public...
       comments:
         one: 1 commentaire
         other: "%{count} commentaires"

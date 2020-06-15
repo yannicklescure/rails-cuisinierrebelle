@@ -111,6 +111,14 @@
     <div class="my-3">
       <%= render 'comments/form', recipe: @recipe, comment: @comment %>
     </div>
+    <% else %>
+    <div class="input-group my-3">
+      <textarea id="new-user-registration" class="form-control" placeholder="<%= t('.add_a_public_comment') %>" aria-label="With textarea"></textarea>
+    </div>
+    <div class="input-group my-3">
+      <a href="<%= new_user_registration_path %>" class="btn btn-light"><%= t('.add_a_comment') %></a>
+      <a href="<%= new_user_registration_path %>" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
+    </div>
     <% end %>
     <div id="comments-list">
       <div class="d-flex flex-column">

@@ -148,7 +148,7 @@ es:
       comments: Comentarios
     form:
       add_a_comment: Comentario
-      add_a_public_comment: Agregar un comentario público
+      add_a_public_comment: Agregar un comentario público...
       photo: Foto
       save_edit: Guardar
     replies:
@@ -368,6 +368,8 @@ es:
       title: Título
       youtube_video_link: Enlace de video de Youtube
     show:
+      add_a_comment: Comentario
+      add_a_public_comment: Agregar un comentario público...
       comments:
         one: 1 comentario
         other: "%{count} comentarios"
