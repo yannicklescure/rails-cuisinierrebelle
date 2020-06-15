@@ -12,7 +12,7 @@ class Recipe < ApplicationRecord
   friendly_id :title, use: :slugged
 
   validates :title, presence: true
-  validates :subtitle, presence: true
+  # validates :subtitle, presence: true
   validates :description, presence: true
   validates :direction, presence: true
   validates :photo, presence: true
