@@ -1,17 +1,20 @@
 <div class="banner bg-banner d-flex justify-content-center justify-content-md-center align-items-center flex-column">
-  <div class="container mb-5 mb-md-0">
-    <div id="banner-cta-box" class="text-center">
-      <!-- <div id ="banner-cta-box-title" class="h2 text-white"><%= t('.banner_title') %></div> -->
-      <!-- <div class="lead text-white text-center"><%= t('.banner_subtitle') %></div> -->
-      <div class="lead text-white text-center"><%= t('.banner_text_html') %></div>
+  <div class="d-flex flex-column">
+    <div class="container">
+      <div id="banner-cta-box" class="text-center">
+        <!-- <div id ="banner-cta-box-title" class="h2 text-white"><%= t('.banner_title') %></div> -->
+        <!-- <div class="lead text-white text-center"><%= t('.banner_subtitle') %></div> -->
+        <div class="lead text-white text-center"><%= t('.banner_text_html') %></div>
+      </div>
+      <div id="banner-cta-box-btn" class="d-flex mt-3 justify-content-center flex-column flex-md-row">
+        <!-- <a class="btn btn-warning mx-3 mt-md-0" href="#recipes-cards" role="button"><i class="fas fa-utensils"></i>&ensp;<%= t(".recipes") %></a> -->
+        <%= link_to t('.sign_in'), new_user_session_path, class: 'btn btn-warning mt-3 mx-3 mt-md-0' %>
+        <%= link_to t('.sign_up'), new_user_registration_path, class: 'btn btn-info mt-3 mx-3 mt-md-0' %>
+        <% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
+        <!-- <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a> -->
+        <% end %>
+      </div>
     </div>
-    <div id="banner-cta-box-btn" class="d-flex mt-3 justify-content-center flex-column flex-md-row">
-      <!-- <a class="btn btn-warning mx-3 mt-md-0" href="#recipes-cards" role="button"><i class="fas fa-utensils"></i>&ensp;<%= t(".recipes") %></a> -->
-      <%= link_to t('.sign_in'), new_user_session_path, class: 'btn btn-warning mt-3 mx-3 mt-md-0' %>
-      <%= link_to t('.sign_up'), new_user_registration_path, class: 'btn btn-info mt-3 mx-3 mt-md-0' %>
-      <% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
-      <!-- <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a> -->
-      <% end %>
-    </div>
+    <a class="btn btn-link m-3 text-muted" href="#recipes-cards" role="button"><%= t(".recipes") %></a>
   </div>
 </div>
