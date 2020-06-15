@@ -23,6 +23,7 @@ import { alerts } from "../components/alerts";
 import { userBanner } from "../components/user-banner"
 import { googleAdsNoNavbar } from "../components/google-ads";
 import { searchInput } from "../components/search-input";
+import { shareButton } from "../components/share-button";
 
 import { settings } from "../pages/settings";
 import { recipe } from "../pages/recipe";
@@ -53,6 +54,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   if (currentController === 'tools') alerts();
   if (currentController === 'top100') top100();
   if (currentController === 'admin' && userSignedIn) admin(location);
+
+  const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
+  document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
+  document.querySelector('.banner').style.minHeight = `calc(100vh - ${navbarHeight}px)`;
 });
 
 
@@ -87,7 +92,7 @@ if (!currentController && !currentPage) {
 if (!currentController && !currentPage && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
   const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
-  if (window.innerWidth > 375) {
+  if (bannerCtaBoxTitle && window.innerWidth > 375) {
     bannerCtaBoxTitle.classList.remove('h2');
     bannerCtaBoxTitle.classList.add('h1');
   }
