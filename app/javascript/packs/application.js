@@ -33,10 +33,6 @@ import { admin } from "../pages/admin";
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  previewImageOnFileSelect();
-  googleAdsNoNavbar();
-});
 
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
@@ -47,13 +43,18 @@ let currentController = location.currentController;
 let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
 
-if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-if (currentController && currentController === 'r') recipe();
-if (currentController === 'u' && currentPage != null) userBanner();
-if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
-if (currentController === 'top100') top100();
-if (currentController === 'tools') alerts();
-if (currentController === 'admin' && userSignedIn) admin(location);
+window.addEventListener('DOMContentLoaded', (event) => {
+  previewImageOnFileSelect();
+  googleAdsNoNavbar();
+  if (currentPage && currentPage.match(/edit\..*/)) btnClick();
+  if (currentController && currentController === 'r') recipe();
+  if (currentController === 'u' && currentPage != null) userBanner();
+  if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
+  if (currentController === 'tools') alerts();
+  if (currentController === 'top100') top100();
+  if (currentController === 'admin' && userSignedIn) admin(location);
+});
+
 
 const root = document.querySelector('#root');
 if (root) recipes(root, location);
