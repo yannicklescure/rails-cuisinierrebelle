@@ -6,7 +6,7 @@
   <% else %>
     <%= f.button :submit, t('.save_edit'), id: "edit-reply-#{reply.id}-btn", class: 'btn btn-light' %>
   <% end %>
-  <div class="btn btn-light reply-photo-btn" data-comment="<%= comment.id %>" <%= "data-reply=#{reply.id}" if !reply.id.nil? %> style="padding: 6px;"><i class="material-icons d-flex">insert_photo</i></div>
+  <div class="btn btn-light reply-photo-btn" data-comment="<%= comment.id %>" <%= "data-reply=#{reply.id}" if !reply.id.nil? %> style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></div>
   <div class="d-flex flex-column">
     <% if !reply.photo.url.nil? %>
       <%= image_tag reply.photo.url(:preview), id: "reply-photo-active-#{reply.id}", crop: :fill, width: 300, class: 'img-fluid rounded mt-3' %>
