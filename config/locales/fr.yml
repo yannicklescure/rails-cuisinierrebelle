@@ -550,8 +550,11 @@ fr:
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
+      banner_text_html: 'Partagez dès maintenant des recettes<br>en toute simplicité'
+      banner_title: '#cuisinierRebelle'
       recipes: Recettes
       sign_up: Inscription
+      sign_in: Connexion
     card-product:
       edit_html: Editer
       more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>

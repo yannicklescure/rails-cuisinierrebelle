@@ -427,8 +427,11 @@ es:
   shared:
     banner:
       banner_subtitle: Recetas de cocina y otras cosas
+      banner_text_html: 'Comparte ahora las recetas<br>de manera fácil'
+      banner_title: '#cuisinierRebelle'
       recipes: Recetas
       sign_up: Regístrate
+      sign_in: Iniciar sesión
     card-product:
       edit_html: Editar
       more_details_html: Más detalles <i class="material-icons md-16 d-flex pl-1">open_in_new</i>

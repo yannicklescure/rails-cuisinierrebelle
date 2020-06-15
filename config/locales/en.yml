@@ -543,9 +543,12 @@ en:
       verified_html: <i class="material-icons md-16">check_circle</i>
   shared:
     banner:
-      banner_subtitle: cuisinier rebelle, social recipes!
+      banner_subtitle: Cuisinier Rebelle, social recipes!
+      banner_text_html: 'Share right now recipes<br>the easy way'
+      banner_title: '#cuisinierRebelle'
       recipes: Recipes
       sign_up: Sign up
+      sign_in: Log in
     card-product:
       edit_html: Edit
       more_details_html: More details <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
