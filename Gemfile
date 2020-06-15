@@ -69,3 +69,4 @@ gem "actionview", ">= 6.0.2.2"
 # gem 'material_icons'
 gem 'kaminari'
 gem 'fastimage'
+gem "websocket-extensions", ">= 0.1.5"
