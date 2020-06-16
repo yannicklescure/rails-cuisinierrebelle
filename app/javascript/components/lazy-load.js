@@ -82,16 +82,18 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
   let start = parseInt(root.dataset.recipes) - 24 > 0 ? parseInt(root.dataset.recipes) - 24 : 0;
   let end = recipes.length;
   if (render) {
-    const initCards = {
+    let initCards = {
       init: init,
       data: data,
       array: recipes,
       bookmarks: userBookmarks,
       likes: userLikes,
+      type: 'card',
       cardsQty: cardsQty,
       start: start,
       end: end
     };
+    if (init.currentPage && !init.currentPage.match(/.*\/.*/)) initCards.type = 'grid';
     cards(initCards);
   }
   callback();
