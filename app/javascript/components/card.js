@@ -106,13 +106,8 @@ export const card = (params, callback = () => {}) => {
       `;
       const root = document.querySelector('#root');
       root.insertAdjacentHTML('beforeEnd', card);
-      const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
-      cardImgTop.style.minHeight = `${cardImgTop.clientWidth}px`;
-      // const cardNodeElement = document.querySelector(`[data-recipe*="${recipe.id}"]`);
-      // const svgElements = cardNodeElement.querySelectorAll('svg');
-      // svgElements.forEach(svgElement => {
-      //   svgElement.style.fontSize = '100%';
-      // });
+      // const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
+      // cardImgTop.style.minHeight = `${cardImgTop.clientWidth}px`;
     }
   });
   if(init.userSignedIn) cardHeart();
