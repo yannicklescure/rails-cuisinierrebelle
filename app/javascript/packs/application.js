@@ -43,6 +43,8 @@ let currentLang = location.currentLang;
 let currentController = location.currentController;
 let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
+// console.log(device);
+if (device != 'desktop') shareButton();
 
 window.addEventListener('DOMContentLoaded', (event) => {
   previewImageOnFileSelect();
