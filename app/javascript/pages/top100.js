@@ -4,13 +4,13 @@ export const top100 = () => {
   if (top100TitleBar) {
     const top100TitleBarOffsetTop = top100TitleBar.offsetTop;
     const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
-    const top100TitleMarginBottom = parseInt(window.getComputedStyle(top100Title).getPropertyValue('margin-bottom').replace('px',''));
+    // const top100TitleMarginBottom = parseInt(window.getComputedStyle(top100Title).getPropertyValue('margin-bottom').replace('px',''));
     window.addEventListener('scroll', () => {
-      if (window.scrollY > top100TitleBarOffsetTop - navbarHeight) {
+      if (window.scrollY > top100TitleBarOffsetTop) {
         top100TitleBar.style.top = `${navbarHeight}px`;
         top100TitleBar.classList.add('fixed-top');
         top100Title.style.paddingBottom = `${top100TitleBar.clientHeight}px`;
-      } else if (window.scrollY < top100TitleBarOffsetTop + navbarHeight) {
+      } else if (window.scrollY < top100TitleBarOffsetTop) {
         top100TitleBar.style.top = null;
         top100TitleBar.classList.remove('fixed-top');
         top100Title.style.paddingBottom = null;

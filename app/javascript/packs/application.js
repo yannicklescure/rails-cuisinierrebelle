@@ -57,7 +57,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
   document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
-  document.querySelector('.banner').style.minHeight = `calc(100vh - ${navbarHeight}px)`;
+  const banner = document.querySelector('.banner');
+  if (banner) banner.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
 });
 
 
