@@ -1,8 +1,7 @@
 <div class="admin-recipes">
   <div class="row bg-white m-0 sticky-top border-top border-bottom font-weight-bold" style="top:59px;">
-    <div class="col-1"><%= t('.photo') %></div>
-    <div class="col-2"><%= t('.title') %></div>
-    <div class="col text-center"><%= t('.user') %></div>
+    <div class="col text-left"><%= t('.title') %></div>
+    <div class="col text-left"><%= t('.user') %></div>
     <div class="col text-center"><%= t('.published_date') %></div>
     <div class="col text-center"><%= t('.comments') %></div>
     <div class="col text-center"><%= t('.likes') %></div>
@@ -11,13 +10,15 @@
   </div>
   <% @recipes.sort_by { |date| date.created_at }.reverse.map do |recipe| %>
   <div class="row align-items-center m-0 border-top" id="<%= "recipe-#{recipe.id}" %>">
-    <div class="col-1">
-      <div class="d-block" style="height: 32px;">
-        <%= image_tag recipe.photo.url(:preview), secure: true, height: '32px', width: '32px', class: 'rounded', style: "object-fit: cover;" %>
-      </div>
+    <div class="col">
+      <%= link_to recipe_path(recipe), target: '_blank', class: 'd-flex align-items-center' do %>
+        <div class="d-block mr-3" style="height: 32px;">
+          <%= image_tag recipe.photo.url(:preview), secure: true, height: '32px', width: '32px', class: 'rounded', style: "object-fit: cover;" %>
+        </div>
+        <%= truncate(recipe.title, length: 20) %>
+      <% end %>
     </div>
-    <div class="col-2"><%= link_to truncate(recipe.title, length: 20), recipe_path(recipe) %></div>
-    <div class="col d-flex align-items-center justify-content-center text-center"><img src="<%= recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2"><%= recipe.user.name %></div>
+    <div class="col d-flex align-items-center"><img src="<%= recipe.user.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2"><%= recipe.user.name %></div>
     <div class="col text-center">
       <% time_since_creation = TimeDifference.between(recipe.created_at, Time.current) %>
       <% if time_since_creation.in_years.floor >= 2 %>
