@@ -65,7 +65,7 @@ export const recipes = (root, location) => {
         btnText = `<span class="mr-2">Nouvelle recette</span>`;
         break;
       default:
-        text = "I have never heard of that fruit...";
+        btnText = `<span class="mr-2">Nouvelle recette</span>`;
     }
     const newRecipeButton = document.querySelector('#new-recipe-btn');
     newRecipeButton.innerHTML = btnIcon;
