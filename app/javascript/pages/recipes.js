@@ -41,11 +41,11 @@ export const recipes = (root, location) => {
       font-size: 1em;
       // padding: .4em .7em;
       transition: .3s;
-      background-color: #dc3544;
+      background-color: #cd5c5c;
     }
 
     .new-recipe-btn:hover {
-      background-color: #cd5c5c;
+      background-color: #dc3544;
     }
     </style>
     <a href="https://www.cuisinierrebelle.com/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white px-3 py-2"></a>`;
