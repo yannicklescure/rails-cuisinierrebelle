@@ -9,6 +9,7 @@ import { replyPhoto } from "../components/reply-photo";
 import { previewReplyPhotoOnFileSelect } from "../components/reply-photo-preview";
 import { viewReplies } from "../components/reply";
 import { smoothToAnchor } from "../components/smooth-to-anchor";
+import { print } from "../components/print";
 
 export const recipe = () => {
   window.onhashchange = () => smoothToAnchor();
@@ -20,6 +21,7 @@ export const recipe = () => {
 
   if(userSignedIn) {
     btnClick();
+    print();
     replyForms();
     repliesReply();
     editComment();
