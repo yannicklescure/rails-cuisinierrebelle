@@ -52,7 +52,7 @@ export const recipes = (root, location) => {
     document.querySelector('body').insertAdjacentHTML('afterBegin', newRecipeButtonHTML);
     // console.log(document.querySelector('#new-recipe-btn'));
     const btnIcon = `<span class="material-icons md-18 d-flex" style="padding: 3px;">create</span>`;
-    // console.log(location.currentLang);
+    console.log(location.currentLang);
     let btnText;
     switch(location.currentLang) {
       case "en":

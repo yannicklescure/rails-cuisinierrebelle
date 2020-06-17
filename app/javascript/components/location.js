@@ -1,7 +1,7 @@
 export const currentLocation = (options) => {
   let data = window.location.href.match(/https?:\/(?<domain>\/\w+.+:\d+|\/\w+.\w+.\w+)(?<lang>\/en|\/es|\/fr)?(?<query>\/index.+)?(?<controller>\/\w+)?(?<page>\/.+)?/);
   // console.log(data.groups);
-  let currentLang = data.groups.lang || 'en';
+  let currentLang = data.groups.lang || 'fr';
   if (currentLang) currentLang = currentLang.replace('/','');
   let currentController = data.groups.controller || null;
   if (currentController) currentController = currentController.replace('/','');
