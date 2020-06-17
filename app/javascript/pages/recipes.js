@@ -41,32 +41,33 @@ export const recipes = (root, location) => {
       font-size: 1em;
       // padding: .4em .7em;
       transition: .3s;
-      background-color: #cd5c5c;
-    }
-
-    .new-recipe-btn:hover {
       background-color: #dc3544;
     }
+
+    // .new-recipe-btn:hover {
+    //   background-color: #dc3544;
+    // }
     </style>
     <a href="https://www.cuisinierrebelle.com/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white px-3 py-2"></a>`;
     document.querySelector('body').insertAdjacentHTML('afterBegin', newRecipeButtonHTML);
     // console.log(document.querySelector('#new-recipe-btn'));
     const btnIcon = `<span class="material-icons md-18 d-flex" style="padding: 3px;">create</span>`;
     // console.log(location.currentLang);
-    let btnText;
+    let btnText = `<span class="ml-2">`;
     switch(location.currentLang) {
       case "en":
-        btnText = `<span class="mr-2">New recipe</span>`;
+        btnText += `Add new recipe`;
         break;
       case "es":
-        btnText = `<span class="mr-2">Nueva receta</span>`;
+        btnText += `Agregar nueva receta`;
         break;
       case "fr":
-        btnText = `<span class="mr-2">Nouvelle recette</span>`;
+        btnText += `Créer une nouvelle recette`;
         break;
       default:
-        btnText = `<span class="mr-2">Nouvelle recette</span>`;
+        btnText += `Créer une nouvelle recette`;
     }
+    btnText += `</span>`;
     const newRecipeButton = document.querySelector('#new-recipe-btn');
     newRecipeButton.innerHTML = btnIcon;
     // newRecipeButton.addEventListener('click', (event) => {
@@ -74,7 +75,7 @@ export const recipes = (root, location) => {
     //   console.log('click');
     // });
     newRecipeButton.addEventListener('mouseenter', (event) => {
-      event.currentTarget.innerHTML = btnText + btnIcon;
+      event.currentTarget.innerHTML = btnIcon + btnText;
     });
     newRecipeButton.addEventListener('mouseleave', (event) => {
       event.currentTarget.innerHTML = btnIcon;
