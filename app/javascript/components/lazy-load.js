@@ -93,7 +93,10 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       start: start,
       end: end
     };
-    if (init.currentPage && !init.currentPage.match(/.*\/.*/)) initCards.type = 'grid';
+    // console.log(init);
+    if (init.device != 'desktop') {
+      if (init.currentPage && init.currentPage != 'index' && !init.currentPage.match(/.*\/.*/)) initCards.type = 'grid';
+    }
     cards(initCards);
   }
   callback();

@@ -4,3 +4,37 @@
   // left: 0;
   // z-index: 100;
 }
+
+#new-recipe-btn {
+  // position: fixed;
+  // top: 60px;
+  // right: 80px;
+  // height: 100px;
+  // z-index: 999;
+  // display: none;
+  color: red;
+}
+
+.new-recipe-btn {
+  // border: none;
+  // border-radius: 50%;
+  // bottom: 44px;
+  // cursor: pointer;
+  // // display: none;
+  // font-size: 1.5em;
+  // padding: .4em .7em;
+  // position: fixed;
+  // right: 30px;
+  // z-index: 99;
+  // transition: .3s;
+  // background-color: red;
+}
+
+.new-recipe-btn:focus {
+  // border: 1px solid transparent;
+  // outline: none;
+}
+
+.new-recipe-btn:hover {
+  // background-color: #555;
+}
