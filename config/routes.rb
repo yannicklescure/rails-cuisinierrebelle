@@ -161,6 +161,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :user, only: [ :index ]
       resources :recipes, only: [ :index, :show, :update ]
       resources :mailchimp, only: [ :show, :update ]
       resources :notification, only: [ :show, :update ]

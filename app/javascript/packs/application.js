@@ -24,6 +24,7 @@ import { userBanner } from "../components/user-banner"
 import { googleAdsNoNavbar } from "../components/google-ads";
 import { searchInput } from "../components/search-input";
 import { shareButton } from "../components/share-button";
+import { navbarBottom } from "../components/navbar-bottom";
 
 import { settings } from "../pages/settings";
 import { recipe } from "../pages/recipe";
@@ -44,7 +45,10 @@ let currentController = location.currentController;
 let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
 // console.log(device);
-if (device != 'desktop') shareButton();
+if (device != 'desktop') {
+  shareButton();
+  navbarBottom();
+}
 
 window.addEventListener('DOMContentLoaded', (event) => {
   previewImageOnFileSelect();

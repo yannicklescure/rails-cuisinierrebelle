@@ -1,4 +1,5 @@
 <div class="container my-5">
+  <div class="mb-5 h1 text-center"><%= t('.add_new_recipe') %></div>
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :title, label: t('.title'), input_html: { maxlength: 100} %>
     <%= f.input :subtitle, label: t('.subtitle'), input_html: { maxlength: 150}  %>

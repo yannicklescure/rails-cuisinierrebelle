@@ -445,6 +445,7 @@ en:
       title: Title
       youtube_video_link: Youtube video link
     new:
+      add_new_recipe: Add new recipe
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
       create_recipe: Create recipe
@@ -544,11 +545,11 @@ en:
   shared:
     banner:
       banner_subtitle: Cuisinier Rebelle, social recipes!
-      banner_text_html: 'Share right now recipes<br>the easy way'
-      banner_title: '#cuisinierRebelle'
+      banner_text_html: Share right now recipes<br>the easy way
+      banner_title: "#cuisinierRebelle"
       recipes: Or see recipes
-      sign_up: Sign up
       sign_in: Log in
+      sign_up: Sign up
     card-product:
       edit_html: Edit
       more_details_html: More details <i class="material-icons md-16 d-flex pl-1">open_in_new</i>

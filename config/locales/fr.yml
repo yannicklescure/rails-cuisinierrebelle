@@ -451,6 +451,7 @@ fr:
       title: Titre
       youtube_video_link: Lien video Youtube
     new:
+      add_new_recipe: Créer une nouvelle recette
       add_tags: Ajouter des tags
       add_your_tags_separated_by_commas: Ajoutez vos tags séparés par des virgules
       create_recipe: Ajouter une recette
@@ -550,11 +551,11 @@ fr:
   shared:
     banner:
       banner_subtitle: Recettes de cuisine et plus
-      banner_text_html: 'Partagez dès maintenant des recettes<br>en toute simplicité'
-      banner_title: '#cuisinierRebelle'
+      banner_text_html: Partagez dès maintenant des recettes<br>en toute simplicité
+      banner_title: "#cuisinierRebelle"
       recipes: Ou voir les recettes
-      sign_up: Inscription
       sign_in: Connexion
+      sign_up: Inscription
     card-product:
       edit_html: Editer
       more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
