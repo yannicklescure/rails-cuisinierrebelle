@@ -1,5 +1,19 @@
 import { cookiesToObject } from "../components/cookies";
 
+const smoothScroll = (button) => {
+  button.addEventListener('click', (event) => {
+    if (window.scrollY > 0) {
+      event.preventDefault();
+      const scrollOptions = {
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      };
+      window.scrollTo(scrollOptions);
+    }
+  });
+}
+
 const fetchUserData = (init, options) => {
   return fetch(init.url, options)
   .then(response => response.json())
@@ -12,7 +26,7 @@ const fetchUserData = (init, options) => {
   });
 }
 
-export const navbarBottom = () => {
+export const navbarBottom = (location) => {
   const body = document.querySelector('body');
   const userSignedIn = body.dataset.user === 'true';
   const cookies = cookiesToObject(document.cookie);
@@ -48,7 +62,7 @@ export const navbarBottom = () => {
     fetchUserData(init, options).then(data => {
       // console.log(data)
       let navbar = `<div class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
-      navbar += `<a href="/" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
+      navbar += `<a id="home" href="/" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
       navbar += `<div class="d-flex" justify-content-center>`;
       navbar += `<a href="/top100" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>`;
       // navbar += `<a href="" class="text-dark"><span class="material-icons md-32 d-flex px-3">notifications</span></a>`;
@@ -58,6 +72,10 @@ export const navbarBottom = () => {
       navbar += `<a href="/u/${data.user.auth.slug}" class="text-dark px-3 text-decoration-none"><img src="${data.user.auth.image.thumb.url}" width="32" height="32" class="border border-dark rounded-circle"></a>`;
       navbar += `</div>`;
       body.insertAdjacentHTML('afterBegin', navbar);
+      if (!location.currentController && !location.currentPage) {
+        const homeButton = document.querySelector('#home');
+        if (homeButton) smoothScroll(homeButton);
+      }
     });
   }
 }

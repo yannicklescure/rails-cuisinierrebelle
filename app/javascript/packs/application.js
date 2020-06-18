@@ -26,6 +26,7 @@ import { searchInput } from "../components/search-input";
 import { shareButton } from "../components/share-button";
 import { navbarBottom } from "../components/navbar-bottom";
 
+import { home } from "../pages/home";
 import { settings } from "../pages/settings";
 import { recipe } from "../pages/recipe";
 import { recipes } from "../pages/recipes";
@@ -47,12 +48,13 @@ const device = document.querySelector('body').dataset.device;
 // console.log(device);
 if (device != 'desktop') {
   shareButton();
-  navbarBottom();
+  navbarBottom(location);
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
   previewImageOnFileSelect();
   googleAdsNoNavbar();
+  if (!currentController && !currentPage) home();
   if (currentPage && currentPage.match(/edit\..*/)) btnClick();
   if (currentController && currentController === 'r') recipe();
   if (currentController === 'u' && currentPage != null) userBanner();
@@ -81,20 +83,6 @@ if(window.innerWidth <= 768) {
   navbarBrand.style.padding = "5px 0";
 }
 
-if (!currentController && !currentPage) {
-  const navbarBrand = document.querySelector('.navbar-brand');
-  navbarBrand.addEventListener('click', (event) => {
-    if (window.scrollY > 0) {
-      event.preventDefault();
-      const scrollOptions = {
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      };
-      window.scrollTo(scrollOptions);
-    }
-  });
-}
 
 if (!currentController && !currentPage && !userSignedIn) {
   scrollToAnchor("#recipes-cards");
