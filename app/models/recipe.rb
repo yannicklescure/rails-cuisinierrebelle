@@ -26,5 +26,5 @@ class Recipe < ApplicationRecord
   #   using: [:tsearch, :trigram],
   #   # ignoring: :accents
   # }
-  multisearchable against: [:title, :description, :direction]
+  multisearchable against: [:title, :description, :direction, :tag_list]
 end
