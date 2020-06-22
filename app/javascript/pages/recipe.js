@@ -38,4 +38,9 @@ export const recipe = () => {
       });
     }
   }
+
+  const recipeImage = document.querySelector('.recipe-image');
+  const recipeImageWidth = recipeImage.offsetWidth;
+  const recipeImageHeight = `${parseInt(recipeImageWidth * 9 / 16)}px`;
+  recipeImage.style.height = recipeImageHeight;
 }

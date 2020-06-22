@@ -1,4 +1,4 @@
-<div class="container mt-3 mb-5">
+<div class="container mt-3 mb-5 recipe">
   <div class="d-flex flex-column">
     <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start  mb-3 mb-md-0 d-print-none">
       <div id="recipe-user" class="d-flex <%= 'flex-grow-1 flex-grow-md-0 w-100' if !client.device_type.nil? && !client.device_type.match(/desktop/) %> align-items-center order-0">
@@ -65,7 +65,8 @@
     </div>
   </div>
   <div class="my-3 my-md-5 d-print-none">
-    <%= image_tag @recipe.photo.url(:full), class: 'img-fluid rounded' %>
+    <div class="recipe-image" style="background-image: url(<%= @recipe.photo.url(:full) %>);"></div>
+    <%#= image_tag @recipe.photo.url(:full), class: 'recipe-image' %>
   </div>
   <div class="d-none d-print-block mt-3 mb-5 text-center">&#8766;&nbsp;www.CuisinierRebelle.com&nbsp;&#8766;</div>
   <% renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' }) %>
