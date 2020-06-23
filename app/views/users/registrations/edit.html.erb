@@ -24,13 +24,14 @@
 
 
     <div class="my-3">
+      <%=  %>
       <%= f.label :locale, t('.locale') %>
       <%#= f.select :locale, I18n.available_locales.map(&:to_s), class: "custom-select" %>
       <select name="user[locale]" id="user_locale" class="custom-select">
-        <option value="nil" selected><%= t('.open_this_select_menu') %></option>
-        <option value="en"><%= t('.english_html') %></option>
-        <option value="es"><%= t('.spanish_html') %></option>
-        <option value="fr"><%= t('.french_html') %></option>
+        <option value="nil" <%= "selected" if current_user.locale.nil? %>><%= t('.open_this_select_menu') %></option>
+        <option value="en" <%= "selected" if current_user.locale == 'en' %>><%= t('.english_html') %></option>
+        <option value="es" <%= "selected" if current_user.locale == 'es' %>><%= t('.spanish_html') %></option>
+        <option value="fr" <%= "selected" if current_user.locale == 'fr' %>><%= t('.french_html') %></option>
       </select>
     </div>
 
