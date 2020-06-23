@@ -63,12 +63,12 @@ export const navbarBottom = (location) => {
       // console.log(data)
       let navbar = `<div class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
       navbar += `<a id="home" href="/" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
-      navbar += `<div class="d-flex" justify-content-center>`;
+      // navbar += `<div class="d-flex" justify-content-center>`;
       navbar += `<a href="/top100" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>`;
       // navbar += `<a href="" class="text-dark"><span class="material-icons md-32 d-flex px-3">notifications</span></a>`;
       navbar += `<a href="/r/new" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">add_box</span></a>`;
       navbar += `<a href="/u/${data.user.auth.slug}/bookmarks" class="text-dark text-decoration-none"><span class="material-icons md-32 d-flex px-3">bookmarks</span></a>`;
-      navbar += `</div>`;
+      // navbar += `</div>`;
       navbar += `<a href="/u/${data.user.auth.slug}" class="text-dark px-3 text-decoration-none"><img src="${data.user.auth.image.thumb.url}" width="32" height="32" class="border border-dark rounded-circle"></a>`;
       navbar += `</div>`;
       body.insertAdjacentHTML('afterBegin', navbar);
