@@ -87,8 +87,10 @@ export const navbarBottom = (location) => {
           el.classList.add('text-dark');
           break;
         case 'r':
-          el = document.querySelector('#new-recipe');
-          el.classList.add('text-dark');
+          if (location.currentPage === 'new') {
+            el = document.querySelector('#new-recipe');
+            el.classList.add('text-dark');
+          }
           break;
         case 'u':
           if (location.currentPage.match(/.*\/bookmarks/)) {
@@ -102,8 +104,8 @@ export const navbarBottom = (location) => {
         default:
           console.log(`Sorry, we couldn't find ${location.currentController}.`);
       }
-      // console.log(el.classList.value);
-      if (el.classList.value) {
+      if (el.classList) {
+        // console.log(el.classList.value);
         el.classList.remove('navbar-bottom');
         smoothScroll(el);
       }
