@@ -12,8 +12,8 @@ import { viewReplies } from "../components/reply";
 import { print } from "../components/print";
 
 export const recipe = () => {
-  window.onhashchange = () => smoothToAnchor();
-  window.onload = () => smoothToAnchor();
+  // window.onhashchange = () => smoothToAnchor();
+  // window.onload = () => smoothToAnchor();
 
   viewReplies();
 
@@ -40,7 +40,9 @@ export const recipe = () => {
   }
 
   const recipeImage = document.querySelector('.recipe-image');
-  const recipeImageWidth = recipeImage.offsetWidth;
-  const recipeImageHeight = `${parseInt(recipeImageWidth * 9 / 16)}px`;
-  recipeImage.style.height = recipeImageHeight;
+  if (recipeImage) {
+    const recipeImageWidth = recipeImage.offsetWidth;
+    const recipeImageHeight = `${parseInt(recipeImageWidth * 9 / 16)}px`;
+    recipeImage.style.height = recipeImageHeight;
+  }
 }
