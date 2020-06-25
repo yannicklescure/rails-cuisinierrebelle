@@ -69,7 +69,7 @@ export const recipes = (root, location) => {
     }
     btnText += `</span>`;
     const newRecipeButton = document.querySelector('#new-recipe-btn');
-    newRecipeButton.innerHTML = btnIcon;
+    newRecipeButton.innerHTML = btnIcon + btnText;
     // newRecipeButton.addEventListener('click', (event) => {
     //   event.preventDefault();
     //   console.log('click');
@@ -80,6 +80,21 @@ export const recipes = (root, location) => {
     newRecipeButton.addEventListener('mouseleave', (event) => {
       event.currentTarget.innerHTML = btnIcon;
     });
+
+    let lastScrollTop = 0;
+
+    // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+    window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
+       let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+       if (st > lastScrollTop){
+          // downscroll code
+          newRecipeButton.innerHTML = btnIcon;
+       } else {
+          // upscroll code
+          newRecipeButton.innerHTML = btnIcon + btnText;
+       }
+       lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
   }
   // }
 }
