@@ -1,0 +1,7 @@
+<div id="navbar-bottom" class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">
+  <a id="home" href="/" class="navbar-bottom-btn text-muted text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>
+  <a id="whatshot" href="/top100" class="navbar-bottom-btn text-muted text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>
+  <a id="new-recipe" href="/r/new" class="navbar-bottom-btn text-muted text-decoration-none"><span class="material-icons md-32 d-flex px-3">add_box</span></a>
+  <a id="bookmarks" href="/u/<%= current_user.slug %>/bookmarks" class="navbar-bottom-btn text-muted text-decoration-none"><span class="material-icons md-32 d-flex px-3">bookmarks</span></a>
+  <a href="/u/<%= current_user.slug %>" class="px-3 text-decoration-none"><img id="user" src="<%= current_user.image.thumb.url %>" width="32" height="32" class="navbar-bottom-btn border-muted border rounded-circle"></a>
+</div>

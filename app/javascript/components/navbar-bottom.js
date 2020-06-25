@@ -71,32 +71,39 @@ export const navbarBottom = (location) => {
       // navbar += `</div>`;
       navbar += `<a href="/u/${data.user.auth.slug}" class="px-3 text-decoration-none"><img id="user" src="${data.user.auth.image.thumb.url}" width="32" height="32" class="navbar-bottom-btn border rounded-circle"></a>`;
       navbar += `</div>`;
-      body.insertAdjacentHTML('afterBegin', navbar);
+      // body.insertAdjacentHTML('afterBegin', navbar);
+
       // if (!location.currentController && !location.currentPage) {
       //   const homeButton = document.querySelector('#home');
       //   if (homeButton) smoothScroll(homeButton);
       // }
+      let id = '';
       let el = '';
       switch (location.currentController) {
         case null:
+          id = 'home';
           el = document.querySelector('#home');
           el.classList.add('text-dark');
           break;
         case 'top100':
+          id = 'whatshot';
           el = document.querySelector('#whatshot');
           el.classList.add('text-dark');
           break;
         case 'r':
           if (location.currentPage === 'new') {
+            id = 'new-recipe';
             el = document.querySelector('#new-recipe');
             el.classList.add('text-dark');
           }
           break;
         case 'u':
           if (location.currentPage.match(/.*\/bookmarks/)) {
+            id = 'bookmarks';
             el = document.querySelector('#bookmarks');
             el.classList.add('text-dark');
           } else {
+            id = 'user';
             el = document.querySelector('#user');
             el.classList.add('border-dark');
           }
@@ -107,11 +114,13 @@ export const navbarBottom = (location) => {
       if (el.classList) {
         // console.log(el.classList.value);
         el.classList.remove('navbar-bottom-btn');
+        if (id === 'user') el.classList.remove('border-muted');
+        else el.classList.remove('text-muted');
         smoothScroll(el);
       }
-      document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
-        button.classList.add('text-muted');
-      });
+      // document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
+      //   button.classList.add('text-muted');
+      // });
     });
   }
 }
