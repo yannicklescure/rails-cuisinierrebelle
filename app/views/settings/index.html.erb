@@ -22,11 +22,11 @@
   </div>
   <div class="d-flex flex-row justify-content-between justify-content-md-start">
     <strong><%= t('.created_at') %></strong>
-    <div class="pl-md-2"><%= @user.created_at %></div>
+    <div class="pl-md-2"><%= I18n.localize @user.created_at, format: :long %></div>
   </div>
   <div class="d-flex flex-row justify-content-between justify-content-md-start">
     <strong><%= t('.updated_at') %></strong>
-    <div class="pl-md-2"><%= @user.updated_at %></div>
+    <div class="pl-md-2"><%= I18n.localize @user.updated_at, format: :long %></div>
   </div>
   <div class="d-flex flex-column py-3">
     <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-between">
