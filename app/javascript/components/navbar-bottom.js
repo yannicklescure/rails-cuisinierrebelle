@@ -61,15 +61,15 @@ export const navbarBottom = (location) => {
 
     fetchUserData(init, options).then(data => {
       // console.log(data)
-      let navbar = `<div class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
-      navbar += `<a id="home" href="/" class="navbar-bottom text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
+      let navbar = `<div id="navbar-bottom" class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
+      navbar += `<a id="home" href="/" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
       // navbar += `<div class="d-flex" justify-content-center>`;
-      navbar += `<a id="whatshot" href="/top100" class="navbar-bottom text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>`;
-      // navbar += `<a id="notifications" href="" class="navbar-bottom"><span class="material-icons md-32 d-flex px-3">notifications</span></a>`;
-      navbar += `<a id="new-recipe" href="/r/new" class="navbar-bottom text-decoration-none"><span class="material-icons md-32 d-flex px-3">add_box</span></a>`;
-      navbar += `<a id="bookmarks" href="/u/${data.user.auth.slug}/bookmarks" class="navbar-bottom text-decoration-none"><span class="material-icons md-32 d-flex px-3">bookmarks</span></a>`;
+      navbar += `<a id="whatshot" href="/top100" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>`;
+      // navbar += `<a id="notifications" href="" class="navbar-bottom-btn"><span class="material-icons md-32 d-flex px-3">notifications</span></a>`;
+      navbar += `<a id="new-recipe" href="/r/new" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">add_box</span></a>`;
+      navbar += `<a id="bookmarks" href="/u/${data.user.auth.slug}/bookmarks" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">bookmarks</span></a>`;
       // navbar += `</div>`;
-      navbar += `<a href="/u/${data.user.auth.slug}" class="px-3 text-decoration-none"><img id="user" src="${data.user.auth.image.thumb.url}" width="32" height="32" class="navbar-bottom border rounded-circle"></a>`;
+      navbar += `<a href="/u/${data.user.auth.slug}" class="px-3 text-decoration-none"><img id="user" src="${data.user.auth.image.thumb.url}" width="32" height="32" class="navbar-bottom-btn border rounded-circle"></a>`;
       navbar += `</div>`;
       body.insertAdjacentHTML('afterBegin', navbar);
       // if (!location.currentController && !location.currentPage) {
@@ -106,10 +106,10 @@ export const navbarBottom = (location) => {
       }
       if (el.classList) {
         // console.log(el.classList.value);
-        el.classList.remove('navbar-bottom');
+        el.classList.remove('navbar-bottom-btn');
         smoothScroll(el);
       }
-      document.querySelectorAll('.navbar-bottom').forEach( button => {
+      document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
         button.classList.add('text-muted');
       });
     });

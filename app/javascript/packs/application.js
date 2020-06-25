@@ -45,13 +45,13 @@ let currentLang = location.currentLang;
 let currentController = location.currentController;
 let currentPage = location.currentPage;
 const device = document.querySelector('body').dataset.device;
-// console.log(device);
-if (device != 'desktop') {
-  shareButton();
-  navbarBottom(location);
-}
 
-window.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
+  // console.log(device);
+  if (device != 'desktop') {
+    shareButton();
+    navbarBottom(location);
+  }
   previewImageOnFileSelect();
   googleAdsNoNavbar();
   if (!currentController && !currentPage) home();
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
   const banner = document.querySelector('.banner');
   if (banner) banner.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
-});
+}, false);
 
 
 const root = document.querySelector('#root');
