@@ -1,6 +1,6 @@
 <%= simple_form_for([recipe, comment, reply], remote: true, html: ({id: "new_reply_#{comment.id}", data: { reply: reply.id, comment: comment.id }})) do |f| %>
   <%= f.input :content, label:false, placeholder: t('.add_a_public_reply'), input_html: { id: "reply_content_#{comment.id}" } %>
-  <% if comment.id.nil? %>
+  <% if reply.id.nil? %>
     <%= f.button :submit, t('.reply'), class: 'btn btn-light' %>
     <%#= f.button :submit, t('.add_a_comment'), class: 'btn btn-light' %>
   <% else %>
