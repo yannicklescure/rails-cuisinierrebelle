@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.7.1'
 
-gem 'rails', '6.0.2.2'
+gem 'rails', '6.0.3.2'
 gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem "i18n-js"
 gem "puma", ">= 4.3.5"
@@ -70,3 +70,5 @@ gem "actionview", ">= 6.0.2.2"
 gem 'kaminari'
 gem 'fastimage'
 gem "websocket-extensions", ">= 0.1.5"
+# gem "actionpack", ">= 6.0.3.2"
+# gem "rack", ">= 2.2.3"
