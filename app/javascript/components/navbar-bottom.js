@@ -26,6 +26,17 @@ const fetchUserData = (init, options) => {
   });
 }
 
+const getElementId = () => {
+  document.querySelectorAll('.navbar-bottom-btn').forEach(element => {
+    element.addEventListener('click', (event) => {
+      // console.log(event.currentTarget);
+      document.cookie = `navbarBottomBtn=;path=/users`;
+      document.cookie = `navbarBottomBtn=${event.currentTarget.getAttribute('id')};path=/users`;
+      // alert(document.cookie);
+    });
+  });
+}
+
 export const navbarBottom = (location) => {
   const body = document.querySelector('body');
   const userSignedIn = body.dataset.user === 'true';
@@ -72,55 +83,75 @@ export const navbarBottom = (location) => {
       navbar += `<a href="/u/${data.user.auth.slug}" class="px-3 text-decoration-none"><img id="user" src="${data.user.auth.image.thumb.url}" width="32" height="32" class="navbar-bottom-btn border rounded-circle"></a>`;
       navbar += `</div>`;
       // body.insertAdjacentHTML('afterBegin', navbar);
-
-      // if (!location.currentController && !location.currentPage) {
-      //   const homeButton = document.querySelector('#home');
-      //   if (homeButton) smoothScroll(homeButton);
-      // }
-      let id = '';
-      let el = '';
-      switch (location.currentController) {
-        case null:
-          id = 'home';
-          el = document.querySelector('#home');
-          el.classList.add('text-dark');
-          break;
-        case 'top100':
-          id = 'whatshot';
-          el = document.querySelector('#whatshot');
-          el.classList.add('text-dark');
-          break;
-        case 'r':
-          if (location.currentPage === 'new') {
-            id = 'new-recipe';
-            el = document.querySelector('#new-recipe');
-            el.classList.add('text-dark');
-          }
-          break;
-        case 'u':
-          if (location.currentPage.match(/.*\/bookmarks/)) {
-            id = 'bookmarks';
-            el = document.querySelector('#bookmarks');
-            el.classList.add('text-dark');
-          } else {
-            id = 'user';
-            el = document.querySelector('#user');
-            el.classList.add('border-dark');
-          }
-          break;
-        default:
-          console.log(`Sorry, we couldn't find ${location.currentController}.`);
-      }
-      if (el.classList) {
-        // console.log(el.classList.value);
-        el.classList.remove('navbar-bottom-btn');
-        if (id === 'user') el.classList.remove('border-muted');
-        else el.classList.remove('text-muted');
-        smoothScroll(el);
-      }
-      // document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
-      //   button.classList.add('text-muted');
-      // });
     });
   }
+
+  // if (!location.currentController && !location.currentPage) {
+  //   const homeButton = document.querySelector('#home');
+  //   if (homeButton) smoothScroll(homeButton);
+  // }
+  getElementId();
+  let id = '';
+  // const elementId = getElementId();
+  let el = '';
+  // console.log(location.currentController);
+  switch (location.currentController) {
+    case null:
+      id = 'home';
+      el = document.querySelector('#home');
+      // el.classList.add('text-dark');
+      break;
+    case 'top100':
+      id = 'whatshot';
+      el = document.querySelector('#whatshot');
+      // el.classList.add('text-dark');
+      break;
+    case 'r':
+      if (location.currentPage === 'new') {
+        id = 'new-recipe';
+        el = document.querySelector('#new-recipe');
+        // el.classList.add('text-dark');
+      }
+      break;
+    case 'u':
+      if (location.currentPage.match(/.*\/bookmarks/)) {
+        id = 'bookmarks';
+        el = document.querySelector('#bookmarks');
+        // el.classList.add('text-dark');
+      } else {
+        id = 'user';
+        el = document.querySelector('#user');
+        // el.classList.add('border-dark');
+      }
+      break;
+    default:
+      // console.log(`Sorry, we couldn't find ${location.currentController}.`);
+      // el = getElementId();
+      if (document.cookie.split(';').some((item) => item.trim().startsWith('navbarBottomBtn='))) {
+        // console.log('The cookie "navbarBottomBtn" exists (ES6)')
+        const cookieValue = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('navbarBottomBtn'))
+          .split('=')[1];
+        // console.log(cookieValue);
+        id = cookieValue;
+        el = document.querySelector(`#${cookieValue}`);
+      }
+  }
+  if (el) {
+    // console.log(el.classList.value);
+    // el.classList.remove('navbar-bottom-btn');
+    // console.log(id);
+    if (id === 'user') {
+      el.classList.remove('border-muted');
+      el.classList.add('border-dark');
+    } else {
+      el.classList.remove('text-muted');
+      el.classList.add('text-dark');
+    }
+    smoothScroll(el);
+  }
+  // document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
+  //   button.classList.add('text-muted');
+  // });
 }
