@@ -1,7 +1,7 @@
 json.data do
   if user_signed_in?
     json.user do
-      json.auth current_user, :email, :slug, :name, :image, :checked
+      json.auth current_user, :email, :slug, :name, :image, :checked, :locale
       # if current_user.likes.any?
       #   json.likes current_user.likes do |like|
       #     json.extract! like, :recipe_id
