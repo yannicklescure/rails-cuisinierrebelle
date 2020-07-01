@@ -19,24 +19,30 @@ class Api::V1::RecipesController < Api::V1::BaseController
     end
     @query = params[:query]
     if @query.present?
-      @pg_search_results = PgSearch.multisearch(@query)
-      @search_results = []
-      if @pg_search_results.any?
-        case @pg_search_results[0].searchable_type
-        when 'User'
-          @search_results = @pg_search_results.map { |r| User.find(r.searchable_id) }.sort_by {|k,v| k.id }.reverse
-        when 'Recipe'
-          @search_results = @pg_search_results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id }.reverse
-        else
-          @search_results = []
-        end
-      else
-        @search_results = Recipe.tagged_with(@query).map { |r| r }.sort_by {|k,v| k.id}.reverse
-      end
+      # @pg_search_results = PgSearch.multisearch(@query)
+      # @search_results = []
+      # if @pg_search_results.any?
+      #   case @pg_search_results[0].searchable_type
+      #   when 'User'
+      #     @search_results = @pg_search_results.map { |r| User.find(r.searchable_id) }.sort_by {|k,v| k.id }.reverse
+      #   when 'Recipe'
+      #     @search_results = @pg_search_results.map { |r| Recipe.find(r.searchable_id) }.sort_by {|k,v| k.id }.reverse
+      #   else
+      #     @search_results = []
+      #   end
+      # else
+      #   @search_results = Recipe.tagged_with(@query).map { |r| r }.sort_by {|k,v| k.id}.reverse
+      # end
 
-      @recipes = []
+      @search_user = User.search(@query)
+      @search_recipe = Recipe.search(@query)
+      @results = {
+        user: @search_user.any? ? @search_user.map { |r| User.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil,
+        recipe: @search_recipe.any? ? @search_recipe.map { |r| Recipe.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil
+      }
+
       max = [48, Recipe.all.count].min
-      @recipes = @search_results
+      @recipes = @results[:recipe].nil? ? [] : @results[:recipe]
       if @recipes.count < max
         Recipe.all.select { |r| r unless @recipes.include? r }.shuffle.take(max - @recipes.count).map { |e| @recipes << e }
       end

@@ -21,15 +21,16 @@ class Recipe < ApplicationRecord
     message: I18n.t(".only_allows_youtube_video")
   }
 
-  include PgSearch::Model
-  # PgSearch.multisearch_options = {
-  #   using: [:tsearch, :trigram],
-  #   ignoring: :accents
-  # }
-  multisearchable(
-      against: [:title, :description, :direction, :tag_list],
-      # update_if: [:description_changed?, :tag_list_changed?],
-      # using: [:tsearch, :trigram, :dmetaphone]
-      using: [:tsearch, :trigram]
-    )
+  # include PgSearch::Model
+  # # PgSearch.multisearch_options = {
+  # #   using: [:tsearch, :trigram],
+  # #   ignoring: :accents
+  # # }
+  # multisearchable(
+  #     against: [:title, :description, :direction, :tag_list],
+  #     # update_if: [:description_changed?, :tag_list_changed?],
+  #     # using: [:tsearch, :trigram, :dmetaphone]
+  #     using: [:tsearch, :trigram]
+  #   )
+  searchkick
 end

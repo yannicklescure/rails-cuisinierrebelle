@@ -57,12 +57,13 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  include PgSearch::Model
-  # PgSearch.multisearch_options = {
-    # using: [:tsearch, :trigram],
-    # ignoring: :accents
-  # }
-  multisearchable against: [:name, :first_name, :last_name]
+  # include PgSearch::Model
+  # # PgSearch.multisearch_options = {
+  #   # using: [:tsearch, :trigram],
+  #   # ignoring: :accents
+  # # }
+  # multisearchable against: [:name, :first_name, :last_name]
+  searchkick
   private
 
   def sanitize_user_slug
