@@ -27,8 +27,13 @@
         </div>
       </div>
     </div>
-    <div id="user-name-sm" class="order-2 d-flex flex-grow-1 flex-md-grow-0 flex-md-column mx-3 mb-3">
-      <%= render user %>
+    <div class="d-flex align-items-center justify-content-between mx-3">
+      <div id="user-name-sm" class="order-0 d-flex flex-grow-1 flex-md-grow-0 flex-md-column">
+        <%= render user %>
+      </div>
+      <% if user_signed_in? && user == current_user %>
+        <%= link_to t('.admin_html'), user_settings_path(current_user), class: "text-muted text-decoration-none" %>
+      <% end %>
     </div>
   </div>
 </div>

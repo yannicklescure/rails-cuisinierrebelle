@@ -634,6 +634,7 @@ fr:
       following: Abonnements
       recipes: Recettes
     user-banner-small:
+      admin_html: <i class="material-icons md-18 d-flex">settings</i>
       followers: Abonnés
       following: Abonnements
       recipes: Recettes
