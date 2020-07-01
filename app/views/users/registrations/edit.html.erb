@@ -38,9 +38,9 @@
     <div class="d-flex flex-column">
       <%= f.label :image, t('.photo') %>
       <% unless @user.image.url.nil? %>
-        <%= image_tag @user.image.url(:preview), id: 'photo-active', crop: :fill, width: 300, class: 'img-fluid rounded mb-3' %>
+        <%= image_tag @user.image.url(:preview), id: 'photo-active', crop: :fill, width: 128, class: 'img-fluid rounded mb-3' %>
       <% end %>
-      <%= image_tag "", width: 300, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
+      <%= image_tag "", width: 128, class: "d-none img-fluid rounded mb-3", id: "photo-preview" %>
       <%= f.input :image, input_html: { id: 'photo-input'}, label: false %>
     </div>
     <%= f.input :current_password,
@@ -64,14 +64,18 @@
     <% end %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".update"), class: 'btn btn-light' %>
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="form-actions">
+      <%= f.button :submit, t(".update"), class: 'btn btn-light' %>
+    </div>
+    <a href="javascript:void(0)" class="text-muted" type="button" data-toggle="collapse" data-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
+      <%= t(".cancel_my_account") %>
+    </a>
   </div>
 <% end %>
 
-<div class="my-3">
-  <h3><%= t(".cancel_my_account") %></h3>
+<div class="collapse my-3" id="collapseDeleteUser">
+  <p><%= t(".unhappy") %>&nbsp;<%= link_to t(".cancel_my_account"), registration_path(resource), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
 </div>
-<p><%= t(".unhappy") %>&nbsp;<%= link_to t(".cancel_my_account"), registration_path(resource), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
 
 <%#= link_to t("devise.shared.links.back"), :back %>
