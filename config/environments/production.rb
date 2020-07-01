@@ -1,4 +1,6 @@
 Rails.application.configure do
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+
   config.action_mailer.default_url_options = { host: "https://www.cuisinierrebelle.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
