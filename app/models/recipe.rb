@@ -24,7 +24,12 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
   # PgSearch.multisearch_options = {
   #   using: [:tsearch, :trigram],
-  #   # ignoring: :accents
+  #   ignoring: :accents
   # }
-  multisearchable against: [:title, :description, :direction, :tag_list]
+  multisearchable(
+      against: [:title, :description, :direction, :tag_list],
+      # update_if: [:description_changed?, :tag_list_changed?],
+      # using: [:tsearch, :trigram, :dmetaphone]
+      using: [:tsearch, :trigram]
+    )
 end
