@@ -1,51 +1,59 @@
-<div class="container mt-3 mb-5">
 <% if user_signed_in? && @user == current_user %>
-  <div class="d-flex justify-content-start align-items-center pb-3">
-    <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px" style="object-fit: cover;">
-    <div class="d-flex flex-column ml-3">
-      <%= link_to t('.follower', count: @user.followers.count), user_followers_path(@user), class: 'text-body' %>
-      <%= link_to t('.published_recipes', count: @user.recipes.count), user_recipes_path(@user), class: 'text-body' %>
+  <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+    <div class="container mt-5">
+      <div class="d-flex justify-content-start align-items-center pb-3">
+        <img src="<%= @user.image %>" alt="" class="rounded" width="64px" height="64px" style="object-fit: cover;">
+        <div class="d-flex flex-column ml-3">
+          <%= link_to t('.follower', count: @user.followers.count), user_followers_path(@user), class: 'text-body' %>
+          <%= link_to t('.published_recipes', count: @user.recipes.count), user_recipes_path(@user), class: 'text-body' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="d-flex flex-row justify-content-between justify-content-md-start">
-    <strong><%= t('.full_name') %></strong>
-    <div class="pl-md-2 d-flex align-items-center">
-      <%= link_to @user.name.titlecase, user_path(@user), class: 'text-body' %>
-      <% if @user.checked %>
-        <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex pl-1"><%= t('.verified_html') %></span>
+  <% else %>
+    <%= render 'shared/user-banner', user: @user %>
+  <% end %>
+  <div class="container mt-3 mb-5">
+    <div class="d-flex flex-row justify-content-between justify-content-md-start">
+      <strong><%= t('.full_name') %></strong>
+      <div class="pl-md-2 d-flex align-items-center">
+        <%= link_to @user.name.titlecase, user_path(@user), class: 'text-body' %>
+        <% if @user.checked %>
+          <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex pl-1"><%= t('.verified_html') %></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-between justify-content-md-start">
+      <strong><%= t('.email') %></strong>
+      <div class="pl-md-2"><%= @user.email %></div>
+    </div>
+    <div class="d-flex flex-row justify-content-between justify-content-md-start">
+      <strong><%= t('.created_at') %></strong>
+      <div class="pl-md-2"><%= I18n.localize @user.created_at, format: :long %></div>
+    </div>
+    <div class="d-flex flex-row justify-content-between justify-content-md-start">
+      <strong><%= t('.updated_at') %></strong>
+      <div class="pl-md-2"><%= I18n.localize @user.updated_at, format: :long %></div>
+    </div>
+    <div class="d-flex flex-column py-3">
+      <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-start">
+        <div class="custom-control custom-switch mailchimp-switch">
+          <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
+          <label class="custom-control-label" for="mailchimpSwitch"><%#= t('.subscribe_to_newsletter') %></label>
+        </div>
+        <div class="pr-3"><%= t('.subscribe_to_newsletter') %></div>
+      </div>
+      <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-start">
+        <div class="custom-control custom-switch notification-switch">
+          <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
+          <label class="custom-control-label" for="notificationSwitch"><%#= t('.receive_emails_about_comments_and_replies') %></label>
+        </div>
+        <div class="pr-3"><%= t('.receive_emails_about_comments_and_replies') %></div>
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-start">
+      <%= link_to edit_user_registration_path(@user), class: 'btn btn-light d-flex' do %>
+        <%= t('.edit_user_registration') %>
       <% end %>
     </div>
   </div>
-  <div class="d-flex flex-row justify-content-between justify-content-md-start">
-    <strong><%= t('.email') %></strong>
-    <div class="pl-md-2"><%= @user.email %></div>
-  </div>
-  <div class="d-flex flex-row justify-content-between justify-content-md-start">
-    <strong><%= t('.created_at') %></strong>
-    <div class="pl-md-2"><%= I18n.localize @user.created_at, format: :long %></div>
-  </div>
-  <div class="d-flex flex-row justify-content-between justify-content-md-start">
-    <strong><%= t('.updated_at') %></strong>
-    <div class="pl-md-2"><%= I18n.localize @user.updated_at, format: :long %></div>
-  </div>
-  <div class="d-flex flex-column py-3">
-    <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-between">
-      <div class="pr-3"><%= t('.subscribe_to_newsletter') %></div>
-      <div class="custom-control custom-switch mailchimp-switch">
-        <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
-        <label class="custom-control-label" for="mailchimpSwitch"><%#= t('.subscribe_to_newsletter') %></label>
-      </div>
-    </div>
-    <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-between">
-      <div class="pr-3"><%= t('.receive_emails_about_comments_and_replies') %></div>
-      <div class="custom-control custom-switch notification-switch">
-        <input type="checkbox" class="custom-control-input" id="notificationSwitch"<%= " checked" if @user.notification %>>
-        <label class="custom-control-label" for="notificationSwitch"><%#= t('.receive_emails_about_comments_and_replies') %></label>
-      </div>
-    </div>
-  </div>
-  <div class="d-flex flex-column align-items-start">
-    <%= link_to t('.edit_user_registration'), edit_user_registration_path(@user), class: 'btn btn-light' %>
-  </div>
 <% end %>
-</div>
