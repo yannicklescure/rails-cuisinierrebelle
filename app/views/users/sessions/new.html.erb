@@ -1,7 +1,12 @@
-<%= render "users/shared/providers" %>
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <div class="h2"><%= t(".sign_in") %></div>
+  <%= render "users/shared/providers" %>
+  <button class="btn btn-light text-muted" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+    <%= t('.use_form') %>
+  </button>
+</div>
 
-<h2><%= t(".sign_in") %></h2>
-
+<div class="collapse mt-3" id="collapseForm">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -18,6 +23,7 @@
     <%= f.button :submit, t(".sign_in"), class: 'btn btn-light' %>
   </div>
 <% end %>
+</div>
 <div class="my-3">
 <%= render "users/shared/links" %>
 </div>

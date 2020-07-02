@@ -744,9 +744,11 @@ en:
           password to confirm your changes
       new:
         sign_up: Sign up
+        use_form: Use Cuisinier Rebelle's form
     sessions:
       new:
         sign_in: Log in
+        use_form: Use Cuisinier Rebelle's form
     shared:
       links:
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions

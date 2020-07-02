@@ -1,7 +1,12 @@
-<%= render "users/shared/providers" %>
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <div class="h2"><%= t(".sign_up") %></div>
+  <%= render "users/shared/providers" %>
+  <button class="btn btn-light text-muted" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+    <%= t('.use_form') %>
+  </button>
+</div>
 
-<h2><%= t(".sign_up") %></h2>
-
+<div class="collapse mt-3" id="collapseForm">
 <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 <%= simple_form_for(resource, url: registration_path(resource)) do |f| %>
   <%= f.error_notification %>
@@ -32,6 +37,7 @@
     <%= f.button :submit, t(".sign_up"), class: 'btn btn-light' %>
   </div>
 <% end %>
+</div>
 <div class="my-3">
 <%= render "users/shared/links" %>
 </div>

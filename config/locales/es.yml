@@ -633,9 +633,11 @@ es:
           actual para confirmar los cambios
       new:
         sign_up: Registrarse
+        use_form: Usa la forma de Cuisinier Rebelle
     sessions:
       new:
         sign_in: Iniciar sesión
+        use_form: Usa la forma de Cuisinier Rebelle
     shared:
       links:
         didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones

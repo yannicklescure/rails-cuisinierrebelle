@@ -756,9 +756,11 @@ fr:
           votre mot de passe actuel pour valider ces modifications
       new:
         sign_up: Inscription
+        use_form: Utilisez le formulaire de Cuisinier Rebelle
     sessions:
       new:
         sign_in: Connexion
+        use_form: Utilisez le formulaire de Cuisinier Rebelle
     shared:
       links:
         didn_t_receive_confirmation_instructions: Vous n'avez pas reçu le courriel
