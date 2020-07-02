@@ -1,7 +1,7 @@
 ---
 fr:
   '':
-    only_allows_youtube_video: Seules les videos de Youtube sont permises
+    only_allows_youtube_video: Seules les videos de YouTube sont permises
   about:
     edit:
       add_a_public_content: Ajouter un contenu public
@@ -443,25 +443,40 @@ fr:
       add_your_tags_separated_by_commas: Ajoutez vos tags séparés par des virgules
       are_you_sure: Êtes-vous sûr ?
       delete: Supprimer
-      description: Description
-      direction: Direction
+      description: Introduction personnalisée
+      direction: Recette
       markdown_syntax_friendly_area: Syntaxe Markdown admise
       photo: Photo
       subtitle: Sous-titre
       title: Titre
-      youtube_video_link: Lien video Youtube
+      youtube_video_link: Lien video YouTube
+    form:
+      add_new_recipe: Add new recipe
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
+      advanced_options: Plus d'options
+      are_you_sure: Êtes-vous sûr ?
+      create_recipe: Enregistrer
+      delete: Supprimer
+      description: Description
+      direction: Recette
+      markdown_syntax_friendly_area: Syntaxe Markdown admise
+      photo: Photo
+      subtitle: Sous-titre
+      title: Titre
+      youtube_video_link: Lien vidéo YouTube
     new:
       add_new_recipe: Créer une nouvelle recette
       add_tags: Ajouter des tags
       add_your_tags_separated_by_commas: Ajoutez vos tags séparés par des virgules
       create_recipe: Ajouter une recette
-      description: Description
-      direction: Direction
+      description: Introduction personnalisée
+      direction: Recette
       markdown_syntax_friendly_area: Syntaxe Markdown admise
       photo: Photo
       subtitle: Sous-titre
       title: Titre
-      youtube_video_link: Lien video Youtube
+      youtube_video_link: Lien vidéo YouTube
     show:
       add_a_comment: Commenter
       add_a_public_comment: Ajouter un commentaire public...

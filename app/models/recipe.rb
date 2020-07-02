@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
 
   validates :title, presence: true
   # validates :subtitle, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
   validates :direction, presence: true
   validates :photo, presence: true
   validates :video, format: {

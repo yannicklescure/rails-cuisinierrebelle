@@ -339,8 +339,8 @@ es:
       are_you_sure: "¿Estas seguro?"
       create_page: Guardar
       delete: Eliminar
-      description: Description
-      photo: Foto
+      description: Descripción
+      photo: Photo
       title: Title
       url: Url
   recipes:
@@ -349,20 +349,35 @@ es:
       add_your_tags_separated_by_commas: Agregue sus etiquetas separadas por comas
       are_you_sure: "¿Estas seguro?"
       delete: Eliminar
-      description: Descripción
-      direction: Dirección
+      description: Introducción personalizada
+      direction: Receta
       markdown_syntax_friendly_area: Área amigable de sintaxis de Markdown
       photo: Foto
       subtitle: Subtitular
       title: Título
       youtube_video_link: Enlace de video de Youtube
+    form:
+      add_new_recipe: Add new recipe
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
+      advanced_options: Más opciones
+      are_you_sure: Are you sure
+      create_recipe: Create recipe
+      delete: Delete
+      description: Description
+      direction: Direction
+      markdown_syntax_friendly_area: Markdown syntax friendly area
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
     new:
       add_new_recipe: Agregar nueva receta
       add_tags: Agregar etiquetas
       add_your_tags_separated_by_commas: Agregue sus etiquetas separadas por comas
       create_recipe: Crear receta
-      description: Descripción
-      direction: Dirección
+      description: Introducción personalizada
+      direction: Receta
       markdown_syntax_friendly_area: Área amigable de sintaxis de Markdown
       photo: Foto
       subtitle: Subtitular

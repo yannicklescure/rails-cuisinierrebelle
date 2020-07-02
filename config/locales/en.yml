@@ -437,8 +437,23 @@ en:
       add_your_tags_separated_by_commas: Add your tags separated by commas
       are_you_sure: Are you sure?
       delete: Delete
+      description: Custom introduction
+      direction: Recipe
+      markdown_syntax_friendly_area: Markdown syntax friendly area
+      photo: Photo
+      subtitle: Subtitle
+      title: Title
+      youtube_video_link: Youtube video link
+    form:
+      add_new_recipe: Add new recipe
+      add_tags: Add tags
+      add_your_tags_separated_by_commas: Add your tags separated by commas
+      advanced_options: More options
+      are_you_sure: Are you sure?
+      create_recipe: Save
+      delete: Delete
       description: Description
-      direction: Direction
+      direction: Recipe
       markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle
@@ -449,8 +464,8 @@ en:
       add_tags: Add tags
       add_your_tags_separated_by_commas: Add your tags separated by commas
       create_recipe: Create recipe
-      description: Description
-      direction: Direction
+      description: Custom introduction
+      direction: Recipe
       markdown_syntax_friendly_area: Markdown syntax friendly area
       photo: Photo
       subtitle: Subtitle

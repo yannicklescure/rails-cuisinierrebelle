@@ -12,7 +12,7 @@ const fetchUserData = (init, options) => {
   });
 }
 
-export const newRecipeButton = () => {
+export const newRecipeButton = (location) => {
 
   const body = document.querySelector('body');
   const userSignedIn = body.dataset.user === 'true';
@@ -46,8 +46,8 @@ export const newRecipeButton = () => {
 
     // const root = document.querySelector('#root');
 
-    fetchUserData(init, options).then(data => {
-      console.log(data)
+    // fetchUserData(init, options).then(data => {
+      // console.log(data)
       const newRecipeButtonHTML = `<style>
       #new-recipe-btn {
         position: fixed;
@@ -70,14 +70,15 @@ export const newRecipeButton = () => {
       //   background-color: #dc3544;
       // }
       </style>
-      <a href="https://www.cuisinierrebelle.com/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white p-2"></a>`;
+      <a href="/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white p-2"></a>`;
       document.querySelector('body').insertAdjacentHTML('afterBegin', newRecipeButtonHTML);
       // console.log(document.querySelector('#new-recipe-btn'));
       const btnIcon = `<span id="new-recipe-btn-icon" class="material-icons md-18 d-flex m-1 ml-2">create</span>`;
       // console.log(location.currentLang);
       let btnText = `<span id="new-recipe-btn-text" class="mr-2">`;
-      console.log(data.user.auth.locale);
-      switch(data.user.auth.locale) {
+      // console.log(data.user.auth.locale);
+      // switch(data.user.auth.locale) {
+      switch(location.currentLang) {
         case "en":
           btnText += `Add new recipe`;
           break;
@@ -96,8 +97,9 @@ export const newRecipeButton = () => {
       const newRecipeButtonSizeMin = 42 ;// newRecipeButton.offsetWidth;
       // console.log(newRecipeButtonSizeMin);
       newRecipeButton.innerHTML = btnIcon + btnText;
-      const newRecipeButtonSizeMax = newRecipeButton.offsetWidth;
+      const newRecipeButtonSizeMax = newRecipeButton.offsetWidth + 1;
       // console.log(newRecipeButtonSizeMax);
+      // console.log(Math.round(parseFloat(newRecipeButtonSizeMax)));
       const newRecipeButtonText = document.querySelector('#new-recipe-btn-text');
       const newRecipeButtonIcon = document.querySelector('#new-recipe-btn-icon');
       // newRecipeButton.addEventListener('click', (event) => {
@@ -141,6 +143,6 @@ export const newRecipeButton = () => {
         }
         lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
       }, false);
-    });
+    // });
   }
 }

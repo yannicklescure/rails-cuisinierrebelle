@@ -15,7 +15,6 @@ jQuery.htmlPrefilter = function( html ) {
 import "bootstrap";
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
-import { previewImageOnFileSelect } from "../components/photo-preview";
 import { cardHeart } from "../components/card-heart";
 import { flashes } from "../components/flashes";
 import { btnClick } from "../components/button";
@@ -36,59 +35,58 @@ import { admin } from "../pages/admin";
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
-
-const userSignedIn = document.querySelector('body').dataset.user === 'true';
-
-const location = currentLocation();
-// console.log(location);
-let currentLang = location.currentLang;
-let currentController = location.currentController;
-let currentPage = location.currentPage;
-const device = document.querySelector('body').dataset.device;
-
 document.addEventListener('DOMContentLoaded', (event) => {
-  // console.log(device);
-  if (device != 'desktop') {
-    shareButton();
-    navbarBottom(location);
-  }
-  previewImageOnFileSelect();
-  googleAdsNoNavbar();
-  if (!currentController && !currentPage) home();
-  if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-  if (currentController && currentController === 'r') recipe();
-  if (currentController === 'u' && currentPage != null) userBanner();
-  if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
-  if (currentController === 'tools') alerts();
-  if (currentController === 'top100') top100();
-  if (currentController === 'admin' && userSignedIn) admin(location);
-
   const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
+  // console.log(navbarHeight);
   document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
   const banner = document.querySelector('.banner');
   if (banner) banner.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
 }, false);
 
+const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
-const root = document.querySelector('#root');
-if (root) recipes(root, location);
+Promise.resolve(currentLocation()).then(location => {
+  console.log(location);
+  let currentLang = location.currentLang;
+  let currentController = location.currentController;
+  let currentPage = location.currentPage;
+  const device = document.querySelector('body').dataset.device;
 
-searchInput({
-  location: location,
-  device: device
-});
+    // console.log(device);
+    if (device != 'desktop') {
+      shareButton();
+      navbarBottom(location);
+    }
+    googleAdsNoNavbar();
+    if (!currentController && !currentPage) home();
+    if (currentPage && currentPage.match(/edit\..*/)) btnClick();
+    if (currentController && currentController === 'r') recipe(location);
+    if (currentController === 'u' && currentPage != null) userBanner();
+    if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
+    if (currentController === 'tools') alerts();
+    if (currentController === 'top100') top100();
+    if (currentController === 'admin' && userSignedIn) admin(location);
 
-const navbarBrand = document.querySelector(".navbar-brand");
-if(window.innerWidth <= 768) {
-  navbarBrand.style.padding = "5px 0";
-}
+  const root = document.querySelector('#root');
+  if (root) recipes(location);
 
+  searchInput({
+    location: location,
+    device: device
+  });
 
-if (!currentController && !currentPage && !userSignedIn) {
-  scrollToAnchor("#recipes-cards");
-  const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
-  if (bannerCtaBoxTitle && window.innerWidth > 375) {
-    bannerCtaBoxTitle.classList.remove('h2');
-    bannerCtaBoxTitle.classList.add('h1');
+  const navbarBrand = document.querySelector(".navbar-brand");
+  if(window.innerWidth <= 768) {
+    navbarBrand.style.padding = "5px 0";
   }
-}
+
+
+  if (!currentController && !currentPage && !userSignedIn) {
+    scrollToAnchor("#recipes-cards");
+    const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
+    if (bannerCtaBoxTitle && window.innerWidth > 375) {
+      bannerCtaBoxTitle.classList.remove('h2');
+      bannerCtaBoxTitle.classList.add('h1');
+    }
+  }
+});

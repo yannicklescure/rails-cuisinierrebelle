@@ -2,7 +2,7 @@ import { cookiesToObject } from "../components/cookies";
 import { lazyLoad } from "../components/lazy-load";
 import { newRecipeButton } from "../components/recipe-button-new";
 
-export const recipes = (root, location) => {
+export const recipes = (location) => {
   // if (currentController === null || currentController === 'users' || currentController === 'bookmarks' || (currentController === 'recipes' && currentPage === null)) {
   // console.log(root.dataset.recipes);
   const body = document.querySelector('body');
@@ -11,7 +11,7 @@ export const recipes = (root, location) => {
   const device = body.dataset.device;
 
   const init = {
-    url: `/api/v1/recipes?cards=${root.dataset.recipes}`,
+    url: `/api/v1/recipes?cards=${document.querySelector('#root').dataset.recipes}`,
     userSignedIn: userSignedIn,
     currentController: location.currentController,
     currentPage: location.currentPage,
@@ -27,7 +27,7 @@ export const recipes = (root, location) => {
   lazyLoad(init);
 
   if (userSignedIn && device === 'desktop') {
-    newRecipeButton();
+    newRecipeButton(location);
   }
   // }
 }

@@ -48,6 +48,10 @@ class RecipesController < ApplicationController
     # params[:recipe][:video] = sanitize_youtube_video_link(params[:recipe][:video])
     # @recipe.video = nil if @recipe.video == ''
     @recipe.video = sanitize_youtube_video_link(params[:recipe][:video])
+    unless @recipe.description.length.positive?
+      @recipe.description = @recipe.direction.truncate(280)
+    end
+    # binding.pry
     if @recipe.save
       # binding.pry
       # binding.pry
