@@ -13,6 +13,11 @@
     <%= render 'shared/user-banner', user: @user %>
   <% end %>
   <div class="container mt-3 mb-5">
+    <div class="d-flex align-items-start justify-content-end mb-3">
+      <%= link_to edit_user_registration_path(@user), class: 'btn btn-sm btn-light d-flex' do %>
+        <%= t('.edit_user_registration') %>
+      <% end %>
+    </div>
     <div class="d-flex flex-row justify-content-between justify-content-md-start">
       <strong><%= t('.full_name') %></strong>
       <div class="pl-md-2 d-flex align-items-center">
@@ -49,11 +54,6 @@
         </div>
         <div class="pr-3"><%= t('.receive_emails_about_comments_and_replies') %></div>
       </div>
-    </div>
-    <div class="d-flex flex-column align-items-start">
-      <%= link_to edit_user_registration_path(@user), class: 'btn btn-light d-flex' do %>
-        <%= t('.edit_user_registration') %>
-      <% end %>
     </div>
   </div>
 <% end %>
