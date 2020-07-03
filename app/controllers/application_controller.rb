@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     # I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
     # binding.pry
+    # https://github.com/iain/http_accept_language
     if session[:locale].nil?
       I18n.locale = params[:locale] ? params[:locale] : http_accept_language.compatible_language_from(I18n.available_locales)
     else
