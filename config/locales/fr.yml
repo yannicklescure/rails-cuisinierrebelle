@@ -561,7 +561,7 @@ fr:
       full_name: Nom complet
       published_recipes: "%{count} recettes publiées"
       receive_emails_about_comments_and_replies: Recevoir les notifications par courriel
-      remove_ads: Supprimez la pub (Freemium)
+      remove_ads: Supprimer la publicité
       subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Mise à jour
       verified: Vérifié

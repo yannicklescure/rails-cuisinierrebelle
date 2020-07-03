@@ -555,7 +555,7 @@ en:
       full_name: Full name
       published_recipes: "%{count} published recipes"
       receive_emails_about_comments_and_replies: Receive email notifications
-      remove_ads: Remove ads (Freemium)
+      remove_ads: Remove ads
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Verified
