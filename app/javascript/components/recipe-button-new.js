@@ -149,15 +149,15 @@ export const newRecipeButton = (location) => {
         const body = document.body;
         const html = document.documentElement;
         const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
-        console.log(height);
+        // console.log(height);
 
         let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-        console.log(st + window.innerHeight === height)
+        // console.log(st + window.innerHeight === height)
         if (st + window.innerHeight >= height - 217) {
-          console.log(st + window.innerHeight)
+          // console.log(st + window.innerHeight)
           newRecipeButton.classList.add('d-none');
           newRecipeButton.classList.remove('d-flex');
-          console.log('end');
+          // console.log('end');
         } else {
           newRecipeButton.classList.add('d-flex');
           newRecipeButton.classList.remove('d-none');
