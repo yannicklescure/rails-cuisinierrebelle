@@ -35,16 +35,21 @@ const triggerClick = (element) => {
 }
 
 const alertJQ = () => {
-  const alertJQ = $('.alert');
-  alertJQ.hide();
+  // const alertJQ = $('.alert');
+  // alertJQ.hide();
+  document.querySelector('.alert').style.display = 'none';
 };
 
 export const flashes = () => {
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      triggerClick({close: '.close', alert: '.alert'}, alertJQ);
-    }, 1500);
-  }).then((result) => {
-    alertJQ();
-  })
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.querySelector('.alert').style.display = 'block';
+        triggerClick({close: '.close', alert: '.alert'}, alertJQ);
+      }, 1500);
+    }).then((result) => {
+      alertJQ();
+    })
+  });
 }

@@ -51,8 +51,8 @@ export const newRecipeButton = (location) => {
       const newRecipeButtonHTML = `<style>
       #new-recipe-btn {
         position: fixed;
-        bottom: 45px;
-        right: 30px;
+        bottom: 16px;
+        right: 16px;
         z-index: 999;
       }
 
@@ -124,7 +124,7 @@ export const newRecipeButton = (location) => {
       let lastScrollTop = 0;
 
       // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-      window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
+      document.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
         let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
         if (st > lastScrollTop){
           // downscroll code
@@ -143,6 +143,26 @@ export const newRecipeButton = (location) => {
         }
         lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
       }, false);
+
+      document.addEventListener('scroll', (event) => {
+        let element = event.currentTarget;
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+        console.log(height);
+
+        let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        console.log(st + window.innerHeight === height)
+        if (st + window.innerHeight >= height - 217) {
+          console.log(st + window.innerHeight)
+          newRecipeButton.classList.add('d-none');
+          newRecipeButton.classList.remove('d-flex');
+          console.log('end');
+        } else {
+          newRecipeButton.classList.add('d-flex');
+          newRecipeButton.classList.remove('d-none');
+        }
+      });
     // });
   }
 }

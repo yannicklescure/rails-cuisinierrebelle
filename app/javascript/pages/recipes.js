@@ -27,7 +27,9 @@ export const recipes = (location) => {
   lazyLoad(init);
 
   if (userSignedIn && device === 'desktop') {
-    newRecipeButton(location);
+    setTimeout(() => {
+      newRecipeButton(location);
+    },2000);
   }
   // }
 }
