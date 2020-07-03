@@ -543,6 +543,7 @@ en:
       comments: Comments
   settings:
     index:
+      communication: Communication
       created_at: Created at
       edit_user_registration: Edit
       email: Email
@@ -550,9 +551,11 @@ en:
         one: 1 follower
         other: "%{count} followers"
         zero: No follower
+      freemium: Freemium
       full_name: Full name
       published_recipes: "%{count} published recipes"
       receive_emails_about_comments_and_replies: Receive email notifications
+      remove_ads: Remove ads (Freemium)
       subscribe_to_newsletter: Subscribe to newsletter
       updated_at: Updated at
       verified: Verified

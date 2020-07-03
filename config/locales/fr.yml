@@ -549,6 +549,7 @@ fr:
       comments: Comments
   settings:
     index:
+      communication: Communication
       created_at: Création
       edit_user_registration: Éditer
       email: Email
@@ -556,9 +557,11 @@ fr:
         one: 1 abonné
         other: "%{count} abonnés"
         zero: Pas d'abonné
+      freemium: Freemium
       full_name: Nom complet
       published_recipes: "%{count} recettes publiées"
       receive_emails_about_comments_and_replies: Recevoir les notifications par courriel
+      remove_ads: Supprimez la pub (Freemium)
       subscribe_to_newsletter: Recevoir l'infolettre
       updated_at: Mise à jour
       verified: Vérifié

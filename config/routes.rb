@@ -165,6 +165,7 @@ Rails.application.routes.draw do
       resources :recipes, only: [ :index, :show, :update ]
       resources :mailchimp, only: [ :show, :update ]
       resources :notification, only: [ :show, :update ]
+      resources :freemium, only: [ :show, :update ]
     end
   end
 

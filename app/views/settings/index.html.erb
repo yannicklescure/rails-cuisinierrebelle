@@ -13,7 +13,8 @@
     <%= render 'shared/user-banner', user: @user %>
   <% end %>
   <div class="container mt-3 mb-5">
-    <div class="d-flex align-items-start justify-content-end mb-3">
+    <div class="d-flex flex-row justify-content-between align-items-center">
+      <div class="h5"><%= t('.information') %></div>
       <%= link_to edit_user_registration_path(@user), class: 'btn btn-sm btn-light d-flex' do %>
         <%= t('.edit_user_registration') %>
       <% end %>
@@ -39,7 +40,8 @@
       <strong><%= t('.updated_at') %></strong>
       <div class="pl-md-2"><%= I18n.localize @user.updated_at, format: :long %></div>
     </div>
-    <div class="d-flex flex-column py-3">
+    <div class="d-flex flex-column mt-3">
+      <div class="h5"><%= t('.communication') %></div>
       <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-start">
         <div class="custom-control custom-switch mailchimp-switch">
           <input type="checkbox" class="custom-control-input" id="mailchimpSwitch"<%= " checked" if @user.mailchimp %>>
@@ -53,6 +55,16 @@
           <label class="custom-control-label" for="notificationSwitch"><%#= t('.receive_emails_about_comments_and_replies') %></label>
         </div>
         <div class="pr-3"><%= t('.receive_emails_about_comments_and_replies') %></div>
+      </div>
+    </div>
+    <div class="d-flex flex-column mt-3">
+      <div class="h5"><%= t('.freemium') %></div>
+      <div class="d-flex <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>w-50<% else %>w-100<% end %> justify-content-start">
+        <div class="custom-control custom-switch freemium-switch">
+          <input type="checkbox" class="custom-control-input" id="freemiumSwitch"<%= " checked" if @user.freemium %>>
+          <label class="custom-control-label" for="freemiumSwitch"><%#= t('.receive_emails_about_comments_and_replies') %></label>
+        </div>
+        <div class="pr-3"><%= t('.remove_ads') %></div>
       </div>
     </div>
   </div>
