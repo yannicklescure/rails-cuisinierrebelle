@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
 Promise.resolve(currentLocation()).then(location => {
-  console.log(location);
+  // console.log(location);
   let currentLang = location.currentLang;
   let currentController = location.currentController;
   let currentPage = location.currentPage;

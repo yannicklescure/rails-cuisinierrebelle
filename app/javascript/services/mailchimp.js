@@ -1,4 +1,17 @@
-export const mailchimp = (init) => {
+import { cookiesToObject } from "../components/cookies";
+
+export const mailchimp = () => {
+  const cookies = cookiesToObject(document.cookie);
+  const userId = parseInt(document.querySelector('body').dataset.userId);
+
+  const init = {
+    user_id: userId,
+    user_email: cookies.user_email,
+    user_token: cookies.user_token,
+    url: '/api/v1/mailchimp'
+  };
+  // console.log(init);
+
   const btnSwitches = document.querySelectorAll('.mailchimp-switch');
   btnSwitches.forEach((btnSwitch) => {
     btnSwitch.addEventListener('change', (event)=> {

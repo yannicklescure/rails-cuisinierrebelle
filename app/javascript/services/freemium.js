@@ -1,4 +1,17 @@
-export const freemium = (init) => {
+import { cookiesToObject } from "../components/cookies";
+
+export const freemium = () => {
+  const cookies = cookiesToObject(document.cookie);
+  const userId = parseInt(document.querySelector('body').dataset.userId);
+
+  const init = {
+    user_id: userId,
+    user_email: cookies.user_email,
+    user_token: cookies.user_token,
+    url: '/api/v1/freemium'
+  };
+  // console.log(init);
+
   const btnSwitches = document.querySelectorAll('.freemium-switch');
   btnSwitches.forEach((btnSwitch) => {
     btnSwitch.addEventListener('change', (event)=> {
