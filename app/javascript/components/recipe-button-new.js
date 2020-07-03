@@ -153,7 +153,7 @@ export const newRecipeButton = (location) => {
 
         let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
         // console.log(st + window.innerHeight === height)
-        if (st + window.innerHeight >= height - 217) {
+        if (st + window.innerHeight >= height - 216) {
           // console.log(st + window.innerHeight)
           newRecipeButton.classList.add('d-none');
           newRecipeButton.classList.remove('d-flex');
