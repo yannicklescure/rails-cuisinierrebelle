@@ -3,7 +3,7 @@ export const setPictureSize = (picture) => {
   if (picture) {
     // console.log(picture);
     let pictureWidth = picture.offsetWidth || 260;
-    if (device === 'smartphone') pictureWidth = window.innerWidth - 30;
+    if (device != 'desktop' || device != 'tablet') pictureWidth = window.innerWidth - 30;
     // console.log(pictureWidth);
     let pictureHeight = `${parseInt(pictureWidth * 9 / 16)}`;
     // console.log(pictureHeight);
