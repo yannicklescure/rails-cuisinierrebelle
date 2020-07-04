@@ -1,12 +1,24 @@
 <div class="container my-5">
   <!-- <div class="mb-5 h1 text-center"><%= t('.add_new_recipe') %></div> -->
-  <div class="d-flex justify-content-end">
-    <button id="recipe-button-options" class="btn btn-sm btn-light d-flex align-items-center" type="button" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
-      <span class="material-icons md-18">expand_more</span>
-      <%= t('.advanced_options') %>
-    </button>
-  </div>
   <%= simple_form_for(@recipe) do |f| %>
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <%= f.label :photo, t('.photo'), class: 'm-0' %>
+      <button id="recipe-button-options" class="btn btn-sm btn-light d-flex align-items-center" type="button" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
+        <span class="material-icons md-18">expand_more</span>
+        <%= t('.advanced_options') %>
+      </button>
+    </div>
+    <div class="d-flex flex-column mb-3">
+      <%= f.input :photo, input_html: { id: 'photo-input', class: 'd-none m-0' }, label: false %>
+      <% if @recipe.id.nil? %>
+        <div class="d-flex">
+          <div id="photo-active" class="btn btn-light recipe-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></div>
+        </div>
+      <% else %>
+        <%= image_tag @recipe.photo.url(:preview), id: 'photo-active', class: 'rounded recipe-image recipe-photo-btn', width: 260, height: 174, style: "object-fit: cover" %>
+      <% end %>
+      <%= image_tag "", id: "photo-preview", class: "d-none rounded recipe-image recipe-photo-btn", width: 260, height: 174, style: "object-fit: cover" %>
+    </div>
     <%= f.input :title, label: t('.title'), input_html: { maxlength: 100 } %>
     <div class="collapse" id="collapseItems">
       <%= f.input :subtitle, label: t('.subtitle'), input_html: { maxlength: 150 }  %>
@@ -17,22 +29,10 @@
       <%= f.input :video, label: t('.youtube_video_link') %>
       <%= f.input :tag_list, label: t('.add_tags'), as: :text, hint: t('.add_your_tags_separated_by_commas') %>
     </div>
-    <div class="d-flex flex-column">
-      <%= f.label :photo, t('.photo') %>
-      <%= f.input :photo, input_html: { id: 'photo-input', class: 'd-none'}, label: false %>
-      <% if @recipe.id.nil? %>
-        <div class="d-flex">
-          <div class="btn btn-light recipe-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></div>
-        </div>
-      <% else %>
-        <%= image_tag @recipe.photo.url(:preview), id: 'photo-active', class: 'rounded mb-3 recipe-photo-btn', width: 260, height: 174, style: "object-fit: cover" %>
-      <% end %>
-      <%= image_tag "", id: "photo-preview", class: "d-none rounded mb-3 recipe-photo-btn", width: 260, height: 174, style: "object-fit: cover" %>
-    </div>
     <div class="my-3 d-flex justify-content-between align-items-center">
       <%= f.button :submit, t('.create_recipe'), class: "btn btn-light" %>
       <% unless @recipe.id.nil? %>
-        <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'text-body' %>
+        <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'text-muted' %>
       <% end %>
     </div>
   <% end %>

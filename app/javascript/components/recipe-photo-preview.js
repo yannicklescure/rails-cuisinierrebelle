@@ -1,3 +1,5 @@
+import { setPictureSize } from "../functions/set-picture-size";
+
 const previewImageOnFileSelect = () => {
   // we select the photo input
   const input = document.getElementById('photo-input');
@@ -19,7 +21,9 @@ const displayPreview = (input) => {
     reader.readAsDataURL(input.files[0])
     const photoActive = document.getElementById('photo-active');
     if(photoActive) photoActive.classList.add('d-none');
-    document.getElementById('photo-preview').classList.remove('d-none');
+    const photoPreview = document.getElementById('photo-preview')
+    setPictureSize(photoPreview);
+    photoPreview.classList.remove('d-none');
   }
 }
 

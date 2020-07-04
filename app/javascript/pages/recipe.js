@@ -14,6 +14,7 @@ import { print } from "../components/print";
 import { previewImageOnFileSelect } from "../components/recipe-photo-preview";
 import { recipePhoto } from "../components/recipe-photo";
 import { optionsButton } from "../components/recipe-button-options";
+import { setPictureSize } from "../functions/set-picture-size";
 
 export const recipe = (location) => {
   // console.log(location);
@@ -56,10 +57,5 @@ export const recipe = (location) => {
       }
     }
 
-    const recipeImage = document.querySelector('.recipe-image');
-    if (recipeImage) {
-      const recipeImageWidth = recipeImage.offsetWidth;
-      const recipeImageHeight = `${parseInt(recipeImageWidth * 9 / 16)}px`;
-      recipeImage.style.height = recipeImageHeight;
-    }
+    setPictureSize(document.querySelector('.recipe-image'));
 };

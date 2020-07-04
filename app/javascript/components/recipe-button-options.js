@@ -5,7 +5,7 @@ export const optionsButton = (location) => {
   let openText = '';
   let closedText = '';
 
-  console.log(location.currentLang);
+  // console.log(location.currentLang);
   switch (location.currentLang) {
     case 'fr':
       openText = `Moins d'options`;
