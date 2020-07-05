@@ -30,6 +30,7 @@ import { settings } from "../pages/settings";
 import { recipe } from "../pages/recipe";
 import { recipes } from "../pages/recipes";
 import { top100 } from "../pages/top100";
+import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
 if(document.querySelector('.notice') != null) flashes();
@@ -65,6 +66,7 @@ Promise.resolve(currentLocation()).then(location => {
     if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
     if (currentController === 'tools') alerts();
     if (currentController === 'top100') top100();
+    if (currentController === 'conversion') conversion();
     if (currentController === 'admin' && userSignedIn) admin(location);
 
   const root = document.querySelector('#root');
