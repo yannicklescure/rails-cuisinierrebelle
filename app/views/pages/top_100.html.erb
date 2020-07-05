@@ -8,7 +8,7 @@
       <div class="col"><strong><%= t('.title') %></strong></div>
     </div>
   </div>
-  <div class="container">
+  <div id="top-100-content" class="container">
     <% @recipes.each_with_index do |recipe, index| %>
     <div class="row px-3 align-items-center <%= 'bg-light' if index.odd? %>" style="height: 48px;">
       <tr id="<%= "recipe-top-#{index+1}" %>">

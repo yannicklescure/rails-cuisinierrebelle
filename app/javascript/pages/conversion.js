@@ -1,5 +1,5 @@
 import { mainbarFixedTop } from '../functions/mainbar-fixed-top';
 
 export const conversion = () => {
-  mainbarFixedTop({ title: '#conversion-title', mainbar: '#conversion-title-bar' });
+  mainbarFixedTop({ title: '#conversion-title', mainbar: '#conversion-title-bar', content: '#conversion-content' });
 }
