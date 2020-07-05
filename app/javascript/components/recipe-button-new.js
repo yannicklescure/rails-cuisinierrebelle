@@ -51,7 +51,7 @@ export const newRecipeButton = (location) => {
       const newRecipeButtonHTML = `<style>
       #new-recipe-btn {
         position: fixed;
-        bottom: 16px;
+        bottom: 32px;
         right: 16px;
         z-index: 999;
       }
