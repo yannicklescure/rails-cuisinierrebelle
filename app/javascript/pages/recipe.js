@@ -31,7 +31,8 @@ export const recipe = (location) => {
     const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
     if(userSignedIn) {
-      if (currentPage && currentPage.match(/.*\/edit/) || currentPage === 'new') {
+      // if (currentPage && currentPage.match(/.*\/edit/) || currentPage === 'new') {
+      if (document.querySelector('form[id="new_recipe"]')) {
         recipePhoto();
         previewImageOnFileSelect();
         optionsButton(location);
