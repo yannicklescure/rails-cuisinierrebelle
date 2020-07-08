@@ -1,0 +1,16 @@
+<div class="container py-3" id="notifications">
+  <div class="d-flex flex-column">
+    <% @likes.each do |like| %>
+      <%# raise %>
+      <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+        <div><a href="<%= user_path(like.user) %>"><img src="<%= like.user.image.url(:thumb)%>" alt="" class="rounded-circle" width="24" height="24"></a><span class="ml-2"><%= "#{like.user.name} #{t('.liked_your_recipe')}" %></span></div>
+        <div class="d-flex">
+          <% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
+            <span class="mr-2"><%= like.recipe.title %></span>
+          <% end %>
+          <img src="<%= like.recipe.photo.url(:thumb) %>" alt="" class="rounded" width="32" height="32">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

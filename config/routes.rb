@@ -118,6 +118,7 @@ Rails.application.routes.draw do
     get '/:locale/pages/:id', to: redirect('/%{locale}/pg/%{id}')
     get '/pages/:id', to: redirect('/pg/%{id}')
 
+    resources :notifications, only: [:index]
     resources :products, except: [:index, :show]
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

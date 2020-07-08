@@ -289,6 +289,9 @@ es:
     users:
       cooking_recipes_and_more: Recetas de cocina y más
       cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
+  notifications:
+    index:
+      liked_your_recipe: le gustó tu receta.
   pages:
     conversion:
       all_purpose_flour_t55: Harina para todo uso t55
@@ -435,6 +438,7 @@ es:
         zero: Sin seguidor
       freemium: Freemium
       full_name: Nombre completo
+      information: Information
       published_recipes: "%{count} recetas publicadas"
       receive_emails_about_comments_and_replies: Reciba notificaciones por correo
         electrónico
@@ -497,6 +501,7 @@ es:
       log_out: Cerrar sesión
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nueva receta
+      notifications_html: <i class="material-icons md-18">notifications</i>
       recipes: Recetas
       settings: Configuración
       sign_in: Iniciar sesión
@@ -506,6 +511,7 @@ es:
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier&nbsp;Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
+      notifications_html: <i class="material-icons md-24">notifications</i>
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>

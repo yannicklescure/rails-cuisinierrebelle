@@ -383,6 +383,9 @@ fr:
     users:
       cooking_recipes_and_more: Recettes de cuisine et plus
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales
+  notifications:
+    index:
+      liked_your_recipe: a aimé ta recette.
   pages:
     conversion:
       all_purpose_flour_t55: Farine tout usage T55
@@ -559,6 +562,7 @@ fr:
         zero: Pas d'abonné
       freemium: Freemium
       full_name: Nom complet
+      information: Information
       published_recipes: "%{count} recettes publiées"
       receive_emails_about_comments_and_replies: Recevoir les notifications par courriel
       remove_ads: Supprimer la publicité
@@ -620,6 +624,7 @@ fr:
       log_out: Se déconnecter
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nouvelle recette
+      notifications_html: <i class="material-icons md-18">notifications</i>
       recipes: Recettes
       settings: Paramètres
       sign_in: Connexion
@@ -629,6 +634,7 @@ fr:
     navbar-small:
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier&nbsp;Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
+      notifications_html: <i class="material-icons md-24">notifications</i>
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
