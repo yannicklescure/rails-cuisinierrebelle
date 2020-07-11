@@ -32,7 +32,7 @@ export const recipe = (location) => {
 
     if(userSignedIn) {
       // if (currentPage && currentPage.match(/.*\/edit/) || currentPage === 'new') {
-      if (document.querySelector('form[id="new_recipe"]')) {
+      if (document.querySelector('form[id="new_recipe"]') || document.querySelector('form[id^="edit_recipe_"]')) {
         recipePhoto();
         previewImageOnFileSelect();
         optionsButton(location);
