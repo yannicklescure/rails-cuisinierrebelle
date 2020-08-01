@@ -66,6 +66,7 @@ export const card = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const card = `
+        <div class="col-12 col-md-4 col-lg-3 p-2">
           <div class="card border-0" data-recipe="${recipe.id}">
             <div class="card-header py-1 px-0 border-0 bg-white rounded">
               <div class="d-flex justify-content-start align-items-center">
@@ -101,6 +102,7 @@ export const card = (params, callback = () => {}) => {
               <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
             </div>
           </div>
+        </div>
       `;
       const root = document.querySelector('#root');
       root.insertAdjacentHTML('beforeEnd', card);

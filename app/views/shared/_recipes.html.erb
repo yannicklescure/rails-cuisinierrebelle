@@ -3,8 +3,8 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div id="recipes-cards">
-    <div id="root" class="card-columns p-2" data-bookmarks-count="<%= @bookmarks.count %>" data-recipes="<%= @cards.nil? ? '24' : @cards %>"></div>
+    <div id="root" class="row p-2" data-bookmarks-count="<%= @bookmarks.count %>" data-recipes="<%= @cards.nil? ? '24' : @cards %>"></div>
   </div>
 </div>
