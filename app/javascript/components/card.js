@@ -9,6 +9,9 @@ export const card = (params, callback = () => {}) => {
   const array = params.array;
   let locale = init.locale != 'en' ? `/${init.locale}` : '';
 
+  let trigger = 0;
+  let cardDeck = `<div class="card-deck">`;
+
   array.forEach((recipe, index) => {
     if(index + 1 > params.start && index + 1 <= params.end) {
       let bookmarkPatchAttributes = '';
@@ -66,7 +69,7 @@ export const card = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const card = `
-          <div class="card my-2" style="margin: 0 1px" data-recipe="${recipe.id}">
+          <div class="card m-md-2" style="margin: 0 1px" data-recipe="${recipe.id}">
             <div class="card-header px-2 pt-2 pb-0 border-0 bg-white rounded">
               <div class="d-flex justify-content-start align-items-center">
                 <a href="${locale}/u/${recipe.user.slug}/about" class="card-link text-body d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
@@ -106,8 +109,40 @@ export const card = (params, callback = () => {}) => {
             </div>
           </div>
       `;
-      const root = document.querySelector('#root');
-      root.insertAdjacentHTML('beforeEnd', card);
+
+
+      cardDeck += card;
+      trigger += 1;
+
+      // Extra small screen / phone
+      // xs: 0,
+      // Small screen / phone
+      // sm: 576px,
+      // Medium screen / tablet
+      // md: 768px,
+      // Large screen / desktop
+      // lg: 992px,
+      // Extra large screen / wide desktop
+      // xl: 1200px
+      let cardsCount = 0;
+      console.log(window.innerWidth);
+      if (window.innerWidth >= 1600) cardsCount = 6;
+      else if (window.innerWidth >= 1400) cardsCount = 5;
+      else if (window.innerWidth >= 1200) cardsCount = 4;
+      else if (window.innerWidth >= 992) cardsCount = 4;
+      else if (window.innerWidth >= 768) cardsCount = 3;
+      else if (window.innerWidth >= 576) cardsCount = 2;
+      else cardsCount = 1;
+
+      if (trigger === cardsCount) {
+        console.log(trigger);
+        cardDeck += `</div>`;
+        const root = document.querySelector('#root');
+        root.insertAdjacentHTML('beforeEnd', cardDeck);
+        trigger = 0;
+        cardDeck = `<div class="card-deck">`
+      }
+
       // const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
       // cardImgTop.style.minHeight = `${cardImgTop.clientWidth}px`;
     }
