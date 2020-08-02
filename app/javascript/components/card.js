@@ -69,14 +69,14 @@ export const card = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const card = `
-          <div class="card m-md-2" style="margin: 0 1px" data-recipe="${recipe.id}">
-            <div class="card-header px-2 pt-2 pb-0 border-0 bg-white rounded">
+          <div class="card my-3 m-md-2 rounded" style="margin: 0 1px" data-recipe="${recipe.id}">
+            <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
               <div class="d-flex justify-content-start align-items-center">
                 <a href="${locale}/u/${recipe.user.slug}/about" class="card-link text-body d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
                 ${userChecked}
               </div>
             </div>
-            <div class="card-body p-2">
+            <div class="card-body bg-white p-2">
               <a href="${locale}/r/${recipe.slug}">
                 <div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
                   <div class="fa-heart-${recipe.id} d-none text-danger display-3">
@@ -92,7 +92,7 @@ export const card = (params, callback = () => {}) => {
                 <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
               </div>
             </div>
-            <div class="card-footer p-2">
+            <div class="card-footer bg-white p-2">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center text-danger">
                   <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
