@@ -66,26 +66,31 @@ export const card = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const card = `
-        <div class="col-12 col-md-4 col-lg-3 p-2">
-          <div class="card border-0" data-recipe="${recipe.id}">
-            <div class="card-header py-1 px-0 border-0 bg-white rounded">
+          <div class="card my-2" style="margin: 0 1px" data-recipe="${recipe.id}">
+            <div class="card-header px-2 pt-2 pb-0 border-0 bg-white rounded">
               <div class="d-flex justify-content-start align-items-center">
                 <a href="${locale}/u/${recipe.user.slug}/about" class="card-link text-body d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
                 ${userChecked}
               </div>
             </div>
-            <a href="${locale}/r/${recipe.slug}">
-              <div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
-                <div class="fa-heart-${recipe.id} d-none text-danger display-3">
-                  ${heartFillBig}
+            <div class="card-body p-2">
+              <a href="${locale}/r/${recipe.slug}">
+                <div class="card-img-top card-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');">
+                  <div class="fa-heart-${recipe.id} d-none text-danger display-3">
+                    ${heartFillBig}
+                  </div>
+                  <div class="fa-bookmark-${recipe.id} d-none text-body display-3">
+                    ${bookmarkFillBig}
+                  </div>
                 </div>
-                <div class="fa-bookmark-${recipe.id} d-none text-body display-3">
-                  ${bookmarkFillBig}
-                </div>
+              </a>
+              <div class="d-flex flex-column">
+                <a href="${locale}/r/${recipe.slug}" class="card-link mt-2 text-body text-uppercase">${recipe.title}</a>
+                <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
               </div>
-            </a>
-            <div class="card-body py-2 px-0">
-              <div class="d-flex justify-content-between align-items-center mb-1">
+            </div>
+            <div class="card-footer p-2">
+              <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center text-danger">
                   <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
                     ${faHeart}<span class="text-muted font-weight-lighter ml-1">${recipe.likes_count}</span>
@@ -98,11 +103,8 @@ export const card = (params, callback = () => {}) => {
                   <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                 </div>
               </div>
-              <a href="${locale}/r/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
-              <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
             </div>
           </div>
-        </div>
       `;
       const root = document.querySelector('#root');
       root.insertAdjacentHTML('beforeEnd', card);
