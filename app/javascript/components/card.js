@@ -110,28 +110,27 @@ export const card = (params, callback = () => {}) => {
           </div>
       `;
 
-
       cardDeck += card;
       trigger += 1;
-
-      // Extra small screen / phone
-      // xs: 0,
-      // Small screen / phone
-      // sm: 576px,
-      // Medium screen / tablet
-      // md: 768px,
-      // Large screen / desktop
-      // lg: 992px,
-      // Extra large screen / wide desktop
-      // xl: 1200px
       let cardsCount = 0;
+
       console.log(window.innerWidth);
       if (window.innerWidth >= 1600) cardsCount = 6;
       else if (window.innerWidth >= 1400) cardsCount = 5;
+      // Extra large screen / wide desktop
+      // xl: 1200px
       else if (window.innerWidth >= 1200) cardsCount = 4;
+      // Large screen / desktop
+      // lg: 992px,
       else if (window.innerWidth >= 992) cardsCount = 4;
+      // Medium screen / tablet
+      // md: 768px,
       else if (window.innerWidth >= 768) cardsCount = 3;
+      // Small screen / phone
+      // sm: 576px,
       else if (window.innerWidth >= 576) cardsCount = 2;
+      // Extra small screen / phone
+      // xs: 0,
       else cardsCount = 1;
 
       if (trigger === cardsCount) {

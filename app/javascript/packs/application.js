@@ -33,6 +33,8 @@ import { top100 } from "../pages/top100";
 import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
+console.log = function() {}
+
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
