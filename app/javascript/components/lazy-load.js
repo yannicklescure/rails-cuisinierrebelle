@@ -96,6 +96,10 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
     // console.log(init);
     if (init.device != 'desktop') {
       if (init.currentPage && init.currentPage != 'index' && !init.currentPage.match(/.*\/.*/)) initCards.type = 'grid';
+      const root = document.querySelector('#root');
+      root.classList.remove('p-md-2');
+      root.classList.add('row');
+      root.classList.add('p-2');
     }
     cards(initCards);
   }
