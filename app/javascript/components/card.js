@@ -4,15 +4,37 @@ const capitalize_Words = (str) => {
  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
-export const card = (params, callback = () => {}) => {
-  const init = params.init;
-  const array = params.array;
-  let locale = init.locale != 'en' ? `/${init.locale}` : '';
+const setCardsCount = (width) => {
+  console.log(width);
+  if (width >= 1600) return 6;
+  else if (width >= 1400) return 5;
+  // Extra large screen / wide desktop
+  // xl: 1200px
+  else if (width >= 1200) return 4;
+  // Large screen / desktop
+  // lg: 992px,
+  else if (width >= 992) return 4;
+  // Medium screen / tablet
+  // md: 768px,
+  else if (width >= 768) return 3;
+  // Small screen / phone
+  // sm: 576px,
+  else if (width >= 576) return 2;
+  // Extra small screen / phone
+  // xs: 0,
+  else return 1;
+}
+
+const setCards = (params) => {
+
+  let locale = params.init.locale != 'en' ? `/${params.init.locale}` : '';
 
   let trigger = 0;
   let cardDeck = `<div class="card-deck">`;
 
-  array.forEach((recipe, index) => {
+  console.log(Math.ceil(params.array.length / params.count))
+
+  params.array.forEach((recipe, index) => {
     if(index + 1 > params.start && index + 1 <= params.end) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
@@ -27,7 +49,7 @@ export const card = (params, callback = () => {}) => {
       let bookmarkUrl = '/users/sign_in';
       let faHeart = heart;
       let faBookmark = bookmark;
-      if(init.userSignedIn) {
+      if(params.init.userSignedIn) {
         bookmarkUrl = `/r/${recipe.slug}/bookmarks`;
         bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
         likeUrl = `/r/${recipe.slug}/likes`;
@@ -40,7 +62,7 @@ export const card = (params, callback = () => {}) => {
       let userChecked = '';
       let verifiedText = '';
       if (userCheckedStatus) {
-        switch(init.locale) {
+        switch(params.init.locale) {
           case 'fr':
             verifiedText = `Vérifié`;
             break;
@@ -67,6 +89,7 @@ export const card = (params, callback = () => {}) => {
         })
       }
       // console.log(`count ${commentsCount}`);
+      console.log(`recipe ${recipe.id}`);
 
       const card = `
           <div class="card rounded border-0 my-3 m-md-2" data-recipe="${recipe.id}">
@@ -110,29 +133,12 @@ export const card = (params, callback = () => {}) => {
 
       cardDeck += card;
       trigger += 1;
-      let cardsCount = 0;
 
-      console.log(window.innerWidth);
-      if (window.innerWidth >= 1600) cardsCount = 6;
-      else if (window.innerWidth >= 1400) cardsCount = 5;
-      // Extra large screen / wide desktop
-      // xl: 1200px
-      else if (window.innerWidth >= 1200) cardsCount = 4;
-      // Large screen / desktop
-      // lg: 992px,
-      else if (window.innerWidth >= 992) cardsCount = 4;
-      // Medium screen / tablet
-      // md: 768px,
-      else if (window.innerWidth >= 768) cardsCount = 3;
-      // Small screen / phone
-      // sm: 576px,
-      else if (window.innerWidth >= 576) cardsCount = 2;
-      // Extra small screen / phone
-      // xs: 0,
-      else cardsCount = 1;
+      // const cardsCount = setCardsCount(window.innerWidth);
 
-      if (trigger === cardsCount) {
-        console.log(trigger);
+      // console.log(trigger);
+      // console.log(params.count);
+      if (trigger === params.count || recipe.id === params.array[params.array.length-1].id) {
         cardDeck += `</div>`;
         const root = document.querySelector('#root');
         root.insertAdjacentHTML('beforeEnd', cardDeck);
@@ -143,7 +149,29 @@ export const card = (params, callback = () => {}) => {
       // const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
       // cardImgTop.style.minHeight = `${cardImgTop.clientWidth}px`;
     }
+    const cards = document.querySelectorAll('.card');
+    let cardWidth = 0;
+    cards.forEach((card, index) => {
+      console.log(card.offsetWidth)
+      if (index === 0) cardWidth = card.offsetWidth;
+      card.style.maxWidth = `${cardWidth}px`;
+    });
   });
-  if(init.userSignedIn) cardHeart();
+}
+
+export const card = (params, callback = () => {}) => {
+
+  params.count = setCardsCount(window.innerWidth);
+  console.log(params.array.length);
+  setCards(params);
+
+  // window.addEventListener('resize', () => {
+  //   console.log(params.array.length);
+  //   document.getElementById('root').innerHTML = "";
+  //   params.count = setCardsCount(window.innerWidth);
+  //   setCards(params);
+  // });
+
+  if(params.init.userSignedIn) cardHeart();
   callback();
 }

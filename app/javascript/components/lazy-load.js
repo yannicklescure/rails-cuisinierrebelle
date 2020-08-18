@@ -91,7 +91,7 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       type: 'card',
       cardsQty: cardsQty,
       start: start,
-      end: end
+      end: end,
     };
     // console.log(init);
     if (init.device != 'desktop') {
@@ -116,6 +116,32 @@ const fetchRecipes = (init, options) => {
   .catch(ex => {
     console.log('parsing failed', ex);
   });
+}
+
+const setCardsCount = (width) => {
+  console.log(width);
+  if (width >= 1600) return 6;
+  else if (width >= 1400) return 5;
+  // Extra large screen / wide desktop
+  // xl: 1200px
+  else if (width >= 1200) return 4;
+  // Large screen / desktop
+  // lg: 992px,
+  else if (width >= 992) return 4;
+  // Medium screen / tablet
+  // md: 768px,
+  else if (width >= 768) return 3;
+  // Small screen / phone
+  // sm: 576px,
+  else if (width >= 576) return 2;
+  // Extra small screen / phone
+  // xs: 0,
+  else return 1;
+}
+
+const max = x => {
+  if (x === 5) return 25
+  else return 24
 }
 
 export const lazyLoad = (init) => {
@@ -157,12 +183,15 @@ export const lazyLoad = (init) => {
     if (data.recipes.length > 0) {
       renderRecipes(init, options, data, () => {
         document.querySelector('#spinner').remove();
-        const cardsMax = 24;
+        const cardsMax = max(setCardsCount(window.innerWidth));
         let renderCards = data.recipes.length % cardsMax === 0;
         let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
         let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
+        console.log(data.recipes)
+        console.log(cardNodeElement)
         let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
         window.addEventListener('scroll', () => {
+          console.log(`cardNodeElementTop ${cardNodeElementTop}`)
           let trigger = Math.round(window.scrollY + window.innerHeight);
           if (cardNodeElement && renderCards) {
             if (trigger >= cardNodeElementTop) {
