@@ -1,68 +1,27 @@
 import { cardHeart } from "./card-heart";
 import { cookiesToObject } from "../components/cookies";
-
-const capitalize_Words = (str) => {
- return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
-
-const setCardsParams = (width) => {
-  console.log(width);
-  if (width >= 1600) return {
-    count: 6,
-    width: 299
-  };
-  else if (width >= 1400) return {
-    count: 5,
-    width: 298
-  };
-  // Extra large screen / wide desktop
-  // xl: 1200px
-  else if (width >= 1200) return {
-    count: 4,
-    width: 326
-  };
-  // Large screen / desktop
-  // lg: 992px,
-  else if (width >= 992) return {
-    count: 4,
-    width: 276
-  };
-  // Medium screen / tablet
-  // md: 768px,
-  else if (width >= 768) return {
-    count: 3,
-    width: 304
-  };
-  // Small screen / phone
-  // sm: 576px,
-  else if (width >= 576) return {
-    count: 2,
-    width: 346
-  };
-  // Extra small screen / phone
-  // xs: 0,
-  else return {
-    count: 1,
-    width: 530
-  };
-}
+import { setCardsParams } from "../util";
+import { capitalize_Words } from "../util";
+import { userParams } from "../util";
 
 const setCards = (params) => {
 
-  let locale = params.init.locale != 'en' ? `/${params.init.locale}` : '';
+  let locale = params.init.locale != 'fr' ? `/${params.init.locale}` : '';
 
   let trigger = 0;
   let cardDeck = `<div class="card-deck">`;
 
   // console.log(Math.ceil(params.array.length / params.count));
-  console.log(Math.ceil(document.querySelector('#root').dataset.recipes / params.count));
+  // console.log(Math.ceil(document.querySelector('#root').dataset.recipes / params.count));
   console.log(params.array)
-  console.log(params.start)
-  console.log(params.end)
+  // console.log(params.start)
+  // console.log(params.end)
 
   params.array.forEach((recipe, index) => {
-    console.log(index)
+    // console.log(index)
+    // if(recipe.id >= params.start && recipe.id <= params.end) {
     // if(index + 1 > params.start && index + 1 <= params.end) {
+    // if(index + 1 <= params.end) {
     if (recipe) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
@@ -86,24 +45,9 @@ const setCards = (params) => {
         if(params.bookmarks.includes(recipe.id)) faBookmark = bookmarkFill;
       }
 
-      const userCheckedStatus = recipe.user.checked;
-      let userChecked = '';
-      let verifiedText = '';
-      if (userCheckedStatus) {
-        switch(params.init.locale) {
-          case 'fr':
-            verifiedText = `Vérifié`;
-            break;
-          case 'es':
-            verifiedText = `Auditado`;
-            break;
-          default:
-            verifiedText = `Verified`;
-        }
-        userChecked = `<span data-toggle="tooltip" data-placement="top" title="${verifiedText}" class="ml-1">
-          <i class="material-icons md-16 d-flex" style="font-size: 90%">check_circle</i>
-        </span>`;
-      }
+      const userCheckedStatus = userParams(recipe.user.checked, params.init.locale);
+      let userChecked = userCheckedStatus.checked;
+      let verifiedText = userCheckedStatus.verified;
 
       let commentsCount = 0;
       if (recipe.comments) {
@@ -117,7 +61,7 @@ const setCards = (params) => {
         })
       }
       // console.log(`count ${commentsCount}`);
-      console.log(`recipe ${recipe.id}`);
+      console.log(`recipe ${recipe.id} index ${index}`);
 
       const card = `
           <div class="card rounded border-0 my-3 m-md-2" data-recipe="${recipe.id}">
@@ -165,7 +109,7 @@ const setCards = (params) => {
       // const cardsCount = setCardsParams(window.innerWidth);
 
       // console.log(trigger);
-      console.log(params.count);
+      // console.log(params.count);
       if (trigger === params.count || recipe.id === params.array[params.array.length-1].id) {
         cardDeck += `</div>`;
         const root = document.querySelector('#root');
@@ -188,8 +132,8 @@ const setCards = (params) => {
 
 export const card = (params, callback = () => {}) => {
 
-  params.count = setCardsParams(window.innerWidth).count;
-  params.width = setCardsParams(window.innerWidth).width;
+  params.count = setCardsParams().count;
+  params.width = setCardsParams().width;
   console.log(params.array.length);
   setCards(params);
 

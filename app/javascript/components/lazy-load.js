@@ -1,5 +1,12 @@
 import { cards } from "./cards";
 
+import { setCardsParams } from "../util";
+
+const max = x => {
+  if (x === 5) return 25
+  else return 24
+}
+
 const filterRecipes = (el, recipes) => {
   return recipes.filter(recipe => {
     if(recipe.user.slug === el) return recipe;
@@ -69,7 +76,7 @@ const arrRecipes = (init, options, data) => {
 }
 
 const renderRecipes = (init, options, data, callback = () => {}) => {
-  const cardsMax = 24;
+  const cardsMax = init.cards;
 
   const arrRecipesObj = arrRecipes(init, options, data)
   let recipes = arrRecipesObj.recipes;
@@ -79,10 +86,11 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
 
   let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
   const root = document.querySelector('#root');
-  let start = parseInt(root.dataset.recipes) - 24 > 0 ? parseInt(root.dataset.recipes) - 24 : 0;
-  let end = recipes.length;
+  // let start = parseInt(root.dataset.recipes) - init.cards > 0 ? parseInt(root.dataset.recipes) - init.cards : 0;
+  // let start = parseInt(root.dataset.recipes) - init.cards > 0 ? parseInt(root.dataset.recipes) - init.cards : 0;
+  // let end = recipes.length;
   if (render) {
-    let initCards = {
+    let params = {
       init: init,
       data: data,
       array: recipes,
@@ -90,18 +98,36 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       likes: userLikes,
       type: 'card',
       cardsQty: cardsQty,
-      start: start,
-      end: end,
+      // start: start,
+      // end: end,
     };
     // console.log(init);
     if (init.device != 'desktop') {
-      if (init.currentPage && init.currentPage != 'index' && !init.currentPage.match(/.*\/.*/)) initCards.type = 'grid';
-      const root = document.querySelector('#root');
+      if (init.currentPage && init.currentPage != 'index' && !init.currentPage.match(/.*\/.*/)) params.type = 'grid';
+      // const root = document.querySelector('#root');
       root.classList.remove('p-md-2');
       root.classList.add('row');
       root.style.padding = '14px';
     }
-    cards(initCards);
+
+    if (params.array.length > params.init.cards) {
+      const allRecipes = document.querySelector('#root').dataset.recipes;
+      console.log(allRecipes);
+      if (params.array.length === allRecipes) {
+        const batchSize = Math.ceil(document.querySelector('#root').dataset.recipes / params.init.cards);
+        // console.log(batchSize);
+        // console.log((batchSize * params.init.cards) > params.array.length);
+        // console.log(params.array.length)
+        // console.log(document.querySelector('#root').dataset.recipes);
+        // console.log(params.init.cards);
+        // console.log(batchSize * params.init.cards);
+        params.init.cards = (batchSize * params.init.cards) > params.array.length ? allRecipes % params.init.cards : params.init.cards
+      }
+      console.log(params.init.cards);
+      params.array = params.array.slice(params.array.length - params.init.cards)
+    }
+
+    cards(params);
   }
   callback();
 }
@@ -116,32 +142,6 @@ const fetchRecipes = (init, options) => {
   .catch(ex => {
     console.log('parsing failed', ex);
   });
-}
-
-const setCardsCount = (width) => {
-  console.log(width);
-  if (width >= 1600) return 6;
-  else if (width >= 1400) return 5;
-  // Extra large screen / wide desktop
-  // xl: 1200px
-  else if (width >= 1200) return 4;
-  // Large screen / desktop
-  // lg: 992px,
-  else if (width >= 992) return 4;
-  // Medium screen / tablet
-  // md: 768px,
-  else if (width >= 768) return 3;
-  // Small screen / phone
-  // sm: 576px,
-  else if (width >= 576) return 2;
-  // Extra small screen / phone
-  // xs: 0,
-  else return 1;
-}
-
-const max = x => {
-  if (x === 5) return 25
-  else return 24
 }
 
 export const lazyLoad = (init) => {
@@ -183,9 +183,10 @@ export const lazyLoad = (init) => {
     if (data.recipes.length > 0) {
       renderRecipes(init, options, data, () => {
         document.querySelector('#spinner').remove();
-        const cardsMax = max(setCardsCount(window.innerWidth));
+        const cardsMax = max(setCardsParams().count);
         let renderCards = data.recipes.length % cardsMax === 0;
         let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
+        // console.log(cardsQty);
         let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
         // console.log(data.recipes)
         // console.log(cardNodeElement)
@@ -203,7 +204,7 @@ export const lazyLoad = (init) => {
               } else {
                 init.url += `&cards=${newCardsQty}`
               }
-              root.dataset.recipes = newCardsQty;
+              // root.dataset.recipes = newCardsQty;
               renderCards = false;
               fetchRecipes(init, options).then(data => {
                 if (data.recipes) {

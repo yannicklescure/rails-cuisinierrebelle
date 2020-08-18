@@ -14,7 +14,7 @@ import { print } from "../components/print";
 import { previewImageOnFileSelect } from "../components/recipe-photo-preview";
 import { recipePhoto } from "../components/recipe-photo";
 import { optionsButton } from "../components/recipe-button-options";
-import { setPictureSize } from "../functions/set-picture-size";
+import { setPictureSize } from "../util";
 
 export const recipe = (location) => {
   // console.log(location);

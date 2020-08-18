@@ -55,6 +55,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
     if @cards.present?
       @cards = params[:cards].to_i > @recipes.count ? @recipes.count : params[:cards].to_i
       @recipes = @recipes.take(@cards)
+      @recipes_count = Recipe.all.count
+      # binding.pry
     else
       @recipes = @recipes.take(24)
     end

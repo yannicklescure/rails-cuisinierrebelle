@@ -1,4 +1,4 @@
-import { setPictureSize } from "../functions/set-picture-size";
+import { setPictureSize } from "../util";
 
 const previewImageOnFileSelect = () => {
   // we select the photo input

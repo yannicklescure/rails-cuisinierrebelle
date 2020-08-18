@@ -1,16 +1,28 @@
 import { cardHeart } from "./card-heart";
-
-const capitalize_Words = (str) => {
- return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
+// import { capitalize_Words } from "../util";
+import { userParams } from "../util";
+// import { setCardsParams } from "../util";
 
 export const grid = (params, callback = () => {}) => {
-  const init = params.init;
-  const array = params.array;
-  let locale = init.locale != 'en' ? `/${init.locale}` : '';
+  console.log('grid');
+  // const init = params.init;
+  // const array = params.array;
+  let locale = params.init.locale != 'fr' ? `/${params.init.locale}` : '';
 
-  array.forEach((recipe, index) => {
-    if(index + 1 > params.start && index + 1 <= params.end) {
+  document.querySelector('#root').style.padding = '16px';
+  console.log(params.array)
+
+  params.array.forEach((recipe, index) => {
+    // if(index + 1 > params.start && index + 1 <= params.end) {
+    // if(recipe.id >= params.start && recipe.id <= params.end) {
+    console.log(`recipe ${recipe.id} index ${index}`);
+    // console.log(params.array[params.array.length -1].id);
+    // console.log(parseInt(params.init.cards));
+    // console.log(parseInt(params.array[params.array.length -1].id + params.init.cards));
+    // if (parseInt(recipe.id) <= parseInt(params.array[params.array.length -1].id + params.cards)) {
+    if(recipe) {
+      // console.log(recipe.id);
+    // if(index + 1 <= params.end) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
       const heart = `<i class="material-icons md-18 align-icons">favorite_border</i>`;
@@ -24,7 +36,7 @@ export const grid = (params, callback = () => {}) => {
       let bookmarkUrl = '/users/sign_in';
       let faHeart = heart;
       let faBookmark = bookmark;
-      if(init.userSignedIn) {
+      if(params.init.userSignedIn) {
         bookmarkUrl = `/r/${recipe.slug}/bookmarks`;
         bookmarkPatchAttributes = `data-bookmark-recipe="${recipe.id}" data-remote="true" rel="nofollow" data-method="patch" `;
         likeUrl = `/r/${recipe.slug}/likes`;
@@ -33,24 +45,9 @@ export const grid = (params, callback = () => {}) => {
         if(params.bookmarks.includes(recipe.id)) faBookmark = bookmarkFill;
       }
 
-      const userCheckedStatus = recipe.user.checked;
-      let userChecked = '';
-      let verifiedText = '';
-      if (userCheckedStatus) {
-        switch(init.locale) {
-          case 'fr':
-            verifiedText = `Vérifié`;
-            break;
-          case 'es':
-            verifiedText = `Auditado`;
-            break;
-          default:
-            verifiedText = `Verified`;
-        }
-        userChecked = `<span data-toggle="tooltip" data-placement="top" title="${verifiedText}" class="ml-1">
-          <i class="material-icons md-16 d-flex" style="font-size: 90%">check_circle</i>
-        </span>`;
-      }
+      const userCheckedStatus = userParams(recipe.user.checked, params.init.locale);
+      let userChecked = userCheckedStatus.checked;
+      let verifiedText = userCheckedStatus.verified;
 
       let commentsCount = 0;
       if (recipe.comments) {
@@ -80,6 +77,6 @@ export const grid = (params, callback = () => {}) => {
       gridImgTop.style.minHeight = `${gridImgTop.clientWidth}px`;
     }
   });
-  // if(init.userSignedIn) cardHeart();
+  // if(params.init.userSignedIn) cardHeart();
   callback();
 }
