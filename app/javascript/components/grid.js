@@ -66,7 +66,7 @@ export const grid = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const grid = `
-        <div class="col-4 col-md-4 col-lg-3 col-xl-2 p-2">
+        <div class="col-4 col-md-4 col-lg-3 col-xl-2" style="padding: 2px;">
           <div class="grid border-0" data-recipe="${recipe.id}">
             <a href="${locale}/r/${recipe.slug}">
               <div class="grid-img-top grid-img-top-${recipe.id} d-flex justify-content-center align-items-center" style="background-image: url('${recipe.photo.card.url}');"></div>

@@ -99,7 +99,7 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       const root = document.querySelector('#root');
       root.classList.remove('p-md-2');
       root.classList.add('row');
-      root.classList.add('p-2');
+      root.style.padding = '14px';
     }
     cards(initCards);
   }

@@ -69,7 +69,7 @@ export const card = (params, callback = () => {}) => {
       // console.log(`count ${commentsCount}`);
 
       const card = `
-          <div class="card my-3 m-md-2 rounded" style="margin: 0 1px" data-recipe="${recipe.id}">
+          <div class="card rounded border-0 my-3 m-md-2" data-recipe="${recipe.id}">
             <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
               <div class="d-flex justify-content-start align-items-center">
                 <a href="${locale}/u/${recipe.user.slug}/about" class="card-link text-body d-flex align-items-center" style="font-size: 90%"><img src="${recipe.user.image.thumb.url}" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">${capitalize_Words(recipe.user.name)}</a>
@@ -87,13 +87,7 @@ export const card = (params, callback = () => {}) => {
                   </div>
                 </div>
               </a>
-              <div class="d-flex flex-column">
-                <a href="${locale}/r/${recipe.slug}" class="card-link mt-2 text-body text-uppercase">${recipe.title}</a>
-                <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
-              </div>
-            </div>
-            <div class="card-footer bg-white p-2">
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center my-2">
                 <div class="d-flex align-items-center text-danger">
                   <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
                     ${faHeart}<span class="text-muted font-weight-lighter ml-1">${recipe.likes_count}</span>
@@ -105,6 +99,10 @@ export const card = (params, callback = () => {}) => {
                   </a>
                   <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                 </div>
+              </div>
+              <div class="d-flex flex-column">
+                <a href="${locale}/r/${recipe.slug}" class="card-link text-body text-uppercase">${recipe.title}</a>
+                <div class="card-text font-weight-lighter" style="font-size: 90%">${recipe.description}</div>
               </div>
             </div>
           </div>
