@@ -187,8 +187,8 @@ export const lazyLoad = (init) => {
         let renderCards = data.recipes.length % cardsMax === 0;
         let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
         let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
-        console.log(data.recipes)
-        console.log(cardNodeElement)
+        // console.log(data.recipes)
+        // console.log(cardNodeElement)
         let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
         window.addEventListener('scroll', () => {
           console.log(`cardNodeElementTop ${cardNodeElementTop}`)

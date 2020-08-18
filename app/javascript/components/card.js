@@ -1,28 +1,50 @@
 import { cardHeart } from "./card-heart";
+import { cookiesToObject } from "../components/cookies";
 
 const capitalize_Words = (str) => {
  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
-const setCardsCount = (width) => {
+const setCardsParams = (width) => {
   console.log(width);
-  if (width >= 1600) return 6;
-  else if (width >= 1400) return 5;
+  if (width >= 1600) return {
+    count: 6,
+    width: 299
+  };
+  else if (width >= 1400) return {
+    count: 5,
+    width: 298
+  };
   // Extra large screen / wide desktop
   // xl: 1200px
-  else if (width >= 1200) return 4;
+  else if (width >= 1200) return {
+    count: 4,
+    width: 326
+  };
   // Large screen / desktop
   // lg: 992px,
-  else if (width >= 992) return 4;
+  else if (width >= 992) return {
+    count: 4,
+    width: 276
+  };
   // Medium screen / tablet
   // md: 768px,
-  else if (width >= 768) return 3;
+  else if (width >= 768) return {
+    count: 3,
+    width: 304
+  };
   // Small screen / phone
   // sm: 576px,
-  else if (width >= 576) return 2;
+  else if (width >= 576) return {
+    count: 2,
+    width: 346
+  };
   // Extra small screen / phone
   // xs: 0,
-  else return 1;
+  else return {
+    count: 1,
+    width: 530
+  };
 }
 
 const setCards = (params) => {
@@ -32,10 +54,16 @@ const setCards = (params) => {
   let trigger = 0;
   let cardDeck = `<div class="card-deck">`;
 
-  console.log(Math.ceil(params.array.length / params.count))
+  // console.log(Math.ceil(params.array.length / params.count));
+  console.log(Math.ceil(document.querySelector('#root').dataset.recipes / params.count));
+  console.log(params.array)
+  console.log(params.start)
+  console.log(params.end)
 
   params.array.forEach((recipe, index) => {
-    if(index + 1 > params.start && index + 1 <= params.end) {
+    console.log(index)
+    // if(index + 1 > params.start && index + 1 <= params.end) {
+    if (recipe) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
       const heart = `<i class="material-icons md-18 align-icons">favorite_border</i>`;
@@ -134,10 +162,10 @@ const setCards = (params) => {
       cardDeck += card;
       trigger += 1;
 
-      // const cardsCount = setCardsCount(window.innerWidth);
+      // const cardsCount = setCardsParams(window.innerWidth);
 
       // console.log(trigger);
-      // console.log(params.count);
+      console.log(params.count);
       if (trigger === params.count || recipe.id === params.array[params.array.length-1].id) {
         cardDeck += `</div>`;
         const root = document.querySelector('#root');
@@ -151,25 +179,25 @@ const setCards = (params) => {
     }
     const cards = document.querySelectorAll('.card');
     let cardWidth = 0;
+
     cards.forEach((card, index) => {
-      console.log(card.offsetWidth)
-      if (index === 0) cardWidth = card.offsetWidth;
-      card.style.maxWidth = `${cardWidth}px`;
+      card.style.maxWidth = `${params.width}px`;
     });
   });
 }
 
 export const card = (params, callback = () => {}) => {
 
-  params.count = setCardsCount(window.innerWidth);
+  params.count = setCardsParams(window.innerWidth).count;
+  params.width = setCardsParams(window.innerWidth).width;
   console.log(params.array.length);
   setCards(params);
 
   // window.addEventListener('resize', () => {
   //   console.log(params.array.length);
-  //   document.getElementById('root').innerHTML = "";
-  //   params.count = setCardsCount(window.innerWidth);
-  //   setCards(params);
+  //   // document.getElementById('root').innerHTML = "";
+  //   // params.count = setCardsParams(window.innerWidth);
+  //   // setCards(params);
   // });
 
   if(params.init.userSignedIn) cardHeart();
