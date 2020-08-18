@@ -113,7 +113,7 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
     if (params.array.length > params.init.cards) {
       const allRecipes = document.querySelector('#root').dataset.recipes;
       console.log(allRecipes);
-      if (params.array.length === allRecipes) {
+      if (params.array.length >= allRecipes) {
         const batchSize = Math.ceil(document.querySelector('#root').dataset.recipes / params.init.cards);
         // console.log(batchSize);
         // console.log((batchSize * params.init.cards) > params.array.length);
@@ -121,9 +121,10 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
         // console.log(document.querySelector('#root').dataset.recipes);
         // console.log(params.init.cards);
         // console.log(batchSize * params.init.cards);
+        console.log(params.array.length);
+        console.log(params.init.cards);
         params.init.cards = (batchSize * params.init.cards) > params.array.length ? allRecipes % params.init.cards : params.init.cards
       }
-      console.log(params.init.cards);
       params.array = params.array.slice(params.array.length - params.init.cards)
     }
 
