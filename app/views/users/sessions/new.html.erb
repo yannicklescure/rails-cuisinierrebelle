@@ -1,29 +1,26 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
   <div class="h2"><%= t(".sign_in") %></div>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in"), class: 'btn btn-light' %>
+    </div>
+  <% end %>
+
   <%= render "users/shared/providers" %>
-  <button class="btn btn-light text-muted" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
-    <%= t('.use_form') %>
-  </button>
 </div>
 
-<div class="collapse mt-3" id="collapseForm">
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_in"), class: 'btn btn-light' %>
-  </div>
-<% end %>
-</div>
 <div class="my-3">
 <%= render "users/shared/links" %>
 </div>
