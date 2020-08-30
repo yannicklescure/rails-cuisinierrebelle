@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     authorize @comment
     @comment.recipe = @recipe
     @comment.user = current_user
-    if @comment.content.match?(/https?/)
+    if (@comment.content.match?(/https?/) && !@comment.content.include?("cuisinierrebelle.com"))
       @comment.spam = true
       # binding.pry
     end

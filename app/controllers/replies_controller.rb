@@ -22,7 +22,7 @@ class RepliesController < ApplicationController
     # @reply.recipe = @recipe
     @reply.comment = @comment
     @reply.user = current_user
-    if @reply.content.match?(/https?/)
+    if (@reply.content.match?(/https?/) && !@reply.content.include?("cuisinierrebelle.com"))
       @reply.spam = true
       # binding.pry
     end

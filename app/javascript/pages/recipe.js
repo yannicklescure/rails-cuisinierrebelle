@@ -16,6 +16,26 @@ import { recipePhoto } from "../components/recipe-photo";
 import { optionsButton } from "../components/recipe-button-options";
 import { setPictureSize } from "../util";
 
+const cleanHashtags = () => {
+  let hashtags = document.querySelectorAll('a[href*="/hashtag"]')
+  console.log(hashtags)
+  hashtags.forEach(hashtag => {
+    // console.log(hashtag)
+    // hashtag.removeAttribute('rel');
+    hashtag.removeAttribute('target');
+  })
+};
+
+const cleanComments = () => {
+  let hashtags = document.querySelectorAll('a[href*="cuisinierrebelle.com"]')
+  console.log(hashtags)
+  hashtags.forEach(hashtag => {
+    // console.log(hashtag)
+    // hashtag.removeAttribute('rel');
+    hashtag.removeAttribute('target');
+  })
+};
+
 export const recipe = (location) => {
   // console.log(location);
   let currentLang = location.currentLang;
@@ -59,4 +79,7 @@ export const recipe = (location) => {
     }
 
     setPictureSize(document.querySelector('.recipe-image'));
+
+    // cleanHashtags();
+    cleanComments();
 };
