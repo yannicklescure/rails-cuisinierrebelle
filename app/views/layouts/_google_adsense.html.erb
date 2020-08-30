@@ -1,3 +1,3 @@
 <% if Rails.env.production? %>
-<script data-ad-client="ca-pub-9223566768445571" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script data-ad-client="<%= ENV['GOOGLE_ADS'] %>" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <% end %>
