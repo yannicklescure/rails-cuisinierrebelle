@@ -9,7 +9,7 @@ import { previewCommentPhotoOnFileSelect } from "../components/comment-photo-pre
 import { replyPhoto } from "../components/reply-photo";
 import { previewReplyPhotoOnFileSelect } from "../components/reply-photo-preview";
 import { viewReplies } from "../components/reply";
-// import { smoothToAnchor } from "../components/smooth-to-anchor";
+import { smoothToAnchor } from "../components/smooth-to-anchor";
 import { print } from "../components/print";
 import { previewImageOnFileSelect } from "../components/recipe-photo-preview";
 import { recipePhoto } from "../components/recipe-photo";
@@ -17,22 +17,22 @@ import { optionsButton } from "../components/recipe-button-options";
 import { setPictureSize } from "../util";
 
 const cleanHashtags = () => {
-  let hashtags = document.querySelectorAll('a[href*="/hashtag"]')
-  console.log(hashtags)
-  hashtags.forEach(hashtag => {
+  let elements = document.querySelectorAll('a[href*="/hashtag"]')
+  console.log(elements)
+  elements.forEach(element => {
     // console.log(hashtag)
     // hashtag.removeAttribute('rel');
-    hashtag.removeAttribute('target');
+    element.removeAttribute('target');
   })
 };
 
 const cleanComments = () => {
-  let hashtags = document.querySelectorAll('a[href*="cuisinierrebelle.com"]')
-  console.log(hashtags)
-  hashtags.forEach(hashtag => {
+  let elements = document.querySelectorAll('a[href*="cuisinierrebelle.com"]')
+  console.log(elements)
+  elements.forEach(element => {
     // console.log(hashtag)
     // hashtag.removeAttribute('rel');
-    hashtag.removeAttribute('target');
+    element.removeAttribute('target');
   })
 };
 
@@ -43,8 +43,8 @@ export const recipe = (location) => {
   let currentPage = location.currentPage;
   const device = document.querySelector('body').dataset.device;
 
-    // window.onhashchange = () => smoothToAnchor();
-    // window.onload = () => smoothToAnchor();
+    window.onhashchange = () => smoothToAnchor();
+    window.onload = () => smoothToAnchor();
 
     viewReplies();
 
