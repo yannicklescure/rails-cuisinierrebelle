@@ -42,7 +42,7 @@ class CommentPhotoUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  process :optimize
+  process optimize: [{quality: 90, level: 7}]
 
   version :thumb do
     # process resize_to_fill: [64, 64]
