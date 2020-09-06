@@ -15,6 +15,8 @@ module RailsCuisinierRebelle
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.middleware.use Rack::Deflater
+
     # https://github.com/iain/http_accept_language
     config.i18n.available_locales = %w(en fr es)
   end
