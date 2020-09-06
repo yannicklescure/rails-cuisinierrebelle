@@ -1,5 +1,7 @@
 class PhotoUploader < CarrierWave::Uploader::Base
 
+  include Piet::CarrierWaveExtension
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -39,6 +41,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process resize_to_fit: [50, 50]
   # end
+
+  process :optimize
 
   version :thumb do
     # process resize_to_fill: [64, 64]
