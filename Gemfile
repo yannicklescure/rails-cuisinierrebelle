@@ -43,11 +43,17 @@ end
 
 gem "rspec", "~> 3.9"
 gem 'carrierwave'
+gem 'carrierwave-aws'
 gem 'carrierwave-i18n'
+# gem 'sprockets-webp'
+gem 'carrierwave-webp'
+gem 'webp-ffi'
 gem 'piet'
 gem 'piet-binary'
 # gem 'cloudinary'
-gem "aws-sdk"
+# gem "aws-sdk"
+gem 'aws-sdk-s3', '~> 1'
+
 gem "fog-aws"
 gem "mini_magick"
 gem 'redcarpet'

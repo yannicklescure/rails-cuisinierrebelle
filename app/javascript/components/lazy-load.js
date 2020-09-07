@@ -1,5 +1,4 @@
 import { cards } from "./cards";
-
 import { setCardsParams } from "../util";
 
 const max = x => {
@@ -35,7 +34,7 @@ const arrRecipes = (init, options, data) => {
         render = recipes.length > 0;
         break;
       case `${data.user.auth.slug}/bookmarks`:
-        recipes = data.recipes.filter(recipe => userBookmarks.includes(recipe.id));
+        recipes = data.recipes.filter(item => userBookmarks.includes(item.recipe.id));
         render = recipes.length > 0;
         break;
       case `${init.currentPage}`:
@@ -72,17 +71,24 @@ const arrRecipes = (init, options, data) => {
     userBookmarks: userBookmarks,
     render: render
   };
+  console.log(result)
   return result;
 }
 
 const renderRecipes = (init, options, data, callback = () => {}) => {
   const cardsMax = init.cards;
-
-  const arrRecipesObj = arrRecipes(init, options, data)
+  console.log(init);
+  console.log(options);
+  console.log(data);
+  const arrRecipesObj = arrRecipes(init, options, data);
   let recipes = arrRecipesObj.recipes;
   let render = arrRecipesObj.render;
   let userLikes = arrRecipesObj.userLikes;
   let userBookmarks = arrRecipesObj.userBookmarks;
+  console.log(recipes);
+  console.log(render);
+  console.log(userLikes);
+  console.log(userBookmarks);
 
   let cardsQty = recipes.length > cardsMax ? cardsMax : recipes.length;
   const root = document.querySelector('#root');
@@ -110,6 +116,8 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       root.style.padding = '14px';
     }
 
+    console.log(params);
+
     if (params.array.length > params.init.cards) {
       const allRecipes = document.querySelector('#root').dataset.recipes;
       console.log(allRecipes);
@@ -127,7 +135,13 @@ const renderRecipes = (init, options, data, callback = () => {}) => {
       }
       params.array = params.array.slice(params.array.length - params.init.cards)
     }
+    else {
+      console.log(params.array.length > params.init.cards)
+      console.log(params.array.length)
+      console.log(params.init.cards)
+    }
 
+    console.log(params)
     cards(params);
   }
   callback();
@@ -174,6 +188,7 @@ export const lazyLoad = (init) => {
   }
 
   if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {
+    console.log('bookmarks')
     init.url = `/api/v1/recipes?bookmarks=true`;
   }
   if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
@@ -181,6 +196,7 @@ export const lazyLoad = (init) => {
   }
 
   fetchRecipes(init, options).then(data => {
+    console.log(data.recipes)
     if (data.recipes.length > 0) {
       renderRecipes(init, options, data, () => {
         document.querySelector('#spinner').remove();
@@ -188,9 +204,9 @@ export const lazyLoad = (init) => {
         let renderCards = data.recipes.length % cardsMax === 0;
         let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
         // console.log(cardsQty);
-        let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
-        // console.log(data.recipes)
-        // console.log(cardNodeElement)
+        let cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
+        console.log(data.recipes)
+        console.log(cardNodeElement)
         let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
         window.addEventListener('scroll', () => {
           console.log(`cardNodeElementTop ${cardNodeElementTop}`)
@@ -211,7 +227,7 @@ export const lazyLoad = (init) => {
                 if (data.recipes) {
                   renderRecipes(init, options, data, () => {
                     cardsQty = newCardsQty;
-                    cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].id}"]`);
+                    cardNodeElement = document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
                     if (cardNodeElement) cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
                     renderCards = data.recipes.length % cardsMax === 0;
                   });

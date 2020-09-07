@@ -3,6 +3,8 @@ import { grid } from "./grid";
 
 export const cards = (params, callback = () => {}) => {
 
+  console.log(params)
+
   if(params.array) {
     if (params.type === 'card') {
       card(params);

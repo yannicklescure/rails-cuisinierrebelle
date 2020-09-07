@@ -1,16 +1,19 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  after :store, :delete_old_tmp_file
 
   include Piet::CarrierWaveExtension
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include CarrierWave::WebP::Converter
 
   # Choose what kind of storage to use for this uploader:
   # if Rails.env.development? || Rails.env.test?
   #   storage :file
   # elsif Rails.env.production?
-  #   storage :fog
+  #   # storage :fog
+  #   storage :aws
   # end
 
   # Override the directory where uploaded files will be stored.
@@ -42,7 +45,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  process optimize: [{quality: 90, level: 7}]
+  # process optimize: [{quality: 90, level: 7}]
+  process convert_to_webp: [{ quality: 60, method: 6 }]
 
   version :thumb do
     # process resize_to_fill: [64, 64]
@@ -52,6 +56,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :preview do
     # process resize_to_fill: [256, 256]
     process efficient_conversion: [256, 256]
+  end
+
+  version :open_graph do
+    # process resize_to_fill: [1200, 1200]
+    process efficient_conversion: [1200, 1200]
   end
 
   version :full do
@@ -102,5 +111,19 @@ class ImageUploader < CarrierWave::Uploader::Base
       end
       img
     end
+  end
+
+  def sanitized_file
+    super
+  end
+
+  # remember the tmp file
+  def cache!(new_file = sanitized_file)
+    super
+    @old_tmp_file = new_file
+  end
+
+  def delete_old_tmp_file(dummy)
+    @old_tmp_file.try :delete
   end
 end

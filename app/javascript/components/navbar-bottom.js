@@ -70,8 +70,10 @@ export const navbarBottom = (location) => {
 
     // const root = document.querySelector('#root');
 
+
     fetchUserData(init, options).then(data => {
       // console.log(data)
+      console.log(data.user)
       let navbar = `<div id="navbar-bottom" class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
       navbar += `<a id="home" href="/" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
       // navbar += `<div class="d-flex" justify-content-center>`;
