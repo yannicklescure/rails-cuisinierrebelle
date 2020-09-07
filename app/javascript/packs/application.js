@@ -33,7 +33,13 @@ import { top100 } from "../pages/top100";
 import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
-console.log = function() {}
+if ((/localhost/).test(document.domain)) document.domain = "localhost";
+else console.log = function() {}
+
+if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
+  document.domain = "laresistancefrancaise.com";
+}
+console.log(document.domain)
 
 if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
