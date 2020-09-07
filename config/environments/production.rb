@@ -4,6 +4,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "https://www.cuisinierrebelle.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # In Heroku, serving static assets through the Rails container
+  config.serve_static_assets = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
