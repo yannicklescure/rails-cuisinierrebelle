@@ -141,7 +141,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :image)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :image, :locale)
   end
 
   def sign_up_params
@@ -151,6 +151,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params["user"]["name"] = "#{params["user"]["first_name"]} #{params["user"]["last_name"]}"
-    params.require(:user).permit(:first_name, :last_name, :name, :email, :password, :password_confirmation, :current_password, :image)
+    params.require(:user).permit(:first_name, :last_name, :name, :email, :password, :password_confirmation, :current_password, :image, :locale)
   end
 end
