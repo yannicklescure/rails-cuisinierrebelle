@@ -6,7 +6,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  include CarrierWave::WebP::Converter
+  # include CarrierWave::WebP::Converter
+  include WebPConverter
 
   # Choose what kind of storage to use for this uploader:
   # if Rails.env.development? || Rails.env.test?
@@ -46,31 +47,66 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # process optimize: [{quality: 90, level: 7}]
-  process convert_to_webp: [{ quality: 60, method: 6 }]
+  # process convert_to_webp: [{ quality: 60, method: 6 }]
+
+  # version :webp do
+  #   process convert_to_webp: [{ quality: 80, method: 5 }]
+
+  #   def full_filename(file)
+  #     return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+
+  #     "#{version_name}_#{file}.webp"
+  #   end
+  # end
 
   version :thumb do
     # process resize_to_fill: [64, 64]
     process efficient_conversion: [64, 64]
+    process convert_to_webp: [{ quality: 60, method: 6 }]
+    def full_filename(file)
+      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+      "#{version_name}_#{file}.webp"
+    end
   end
 
   version :preview do
     # process resize_to_fill: [260, 174]
     process efficient_conversion: [260, 174]
+    process convert_to_webp: [{ quality: 60, method: 6 }]
+    def full_filename(file)
+      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+      "#{version_name}_#{file}.webp"
+    end
   end
 
   version :card do
     # process resize_to_fill: [400, 300]
     process efficient_conversion: [400, 300]
+    process convert_to_webp: [{ quality: 60, method: 6 }]
+    def full_filename(file)
+      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+      "#{version_name}_#{file}.webp"
+    end
   end
 
   version :open_graph do
     # process resize_to_fill: [1200, 1200]
     process efficient_conversion: [1200, 1200]
+    process convert_to_webp: [{ quality: 60, method: 6 }]
+    def full_filename(file)
+      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+      "#{version_name}_#{file}.webp"
+    end
   end
 
   version :full do
     # process resize_to_fill: [1920, 1200]
     process efficient_conversion: [1920, 1200]
+    process convert_to_webp: [{ quality: 60, method: 6 }]
+    def full_filename(file)
+      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+      "#{version_name}_#{file}.webp"
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
