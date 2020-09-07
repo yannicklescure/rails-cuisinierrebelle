@@ -79,3 +79,4 @@ gem "websocket-extensions", ">= 0.1.5"
 # gem "actionpack", ">= 6.0.3.2"
 # gem "rack", ">= 2.2.3"
 gem 'rack-cors'
+gem "serviceworker-rails"

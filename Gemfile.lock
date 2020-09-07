@@ -1264,6 +1264,8 @@ GEM
       activerecord (>= 4)
       activesupport (>= 4)
     semantic_range (2.3.0)
+    serviceworker-rails (0.6.0)
+      railties (>= 3.1)
     sidekiq (6.1.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -1372,6 +1374,7 @@ DEPENDENCIES
   sassc-rails
   searchkick
   seed_dump
+  serviceworker-rails
   sidekiq
   sidekiq-failures (~> 1.0)
   simple_form
