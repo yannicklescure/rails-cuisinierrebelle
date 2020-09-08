@@ -572,6 +572,8 @@ en:
       recipes: Or see recipes
       sign_in: Log in
       sign_up: Sign up
+      photo_by: Photo by
+      photo_on: on
     card-product:
       edit_html: Edit
       more_details_html: More details <i class="material-icons md-16 d-flex pl-1">open_in_new</i>

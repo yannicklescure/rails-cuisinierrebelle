@@ -57,7 +57,8 @@ class PagesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @liked = Like.find_by(user: current_user, recipe: @recipe)
     @unsplash_search_results = Unsplash::Photo.search("cooking,food")
-    @banner_bg = @unsplash_search_results[rand(@unsplash_search_results.length)].urls.raw + "&w=1600&h=900&fm=webp"
+    @unsplash_search_result = @unsplash_search_results[rand(@unsplash_search_results.length)]
+    @banner_bg = @unsplash_search_result.urls.raw + "&w=1600&h=900&fm=webp"
     # binding.pry
   end
 

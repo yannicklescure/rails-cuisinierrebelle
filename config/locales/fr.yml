@@ -578,6 +578,8 @@ fr:
       recipes: Ou voir les recettes
       sign_in: Connexion
       sign_up: Inscription
+      photo_by: Photo de
+      photo_on: sur
     card-product:
       edit_html: Editer
       more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
