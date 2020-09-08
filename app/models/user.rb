@@ -1,3 +1,5 @@
+require 'digest'
+
 class User < ApplicationRecord
   acts_as_token_authenticatable
 
@@ -67,13 +69,21 @@ class User < ApplicationRecord
 
   def sanitize_user_slug
     # binding.pry
-    if slug.match?(/\W/)
-      if User.find_by(slug: slug.gsub!(/\W/,'')).nil?
-        slug.gsub!(/\W/,'')
-      else
-        slug = "#{first_name[0]}#{last_name}".downcase
-        slug = "#{slug}#{DateTime.now.strftime('%Q')}"
+    # if self.slug.match?(/\W/)
+      # self.slug = self.slug.gsub!(/\W/,'')
+      self.slug = "#{self.first_name}#{self.last_name}".downcase
+      unless User.find_by(slug: self.slug).nil?
+        self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
+        # binding.pry
       end
+
+      # self.save
+    # end
+  end
+
+  def sanitize_user_image
+    if self.image.url.nil?
+      self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
       # self.save
     end
   end
@@ -82,16 +92,9 @@ class User < ApplicationRecord
     UserMailer.with(user: self).welcome.deliver_now
   end
 
-  def sanitize_user_image
-    if image.url.nil?
-      remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
-      # self.save
-    end
-  end
-
   def async_update
     MailchimpSubscribeUser.perform_later(self)
-    mailchimp = true
+    self.mailchimp = true
     # self.save
   end
 
