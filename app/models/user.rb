@@ -70,12 +70,12 @@ class User < ApplicationRecord
   def sanitize_user_slug
     # binding.pry
     # if self.slug.match?(/\W/)
-      # self.slug = self.slug.gsub!(/\W/,'')
-      self.slug = "#{self.first_name}#{self.last_name}".downcase.gsub!(/\W/,'')
+      self.slug = "#{self.first_name}#{self.last_name}".downcase
       unless User.find_by(slug: self.slug).nil?
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
         # binding.pry
       end
+      self.slug = self.slug.gsub!(/\W/,'')
       self.save
     # end
   end
