@@ -68,7 +68,9 @@ class User < ApplicationRecord
   def sanitize_user_slug
     # binding.pry
     if slug.match?(/\W/)
-      slug.gsub!(/\W/,'')
+      # slug.gsub!(/\W/,'')
+      slug = "#{first_name}#{last_name}".downcase
+      puts slug
       unless User.find_by(slug: slug).nil?
         slug = "#{slug}#{DateTime.now.strftime('%Q')}"
       end
