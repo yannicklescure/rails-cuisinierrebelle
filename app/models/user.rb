@@ -1,4 +1,5 @@
 require 'digest'
+require "i18n"
 
 class User < ApplicationRecord
   acts_as_token_authenticatable
@@ -72,7 +73,7 @@ class User < ApplicationRecord
     # if self.slug.match?(/\W/)
       # binding.pry
       # unless User.find_by(slug: self.slug).nil?
-      self.slug = "#{self.first_name}#{self.last_name}".downcase
+      self.slug = I18n.transliterate("#{self.first_name}#{self.last_name}".downcase)
       if User.where(slug: self.slug).exists?
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
       end
