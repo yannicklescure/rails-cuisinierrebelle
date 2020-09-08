@@ -86,3 +86,4 @@ gem "websocket-extensions", ">= 0.1.5"
 # gem "rack", ">= 2.2.3"
 gem 'rack-cors'
 gem "serviceworker-rails"
+gem 'unsplash'
