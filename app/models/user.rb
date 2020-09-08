@@ -68,8 +68,11 @@ class User < ApplicationRecord
 
   def sanitize_user_slug
     # binding.pry
-    if self.slug.match?(/\W/)
-      self.slug.gsub!(/\W/,'')
+    if slug.match?(/\W/)
+      slug.gsub!(/\W/,'')
+      unless User.find_by(slug: slug).nil?
+        slug = "#{slug}#{DateTime.now.strftime('%Q')}"
+      end
       self.save
     end
   end
@@ -79,15 +82,15 @@ class User < ApplicationRecord
   end
 
   def create_default_image
-    if self.image.url.nil?
-      self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
+    if image.url.nil?
+      remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
       self.save
     end
   end
 
   def async_update
     MailchimpSubscribeUser.perform_later(self)
-    self.mailchimp = true
+    mailchimp = true
     self.save
   end
 
