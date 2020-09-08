@@ -76,15 +76,14 @@ class User < ApplicationRecord
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
         # binding.pry
       end
-
-      # self.save
+      self.save
     # end
   end
 
   def sanitize_user_image
     if self.image.url.nil?
       self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
-      # self.save
+      self.save
     end
   end
 
