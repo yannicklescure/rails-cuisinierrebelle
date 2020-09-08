@@ -71,13 +71,14 @@ class User < ApplicationRecord
     # binding.pry
     # if self.slug.match?(/\W/)
       # binding.pry
+      # unless User.find_by(slug: self.slug).nil?
       self.slug = "#{self.first_name}#{self.last_name}".downcase
-      unless User.find_by(slug: self.slug).nil?
+      if User.where(slug: self.slug).exists?
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
-        # binding.pry
       end
-      # binding.pry
       self.slug.gsub!(/\W/,'')
+      puts self.slug
+      # binding.pry
       self.save
     # end
   end
