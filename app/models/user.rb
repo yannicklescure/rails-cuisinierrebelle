@@ -44,9 +44,9 @@ class User < ApplicationRecord
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
     self.locale = I18n.locale
+    async_update
     self.save
     send_welcome_email
-    async_update
   end
 
   # after_commit :create_default_image
