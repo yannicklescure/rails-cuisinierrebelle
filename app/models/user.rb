@@ -68,13 +68,13 @@ class User < ApplicationRecord
   def sanitize_user_slug
     # binding.pry
     if slug.match?(/\W/)
-      # slug.gsub!(/\W/,'')
-      slug = "#{first_name}#{last_name}".downcase
-      puts slug
-      unless User.find_by(slug: slug).nil?
+      if User.find_by(slug: slug.gsub!(/\W/,'')).nil?
+        slug.gsub!(/\W/,'')
+      else
+        slug = "#{first_name[0]}#{last_name}".downcase
         slug = "#{slug}#{DateTime.now.strftime('%Q')}"
       end
-      self.save
+      # self.save
     end
   end
 
@@ -85,14 +85,14 @@ class User < ApplicationRecord
   def sanitize_user_image
     if image.url.nil?
       remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
-      self.save
+      # self.save
     end
   end
 
   def async_update
     MailchimpSubscribeUser.perform_later(self)
     mailchimp = true
-    self.save
+    # self.save
   end
 
   def self.from_omniauth(auth)
