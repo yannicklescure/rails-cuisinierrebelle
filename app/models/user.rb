@@ -71,7 +71,7 @@ class User < ApplicationRecord
     # binding.pry
     # if self.slug.match?(/\W/)
       # self.slug = self.slug.gsub!(/\W/,'')
-      self.slug = "#{self.first_name}#{self.last_name}".downcase
+      self.slug = "#{self.first_name}#{self.last_name}".downcase.gsub!(/\W/,'')
       unless User.find_by(slug: self.slug).nil?
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
         # binding.pry
