@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
-  after_commit :sanitize_user_slug, :sanitize_user_image
+  before_commit :sanitize_user_slug, :sanitize_user_image
 
   extend FriendlyId
   friendly_id :name, use: :slugged
