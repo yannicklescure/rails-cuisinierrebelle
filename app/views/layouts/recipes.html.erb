@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#343940">
     <%#= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= preload_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/google_analytics' %>
     <%= render 'layouts/google_adsense' if user_signed_in? && !current_user.freemium || !user_signed_in? %>
   </head>

@@ -36,7 +36,7 @@
 <meta name="msapplication-config" content="https://media.cuisinierrebelle.com/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#343940">
 <%#= stylesheet_link_tag 'application', media: 'all' %>
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= preload_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= render 'layouts/google_analytics' %>
 <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
