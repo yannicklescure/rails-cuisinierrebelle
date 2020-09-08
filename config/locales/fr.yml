@@ -578,7 +578,8 @@ fr:
       recipes: Ou voir les recettes
       sign_in: Connexion
       sign_up: Inscription
-      photo_by: Photo de
+      photo_by: "Photo de "
+      photo_by_1: "Photo d'"
       photo_on: sur
     card-product:
       edit_html: Editer

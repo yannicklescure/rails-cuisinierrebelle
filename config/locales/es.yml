@@ -455,7 +455,8 @@ es:
       recipes: O ver las recetas
       sign_in: Iniciar sesión
       sign_up: Regístrate
-      photo_by: Photo de
+      photo_by: "Foto de "
+      photo_by_1: "Foto de "
       photo_on: en
     card-product:
       edit_html: Editar

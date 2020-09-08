@@ -23,7 +23,7 @@
     </div>
     <div class="d-flex justify-content-center text-muted">
       <p>
-        <small><%= t(".photo_by") %> <a href="<%= @unsplash_search_result.user.links.html %>" target="_blank" class="text-light"><%= @unsplash_search_result.user.name %></a> <%= t(".photo_on") %> <a href="https://unsplash.com/?utm_source=cuisinier_rebelle&utm_medium=referral" target="_blank" class="text-light">Unsplash</a></small></p>
+        <small><%= @unsplash_search_result.user.name[0].match(/^(A|E|I|O|U|a|e|i|o|u)/) ? t(".photo_by_1") : t(".photo_by") %><a href="<%= @unsplash_search_result.user.links.html %>" target="_blank" class="text-light"><%= @unsplash_search_result.user.name %></a> <%= t(".photo_on") %> <a href="https://unsplash.com/?utm_source=cuisinier_rebelle&utm_medium=referral" target="_blank" class="text-light">Unsplash</a></small></p>
     </div>
   </div>
 </div>

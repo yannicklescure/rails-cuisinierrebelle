@@ -572,7 +572,8 @@ en:
       recipes: Or see recipes
       sign_in: Log in
       sign_up: Sign up
-      photo_by: Photo by
+      photo_by: "Photo by "
+      photo_by_1: "Photo by "
       photo_on: "on"
     card-product:
       edit_html: Edit
