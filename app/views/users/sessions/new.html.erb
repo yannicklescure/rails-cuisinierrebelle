@@ -1,6 +1,8 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
   <div class="h2"><%= t(".sign_in") %></div>
 
+  <%= render "users/shared/providers" %>
+
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -18,7 +20,6 @@
     </div>
   <% end %>
 
-  <%= render "users/shared/providers" %>
 </div>
 
 <div class="my-3">
