@@ -51,7 +51,6 @@ CarrierWave.configure do |config|
       region:            ENV['S3_REGION'], # Required
       stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
     }
-    config.asset_host = ENV['S3_CDN_URL']
 
     # Optional: Signing of download urls, e.g. for serving private content through
     # CloudFront. Be sure you have the `cloudfront-signer` gem installed and
