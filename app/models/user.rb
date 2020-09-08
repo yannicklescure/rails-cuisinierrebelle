@@ -46,13 +46,12 @@ class User < ApplicationRecord
     self.locale = I18n.locale
     self.save
     send_welcome_email
-    create_default_image
     async_update
   end
 
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
-  after_commit :sanitize_user_slug
+  after_commit :sanitize_user_slug, :sanitize_user_image
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -81,7 +80,7 @@ class User < ApplicationRecord
     UserMailer.with(user: self).welcome.deliver_now
   end
 
-  def create_default_image
+  def sanitize_user_image
     if image.url.nil?
       remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
       self.save
