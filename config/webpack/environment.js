@@ -1,3 +1,6 @@
+// config/webpack/environment.js
+// import(/* webpackPreload: true */ "...")
+
 const { environment } = require('@rails/webpacker')
 
 const webpack = require('webpack')
@@ -14,6 +17,17 @@ environment.plugins.prepend('Provide',
   })
 )
 
+const FontminPlugin = require('fontmin-webpack')
+
+environment.plugins.append(
+  'Fontmin', new FontminPlugin({
+    autodetect: true,
+  })
+)
+
+environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all' } }}))
+// environment.splitChunks()
+
 // Get the actual sass-loader config
 const sassLoader = environment.loaders.get('sass')
 const sassLoaderConfig = sassLoader.use.find(function(element) {
@@ -23,7 +37,5 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 // Use Dart-implementation of Sass (default is node-sass)
 const options = sassLoaderConfig.options
 options.implementation = require('sass')
-
-environment.splitChunks()
 
 module.exports = environment
