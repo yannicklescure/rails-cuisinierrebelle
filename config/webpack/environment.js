@@ -1,8 +1,29 @@
 // config/webpack/environment.js
-// import(/* webpackPreload: true */ "material-icons")
-const { environment } = require('@rails/webpacker')
 
+// import(/* webpackPreload: true */ "...")
+const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
+const bootstrap = {
+  test: /\.(scss)$/,
+  use: [{
+    loader: 'style-loader', // inject CSS to page
+  }, {
+    loader: 'css-loader', // translates CSS into CommonJS modules
+  }, {
+    loader: 'postcss-loader', // Run post css actions
+    options: {
+      plugins: function () { // post css plugins, can be exported to postcss.config.js
+        return [
+          require('precss'),
+          require('autoprefixer')
+        ];
+      }
+    }
+  }, {
+    loader: 'sass-loader' // compiles Sass to CSS
+  }]
+}
+environment.loaders.append('bootstrap', bootstrap)
 
 // Preventing Babel from transpiling NodeModules packages
 environment.loaders.delete('nodeModules');
@@ -16,6 +37,8 @@ environment.plugins.prepend('Provide',
   })
 )
 
+// environment.config.merge()
+
 const FontminPlugin = require('fontmin-webpack')
 
 environment.plugins.append(
@@ -23,6 +46,7 @@ environment.plugins.append(
     autodetect: true,
   })
 )
+
 
 environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all', } }}))
 // environment.splitChunks()

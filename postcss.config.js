@@ -5,7 +5,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')
 let environment = {
   plugins: [
     // require('tailwindcss'),
-    require('bootstrap'),
+    // require('bootstrap'),
     require('precss'),
     require('autoprefixer'),
     require('postcss-import'),

@@ -3,71 +3,65 @@
     <i class="fas fa-utensils"></i>&nbsp;<%= t('.cuisinier_rebelle') %>
   <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="d-flex w-100 justify-content-md-between flex-column flex-md-row">
-      <div class="order-1 order-sm-0 d-flex align-items-center">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100") %></a></li>
-          <!-- <li class="nav-item"><a href="<%= tools_path %>" class="nav-link"><%= t(".tools") %></a></li> -->
-          <li class="nav-item"><a href="<%= conversion_path %>" class="nav-link"><%= t(".conversion") %></a></li>
-        </ul>
-      </div>
-      <div class="d-flex flex-grow-1 justify-content-center align-items-center">
-        <%= render 'index/form' %>
-      </div>
-      <div class="order-0 order-sm-1 d-flex align-items-center">
-        <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? %>
-            <% if current_user.locale.nil? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= t('.languages_html') %>
-              </a>
-              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-                <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
-                <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
-                <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
-              </div>
-            </li>
-            <% end %>
-            <% if current_user.admin || current_user.moderator %>
-            <%= link_to t('.admin_html'), admin_path(), class: "nav-link" %>
-            <% end %>
-            <li class="nav-item"><%= link_to t('.bookmarks_html'), user_bookmarks_path(current_user), class: "nav-link bookmarks" %></li>
-            <li class="nav-item"><%= link_to t('.notifications_html'), notifications_path, class: "nav-link bookmarks" %></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= t('.menu_modal_html') %>
-              </a>
-              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-                <%= link_to t(".new_recipe"), new_recipe_path, class: "dropdown-item" %>
-                <%= link_to t(".recipes"), user_recipes_path(current_user), class: "dropdown-item" %>
-                <%#= link_to t(".index"), index_index_path, class: "dropdown-item" %>
-                <%#= link_to t(".followers"), user_followers_path(current_user), class: "dropdown-item" %>
-                <%= link_to t(".following"), user_following_path(current_user), class: "dropdown-item" %>
-                <%= link_to t(".settings"), user_settings_path(current_user), class: "dropdown-item" %>
-                <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item dropdown d-flex">
-              <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= t('.languages_html') %>
-              </a>
-              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-                <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
-                <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
-                <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
-              </div>
-            </li>
-            <li class="nav-item"><%= link_to t(".sign_in"), new_user_session_path, class: "nav-link" %></li>
+  <div class="d-flex w-100 justify-content-md-between flex-column flex-md-row">
+    <div class="order-1 order-sm-0 d-flex align-items-center">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100") %></a></li>
+        <!-- <li class="nav-item"><a href="<%= tools_path %>" class="nav-link"><%= t(".tools") %></a></li> -->
+        <li class="nav-item"><a href="<%= conversion_path %>" class="nav-link"><%= t(".conversion") %></a></li>
+      </ul>
+    </div>
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+      <%= render 'index/form' %>
+    </div>
+    <div class="order-0 order-sm-1 d-flex align-items-center">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <% if current_user.locale.nil? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('.languages_html') %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+              <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
+              <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
+              <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
+            </div>
+          </li>
           <% end %>
-        </ul>
-      </div>
+          <% if current_user.admin || current_user.moderator %>
+          <%= link_to t('.admin_html'), admin_path(), class: "nav-link" %>
+          <% end %>
+          <li class="nav-item"><%= link_to t('.bookmarks_html'), user_bookmarks_path(current_user), class: "nav-link bookmarks" %></li>
+          <li class="nav-item"><%= link_to t('.notifications_html'), notifications_path, class: "nav-link bookmarks" %></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('.menu_modal_html') %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+              <%= link_to t(".new_recipe"), new_recipe_path, class: "dropdown-item" %>
+              <%= link_to t(".recipes"), user_recipes_path(current_user), class: "dropdown-item" %>
+              <%#= link_to t(".index"), index_index_path, class: "dropdown-item" %>
+              <%#= link_to t(".followers"), user_followers_path(current_user), class: "dropdown-item" %>
+              <%= link_to t(".following"), user_following_path(current_user), class: "dropdown-item" %>
+              <%= link_to t(".settings"), user_settings_path(current_user), class: "dropdown-item" %>
+              <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown d-flex">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('.languages_html') %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+              <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
+              <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
+              <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
+            </div>
+          </li>
+          <li class="nav-item"><%= link_to t(".sign_in"), new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
