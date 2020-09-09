@@ -9,7 +9,7 @@ const setCards = (params) => {
   let locale = params.init.locale != 'fr' ? `/${params.init.locale}` : '';
 
   let trigger = 0;
-  let cardDeck = `<div class="card-deck">`;
+  let cardDeck = `<div class="card-deck w-100">`;
 
   // console.log(Math.ceil(params.array.length / params.count));
   // console.log(Math.ceil(document.querySelector('#root').dataset.recipes / params.count));
@@ -119,7 +119,7 @@ const setCards = (params) => {
         const root = document.querySelector('#root');
         root.insertAdjacentHTML('beforeEnd', cardDeck);
         trigger = 0;
-        cardDeck = `<div class="card-deck">`
+        cardDeck = `<div class="card-deck w-100">`
       }
 
       // const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
