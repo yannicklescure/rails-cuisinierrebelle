@@ -47,18 +47,17 @@ environment.plugins.append(
   })
 )
 
-
 environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all', } }}))
 // environment.splitChunks()
 
-// Get the actual sass-loader config
-const sassLoader = environment.loaders.get('sass')
-const sassLoaderConfig = sassLoader.use.find(function(element) {
-  return element.loader == 'sass-loader'
-})
+// // Get the actual sass-loader config
+// const sassLoader = environment.loaders.get('sass')
+// const sassLoaderConfig = sassLoader.use.find(function(element) {
+//   return element.loader == 'sass-loader'
+// })
 
-// Use Dart-implementation of Sass (default is node-sass)
-const options = sassLoaderConfig.options
-options.implementation = require('sass')
+// // Use Dart-implementation of Sass (default is node-sass)
+// const options = sassLoaderConfig.options
+// options.implementation = require('sass')
 
 module.exports = environment

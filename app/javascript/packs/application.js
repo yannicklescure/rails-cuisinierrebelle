@@ -15,15 +15,6 @@ jQuery.htmlPrefilter = function( html ) {
 import "bootstrap";
 require("@fortawesome/fontawesome-free/js/all")
 
-const WebFont = require('webfontloader');
-
-WebFont.load({
-  google: {
-    families: ['Roboto', 'Material Icons']
-  },
-  timeout: 2000 // Set the timeout to two seconds
-});
-
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
 import { cardHeart } from "../components/card-heart";
@@ -44,71 +35,95 @@ import { top100 } from "../pages/top100";
 import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
-if ((/localhost/).test(document.domain)) document.domain = "localhost";
-else console.log = function() {}
+const initBeforeLoader = () => {
+  if ((/localhost/).test(document.domain)) document.domain = "localhost";
+  else console.log = function() {}
 
-if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
-  document.domain = "laresistancefrancaise.com";
-}
-console.log(document.domain)
-
-if(document.querySelector('.notice') != null) flashes();
-$('[data-toggle="tooltip"]').tooltip();
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
-  // console.log(navbarHeight);
-  document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
-  const banner = document.querySelector('.banner');
-  if (banner) banner.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
-}, false);
-
-const userSignedIn = document.querySelector('body').dataset.user === 'true';
-
-Promise.resolve(currentLocation()).then(location => {
-  // console.log(location);
-  let currentLang = location.currentLang;
-  let currentController = location.currentController;
-  let currentPage = location.currentPage;
-  const device = document.querySelector('body').dataset.device;
-
-    // console.log(device);
-    if (device != 'desktop') {
-      shareButton();
-      console.log(userSignedIn)
-      if (userSignedIn) navbarBottom(location);
-    }
-    googleAdsNoNavbar();
-    if (!currentController && !currentPage) home();
-    if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-    if (currentController && currentController === 'r') recipe(location);
-    if (currentController === 'u' && currentPage != null) userBanner();
-    if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
-    if (currentController === 'tools') alerts();
-    if (currentController === 'top100') top100();
-    if (currentController === 'conversion') conversion();
-    if (currentController === 'admin' && userSignedIn) admin(location);
-
-  const root = document.querySelector('#root');
-  if (root) recipes(location);
-
-  searchInput({
-    location: location,
-    device: device
-  });
-
-  const navbarBrand = document.querySelector(".navbar-brand");
-  if(window.innerWidth <= 768) {
-    navbarBrand.style.padding = "5px 0";
+  if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
+    document.domain = "laresistancefrancaise.com";
   }
+  console.log(document.domain)
 
+  if(document.querySelector('.notice') != null) flashes();
+  $('[data-toggle="tooltip"]').tooltip();
+}
 
-  if (!currentController && !currentPage && !userSignedIn) {
-    scrollToAnchor("#recipes-cards");
-    const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
-    if (bannerCtaBoxTitle && window.innerWidth > 375) {
-      bannerCtaBoxTitle.classList.remove('h2');
-      bannerCtaBoxTitle.classList.add('h1');
+const initLoader = () => {
+  const WebFont = require('webfontloader');
+
+  WebFont.load({
+    google: {
+      families: ['Roboto', 'Material Icons']
+    },
+    timeout: 2000 // Set the timeout to two seconds
+  });
+  // const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
+  // document.querySelector('body').style.paddingTop = `${navbarHeight}px`;
+  // const banner = document.querySelector('.banner');
+  // if (banner) banner.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
+}
+
+const initApp = () => {
+  document.querySelector('#navbar-main').classList.remove('d-none');
+  document.querySelector('#credit').classList.remove('d-none');
+  Promise.resolve(currentLocation()).then(location => {
+    console.log(location);
+    let currentLang = location.currentLang;
+    let currentController = location.currentController;
+    let currentPage = location.currentPage;
+    const device = document.querySelector('body').dataset.device;
+    const userSignedIn = document.querySelector('body').dataset.user === 'true';
+
+      // console.log(device);
+      if (device != 'desktop') {
+        shareButton();
+        console.log(userSignedIn)
+        if (userSignedIn) navbarBottom(location);
+      }
+      googleAdsNoNavbar();
+      if (!currentController && !currentPage) home();
+      if (currentPage && currentPage.match(/edit\..*/)) btnClick();
+      if (currentController && currentController === 'r') recipe(location);
+      if (currentController === 'u' && currentPage != null) userBanner();
+      if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
+      if (currentController === 'tools') alerts();
+      if (currentController === 'top100') top100();
+      if (currentController === 'conversion') conversion();
+      if (currentController === 'admin' && userSignedIn) admin(location);
+
+    const root = document.querySelector('#root');
+    if (root) recipes(location);
+
+    searchInput({
+      location: location,
+      device: device
+    });
+
+    const navbarBrand = document.querySelector(".navbar-brand");
+    if(window.innerWidth <= 768) {
+      navbarBrand.style.padding = "5px 0";
     }
+
+
+    if (!currentController && !currentPage && !userSignedIn) {
+      scrollToAnchor("#recipes-cards");
+      const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
+      if (bannerCtaBoxTitle && window.innerWidth > 375) {
+        bannerCtaBoxTitle.classList.remove('h2');
+        bannerCtaBoxTitle.classList.add('h1');
+      }
+    }
+  });
+}
+
+document.addEventListener('readystatechange', event => {
+  if (event.target.readyState === 'loading') {
+    initBeforeLoader();
+  }
+  else if (event.target.readyState === 'interactive') {
+    initLoader();
+  }
+  else if (event.target.readyState === 'complete') {
+    initApp();
   }
 });
