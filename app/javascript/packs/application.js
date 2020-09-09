@@ -20,7 +20,8 @@ const WebFont = require('webfontloader');
 WebFont.load({
   google: {
     families: ['Roboto', 'Material Icons']
-  }
+  },
+  timeout: 2000 // Set the timeout to two seconds
 });
 
 import { scrollToAnchor } from "../components/scroll-to-anchor";
