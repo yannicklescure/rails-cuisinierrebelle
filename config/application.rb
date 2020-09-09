@@ -20,6 +20,5 @@ module RailsCuisinierRebelle
     # https://github.com/iain/http_accept_language
     config.i18n.available_locales = %w(en fr es)
 
-    config.assets.compile = true
   end
 end
