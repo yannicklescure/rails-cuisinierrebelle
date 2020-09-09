@@ -15,6 +15,13 @@ jQuery.htmlPrefilter = function( html ) {
 import "bootstrap";
 require("@fortawesome/fontawesome-free/js/all")
 
+const WebFont = require('webfontloader');
+
+WebFont.load({
+  google: {
+    families: ['Roboto', 'Material Icons']
+  }
+});
 
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
