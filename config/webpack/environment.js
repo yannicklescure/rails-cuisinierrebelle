@@ -1,6 +1,10 @@
 // config/webpack/environment.js
 
-// import(/* webpackPreload: true */ "...")
+import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.eot")
+import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.ttf")
+import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.woff")
+import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.woff2")
+
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 const bootstrap = {
