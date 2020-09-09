@@ -35,9 +35,10 @@ import { top100 } from "../pages/top100";
 import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
+if ((/localhost/).test(document.domain)) document.domain = "localhost";
+else console.log = function() {}
+
 const initBeforeLoader = () => {
-  if ((/localhost/).test(document.domain)) document.domain = "localhost";
-  else console.log = function() {}
 
   if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
     document.domain = "laresistancefrancaise.com";
