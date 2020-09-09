@@ -15,3 +15,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( application-mailer.scss )
 Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
+
+Rails.application.config.assets.paths << Rails.root.join('node_modules/font-awesome/fonts')
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
