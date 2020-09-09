@@ -1,9 +1,9 @@
 // config/webpack/environment.js
 
-import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.eot")
-import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.ttf")
-import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.woff")
-import(/* webpackPreload: true */ "material_icons-2.2.1/app/assets/fonts/MaterialIcons-Regular.woff2")
+// import(/* webpackPreload: true */ "MaterialIcons-Regular.eot")
+// import(/* webpackPreload: true */ "MaterialIcons-Regular.ttf")
+// import(/* webpackPreload: true */ "MaterialIcons-Regular.woff")
+// import(/* webpackPreload: true */ "MaterialIcons-Regular.woff2")
 
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
@@ -41,7 +41,7 @@ environment.plugins.prepend('Provide',
   })
 )
 
-// environment.config.merge()
+environment.config.merge()
 
 const FontminPlugin = require('fontmin-webpack')
 
@@ -51,7 +51,32 @@ environment.plugins.append(
   })
 )
 
-environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all', } }}))
+environment.splitChunks((config) => Object.assign({}, config, {
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      // minRemainingSize: 0,
+      maxSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+}))
 // environment.splitChunks()
 
 // // Get the actual sass-loader config

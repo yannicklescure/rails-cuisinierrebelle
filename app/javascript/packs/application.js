@@ -13,7 +13,10 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import "bootstrap";
-require("@fortawesome/fontawesome-free/js/all")
+// require("@fortawesome/fontawesome-free/js/all")
+// require("@fortawesome/fontawesome-free/svgs/faUtensils")
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+
 
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
