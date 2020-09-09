@@ -30,7 +30,7 @@ if (process.env.RAILS_ENV === "production") {
         './app/javascript/**/*.vue',
         './app/javascript/**/*.jsx',
       ],
-      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || []
     })
   )
 }
