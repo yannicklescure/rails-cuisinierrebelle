@@ -3,11 +3,14 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",
     "bootstrap-icons": "^1.0.0-alpha3",
     "jquery": "~3.4.1",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.0",
+    "postcss": "^7.0.32",
+    "postcss-loader": "^4.0.1"
   },
   "devDependencies": {
     "webpack": "^4.41.4",
