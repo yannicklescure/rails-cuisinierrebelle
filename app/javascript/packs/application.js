@@ -13,6 +13,9 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import "bootstrap";
+require("@fortawesome/fontawesome-free/js/all")
+
+
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
 import { cardHeart } from "../components/card-heart";
