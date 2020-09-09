@@ -24,7 +24,7 @@ environment.plugins.append(
   })
 )
 
-environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all' } }}))
+environment.splitChunks((config) => Object.assign({}, config, { optimization: { splitChunks: { chunks: 'all', } }}))
 // environment.splitChunks()
 
 // Get the actual sass-loader config
