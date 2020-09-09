@@ -17,8 +17,8 @@ Rails.application.config.assets.precompile += %w( application-mailer.scss )
 Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
 
 # Adding Webfonts to the Asset Pipeline
-Rails.application.config.assets.precompile << Proc.new { |path|
-  if path =~ /\.(eot|svg|ttf|woff)\z/
-    true
-  end
-}
+# Rails.application.config.assets.precompile << Proc.new { |path|
+#   if path =~ /\.(eot|svg|ttf|woff)\z/
+#     true
+#   end
+# }

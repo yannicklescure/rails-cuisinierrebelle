@@ -1,5 +1,5 @@
 // config/webpack/environment.js
-// import(/* webpackPreload: true */ "...")
+// import(/* webpackPreload: true */ "material-icons")
 const { environment } = require('@rails/webpacker')
 
 const webpack = require('webpack')
