@@ -75,7 +75,8 @@ Promise.resolve(currentLocation()).then(location => {
     // console.log(device);
     if (device != 'desktop') {
       shareButton();
-      navbarBottom(location);
+      console.log(userSignedIn)
+      if (userSignedIn) navbarBottom(location);
     }
     googleAdsNoNavbar();
     if (!currentController && !currentPage) home();
