@@ -31,8 +31,11 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
     # binding.pry
-    super
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    set_flash_message! :notice, :signed_out if signed_out
+    yield if block_given?
     session.delete :locale
+    respond_to_on_destroy
   end
 
   protected
@@ -49,5 +52,15 @@ class Users::SessionsController < Devise::SessionsController
       session[:locale] = I18n.locale
     end
     super
+  end
+
+  def respond_to_on_destroy
+    # We actually need to hardcode this as Rails default responder doesn't
+    # support returning empty response on GET request
+    respond_to do |format|
+      format.js
+      format.all { head :no_content }
+      format.any(*navigational_formats) { redirect_to after_sign_out_path_for(resource_name) }
+    end
   end
 end

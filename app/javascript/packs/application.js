@@ -8,6 +8,8 @@
 // This is a must
 //= require i18n/translations
 
+require('data-confirm-modal')
+
 jQuery.htmlPrefilter = function( html ) {
   return html;
 };
@@ -16,7 +18,6 @@ import "bootstrap";
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-
 
 import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { currentLocation } from "../components/location";
@@ -126,3 +127,15 @@ document.addEventListener('readystatechange', event => {
     initApp();
   }
 });
+
+// const logOut = document.querySelector('.log-out');
+// if (logOut) {
+//   // $('#log-out').confirmModal();
+//   logOut.addEventListener('click', (event) => {
+//     const el = document.querySelector('.cancel')
+//     console.log(el)
+//     el.addEventListener('click', (event) => {
+//       console.log(event)
+//     })
+//   });
+// }

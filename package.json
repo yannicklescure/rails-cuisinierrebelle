@@ -8,6 +8,7 @@
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",
     "css-loader": "^4.3.0",
+    "data-confirm-modal": "^1.6.2",
     "fontmin-webpack": "^2.0.7",
     "jquery": "~3.4.1",
     "material-icons": "^0.3.1",

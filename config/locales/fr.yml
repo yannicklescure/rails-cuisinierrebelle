@@ -195,6 +195,9 @@ fr:
       no_bookmarks_html: Aucun favoris...&nbsp;<i class="far fa-grin-beam-sweat"></i>
     update:
       no_bookmarks_html: Aucun favoris...&nbsp;<i class="far fa-grin-beam-sweat"></i>
+  buttons:
+    cancel: Annuler
+    ok: Ok
   comments:
     create:
       comments: Commentaires
@@ -575,12 +578,12 @@ fr:
       banner_subtitle: Recettes de cuisine et plus
       banner_text_html: Partagez dès maintenant des recettes<br>en toute simplicité
       banner_title: "#cuisinierRebelle"
+      photo_by: 'Photo de '
+      photo_by_1: Photo d'
+      photo_on: sur
       recipes: Ou voir les recettes
       sign_in: Connexion
       sign_up: Inscription
-      photo_by: "Photo de "
-      photo_by_1: "Photo d'"
-      photo_on: sur
     card-product:
       edit_html: Editer
       more_details_html: Voir détails <i class="material-icons md-16 d-flex pl-1">open_in_new</i>
