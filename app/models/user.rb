@@ -75,13 +75,25 @@ class User < ApplicationRecord
       # unless User.find_by(slug: self.slug).nil?
       self.slug = I18n.transliterate("#{self.first_name}#{self.last_name}".downcase)
       self.slug.gsub!(/\W/,'')
-      if User.where(slug: self.slug).exists?
+      # binding.pry
+      if is_user_duplicate?
         self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
       end
       puts self.slug
       # binding.pry
       self.save
     # end
+  end
+
+  def is_user_duplicate?
+    tmp = User.find_by(slug: self.slug)
+    if tmp.nil?
+      false
+    elsif tmp.id === self.id
+      false
+    else
+      true
+    end
   end
 
   def sanitize_user_image
