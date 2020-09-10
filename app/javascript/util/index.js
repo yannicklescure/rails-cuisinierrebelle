@@ -1,3 +1,24 @@
+export const localRecipes = () => {
+  const data = localStorage.getItem('recipes')
+  if (data) return JSON.parse(data);
+  else return null
+}
+
+export const fetchRecipes = (init) => {
+  return fetch(init.url, init.options)
+    .then(response => response.json())
+    .then(result => {
+      const data = result.data;
+      console.log(data)
+      data.timestamp = (new Date).getTime()
+      localStorage.setItem('recipes', JSON.stringify(data));
+      return data;
+    })
+    .catch(ex => {
+      console.log('parsing failed', ex);
+    });
+}
+
 export const setCardsParams = () => {
   const width = window.innerWidth;
   console.log(width);

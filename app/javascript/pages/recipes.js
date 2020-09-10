@@ -2,31 +2,12 @@ import { cookiesToObject } from "../components/cookies";
 import { lazyLoad } from "../components/lazy-load";
 import { newRecipeButton } from "../components/recipe-button-new";
 import { setCardsParams } from "../util";
+import { localRecipes } from "../util";
+import { fetchRecipes } from "../util";
 
 const max = x => {
   if (x === 5) return 25
   else return 24
-}
-
-const localRecipes = () => {
-  const data = localStorage.getItem('recipes')
-  if (data) return JSON.parse(data);
-  else return null
-}
-
-const fetchRecipes = (init) => {
-  return fetch(init.url, init.options)
-    .then(response => response.json())
-    .then(result => {
-      const data = result.data;
-      console.log(data)
-      data.timestamp = (new Date).getTime()
-      localStorage.setItem('recipes', JSON.stringify(data));
-      return data;
-    })
-    .catch(ex => {
-      console.log('parsing failed', ex);
-    });
 }
 
 const setLazyLoad = (init, data) => {

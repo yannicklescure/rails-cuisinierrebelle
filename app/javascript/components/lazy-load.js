@@ -1,5 +1,6 @@
 import { cards } from "./cards";
 import { setCardsParams } from "../util";
+import { fetchRecipes } from "../util";
 
 const max = x => {
   if (x === 5) return 25
