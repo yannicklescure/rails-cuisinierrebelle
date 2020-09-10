@@ -41,16 +41,13 @@ import { admin } from "../pages/admin";
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}
 
-const initBeforeLoader = () => {
-
-  if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
-    document.domain = "laresistancefrancaise.com";
-  }
-  console.log(document.domain)
-
-  if(document.querySelector('.notice') != null) flashes();
-  $('[data-toggle="tooltip"]').tooltip();
+if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
+  document.domain = "laresistancefrancaise.com";
 }
+console.log(document.domain)
+
+if(document.querySelector('.notice') != null) flashes();
+$('[data-toggle="tooltip"]').tooltip();
 
 const initLoader = () => {
   const WebFont = require('webfontloader');
@@ -122,10 +119,7 @@ const initApp = () => {
 }
 
 document.addEventListener('readystatechange', event => {
-  if (event.target.readyState === 'loading') {
-    initBeforeLoader();
-  }
-  else if (event.target.readyState === 'interactive') {
+  if (event.target.readyState === 'interactive') {
     initLoader();
   }
   else if (event.target.readyState === 'complete') {

@@ -97,7 +97,7 @@ class User < ApplicationRecord
   end
 
   def sanitize_user_image
-    if self.image.url.nil?
+    unless self.image.file.exists?
       self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
       self.save
     end
