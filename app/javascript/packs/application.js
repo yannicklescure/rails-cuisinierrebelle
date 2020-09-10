@@ -128,6 +128,14 @@ document.addEventListener('readystatechange', event => {
   }
 });
 
+const signIn = document.querySelector('#sign-in');
+
+if (signIn) {
+  signIn.addEventListener('click', ()=> {
+    localStorage.removeItem('recipes');
+  });
+}
+
 // const logOut = document.querySelector('.log-out');
 // if (logOut) {
 //   // $('#log-out').confirmModal();
