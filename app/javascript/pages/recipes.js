@@ -4,6 +4,7 @@ import { newRecipeButton } from "../components/recipe-button-new";
 import { setCardsParams } from "../util";
 import { localRecipes } from "../util";
 import { fetchRecipes } from "../util";
+import { formattedTime } from "../util";
 
 const max = x => {
   if (x === 5) return 25
@@ -49,31 +50,16 @@ export const recipes = (location) => {
     locale: location.currentLang,
     device: device,
     cards: cardsMaxCount,
-    options: options
+    options: options,
+    query: false,
   };
   if (location.query) {
     // console.log(location.query);
     init.url = `/api/v1/recipes?query=${location.query}`;
+    init.query = true;
   }
 
   let data = localRecipes();
-
-  const formattedTime = (unix_timestamp) => {
-    // Create a new JavaScript Date object based on the timestamp
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    var date = new Date(unix_timestamp);
-    // Hours part from the timestamp
-    var hours = date.getHours();
-    // Minutes part from the timestamp
-    var minutes = "0" + date.getMinutes();
-    // Seconds part from the timestamp
-    var seconds = "0" + date.getSeconds();
-
-    // Will display time in 10:30:23 format
-    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-    console.log(formattedTime);
-  }
 
   const waitingTime = 3 * 60 * 1000; // 3 minutes
   console.log(data);

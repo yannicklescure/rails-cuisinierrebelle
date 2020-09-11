@@ -1,17 +1,5 @@
 import { cookiesToObject } from "../components/cookies";
 
-const fetchUserData = (init, options) => {
-  return fetch(init.url, options)
-  .then(response => response.json())
-  .then(result => {
-    const data = result.data;
-    return data;
-  })
-  .catch(ex => {
-    console.log('parsing failed', ex);
-  });
-}
-
 export const newRecipeButton = (location) => {
 
   const body = document.querySelector('body');
@@ -58,17 +46,11 @@ export const newRecipeButton = (location) => {
 
       .new-recipe-btn {
         border: none;
-        // border-radius: 50%;
         cursor: pointer;
         font-size: 1em;
-        // padding: .4em .7em;
         background-color: #dc3544;
         transition: all .3s;
       }
-
-      // .new-recipe-btn:hover {
-      //   background-color: #dc3544;
-      // }
       </style>
       <a href="/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white p-2"></a>`;
       document.querySelector('body').insertAdjacentHTML('afterBegin', newRecipeButtonHTML);
@@ -95,30 +77,34 @@ export const newRecipeButton = (location) => {
       const newRecipeButton = document.querySelector('#new-recipe-btn');
       newRecipeButton.innerHTML = btnIcon;
       const newRecipeButtonSizeMin = 42 ;// newRecipeButton.offsetWidth;
-      // console.log(newRecipeButtonSizeMin);
       newRecipeButton.innerHTML = btnIcon + btnText;
       const newRecipeButtonSizeMax = newRecipeButton.offsetWidth + 1;
-      // console.log(newRecipeButtonSizeMax);
-      // console.log(Math.round(parseFloat(newRecipeButtonSizeMax)));
       const newRecipeButtonText = document.querySelector('#new-recipe-btn-text');
       const newRecipeButtonIcon = document.querySelector('#new-recipe-btn-icon');
-      // newRecipeButton.addEventListener('click', (event) => {
-      //   event.preventDefault();
-      //   console.log('click');
-      // });
-      newRecipeButton.addEventListener('mouseenter', (event) => {
-        // event.currentTarget.innerHTML = btnIcon + btnText;
-        event.currentTarget.style.width = `${newRecipeButtonSizeMax}px`;
-        newRecipeButtonIcon.classList.add('ml-2');
-        setTimeout(() => {
-          newRecipeButtonText.classList.remove('d-none');
-        }, 300);
-      });
-      newRecipeButton.addEventListener('mouseleave', (event) => {
-        // event.currentTarget.innerHTML = btnIcon;
-        event.currentTarget.style.width = `${newRecipeButtonSizeMin}px`;
+      const expandBtn = () => {
+        Promise.resolve(`${newRecipeButtonSizeMax}px`)
+        .then(result => {
+          newRecipeButton.style.width = result;
+          newRecipeButtonIcon.classList.add('ml-2');
+        })
+        .finally(() => {
+          setTimeout(() => {
+            newRecipeButtonText.classList.remove('d-none');
+          }, 275);
+        })
+      }
+
+      const shrinkBtn = () => {
+        newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
         newRecipeButtonIcon.classList.remove('ml-2');
         newRecipeButtonText.classList.add('d-none');
+      }
+
+      newRecipeButton.addEventListener('mouseenter', (event) => {
+        expandBtn();
+      });
+      newRecipeButton.addEventListener('mouseleave', (event) => {
+        shrinkBtn();
       });
 
       let lastScrollTop = 0;
@@ -127,42 +113,11 @@ export const newRecipeButton = (location) => {
       document.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
         let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
         if (st > lastScrollTop){
-          // downscroll code
-          // newRecipeButton.innerHTML = btnIcon;
-          newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
-          newRecipeButtonIcon.classList.remove('ml-2');
-          newRecipeButtonText.classList.add('d-none');
+          shrinkBtn();
         } else {
-          // upscroll code
-          // newRecipeButton.innerHTML = btnIcon + btnText;
-          newRecipeButton.style.width = `${newRecipeButtonSizeMax}px`;
-          newRecipeButtonIcon.classList.add('ml-2');
-          setTimeout(() => {
-            newRecipeButtonText.classList.remove('d-none');
-          }, 300);
+          expandBtn();
         }
         lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
       }, false);
-
-      document.addEventListener('scroll', (event) => {
-        let element = event.currentTarget;
-        const body = document.body;
-        const html = document.documentElement;
-        const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
-        // console.log(height);
-
-        let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-        // console.log(st + window.innerHeight === height)
-        if (st + window.innerHeight >= height - 216) {
-          // console.log(st + window.innerHeight)
-          newRecipeButton.classList.add('d-none');
-          newRecipeButton.classList.remove('d-flex');
-          // console.log('end');
-        } else {
-          newRecipeButton.classList.add('d-flex');
-          newRecipeButton.classList.remove('d-none');
-        }
-      });
-    // });
   }
 }
