@@ -59,8 +59,11 @@ export const recipes = (location) => {
     init.query = true;
   }
 
-  localStorage.removeItem('recipes'); // To remove
   let data = localRecipes();
+  if (data.timestamp < 1599858840836) { // Fix store built before Fri Sep 11, 2020 17:14:00
+    localStorage.removeItem('recipes'); // To remove
+    data = null;
+  }
 
   const waitingTime = 3 * 60 * 1000; // 3 minutes
   console.log(data);
