@@ -71,6 +71,7 @@ export const recipes = (location) => {
   }
 
   if (data && !(data.timestamp + waitingTime <= new Date().getTime())) {
+    localStorage.removeItem('recipes'); // To remove
     console.log('localStorage');
     setLazyLoad(init, data);
   }
