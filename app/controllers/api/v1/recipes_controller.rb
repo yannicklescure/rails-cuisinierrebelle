@@ -4,6 +4,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
+    @users = User.all
     @slug = params[:slug]
     if @slug.present?
       user = User.find_by(slug: @slug)

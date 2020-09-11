@@ -8,6 +8,8 @@ const max = x => {
 }
 
 const filterRecipes = (el, recipes) => {
+  console.log(el)
+  console.log(recipes)
   return recipes.filter(recipe => {
     if(recipe.user.slug === el) return recipe;
   });
@@ -153,15 +155,19 @@ export const lazyLoad = (init) => {
   // console.log(init.device);
   // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
 
+  let data = init.data;
+  const options = init.options;
   const root = document.querySelector('#root');
-
+  let dataRecipes = data.state.recipes;
   if (init.url.match(/.+?query=.+/) && parseInt(root.dataset.recipes) == 0) {
     init.url = `/api/v1/recipes`;
+    data = data;
   }
 
-  // console.log(init);
   if (init.currentController === 'u') {
     init.url = `/api/v1/recipes?slug=${init.currentPage}`;
+    data = data.getters.users.filter(user => user.slug === init.currentPage)[0] || null
+    dataRecipes = data.recipes;
   }
 
   if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {
@@ -172,15 +178,13 @@ export const lazyLoad = (init) => {
     init.url = `/api/v1/recipes?recipes=true`;
   }
 
-  const data = init.data;
-  const options = init.options;
 
   const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
 
   if (data) {
     console.log(data)
     if (data.recipes.length > 0) {
-      data.recipes = data.state.recipes.slice(0, 24);
+      data.recipes = dataRecipes.slice(0, 24);
       renderRecipes(init, data, () => {
         document.querySelector('#spinner').remove();
         const cardsMax = max(setCardsParams().count);
@@ -224,9 +228,9 @@ export const lazyLoad = (init) => {
                 });
               }
               let appendCardsResult = {}
-              console.log(data.state.recipes.length >= newCardsQty)
-              if (data.state.recipes.length >= newCardsQty) {
-                data.recipes = data.state.recipes.slice(0, newCardsQty);
+              console.log(dataRecipes.length >= newCardsQty)
+              if (dataRecipes.length >= newCardsQty) {
+                data.recipes = dataRecipes.slice(0, newCardsQty);
                 console.log(data.recipes)
                 new Promise( resolve => appendCards(init, data), error => console.log(error))
                   .then((result) => {

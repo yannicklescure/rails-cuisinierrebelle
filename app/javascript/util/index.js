@@ -4,10 +4,29 @@ export const localRecipes = () => {
   else return null
 }
 
+const setStoreState = (data) => {
+  return {
+    recipes: data.recipes,
+  }
+}
+
+const setStoreGetters = (data) => {
+  const arr = [];
+  data.users.forEach(user => {
+    user.recipes = user.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse();
+    arr.push(user);
+  });
+  data.users = arr;
+  return {
+    users: data.users,
+  }
+}
+
 const setRecipes = (data) => {
   data.timestamp = (new Date).getTime()
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
-  data.state = { recipes: data.recipes };
+  data.state = setStoreState(data);
+  data.getters = setStoreGetters(data);
   localStorage.setItem('recipes', JSON.stringify(data));
 }
 
