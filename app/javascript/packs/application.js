@@ -62,7 +62,7 @@ const initLoader = () => {
 }
 
 const initApp = () => {
-  document.querySelector('#navbar-main').classList.remove('d-none');
+  // document.querySelector('#navbar-main').classList.remove('d-none');
   const credit = document.querySelector('#credit')
   if (credit) credit.classList.remove('d-none');
   // const navbarHeight = parseInt(document.querySelector('#navbar-main').clientHeight);
