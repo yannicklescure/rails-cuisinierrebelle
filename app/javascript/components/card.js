@@ -22,7 +22,7 @@ const setCards = (params) => {
     // if(recipe.id >= params.start && recipe.id <= params.end) {
     // if(index + 1 > params.start && index + 1 <= params.end) {
     // if(index + 1 <= params.end) {
-    console.log(item)
+    // console.log(item)
     if (item) {
       let bookmarkPatchAttributes = '';
       let likePatchAttributes = '';
@@ -62,10 +62,10 @@ const setCards = (params) => {
         })
       }
       // console.log(`count ${commentsCount}`);
-      console.log(`recipe ${item.recipe.id} index ${index}`);
-      console.log(item);
-      console.log(item.user.image.thumb.url);
-      console.log(item.recipe.photo.card.url);
+      // console.log(`recipe ${item.recipe.id} index ${index}`);
+      // console.log(item);
+      // console.log(item.user.image.thumb.url);
+      // console.log(item.recipe.photo.card.url);
 
       const card = `
           <div class="card rounded border-0 my-3 m-md-2" data-recipe="${item.recipe.id}">

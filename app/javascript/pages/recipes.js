@@ -57,8 +57,14 @@ export const recipes = (location) => {
 
   let data = localRecipes();
 
-  if (data) setLazyLoad(init, data)
-  else fetchRecipes(init).then(data => setLazyLoad(init, data))
+  if (data) {
+    console.log('localStorage')
+    setLazyLoad(init, data)
+  }
+  else {
+    console.log('fetch server')
+    fetchRecipes(init).then(data => setLazyLoad(init, data))
+  }
 
   if (userSignedIn && device === 'desktop') {
     setTimeout(() => {

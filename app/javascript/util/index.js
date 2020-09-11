@@ -4,15 +4,48 @@ export const localRecipes = () => {
   else return null
 }
 
+const setRecipes = (data) => {
+  data.timestamp = (new Date).getTime()
+  data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
+  data.state = { recipes: data.recipes };
+  localStorage.setItem('recipes', JSON.stringify(data));
+}
+
 export const fetchRecipes = (init) => {
   return fetch(init.url, init.options)
     .then(response => response.json())
     .then(result => {
-      const data = result.data;
-      console.log(data)
-      data.timestamp = (new Date).getTime()
-      localStorage.setItem('recipes', JSON.stringify(data));
-      return data;
+      const newData = result.data;
+      // console.log(newData);
+      const data = localRecipes();
+      if (data) {
+        const recipes = data.recipes;
+        console.log(recipes)
+        recipes.timestamp = new Date().getTime();
+        const newRecipes = newData.recipes;
+        console.log(newRecipes);
+        newRecipes.forEach(newRecipe => {
+          // const el = recipes.filter(recipe => recipe === newRecipe);
+          // console.log(newRecipe)
+          const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
+          console.log(el.length);
+          // if (!recipes.includes(newRecipe)) {
+          if (el.length === 0) {
+            data.recipes.push(newRecipe)
+          }
+          else {
+            console.log(newRecipe)
+          }
+        })
+        // const waitingTime = 3 * 60 * 1000 // 3 minutes
+        // if (recipes.timestamp + waitingTime <= timestamp) {
+        // }
+        setRecipes(data)
+      }
+      else {
+        setRecipes(newData)
+      }
+      return newData;
     })
     .catch(ex => {
       console.log('parsing failed', ex);

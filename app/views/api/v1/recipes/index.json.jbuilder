@@ -80,6 +80,8 @@ json.data do
             end
           end
         end
+      else
+        json.comments []
       end
     end
   end

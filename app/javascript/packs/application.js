@@ -75,7 +75,9 @@ const initApp = () => {
   //   navbarBrand.style.padding = "5px 0";
   // }
 
-  Promise.resolve(currentLocation()).then(location => {
+  Promise.resolve(currentLocation())
+  // new Promise( resolve => currentLocation(), error => console.log(error))
+  .then(location => {
     console.log(location);
     let currentLang = location.currentLang;
     let currentController = location.currentController;
