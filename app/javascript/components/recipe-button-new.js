@@ -7,30 +7,7 @@ export const newRecipeButton = (location) => {
   const cookies = cookiesToObject(document.cookie);
   const device = body.dataset.device;
 
-  const init = {
-    url: `/api/v1/user`,
-    userSignedIn: userSignedIn,
-    // currentController: location.currentController,
-    // currentPage: location.currentPage,
-    // locale: location.currentLang,
-    user_email: cookies.user_email,
-    user_token: cookies.user_token,
-    device: device
-  };
-
   if (userSignedIn) {
-
-    let options;
-    if(init.userSignedIn) {
-      options = {
-        headers: {
-          'X-User-Email': atob(decodeURIComponent(init.user_email)),
-          'X-User-Token': atob(decodeURIComponent(init.user_token))
-        }
-      };
-    } else {
-      options = {};
-    }
 
     // const root = document.querySelector('#root');
 
@@ -50,6 +27,11 @@ export const newRecipeButton = (location) => {
         font-size: 1em;
         background-color: #dc3544;
         transition: all .3s;
+      }
+      .scaled {
+        /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale */
+        transform: scale(1); /* Equal to scaleX(2) scaleY(1) */
+        transform-origin: right;
       }
       </style>
       <a href="/r/new" id="new-recipe-btn" class="new-recipe-btn d-print-none rounded-pill text-decoration-none d-flex align-items-center text-white p-2"></a>`;
@@ -84,7 +66,8 @@ export const newRecipeButton = (location) => {
       const expandBtn = () => {
         Promise.resolve(`${newRecipeButtonSizeMax}px`)
         .then(result => {
-          newRecipeButton.style.width = result;
+          // newRecipeButton.style.width = result;
+          newRecipeButton.classList.remove('scaled');
           newRecipeButtonIcon.classList.add('ml-2');
         })
         .finally(() => {
@@ -95,7 +78,8 @@ export const newRecipeButton = (location) => {
       }
 
       const shrinkBtn = () => {
-        newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
+        newRecipeButton.classList.add('scaled');
+        // newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
         newRecipeButtonIcon.classList.remove('ml-2');
         newRecipeButtonText.classList.add('d-none');
       }
