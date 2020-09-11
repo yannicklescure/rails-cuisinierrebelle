@@ -3,6 +3,9 @@
 // data.timestamp = (new Date).getTime();
 // data.user = null;
 // localStorage.setItem('recipes', JSON.stringify(data));
-localStorage.removeItem('recipes');
+// localStorage.removeItem('recipes');
+const data = JSON.parse(localStorage.getItem('recipes'))
+data.user = null;
+localStorage.setItem('recipes', JSON.stringify(data));
 // console.log(data);
 window.location.href = '<%= root_path %>';

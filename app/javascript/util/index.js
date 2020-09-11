@@ -16,7 +16,7 @@ export const fetchRecipes = (init) => {
     .then(response => response.json())
     .then(result => {
       const newData = result.data;
-      // console.log(newData);
+      console.log(newData);
       const data = localRecipes();
       if (data) {
         const recipes = data.recipes;
@@ -42,7 +42,7 @@ export const fetchRecipes = (init) => {
       else {
         setRecipes(newData)
       }
-      return data;
+      return data ? data : newData;
     })
     .catch(ex => {
       console.log('parsing failed', ex);

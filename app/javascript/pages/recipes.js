@@ -11,6 +11,7 @@ const max = x => {
 }
 
 const setLazyLoad = (init, data) => {
+  console.log(data);
   init.data = data;
   lazyLoad(init);
 }
@@ -74,17 +75,22 @@ export const recipes = (location) => {
     console.log(formattedTime);
   }
 
-  const waitingTime = 3 * 60 * 1000 // 3 minutes
-  formattedTime(data.timestamp)
-  formattedTime(data.timestamp + waitingTime)
-  formattedTime(new Date().getTime())
+  const waitingTime = 3 * 60 * 1000; // 3 minutes
+  console.log(data);
+  // if (!data) data = { timestamp: new Date().getTime() }
+  if (data != null) {
+    formattedTime(data.timestamp);
+    formattedTime(data.timestamp + waitingTime);
+    formattedTime(new Date().getTime());
+  }
+
   if (data && !(data.timestamp + waitingTime <= new Date().getTime())) {
     console.log('localStorage');
     setLazyLoad(init, data);
   }
   else {
     console.log('fetch server');
-    fetchRecipes(init).then(data => setLazyLoad(init, data));
+    fetchRecipes(init).then(result => setLazyLoad(init, result));
   }
 
   if (userSignedIn && device === 'desktop') {
