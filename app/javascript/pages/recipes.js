@@ -59,6 +59,7 @@ export const recipes = (location) => {
     init.query = true;
   }
 
+  localStorage.removeItem('recipes'); // To remove
   let data = localRecipes();
 
   const waitingTime = 3 * 60 * 1000; // 3 minutes
@@ -71,7 +72,6 @@ export const recipes = (location) => {
   }
 
   if (data && !(data.timestamp + waitingTime <= new Date().getTime())) {
-    localStorage.removeItem('recipes'); // To remove
     console.log('localStorage');
     setLazyLoad(init, data);
   }
