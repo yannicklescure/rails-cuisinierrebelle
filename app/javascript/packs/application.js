@@ -101,8 +101,8 @@ const initApp = () => {
       if (userSignedIn) navbarBottom(location);
     }
     googleAdsNoNavbar();
-    if (!currentController && !currentPage) home();
     if (currentPage && currentPage.match(/edit\..*/)) btnClick();
+    if (!currentController && !currentPage) home();
     if (currentController && currentController === 'r') recipe(location);
     if (currentController === 'u' && currentPage != null) userBanner();
     if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();

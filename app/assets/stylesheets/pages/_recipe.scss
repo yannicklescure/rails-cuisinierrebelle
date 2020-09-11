@@ -1,7 +1,7 @@
 .recipe .recipe-image {
   border-radius: 4px;
-  min-height: 200px;
-  // height: calc(100vw * 0.6);
+  width: 100%;
+  height: calc(100vw * 9 / 16);
   background-size: cover;
   background-position: center;
   object-fit: cover;

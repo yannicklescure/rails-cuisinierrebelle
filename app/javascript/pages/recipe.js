@@ -78,7 +78,7 @@ export const recipe = (location) => {
       }
     }
 
-    setPictureSize(document.querySelector('.recipe-image'));
+    // setPictureSize(document.querySelector('.recipe-image'));
 
     // cleanHashtags();
     cleanComments();

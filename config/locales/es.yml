@@ -504,6 +504,7 @@ es:
       french_html: Français
       inbox: Mensajes
       languages_html: <i class="material-icons md-18">translate</i>
+      top_100_html: <i class="material-icons md-18">whatshot</i>
       log_out: Cerrar sesión
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nueva receta

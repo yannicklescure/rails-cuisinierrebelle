@@ -6,7 +6,7 @@
   <div class="d-flex w-100 justify-content-md-between flex-column flex-md-row">
     <div class="order-1 order-sm-0 d-flex align-items-center">
       <ul class="navbar-nav">
-        <li class="nav-item"><a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100") %></a></li>
+        <!-- <li class="nav-item"><a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100") %></a></li> -->
         <!-- <li class="nav-item"><a href="<%= tools_path %>" class="nav-link"><%= t(".tools") %></a></li> -->
         <li class="nav-item"><a href="<%= conversion_path %>" class="nav-link"><%= t(".conversion") %></a></li>
       </ul>
@@ -53,6 +53,7 @@
             <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.languages_html') %>
             </a>
+            <a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100_html") %></a>
             <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
               <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
               <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
