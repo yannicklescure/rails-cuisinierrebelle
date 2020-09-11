@@ -60,7 +60,7 @@ export const recipes = (location) => {
   }
 
   let data = localRecipes();
-  if (data.timestamp < 1599858840836) { // Fix store built before Fri Sep 11, 2020 17:14:00
+  if (data && data.timestamp < 1599858840836) { // Fix store built before Fri Sep 11, 2020 17:14:00
     localStorage.removeItem('recipes'); // To remove
     data = null;
   }

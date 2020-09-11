@@ -42,7 +42,7 @@ const arrRecipes = (init, data) => {
         break;
       case `${init.currentPage}`:
         // if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
-        if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+        if (init.currentPage != null) recipes = filterRecipes(init.currentPage.match(/\w+/)[0], data.recipes);
         render = recipes.length > 0;
         break;
       default:
@@ -60,7 +60,7 @@ const arrRecipes = (init, data) => {
         render = recipes.length > 0;
         break;
       case `${init.currentPage}`:
-        if (init.currentPage != null) recipes = filterRecipes(init.currentPage, data.recipes);
+        if (init.currentPage != null) recipes = filterRecipes(init.currentPage.match(/\w+/)[0], data.recipes);
         render = recipes.length > 0;
         break;
       default:
@@ -166,7 +166,8 @@ export const lazyLoad = (init) => {
 
   if (init.currentController === 'u') {
     init.url = `/api/v1/recipes?slug=${init.currentPage}`;
-    data = data.getters.users.filter(user => user.slug === init.currentPage)[0] || null
+    console.log(init.currentPage.match(/\w+/)[0])
+    data = data.getters.users.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
     dataRecipes = data.recipes;
   }
 
@@ -174,9 +175,10 @@ export const lazyLoad = (init) => {
     console.log('bookmarks')
     init.url = `/api/v1/recipes?bookmarks=true`;
   }
-  if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
-    init.url = `/api/v1/recipes?recipes=true`;
-  }
+
+  // if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
+  //   init.url = `/api/v1/recipes?recipes=true`;
+  // }
 
 
   const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
