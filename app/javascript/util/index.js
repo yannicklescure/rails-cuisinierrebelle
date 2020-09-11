@@ -37,15 +37,12 @@ export const fetchRecipes = (init) => {
             console.log(newRecipe)
           }
         })
-        // const waitingTime = 3 * 60 * 1000 // 3 minutes
-        // if (recipes.timestamp + waitingTime <= timestamp) {
-        // }
         setRecipes(data)
       }
       else {
         setRecipes(newData)
       }
-      return newData;
+      return data;
     })
     .catch(ex => {
       console.log('parsing failed', ex);

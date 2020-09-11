@@ -178,7 +178,7 @@ export const lazyLoad = (init) => {
   const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
 
   if (data) {
-    console.log(data.recipes)
+    console.log(data)
     if (data.recipes.length > 0) {
       data.recipes = data.state.recipes.slice(0, 24);
       renderRecipes(init, data, () => {

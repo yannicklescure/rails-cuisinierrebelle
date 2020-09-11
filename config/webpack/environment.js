@@ -1,11 +1,7 @@
 // config/webpack/environment.js
 
-// import(/* webpackPreload: true */ "MaterialIcons-Regular.eot")
-// import(/* webpackPreload: true */ "MaterialIcons-Regular.ttf")
-// import(/* webpackPreload: true */ "MaterialIcons-Regular.woff")
-// import(/* webpackPreload: true */ "MaterialIcons-Regular.woff2")
-import(/* webpackPreload: true */ "material-icons/iconfont/MaterialIcons-Regular.woff2")
-import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2")
+// import(/* webpackPreload: true */ "material-icons/iconfont/MaterialIcons-Regular.woff2")
+// import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2")
 
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
