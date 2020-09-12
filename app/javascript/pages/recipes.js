@@ -9,7 +9,12 @@ import { setInit } from "../util";
 
 const setLazyLoad = (init, data) => {
   console.log(data);
+  if (!init.dataRecipes) init.dataRecipes = data.recipes;
   init.data = data;
+  if (init.query) {
+    init.data = data.search.recipes.length > 0 ? data.search : data
+    init.dataRecipes = init.data.recipes;
+  }
   lazyLoad(init);
 }
 
@@ -35,7 +40,42 @@ export const recipes = (location) => {
 
   if (data && !(data.timestamp + waitingTime <= new Date().getTime())) {
     console.log('localStorage');
-    setLazyLoad(init, data);
+
+    if (init.url.match(/.+?query=.+/)) {
+      console.log('fetch search')
+      // init.url = `/api/v1/recipes`;
+      // init.dataRecipes = data.state.recipes;
+      // console.log(init.dataRecipes)
+      fetchRecipes(init).then(result => setLazyLoad(init, result));
+    }
+
+    else if (init.currentController === 'u' && init.currentPage.match(/.*\/bookmarks/)) {
+      console.log('bookmarks')
+      init.url = `/api/v1/recipes?bookmarks=true`;
+      console.log(init.dataRecipes)
+      data = data.user.bookmarks || null
+      init.dataRecipes = data.recipes;
+      console.log('######################')
+      console.log(data)
+      console.log('######################')
+      setLazyLoad(init, data);
+    }
+
+    else if (init.currentController === 'u' && !init.currentPage.match(/.*\/bookmarks/)) {
+      init.url = `/api/v1/recipes?slug=${init.currentPage}`;
+      console.log(init.currentPage.match(/\w+/)[0])
+      data = data.getters.users.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
+      init.dataRecipes = data.recipes;
+      console.log(init.dataRecipes)
+      setLazyLoad(init, data);
+    }
+
+    else {
+      init.dataRecipes = data.state.recipes;
+      console.log(init.dataRecipes)
+      setLazyLoad(init, data);
+    }
+
   }
   else {
     console.log('fetch server');

@@ -6,11 +6,11 @@ class IndexController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @query = params[:query]
     if @query.present?
-      @search_user = User.search(@query)
-      @search_recipe = Recipe.search(@query)
+      @search_users = User.search(@query)
+      @search_recipes = Recipe.search(@query)
       @results = {
-        user: @search_user.any? ? @search_user.map { |r| User.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil,
-        recipe: @search_recipe.any? ? @search_recipe.map { |r| Recipe.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil
+        user: @search_users.any? ? @search_users.map { |r| User.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil,
+        recipe: @search_recipes.any? ? @search_recipes.map { |r| Recipe.find(r.id) }.sort_by {|k,v| k.id}.reverse : nil
       }
       # binding.pry
       # if @search_results.any?

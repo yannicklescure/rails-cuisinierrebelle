@@ -166,25 +166,8 @@ export const lazyLoad = (init) => {
   let data = init.data;
   const options = init.options;
   const root = document.querySelector('#root');
-  let dataRecipes = data.state.recipes;
-  if (init.url.match(/.+?query=.+/) && parseInt(root.dataset.recipes) == 0) {
-    init.url = `/api/v1/recipes`;
-    data = data;
-  }
-
-  if (init.currentController === 'u' && !init.currentPage.match(/.*\/bookmarks/)) {
-    init.url = `/api/v1/recipes?slug=${init.currentPage}`;
-    console.log(init.currentPage.match(/\w+/)[0])
-    data = data.getters.users.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
-    dataRecipes = data.recipes;
-  }
-
-  if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {
-    console.log('bookmarks')
-    init.url = `/api/v1/recipes?bookmarks=true`;
-    data = data.user.bookmarks || null
-    dataRecipes = data.recipes;
-  }
+  let dataRecipes = init.dataRecipes;
+  console.log(dataRecipes)
 
   // if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
   //   init.url = `/api/v1/recipes?recipes=true`;

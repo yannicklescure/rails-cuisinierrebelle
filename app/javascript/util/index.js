@@ -72,6 +72,7 @@ const setStoreGetters = (data) => {
 }
 
 const setRecipes = (data) => {
+  console.log(data);
   data.timestamp = (new Date).getTime()
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
   data.state = setStoreState(data);
@@ -96,7 +97,7 @@ export const fetchRecipes = (init) => {
           // const el = recipes.filter(recipe => recipe === newRecipe);
           // console.log(newRecipe)
           const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
-          console.log(el.length);
+          // console.log(el.length);
           // if (!recipes.includes(newRecipe)) {
           if (el.length === 0) {
             data.recipes.push(newRecipe)
@@ -105,6 +106,7 @@ export const fetchRecipes = (init) => {
             console.log(newRecipe)
           }
         })
+        data.search = newData.search;
         setRecipes(data)
       }
       else {

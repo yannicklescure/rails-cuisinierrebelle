@@ -170,4 +170,63 @@ json.data do
       end
     end
   end
+
+  json.search do
+    json.users do
+      json.array! @search_users
+    end
+    json.recipes do
+      json.array! @search_recipes do |recipe|
+      json.recipe do
+        json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :likes_count
+        json.photo do
+          json.card do
+            json.url recipe.photo.url(:card)
+          end
+          json.full do
+            json.url recipe.photo.url(:full)
+          end
+          json.preview do
+            json.url recipe.photo.url(:preview)
+          end
+          json.thumb do
+            json.url recipe.photo.url(:thumb)
+          end
+        end
+      end
+      # json.extract! recipe
+      # json.recipe recipe
+      json.user do
+        json.id recipe.user.id
+        # json.email recipe.user.email
+        json.slug recipe.user.slug
+        json.name recipe.user.name
+        json.image do
+          json.full do
+            json.url recipe.user.image.url(:full)
+          end
+          json.preview do
+            json.url recipe.user.image.url(:preview)
+          end
+          json.thumb do
+            json.url recipe.user.image.url(:thumb)
+          end
+        end
+        json.checked recipe.user.checked
+      end
+      if recipe.comments.any?
+        json.comments recipe.comments do |comment|
+          json.extract! comment, :id, :content
+          if comment.replies.any?
+            json.replies comment.replies do |reply|
+              json.extract! reply, :id, :content
+            end
+          end
+        end
+      else
+        json.comments []
+      end
+    end
+    end
+  end
 end
