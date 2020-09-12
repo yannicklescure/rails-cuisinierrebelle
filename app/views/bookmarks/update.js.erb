@@ -54,7 +54,37 @@ if (root) {
     return true;
   }
 
+  data = JSON.parse(localStorage.getItem('recipes'))
   if(<%= @bookmarked %>) {
+    data.user.bookmarks.recipes.unshift({
+      recipe: {
+        id: <%= @recipe.id %>,
+        slug: "<%= @recipe.slug %>",
+        title: "<%= @recipe.title %>",
+        subtitle: "<%= @recipe.subtitle %>",
+        video: "<%= @recipe.video %>",
+        direction: "<%= @recipe.direction.dump %>",
+        description: "<%= @recipe.description.dump %>",
+        likes_count: "<%= @recipe.likes_count %>",
+        photo: {
+          card: { url: "<%= @recipe.photo.url(:card) %>" },
+          full: { url: "<%= @recipe.photo.url(:full) %>" },
+          preview: { url: "<%= @recipe.photo.url(:preview) %>" },
+          thumb: { url: "<%= @recipe.photo.url(:thumb) %>" },
+        },
+      },
+      user: {
+        slug: "<%= @recipe.user.slug %>",
+        name: "<%= @recipe.user.name %>",
+        image: {
+          full: { url: "<%= @recipe.user.image.url(:full) %>" },
+          preview: { url: "<%= @recipe.user.image.url(:preview) %>" },
+          thumb: { url: "<%= @recipe.user.image.url(:thumb) %>" },
+        },
+        checked: "<%= @recipe.user.checked %>"
+      },
+    });
+
     bookmarksCount += 1;
     root.dataset.bookmarksCount = bookmarksCount;
     bookmarked.innerHTML = bookmarkFill;
@@ -67,14 +97,20 @@ if (root) {
       }, 500);
     }
   } else {
+    el = data.user.bookmarks.recipes.filter(item => item.recipe.id === <%= @recipe.id %>)[0]
+    console.log(el)
+    position = data.user.bookmarks.recipes.indexOf(el)
+    data.user.bookmarks.recipes.splice(position,1)
+
     bookmarksCount -= 1;
     root.dataset.bookmarksCount = bookmarksCount;
     bookmarked.innerHTML = bookmark;
-    if(returnPosition().currentPage && returnPosition().currentPage.match(/\/bookmarks/)) {
-      card.parentElement.remove();
-      if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
-    }
+    // if(returnPosition().currentPage && returnPosition().currentPage.match(/\/bookmarks/)) {
+    //   card.parentElement.remove();
+    //   if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
+    // }
   }
+  localStorage.setItem('recipes', JSON.stringify(data));
 } else {
   bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
   if(<%= @bookmarked %>) {

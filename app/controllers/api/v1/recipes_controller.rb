@@ -6,6 +6,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @recipes = policy_scope(Recipe).order('created_at DESC')
     @users = User.all
     @slug = params[:slug]
+    # binding.pry
     if @slug.present?
       user = User.find_by(slug: @slug)
       @recipes = @recipes.filter { |r| r.user_id == user.id }
@@ -55,11 +56,12 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @cards = params[:cards]
     if @cards.present?
       @cards = params[:cards].to_i > @recipes.count ? @recipes.count : params[:cards].to_i
-      @recipes = @recipes.take(@cards)
+      @recipes = @cards == 24 ? @recipes : @recipes.take(@cards)
       @recipes_count = Recipe.all.count
       # binding.pry
     else
-      @recipes = @recipes.take(24)
+      # @recipes = @recipes.take(24)
+      # binding.pry
     end
   end
 

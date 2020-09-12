@@ -39,6 +39,9 @@ import { top100 } from "../pages/top100";
 import { conversion } from "../pages/conversion";
 import { admin } from "../pages/admin";
 
+import { setInit } from "../util";
+import { fetchRecipes } from "../util";
+
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}
 
@@ -134,7 +137,16 @@ const signIn = document.querySelector('#sign-in');
 
 if (signIn) {
   signIn.addEventListener('click', ()=> {
-    // localStorage.removeItem('recipes');
+    localStorage.removeItem('recipes');
+    // const setUser = (init, result) => {
+    //   console.log(result.user);
+    //   const data = JSON.parse(localStorage.getItem('recipes'))
+    //   data.user = result.user;
+    //   localStorage.setItem('recipes', JSON.stringify(data));
+    // }
+
+    // const init = setInit(location);
+    // fetchRecipes(init).then(result => setUser(init, result));
   });
 }
 

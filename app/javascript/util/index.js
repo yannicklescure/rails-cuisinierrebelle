@@ -1,3 +1,52 @@
+import { cookiesToObject } from "../components/cookies";
+
+export const setInit = (location) => {
+
+  const max = x => {
+    if (x === 5) return 25
+    else return 24
+  }
+  const body = document.querySelector('body');
+  const userSignedIn = body.dataset.user === 'true';
+  const cookies = cookiesToObject(document.cookie);
+  const device = body.dataset.device;
+  const cardsMaxCount = max(setCardsParams().count);
+  // const cardsMax = square(setCardsCount(window.innerWidth))
+
+  let options;
+  if(userSignedIn) {
+    options = {
+      headers: {
+        'X-User-Email': atob(decodeURIComponent(cookies.user_email)),
+        'X-User-Token': atob(decodeURIComponent(cookies.user_token))
+      }
+    };
+  } else {
+    options = {};
+  }
+
+  const init = {
+    // url: `/api/v1/recipes?cards=${document.querySelector('#root').dataset.recipes}`,
+    url: `/api/v1/recipes?cards=${cardsMaxCount}`,
+    userSignedIn: userSignedIn,
+    currentController: location.currentController,
+    currentPage: location.currentPage,
+    user_email: cookies.user_email,
+    user_token: cookies.user_token,
+    locale: location.currentLang,
+    device: device,
+    cards: cardsMaxCount,
+    options: options,
+    query: false,
+  };
+  if (location.query) {
+    // console.log(location.query);
+    init.url = `/api/v1/recipes?query=${location.query}`;
+    init.query = true;
+  }
+  return init
+}
+
 export const localRecipes = () => {
   const data = localStorage.getItem('recipes')
   if (data) return JSON.parse(data);

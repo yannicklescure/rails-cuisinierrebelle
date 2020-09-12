@@ -15,22 +15,61 @@ json.data do
           end
         end
       end
-      if current_user.likes.any?
+      # if current_user.likes.any?
         json.likes current_user.likes do |like|
           json.extract! like, :recipe_id
         end
-      end
-      if current_user.bookmarks.any?
-        json.bookmarks current_user.bookmarks.order('created_at DESC') do |bookmark|
-          json.extract! bookmark, :recipe_id, :created_at
+      # end
+      # if current_user.bookmarks.any?
+        json.bookmarks do
+          json.recipes do
+            json.array! current_user.bookmarks.order('created_at DESC').map { |bookmark| Recipe.find(bookmark.recipe_id) }.each do |recipe|
+              # json.extract! bookmark, :recipe_id, :created_at
+              json.recipe do
+                json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :likes_count
+                json.photo do
+                  json.card do
+                    json.url recipe.photo.url(:card)
+                  end
+                  json.full do
+                    json.url recipe.photo.url(:full)
+                  end
+                  json.preview do
+                    json.url recipe.photo.url(:preview)
+                  end
+                  json.thumb do
+                    json.url recipe.photo.url(:thumb)
+                  end
+                end
+              end
+              json.user do
+                json.id recipe.user.id
+                # json.email recipe.user.email
+                json.slug recipe.user.slug
+                json.name recipe.user.name
+                json.image do
+                  json.full do
+                    json.url recipe.user.image.url(:full)
+                  end
+                  json.preview do
+                    json.url recipe.user.image.url(:preview)
+                  end
+                  json.thumb do
+                    json.url recipe.user.image.url(:thumb)
+                  end
+                end
+                json.checked recipe.user.checked
+              end
+            end
+          end
         end
-      end
-      if current_user.recipes.any?
+      # end
+      # if current_user.recipes.any?
         json.recipes current_user.recipes do |recipe|
           # json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :photo, :likes_count
           json.recipe recipe
         end
-      end
+      # end
     end
   end
   json.recipes do

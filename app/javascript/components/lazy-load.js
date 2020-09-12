@@ -79,14 +79,22 @@ const arrRecipes = (init, data) => {
 }
 
 const renderRecipes = (init, data, callback = () => {}) => {
+
+  const $store = { data: JSON.parse(localStorage.getItem('recipes'))}
+  console.log($store);
   const cardsMax = init.cards;
   console.log(init);
   console.log(data);
-  const arrRecipesObj = arrRecipes(init, data);
-  let recipes = arrRecipesObj.recipes;
-  let render = arrRecipesObj.render;
-  let userLikes = arrRecipesObj.userLikes;
-  let userBookmarks = arrRecipesObj.userBookmarks;
+  // const arrRecipesObj = arrRecipes(init, data);
+  // let recipes = arrRecipesObj.recipes;
+  let recipes = data.recipes;
+  // let render = arrRecipesObj.render;
+  let render = data.recipes.length > 0;
+  // let userLikes = arrRecipesObj.userLikes;
+  console.log(typeof init.userSignedIn)
+  let userLikes = init.userSignedIn ? $store.data.user.likes.map(like => like.recipe_id) : [];
+  // let userBookmarks = arrRecipesObj.userBookmarks;
+  let userBookmarks = init.userSignedIn ? $store.data.user.bookmarks.recipes.map(bookmark => bookmark.recipe.id) : [];
   console.log(recipes);
   console.log(render);
   console.log(userLikes);
@@ -164,7 +172,7 @@ export const lazyLoad = (init) => {
     data = data;
   }
 
-  if (init.currentController === 'u') {
+  if (init.currentController === 'u' && !init.currentPage.match(/.*\/bookmarks/)) {
     init.url = `/api/v1/recipes?slug=${init.currentPage}`;
     console.log(init.currentPage.match(/\w+/)[0])
     data = data.getters.users.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
@@ -174,6 +182,8 @@ export const lazyLoad = (init) => {
   if (init.currentPage && init.currentPage.match(/.*\/bookmarks/)) {
     console.log('bookmarks')
     init.url = `/api/v1/recipes?bookmarks=true`;
+    data = data.user.bookmarks || null
+    dataRecipes = data.recipes;
   }
 
   // if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
