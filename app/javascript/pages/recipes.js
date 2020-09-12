@@ -19,7 +19,7 @@ export const recipes = (location) => {
   const init = setInit(location);
 
   let data = localRecipes();
-  if (data && data.timestamp < 1599858840836) { // Fix store built before Fri Sep 11, 2020 17:14:00
+  if (data && data.timestamp < 1599875782173) { // Force localStorage cleanup
     localStorage.removeItem('recipes'); // To remove
     data = null;
   }
