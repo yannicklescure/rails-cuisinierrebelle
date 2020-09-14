@@ -73,7 +73,7 @@ const setStoreGetters = (data) => {
 
 const setRecipes = (data) => {
   console.log(data);
-  data.timestamp = (new Date).getTime()
+  // data.timestamp = (new Date).getTime()
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
   data.state = setStoreState(data);
   data.getters = setStoreGetters(data);
@@ -124,41 +124,41 @@ export const setCardsParams = () => {
   console.log(width);
   if (width >= 1600) return {
     count: 6,
-    width: 299
+    width: "15%"
   };
   else if (width >= 1400) return {
     count: 5,
-    width: 298
+    width: "18%"
   };
   // Extra large screen / wide desktop
   // xl: 1200px
   else if (width >= 1200) return {
     count: 4,
-    width: 326
+    width: "23%"
   };
   // Large screen / desktop
   // lg: 992px,
   else if (width >= 992) return {
     count: 4,
-    width: 276
+    width: "23%"
   };
   // Medium screen / tablet
   // md: 768px,
   else if (width >= 768) return {
     count: 3,
-    width: 304
+    width: "31%"
   };
   // Small screen / phone
   // sm: 576px,
   else if (width >= 576) return {
     count: 2,
-    width: 346
+    width: "50%"
   };
   // Extra small screen / phone
   // xs: 0,
   else return {
     count: 1,
-    width: 530
+    width: "100%"
   };
 }
 

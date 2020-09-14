@@ -181,7 +181,8 @@ export const lazyLoad = (init) => {
     if (data.recipes.length > 0) {
       data.recipes = dataRecipes.slice(0, 24);
       renderRecipes(init, data, () => {
-        document.querySelector('#spinner').remove();
+        const spinner = document.querySelector('#spinner');
+        if (spinner) spinner.remove();
         const cardsMax = max(setCardsParams().count);
         console.log(cardsMax);
         let renderCards = data.recipes.length % cardsMax === 0;
@@ -224,7 +225,7 @@ export const lazyLoad = (init) => {
               }
               let appendCardsResult = {}
               console.log(dataRecipes.length >= newCardsQty)
-              if (dataRecipes.length >= newCardsQty) {
+              // if (dataRecipes.length >= newCardsQty) {
                 data.recipes = dataRecipes.slice(0, newCardsQty);
                 console.log(data.recipes)
                 new Promise( resolve => appendCards(init, data), error => console.log(error))
@@ -233,17 +234,17 @@ export const lazyLoad = (init) => {
                     cardNodeElementTop = result.cardNodeElementTop;
                     renderCards = result.renderCards;
                   })
-              }
-              else {
-                appendCardsResult = fetchRecipes(init).then(response => {
-                  console.log(response);
-                  if (response.recipes) {
-                    return appendCards(init, response);
-                    cardNodeElementTop = appendCardsResult.cardNodeElementTop;
-                    renderCards = appendCardsResult.renderCards;
-                  }
-                });
-              }
+              // }
+              // else {
+              //   appendCardsResult = fetchRecipes(init).then(response => {
+              //     console.log(response);
+              //     if (response.recipes) {
+              //       return appendCards(init, response);
+              //       cardNodeElementTop = appendCardsResult.cardNodeElementTop;
+              //       renderCards = appendCardsResult.renderCards;
+              //     }
+              //   });
+              // }
             }
           }
         });

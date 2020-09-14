@@ -9,7 +9,8 @@ const setCards = (params) => {
   let locale = params.init.locale != 'fr' ? `/${params.init.locale}` : '';
 
   let trigger = 0;
-  let cardDeck = `<div class="card-deck w-100">`;
+  // let cardDeck = `<div class="card-deck w-100">`;
+  let cardDeck = ``;
 
   // console.log(Math.ceil(params.array.length / params.count));
   // console.log(Math.ceil(document.querySelector('#root').dataset.recipes / params.count));
@@ -114,13 +115,14 @@ const setCards = (params) => {
 
       // console.log(trigger);
       // console.log(params.count);
-      if (trigger === params.count || item.recipe.id === params.array[params.array.length-1].recipe.id) {
-        cardDeck += `</div>`;
+      // if (trigger === params.count || item.recipe.id === params.array[params.array.length-1].recipe.id) {
+        // cardDeck += `</div>`;
         const root = document.querySelector('#root');
-        root.insertAdjacentHTML('beforeEnd', cardDeck);
+        // root.insertAdjacentHTML('beforeEnd', cardDeck);
+        root.insertAdjacentHTML('beforeEnd', card);
         trigger = 0;
-        cardDeck = `<div class="card-deck w-100">`
-      }
+        // cardDeck = `<div class="card-deck w-100">`
+      // }
 
       // const cardImgTop = document.querySelector(`.card-img-top-${recipe.id}`);
       // cardImgTop.style.minHeight = `${cardImgTop.clientWidth}px`;
@@ -129,7 +131,7 @@ const setCards = (params) => {
     let cardWidth = 0;
 
     cards.forEach((card, index) => {
-      card.style.maxWidth = `${params.width}px`;
+      card.style.width = `${params.width}`;
     });
   });
 }

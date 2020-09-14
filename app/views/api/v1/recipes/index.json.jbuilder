@@ -72,6 +72,9 @@ json.data do
       # end
     end
   end
+
+  json.timestamp (Recipe.last.created_at.to_f * 1000).to_i
+
   json.recipes do
     json.array! @recipes do |recipe|
       json.recipe do
