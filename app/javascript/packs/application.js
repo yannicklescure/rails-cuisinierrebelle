@@ -124,6 +124,18 @@ const initApp = () => {
   });
 }
 
+window.addEventListener('scroll', () => {
+  const position = window.scrollY;
+  // console.log(position);
+  const navbar = document.querySelector('.navbar');
+  if (position > 0) {
+    navbar.classList.add('border-bottom');
+  }
+  else {
+    navbar.classList.remove('border-bottom');
+  }
+})
+
 document.addEventListener('readystatechange', event => {
   if (event.target.readyState === 'interactive') {
     initLoader();
