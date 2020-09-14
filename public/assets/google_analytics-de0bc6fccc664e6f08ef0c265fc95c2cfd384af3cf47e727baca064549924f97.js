@@ -1,1 +1,0 @@
-document.addEventListener("turbolinks:load",function(t){"function"==typeof gtag&&gtag("config","",{page_location:t.data.url})});
