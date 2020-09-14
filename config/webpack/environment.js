@@ -1,19 +1,10 @@
 // config/webpack/environment.js
 
-import(/* webpackPreload: true */ "material-icons/iconfont/MaterialIcons-Regular.woff2")
-import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2")
+// import(/* webpackPreload: true */ "material-icons/iconfont/MaterialIcons-Regular.woff2")
+// import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2")
 
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
-
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-// environment.plugins.delete('UglifyJs')
-// environment.plugins.set(
-//   'UglifyJs',
-//   new UglifyJsPlugin({
-//     sourceMap: true
-//   })
-// )
 
 const bootstrap = {
   test: /\.(scss)$/,
