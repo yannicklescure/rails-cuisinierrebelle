@@ -9,21 +9,31 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .card .card-img-top {
-    height: calc(100vw * 9/16);
+    height: calc((100vw * 9/16)/2);
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .card .card-img-top {
-    height: calc(100vw * 0.5625);
+    height: calc((100vw * 0.5625)/3);
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-    height: calc(100vw * 0.328);
+    height: calc((100vw * 0.328)/4);
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1400px) {
+  .card .card-img-top {
+    height: calc((100vw * 0.5625)/5);
+  }
+}
+
+@media (min-width: 1600px) {
+  .card .card-img-top {
+    height: calc((100vw * 0.5625)/6);
+  }
+}
