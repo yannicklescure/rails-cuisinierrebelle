@@ -5,6 +5,16 @@ import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-sol
 
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+environment.plugins.delete('UglifyJs')
+environment.plugins.append(
+  'UglifyJs',
+  new UglifyJsPlugin({
+    sourceMap: true
+  })
+)
+
 const bootstrap = {
   test: /\.(scss)$/,
   use: [{
