@@ -1,0 +1,17 @@
+#search {
+  input, button {
+    border-color: #d8dce0;
+  }
+
+  button {
+    color: $text-muted;
+  }
+
+  button:hover i {
+    color: $text-body;
+  }
+}
+
+.form-control-placeholdericon {
+  font-family: "Roboto", "FontAwesome", "Helvetica", "sans-serif";
+}

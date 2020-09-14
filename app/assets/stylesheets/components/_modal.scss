@@ -1,0 +1,9 @@
+.modal-body a,
+a.modal-menu-link {
+  color: $text-muted;
+  text-decoration: none;
+}
+.modal-body a:hover,
+a.modal-menu-link:hover {
+  color: $text-body;
+}
