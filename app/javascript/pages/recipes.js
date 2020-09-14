@@ -18,12 +18,21 @@ const setLazyLoad = (init, data) => {
   lazyLoad(init);
 }
 
+const getLastRecipeTimestamp = (init) => {
+  init.url = '/api/v1/recipes?timestamp=true';
+  return fetch(init.url, init.options)
+    .then(response => response.json())
+    .then(result => console.log(result))
+}
+
 export const recipes = (location) => {
   // if (currentController === null || currentController === 'users' || currentController === 'bookmarks' || (currentController === 'recipes' && currentPage === null)) {
   // console.log(root.dataset.recipes);
   const init = setInit(location);
 
   let data = localRecipes();
+  const lastRecipeTimestamp = getLastRecipeTimestamp(init);
+  console.log(lastRecipeTimestamp)
   if (data && data.timestamp < 1599875782173) { // Force localStorage cleanup
     localStorage.removeItem('recipes'); // To remove
     data = null;
@@ -79,6 +88,7 @@ export const recipes = (location) => {
   }
   else {
     console.log('fetch server');
+    init.url = `/api/v1/recipes`;
     fetchRecipes(init).then(result => setLazyLoad(init, result));
   }
 

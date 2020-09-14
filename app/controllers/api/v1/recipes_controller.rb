@@ -5,6 +5,11 @@ class Api::V1::RecipesController < Api::V1::BaseController
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
     @users = User.all
+    if params[:timestamp].present?
+      render json: {
+        timestamp: (Recipe.last.created_at.to_f * 1000).to_i
+      }
+    end
     @slug = params[:slug]
     # binding.pry
     if @slug.present?
