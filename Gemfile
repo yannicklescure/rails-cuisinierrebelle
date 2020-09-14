@@ -88,3 +88,4 @@ gem "websocket-extensions", ">= 0.1.5"
 gem 'rack-cors'
 gem "serviceworker-rails"
 gem 'unsplash'
+# gem 'yui-compressor'

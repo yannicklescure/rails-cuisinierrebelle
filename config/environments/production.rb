@@ -33,11 +33,13 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
   # config.assets.compile = true
+
+  config.assets.gzip = true # disable gzipped assets generation
 
   # config.action_mailer.delivery_method = :postmark
   # config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
