@@ -30,7 +30,7 @@ export const newRecipeButton = (location) => {
       }
       .scaled {
         /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale */
-        transform: scale(1); /* Equal to scaleX(2) scaleY(1) */
+        transform: scale(1); /* Equal to scaleX(1) scaleY(1) */
         transform-origin: right;
       }
       </style>
