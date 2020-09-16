@@ -39,7 +39,7 @@ export const newRecipeButton = (location) => {
       // console.log(document.querySelector('#new-recipe-btn'));
       const btnIcon = `<span id="new-recipe-btn-icon" class="material-icons md-18 d-flex m-1 ml-2">create</span>`;
       // console.log(location.currentLang);
-      let btnText = `<span id="new-recipe-btn-text" class="mr-2">`;
+      let btnText = ``;
       // console.log(data.user.auth.locale);
       // switch(data.user.auth.locale) {
       switch(location.currentLang) {
@@ -55,25 +55,70 @@ export const newRecipeButton = (location) => {
         default:
           btnText += `Créer une nouvelle recette`;
       }
-      btnText += `</span>`;
+      // btnText += `</span>`;
       const newRecipeButton = document.querySelector('#new-recipe-btn');
       newRecipeButton.innerHTML = btnIcon;
       const newRecipeButtonSizeMin = 42 ;// newRecipeButton.offsetWidth;
-      newRecipeButton.innerHTML = btnIcon + btnText;
+      // newRecipeButton.innerHTML = btnIcon + btnText;
+      newRecipeButton.innerHTML = btnIcon + `<span id="new-recipe-btn-text"></span`;
       const newRecipeButtonSizeMax = newRecipeButton.offsetWidth + 1;
       const newRecipeButtonText = document.querySelector('#new-recipe-btn-text');
       const newRecipeButtonIcon = document.querySelector('#new-recipe-btn-icon');
+
+      const expandText = (text) => {
+        text = text.replace(/\s/g, '\u00A0');
+        const textArray = text.split('');
+        console.log(textArray);
+        if (newRecipeButtonText.innerText === '') {
+          textArray.forEach((char, index) => {
+            setTimeout(() => {
+              newRecipeButtonText.innerText += char;
+              console.log(newRecipeButtonText.innerText);
+            }, index * 5);
+          })
+        }
+      }
+      newRecipeButtonIcon.classList.add('ml-2');
+      newRecipeButtonText.classList.add('mr-2');
+      expandText(btnText);
+
+      const shrinkText = () => {
+        // text = text.replace(/\s/g, '\u00A0');
+        const textArray = newRecipeButtonText.innerText.split('');
+        console.log(textArray);
+        let str = '';
+        if (textArray.length > 0) {
+          textArray.forEach((char, index) => {
+            setTimeout(() => {
+              str = newRecipeButtonText.innerText;
+              newRecipeButtonText.innerText = str.substring(0, str.length - 1);
+              console.log(newRecipeButtonText.innerText);
+            }, index * 5);
+          })
+        }
+      }
+
       const expandBtn = () => {
         Promise.resolve(`${newRecipeButtonSizeMax}px`)
         .then(result => {
+          // newRecipeButton.style.width = `${newRecipeButtonSizeMax}px`;
+          // newRecipeButtonIcon.classList.add('ml-2');
+          // newRecipeButtonText.classList.remove('d-none');
+          // newRecipeButtonText.innerText = '';
           newRecipeButtonIcon.classList.add('ml-2');
-          newRecipeButtonText.classList.remove('d-none');
+          // newRecipeButtonText.classList.remove('d-none');
+          newRecipeButtonText.classList.add('mr-2');
+          expandText(btnText);
         })
       }
 
       const shrinkBtn = () => {
+        // newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
         newRecipeButtonIcon.classList.remove('ml-2');
-        newRecipeButtonText.classList.add('d-none');
+        // newRecipeButtonText.classList.add('d-none');
+        newRecipeButtonText.classList.remove('mr-2');
+        // newRecipeButtonText.innerText = '';
+        shrinkText();
       }
 
       newRecipeButton.addEventListener('mouseenter', (event) => {
