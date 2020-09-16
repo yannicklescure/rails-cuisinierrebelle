@@ -10,7 +10,8 @@
   }
 
   .navbar-brand img {
-    width: 32px;
+    height: 24px;
+    width: 24px;
   }
 
   .navbar-brand {
@@ -48,6 +49,11 @@
 @media (min-width: 576px) {
   .navbar-cuisinierrebelle {
     min-height: 113px;
+
+    .navbar-brand img {
+      height: 24px;
+      width: 24px;
+    }
   }
 }
 
@@ -55,11 +61,30 @@
 @media (min-width: 768px) {
   .navbar-cuisinierrebelle {
     min-height: 59px;
+
+    .navbar-brand img {
+      height: 28px;
+      width: 28px;
+    }
   }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .navbar-cuisinierrebelle {
+    .navbar-brand img {
+      height: 28px;
+      width: 28px;
+    }
+  }
+}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .navbar-cuisinierrebelle {
+    .navbar-brand img {
+      height: 28px;
+      width: 28px;
+    }
+  }
+}
