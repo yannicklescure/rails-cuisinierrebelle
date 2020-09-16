@@ -78,7 +78,7 @@ class PagesController < ApplicationController
 
   def top_100
     @top_100 = "top 100"
-    @recipes = Recipe.all.sort_by {|k,v| k.likes_count}.reverse[0...100]
+    @recipes = Recipe.all.sort_by {|k,v| k.impressionist_count(:filter=>:session_hash)}.reverse[0...100]
     # binding.pry
   end
 
