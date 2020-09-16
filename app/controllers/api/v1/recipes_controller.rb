@@ -4,10 +4,13 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
+    force_update = 1600264401198
+    @last_update = (Recipe.last.created_at.to_f * 1000).to_i
+    @timestamp = @last_update < force_update ? force_update :  @last_update
     @users = User.all
     if params[:timestamp].present?
       render json: {
-        timestamp: (Recipe.last.created_at.to_f * 1000).to_i
+        timestamp: @timestamp
       }
     end
     @slug = params[:slug]

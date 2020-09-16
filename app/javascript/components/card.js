@@ -88,16 +88,22 @@ const setCards = (params) => {
                 </div>
               </a>
               <div class="d-flex justify-content-between align-items-center my-2">
-                <div class="d-flex align-items-center text-danger">
-                  <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
-                    ${faHeart}<span class="text-muted font-weight-lighter ml-1">${item.recipe.likes_count}</span>
-                  </a>
+                <div class="d-flex justify-content-between align-items-center my-2">
+                  <div class="d-flex align-items-center text-muted">
+                    <i class="material-icons md-18 align-icons">visibility</i>
+                    <span class="text-muted font-weight-lighter ml-1">${item.recipe.views_count}</span>
+                  </div>
+                  <div class="d-flex align-items-center text-danger ml-2">
+                    <a class="p-0 text-danger text-decoration-none d-flex align-items-center" ${likePatchAttributes} href="${likeUrl}">
+                      ${faHeart}<span class="text-muted font-weight-lighter ml-1">${item.recipe.likes_count}</span>
+                    </a>
+                  </div>
                 </div>
                 <div class="d-flex align-items-center">
-                  <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${item.recipe.slug}#comments">
+                  <a class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center" href="${locale}/r/${item.recipe.slug}#comments">
                     ${comment}<span class="text-muted font-weight-lighter ml-1">${commentsCount}</span>
                   </a>
-                  <a class="p-0 ml-3 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
+                  <a class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center" ${bookmarkPatchAttributes}href="${bookmarkUrl}">${faBookmark}</a>
                 </div>
               </div>
               <div class="d-flex flex-column">

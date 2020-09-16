@@ -1,7 +1,7 @@
 .recipe .recipe-image {
   border-radius: 4px;
   width: 100%;
-  height: calc(100vw * 9 / 16);
+  height: calc((100vw - 30px) / 1.62);
   background-size: cover;
   background-position: center;
   object-fit: cover;
@@ -14,30 +14,24 @@
 
 @media (min-width: 576px) {
   .recipe .recipe-image {
-    height: calc(100vw * 9 / 16);
+    height: calc((540px - 30px) / 1.62);
   }
 }
 
-// Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .recipe .recipe-image {
-    height: calc(100vw * 0.563);
+    height: calc((720px - 30px) / 1.62);
   }
 }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .recipe .recipe-image {
+    height: calc((960px - 30px) / 1.62);
+  }
+}
 
-// Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .recipe .recipe-image {
-    height: calc(100vw * 0.521);
+    height: calc((1140px - 30px) / 1.62);
   }
 }
-
-// // Extra large devices (large desktops, 1400px and up)
-// @media (min-width: 1400px) {
-//   .recipe .recipe-image {
-//     height: calc(100vw * 0.328);
-//   }
-// }
