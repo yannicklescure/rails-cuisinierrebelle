@@ -66,20 +66,12 @@ export const newRecipeButton = (location) => {
       const expandBtn = () => {
         Promise.resolve(`${newRecipeButtonSizeMax}px`)
         .then(result => {
-          // newRecipeButton.style.width = result;
-          newRecipeButton.classList.remove('scaled');
           newRecipeButtonIcon.classList.add('ml-2');
-        })
-        .finally(() => {
-          setTimeout(() => {
-            newRecipeButtonText.classList.remove('d-none');
-          }, 275);
+          newRecipeButtonText.classList.remove('d-none');
         })
       }
 
       const shrinkBtn = () => {
-        newRecipeButton.classList.add('scaled');
-        // newRecipeButton.style.width = `${newRecipeButtonSizeMin}px`;
         newRecipeButtonIcon.classList.remove('ml-2');
         newRecipeButtonText.classList.add('d-none');
       }
