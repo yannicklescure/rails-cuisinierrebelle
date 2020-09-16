@@ -73,7 +73,7 @@ json.data do
     end
   end
 
-  json.timestamp @last_update
+  json.timestamp @timestamp
 
   json.recipes do
     json.array! @recipes do |recipe|
@@ -183,6 +183,7 @@ json.data do
       json.array! @search_recipes do |recipe|
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :likes_count
+        json.views_count recipe.impressionist_count(:filter=>:session_hash)
         json.photo do
           json.card do
             json.url recipe.photo.url(:card)

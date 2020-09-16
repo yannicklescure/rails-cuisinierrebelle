@@ -39,8 +39,9 @@ export const setInit = (location) => {
     options: options,
     query: false,
   };
+
+  console.log(location.query);
   if (location.query) {
-    // console.log(location.query);
     init.url = `/api/v1/recipes?query=${location.query}`;
     init.query = true;
   }
@@ -90,7 +91,7 @@ export const fetchRecipes = (init) => {
       if (data) {
         const recipes = data.recipes;
         console.log(recipes)
-        recipes.timestamp = new Date().getTime();
+        // recipes.timestamp = new Date().getTime();
         const newRecipes = newData.recipes;
         console.log(newRecipes);
         newRecipes.forEach(newRecipe => {

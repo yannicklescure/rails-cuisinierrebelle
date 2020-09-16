@@ -19,8 +19,7 @@ const setLazyLoad = (init, data) => {
 }
 
 const getLastRecipeTimestamp = (init) => {
-  init.url = '/api/v1/recipes?timestamp=true';
-  return fetch(init.url, init.options)
+  return fetch('/api/v1/recipes?timestamp=true', init.options)
     .then(response => response.json())
     .then(result => {
       setRecipes(init, result.timestamp)
@@ -50,8 +49,9 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
       fetchRecipes(init).then(result => setLazyLoad(init, result));
     }
     else {
-      console.log('localStorage');
+      console.log('fetch localStorage');
 
+      console.log(init.url)
       if (init.url.match(/.+?query=.+/)) {
         console.log('fetch search')
         // init.url = `/api/v1/recipes`;
