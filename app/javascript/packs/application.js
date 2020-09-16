@@ -41,6 +41,7 @@ import { admin } from "../pages/admin";
 
 import { setInit } from "../util";
 import { fetchRecipes } from "../util";
+import { smoothScrollToTop } from "../util";
 
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}
@@ -65,6 +66,8 @@ const initLoader = () => {
 }
 
 const initApp = () => {
+  const navbarBrandButton = document.querySelector('.navbar-brand');
+  if (navbarBrandButton) smoothScrollToTop(navbarBrandButton);
   // document.querySelector('#navbar-main').classList.remove('d-none');
   const credit = document.querySelector('#credit')
   if (credit) credit.classList.remove('d-none');

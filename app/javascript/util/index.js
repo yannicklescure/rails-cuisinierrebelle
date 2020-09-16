@@ -1,5 +1,19 @@
 import { cookiesToObject } from "../components/cookies";
 
+export const smoothScrollToTop = (button) => {
+  button.addEventListener('click', (event) => {
+    if (window.scrollY > 0) {
+      event.preventDefault();
+      const scrollOptions = {
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      };
+      window.scrollTo(scrollOptions);
+    }
+  });
+}
+
 export const setInit = (location) => {
 
   const max = x => {
