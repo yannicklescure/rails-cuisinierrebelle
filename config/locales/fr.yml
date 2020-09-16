@@ -623,7 +623,7 @@ fr:
       conversion: Table de conversion
       cuisinier_rebelle: Cuisinier rebelle
       english_html: English
-      following: Abonnements
+      following: Mes abonnements
       french_html: Français
       inbox: Messages
       languages_html: <i class="material-icons md-18">language</i>
@@ -632,7 +632,7 @@ fr:
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nouvelle recette
       notifications_html: <i class="material-icons md-18">notifications</i>
-      recipes: Recettes
+      recipes: Mes recettes
       settings: Paramètres
       sign_in: Connexion
       spanish_html: Español

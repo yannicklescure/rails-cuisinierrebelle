@@ -500,7 +500,7 @@ es:
       conversion: Tabla de conversión
       cuisinier_rebelle: Cuisinier rebelle
       english_html: English
-      following: Siguiendo
+      following: Mis siguiendos
       french_html: Français
       inbox: Mensajes
       languages_html: <i class="material-icons md-18">language</i>
@@ -509,7 +509,7 @@ es:
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nueva receta
       notifications_html: <i class="material-icons md-18">notifications</i>
-      recipes: Recetas
+      recipes: Mis recetas
       settings: Configuración
       sign_in: Iniciar sesión
       spanish_html: Español
