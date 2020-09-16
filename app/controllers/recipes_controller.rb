@@ -4,6 +4,9 @@ class RecipesController < ApplicationController
 
   layout 'application'
 
+  # impressionist :actions=>[:show,:index]
+  impressionist :actions=>[:index]
+
   def index
     # @recipes = Recipe.where(user: current_user)
     @recipes = policy_scope(Recipe).where(user: current_user)
@@ -14,6 +17,7 @@ class RecipesController < ApplicationController
     # @recipe = Recipe.find(params[:id])
     if Recipe.friendly.exists? params[:id]
       @recipe = Recipe.friendly.find(params[:id])
+      impressionist(@recipe)
       @related_recipes = []
       max = 4
       @recipe.find_related_tags.order('created_at DESC').take(max).map{ |e| @related_recipes << e }

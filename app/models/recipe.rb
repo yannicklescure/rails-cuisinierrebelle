@@ -8,6 +8,9 @@ class Recipe < ApplicationRecord
 
   acts_as_taggable_on :tags
 
+  is_impressionable
+  # is_impressionable counter_cache: true
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
