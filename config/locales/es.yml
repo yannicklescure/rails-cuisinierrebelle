@@ -143,7 +143,7 @@ es:
       no_bookmarks_html: Sin favoritos...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   buttons:
     cancel: Anular
-    ok: Ok
+    ok: Seguir
   comments:
     create:
       comments: Comentarios
@@ -186,6 +186,7 @@ es:
       years_ago: Hace años que
     update:
       comments: Comments
+  confirmation: Confirmación
   devise:
     confirmations:
       new:
@@ -337,9 +338,9 @@ es:
       switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Equipo de cocina
     top_100:
-      visibility_html: <i class="material-icons md-18 d-flex mb-1 justify-content-center">visibility</i>
       title: Titulo
       top_100: Top 100
+      visibility_html: <i class="material-icons md-18 d-flex mb-1 justify-content-center">visibility</i>
   products:
     form:
       are_you_sure: "¿Estas seguro?"
@@ -504,7 +505,6 @@ es:
       french_html: Français
       inbox: Mensajes
       languages_html: <i class="material-icons md-18">language</i>
-      top_100_html: <i class="material-icons md-18">whatshot</i>
       log_out: Cerrar sesión
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nueva receta
@@ -515,7 +515,9 @@ es:
       spanish_html: Español
       tools: Equipo de cocina
       top_100: Top 100
+      top_100_html: <i class="material-icons md-18">whatshot</i>
     navbar-small:
+      cuisinier_rebelle: Cuisinier rebelle
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier&nbsp;Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
       notifications_html: <i class="material-icons md-24">notifications</i>

@@ -36,7 +36,7 @@
             <%# end %>
           <% end %>
           <% if user_signed_in? %>
-            <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure") }, method: :delete, class: "d-flex py-2 w-100 modal-menu-link" %>
+            <%= link_to t(".log_out"), destroy_user_session_path, data: { confirm: t(".are_you_sure"), commit: t('buttons.ok'), cancel: t('buttons.cancel'), title: t('confirmation') }, method: :delete, class: "d-flex py-2 w-100 modal-menu-link" %>
           <% else %>
             <%= link_to t(".sign_in"), new_user_session_path, class: "d-flex py-2 w-100 modal-menu-link" %>
           <% end %>

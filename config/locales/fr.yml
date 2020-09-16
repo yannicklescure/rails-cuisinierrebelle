@@ -197,7 +197,7 @@ fr:
       no_bookmarks_html: Aucun favoris...&nbsp;<i class="far fa-grin-beam-sweat"></i>
   buttons:
     cancel: Annuler
-    ok: Ok
+    ok: Continuer
   comments:
     create:
       comments: Commentaires
@@ -279,6 +279,7 @@ fr:
         zero: zéro an
     update:
       comments: Comments
+  confirmation: Confirmation
   devise:
     confirmations:
       new:
@@ -431,9 +432,9 @@ fr:
       switch_view_html: <i class="material-icons md-24">swap_horiz</i>
       tools: Matériel de cuisine
     top_100:
-      visibility_html: <i class="material-icons md-18 d-flex mb-1 justify-content-center">visibility</i>
       title: Titre
       top_100: Top 100
+      visibility_html: <i class="material-icons md-18 d-flex mb-1 justify-content-center">visibility</i>
   products:
     form:
       are_you_sure: Êtes-vous sûr ?
@@ -627,7 +628,6 @@ fr:
       french_html: Français
       inbox: Messages
       languages_html: <i class="material-icons md-18">language</i>
-      top_100_html: <i class="material-icons md-18">whatshot</i>
       log_out: Se déconnecter
       menu_modal_html: <i class="material-icons md-18">more_vert</i>
       new_recipe: Nouvelle recette
@@ -638,7 +638,9 @@ fr:
       spanish_html: Español
       tools: Matériel de cuisine
       top_100: Top 100
+      top_100_html: <i class="material-icons md-18">whatshot</i>
     navbar-small:
+      cuisinier_rebelle: Cuisinier rebelle
       cuisinier_rebelle_html: <i class="fas fa-utensils"></i>&nbsp;Cuisinier&nbsp;Rebelle
       menu_modal_html: <i class="material-icons md-24">menu</i>
       notifications_html: <i class="material-icons md-24">notifications</i>
