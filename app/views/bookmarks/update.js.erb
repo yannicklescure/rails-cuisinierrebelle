@@ -66,6 +66,7 @@ if (root) {
         direction: "<%= @recipe.direction.dump %>",
         description: "<%= @recipe.description.dump %>",
         likes_count: "<%= @recipe.likes_count %>",
+        views_count: "<%= @recipe.impressionist_count(:filter=>:session_hash) %>",
         photo: {
           card: { url: "<%= @recipe.photo.url(:card) %>" },
           full: { url: "<%= @recipe.photo.url(:full) %>" },

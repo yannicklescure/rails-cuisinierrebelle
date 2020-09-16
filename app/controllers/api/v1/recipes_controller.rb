@@ -4,7 +4,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def index
     @recipes = policy_scope(Recipe).order('created_at DESC')
-    force_update = 1600285041370
+    force_update = 1600285656181
     @last_update = (Recipe.last.created_at.to_f * 1000).to_i
     @timestamp = @last_update < force_update ? force_update :  @last_update
     @users = User.all
