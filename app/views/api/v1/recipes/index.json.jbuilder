@@ -68,7 +68,24 @@ json.data do
       # if current_user.recipes.any?
         json.recipes current_user.recipes do |recipe|
           # json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :photo, :likes_count
-          json.recipe recipe
+          json.recipe do
+            json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :likes_count
+            json.views_count recipe.impressionist_count(:filter=>:session_hash)
+            json.photo do
+              json.card do
+                json.url recipe.photo.url(:card)
+              end
+              json.full do
+                json.url recipe.photo.url(:full)
+              end
+              json.preview do
+                json.url recipe.photo.url(:preview)
+              end
+              json.thumb do
+                json.url recipe.photo.url(:thumb)
+              end
+            end
+          end
         end
       # end
     end
