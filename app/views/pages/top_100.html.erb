@@ -13,7 +13,7 @@
     <div class="row px-3 align-items-center <%= 'bg-light' if index.odd? %>" style="height: 48px;">
       <tr id="<%= "recipe-top-#{index+1}" %>">
         <!-- <th scope="row"><%= index + 1 %></th> -->
-        <div class="col-1 d-flex justify-content-center"><%= recipe.likes_count %></div>
+        <div class="col-1 d-flex justify-content-center"><%= recipe.impressionist_count(:filter=>:session_hash) %></div>
         <div class="col"><%= link_to recipe.title, recipe_path(recipe), class: 'd-flex w-100' %></div>
       </tr>
     </div>
