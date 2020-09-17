@@ -1,6 +1,7 @@
 import { cards } from "./cards";
 import { setCardsParams } from "../util";
 import { fetchRecipes } from "../util";
+import { setSkeleton } from "../components/skeleton";
 
 const max = x => {
   if (x === 5) return 25
@@ -159,6 +160,8 @@ const renderRecipes = (init, data, callback = () => {}) => {
 
 export const lazyLoad = (init) => {
 
+  setSkeleton();
+
   // console.log(init);
   // console.log(init.device);
   // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
@@ -176,82 +179,85 @@ export const lazyLoad = (init) => {
 
   const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
 
+  const skeleton = document.querySelector('#skeleton');
   if (data) {
     console.log(data)
     if (data.recipes.length > 0) {
       data.recipes = dataRecipes.slice(0, 24);
-      renderRecipes(init, data, () => {
-        const spinner = document.querySelector('#spinner');
-        if (spinner) spinner.remove();
-        const cardsMax = max(setCardsParams().count);
-        console.log(cardsMax);
-        let renderCards = data.recipes.length % cardsMax === 0;
-        console.log(renderCards);
-        let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
-        // console.log(cardsQty);
-        let cardNodeElement = cardNodeElementAnchor(data);
-        console.log(data.recipes)
-        console.log(cardNodeElement)
-        let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
-        window.addEventListener('scroll', () => {
-          console.log(`cardNodeElementTop ${cardNodeElementTop}`)
-          let trigger = Math.round(window.scrollY + window.innerHeight);
-          if (cardNodeElement && renderCards) {
-            if (trigger >= cardNodeElementTop) {
-              let newCardsQty = cardsQty + data.recipes.length;
-              // init.url = `/api/v1/recipes?cards=${newCardsQty}`;
-              const initUrl = init.url.match(/(.*)(&|\?)cards=(.*)/);
-              if (initUrl) {
-                init.url = `${initUrl[1]}${initUrl[2]}cards=${newCardsQty}`
-              } else {
-                init.url += `&cards=${newCardsQty}`
-              }
-              // root.dataset.recipes = newCardsQty;
-              renderCards = false;
-              const appendCards = (init, data) => {
-                console.log(data.recipes)
-                return renderRecipes(init, data, () => {
-                  cardsQty = newCardsQty;
-                  cardNodeElement = cardNodeElementAnchor(data);
-                  if (cardNodeElement) cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
-                  renderCards = data.recipes.length % cardsMax === 0;
-                  const result = {
-                    cardNodeElementTop: cardNodeElementTop,
-                    renderCards: renderCards,
-                  }
-                  console.log(result)
-                  return result
-                });
-              }
-              let appendCardsResult = {}
-              console.log(dataRecipes.length >= newCardsQty)
-              // if (dataRecipes.length >= newCardsQty) {
-                data.recipes = dataRecipes.slice(0, newCardsQty);
-                console.log(data.recipes)
-                new Promise( resolve => appendCards(init, data), error => console.log(error))
-                  .then((result) => {
+      setTimeout(() => {
+        renderRecipes(init, data, () => {
+          if (skeleton) skeleton.remove();
+          const cardsMax = max(setCardsParams().count);
+          console.log(cardsMax);
+          let renderCards = data.recipes.length % cardsMax === 0;
+          console.log(renderCards);
+          let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
+          // console.log(cardsQty);
+          let cardNodeElement = cardNodeElementAnchor(data);
+          console.log(data.recipes)
+          console.log(cardNodeElement)
+          let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
+          window.addEventListener('scroll', () => {
+            console.log(`cardNodeElementTop ${cardNodeElementTop}`)
+            let trigger = Math.round(window.scrollY + window.innerHeight);
+            if (cardNodeElement && renderCards) {
+              if (trigger >= cardNodeElementTop) {
+                let newCardsQty = cardsQty + data.recipes.length;
+                // init.url = `/api/v1/recipes?cards=${newCardsQty}`;
+                const initUrl = init.url.match(/(.*)(&|\?)cards=(.*)/);
+                if (initUrl) {
+                  init.url = `${initUrl[1]}${initUrl[2]}cards=${newCardsQty}`
+                } else {
+                  init.url += `&cards=${newCardsQty}`
+                }
+                // root.dataset.recipes = newCardsQty;
+                renderCards = false;
+                const appendCards = (init, data) => {
+                  console.log(data.recipes)
+                  return renderRecipes(init, data, () => {
+                    cardsQty = newCardsQty;
+                    cardNodeElement = cardNodeElementAnchor(data);
+                    if (cardNodeElement) cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
+                    renderCards = data.recipes.length % cardsMax === 0;
+                    const result = {
+                      cardNodeElementTop: cardNodeElementTop,
+                      renderCards: renderCards,
+                    }
                     console.log(result)
-                    cardNodeElementTop = result.cardNodeElementTop;
-                    renderCards = result.renderCards;
-                  })
-              // }
-              // else {
-              //   appendCardsResult = fetchRecipes(init).then(response => {
-              //     console.log(response);
-              //     if (response.recipes) {
-              //       return appendCards(init, response);
-              //       cardNodeElementTop = appendCardsResult.cardNodeElementTop;
-              //       renderCards = appendCardsResult.renderCards;
-              //     }
-              //   });
-              // }
+                    return result
+                  });
+                }
+                let appendCardsResult = {}
+                console.log(dataRecipes.length >= newCardsQty)
+                // if (dataRecipes.length >= newCardsQty) {
+                  data.recipes = dataRecipes.slice(0, newCardsQty);
+                  console.log(data.recipes)
+                  new Promise( resolve => appendCards(init, data), error => console.log(error))
+                    .then((result) => {
+                      console.log(result)
+                      cardNodeElementTop = result.cardNodeElementTop;
+                      renderCards = result.renderCards;
+                    })
+                // }
+                // else {
+                //   appendCardsResult = fetchRecipes(init).then(response => {
+                //     console.log(response);
+                //     if (response.recipes) {
+                //       return appendCards(init, response);
+                //       cardNodeElementTop = appendCardsResult.cardNodeElementTop;
+                //       renderCards = appendCardsResult.renderCards;
+                //     }
+                //   });
+                // }
+              }
             }
-          }
+          });
         });
-      });
+      }, 0)
     }
     else {
-      document.querySelector('#spinner').remove();
+      // document.querySelector('#skeleton').remove();
+      if (skeleton) skeleton.remove();
     }
   }
 }

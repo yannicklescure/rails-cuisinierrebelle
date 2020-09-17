@@ -136,9 +136,9 @@ const setCards = (params) => {
     const cards = document.querySelectorAll('.card');
     let cardWidth = 0;
 
-    cards.forEach((card, index) => {
-      card.style.width = `${params.width}`;
-    });
+    // cards.forEach((card, index) => {
+    //   card.style.width = `${params.width}`;
+    // });
   });
 }
 
