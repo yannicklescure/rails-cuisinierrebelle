@@ -48,7 +48,7 @@
               <%#= link_to t(".followers"), user_followers_path(current_user), class: "dropdown-item" %>
               <%= link_to t(".following"), user_following_path(current_user), class: "dropdown-item" %>
               <%= link_to t(".settings"), user_settings_path(current_user), class: "dropdown-item" %>
-              <%= link_to t(".log_out"), destroy_user_session_path, id: "log-out", data: { confirm: t(".are_you_sure"), commit: t('buttons.ok'), cancel: t('buttons.cancel'), title: t('confirmation') }, method: :delete, remote: true, class: "dropdown-item" %>
+              <%= link_to t(".log_out"), destroy_user_session_path, id: "log-out", data: { confirm: t(".are_you_sure"), commit: t('buttons.ok'), cancel: t('buttons.cancel'), title: t(".log_out") }, method: :delete, remote: true, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>

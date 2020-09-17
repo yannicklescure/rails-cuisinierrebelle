@@ -32,7 +32,7 @@
     <div class="my-3 d-flex justify-content-between align-items-center">
       <%= f.button :submit, t('.create_recipe'), class: "btn btn-light" %>
       <% unless @recipe.id.nil? %>
-        <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure"), commit: t('buttons.ok'), cancel: t('buttons.cancel'), title: t('confirmation') }, method: :delete, class: 'text-muted' %>
+        <%= link_to t('.delete'), recipe_path(@recipe), data: { confirm: t(".are_you_sure"), commit: t('buttons.ok'), cancel: t('buttons.cancel'), title: t('.delete') }, method: :delete, class: 'text-muted' %>
       <% end %>
     </div>
   <% end %>
