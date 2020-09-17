@@ -29,7 +29,7 @@ const getLastRecipeTimestamp = (init) => {
 }
 
 export const recipes = (location) => {
-  setSkeleton();
+  // setSkeleton();
 
   const init = setInit(location);
   getLastRecipeTimestamp(init);
@@ -96,7 +96,7 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
   if (init.userSignedIn && init.device === 'desktop') {
     setTimeout(() => {
       newRecipeButton(location);
-    },2000);
+    },1500);
   }
   // }
 }

@@ -1,1 +1,27 @@
-<div id="skeleton" class="d-flex flex-wrap justify-content-start p-md-2" role="status"></div>
+<div id="skeleton" class="d-flex flex-wrap justify-content-start p-md-2" role="status">
+  <% i = 0 %>
+  <% 12.times do %>
+    <div class="card rounded border-0 my-3 m-md-2" data-recipe="<%= i+1 %>">
+      <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
+        <div class="d-flex justify-content-start align-items-center">
+          <div id="card-picture" class="skeleton-loading mr-2"></div>
+          <div id="card-name" class="skeleton-loading"></div>
+        </div>
+      </div>
+      <div class="card-body bg-white p-2">
+          <div id="card-image" class="skeleton-loading">
+          </div>
+        <div class="d-flex justify-content-between align-items-center my-2">
+          <div id="card-action" class="skeleton-loading"></div>
+        </div>
+        <div class="d-flex flex-column">
+          <div id="card-title" class="skeleton-loading"></div>
+          <div id="card-text" class="skeleton-loading my-1"></div>
+          <div id="card-text" class="skeleton-loading my-1"></div>
+          <div id="card-text" class="skeleton-loading my-1"></div>
+        </div>
+      </div>
+    </div>
+    <% i += 1 %>
+  <% end %>
+</div>
