@@ -1,6 +1,12 @@
 #skeleton {
-  margin: 0 -15px;
-  padding: 14px;
+  // margin: 0 -15px;
+  // padding: 8px;
+
+  .card {
+    // padding: 6px;
+    width: 100%;
+  }
+
   #card-picture {
     width: 24px;
     height: 24px;
@@ -63,12 +69,20 @@
     #card-image {
       height: calc(100vw / ( 2 * 1.62));
     }
+
+    .card {
+      width: 50%;
+    }
   }
 }
 @media (min-width: 768px) {
   #skeleton {
     #card-image {
       height: calc(100vw / ( 3 * 1.62));
+    }
+
+    .card {
+      width: 31%;
     }
   }
 }
@@ -77,12 +91,20 @@
     #card-image {
       height: calc(100vw / ( 4 * 1.62));
     }
+
+    .card {
+      width: 23%;
+    }
   }
 }
 @media (min-width: 1200px) {
   #skeleton {
     #card-image {
       height: calc(100vw / ( 4 * 1.62));
+    }
+
+    .card {
+      width: 23%;
     }
   }
 }
@@ -91,12 +113,20 @@
     #card-image {
       height: calc(100vw / ( 5 * 1.62));
     }
+
+    .card {
+      width: 18%;
+    }
   }
 }
 @media (min-width: 1600px) {
   #skeleton {
     #card-image {
       height: calc(100vw / ( 6 * 1.62));
+    }
+
+    .card {
+      width: 15%;
     }
   }
 }
