@@ -1,7 +1,6 @@
 import { cards } from "./cards";
 import { setCardsParams } from "../util";
 import { fetchRecipes } from "../util";
-import { setSkeleton } from "../components/skeleton";
 
 const max = x => {
   if (x === 5) return 25
@@ -159,8 +158,6 @@ const renderRecipes = (init, data, callback = () => {}) => {
 }
 
 export const lazyLoad = (init) => {
-
-  setSkeleton();
 
   // console.log(init);
   // console.log(init.device);

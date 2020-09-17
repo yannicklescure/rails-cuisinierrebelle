@@ -6,6 +6,7 @@ import { localRecipes } from "../util";
 import { fetchRecipes } from "../util";
 import { formattedTime } from "../util";
 import { setInit } from "../util";
+import { setSkeleton } from "../components/skeleton";
 
 const setLazyLoad = (init, data) => {
   console.log(data);
@@ -28,6 +29,8 @@ const getLastRecipeTimestamp = (init) => {
 }
 
 export const recipes = (location) => {
+  setSkeleton();
+
   const init = setInit(location);
   getLastRecipeTimestamp(init);
   window.addEventListener('resize', () => {
