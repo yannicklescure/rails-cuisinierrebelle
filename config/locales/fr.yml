@@ -601,8 +601,8 @@ fr:
       help: Aide
       help_link: aide
       legal: Légal
-      made_with_love_by_html: <div class="d-flex align-items-center">Fait avec <i
-        class="material-icons md-18 px-1 text-danger">favorite</i> par Cuisinier Rebelle</div>
+      made_with_love_by_html: <div class="d-flex align-items-center"><div>Fait avec </div><div class="mb-n1"><i
+        class="material-icons md-18 px-1 text-danger">favorite</i></div><div class="ml-2"> par Cuisinier Rebelle</div></div>
       news: Nouvelles
       news_link: nouvelles
       policies: Charte
