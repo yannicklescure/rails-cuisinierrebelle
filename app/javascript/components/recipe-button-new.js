@@ -44,16 +44,16 @@ export const newRecipeButton = (location) => {
       // switch(data.user.auth.locale) {
       switch(location.currentLang) {
         case "en":
-          btnText += `Add new recipe`;
+          btnText += `Sahre a recipe`;
           break;
         case "es":
-          btnText += `Agregar nueva receta`;
+          btnText += `Comparte una receta`;
           break;
         case "fr":
-          btnText += `Créer une nouvelle recette`;
+          btnText += `Partager une recette`;
           break;
         default:
-          btnText += `Créer une nouvelle recette`;
+          btnText += `Partager une recette`;
       }
       // btnText += `</span>`;
       const newRecipeButton = document.querySelector('#new-recipe-btn');
