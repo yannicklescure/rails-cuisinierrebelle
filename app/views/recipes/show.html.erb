@@ -42,7 +42,7 @@
             <span class="text-muted font-weight-lighter ml-1"><%= @recipe.likes.count %></span>
           <% end %>
         <% end %>
-          <div class="d-flex align-items-center p-0 m-0 mr-md-0 ml-md-3">
+          <div class="d-flex align-items-center ml-3">
             <i class="material-icons md-18 align-icons">visibility</i>
             <span class="text-muted font-weight-lighter ml-1"><%= @recipe.impressionist_count(:filter=>:session_hash) %></span>
           </div>
