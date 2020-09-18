@@ -102,6 +102,7 @@ const initApp = () => {
 
     // console.log(device);
     if (device != 'desktop') {
+      // document.querySelector('body').style.paddingTop = '105px';
       shareButton();
       console.log(userSignedIn)
       if (userSignedIn) navbarBottom(location);

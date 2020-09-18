@@ -121,9 +121,9 @@ const renderRecipes = (init, data, callback = () => {}) => {
     if (init.device != 'desktop') {
       if (init.currentPage && init.currentPage != 'index' && !init.currentPage.match(/.*\/.*/)) params.type = 'grid';
       // const root = document.querySelector('#root');
-      root.classList.remove('p-md-2');
-      root.classList.add('row');
-      root.style.padding = '14px';
+      // root.classList.remove('p-md-2');
+      // root.classList.add('row');
+      // root.style.padding = '14px';
     }
 
     console.log(params);
