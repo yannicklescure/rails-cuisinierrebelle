@@ -20,7 +20,8 @@ class Users::SessionsController < Devise::SessionsController
     after_sign_in_path = after_sign_in_path_for(resource)
     current_locale = after_sign_in_path.match(/\/(en|fr|es)?.*/)[1] || I18n.default_locale
     if I18n.available_locales.include?(current_locale.to_sym)
-      after_sign_in_path = after_sign_in_path.gsub(/#{current_locale}/, resource.locale)
+      # binding.pry
+      after_sign_in_path = after_sign_in_path.gsub(/(\/#{current_locale})/, "/#{resource.locale}")
     end
     # binding.pry
     respond_with resource, location: after_sign_in_path
