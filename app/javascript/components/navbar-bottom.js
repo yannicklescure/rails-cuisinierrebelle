@@ -30,8 +30,8 @@ const getElementId = () => {
   document.querySelectorAll('.navbar-bottom-btn').forEach(element => {
     element.addEventListener('click', (event) => {
       // console.log(event.currentTarget);
-      document.cookie = `navbarBottomBtn=;path=/users`;
-      document.cookie = `navbarBottomBtn=${event.currentTarget.getAttribute('id')};path=/users`;
+      document.cookie = `navbarBottomBtn=;path=/users;SameSite=Strict;`;
+      document.cookie = `navbarBottomBtn=${event.currentTarget.getAttribute('id')};path=/users;SameSite=Strict;`;
       // alert(document.cookie);
     });
   });

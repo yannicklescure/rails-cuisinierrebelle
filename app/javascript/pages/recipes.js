@@ -69,9 +69,7 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
         console.log(init.dataRecipes)
         data = data.user.bookmarks || null
         init.dataRecipes = data.recipes;
-        console.log('######################')
         console.log(data)
-        console.log('######################')
         setLazyLoad(init, data);
       }
 

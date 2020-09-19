@@ -46,8 +46,8 @@ import { smoothScrollToTop } from "../util";
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}
 
-if ((/.*laresistancefrancaise\.com/).test(document.domain)) {
-  document.domain = "laresistancefrancaise.com";
+if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
+  document.domain = "cuisinierrebelle.com";
 }
 console.log(document.domain)
 

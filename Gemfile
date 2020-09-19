@@ -90,3 +90,4 @@ gem "serviceworker-rails"
 gem 'unsplash'
 # gem 'yui-compressor'
 gem 'impressionist'
+gem 'rails_same_site_cookie'
