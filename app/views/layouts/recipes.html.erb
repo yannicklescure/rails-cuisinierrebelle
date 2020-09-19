@@ -48,7 +48,7 @@
   <body
     class="d-flex flex-column" data-user="<%= user_signed_in? %>"
     data-device="<%= client.device_type.nil? ? 'robot' : client.device_type %>"
-    style="padding-top: <%= client.device_type.match(/desktop/) ? 59 : 105 %>px;">
+    style="padding-top: <%= client.device_type.match(/desktop/) ? 59 : 113 %>px;">
     <%= render 'layouts/facebook' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
