@@ -45,7 +45,7 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
   .then(reload => {
     console.log(reload)
     if(reload || reload === null) { // Force localStorage cleanup
-      localStorage.removeItem('recipes'); // To remove
+      localStorage.removeItem('cuisinier_rebelle'); // To remove
       // data = null;
       console.log('fetch server');
       init.url = `/api/v1/recipes`;
