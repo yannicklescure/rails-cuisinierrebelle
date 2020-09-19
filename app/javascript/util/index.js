@@ -108,7 +108,7 @@ export const fetchRecipes = (init) => {
     .then(result => {
       const newData = result.data;
       console.log(newData);
-      const data = localRecipes();
+      const data = localRecipes(init);
       if (data) {
         const recipes = data.recipes;
         console.log(recipes)
