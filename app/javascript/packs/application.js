@@ -153,7 +153,7 @@ const signIn = document.querySelector('#sign-in');
 
 if (signIn) {
   signIn.addEventListener('click', ()=> {
-    localStorage.removeItem('recipes');
+    localStorage.removeItem('cuisinier_rebelle');
     // const setUser = (init, result) => {
     //   console.log(result.user);
     //   const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))

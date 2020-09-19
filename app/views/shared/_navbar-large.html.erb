@@ -56,7 +56,7 @@
             <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.languages_html') %>
             </a>
-            <a href="<%= top_100_path %>" class="nav-link"><%= t(".top_100_html") %></a>
+            <a href="<%= top_100_path %>" class="nav-link text-fire"><%= t(".top_100_html") %></a>
             <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
               <%= link_to t('.english_html'), current_page_params.merge(locale: :en), class: "dropdown-item" %>
               <%= link_to t('.spanish_html'), current_page_params.merge(locale: :es), class: "dropdown-item" %>
