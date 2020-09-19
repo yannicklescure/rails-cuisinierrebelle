@@ -478,8 +478,9 @@ es:
       help: Ayuda
       help_link: ayuda
       legal: Legal
-      made_with_love_by_html: <div class="d-flex align-items-center"><div>Hecho con </div><div class="mb-n1"><i
-        class="material-icons md-18 px-1 text-danger">favorite</i></div><div class="ml-2"> por Cuisinier Rebelle</div></div>
+      made_with_love_by_html: <div class="d-flex align-items-center"><div>Hecho con
+        </div><div class="mb-n1"><i class="material-icons md-18 px-1 text-danger">favorite</i></div><div
+        class="ml-2"> por Cuisinier Rebelle</div></div>
       news: Noticias
       news_link: noticias
       policies: Políticas
@@ -524,6 +525,7 @@ es:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
+      top_100_html: <i class="material-icons md-24">whatshot</i>
       whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: "¿Estas seguro?"
@@ -670,6 +672,7 @@ es:
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
     user:
+      edit_recipe: Edit recipe
       follow: Suscribirse
       unfollow: Sucrito
       verified: Auditado

@@ -5,6 +5,9 @@
     <% end %>
     <div class="d-flex">
       <div id="share-btn" class="text-muted d-flex align-items-center text-decoration-none mr-3"><%= t('.share_btn_html') %></div>
+      <a
+        href="<%= top_100_path %>"
+        class="text-fire d-flex align-items-center text-decoration-none mr-3"><%= t(".top_100_html") %></a>
       <%= link_to t('.notifications_html'), notifications_path, class: "text-muted d-flex align-items-center text-decoration-none mr-3" %>
       <a class="text-muted d-flex align-items-center text-decoration-none" href="#" data-toggle="modal" data-target="#modalMenuCenter"><%= t('.menu_modal_html') %></a>
     </div>

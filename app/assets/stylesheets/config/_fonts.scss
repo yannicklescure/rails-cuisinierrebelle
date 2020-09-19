@@ -16,3 +16,9 @@ $headers-font: 'Raleway', sans-serif;
 // $my-font: "Font Name";
 
 // @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.text-fire {
+  background: -webkit-linear-gradient(#FFED00, #FF0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

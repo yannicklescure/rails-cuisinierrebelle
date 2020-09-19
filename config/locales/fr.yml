@@ -601,8 +601,9 @@ fr:
       help: Aide
       help_link: aide
       legal: Légal
-      made_with_love_by_html: <div class="d-flex align-items-center"><div>Fait avec </div><div class="mb-n1"><i
-        class="material-icons md-18 px-1 text-danger">favorite</i></div><div class="ml-2"> par Cuisinier Rebelle</div></div>
+      made_with_love_by_html: <div class="d-flex align-items-center"><div>Fait avec
+        </div><div class="mb-n1"><i class="material-icons md-18 px-1 text-danger">favorite</i></div><div
+        class="ml-2"> par Cuisinier Rebelle</div></div>
       news: Nouvelles
       news_link: nouvelles
       policies: Charte
@@ -647,6 +648,7 @@ fr:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
+      top_100_html: '<i class="material-icons md-24">whatshot</i>'
       whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?
@@ -794,6 +796,7 @@ fr:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage
     user:
+      edit_recipe: Edit recipe
       follow: S'abonner
       unfollow: Abonné
       verified: Vérifié
