@@ -89,6 +89,8 @@ json.data do
         end
       # end
     end
+  else
+    json.user nil
   end
 
   json.timestamp @timestamp

@@ -80,7 +80,7 @@ const arrRecipes = (init, data) => {
 
 const renderRecipes = (init, data, callback = () => {}) => {
 
-  const $store = { data: JSON.parse(localStorage.getItem('recipes'))}
+  const $store = { data: JSON.parse(localStorage.getItem('cuisinier_rebelle'))}
   console.log($store);
   const cardsMax = init.cards;
   console.log(init);

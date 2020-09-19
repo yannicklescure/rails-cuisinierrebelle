@@ -62,9 +62,16 @@ export const setInit = (location) => {
   return init
 }
 
-export const localRecipes = () => {
-  const data = localStorage.getItem('recipes')
-  if (data) return JSON.parse(data);
+export const localRecipes = (init) => {
+  const dataStr = localStorage.getItem('cuisinier_rebelle')
+  if (dataStr) {
+    const data = JSON.parse(dataStr);
+    if (!init.userSignedIn) {
+      data.user = null;
+      localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
+    }
+    return data
+  }
   else return null
 }
 
@@ -92,7 +99,7 @@ const setRecipes = (data) => {
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
   data.state = setStoreState(data);
   data.getters = setStoreGetters(data);
-  localStorage.setItem('recipes', JSON.stringify(data));
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 }
 
 export const fetchRecipes = (init) => {

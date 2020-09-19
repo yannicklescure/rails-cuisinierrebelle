@@ -40,7 +40,7 @@ export const recipes = (location) => {
 
 export const setRecipes = (init, lastRecipeTimestamp) => {
 
-  let data = localRecipes();
+  let data = localRecipes(init);
   Promise.resolve(data && data.timestamp < lastRecipeTimestamp)
   .then(reload => {
     console.log(reload)

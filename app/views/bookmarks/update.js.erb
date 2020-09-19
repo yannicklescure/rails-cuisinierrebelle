@@ -54,7 +54,7 @@ if (root) {
     return true;
   }
 
-  data = JSON.parse(localStorage.getItem('recipes'))
+  data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
   if(<%= @bookmarked %>) {
     data.user.bookmarks.recipes.unshift({
       recipe: {
@@ -111,7 +111,7 @@ if (root) {
     //   if(bookmarksCount === 0) root.innerHTML = `<p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>`;
     // }
   }
-  localStorage.setItem('recipes', JSON.stringify(data));
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 } else {
   bookmarked = document.querySelector("[data-bookmark-recipe='<%= @recipe.id %>']");
   if(<%= @bookmarked %>) {

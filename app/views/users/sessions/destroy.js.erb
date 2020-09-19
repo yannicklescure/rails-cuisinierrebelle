@@ -1,11 +1,11 @@
 // console.log('<%= root_path %>')
-// data = JSON.parse(localStorage.getItem('recipes'))
+// data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
 // data.timestamp = (new Date).getTime();
 // data.user = null;
-// localStorage.setItem('recipes', JSON.stringify(data));
+// localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 // localStorage.removeItem('recipes');
-const data = JSON.parse(localStorage.getItem('recipes'))
+const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
 data.user = null;
-localStorage.setItem('recipes', JSON.stringify(data));
+localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 // console.log(data);
 window.location.href = '<%= root_path %>';

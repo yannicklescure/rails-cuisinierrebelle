@@ -156,9 +156,9 @@ if (signIn) {
     localStorage.removeItem('recipes');
     // const setUser = (init, result) => {
     //   console.log(result.user);
-    //   const data = JSON.parse(localStorage.getItem('recipes'))
+    //   const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
     //   data.user = result.user;
-    //   localStorage.setItem('recipes', JSON.stringify(data));
+    //   localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
     // }
 
     // const init = setInit(location);
