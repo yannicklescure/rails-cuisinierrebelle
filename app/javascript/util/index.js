@@ -93,7 +93,7 @@ const setStoreGetters = (data) => {
   }
 }
 
-const setRecipes = (data) => {
+export const setStore = (data) => {
   console.log(data);
   // data.timestamp = (new Date).getTime()
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
@@ -129,10 +129,10 @@ export const fetchRecipes = (init) => {
           }
         })
         data.search = newData.search;
-        setRecipes(data)
+        setStore(data)
       }
       else {
-        setRecipes(newData)
+        setStore(newData)
       }
       return data ? data : newData;
     })

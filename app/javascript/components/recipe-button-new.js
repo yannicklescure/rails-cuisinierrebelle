@@ -73,7 +73,7 @@ export const newRecipeButton = (location) => {
           textArray.forEach((char, index) => {
             setTimeout(() => {
               newRecipeButtonText.innerText += char;
-              console.log(newRecipeButtonText.innerText);
+              // console.log(newRecipeButtonText.innerText);
             }, index * 5);
           })
         }

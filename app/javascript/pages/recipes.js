@@ -6,6 +6,7 @@ import { localRecipes } from "../util";
 import { fetchRecipes } from "../util";
 import { formattedTime } from "../util";
 import { setInit } from "../util";
+import { setStore } from "../util";
 import { setSkeleton } from "../components/skeleton";
 
 const setLazyLoad = (init, data) => {
@@ -53,8 +54,9 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
     }
     else {
       console.log('fetch localStorage');
-
-      console.log(init.url)
+      console.log(typeof data);
+      setStore(data);
+      console.log(init.url);
       if (init.url.match(/.+?query=.+/)) {
         console.log('fetch search')
         // init.url = `/api/v1/recipes`;
@@ -90,6 +92,7 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
 
     }
   })
+  // .then(() => {})
 
   if (init.userSignedIn && init.device === 'desktop') {
     setTimeout(() => {

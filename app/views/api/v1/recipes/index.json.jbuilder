@@ -17,7 +17,7 @@ json.data do
       end
       # if current_user.likes.any?
         json.likes current_user.likes do |like|
-          json.extract! like, :recipe_id
+          json.recipeId like.recipe_id
         end
       # end
       # if current_user.bookmarks.any?

@@ -58,6 +58,13 @@ unfade = (element) => {
     }, 10);
 }
 
+data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+
+if (data) {
+  el = data.recipes.filter(recipe => recipe.recipe.id === <%= @recipe.id %>)[0]
+  position = data.recipes.indexOf(el)
+}
+
 if(<%= @liked %>) {
   if (liked) liked.innerHTML = `${heartFill}${likes_count}`;
   if(faHeart != null) {
@@ -68,6 +75,23 @@ if(<%= @liked %>) {
       setTimeout(() => {faHeart.classList.add('d-none')}, 500);
     }, 500);
   }
+  if (data) {
+    el.recipe.likes_count += 1
+    data.user.likes.unshift({recipeId: <%= @recipe.id %>})
+  }
+
 } else {
   liked.innerHTML = `${heart}${likes_count}`;
+  if (data) {
+    el.recipe.likes_count -= 1
+    thisLike = data.user.likes.filter(like => like.recipeId === <%= @recipe.id %>)[0]
+    console.log(thisLike)
+    thisLikePosition = data.user.likes.indexOf(thisLike)
+    data.user.likes.splice(thisLikePosition,1)
+  }
+}
+
+if (data) {
+  data.recipes.splice(position, 1, el);
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 }

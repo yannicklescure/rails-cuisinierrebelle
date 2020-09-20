@@ -92,7 +92,7 @@ const renderRecipes = (init, data, callback = () => {}) => {
   let render = data.recipes.length > 0;
   // let userLikes = arrRecipesObj.userLikes;
   console.log(typeof init.userSignedIn)
-  let userLikes = init.userSignedIn ? $store.data.user.likes.map(like => like.recipe_id) : [];
+  let userLikes = init.userSignedIn ? $store.data.user.likes.map(like => like.recipeId) : [];
   // let userBookmarks = arrRecipesObj.userBookmarks;
   let userBookmarks = init.userSignedIn ? $store.data.user.bookmarks.recipes.map(bookmark => bookmark.recipe.id) : [];
   console.log(recipes);
