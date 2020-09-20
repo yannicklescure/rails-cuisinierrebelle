@@ -9,7 +9,7 @@ import { previewCommentPhotoOnFileSelect } from "../components/comment-photo-pre
 import { replyPhoto } from "../components/reply-photo";
 import { previewReplyPhotoOnFileSelect } from "../components/reply-photo-preview";
 import { viewReplies } from "../components/reply";
-import { smoothToAnchor } from "../components/smooth-to-anchor";
+import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { print } from "../components/print";
 import { previewImageOnFileSelect } from "../components/recipe-photo-preview";
 import { recipePhoto } from "../components/recipe-photo";
@@ -43,8 +43,8 @@ export const recipe = (location) => {
   let currentPage = location.currentPage;
   const device = document.querySelector('body').dataset.device;
 
-    window.onhashchange = () => smoothToAnchor();
-    window.onload = () => smoothToAnchor();
+    window.onhashchange = () => scrollToAnchor();
+    window.onload = () => scrollToAnchor();
 
     viewReplies();
 

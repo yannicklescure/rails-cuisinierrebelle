@@ -1,6 +1,6 @@
 import { cookiesToObject } from "../components/cookies";
 
-export const smoothScrollToTop = (button) => {
+export const scrollToTop = (button) => {
   button.addEventListener('click', (event) => {
     if (window.scrollY > 0) {
       event.preventDefault();
@@ -10,6 +10,9 @@ export const smoothScrollToTop = (button) => {
         behavior: 'smooth'
       };
       window.scrollTo(scrollOptions);
+    }
+    else {
+      localStorage.removeItem('cuisinier_rebelle');
     }
   });
 }
