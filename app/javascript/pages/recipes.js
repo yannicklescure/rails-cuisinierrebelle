@@ -1,6 +1,5 @@
 import { cookiesToObject } from "../components/cookies";
 import { lazyLoad } from "../components/lazy-load";
-import { newRecipeButton } from "../components/recipe-button-new";
 import { setCardsParams } from "../util";
 import { localRecipes } from "../util";
 import { fetchRecipes } from "../util";
@@ -93,11 +92,5 @@ export const setRecipes = (init, lastRecipeTimestamp) => {
     }
   })
   // .then(() => {})
-
-  if (init.userSignedIn && init.device === 'desktop') {
-    setTimeout(() => {
-      newRecipeButton(location);
-    },1500);
-  }
   // }
 }

@@ -1,6 +1,7 @@
 import { cards } from "./cards";
 import { setCardsParams } from "../util";
 import { fetchRecipes } from "../util";
+import { newRecipeButton } from "../components/recipe-button-new";
 
 const max = x => {
   if (x === 5) return 25
@@ -177,7 +178,7 @@ export const lazyLoad = (init) => {
   const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
 
   const skeleton = document.querySelector('#skeleton');
-  if (data) {
+  Promise.resolve(data).then(() => {
     console.log(data)
     if (data.recipes.length > 0) {
       data.recipes = dataRecipes.slice(0, 24);
@@ -256,5 +257,12 @@ export const lazyLoad = (init) => {
       // document.querySelector('#skeleton').remove();
       if (skeleton) skeleton.remove();
     }
-  }
+  })
+  .then(() => {
+    if (init.userSignedIn && init.device === 'desktop') {
+      setTimeout(() => {
+        newRecipeButton(location);
+      },1500);
+    }
+  })
 }
