@@ -1,98 +1,33 @@
 import { cookiesToObject } from "../components/cookies";
-
-const smoothScroll = (button) => {
-  button.addEventListener('click', (event) => {
-    if (window.scrollY > 0) {
-      event.preventDefault();
-      const scrollOptions = {
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      };
-      window.scrollTo(scrollOptions);
-    }
-  });
-}
-
-const fetchUserData = (init, options) => {
-  return fetch(init.url, options)
-  .then(response => response.json())
-  .then(result => {
-    const data = result.data;
-    return data;
-  })
-  .catch(ex => {
-    console.log('parsing failed', ex);
-  });
-}
-
-const getElementId = () => {
-  document.querySelectorAll('.navbar-bottom-btn').forEach(element => {
-    element.addEventListener('click', (event) => {
-      // console.log(event.currentTarget);
-      document.cookie = `navbarBottomBtn=;path=/users;SameSite=Strict;`;
-      document.cookie = `navbarBottomBtn=${event.currentTarget.getAttribute('id')};path=/users;SameSite=Strict;`;
-      // alert(document.cookie);
-    });
-  });
-}
+import { scrollToTop } from "../util";
 
 export const navbarBottom = (location) => {
-  const body = document.querySelector('body');
-  const userSignedIn = body.dataset.user === 'true';
-  const cookies = cookiesToObject(document.cookie);
-  const device = body.dataset.device;
 
-  const init = {
-    url: `/api/v1/user`,
-    userSignedIn: userSignedIn,
-    // currentController: location.currentController,
-    // currentPage: location.currentPage,
-    // locale: location.currentLang,
-    user_email: cookies.user_email,
-    user_token: cookies.user_token,
-    device: device
-  };
+  let lastScrollTop = 0;
+  let isScrolling;
 
-  if (userSignedIn) {
-
-    let options;
-    if(init.userSignedIn) {
-      options = {
-        headers: {
-          'X-User-Email': atob(decodeURIComponent(init.user_email)),
-          'X-User-Token': atob(decodeURIComponent(init.user_token))
-        }
-      };
+  // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+  window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
+    let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+    if (st > lastScrollTop){
+      document.querySelector('#navbar-bottom').style.visibility = 'collapse';
     } else {
-      options = {};
     }
+    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 
-    // const root = document.querySelector('#root');
+    // Clear our timeout throughout the scroll
+    window.clearTimeout( isScrolling );
 
+    // Set a timeout to run after scrolling ends
+    isScrolling = setTimeout(() => {
 
-    fetchUserData(init, options).then(data => {
-      // console.log(data)
-      console.log(data.user)
-      let navbar = `<div id="navbar-bottom" class="fixed-bottom d-flex border-top justify-content-between align-items-center bg-white py-2 px-2">`;
-      navbar += `<a id="home" href="/" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">home</span></a>`;
-      // navbar += `<div class="d-flex" justify-content-center>`;
-      navbar += `<a id="whatshot" href="/top100" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">whatshot</span></a>`;
-      // navbar += `<a id="notifications" href="" class="navbar-bottom-btn"><span class="material-icons md-32 d-flex px-3">notifications</span></a>`;
-      navbar += `<a id="new-recipe" href="/r/new" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">add_box</span></a>`;
-      navbar += `<a id="bookmarks" href="/u/${data.user.auth.slug}/bookmarks" class="navbar-bottom-btn text-decoration-none"><span class="material-icons md-32 d-flex px-3">bookmarks</span></a>`;
-      // navbar += `</div>`;
-      navbar += `<a href="/u/${data.user.auth.slug}" class="px-3 text-decoration-none"><img id="user" src="${data.user.auth.image.thumb.url}" width="32" height="32" class="navbar-bottom-btn border rounded-circle"></a>`;
-      navbar += `</div>`;
-      // body.insertAdjacentHTML('afterBegin', navbar);
-    });
-  }
+      // Run the callback
+      console.log( 'Scrolling has stopped.' );
+      document.querySelector('#navbar-bottom').style.visibility = 'visible';
 
-  // if (!location.currentController && !location.currentPage) {
-  //   const homeButton = document.querySelector('#home');
-  //   if (homeButton) smoothScroll(homeButton);
-  // }
-  getElementId();
+    }, 250);
+  }, false);
+
   let id = '';
   // const elementId = getElementId();
   let el = '';
@@ -141,17 +76,7 @@ export const navbarBottom = (location) => {
       }
   }
   if (el) {
-    // console.log(el.classList.value);
-    // el.classList.remove('navbar-bottom-btn');
-    // console.log(id);
-    if (id === 'user') {
-      el.classList.remove('border-muted');
-      el.classList.add('border-dark');
-    } else {
-      el.classList.remove('text-muted');
-      el.classList.add('text-dark');
-    }
-    smoothScroll(el);
+    scrollToTop(el);
   }
   // document.querySelectorAll('.navbar-bottom-btn').forEach( button => {
   //   button.classList.add('text-muted');
