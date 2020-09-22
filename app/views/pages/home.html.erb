@@ -2,7 +2,7 @@
 <% unless user_signed_in? %>
   <%= render 'shared/banner' %>
 <% end %>
-<% if Rails.env.production? %>
+<% if user_signed_in? && !current_user.freemium || !user_signed_in? %>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- unit 1 -->
 <ins class="adsbygoogle"
