@@ -42,6 +42,7 @@
     <%#= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/google_analytics' %>
     <%= render 'layouts/google_adsense' if user_signed_in? && !current_user.freemium || !user_signed_in? %>
   </head>
@@ -56,7 +57,5 @@
     <%= yield %>
     <%= render 'shared/footer' %>
     <%#= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_packs_with_chunks_tag 'application' %>
   </body>
 </html>

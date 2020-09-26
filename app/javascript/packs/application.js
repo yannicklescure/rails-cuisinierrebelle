@@ -8,6 +8,11 @@
 // This is a must
 //= require i18n/translations
 
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+
 require('data-confirm-modal')
 
 jQuery.htmlPrefilter = function( html ) {
@@ -15,6 +20,8 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import "bootstrap";
+// import "../stylesheets/application"
+
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
 // import { faUtensils } from "@fortawesome/free-solid-svg-icons";
