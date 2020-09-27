@@ -44,45 +44,47 @@ environment.config.merge()
 //   })
 // );
 
-// const FontminPlugin = require('fontmin-webpack')
-
-// environment.plugins.append(
-//   'Fontmin', new FontminPlugin({
-//     autodetect: true,
-//   })
-// )
-
-// const bootstrap = {
-//   test: /\.(scss)$/,
-//   use: [
-//     {
-//       loader: 'style-loader', // inject CSS to page
-//     },
-//     {
-//       loader: 'css-loader', // translates CSS into CommonJS modules
-//     },
-//     {
-//       loader: 'postcss-loader', // Run post css actions
-//       options: {
-//         plugins: function () { // post css plugins, can be exported to postcss.config.js
-//           return [
-//             require('precss'),
-//             require('autoprefixer')
-//           ];
-//         }
-//       }
-//     },
-//     {
-//       loader: 'sass-loader' // compiles Sass to CSS
-//     }
-//   ]
-// }
-// environment.loaders.append('bootstrap', bootstrap)
-
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
-environment.config.set('optimization.minimizer', [new UglifyJsPlugin()])
+environment.config.set('optimization.minimizer', [new UglifyJsPlugin(
+    uglifyOptions: {
+      compress: {
+        arrows: false,
+        booleans: false,
+        cascade: false,
+        collapse_vars: false,
+        comparisons: false,
+        computed_props: false,
+        hoist_funs: false,
+        hoist_props: false,
+        hoist_vars: false,
+        if_return: false,
+        inline: false,
+        join_vars: false,
+        keep_infinity: true,
+        loops: false,
+        negate_iife: false,
+        properties: false,
+        reduce_funcs: false,
+        reduce_vars: false,
+        sequences: false,
+        side_effects: false,
+        switches: false,
+        top_retain: false,
+        toplevel: false,
+        typeofs: false,
+        unused: false,
+
+        // Switch off all types of compression except those needed to convince
+        // react-devtools that we're using a production build
+        conditionals: true,
+        dead_code: true,
+        evaluate: true,
+      },
+      mangle: true,
+    },
+)])
 
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -148,14 +150,14 @@ environment.plugins.insert(
 // }))
 // environment.splitChunks()
 
-// // Get the actual sass-loader config
-// const sassLoader = environment.loaders.get('sass')
-// const sassLoaderConfig = sassLoader.use.find(function(element) {
-//   return element.loader == 'sass-loader'
-// })
+// Get the actual sass-loader config
+const sassLoader = environment.loaders.get('sass')
+const sassLoaderConfig = sassLoader.use.find(function(element) {
+  return element.loader == 'sass-loader'
+})
 
-// // Use Dart-implementation of Sass (default is node-sass)
-// const options = sassLoaderConfig.options
-// options.implementation = require('sass')
+// Use Dart-implementation of Sass (default is node-sass)
+const options = sassLoaderConfig.options
+options.implementation = require('sass')
 
 module.exports = environment

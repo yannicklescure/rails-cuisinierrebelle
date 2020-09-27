@@ -8,11 +8,11 @@
 // This is a must
 //= require i18n/translations
 
-import Rails from '@rails/ujs'
-// require('@rails/ujs').start()
+// import Rails from '@rails/ujs'
+require('@rails/ujs').start()
 // require('turbolinks').start()
 require('@rails/activestorage').start()
-import 'channels'
+require('channels')
 
 require('data-confirm-modal')
 
@@ -29,7 +29,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
-Rails.start()
+// Rails.start()
 
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
