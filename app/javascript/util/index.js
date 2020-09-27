@@ -13,6 +13,7 @@ export const scrollToTop = (button) => {
     }
     else {
       localStorage.removeItem('cuisinier_rebelle');
+      // window.location.reload();
     }
   });
 }

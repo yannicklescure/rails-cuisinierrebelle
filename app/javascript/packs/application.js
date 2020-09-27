@@ -62,14 +62,14 @@ if(document.querySelector('.notice') != null) flashes();
 $('[data-toggle="tooltip"]').tooltip();
 
 const initLoader = () => {
-  const WebFont = require('webfontloader');
+//   const WebFont = require('webfontloader');
 
-  WebFont.load({
-    google: {
-      families: ['Roboto', 'Material Icons']
-    },
-    timeout: 2000 // Set the timeout to two seconds
-  });
+//   WebFont.load({
+//     google: {
+//       families: ['Roboto', 'Material Icons']
+//     },
+//     timeout: 2000 // Set the timeout to two seconds
+//   });
 }
 
 const initApp = () => {
@@ -155,6 +155,10 @@ document.addEventListener('readystatechange', event => {
     initApp();
   }
 });
+
+// initLoader();
+// initApp();
+
 
 const signIn = document.querySelector('#sign-in');
 
