@@ -88,7 +88,7 @@ environment.splitChunks((config) => Object.assign({}, config, {
     }
   }
 }))
-environment.splitChunks()
+// environment.splitChunks()
 
 // // Get the actual sass-loader config
 // const sassLoader = environment.loaders.get('sass')
