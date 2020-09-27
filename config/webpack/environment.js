@@ -6,6 +6,18 @@
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 
+const dotenv = require('dotenv')
+
+const dotenvFiles = [
+  `.env.${process.env.NODE_ENV}.local`,
+  '.env.local',
+  `.env.${process.env.NODE_ENV}`,
+  '.env',
+]
+dotenvFiles.forEach((dotenvFile) => {
+  dotenv.config({ path: dotenvFile, silent: true })
+})
+
 // Preventing Babel from transpiling NodeModules packages
 environment.loaders.delete('nodeModules')
 
@@ -44,7 +56,7 @@ environment.config.merge()
 //   test: /\.(scss)$/,
 //   use: [
 //     {
-//       // loader: 'style-loader', // inject CSS to page
+//       loader: 'style-loader', // inject CSS to page
 //     },
 //     {
 //       loader: 'css-loader', // translates CSS into CommonJS modules

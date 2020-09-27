@@ -19,7 +19,8 @@ jQuery.htmlPrefilter = function( html ) {
   return html;
 };
 
-import "bootstrap";
+import 'jquery'
+import('src/plugins') // note the function usage!
 import "../stylesheets/application";
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
