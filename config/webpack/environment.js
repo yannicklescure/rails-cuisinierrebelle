@@ -32,9 +32,9 @@ environment.plugins.append('critters',
   })
 );
 
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
-// environment.plugins.append("UglifyJs", new UglifyJSPlugin())
+// environment.plugins.append("UglifyJs", new UglifyJsPlugin())
 environment.config.set('optimization.minimizer', [new UglifyJsPlugin()])
 
 const CompressionPlugin = require('compression-webpack-plugin');
