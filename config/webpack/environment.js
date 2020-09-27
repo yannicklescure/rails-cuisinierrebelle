@@ -84,34 +84,15 @@ environment.plugins.append('compression',
   })
 );
 
-// environment.splitChunks((config) => Object.assign({}, config, {
-//   optimization: {
-//     splitChunks: {
-//       chunks: 'all',
-//       minSize: 20000,
-//       // minRemainingSize: 0,
-//       maxSize: 30000,
-//       minChunks: 1,
-//       maxAsyncRequests: 30,
-//       maxInitialRequests: 30,
-//       automaticNameDelimiter: '~',
-//       enforceSizeThreshold: 50000,
-//       cacheGroups: {
-//         defaultVendors: {
-//           test: /[\\/]node_modules[\\/]/,
-//           priority: -10
-//         },
-//         default: {
-//           minChunks: 2,
-//           priority: -20,
-//           reuseExistingChunk: true
-//         }
-//       }
-//     }
-//   }
-// }))
-// environment.splitChunks()
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+}
 
+// config/webpack/environment.js
 const splitChunks = require('./split_chunks')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
@@ -126,6 +107,34 @@ environment.plugins.insert(
     publicPath: true // rails defaults copied from webpacker
   })
 )
+
+// environment.splitChunks((config) => Object.assign({}, config, {
+//   optimization: {
+//     splitChunks: {
+//       chunks: 'all',
+//       // minSize: 20000,
+//       // // minRemainingSize: 0,
+//       // maxSize: 30000,
+//       // minChunks: 1,
+//       // maxAsyncRequests: 30,
+//       // maxInitialRequests: 30,
+//       // automaticNameDelimiter: '~',
+//       // enforceSizeThreshold: 50000,
+//       // cacheGroups: {
+//       //   defaultVendors: {
+//       //     test: /[\\/]node_modules[\\/]/,
+//       //     priority: -10
+//       //   },
+//       //   default: {
+//       //     minChunks: 2,
+//       //     priority: -20,
+//       //     reuseExistingChunk: true
+//       //   }
+//       // }
+//     }
+//   }
+// }))
+// environment.splitChunks()
 
 // // Get the actual sass-loader config
 // const sassLoader = environment.loaders.get('sass')
