@@ -49,34 +49,34 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
 environment.config.set('optimization.minimizer', [new UglifyJsPlugin()]);
 
-environment.loaders.prepend('sass', {
-  test: /\.s[ac]ss$/i,
-  use: [
-    // Creates `style` nodes from JS strings
-    'style-loader',
-    // Translates CSS into CommonJS
-    'css-loader',
-    {
-      loader: 'postcss-loader', // Run post css actions
-      options: {
-        plugins: () => { // post css plugins, can be exported to postcss.config.js
-          return [
-            require('precss'),
-            require('autoprefixer')
-          ];
-        }
-      }
-    },
-    // Compiles Sass to CSS
-    {
-      loader: 'sass-loader',
-      options: {
-        // Prefer `dart-sass`
-        implementation: require('sass'),
-      },
-    }
-  ],
-},)
+// environment.loaders.prepend('sass', {
+//   test: /\.s[ac]ss$/i,
+//   use: [
+//     // Creates `style` nodes from JS strings
+//     'style-loader',
+//     // Translates CSS into CommonJS
+//     'css-loader',
+//     {
+//       loader: 'postcss-loader', // Run post css actions
+//       options: {
+//         plugins: () => { // post css plugins, can be exported to postcss.config.js
+//           return [
+//             require('precss'),
+//             require('autoprefixer')
+//           ];
+//         }
+//       }
+//     },
+//     // Compiles Sass to CSS
+//     {
+//       loader: 'sass-loader',
+//       options: {
+//         // Prefer `dart-sass`
+//         implementation: require('sass'),
+//       },
+//     }
+//   ],
+// },)
 
 const CompressionPlugin = require('compression-webpack-plugin');
 
