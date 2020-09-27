@@ -115,7 +115,7 @@ environment.plugins.insert(
 // const options = sassLoaderConfig.options
 // options.implementation = require('sass')
 
-const sassLoader = require('./sass_loader')
-environment.config.merge(sassLoader)
+// const sassLoader = require('./sass_loader')
+// environment.config.merge(sassLoader)
 
 module.exports = environment
