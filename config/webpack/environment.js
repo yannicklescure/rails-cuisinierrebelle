@@ -49,6 +49,37 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
 environment.config.set('optimization.minimizer', [new UglifyJsPlugin()]);
 
+const sassLoader = require('./sass_loader')
+// environment.config.merge(sassLoader)
+environment.loaders.prepend('sass', {
+  test: /\.s[ac]ss$/i,
+  use: [
+    // Creates `style` nodes from JS strings
+    'style-loader',
+    // Translates CSS into CommonJS
+    'css-loader',
+    {
+      loader: 'postcss-loader', // Run post css actions
+      options: {
+        plugins: function () { // post css plugins, can be exported to postcss.config.js
+          return [
+            require('precss'),
+            require('autoprefixer')
+          ];
+        }
+      }
+    },
+    // Compiles Sass to CSS
+    {
+      loader: 'sass-loader',
+      options: {
+        // Prefer `dart-sass`
+        implementation: require('sass'),
+      },
+    }
+  ],
+},)
+
 const CompressionPlugin = require('compression-webpack-plugin');
 
 environment.plugins.append('compression',
@@ -76,46 +107,5 @@ environment.plugins.insert(
     publicPath: true // rails defaults copied from webpacker
   })
 )
-
-// environment.splitChunks((config) => Object.assign({}, config, {
-//   optimization: {
-//     splitChunks: {
-//       chunks: 'all',
-//       // minSize: 20000,
-//       // // minRemainingSize: 0,
-//       // maxSize: 30000,
-//       // minChunks: 1,
-//       // maxAsyncRequests: 30,
-//       // maxInitialRequests: 30,
-//       // automaticNameDelimiter: '~',
-//       // enforceSizeThreshold: 50000,
-//       // cacheGroups: {
-//       //   defaultVendors: {
-//       //     test: /[\\/]node_modules[\\/]/,
-//       //     priority: -10
-//       //   },
-//       //   default: {
-//       //     minChunks: 2,
-//       //     priority: -20,
-//       //     reuseExistingChunk: true
-//       //   }
-//       // }
-//     }
-//   }
-// }))
-// environment.splitChunks()
-
-// // Get the actual sass-loader config
-// const sassLoader = environment.loaders.get('sass')
-// const sassLoaderConfig = sassLoader.use.find(function(element) {
-//   return element.loader == 'sass-loader'
-// })
-
-// // Use Dart-implementation of Sass (default is node-sass)
-// const options = sassLoaderConfig.options
-// options.implementation = require('sass')
-
-// const sassLoader = require('./sass_loader')
-// environment.config.merge(sassLoader)
 
 module.exports = environment
