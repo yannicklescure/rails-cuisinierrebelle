@@ -20,17 +20,17 @@ environment.plugins.prepend('Provide',
 
 environment.config.merge()
 
-const Critters = require('critters-webpack-plugin');
+// const Critters = require('critters-webpack-plugin');
 
-environment.plugins.append('critters',
-  new Critters({
-    // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
-    preload: 'swap',
+// environment.plugins.append('critters',
+//   new Critters({
+//     // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
+//     preload: 'swap',
 
-    // Don't inline critical font-face rules, but preload the font URLs:
-    preloadFonts: true
-  })
-);
+//     // Don't inline critical font-face rules, but preload the font URLs:
+//     preloadFonts: true
+//   })
+// );
 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
