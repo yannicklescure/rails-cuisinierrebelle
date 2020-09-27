@@ -20,12 +20,12 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import "bootstrap";
-import "../stylesheets/application"
+import "../stylesheets/application";
 
-import '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
 
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
