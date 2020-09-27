@@ -32,6 +32,41 @@ environment.config.merge()
 //   })
 // );
 
+// const FontminPlugin = require('fontmin-webpack')
+
+// environment.plugins.append(
+//   'Fontmin', new FontminPlugin({
+//     autodetect: true,
+//   })
+// )
+
+// const bootstrap = {
+//   test: /\.(scss)$/,
+//   use: [
+//     {
+//       // loader: 'style-loader', // inject CSS to page
+//     },
+//     {
+//       loader: 'css-loader', // translates CSS into CommonJS modules
+//     },
+//     {
+//       loader: 'postcss-loader', // Run post css actions
+//       options: {
+//         plugins: function () { // post css plugins, can be exported to postcss.config.js
+//           return [
+//             require('precss'),
+//             require('autoprefixer')
+//           ];
+//         }
+//       }
+//     },
+//     {
+//       loader: 'sass-loader' // compiles Sass to CSS
+//     }
+//   ]
+// }
+// environment.loaders.append('bootstrap', bootstrap)
+
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
@@ -49,47 +84,48 @@ environment.plugins.append('compression',
   })
 );
 
-// const FontminPlugin = require('fontmin-webpack')
-
-// environment.plugins.append(
-//   'Fontmin', new FontminPlugin({
-//     autodetect: true,
-//   })
-// )
-
-// const bootstrap = {
-//   test: /\.(scss)$/,
-//   use: ['style-loader', 'css-loader']
-// }
-// environment.loaders.append('bootstrap', bootstrap)
-
-environment.splitChunks((config) => Object.assign({}, config, {
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 20000,
-      // minRemainingSize: 0,
-      maxSize: 30000,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
-  }
-}))
+// environment.splitChunks((config) => Object.assign({}, config, {
+//   optimization: {
+//     splitChunks: {
+//       chunks: 'all',
+//       minSize: 20000,
+//       // minRemainingSize: 0,
+//       maxSize: 30000,
+//       minChunks: 1,
+//       maxAsyncRequests: 30,
+//       maxInitialRequests: 30,
+//       automaticNameDelimiter: '~',
+//       enforceSizeThreshold: 50000,
+//       cacheGroups: {
+//         defaultVendors: {
+//           test: /[\\/]node_modules[\\/]/,
+//           priority: -10
+//         },
+//         default: {
+//           minChunks: 2,
+//           priority: -20,
+//           reuseExistingChunk: true
+//         }
+//       }
+//     }
+//   }
+// }))
 // environment.splitChunks()
+
+const splitChunks = require('./split_chunks')
+const WebpackAssetsManifest = require('webpack-assets-manifest')
+
+environment.config.merge(splitChunks)
+
+// Should override the existing manifest plugin
+environment.plugins.insert(
+  'Manifest',
+  new WebpackAssetsManifest({
+    entrypoints: true, // default in rails is false
+    writeToDisk: true, // rails defaults copied from webpacker
+    publicPath: true // rails defaults copied from webpacker
+  })
+)
 
 // // Get the actual sass-loader config
 // const sassLoader = environment.loaders.get('sass')
