@@ -61,14 +61,6 @@ environment.plugins.append('compression',
   })
 );
 
-module.exports = {
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  }
-}
-
 // config/webpack/environment.js
 const splitChunks = require('./split_chunks')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
@@ -113,14 +105,17 @@ environment.plugins.insert(
 // }))
 // environment.splitChunks()
 
-// Get the actual sass-loader config
-const sassLoader = environment.loaders.get('sass')
-const sassLoaderConfig = sassLoader.use.find(function(element) {
-  return element.loader == 'sass-loader'
-})
+// // Get the actual sass-loader config
+// const sassLoader = environment.loaders.get('sass')
+// const sassLoaderConfig = sassLoader.use.find(function(element) {
+//   return element.loader == 'sass-loader'
+// })
 
-// Use Dart-implementation of Sass (default is node-sass)
-const options = sassLoaderConfig.options
-options.implementation = require('sass')
+// // Use Dart-implementation of Sass (default is node-sass)
+// const options = sassLoaderConfig.options
+// options.implementation = require('sass')
+
+const sassLoader = require('./sass_loader')
+environment.config.merge(sassLoader)
 
 module.exports = environment
