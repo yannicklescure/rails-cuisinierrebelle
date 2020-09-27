@@ -20,6 +20,23 @@ environment.plugins.prepend('Provide',
 
 environment.config.merge()
 
+const Critters = require('critters-webpack-plugin');
+
+environment.plugins.append('critters',
+  new Critters({
+    // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
+    preload: 'swap',
+
+    // Don't inline critical font-face rules, but preload the font URLs:
+    preloadFonts: true
+  })
+);
+
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin")
+// environment.plugins.delete("UglifyJs")
+// environment.plugins.append("UglifyJs", new UglifyJSPlugin())
+environment.config.set('optimization.minimizer', [new UglifyJsPlugin()])
+
 const CompressionPlugin = require('compression-webpack-plugin');
 
 environment.plugins.append('compression',
@@ -65,7 +82,7 @@ environment.plugins.append('compression',
 environment.splitChunks((config) => Object.assign({}, config, {
   optimization: {
     splitChunks: {
-      chunks: 'async',
+      chunks: 'all',
       minSize: 20000,
       // minRemainingSize: 0,
       maxSize: 30000,

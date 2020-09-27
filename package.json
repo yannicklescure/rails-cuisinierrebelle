@@ -11,6 +11,7 @@
     "bootstrap": "^4.5.2",
     "channels": "^0.0.4",
     "compression-webpack-plugin": "^6.0.2",
+    "critters-webpack-plugin": "^2.5.0",
     "css-loader": "^4.3.0",
     "data-confirm-modal": "^1.6.2",
     "fontmin-webpack": "^2.0.7",
