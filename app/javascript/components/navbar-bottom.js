@@ -7,26 +7,26 @@ export const navbarBottom = (location) => {
   let isScrolling;
 
   // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-  window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
-    let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-    if (st > lastScrollTop){
-      document.querySelector('#navbar-bottom').style.visibility = 'collapse';
-    } else {
-    }
-    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+  // window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
+  //   let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+  //   if (st > lastScrollTop){
+  //     document.querySelector('#navbar-bottom').style.visibility = 'collapse';
+  //   } else {
+  //   }
+  //   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 
-    // Clear our timeout throughout the scroll
-    window.clearTimeout( isScrolling );
+  //   // Clear our timeout throughout the scroll
+  //   window.clearTimeout( isScrolling );
 
-    // Set a timeout to run after scrolling ends
-    isScrolling = setTimeout(() => {
+  //   // Set a timeout to run after scrolling ends
+  //   isScrolling = setTimeout(() => {
 
-      // Run the callback
-      console.log( 'Scrolling has stopped.' );
-      document.querySelector('#navbar-bottom').style.visibility = 'visible';
+  //     // Run the callback
+  //     console.log( 'Scrolling has stopped.' );
+  //     document.querySelector('#navbar-bottom').style.visibility = 'visible';
 
-    }, 250);
-  }, false);
+  //   }, 250);
+  // }, false);
 
   let id = '';
   // const elementId = getElementId();
