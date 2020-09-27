@@ -49,8 +49,6 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
 environment.config.set('optimization.minimizer', [new UglifyJsPlugin()]);
 
-const sassLoader = require('./sass_loader')
-// environment.config.merge(sassLoader)
 environment.loaders.prepend('sass', {
   test: /\.s[ac]ss$/i,
   use: [
@@ -61,7 +59,7 @@ environment.loaders.prepend('sass', {
     {
       loader: 'postcss-loader', // Run post css actions
       options: {
-        plugins: function () { // post css plugins, can be exported to postcss.config.js
+        plugins: () => { // post css plugins, can be exported to postcss.config.js
           return [
             require('precss'),
             require('autoprefixer')
