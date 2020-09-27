@@ -79,7 +79,7 @@ gem "nokogiri", ">= 1.10.8"
 gem 'bootstrap-email'
 # gem "actionview", ">= 6.0.2.2"
 gem "actionview", ">= 6.0.3.2"
-gem 'material_icons'
+# gem 'material_icons'
 gem 'kaminari'
 gem 'fastimage'
 gem "websocket-extensions", ">= 0.1.5"

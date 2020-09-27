@@ -20,7 +20,7 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import "bootstrap";
-// import "../stylesheets/application"
+import "../stylesheets/application"
 
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
