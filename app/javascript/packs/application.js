@@ -8,10 +8,11 @@
 // This is a must
 //= require i18n/translations
 
-require("@rails/ujs").start()
-// require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
+import Rails from '@rails/ujs'
+// require('@rails/ujs').start()
+// require('turbolinks').start()
+require('@rails/activestorage').start()
+import 'channels'
 
 require('data-confirm-modal')
 
@@ -20,13 +21,15 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import 'jquery'
-import('src/plugins') // note the function usage!
-import "../stylesheets/application";
+import '../src/plugins' // note the function usage!
+import '../stylesheets/application';
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
+
+Rails.start()
 
 // require("@fortawesome/fontawesome-free/js/all")
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
