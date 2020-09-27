@@ -245,6 +245,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     namae (1.0.1)
+    newrelic_rpm (6.13.1)
     nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -482,6 +483,7 @@ DEPENDENCIES
   material_icons
   mini_magick
   namae
+  newrelic_rpm
   nokogiri (>= 1.10.8)
   omniauth-facebook
   omniauth-rails_csrf_protection (~> 0.1)
