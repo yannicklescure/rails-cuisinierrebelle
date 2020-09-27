@@ -3212,11 +3212,6 @@ follow-redirects@^1.0.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
 
-font-awesome-sass@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/font-awesome-sass/-/font-awesome-sass-4.7.0.tgz#4eda693e915009ce00b228e0964dc5eca9bc34e1"
-  integrity sha1-TtppPpFQCc4Asijglk3F7Km8NOE=
-
 fonteditor-core@^1.0.2:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/fonteditor-core/-/fonteditor-core-1.0.5.tgz#870d9a69668b2c03d21ac5b8bed9be77435d5ee3"
