@@ -22,12 +22,8 @@ jQuery.htmlPrefilter = function( html ) {
 
 import 'jquery'
 import '../src/plugins' // note the function usage!
+// import '../src/fonts' // note the function usage!
 import '../stylesheets/application';
-
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
 
 // Rails.start()
 
@@ -35,32 +31,18 @@ import '@fortawesome/fontawesome-free/js/brands';
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
 // import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
-import { alerts } from "../components/alerts";
-import { btnClick } from "../components/button";
-import { cardHeart } from "../components/card-heart";
-import { currentLocation } from "../components/location";
-import { flashes } from "../components/flashes";
-import { googleAdsNoNavbar } from "../components/google-ads";
-import { navbarBottom } from "../components/navbar-bottom";
-import { scrollToAnchor } from "../components/scroll-to-anchor";
-import { searchInput } from "../components/search-input";
-import { shareButton } from "../components/share-button";
-import { userBanner } from "../components/user-banner"
-
-import { admin } from "../pages/admin";
-import { conversion } from "../pages/conversion";
-import { home } from "../pages/home";
-import { recipe } from "../pages/recipe";
-import { recipes } from "../pages/recipes";
-import { settings } from "../pages/settings";
-import { top100 } from "../pages/top100";
-
-import { fetchRecipes } from "../util";
-import { scrollToTop } from "../util";
-import { setInit } from "../util";
+// import { cardHeart } from "../components/card-heart";
 
 
-const initLoader = () => {
+
+
+
+
+// import { fetchRecipes } from "../util";
+// import { setInit } from "../util";
+
+
+const initLoader = async () => {
   if ((/localhost/).test(document.domain)) document.domain = "localhost";
   else console.log = function() {}
 
@@ -69,8 +51,11 @@ const initLoader = () => {
   }
   console.log(document.domain)
 
-  if(document.querySelector('.notice') != null) flashes();
-  $('[data-toggle="tooltip"]').tooltip();
+  if(document.querySelector('.notice') != null) {
+    const { flashes } = await import("../components/flashes");
+    flashes();
+    $('[data-toggle="tooltip"]').tooltip();
+  }
 //   const WebFont = require('webfontloader');
 
 //   WebFont.load({
@@ -81,9 +66,12 @@ const initLoader = () => {
 //   });
 }
 
-const initApp = () => {
+const initApp = async () => {
   const navbarBrandButton = document.querySelector('.navbar-brand');
-  if (navbarBrandButton) scrollToTop(navbarBrandButton);
+  if (navbarBrandButton) {
+    const { scrollToTop } = await import("../util");
+    scrollToTop(navbarBrandButton);
+  }
   // document.querySelector('#navbar-main').classList.remove('d-none');
   const credit = document.querySelector('#credit')
   if (credit) credit.classList.remove('d-none');
@@ -97,9 +85,10 @@ const initApp = () => {
   //   navbarBrand.style.padding = "5px 0";
   // }
 
+  const { currentLocation } = await import("../components/location");
   Promise.resolve(currentLocation())
   // new Promise( resolve => currentLocation(), error => console.log(error))
-  .then(location => {
+  .then(async location => {
     console.log(location);
     let currentLang = location.currentLang;
     let currentController = location.currentController;
@@ -108,6 +97,7 @@ const initApp = () => {
     const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
     if (!currentController && !currentPage && !userSignedIn) {
+      const { scrollToAnchor } = import("../components/scroll-to-anchor");
       scrollToAnchor("#recipes-cards");
       const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
       if (bannerCtaBoxTitle && window.innerWidth > 375) {
@@ -119,24 +109,63 @@ const initApp = () => {
     // console.log(device);
     if (device != 'desktop') {
       // document.querySelector('body').style.paddingTop = '105px';
+      const { shareButton } = await import("../components/share-button");
       shareButton();
       console.log(userSignedIn)
-      if (userSignedIn) navbarBottom(location);
+      if (userSignedIn) {
+        const { navbarBottom } = await import("../components/navbar-bottom");
+        navbarBottom(location);
+      }
     }
+
+    const { googleAdsNoNavbar } = await import("../components/google-ads");
     googleAdsNoNavbar();
-    if (currentPage && currentPage.match(/edit\..*/)) btnClick();
-    if (!currentController && !currentPage) home();
-    if (currentController && currentController === 'r') recipe(location);
-    if (currentController === 'u' && currentPage != null) userBanner();
-    if (currentPage && currentPage.match(/\/settings/) && userSignedIn) settings();
-    if (currentController === 'tools') alerts();
-    if (currentController === 'top100') top100();
-    if (currentController === 'conversion') conversion();
-    if (currentController === 'admin' && userSignedIn) admin(location);
 
     const root = document.querySelector('#root');
-    if (root) recipes(location);
+    // (async () => {
+      if (!currentController && !currentPage) {
+        const { home } = await import("../pages/home");
+        home();
+      }
+      if (currentPage && currentPage.match(/edit\..*/)) {
+        const { btnClick } = await import("../components/button");
+        btnClick();
+      }
+      if (currentController && currentController === 'r') {
+        const { recipe } = await import("../pages/recipe");
+        recipe(location);
+      }
+      if (currentController === 'u' && currentPage != null) {
+        const { userBanner } = await import("../components/user-banner");
+        userBanner();
+      }
+      if (currentPage && currentPage.match(/\/settings/) && userSignedIn) {
+        const { settings } = await import("../pages/settings");
+        settings();
+      }
+      if (currentController === 'tools') {
+        const { alerts } = await import("../components/alerts");
+        alerts();
+      }
+      if (currentController === 'top100') {
+        const { top100 } = await import("../pages/top100");
+        top100();
+      }
+      if (currentController === 'conversion') {
+        const { conversion } = await import("../pages/conversion");
+        conversion();
+      }
+      if (currentController === 'admin' && userSignedIn) {
+        const { admin } = await import("../pages/admin");
+        admin(location);
+      }
+      if (root) {
+        const { recipes } = await import("../pages/recipes");
+        recipes(location);
+      }
+    // })();
 
+    const { searchInput } = await import("../components/search-input");
     searchInput({
       location: location,
       device: device
