@@ -24,14 +24,16 @@ const unfade = (element) => {
   }, 10);
 }
 
-const triggerClick = (element) => {
-  const target = document.querySelector(element.close);
+const triggerClick = (element, callback = () => {}) => {
   const alert = document.querySelector(element.alert);
+  console.log(alert);
+  const target = document.querySelector(element.close);
   target.addEventListener('click',(event) => {
     event.preventDefault();
     fade(alert);
   });
   target.click();
+  callback();
 }
 
 const alertJQ = () => {
@@ -43,13 +45,9 @@ const alertJQ = () => {
 export const flashes = () => {
 
   document.addEventListener('DOMContentLoaded', (event) => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        document.querySelector('.alert').style.display = 'block';
-        triggerClick({close: '.close', alert: '.alert'}, alertJQ);
-      }, 1500);
-    }).then((result) => {
-      alertJQ();
-    })
+    setTimeout(() => {
+      document.querySelector('.alert').style.display = 'block';
+      triggerClick({close: '.close', alert: '.alert'}, alertJQ);
+    }, 1500);
   });
 }

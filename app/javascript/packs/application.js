@@ -26,42 +26,42 @@ import "bootstrap";
 // require("@fortawesome/fontawesome-free/svgs/faUtensils")
 // import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
-import { scrollToAnchor } from "../components/scroll-to-anchor";
-import { currentLocation } from "../components/location";
-import { cardHeart } from "../components/card-heart";
-import { flashes } from "../components/flashes";
-import { btnClick } from "../components/button";
 import { alerts } from "../components/alerts";
-import { userBanner } from "../components/user-banner"
+import { btnClick } from "../components/button";
+import { cardHeart } from "../components/card-heart";
+import { currentLocation } from "../components/location";
+import { flashes } from "../components/flashes";
 import { googleAdsNoNavbar } from "../components/google-ads";
+import { navbarBottom } from "../components/navbar-bottom";
+import { scrollToAnchor } from "../components/scroll-to-anchor";
 import { searchInput } from "../components/search-input";
 import { shareButton } from "../components/share-button";
-import { navbarBottom } from "../components/navbar-bottom";
+import { userBanner } from "../components/user-banner"
 
+import { admin } from "../pages/admin";
+import { conversion } from "../pages/conversion";
 import { home } from "../pages/home";
-import { settings } from "../pages/settings";
 import { recipe } from "../pages/recipe";
 import { recipes } from "../pages/recipes";
+import { settings } from "../pages/settings";
 import { top100 } from "../pages/top100";
-import { conversion } from "../pages/conversion";
-import { admin } from "../pages/admin";
 
-import { setInit } from "../util";
 import { fetchRecipes } from "../util";
 import { scrollToTop } from "../util";
+import { setInit } from "../util";
 
-if ((/localhost/).test(document.domain)) document.domain = "localhost";
-else console.log = function() {}
-
-if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
-  document.domain = "cuisinierrebelle.com";
-}
-console.log(document.domain)
-
-if(document.querySelector('.notice') != null) flashes();
-$('[data-toggle="tooltip"]').tooltip();
 
 const initLoader = () => {
+  if ((/localhost/).test(document.domain)) document.domain = "localhost";
+  else console.log = function() {}
+
+  if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
+    document.domain = "cuisinierrebelle.com";
+  }
+  console.log(document.domain)
+
+  if(document.querySelector('.notice') != null) flashes();
+  $('[data-toggle="tooltip"]').tooltip();
 //   const WebFont = require('webfontloader');
 
 //   WebFont.load({
@@ -153,6 +153,22 @@ document.addEventListener('readystatechange', event => {
   }
   else if (event.target.readyState === 'complete') {
     initApp();
+    const signIn = document.querySelector('#sign-in');
+    if (signIn) {
+      console.log(signIn);
+      signIn.addEventListener('click', ()=> {
+        localStorage.removeItem('cuisinier_rebelle');
+        // const setUser = (init, result) => {
+        //   console.log(result.user);
+        //   const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+        //   data.user = result.user;
+        //   localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
+        // }
+
+        // const init = setInit(location);
+        // fetchRecipes(init).then(result => setUser(init, result));
+      });
+    }
   }
 });
 
@@ -160,22 +176,6 @@ document.addEventListener('readystatechange', event => {
 // initApp();
 
 
-const signIn = document.querySelector('#sign-in');
-
-if (signIn) {
-  signIn.addEventListener('click', ()=> {
-    localStorage.removeItem('cuisinier_rebelle');
-    // const setUser = (init, result) => {
-    //   console.log(result.user);
-    //   const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    //   data.user = result.user;
-    //   localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
-    // }
-
-    // const init = setInit(location);
-    // fetchRecipes(init).then(result => setUser(init, result));
-  });
-}
 
 // const logOut = document.querySelector('.log-out');
 // if (logOut) {
