@@ -12,8 +12,15 @@ export const scrollToTop = (button) => {
       window.scrollTo(scrollOptions);
     }
     else {
-      localStorage.removeItem('cuisinier_rebelle');
-      // window.location.reload();
+      const dataStr = localStorage.getItem('cuisinier_rebelle');
+      if (dataStr) {
+        const data = JSON.parse(dataStr);
+        const now = new Date().getTime();
+        if (now > data.userLogIn + 3 * 60 * 1000) { // refesh data after 3 minutes
+          localStorage.removeItem('cuisinier_rebelle');
+          // window.location.reload();
+        }
+      }
     }
   });
 }
@@ -67,7 +74,7 @@ export const setInit = (location) => {
 }
 
 export const localRecipes = (init) => {
-  const dataStr = localStorage.getItem('cuisinier_rebelle')
+  const dataStr = localStorage.getItem('cuisinier_rebelle');
   if (dataStr) {
     const data = JSON.parse(dataStr);
     if (!init.userSignedIn) {
@@ -103,46 +110,49 @@ export const setStore = (data) => {
   data.recipes = data.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse()
   data.state = setStoreState(data);
   data.getters = setStoreGetters(data);
+  console.log(data.userLogIn);
   localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
 }
 
 export const fetchRecipes = (init) => {
-  return fetch(init.url, init.options)
-    .then(response => response.json())
-    .then(result => {
-      const newData = result.data;
-      console.log(newData);
-      const data = localRecipes(init);
-      if (data) {
-        const recipes = data.recipes;
-        console.log(recipes)
-        // recipes.timestamp = new Date().getTime();
-        const newRecipes = newData.recipes;
-        console.log(newRecipes);
-        newRecipes.forEach(newRecipe => {
-          // const el = recipes.filter(recipe => recipe === newRecipe);
-          // console.log(newRecipe)
-          const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
-          // console.log(el.length);
-          // if (!recipes.includes(newRecipe)) {
-          if (el.length === 0) {
-            data.recipes.push(newRecipe)
-          }
-          else {
-            console.log(newRecipe)
-          }
-        })
-        data.search = newData.search;
-        setStore(data)
+  const data = localRecipes(init);
+  if (data) {
+    const recipes = data.recipes;
+    console.log(recipes)
+    // recipes.timestamp = new Date().getTime();
+    const newRecipes = newData.recipes;
+    console.log(newRecipes);
+    newRecipes.forEach(newRecipe => {
+      // const el = recipes.filter(recipe => recipe === newRecipe);
+      // console.log(newRecipe)
+      const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
+      // console.log(el.length);
+      // if (!recipes.includes(newRecipe)) {
+      if (el.length === 0) {
+        data.recipes.push(newRecipe)
       }
       else {
-        setStore(newData)
+        console.log(newRecipe)
       }
-      return data ? data : newData;
     })
-    .catch(ex => {
-      console.log('parsing failed', ex);
-    });
+    data.search = newData.search;
+    setStore(data)
+    return data
+  }
+  else {
+    return fetch(init.url, init.options)
+      .then(response => response.json())
+      .then(result => {
+        const newData = result.data;
+        console.log(newData);
+        newData.userLogIn = new Date().getTime();
+        setStore(newData);
+        return newData;
+      })
+      .catch(ex => {
+        console.log('parsing failed', ex);
+      });
+  }
 }
 
 export const setCardsParams = () => {
