@@ -97,7 +97,7 @@ const initApp = async () => {
     const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
     if (!currentController && !currentPage && !userSignedIn) {
-      const { scrollToAnchor } = import("../components/scroll-to-anchor");
+      const { scrollToAnchor } = await import("../components/scroll-to-anchor");
       scrollToAnchor("#recipes-cards");
       const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
       if (bannerCtaBoxTitle && window.innerWidth > 375) {
