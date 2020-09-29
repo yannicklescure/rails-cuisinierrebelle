@@ -14,6 +14,8 @@ require('@rails/ujs').start()
 require('@rails/activestorage').start()
 require('channels')
 
+import '../serviceworker-companion'
+
 require('data-confirm-modal')
 
 jQuery.htmlPrefilter = function( html ) {
