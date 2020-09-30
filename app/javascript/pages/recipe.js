@@ -1,4 +1,4 @@
-import { currentLocation } from "../components/location";
+// import { currentLocation } from "../components/location";
 import { btnClick } from "../components/button";
 import { replyForms } from "../components/reply";
 import { repliesReply } from "../components/reply";
@@ -36,11 +36,11 @@ const cleanComments = () => {
   })
 };
 
-export const recipe = (location) => {
-  // console.log(location);
-  let currentLang = location.currentLang;
-  let currentController = location.currentController;
-  let currentPage = location.currentPage;
+export const recipe = (locus) => {
+  // console.log(locus);
+  let currentLang = locus.currentLang;
+  let currentController = locus.currentController;
+  let currentPage = locus.currentPage;
   const device = document.querySelector('body').dataset.device;
 
     window.onhashchange = () => scrollToAnchor();
@@ -55,7 +55,7 @@ export const recipe = (location) => {
       if (document.querySelector('form[id="new_recipe"]') || document.querySelector('form[id^="edit_recipe_"]')) {
         recipePhoto();
         previewImageOnFileSelect();
-        optionsButton(location);
+        optionsButton(locus);
       }
       else {
         btnClick();
@@ -72,8 +72,10 @@ export const recipe = (location) => {
     } else {
       const newUserRegistrationBtn = document.querySelector('#new-user-registration');
       if (newUserRegistrationBtn) {
-        newUserRegistrationBtn.addEventListener('click', ()=> {
-          location.href = `${location.domain}/users/sign_up`;
+        console.log(`${location.origin}/users/sign_up`);
+        newUserRegistrationBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          location.href = `${location.origin}/users/sign_up`;
         });
       }
     }

@@ -90,11 +90,11 @@ const initApp = async () => {
   const { currentLocation } = await import("../components/location");
   Promise.resolve(currentLocation())
   // new Promise( resolve => currentLocation(), error => console.log(error))
-  .then(async location => {
-    console.log(location);
-    let currentLang = location.currentLang;
-    let currentController = location.currentController;
-    let currentPage = location.currentPage;
+  .then(async result => {
+    console.log(result);
+    let currentLang = result.currentLang;
+    let currentController = result.currentController;
+    let currentPage = result.currentPage;
     const device = document.querySelector('body').dataset.device;
     const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
@@ -116,7 +116,7 @@ const initApp = async () => {
       console.log(userSignedIn)
       if (userSignedIn) {
         const { navbarBottom } = await import("../components/navbar-bottom");
-        navbarBottom(location);
+        navbarBottom(result);
       }
     }
 
@@ -135,7 +135,7 @@ const initApp = async () => {
       }
       if (currentController && currentController === 'r') {
         const { recipe } = await import("../pages/recipe");
-        recipe(location);
+        recipe(result);
       }
       if (currentController === 'u' && currentPage != null) {
         const { userBanner } = await import("../components/user-banner");
@@ -159,17 +159,17 @@ const initApp = async () => {
       }
       if (currentController === 'admin' && userSignedIn) {
         const { admin } = await import("../pages/admin");
-        admin(location);
+        admin(result);
       }
       if (root) {
         const { recipes } = await import("../pages/recipes");
-        recipes(location);
+        recipes(result);
       }
     // })();
 
     const { searchInput } = await import("../components/search-input");
     searchInput({
-      location: location,
+      location: result,
       device: device
     });
   });
