@@ -115,27 +115,28 @@ export const setStore = (data) => {
 }
 
 export const fetchRecipes = (init) => {
+  console.log(init);
   const data = localRecipes(init);
-  if (data) {
+  if (data && !init.query) {
     const recipes = data.recipes;
     console.log(recipes)
     // recipes.timestamp = new Date().getTime();
-    const newRecipes = newData.recipes;
-    console.log(newRecipes);
-    newRecipes.forEach(newRecipe => {
-      // const el = recipes.filter(recipe => recipe === newRecipe);
-      // console.log(newRecipe)
-      const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
-      // console.log(el.length);
-      // if (!recipes.includes(newRecipe)) {
-      if (el.length === 0) {
-        data.recipes.push(newRecipe)
-      }
-      else {
-        console.log(newRecipe)
-      }
-    })
-    data.search = newData.search;
+    // const newRecipes = newData.recipes;
+    // console.log(newRecipes);
+    // newRecipes.forEach(newRecipe => {
+    //   // const el = recipes.filter(recipe => recipe === newRecipe);
+    //   // console.log(newRecipe)
+    //   const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
+    //   // console.log(el.length);
+    //   // if (!recipes.includes(newRecipe)) {
+    //   if (el.length === 0) {
+    //     data.recipes.push(newRecipe)
+    //   }
+    //   else {
+    //     console.log(newRecipe)
+    //   }
+    // })
+    // data.search = newData.search;
     setStore(data)
     return data
   }
