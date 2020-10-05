@@ -77,7 +77,9 @@ const arrRecipes = (init, data) => {
   return result;
 }
 
-const renderRecipes = (init, data, callback = () => {}) => {
+const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
+
+const renderRecipes = async (init, data, callback = () => {}) => {
 
   const $store = { data: JSON.parse(localStorage.getItem('cuisinier_rebelle'))}
   console.log($store);
@@ -151,16 +153,13 @@ const renderRecipes = (init, data, callback = () => {}) => {
     }
 
     console.log(params)
-    cards(params);
+    await cards(params);
   }
-  callback();
+  await callback();
+  return true
 }
 
-export const lazyLoad = (init) => {
-
-  // console.log(init);
-  // console.log(init.device);
-  // GET https://secure.example.com?user_email=alice@example.com&user_token=1G8_s7P-V-4MGojaKD7a
+export const lazyLoad = async (init) => {
 
   let data = init.data;
   const options = init.options;
@@ -168,20 +167,16 @@ export const lazyLoad = (init) => {
   let dataRecipes = init.dataRecipes;
   console.log(dataRecipes)
 
-  // if (init.currentPage && init.currentPage.match(/.*\/recipes/)) {
-  //   init.url = `/api/v1/recipes?recipes=true`;
-  // }
-
-
-  const cardNodeElementAnchor = (data) => document.querySelector(`[data-recipe="${data.recipes[data.recipes.length-1].recipe.id}"]`);
-
   const skeleton = document.querySelector('#skeleton');
-  Promise.resolve(data).then(() => {
-    console.log(data)
+
+  // Promise.resolve(data).then(() => {
+    console.log(data);
     if (data.recipes.length > 0) {
       data.recipes = dataRecipes.slice(0, 24);
-      setTimeout(() => {
-        renderRecipes(init, data, () => {
+      // setTimeout(() => {
+        const result = await renderRecipes(init, data, () => {});
+        console.log(result)
+        if (result) {
           if (skeleton) skeleton.remove();
           const cardsMax = max(setCardsParams().count);
           console.log(cardsMax);
@@ -193,10 +188,15 @@ export const lazyLoad = (init) => {
           console.log(data.recipes.length-1);
           console.log(data.recipes[data.recipes.length-1]);
           console.log(cardNodeElement);
-          let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
+          // let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
+          let cardNodeElementTop = cardNodeElement.offsetTop;
+          console.log(cardNodeElementTop);
           window.addEventListener('scroll', () => {
             console.log(`cardNodeElementTop ${cardNodeElementTop}`)
             let trigger = Math.round(window.scrollY + window.innerHeight);
+            console.log(window.innerHeight);
+            console.log(`trigger: ${trigger}`);
+            console.log(`cardNodeElementTop: ${cardNodeElementTop}`);
             if (cardNodeElement && renderCards) {
               if (trigger >= cardNodeElementTop) {
                 let newCardsQty = cardsQty + data.recipes.length;
@@ -249,19 +249,20 @@ export const lazyLoad = (init) => {
               }
             }
           });
-        });
-      }, 0)
+        }
+        // });
+      // }, 0)
     }
     else {
       // document.querySelector('#skeleton').remove();
       if (skeleton) skeleton.remove();
     }
-  })
-  .then(() => {
+  // })
+  // .then(() => {
     if (init.userSignedIn && init.device === 'desktop') {
       setTimeout(() => {
         newRecipeButton(location);
       },1500);
     }
-  })
+  // })
 }
