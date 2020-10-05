@@ -17,9 +17,9 @@ export const cards = (params, callback = () => {}) => {
   return true;
 }
 
-const setCards = async (params, callback = () => {}) => {
+const setCards = (params, callback = () => {}) => {
 
-  const cardsParams = await setCardsParams();
+  const cardsParams = setCardsParams();
 
   params.count = cardsParams.count;
   params.width = cardsParams.width;

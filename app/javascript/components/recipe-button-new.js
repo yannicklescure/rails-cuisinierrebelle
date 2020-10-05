@@ -68,7 +68,7 @@ export const newRecipeButton = (location) => {
       const expandText = (text) => {
         text = text.replace(/\s/g, '\u00A0');
         const textArray = text.split('');
-        console.log(textArray);
+        // console.log(textArray);
         if (newRecipeButtonText.innerText === '') {
           textArray.forEach((char, index) => {
             setTimeout(() => {
@@ -85,14 +85,14 @@ export const newRecipeButton = (location) => {
       const shrinkText = () => {
         // text = text.replace(/\s/g, '\u00A0');
         const textArray = newRecipeButtonText.innerText.split('');
-        console.log(textArray);
+        // console.log(textArray);
         let str = '';
         if (textArray.length > 0) {
           textArray.forEach((char, index) => {
             setTimeout(() => {
               str = newRecipeButtonText.innerText;
               newRecipeButtonText.innerText = str.substring(0, str.length - 1);
-              console.log(newRecipeButtonText.innerText);
+              // console.log(newRecipeButtonText.innerText);
             }, index * 5);
           })
         }

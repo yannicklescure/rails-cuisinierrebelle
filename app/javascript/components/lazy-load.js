@@ -11,9 +11,7 @@ const max = x => {
 const filterRecipes = (el, recipes) => {
   console.log(el)
   console.log(recipes)
-  return recipes.filter(recipe => {
-    if(recipe.user.slug === el) return recipe;
-  });
+  return recipes.filter(recipe => recipe.user.slug === el);
 }
 
 const arrRecipes = (init, data) => {
@@ -192,8 +190,9 @@ export const lazyLoad = (init) => {
           let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
           // console.log(cardsQty);
           let cardNodeElement = cardNodeElementAnchor(data);
-          console.log(data.recipes)
-          console.log(cardNodeElement)
+          console.log(data.recipes.length-1);
+          console.log(data.recipes[data.recipes.length-1]);
+          console.log(cardNodeElement);
           let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
           window.addEventListener('scroll', () => {
             console.log(`cardNodeElementTop ${cardNodeElementTop}`)
