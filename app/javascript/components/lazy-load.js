@@ -194,9 +194,9 @@ export const lazyLoad = async (init) => {
           window.addEventListener('scroll', () => {
             console.log(`cardNodeElementTop ${cardNodeElementTop}`)
             let trigger = Math.round(window.scrollY + window.innerHeight);
-            console.log(window.innerHeight);
-            console.log(`trigger: ${trigger}`);
-            console.log(`cardNodeElementTop: ${cardNodeElementTop}`);
+            // console.log(window.innerHeight);
+            // console.log(`trigger: ${trigger}`);
+            // console.log(`cardNodeElementTop: ${cardNodeElementTop}`);
             if (cardNodeElement && renderCards) {
               if (trigger >= cardNodeElementTop) {
                 let newCardsQty = cardsQty + data.recipes.length;

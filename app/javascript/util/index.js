@@ -65,8 +65,8 @@ export const setInit = (location) => {
     query: false,
   };
 
-  console.log(location.query);
   if (location.query) {
+    console.log(location.query);
     init.url = `/api/v1/recipes?query=${location.query}`;
     init.query = true;
   }
