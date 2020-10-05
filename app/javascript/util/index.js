@@ -1,7 +1,7 @@
 import { cookiesToObject } from "../components/cookies";
 
 export const scrollToTop = (button) => {
-  button.addEventListener('click', (event) => {
+  button.addEventListener('click', async (event) => {
     if (window.scrollY > 0) {
       event.preventDefault();
       const scrollOptions = {
@@ -12,15 +12,22 @@ export const scrollToTop = (button) => {
       window.scrollTo(scrollOptions);
     }
     else {
-      const dataStr = localStorage.getItem('cuisinier_rebelle');
-      if (dataStr) {
-        const data = JSON.parse(dataStr);
-        const now = new Date().getTime();
-        if (now > data.userLogIn + 3 * 60 * 1000) { // refesh data after 3 minutes
-          localStorage.removeItem('cuisinier_rebelle');
-          // window.location.reload();
-        }
+      const root = document.querySelector('#root');
+      if (root) {
+        const { currentLocation } = await import("../components/location");
+        const result = await currentLocation();
+        const { recipes } = await import("../pages/recipes");
+        recipes(result);
       }
+      // const dataStr = localStorage.getItem('cuisinier_rebelle');
+      // if (dataStr) {
+      //   const data = JSON.parse(dataStr);
+      //   const now = new Date().getTime();
+      //   if (now > data.userLogIn + 3 * 60 * 1000) { // refesh data after 3 minutes
+      //     localStorage.removeItem('cuisinier_rebelle');
+      //     // window.location.reload();
+      //   }
+      // }
     }
   });
 }

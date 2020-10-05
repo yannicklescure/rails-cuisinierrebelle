@@ -88,9 +88,9 @@ const initApp = async () => {
   // }
 
   const { currentLocation } = await import("../components/location");
-  Promise.resolve(currentLocation())
+  const result = await currentLocation();
   // new Promise( resolve => currentLocation(), error => console.log(error))
-  .then(async result => {
+  if (result) {
     console.log(result);
     let currentLang = result.currentLang;
     let currentController = result.currentController;
@@ -172,7 +172,7 @@ const initApp = async () => {
       location: result,
       device: device
     });
-  });
+  }
 }
 
 window.addEventListener('scroll', () => {
