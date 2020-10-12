@@ -44,10 +44,10 @@ const alertJQ = () => {
 
 export const flashes = () => {
 
-  document.addEventListener('DOMContentLoaded', (event) => {
+  // document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(() => {
       document.querySelector('.alert').style.display = 'block';
       triggerClick({close: '.close', alert: '.alert'}, alertJQ);
     }, 1500);
-  });
+  // });
 }
