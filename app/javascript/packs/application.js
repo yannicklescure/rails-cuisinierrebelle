@@ -43,6 +43,7 @@ import '../stylesheets/application';
 // import { fetchRecipes } from "../util";
 // import { setInit } from "../util";
 
+// import { flashes } from "../components/flashes";
 
 const initLoader = async () => {
   if ((/localhost/).test(document.domain)) document.domain = "localhost";
@@ -51,13 +52,18 @@ const initLoader = async () => {
   if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
     document.domain = "cuisinierrebelle.com";
   }
-  console.log(document.domain)
+  console.log(document.domain);
 
-  if(document.querySelector('.notice') != null) {
-    const { flashes } = await import("../components/flashes");
-    flashes();
-    $('[data-toggle="tooltip"]').tooltip();
-  }
+  // document.addEventListener('change', async () => {
+    console.log('KDNFGFNGDFNPSDFSDFSDFSDFSDFDFJ');
+    const notice = document.querySelector('.notice');
+    if(notice != null) {
+      const { flashes } = await import("../components/flashes");
+      flashes();
+      $('[data-toggle="tooltip"]').tooltip();
+    }
+  // });
+
 //   const WebFont = require('webfontloader');
 
 //   WebFont.load({
