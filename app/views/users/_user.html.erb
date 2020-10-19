@@ -7,14 +7,14 @@
   </div>
   <% if user_signed_in? %>
     <% if current_user.is_following?(user.id) %>
-      <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'btn btn-dark btn-sm py-0' %>
+      <%= link_to t('.unfollow'), unfollow_user_path(user.id), method: :post, remote: true, class: 'mr-3 btn btn-dark btn-sm py-0' %>
     <% elsif user != current_user %>
-      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'btn btn-dark btn-sm py-0' %>
+      <%= link_to t('.follow'), follow_user_path(user.id), method: :post, remote: true, class: 'mr-3 btn btn-dark btn-sm py-0' %>
     <% end %>
     <% if @recipe && @recipe.user == current_user %>
-    <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'btn btn-sm btn-info py-0' %>
+    <%= link_to t('.edit_recipe'), edit_recipe_path(@recipe), class: 'mr-3 btn btn-sm btn-info py-0' %>
     <% end %>
   <% else %>
-      <%= link_to t('.follow'), new_user_session_path, class: 'btn btn-dark btn-sm py-0' %>
+      <%= link_to t('.follow'), new_user_session_path, class: 'mr-3 btn btn-dark btn-sm py-0' %>
   <% end %>
 </div>
