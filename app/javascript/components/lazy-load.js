@@ -178,20 +178,22 @@ export const lazyLoad = async (init) => {
         console.log(result)
         if (result) {
           if (skeleton) skeleton.remove();
-          const cardsMax = max(setCardsParams().count);
+          const cardsMax = await max(setCardsParams().count);
           console.log(cardsMax);
           let renderCards = data.recipes.length % cardsMax === 0;
           console.log(renderCards);
           let cardsQty = data.recipes.length > cardsMax ? cardsMax : data.recipes.length;
           // console.log(cardsQty);
-          let cardNodeElement = cardNodeElementAnchor(data);
+          let cardNodeElement = await cardNodeElementAnchor(data);
           console.log(data.recipes.length-1);
           console.log(data.recipes[data.recipes.length-1]);
           console.log(cardNodeElement);
+          // cardNodeElement.classList.remove('border-0');
+          // cardNodeElement.classList.add('border-danger');
           // let cardNodeElementTop = cardNodeElement ? cardNodeElement.offsetParent.offsetTop : 75;
           let cardNodeElementTop = cardNodeElement.offsetTop;
           console.log(cardNodeElementTop);
-          window.addEventListener('scroll', () => {
+          window.addEventListener('scroll', async () => {
             console.log(`cardNodeElementTop ${cardNodeElementTop}`)
             let trigger = Math.round(window.scrollY + window.innerHeight);
             // console.log(window.innerHeight);
@@ -209,32 +211,40 @@ export const lazyLoad = async (init) => {
                 }
                 // root.dataset.recipes = newCardsQty;
                 renderCards = false;
-                const appendCards = (init, data) => {
+                const appendCards = async (init, data) => {
                   console.log(data.recipes)
-                  return renderRecipes(init, data, () => {
-                    cardsQty = newCardsQty;
-                    cardNodeElement = cardNodeElementAnchor(data);
-                    if (cardNodeElement) cardNodeElementTop = window.scrollY + cardNodeElement.getBoundingClientRect().top;
-                    renderCards = data.recipes.length % cardsMax === 0;
-                    const result = {
-                      cardNodeElementTop: cardNodeElementTop,
-                      renderCards: renderCards,
-                    }
-                    console.log(result)
-                    return result
-                  });
-                }
-                let appendCardsResult = {}
-                console.log(dataRecipes.length >= newCardsQty)
+                  await renderRecipes(init, data);
+                  cardsQty = newCardsQty;
+                  cardNodeElement = await cardNodeElementAnchor(data);
+                  console.log(cardNodeElement);
+                  if (cardNodeElement) {
+                    cardNodeElementTop = parseInt(window.scrollY + cardNodeElement.getBoundingClientRect().top);
+                    console.log(cardNodeElementTop);
+                    // cardNodeElement.classList.remove('border-0');
+                    // cardNodeElement.classList.add('border-primary');
+                  }
+                  const result = {
+                    cardNodeElementTop: cardNodeElementTop,
+                    renderCards: data.recipes.length % cardsMax === 0,
+                  };
+                  console.log(result);
+                  return result
+                };
+                let appendCardsResult = {};
+                console.log(dataRecipes.length >= newCardsQty);
                 // if (dataRecipes.length >= newCardsQty) {
                   data.recipes = dataRecipes.slice(0, newCardsQty);
                   console.log(data.recipes)
-                  new Promise( resolve => appendCards(init, data), error => console.log(error))
-                    .then((result) => {
-                      console.log(result)
-                      cardNodeElementTop = result.cardNodeElementTop;
-                      renderCards = result.renderCards;
-                    })
+                  // new Promise( resolve => appendCards(init, data), error => console.log(error))
+                  //   .then((result) => {
+                  //     console.log(result)
+                  //     cardNodeElementTop = result.cardNodeElementTop;
+                  //     renderCards = result.renderCards;
+                  //   })
+                  const result = await appendCards(init, data);
+                  console.log(result);
+                  cardNodeElementTop = result.cardNodeElementTop;
+                  renderCards = result.renderCards;
                 // }
                 // else {
                 //   appendCardsResult = fetchRecipes(init).then(response => {
