@@ -1,14 +1,9 @@
-import { cookiesToObject } from "../components/cookies";
-import { lazyLoad } from "../components/lazy-load";
-import { setCardsParams } from "../util";
-import { localRecipes } from "../util";
-import { fetchRecipes } from "../util";
-import { formattedTime } from "../util";
-import { setInit } from "../util";
-import { setStore } from "../util";
-import { setSkeleton } from "../components/skeleton";
+// const { cookiesToObject } = await import("../components/cookies");
+// const { setCardsParams } = await import("../util");
+// const { formattedTime } = await import("../util");
+// const { setSkeleton } = await import("../components/skeleton");
 
-const setLazyLoad = (init, data) => {
+const setLazyLoad = async (init, data) => {
   console.log(data);
   if (!init.dataRecipes) init.dataRecipes = data.recipes;
   init.data = data;
@@ -16,6 +11,7 @@ const setLazyLoad = (init, data) => {
     init.data = data.search.recipes.length > 0 ? data.search : data
     init.dataRecipes = init.data.recipes;
   }
+  const { lazyLoad } = await import("../components/lazy-load");
   lazyLoad(init);
 }
 
@@ -26,7 +22,8 @@ const getLastRecipeTimestamp = (init) => {
 }
 
 export const recipes = async (location) => {
-  const init = setInit(location);
+  const { setInit } = await import("../util");
+  const init = await setInit(location);
   const lastRecipeTimestamp = await getLastRecipeTimestamp(init);
   setRecipes(init, lastRecipeTimestamp);
   console.log(lastRecipeTimestamp);
@@ -37,22 +34,27 @@ export const recipes = async (location) => {
 
 const setRecipes = async (init, lastRecipeTimestamp) => {
 
-  let data = await localRecipes(init);
   console.log(init);
+  const { localRecipes } = await import("../util");
+  let data = await localRecipes(init);
   // Promise.resolve(data && data.timestamp < lastRecipeTimestamp)
+  const { fetchRecipes } = await import("../util");
   if (data) {
     if (data.timestamp < lastRecipeTimestamp) {
       localStorage.removeItem('cuisinier_rebelle'); // To remove
       // data = null;
       console.log('fetch server');
       init.url = `/api/v1/recipes`;
-      fetchRecipes(init).then(result => setLazyLoad(init, result));
+      const result = await fetchRecipes(init);
+      console.log(result)
+      setLazyLoad(init, result);
     }
     else {
       console.log(lastRecipeTimestamp);
       console.log(data.timestamp);
       console.log('fetch localStorage');
       console.log(typeof data);
+      const { setStore } = await import("../util");
       setStore(data);
       console.log(init.url);
       if (init.url.match(/.+?query=.+/)) {
@@ -60,7 +62,9 @@ const setRecipes = async (init, lastRecipeTimestamp) => {
         // init.url = `/api/v1/recipes`;
         // init.dataRecipes = data.state.recipes;
         // console.log(init.dataRecipes)
-        fetchRecipes(init).then(result => setLazyLoad(init, result));
+        // fetchRecipes(init).then(result => setLazyLoad(init, result));
+        const result = await fetchRecipes(init)
+        setLazyLoad(init, result);
       }
 
       else if (init.currentController === 'u' && init.currentPage.match(/.*\/bookmarks/)) {

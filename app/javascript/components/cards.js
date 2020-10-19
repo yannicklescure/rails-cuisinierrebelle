@@ -1,6 +1,5 @@
 import { card } from "./card";
 import { grid } from "./grid";
-import { setCardsParams } from "../util";
 import { cardHeart } from "./card-heart";
 
 export const cards = (params, callback = () => {}) => {
@@ -17,9 +16,10 @@ export const cards = (params, callback = () => {}) => {
   return true;
 }
 
-const setCards = (params, callback = () => {}) => {
+const setCards = async (params, callback = () => {}) => {
 
-  const cardsParams = setCardsParams();
+  const { setCardsParams } = await import("../util");
+  const cardsParams = await setCardsParams();
 
   params.count = cardsParams.count;
   params.width = cardsParams.width;
@@ -28,6 +28,23 @@ const setCards = (params, callback = () => {}) => {
 
   const cards = params.array.map(item => card(params, item));
   console.log(cards);
+  const data = JSON.parse(localStorage.getItem('cuisinier_rebelle'));
+  let array = cards;
+  console.log(data)
+  console.log(data.getters)
+  console.log(data.getters.cards)
+  if (data.getters.cards) {
+    array = data.getters.cards;
+    let tmp = null;
+    cards.forEach(card => {
+      tmp = array.filter(el => el === card);
+      if (tmp.length === 0) {
+        array.push(card);
+      };
+    });
+  }
+  data.getters.cards = array;
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify(data));
   const root = document.querySelector('#root');
   root.insertAdjacentHTML('beforeEnd', cards.join(''));
 

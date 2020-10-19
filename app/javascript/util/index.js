@@ -1,4 +1,3 @@
-import { cookiesToObject } from "../components/cookies";
 
 export const scrollToTop = (button) => {
   button.addEventListener('click', async (event) => {
@@ -32,7 +31,7 @@ export const scrollToTop = (button) => {
   });
 }
 
-export const setInit = (location) => {
+export const setInit = async (location) => {
 
   const max = x => {
     if (x === 5) return 25
@@ -40,6 +39,7 @@ export const setInit = (location) => {
   }
   const body = document.querySelector('body');
   const userSignedIn = body.dataset.user === 'true';
+  const { cookiesToObject } = await import("../components/cookies");
   const cookies = cookiesToObject(document.cookie);
   const device = body.dataset.device;
   const cardsMaxCount = max(setCardsParams().count);
@@ -99,15 +99,24 @@ const setStoreState = (data) => {
   }
 }
 
-const setStoreGetters = (data) => {
+const gettersCards = (data) => {
+  console.log(data);
+  return []
+}
+
+const gettersUsers = (data) => {
   const arr = [];
   data.users.forEach(user => {
     user.recipes = user.recipes.sort((a, b) => (a.recipe.id > b.recipe.id) ? 1 : -1).reverse();
     arr.push(user);
   });
-  data.users = arr;
+  return arr;
+}
+
+const setStoreGetters = (data) => {
   return {
-    users: data.users,
+    cards: gettersCards(data),
+    users: gettersUsers(data),
   }
 }
 
@@ -125,25 +134,6 @@ export const fetchRecipes = (init) => {
   console.log(init);
   const data = localRecipes(init);
   if (data && !init.query) {
-    const recipes = data.recipes;
-    console.log(recipes)
-    // recipes.timestamp = new Date().getTime();
-    // const newRecipes = newData.recipes;
-    // console.log(newRecipes);
-    // newRecipes.forEach(newRecipe => {
-    //   // const el = recipes.filter(recipe => recipe === newRecipe);
-    //   // console.log(newRecipe)
-    //   const el = recipes.filter(recipe => recipe.recipe.id === newRecipe.recipe.id)
-    //   // console.log(el.length);
-    //   // if (!recipes.includes(newRecipe)) {
-    //   if (el.length === 0) {
-    //     data.recipes.push(newRecipe)
-    //   }
-    //   else {
-    //     console.log(newRecipe)
-    //   }
-    // })
-    // data.search = newData.search;
     setStore(data)
     return data
   }
