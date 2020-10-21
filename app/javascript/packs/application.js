@@ -23,7 +23,7 @@ jQuery.htmlPrefilter = function( html ) {
 };
 
 import 'jquery'
-import '../src/plugins' // note the function usage!
+import '../vanillaJS/src/plugins' // note the function usage!
 // import '../src/fonts' // note the function usage!
 import '../stylesheets/application';
 
@@ -55,10 +55,9 @@ const initLoader = async () => {
   console.log(document.domain);
 
   // document.addEventListener('change', async () => {
-    console.log('KDNFGFNGDFNPSDFSDFSDFSDFSDFDFJ');
     const notice = document.querySelector('.notice');
     if(notice != null) {
-      const { flashes } = await import("../components/flashes");
+      const { flashes } = await import("../vanillaJS/components/flashes");
       flashes();
       $('[data-toggle="tooltip"]').tooltip();
     }
@@ -77,7 +76,7 @@ const initLoader = async () => {
 const initApp = async () => {
   const navbarBrandButton = document.querySelector('.navbar-brand');
   if (navbarBrandButton) {
-    const { scrollToTop } = await import("../util");
+    const { scrollToTop } = await import("../vanillaJS/util");
     scrollToTop(navbarBrandButton);
   }
   // document.querySelector('#navbar-main').classList.remove('d-none');
@@ -93,7 +92,7 @@ const initApp = async () => {
   //   navbarBrand.style.padding = "5px 0";
   // }
 
-  const { currentLocation } = await import("../components/location");
+  const { currentLocation } = await import("../vanillaJS/components/location");
   const result = await currentLocation();
   // new Promise( resolve => currentLocation(), error => console.log(error))
   if (result) {
@@ -105,7 +104,7 @@ const initApp = async () => {
     const userSignedIn = document.querySelector('body').dataset.user === 'true';
 
     if (!currentController && !currentPage && !userSignedIn) {
-      const { scrollToAnchor } = await import("../components/scroll-to-anchor");
+      const { scrollToAnchor } = await import("../vanillaJS/components/scroll-to-anchor");
       scrollToAnchor("#recipes-cards");
       const bannerCtaBoxTitle = document.querySelector('#banner-cta-box-title');
       if (bannerCtaBoxTitle && window.innerWidth > 375) {
@@ -117,63 +116,63 @@ const initApp = async () => {
     // console.log(device);
     if (device != 'desktop') {
       // document.querySelector('body').style.paddingTop = '105px';
-      const { shareButton } = await import("../components/share-button");
+      const { shareButton } = await import("../vanillaJS/components/share-button");
       shareButton();
       console.log(userSignedIn)
       if (userSignedIn) {
-        const { navbarBottom } = await import("../components/navbar-bottom");
+        const { navbarBottom } = await import("../vanillaJS/components/navbar-bottom");
         navbarBottom(result);
       }
     }
 
-    const { googleAdsNoNavbar } = await import("../components/google-ads");
+    const { googleAdsNoNavbar } = await import("../vanillaJS/components/google-ads");
     googleAdsNoNavbar();
 
     const root = document.querySelector('#root');
     // (async () => {
       if (!currentController && !currentPage) {
-        const { home } = await import("../pages/home");
+        const { home } = await import("../vanillaJS/pages/home");
         home();
       }
       if (currentPage && currentPage.match(/edit\..*/)) {
-        const { btnClick } = await import("../components/button");
+        const { btnClick } = await import("../vanillaJS/components/button");
         btnClick();
       }
       if (currentController && currentController === 'r') {
-        const { recipe } = await import("../pages/recipe");
+        const { recipe } = await import("../vanillaJS/pages/recipe");
         recipe(result);
       }
       if (currentController === 'u' && currentPage != null) {
-        const { userBanner } = await import("../components/user-banner");
+        const { userBanner } = await import("../vanillaJS/components/user-banner");
         userBanner();
       }
       if (currentPage && currentPage.match(/\/settings/) && userSignedIn) {
-        const { settings } = await import("../pages/settings");
+        const { settings } = await import("../vanillaJS/pages/settings");
         settings();
       }
       if (currentController === 'tools') {
-        const { alerts } = await import("../components/alerts");
+        const { alerts } = await import("../vanillaJS/components/alerts");
         alerts();
       }
       if (currentController === 'top100') {
-        const { top100 } = await import("../pages/top100");
+        const { top100 } = await import("../vanillaJS/pages/top100");
         top100();
       }
       if (currentController === 'conversion') {
-        const { conversion } = await import("../pages/conversion");
+        const { conversion } = await import("../vanillaJS/pages/conversion");
         conversion();
       }
       if (currentController === 'admin' && userSignedIn) {
-        const { admin } = await import("../pages/admin");
+        const { admin } = await import("../vanillaJS/pages/admin");
         admin(result);
       }
       if (root) {
-        const { recipes } = await import("../pages/recipes");
+        const { recipes } = await import("../vanillaJS/pages/recipes");
         recipes(result);
       }
     // })();
 
-    const { searchInput } = await import("../components/search-input");
+    const { searchInput } = await import("../vanillaJS/components/search-input");
     searchInput({
       location: result,
       device: device
