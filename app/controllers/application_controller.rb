@@ -1,7 +1,18 @@
 require "base64"
 
 class ApplicationController < ActionController::Base
+  # protect_from_forgery with: :null_session
+  # protect_from_forgery with: :exception
+  # protect_from_forgery with: :null_session, prepend: true
+  # protect_from_forgery with: :exception, prepend: true
+
+  # include ActionController::Cookies
+  # include ActionController::RequestForgeryProtection
+
+  protect_from_forgery with: :exception
+
   before_action :authenticate_user!, :user_authentication, :set_locale
+  before_action :set_csrf_cookie
   # before_filter :set_locale # get locale directly from the user model
 
   include Pundit
@@ -70,11 +81,12 @@ class ApplicationController < ActionController::Base
   end
 
   def user_authentication
-    if user_signed_in?
-      cookies[:user_email] = Base64.encode64(current_user.email)
-      cookies[:user_token] = Base64.encode64(current_user.authentication_token)
-      cookies[:locale] = session[:locale]
-    end
+    # if user_signed_in?
+      # session[:user_id] = user.id
+      # cookies[:user_email] = Base64.encode64(current_user.email)
+      # cookies[:user_token] = Base64.encode64(current_user.authentication_token)
+      # cookies[:locale] = session[:locale]
+    # end
   end
 
   def default_url_options
@@ -82,6 +94,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_csrf_cookie
+    cookies["CSRF-TOKEN"] = form_authenticity_token
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

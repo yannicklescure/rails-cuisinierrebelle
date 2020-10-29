@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_122723) do
+ActiveRecord::Schema.define(version: 2020_10_24_002605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 2020_10_01_122723) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "authentication_tokens", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.datetime "last_used_at"
+    t.integer "expires_in"
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["body"], name: "index_authentication_tokens_on_body"
+    t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -112,6 +125,12 @@ ActiveRecord::Schema.define(version: 2020_10_01_122723) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "jwt_denylist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -258,6 +277,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_122723) do
 
   add_foreign_key "abouts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "authentication_tokens", "users"
   add_foreign_key "bookmarks", "recipes"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comment_likes", "comments"

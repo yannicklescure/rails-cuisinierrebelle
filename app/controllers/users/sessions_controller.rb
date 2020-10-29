@@ -12,8 +12,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    # binding.pry
     self.resource = warden.authenticate!(auth_options)
+    # binding.pry
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
@@ -32,11 +32,18 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
     # binding.pry
+
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     set_flash_message! :notice, :signed_out if signed_out
     yield if block_given?
     session.delete :locale
     respond_to_on_destroy
+  end
+
+  private
+
+  # this is invoked before destroy and we have to override it
+  def verify_signed_out_user
   end
 
   protected

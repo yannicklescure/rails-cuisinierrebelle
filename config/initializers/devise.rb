@@ -13,6 +13,7 @@ Devise.setup do |config|
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
+  # config.parent_controller = "ActionController::Base"
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -88,7 +89,8 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth]
+  # config.skip_session_storage = [:http_auth]
+  config.skip_session_storage = [:http_auth, :params_auth]
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -251,7 +253,8 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  # config.navigational_formats = ['*/*', :html]  config.navigational_formats = []
+  config.navigational_formats = []
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -260,7 +263,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
+  # config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -269,6 +272,15 @@ Devise.setup do |config|
   # config.warden do |manager|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
+  # end
+
+  # config.warden do |manager|
+  #   # Registering your new Strategy
+  #   manager.strategies.add(:jwt, Devise::Strategies::JsonWebToken)
+
+  #   # Adding the new JWT Strategy to the top of Warden's list,
+  #   # Scoped by what Devise would scope (typically :user)
+  #   manager.default_strategies(scope: :user).unshift :jwt
   # end
 
   # ==> Mountable engine configurations
@@ -297,4 +309,18 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.jwt do |jwt|
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.request_formats = {
+      user: [nil, :json],
+    }
+    jwt.dispatch_requests = [
+      ['POST', %r{^/api/v1/users/sign_in$}],
+      ['GET', %r{^/$}]
+    ]
+    jwt.revocation_requests = [
+      ['DELETE', %r{^/api/v1/users/sign_out$}],
+    ]
+  end
 end

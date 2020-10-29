@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'shared/header' %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= t('.cuisinier_rebelle_social_recipe') %></title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all' %>
+    <%= render 'layouts/google_analytics' %>
   </head>
-  <body
-    class="d-flex flex-column"
-    data-user="<%= user_signed_in? %>"
-    data-device="<%= client.device_type %>"
-    style="padding-top: <%= !client.device_type.nil? && client.device_type.match(/desktop/) ? 59 : 113 %>px;<%= "padding-bottom: 42px;" if !client.device_type.nil? && client.device_type.match(/smartphone/) %>">
-    <%= render 'layouts/facebook' %>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <div class="container mt-5 mb-5">
-      <%= yield %>
+  <body>
+    <div class="container">
+      <div class="d-flex vh-100 justify-content-center">
+        <%= yield %>
+      </div>
     </div>
-    <%= render 'shared/footer' %>
-
-    <%#= javascript_include_tag 'application' %>
+    <%= javascript_packs_with_chunks_tag 'application' %>
   </body>
 </html>

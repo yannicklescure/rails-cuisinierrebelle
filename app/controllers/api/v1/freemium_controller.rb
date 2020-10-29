@@ -1,6 +1,6 @@
 class Api::V1::FreemiumController < Api::V1::BaseController
   # acts_as_token_authentication_handler_for User, except: [ :index, :show ]
-  acts_as_token_authentication_handler_for User
+  before_action :authenticate_user!
   before_action :set_user, only: [ :show, :update ]
 
   def show

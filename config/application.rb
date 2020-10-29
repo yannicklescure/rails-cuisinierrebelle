@@ -17,6 +17,8 @@ module RailsCuisinierRebelle
 
     config.middleware.use Rack::Deflater
 
+    config.middleware.delete ActionDispatch::Session::CookieStore
+
     # https://github.com/iain/http_accept_language
     config.i18n.available_locales = %w(en fr es)
 

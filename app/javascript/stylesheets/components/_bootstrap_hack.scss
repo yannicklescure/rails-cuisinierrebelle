@@ -1,0 +1,60 @@
+textarea:focus, input:focus, .uneditable-input:focus,
+.form-control:focus,
+.custom-select:focus,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+// textarea:focus, input:focus, .uneditable-input:focus {
+//     border-color: rgba(229, 103, 23, 0.8) !important;
+//     box-shadow: 0, 0 !important;
+//     outline: 0 none !important;
+// }
+
+
+// .card {
+//   border-radius: .25rem !important;
+// }
+
+.mouse-pointer {
+  cursor: pointer
+}
+
+p {
+  margin: 0;
+}
+
+.dropdown-item.active,
+.dropdown-item:active,
+.dropdown-item:hover {
+    color: #fff;
+    background-color: $gray-800;
+}
+
+/* this CS forms the triangles */
+.dropdown-triangle:after,
+.dropdown-triangle:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+
+/* this border color controlls the color of the triangle (what looks like the fill of the triangle) */
+.dropdown-triangle:after {
+  right: 25px;
+  border-color: transparent transparent $white transparent;
+  border-width: 7px;
+}
+
+/* this border color controlls the outside, thin border */
+.dropdown-triangle:before {
+  right: 24px;
+  border-color: transparent transparent darken($gray-300, 15%) transparent;
+  border-width: 8px;
+}

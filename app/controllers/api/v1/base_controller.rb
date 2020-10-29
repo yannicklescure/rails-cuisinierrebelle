@@ -1,4 +1,6 @@
 class Api::V1::BaseController < ActionController::API
+  # protect_from_forgery with: :null_session
+
   include Pundit
 
   after_action :verify_authorized, except: :index
@@ -7,6 +9,28 @@ class Api::V1::BaseController < ActionController::API
   rescue_from StandardError,                with: :internal_server_error
   rescue_from Pundit::NotAuthorizedError,   with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  def render_resource(resource)
+    # binding.pry
+    if resource.errors.empty?
+      render json: resource
+    else
+      validation_error(resource)
+    end
+  end
+
+  def validation_error(resource)
+    render json: {
+      errors: [
+        {
+          status: '400',
+          title: 'Bad Request',
+          detail: resource.errors,
+          code: '100'
+        }
+      ]
+    }, status: :bad_request
+  end
 
   private
 

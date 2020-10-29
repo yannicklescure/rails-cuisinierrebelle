@@ -387,6 +387,9 @@ fr:
     users:
       cooking_recipes_and_more: Recettes de cuisine et plus
       cuisinier_rebelle_social_recipe: Cuisinier rebelle, recettes sociales
+    vue:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
   notifications:
     index:
       liked_your_recipe: a aimé ta recette.
@@ -648,7 +651,7 @@ fr:
       search_btn_back_html: <i class="material-icons md-24">replay</i>
       search_btn_html: <i class="material-icons md-24">search</i>
       share_btn_html: <i class="material-icons md-24">share</i>
-      top_100_html: '<i class="material-icons md-24">whatshot</i>'
+      top_100_html: <i class="material-icons md-24">whatshot</i>
       whatshot_btn_html: <i class="material-icons md-24">whatshot</i>
     navbar-small-modal:
       are_you_sure: Êtes-vous sûr ?

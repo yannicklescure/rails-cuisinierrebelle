@@ -381,6 +381,9 @@ en:
     users:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+    vue:
+      cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
   notifications:
     index:
       liked_your_recipe: Liked your recipe.
