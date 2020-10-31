@@ -17,7 +17,7 @@
     <div class="order-0 order-sm-1 d-flex align-items-center">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <% if current_user.locale.nil? %>
+          <%# if current_user.locale.nil? %>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.languages_html') %>
@@ -28,7 +28,7 @@
               <%= link_to t('.french_html'), current_page_params.merge(locale: :fr), class: "dropdown-item" %>
             </div>
           </li>
-          <% end %>
+          <%# end %>
           <% if current_user.admin || current_user.moderator %>
           <%= link_to t('.admin_html'), admin_path(), class: "nav-link" %>
           <% end %>
