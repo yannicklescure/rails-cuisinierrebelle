@@ -21,7 +21,7 @@
           </div>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-          <div id="print" class="mouse-pointer ml-3 text-decoration-none text-body">
+          <div id="print" @click="print" class="mouse-pointer ml-3 text-decoration-none text-body">
             <i class="material-icons md-18 d-flex text-body">print</i>
           </div>
           <div class="mouse-pointer ml-3 text-body text-decoration-none d-flex align-items-center">
@@ -129,6 +129,20 @@ export default {
         window.history.pushState("object or string", "Title", this.$route.path);
       }
     },
+    googleAdsNoPrint () {
+      const googleAutoPlacedAds = this.$el.querySelectorAll('.google-auto-placed');
+      if (googleAutoPlacedAds) {
+        googleAutoPlacedAds.forEach(googleAutoPlacedAd => {
+          googleAutoPlacedAd.classList.add('d-print-none')
+        })
+      } else {
+        console.log('no ads')
+      }
+    },
+    print () {
+      this.googleAdsNoPrint()
+      window.print()
+    }
   },
   computed: {
     item () {

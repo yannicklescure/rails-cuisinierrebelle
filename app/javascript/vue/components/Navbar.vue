@@ -2,7 +2,7 @@
   <div
     :key="componentKey"
     ref="navbar"
-    :class="['navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white mb-3']"
+    :class="['d-print-none navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white mb-3']"
     >
     <div class="d-flex align-items-center">
       <router-link
