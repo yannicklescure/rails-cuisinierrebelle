@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100 rounded border-0 my-3 m-md-2" :ref="item.recipe.id">
+  <div :ref="item.recipe.id">
     <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <router-link

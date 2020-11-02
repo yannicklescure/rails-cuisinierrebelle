@@ -1,7 +1,6 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }">
-    <p>{{ item }}</p>
-    <div v-if="item" class="container mt-3 mb-5 recipe" style="height: auto !important;">
+    <div v-if="item" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
@@ -73,7 +72,7 @@
     <card-small v-for="index in 5" :key="index" :componentKey="index" />
   </div>
 
-  <div id="comments" class="d-print-none">
+  <div id="comments" ref="comments" class="d-print-none">
   <hr>
     <div id="comments-count" class="d-flex">
       No comment
@@ -112,6 +111,24 @@ export default {
     getNavbarHeight () {
       return this.$store.getters.navbarHeight
     },
+    scroll2Anchor () {
+      const currentPage = this.$route.fullpath
+      const target = this.$route.hash
+      console.log(this.$route)
+      console.log(target)
+      if(target) {
+        console.log(this.$refs.comments)
+        let element = this.$el.querySelector(target)
+
+        const scrollOptions = {
+          top: element.offsetTop - this.navbarHeight,
+          left: 0,
+          behavior: 'smooth'
+        };
+        window.scrollTo(scrollOptions);
+        window.history.pushState("object or string", "Title", this.$route.path);
+      }
+    },
   },
   computed: {
     item () {
@@ -119,7 +136,10 @@ export default {
     }
   },
   mounted () {
-    this.navbarHeight = this.getNavbarHeight()
+    this.$nextTick(() => {
+      this.navbarHeight = this.getNavbarHeight()
+      this.scroll2Anchor()
+    })
   }
 }
 </script>

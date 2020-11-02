@@ -3,7 +3,7 @@
 
 export default {
   // pages (state) {
-  //   // state.data.pages.filter(page => page.id === this.$store.state.route.params.id )[0]
+  //   // state.data.pages.filter(page => page.id === this.$route.params.id )[0]
   //   // console.log(state.data.pages)
   //   return state.data.pages
   // },

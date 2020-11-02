@@ -70,6 +70,12 @@ export const fr = () => {
       week: `7 jours`,
       month: `30 jours`,
       all: `Depuis le début`,
+    },
+    navbar: {
+      brand: 'Cuisinier Rebelle',
+      logout: 'Se déconnecter',
+      login: 'Connexion',
+      getStarted: 'Inscription',
     }
   }
 }
