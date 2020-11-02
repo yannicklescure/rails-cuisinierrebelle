@@ -10,18 +10,18 @@
         </div>
         <form>
           <div class="form-group">
-            <label for="inputEmail">Email address</label>
+            <label for="inputEmail">{{ $t('login.email') }}</label>
             <input v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">{{ $t('login.disclaimer') }}</small>
           </div>
           <div class="form-group">
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">{{ $t('login.password') }}</label>
             <input v-model="password" type="password" class="form-control" id="inputPassword">
           </div>
-          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark">Submit</button>
+          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark">{{ $t('login.submit') }}</button>
         </form>
         <div class="my-3">
-          <router-link to="/signup">Sign up</router-link>
+          <router-link to="/signup">{{ $t('login.signup') }}</router-link>
         </div>
       </div>
       </div>

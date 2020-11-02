@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     loadMore () {
-      console.log('loadMore')
       if (this.data.length < this.items.length) {
         console.log('loadMore')
         this.busy = true;
@@ -55,13 +54,13 @@ export default {
   computed: {
     items () {
       return this.$store.getters.recipes
-    }
+    },
   },
   mounted () {
     this.$nextTick(() => {
       this.navbarHeight = this.$store.getters.navbarHeight
       setTimeout(() => {
-        this.loadMore()
+        if (this.items) this.loadMore()
       }, 1000)
     })
   }

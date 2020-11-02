@@ -76,6 +76,13 @@ export const fr = () => {
       logout: 'Se déconnecter',
       login: 'Connexion',
       getStarted: 'Inscription',
+    },
+    login: {
+      email: 'Adresse Courriel',
+      password: 'Mot de passe',
+      submit: 'Connexion',
+      signup: 'Inscription',
+      disclaimer: "Nous ne partagerons jamais vos données personnelles.",
     }
   }
 }
