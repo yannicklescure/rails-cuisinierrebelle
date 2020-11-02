@@ -12,8 +12,8 @@ import { createStore } from '../vue/store'
 import { createRouter } from '../vue/router'
 import { sync } from 'vuex-router-sync'
 
-// import infiniteScroll from 'vue-infinite-scroll'
-// Vue.use(infiniteScroll)
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 import App from '../app.vue'
 
