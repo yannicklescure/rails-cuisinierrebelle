@@ -1,17 +1,21 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }">
-    <div class="container-fluid py-3">
+    <div class="container-fluid" ref="container">
       <div id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-center">
-          <div v-for="(item, index) in data" :key="item.id" class="card rounded border-0">
+        <div id="root" class="d-flex flex-wrap justify-content-start">
+          <div
+            v-for="(item, index) in data"
+            :key="item.id"
+            class="card rounded border-0"
+          >
             <card :item="item" />
           </div>
         </div>
         <div
           v-infinite-scroll="loadMore"
-          :infinite-scroll-disabled="busy"
-          :infinite-scroll-distance="navbarHeight"
-          :infinite-scroll-immediate-check="true"
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="navbarHeight"
+          infinite-scroll-immediate-check="true"
         ></div>
       </div>
     </div>
@@ -35,6 +39,13 @@ export default {
     Card
   },
   methods: {
+    // cardParams (value) {
+    //   const cardWidth = value.params.width
+    //   console.log(cardWidth)
+    //   const containerWidth = this.$refs.container.offsetWidth
+    //   console.log(containerWidth)
+    //   console.log(containerWidth / cardWidth)
+    // },
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
@@ -60,7 +71,7 @@ export default {
     this.$nextTick(() => {
       this.navbarHeight = this.$store.getters.navbarHeight
       setTimeout(() => {
-        if (this.items) this.loadMore()
+        this.loadMore()
       }, 1000)
     })
   }

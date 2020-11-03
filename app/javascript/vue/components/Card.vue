@@ -1,5 +1,5 @@
 <template>
-  <div :ref="item.recipe.id">
+  <div :ref="`card${item.recipe.id}`">
     <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <router-link
@@ -178,6 +178,12 @@ export default {
     this.$nextTick(() => {
       // this.loading = false
       console.log('card ready')
+      // this.$emit('cardParams', {
+      //   params: {
+      //     height: this.$refs[`card${this.item.recipe.id}`].offsetHeight,
+      //     width: this.$refs[`card${this.item.recipe.id}`].offsetWidth
+      //   }
+      // })
     })
   }
 }
