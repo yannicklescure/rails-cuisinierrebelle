@@ -36,4 +36,28 @@ class Recipe < ApplicationRecord
   #     using: [:tsearch, :trigram]
   #   )
   searchkick
+
+  before_save :sanitize_youtube_video_link
+
+  def sanitize_youtube_video_link
+    # params_recipe_video = params[:recipe][:video]
+    params_recipe_video = params_recipe_video == '' ? nil : self.video
+    # binding.pry
+    share_link = params_recipe_video.nil? ? nil : params_recipe_video.match(/(https?:\/\/.+\/)(.+(?=&)|.+)/)
+    if share_link.nil?
+      self.video = nil
+    else
+      if share_link[1].match?(/https:\/\/www.youtube.com\/embed\//)
+        params_recipe_video = share_link[2]
+      elsif share_link[1].match?(/(.*)(watch\?v=)(.+)/)
+        params_recipe_video = share_link[2].match(/(watch\?v=)(.+)/)[2]
+      elsif params_recipe_video.match(/(.+(?=\?))/)
+        params_recipe_video = params_recipe_video.match(/(.+(?=\?))/)[1]
+      elsif share_link[1].match?(/https:\/\/youtu.be\//)
+        params_recipe_video = share_link[2]
+      end
+      # binding.pry
+      self.video = "https://www.youtube.com/embed/#{params_recipe_video}"
+    end
+  end
 end
