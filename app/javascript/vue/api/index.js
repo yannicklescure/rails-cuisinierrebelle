@@ -41,15 +41,15 @@ export const recipeLog = (context, payload) => {
     url: `/api/v1/recipe_logs`,
     headers: {
       'X-CSRF-Token': csrfToken,
-      'X-User-Email': context.getters.user.email,
-      'X-User-Token': context.getters.user.authentication_token
+      'X-User-Email': context.getters.user ? context.getters.user.email : null,
+      'X-User-Token': context.getters.user ? context.getters.user.authentication_token : null
     },
     data: {
       recipe_id: payload.recipe.id,
-      user_id: context.getters.user.id || null,
+      user_id: context.getters.user ? context.getters.user.id : null,
       recipe_log: {
         recipe_id: payload.recipe.id,
-        user_id: context.getters.user.id || null,
+        user_id: context.getters.user ? context.getters.user.id : null,
       }
     }
   })

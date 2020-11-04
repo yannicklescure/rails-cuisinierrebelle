@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     recipeLog () {
-      console.log(this.$store.getters.recipe(this.$route.params.id))
+      // console.log(this.$store.getters.recipe(this.$route.params.id))
       this.$store.dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
     },
 
