@@ -10,7 +10,7 @@ export default {
   SET_DATA: (state, payload) => {
     console.log(payload)
     for (const [key, value] of Object.entries(payload.data)) {
-      console.log(`${key}: ${value}`);
+      console.log(`${key}: ${value}`)
       state.data[key] = payload.data[key]
     }
     // state.data = payload.data

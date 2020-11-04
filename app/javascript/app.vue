@@ -45,14 +45,14 @@ export default {
     //   return this.filter
     // },
     timestamp () {
-      if (this.$store.state.data.timestamp === null) this.fetchItems()
+      // if (this.$store.state.data.timestamp === null) this.fetchItems()
       return this.$store.state.data.timestamp
     },
     mobile () {
       return isMobile
     }
   },
-  mounted () {
+  created () {
     this.fetchItems()
   },
 }

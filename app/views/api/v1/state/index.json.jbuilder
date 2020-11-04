@@ -1,6 +1,6 @@
 json.data do
   json.isAuthenticated user_signed_in?
-  json.lastUpdated 0
+  json.lastUpdated (Time.now.to_f * 1000).to_i
   if user_signed_in?
     json.user do
       json.auth current_user, :id, :email, :slug, :name, :checked
@@ -106,6 +106,7 @@ json.data do
 
   json.recipes do
     json.array! @recipes do |recipe|
+      json.timestamp (recipe.created_at.to_f * 1000).to_i
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
         json.likesCount recipe.likes_count

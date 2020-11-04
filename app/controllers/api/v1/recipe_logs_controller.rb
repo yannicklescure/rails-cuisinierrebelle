@@ -28,12 +28,13 @@ class Api::V1::RecipeLogsController < Api::V1::BaseController
       @recipe_log.message = nil
 
       if @recipe_log.save
-        @recipe.views += 1
+        # @recipe.views += 1
+        @recipe.views = RecipeLog.where(recipe: @recipe).count
         @recipe.save
       end
     end
     authorize @recipe_log
-    render json: { views: RecipeLog.where(recipe: @recipe).count }
+    render json: { views: @recipe.views }
   end
 
   private

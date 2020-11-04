@@ -103,7 +103,7 @@ export default {
   computed: {
     commentsCount () {
       return this.item.comments.length
-    }
+    },
     // user () {
     //   if (this.currentUser) {
     //     this.pin = true

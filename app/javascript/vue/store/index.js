@@ -23,7 +23,7 @@ export const createStore = () => {
         },
         users: [],
         render: {
-          navbarHeight: 59,
+          navbarHeight: 0,
         }
       }
     },

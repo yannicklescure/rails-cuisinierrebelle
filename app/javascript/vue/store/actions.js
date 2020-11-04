@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 import * as api from '../api'
-// import { feedStore } from '../store'
 // import { addNewComment } from '../api'
 // import { addNewPost } from '../api'
 // import { deletePost } from '../api'
@@ -15,7 +14,7 @@ import * as api from '../api'
 // import { pin } from '../api'
 // import { createVueStore } from '../util/store'
 
-const feedStore = ({ commit, dispatch, state }, {}) => {
+const fetchStore = ({ commit, dispatch, state }, {}) => {
   console.log('fetch state data')
   return api.fetchState({ commit, dispatch, state }, {})
     .then(response => {
@@ -40,7 +39,7 @@ export default {
     if (vueStore) {
       console.log(vueStore)
       context.commit("IS_AUTHENTICATED", vueStore.data)
-      return vueStore.data
+      return vueStore.data.isAuthenticated
     } else return false
   },
 
@@ -51,7 +50,7 @@ export default {
       console.log(vueStore)
       // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
       //   console.log('fetching server, refresh vueStore')
-      //   return feedStore(context, {})
+      //   return fetchStore(context, {})
       // } else {
         console.log('loading vueStore...')
         // console.log(vueStore)
@@ -60,7 +59,7 @@ export default {
       // }
     } else {
       console.log('fetching server, initiate vueStore')
-      return feedStore(context, {})
+      return fetchStore(context, {})
     }
   },
 

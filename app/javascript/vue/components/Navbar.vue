@@ -36,7 +36,7 @@
 </template>
 
 <script>
-// import Navbar from './vue/components/Navbar.vue'
+import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
 
 export default {
@@ -87,18 +87,19 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['isAuthenticated', 'user']),
     isScrollTop () {
       return true
     },
-    user () {
-      return this.$store.getters.user
-    },
-    isAuthenticated () {
-      // console.log(this.$store)
-      // console.log(this.$store.state.data.isAuthenticated)
-      // console.log(this.$store.getters.isAuthenticated)
-      return this.$store.getters.isAuthenticated
-    },
+    // user () {
+    //   return this.$store.getters.user
+    // },
+    // isAuthenticated () {
+    //   // console.log(this.$store)
+    //   // console.log(this.$store.state.data.isAuthenticated)
+    //   // console.log(this.$store.getters.isAuthenticated)
+    //   return this.$store.getters.isAuthenticated
+    // },
     // items () {
     //   return this.filter
     // },

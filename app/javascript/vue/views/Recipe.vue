@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CardSmall from '../components/CardSmall'
 
 export default {
@@ -107,13 +108,14 @@ export default {
   data () {
     return {
       componentKey: 0,
-      navbarHeight: 0,
+      // navbarHeight: 0,
     }
   },
   components: {
     CardSmall
   },
   computed: {
+    ...mapGetters(['navbarHeight']),
     item () {
       const item = this.$store.getters.recipe(this.$route.params.id)
       if (item) this.recipeLog()
@@ -126,9 +128,9 @@ export default {
       this.$store.dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
     },
 
-    getNavbarHeight () {
-      return this.$store.getters.navbarHeight
-    },
+    // getNavbarHeight () {
+    //   return this.$store.getters.navbarHeight
+    // },
 
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
@@ -166,13 +168,13 @@ export default {
     }
   },
   async mounted () {
-    // this.$nextTick(() => {
-      this.navbarHeight = await this.getNavbarHeight()
+    this.$nextTick(() => {
+      // this.navbarHeight = await this.getNavbarHeight()
       this.scroll2Anchor()
       setTimeout(() => {
         // this.recipeLog()
       }, 1000)
-    // })
+    })
   }
 }
 </script>

@@ -24,7 +24,7 @@ export default {
     })[0];
   },
   recipes (state) {
-    return state.data.recipes
+    return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   },
   user (state) {
     return state.data.user
