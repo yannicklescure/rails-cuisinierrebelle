@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :state, only: [ :index ]
       resources :users, only: [ :index ]
       resources :recipes, only: [ :index, :show, :update ]
+      resources :recipe_logs, only: [ :create ]
       resources :mailchimp, only: [ :show, :update ]
       resources :notification, only: [ :show, :update ]
       resources :freemium, only: [ :show, :update ]

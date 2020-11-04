@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :recipe_logs, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 

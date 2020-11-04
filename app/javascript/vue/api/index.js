@@ -29,6 +29,36 @@ import axios from 'axios'
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
+export const recipeLog = (context, payload) => {
+  // console.log(user)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `/api/v1/recipe_logs`,
+    headers: {
+      'X-CSRF-Token': csrfToken,
+      'X-User-Email': context.getters.user.email,
+      'X-User-Token': context.getters.user.authentication_token
+    },
+    data: {
+      recipe_id: payload.recipe.id,
+      user_id: context.getters.user.id || null,
+      recipe_log: {
+        recipe_id: payload.recipe.id,
+        user_id: context.getters.user.id || null,
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const login = (context, user) => {
   // console.log(user)
   // console.log($('meta[name="csrf-token"]').attr('content'))

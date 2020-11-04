@@ -39,7 +39,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center text-body">
             <i class="material-icons md-18 align-icons">visibility</i>
-            <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.viewsCount }}</span>
+            <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.views }}</span>
           </div>
           <div class="d-flex align-items-center text-danger ml-2">
             <div

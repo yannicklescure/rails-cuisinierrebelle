@@ -36,7 +36,7 @@
           <div class="d-flex align-items-center ml-3">
             <i class="material-icons md-18 align-icons">visibility</i>
             <span class="text-muted font-weight-lighter ml-1">
-              {{ item.recipe.viewsCount }}
+              {{ item.recipe.views }}
             </span>
           </div>
         </div>
@@ -113,10 +113,23 @@ export default {
   components: {
     CardSmall
   },
+  computed: {
+    item () {
+      const item = this.$store.getters.recipe(this.$route.params.id)
+      if (item) this.recipeLog()
+      return item
+    }
+  },
   methods: {
+    recipeLog () {
+      console.log(this.$store.getters.recipe(this.$route.params.id))
+      this.$store.dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
+    },
+
     getNavbarHeight () {
       return this.$store.getters.navbarHeight
     },
+
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
       const target = this.$route.hash
@@ -135,6 +148,7 @@ export default {
         window.history.pushState("object or string", "Title", this.$route.path);
       }
     },
+
     googleAdsNoPrint () {
       const googleAutoPlacedAds = this.$el.querySelectorAll('.google-auto-placed');
       if (googleAutoPlacedAds) {
@@ -145,21 +159,20 @@ export default {
         console.log('no ads')
       }
     },
+
     print () {
       this.googleAdsNoPrint()
       window.print()
     }
   },
-  computed: {
-    item () {
-      return this.$store.getters.recipe(this.$route.params.id)
-    }
-  },
-  mounted () {
-    this.$nextTick(() => {
-      this.navbarHeight = this.getNavbarHeight()
+  async mounted () {
+    // this.$nextTick(() => {
+      this.navbarHeight = await this.getNavbarHeight()
       this.scroll2Anchor()
-    })
+      setTimeout(() => {
+        // this.recipeLog()
+      }, 1000)
+    // })
   }
 }
 </script>

@@ -27,6 +27,8 @@ class Api::V1::SessionsController < Devise::SessionsController
   # end
 
   def respond_with(resource, _opts = {})
+    # binding.pry
+    # resource.sessionIpAddress = request.remote_ip
     render json: resource
   end
 

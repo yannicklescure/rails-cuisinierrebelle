@@ -64,6 +64,19 @@ export default {
     }
   },
 
+  RECIPE_LOG: (context, payload) => {
+    // console.log(context.state.data)
+    return api.recipeLog(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("RECIPE_LOG", { data: payload, views: response.data.views })
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)

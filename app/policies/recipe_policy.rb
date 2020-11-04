@@ -6,15 +6,15 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    true
   end
 
   def new?
-    return true
+    true
   end
 
   def create?
-    return true
+    true
   end
 
   def update?
@@ -28,6 +28,6 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def tagged?
-    return true
+    true
   end
 end

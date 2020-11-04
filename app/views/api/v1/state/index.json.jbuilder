@@ -30,8 +30,8 @@ json.data do
               json.recipe do
                 json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
                 json.likesCount recipe.likes_count
-                json.viewsCount 0
                 # json.views_count recipe.impressionist_count(:filter=>:session_hash)
+                json.views RecipeLog.where(recipe: recipe).count
                 json.photo do
                   json.card do
                     json.url recipe.photo.url(:card)
@@ -75,8 +75,8 @@ json.data do
           json.recipe do
             json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
             json.likesCount recipe.likes_count
-            json.viewsCount 0
             # json.views_count recipe.impressionist_count(:filter=>:session_hash)
+            json.views RecipeLog.where(recipe: recipe).count
             json.photo do
               json.card do
                 json.url recipe.photo.url(:card)
@@ -109,8 +109,8 @@ json.data do
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
         json.likesCount recipe.likes_count
-        json.viewsCount 0
         # json.views_count recipe.impressionist_count(:filter=>:session_hash)
+        json.views RecipeLog.where(recipe: recipe).count
         json.photo do
           json.card do
             json.url recipe.photo.url(:card)
@@ -169,8 +169,8 @@ json.data do
           json.recipe do
             json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
             json.likesCount recipe.likes_count
-            json.viewsCount 0
             # json.views_count recipe.impressionist_count(:filter=>:session_hash)
+            json.views RecipeLog.where(recipe: recipe).count
             json.photo do
               json.card do
                 json.url recipe.photo.url(:card)
@@ -218,8 +218,8 @@ json.data do
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
         json.likesCount recipe.likes_count
-        json.viewsCount 0
         # json.views_count recipe.impressionist_count(:filter=>:session_hash)
+        json.views RecipeLog.where(recipe: recipe).count
         json.photo do
           json.card do
             json.url recipe.photo.url(:card)
