@@ -13,6 +13,8 @@ export default {
   // },
   isAuthenticated (state, getters) {
     return state.data.isAuthenticated
+    // console.log(state.data.user)
+    // return state.data.user.email != null
   },
   navbarHeight (state) {
     console.log(state)

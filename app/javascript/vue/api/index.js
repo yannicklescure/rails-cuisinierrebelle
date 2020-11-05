@@ -71,9 +71,9 @@ export const recipeLog = (context, payload) => {
     method: 'post',
     url: `/api/v1/recipe_logs`,
     headers: {
-      'X-CSRF-Token': csrfToken,
-      'X-User-Email': context.getters.user ? context.getters.user.email : null,
-      'X-User-Token': context.getters.user ? context.getters.user.authentication_token : null
+      // 'X-CSRF-Token': csrfToken,
+      // 'X-User-Email': context.getters.user ? context.getters.user.email : null,
+      // 'X-User-Token': context.getters.user ? context.getters.user.authentication_token : null
     },
     data: {
       recipe_id: payload.recipe.id,
@@ -124,6 +124,7 @@ export const logout = (context, user) => {
       'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.user.email,
       // 'X-User-Token': context.getters.user.authentication_token
+      'Authorization': `Bearer ${context.state.data.authorization}`,
     },
     data: {
       // email: context.getters.user.email,
@@ -146,21 +147,24 @@ export const fetchState = (context, {}) => {
 }
 
 export const isAuthenticated = (context, user) => {
-  console.log('isAuthenticated?')
-  console.log(context.getters.user.email)
-  console.log( context.getters.user.authentication_token)
+  console.log(`isAuthenticated? ${context.getters.user.email}`)
+  // console.log(context.getters.user.email)
+  // console.log( context.getters.user.authentication_token)
+  const token = context.state.data.authorization
+  console.log(token)
   return axios({
     method: 'get',
     url: `/api/v1/state`,
     headers: {
-      'X-CSRF-Token': csrfToken,
-      'X-User-Email': context.getters.user.email,
-      'X-User-Token': context.getters.user.authentication_token
+      // 'X-CSRF-Token': csrfToken,
+      // 'X-User-Email': context.getters.user.email,
+      // 'X-User-Token': context.getters.user.authentication_token
+      // 'Authorization': token != null ? `Bearer ${token}` : null,
     },
     params: {
       query: 'isAuthenticated',
-      email: context.getters.user.email,
-      authentication_token: context.getters.user.authentication_token
+      // email: context.getters.user.email,
+      // authentication_token: context.getters.user.authentication_token
     }
   })
   .catch(error => {

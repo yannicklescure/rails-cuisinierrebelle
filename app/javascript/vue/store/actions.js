@@ -9,8 +9,8 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
     .then(response => {
       console.log(response.data)
       commit("SET_DATA", response.data)
-      localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
-      console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
+      // localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
+      // console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
       return response.data
     })
 }
@@ -21,6 +21,7 @@ export default {
     // console.log(payload)
     return api.like(context, payload)
       .then(response => {
+        console.log(`response.status ${response.status}`)
         if (response.status === 200) context.commit("LIKE", payload)
         return response
       })
@@ -37,18 +38,19 @@ export default {
 
   IS_AUTHENTICATED: (context, {}) => {
     console.log(context)
-    // return api.isAuthenticated(context, {})
-    //   .then((response) => {
-    //     console.log(response)
-    //     context.commit("IS_AUTHENTICATED", response.data)
-    //     return response.data
-    //   })
-    const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore) {
-      console.log(vueStore)
-      context.commit("IS_AUTHENTICATED", vueStore.data)
-      return vueStore.data.isAuthenticated
-    } else return false
+    return api.isAuthenticated(context, {})
+      .then((response) => {
+        console.log(response)
+        context.commit("IS_AUTHENTICATED", response.data)
+        return response.data
+      })
+    // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+    // if (vueStore) {
+    //   console.log(vueStore)
+    //   // context.commit("IS_AUTHENTICATED", vueStore.data)
+    //   context.commit("SET_DATA", vueStore)
+    //   return vueStore.data.isAuthenticated
+    // } else return false
   },
 
   SET_STORE: (context, {}) => {
@@ -103,9 +105,10 @@ export default {
   LOG_OUT: (context, {}) => {
     console.log(context.state.data)
     return api.logout(context, context.state.data.user.auth)
-    .then(() => {
-      context.commit("LOG_OUT", {})
-    })
+      .then(response => {
+        console.log(response)
+        if (response.status === 204) context.commit("LOG_OUT", {})
+      })
   },
 
   NAVBAR_HEIGHT: (context, navbarHeight) => {

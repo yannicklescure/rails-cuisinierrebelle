@@ -8,7 +8,7 @@ import { sync } from 'vuex-router-sync'
 
 // create store and router instances
 const store = createStore()
-// console.log(store)
+console.log(store)
 
 const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
@@ -16,23 +16,25 @@ const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
 
 const ifAuthenticated = (to, from, next) => {
-  store
-  .dispatch('IS_AUTHENTICATED', {})
-  .then(() => {
-    console.log(`isAuthenticated: ${ store.getters.isAuthenticated }`)
-    console.log(to)
-    // console.log(from)
+  console.log('######')
+  console.log(`from: ${from.path}`)
+  console.log(`to: ${to.path}`)
+  console.log('######')
+  // store
+  // .dispatch('IS_AUTHENTICATED', {})
+  // .then(() => {
+    console.log(`isAuthenticated: ${ store.state.data.isAuthenticated }`)
     if(to.meta.auth) {
-      console.log(`auth: ${ to.meta.auth }`)
-      if (to.name === 'Login' && store.getters.isAuthenticated) next({ name: 'Home' })
-      if (to.name !== 'Login' && !store.getters.isAuthenticated) next({ name: 'Login' })
+      // console.log(`auth: ${ to.meta.auth }`)
+      if (to.name === 'Login' && store.state.data.isAuthenticated) next({ name: 'Home' })
+      if (to.name !== 'Login' && !store.state.data.isAuthenticated) next({ name: 'Login' })
       else {
         // window.location.href = '/login'
         next()
       }
     }
     else next()
-  })
+  // })
 }
 
 export const createRouter = () => {
@@ -138,11 +140,11 @@ export const createRouter = () => {
   })
 }
 
-const router = createRouter()
-// console.log(router)
+// const router = createRouter()
+// // console.log(router)
 
-// sync the router with the vuex store.
-// this registers `store.state.route`
-const unsync = sync(store, router)
-// console.log('router')
-unsync()
+// // sync the router with the vuex store.
+// // this registers `store.state.route`
+// const unsync = sync(store, router)
+// // console.log('router')
+// unsync()

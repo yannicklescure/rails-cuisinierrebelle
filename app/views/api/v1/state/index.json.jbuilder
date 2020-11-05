@@ -29,7 +29,8 @@ json.data do
               # json.extract! bookmark, :recipe_id, :created_at
               json.recipe do
                 json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
-                json.likesCount recipe.likes_count
+                # json.likesCount recipe.likes_count
+                json.likes Like.where(recipe: recipe).count
                 # json.views_count recipe.impressionist_count(:filter=>:session_hash)
                 json.views RecipeLog.where(recipe: recipe).count
                 json.photo do
@@ -74,7 +75,8 @@ json.data do
           # json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description, :photo, :likes_count
           json.recipe do
             json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
-            json.likesCount recipe.likes_count
+            # json.likesCount recipe.likes_count
+            json.likes Like.where(recipe: recipe).count
             # json.views_count recipe.impressionist_count(:filter=>:session_hash)
             json.views RecipeLog.where(recipe: recipe).count
             json.photo do
@@ -109,7 +111,8 @@ json.data do
       json.timestamp (recipe.created_at.to_f * 1000).to_i
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
-        json.likesCount recipe.likes_count
+        # json.likesCount recipe.likes_count
+        json.likes Like.where(recipe: recipe).count
         # json.views_count recipe.impressionist_count(:filter=>:session_hash)
         json.views RecipeLog.where(recipe: recipe).count
         json.photo do
@@ -169,7 +172,8 @@ json.data do
         json.array! user.recipes do |recipe|
           json.recipe do
             json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
-            json.likesCount recipe.likes_count
+            # json.likesCount recipe.likes_count
+            json.likes Like.where(recipe: recipe).count
             # json.views_count recipe.impressionist_count(:filter=>:session_hash)
             json.views RecipeLog.where(recipe: recipe).count
             json.photo do
@@ -218,7 +222,8 @@ json.data do
       json.array! @search_recipes do |recipe|
       json.recipe do
         json.extract! recipe, :id, :slug, :title, :subtitle, :video, :direction, :description
-        json.likesCount recipe.likes_count
+        # json.likesCount recipe.likes_count
+        json.likes Like.where(recipe: recipe).count
         # json.views_count recipe.impressionist_count(:filter=>:session_hash)
         json.views RecipeLog.where(recipe: recipe).count
         json.photo do

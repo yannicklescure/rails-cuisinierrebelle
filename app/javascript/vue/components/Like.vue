@@ -8,7 +8,7 @@
       <router-link v-else to="/login" class="mb-n1 text-body">
         <i class="material-icons md-18 align-icons">favorite_border</i>
       </router-link>
-      <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likesCount }}</span>
+      <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likes }}</span>
     </div>
   </div>
 </template>

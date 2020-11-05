@@ -1,5 +1,11 @@
 import Vue from 'vue'
 
+const saveToLocalStorage = (state, caller) => {
+  console.log(caller)
+  console.log(state)
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: state.data }))
+}
+
 export default {
 
   LIKE: (state, payload) => {
@@ -10,7 +16,8 @@ export default {
 
     const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
     const position = state.data.recipes.indexOf(recipe)
-    state.data.recipes[position].recipe.likesCount += 1
+    state.data.recipes[position].recipe.likes += 1
+    saveToLocalStorage(state, 'LIKE')
   },
 
   UNLIKE: (state, payload) => {
@@ -23,16 +30,20 @@ export default {
 
     const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
     position = state.data.recipes.indexOf(recipe)
-    state.data.recipes[position].recipe.likesCount -= 1
+    state.data.recipes[position].recipe.likes -= 1
+    saveToLocalStorage(state, 'UNLIKE')
   },
 
   IS_AUTHENTICATED: (state, payload) => {
+    console.log(state)
     console.log(state.data.isAuthenticated)
     state.data.isAuthenticated = payload.isAuthenticated
-    console.log(state.data.isAuthenticated)
+    console.log(state)
+    saveToLocalStorage(state, 'IS_AUTHENTICATED')
   },
 
   SET_DATA: (state, payload) => {
+    console.log(state)
     console.log(payload)
     for (const [key, value] of Object.entries(payload.data)) {
       console.log(`${key}: ${value}`)
@@ -41,6 +52,7 @@ export default {
     // state.data = payload.data
     console.log(state.data)
     state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'SET_DATA')
   },
 
   RECIPE_LOG: (state, payload) => {
@@ -51,6 +63,7 @@ export default {
     console.log(position)
     state.data.recipes[position].recipe.views = payload.views
     // state.data.user.points.splice(position, 1)
+    saveToLocalStorage(state, 'RECIPE_LOG')
   },
 
   LOG_IN: (state, payload) => {
@@ -59,23 +72,24 @@ export default {
     state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
     state.data.isAuthenticated = true
     state.data.lastUpdated = new Date().getTime()
-    const storage = { data: state.data }
-    localStorage.setItem('cuisinier_rebelle', JSON.stringify(storage))
+    console.log(state)
+    saveToLocalStorage(state, 'LOG_IN')
   },
 
   LOG_OUT: (state, payload) => {
     console.log(payload)
     console.log(state)
-    state.data.user = null
+    state.data.user = { email: null, authentication_token: null }
+    state.data.authorization = null
     state.data.isAuthenticated = false
     state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
-    const storage = { data: state.data }
-    localStorage.setItem('cuisinier_rebelle', JSON.stringify(storage))
+    saveToLocalStorage(state, 'LOG_OUT')
   },
 
   NAVBAR_HEIGHT: (state, payload) => {
     state.data.render.navbarHeight = payload
     // context.commit("NAVBAR_HEIGHT", navbarHeight)
+    saveToLocalStorage(state, 'NAVBAR_HEIGHT')
   },
 
 

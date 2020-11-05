@@ -108,6 +108,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      log: true,
       // navbarHeight: 0,
     }
   },
@@ -118,7 +119,10 @@ export default {
     ...mapGetters(['navbarHeight']),
     item () {
       const item = this.$store.getters.recipe(this.$route.params.id)
-      if (item) this.recipeLog()
+      if (item && this.log) {
+        this.recipeLog()
+        this.log = false
+      }
       return item
     }
   },
