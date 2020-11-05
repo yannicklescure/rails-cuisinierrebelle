@@ -8,4 +8,15 @@ class LikePolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def create?
+    # binding.pry
+    # record.user == user || user.admin
+    true
+  end
+
+  def destroy?
+    # record.user == user || user.admin
+    true
+  end
 end

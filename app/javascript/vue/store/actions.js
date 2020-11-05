@@ -1,18 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import * as api from '../api'
-// import { addNewComment } from '../api'
-// import { addNewPost } from '../api'
-// import { deletePost } from '../api'
-// import { deleteComment } from '../api'
-// import { editPost } from '../api'
-// import { forwardPost } from '../api'
-// import { fetchUserPosts } from '../api'
-// import { liked } from '../api'
-// import { follow } from '../api'
-// import { fetchSearchQuery } from '../api'
-// import { pin } from '../api'
-// import { createVueStore } from '../util/store'
+import jwt from 'jsonwebtoken'
 
 const fetchStore = ({ commit, dispatch, state }, {}) => {
   console.log('fetch state data')
@@ -27,6 +16,25 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
 }
 
 export default {
+
+  LIKE: (context, payload) => {
+    // console.log(payload)
+    return api.like(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("LIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  UNLIKE: (context, payload) => {
+    // console.log(payload)
+    context.commit("UNLIKE", payload)
+  },
+
   IS_AUTHENTICATED: (context, {}) => {
     console.log(context)
     // return api.isAuthenticated(context, {})
@@ -80,6 +88,9 @@ export default {
     console.log(context.state.data)
     return api.login(context, user)
       .then(response => {
+        const token = response.headers.authorization.split('Bearer ')[1]
+        console.log(token)
+        console.log(jwt.decode(token))
         if (response.status === 200) context.commit("LOG_IN", response)
         return response
       })

@@ -1,6 +1,8 @@
 class Api::V1::BaseController < ActionController::API
   # protect_from_forgery with: :null_session
 
+  include ActionController::MimeResponds
+
   include Pundit
 
   after_action :verify_authorized, except: :index
@@ -9,6 +11,32 @@ class Api::V1::BaseController < ActionController::API
   rescue_from StandardError,                with: :internal_server_error
   rescue_from Pundit::NotAuthorizedError,   with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  respond_to :json
+
+  def jwt_with_jti_matcher_user_auth_action
+    head :ok
+  end
+  before_action :authenticate_jwt_with_jti_matcher_user!,
+                only: :jwt_with_jti_matcher_user_auth_action
+
+  def jwt_with_denylist_user_auth_action
+    head :ok
+  end
+  before_action :authenticate_jwt_with_denylist_user!,
+                only: :jwt_with_denylist_user_auth_action
+
+  def jwt_with_allowlist_user_auth_action
+    head :ok
+  end
+  before_action :authenticate_jwt_with_allowlist_user!,
+                only: :jwt_with_allowlist_user_auth_action
+
+  def jwt_with_null_user_auth_action
+    head :ok
+  end
+  before_action :authenticate_jwt_with_null_user!,
+                only: :jwt_with_null_user_auth_action
 
   def render_resource(resource)
     # binding.pry

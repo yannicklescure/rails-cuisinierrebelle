@@ -41,14 +41,7 @@
             <i class="material-icons md-18 align-icons">visibility</i>
             <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.views }}</span>
           </div>
-          <div class="d-flex align-items-center text-danger ml-2">
-            <div
-              class="p-0 text-danger text-decoration-none d-flex align-items-center"
-            >
-              <i class="material-icons md-18 align-icons">favorite</i>
-              <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likesCount }}</span>
-            </div>
-          </div>
+          <like :item="item" />
         </div>
         <div class="d-flex align-items-center">
           <router-link
@@ -84,13 +77,13 @@
 </template>
 
 <script>
-// import Item from '../components/Item.vue'
+import Like from '../components/Like.vue'
 
 export default {
   name: 'card',
   props: ['item'],
   components: {
-    // Item,
+    Like,
   },
   data () {
     return {

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 
+  # devise_for :users, as: :api, defaults: { format: :json }
   devise_for :users,
     defaults: { format: :json },
     # class_name: 'Api::V1::Users',
@@ -10,13 +11,15 @@ Rails.application.routes.draw do
      registrations: 'api/v1/registrations'
     },
     path_prefix: '/api/v1'
+    # as: :api
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :state, only: [ :index ]
       resources :users, only: [ :index ]
+      resources :state, only: [ :index ]
       resources :recipes, only: [ :index, :show, :update ]
       resources :recipe_logs, only: [ :create ]
+      resources :likes, only: [ :create, :destroy ]
       resources :mailchimp, only: [ :show, :update ]
       resources :notification, only: [ :show, :update ]
       resources :freemium, only: [ :show, :update ]

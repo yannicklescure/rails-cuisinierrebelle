@@ -1,6 +1,31 @@
 import Vue from 'vue'
 
 export default {
+
+  LIKE: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    state.data.user.likes.push(payload)
+    console.log(`likes: ${ state.data.user.likes.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    const position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.likesCount += 1
+  },
+
+  UNLIKE: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const like = state.data.user.likes.filter(like => like.recipe_id === payload.recipe_id)[0]
+    let position = state.data.user.likes.indexOf(like)
+    state.data.user.likes.splice(position, 1)
+    console.log(`likes: ${ state.data.user.likes.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.likesCount -= 1
+  },
+
   IS_AUTHENTICATED: (state, payload) => {
     console.log(state.data.isAuthenticated)
     state.data.isAuthenticated = payload.isAuthenticated
@@ -31,6 +56,7 @@ export default {
   LOG_IN: (state, payload) => {
     console.log(payload)
     state.data.user = payload.data
+    state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
     state.data.isAuthenticated = true
     state.data.lastUpdated = new Date().getTime()
     const storage = { data: state.data }
