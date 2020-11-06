@@ -21,19 +21,14 @@
           </div>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-          <div id="print" @click="print" class="mouse-pointer ml-3 text-decoration-none text-body">
+          <div id="print" @click="print" class="mouse-pointer ml-2 text-decoration-none text-body">
             <i class="material-icons md-18 d-flex text-body">print</i>
           </div>
-          <div class="mouse-pointer ml-3 text-body text-decoration-none d-flex align-items-center">
+          <div class="mouse-pointer ml-2 text-body text-decoration-none d-flex align-items-center">
             <i class="material-icons md-18 align-icons">bookmark</i>
           </div>
-          <div class="mouse-pointer ml-3 text-danger text-decoration-none d-flex align-items-center">
-            <i class="material-icons md-18 align-icons">favorite</i>
-            <span class="text-muted font-weight-lighter ml-1">
-              {{ item.recipe.likesCount }}
-            </span>
-          </div>
-          <div class="d-flex align-items-center ml-3">
+          <like :item="item" />
+          <div class="d-flex align-items-center ml-2">
             <i class="material-icons md-18 align-icons">visibility</i>
             <span class="text-muted font-weight-lighter ml-1">
               {{ item.recipe.views }}
@@ -102,6 +97,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import CardSmall from '../components/CardSmall'
+import Like from '../components/Like.vue'
 
 export default {
   name: 'Recipe',
@@ -113,7 +109,8 @@ export default {
     }
   },
   components: {
-    CardSmall
+    CardSmall,
+    Like,
   },
   computed: {
     ...mapGetters(['navbarHeight']),

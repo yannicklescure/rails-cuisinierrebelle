@@ -33,7 +33,16 @@ export default {
 
   UNLIKE: (context, payload) => {
     // console.log(payload)
-    context.commit("UNLIKE", payload)
+        return api.unlike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("UNLIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
   },
 
   IS_AUTHENTICATED: (context, {}) => {

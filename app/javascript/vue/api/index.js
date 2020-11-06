@@ -30,19 +30,14 @@ const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
 export const like = (context, payload) => {
-  // console.log(context)
-  // console.log($('meta[name="csrf-token"]').attr('content'))
   return axios({
-    // validateStatus: status => {
-    //   console.log(status)
-    //   return status < 500; // Resolve only if the status code is less than 500
-    // },
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
     method: 'post',
     url: `/api/v1/likes`,
     headers: {
-      // 'X-CSRF-Token': csrfToken,
-      // 'X-User-Email': context.getters.user.email,
-      // 'X-User-Token': context.getters.user.authentication_token,
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
     data: {
@@ -52,6 +47,32 @@ export const like = (context, payload) => {
         recipe_id: payload.recipe_id,
         user_id: payload.user_id,
       }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const unlike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `/api/v1/likes/${payload.recipe_id}`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {
+      // recipe_id: payload.recipe_id,
+      // user_id: payload.user_id,
+      // like: {
+      //   recipe_id: payload.recipe_id,
+      //   user_id: payload.user_id,
+      // }
     }
   })
   .catch(error => {

@@ -14,7 +14,12 @@ class Api::V1::LikesController < Api::V1::BaseController
   end
 
   def destroy
-    binding.pry
+    @recipe = Recipe.find(params[:id])
+    @user = current_user
+    @like = Like.find_by(user: @user, recipe: @recipe)
+    # binding.pry
+    authorize @like
+    @like.destroy
     head :no_content
   end
 

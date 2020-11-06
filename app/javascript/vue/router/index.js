@@ -16,18 +16,18 @@ const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
 
 const ifAuthenticated = (to, from, next) => {
-  console.log('######')
+  const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+
   console.log(`from: ${from.path}`)
   console.log(`to: ${to.path}`)
-  console.log('######')
   // store
   // .dispatch('IS_AUTHENTICATED', {})
   // .then(() => {
-    console.log(`isAuthenticated: ${ store.state.data.isAuthenticated }`)
+    console.log(`isAuthenticated: ${ vueStore.data.isAuthenticated }`)
     if(to.meta.auth) {
       // console.log(`auth: ${ to.meta.auth }`)
-      if (to.name === 'Login' && store.state.data.isAuthenticated) next({ name: 'Home' })
-      if (to.name !== 'Login' && !store.state.data.isAuthenticated) next({ name: 'Login' })
+      if (to.name === 'Login' && vueStore.data.isAuthenticated) next({ name: 'Home' })
+      if (to.name !== 'Login' && !vueStore.data.isAuthenticated) next({ name: 'Login' })
       else {
         // window.location.href = '/login'
         next()
