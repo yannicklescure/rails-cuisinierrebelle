@@ -28,7 +28,8 @@ export const createStore = () => {
       timestamp: null,
       user: {
         email: null,
-        authentication_token: null
+        authentication_token: null,
+        bookmarks: [],
       },
       users: [],
       render: {

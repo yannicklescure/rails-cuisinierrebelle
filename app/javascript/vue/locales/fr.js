@@ -83,6 +83,10 @@ export const fr = () => {
       submit: 'Connexion',
       signup: 'Inscription',
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
+    },
+    userBanner: {
+      followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
+      // apple: 'no apples | one apple | {count} apples',
     }
   }
 }

@@ -18,9 +18,9 @@
       v-if="isAuthenticated"
       class="d-flex align-items-center"
     >
-      <div class="nav-item">
+      <router-link to="/bookmarks" class="nav-item text-body">
         <i class="material-icons md-18">bookmarks</i>
-      </div>
+      </router-link>
       <div class="nav-item dropdown">
         <div class="nav-link text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="material-icons md-18">more_vert</i>
@@ -120,6 +120,10 @@ export default {
           console.log('Clicked on proceed')
           console.log(dialog)
           this.$store.dispatch('LOG_OUT', {})
+            .then(response => {
+              console.log(response)
+              if (response.status === 204) this.$router.push({ name: 'Home' })
+            })
         })
         .catch(() => {
           console.log('Clicked on cancel')

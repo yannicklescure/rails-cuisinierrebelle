@@ -10,25 +10,28 @@ import { sync } from 'vuex-router-sync'
 const store = createStore()
 console.log(store)
 
+const Bookmarks = () => import('../views/Bookmarks.vue')
 const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
+const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
-const NotFound = () => import('../views/NotFound.vue')
+const UserFollowers = () => import('../views/UserFollowers.vue')
+const UserRecipes = () => import('../views/UserRecipes.vue')
 
-const ifAuthenticated = (to, from, next) => {
-  const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-
+const ifAuthenticated = async (to, from, next) => {
+  const vueStore = await JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+  const isAuthenticated = vueStore ? vueStore.data.isAuthenticated : false
   console.log(`from: ${from.path}`)
   console.log(`to: ${to.path}`)
   // store
   // .dispatch('IS_AUTHENTICATED', {})
   // .then(() => {
-    console.log(`isAuthenticated: ${ vueStore.data.isAuthenticated }`)
+    console.log(`isAuthenticated: ${ isAuthenticated }`)
     if(to.meta.auth) {
       // console.log(`auth: ${ to.meta.auth }`)
-      if (to.name === 'Login' && vueStore.data.isAuthenticated) next({ name: 'Home' })
-      if (to.name !== 'Login' && !vueStore.data.isAuthenticated) next({ name: 'Login' })
+      if (to.name === 'Login' && isAuthenticated) next({ name: 'Home' })
+      if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
       else {
         // window.location.href = '/login'
         next()
@@ -55,6 +58,33 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/bookmarks',
+    name: 'Bookmarks',
+    component: Bookmarks,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/u/:id',
+    name: 'UserRecipes',
+    component: UserRecipes,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/u/:id/followers',
+    name: 'UserFollowers',
+    component: UserFollowers,
     meta: {
       auth: false // A protected route
     },

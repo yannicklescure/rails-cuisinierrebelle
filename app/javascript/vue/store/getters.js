@@ -20,13 +20,29 @@ export default {
     console.log(state)
     return state.data.render.navbarHeight
   },
-  recipe(state) {
-    return keyword => state.data.recipes.filter(item => {
+  recipe (state) {
+    return keyword => state.data.recipes.filter( item => {
       return item.recipe.slug === keyword
     })[0];
   },
+  bookmarks (state) {
+    return state.data.user.bookmarks
+      .sort((a, b) => (new Date(a.created_at).getTime() > new Date(b.created_at).getTime()) ? 1 : -1).reverse()
+      .map(bookmark => state.data.recipes.filter(item => item.recipe.id === bookmark.recipe_id)[0])
+  },
+  userRecipes (state) {
+    return keyword => state.data.recipes.filter( item => {
+      return item.user.slug === keyword
+    })
+    .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+  },
   recipes (state) {
     return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+  },
+  usersFilter (state) {
+    return keyword => state.data.users.filter( user => {
+      return user.slug === keyword
+    })[0];
   },
   user (state) {
     return state.data.user

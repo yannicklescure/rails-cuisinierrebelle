@@ -110,9 +110,9 @@ export default {
     Visit,
   },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters(['navbarHeight', 'recipe']),
     item () {
-      const item = this.$store.getters.recipe(this.$route.params.id)
+      const item = this.recipe(this.$route.params.id)
       if (item && this.log) {
         this.recipeLog()
         this.log = false

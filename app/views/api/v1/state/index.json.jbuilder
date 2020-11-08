@@ -168,7 +168,40 @@ json.data do
 
   json.users do
     json.array! @users do |user|
-      json.extract! user, :id, :slug, :name
+      json.extract! user, :id, :slug, :name, :checked
+      json.followers user.followers.map{ |f| {
+          name: f.name,
+          slug: f.slug,
+          checked: f.checked,
+          image: {
+            thumb: {
+              url: f.image.url(:thumb)
+            }
+          }
+        }
+      }
+      json.following user.following.map{ |f| {
+          name: f.name,
+          slug: f.slug,
+          checked: f.checked,
+          image: {
+            thumb: {
+              url: f.image.url(:thumb)
+            }
+          }
+        }
+      }
+      json.image do
+        json.full do
+          json.url user.image.url(:full)
+        end
+        json.preview do
+          json.url user.image.url(:preview)
+        end
+        json.thumb do
+          json.url user.image.url(:thumb)
+        end
+      end
       json.recipes do
         json.array! user.recipes do |recipe|
           json.recipe do

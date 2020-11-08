@@ -145,6 +145,7 @@ export default {
       .then(response => {
         console.log(response)
         if (response.status === 204) context.commit("LOG_OUT", {})
+        return response
       })
   },
 
