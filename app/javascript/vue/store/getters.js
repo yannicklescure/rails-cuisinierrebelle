@@ -12,9 +12,9 @@ export default {
   //   return state.data.searchPosts.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   // },
   isAuthenticated (state, getters) {
-    return state.data.isAuthenticated
-    // console.log(state.data.user)
-    // return state.data.user.email != null
+    // return state.data.isAuthenticated
+    console.log(state.data.user)
+    return state.data.user.email != null
   },
   navbarHeight (state) {
     console.log(state)

@@ -1,17 +1,23 @@
 <template>
   <div :class="['d-flex align-items-center ml-2 text-danger']">
     <div class="p-0 text-decoration-none d-flex align-items-center">
-      <div v-if="isAuthenticated" class="mb-n1 mouse-pointer" @click="like">
+      <div v-if="isAuthenticated" class="mouse-pointer align-items" @click="like">
         <i v-if="liked" class="material-icons md-18 align-icons text-danger">favorite</i>
         <i v-else class="material-icons md-18 align-icons">favorite_border</i>
       </div>
-      <router-link v-else to="/login" class="mb-n1 text-body">
+      <router-link v-else to="/login" class="text-body align-items">
         <i class="material-icons md-18 align-icons">favorite_border</i>
       </router-link>
       <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likes }}</span>
     </div>
   </div>
 </template>
+
+<style scoped>
+.align-items {
+  margin-bottom: -5px;
+}
+</style>
 
 <script>
 import { mapGetters } from 'vuex'

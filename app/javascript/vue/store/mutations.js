@@ -8,6 +8,32 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  BOOKMARK: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    state.data.user.bookmarks.push(payload)
+    console.log(`bookmarks: ${ state.data.user.bookmarks.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    const position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.bookmarks += 1
+    saveToLocalStorage(state, 'BOOKMARK')
+  },
+
+  UNBOOKMARK: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const bookmark = state.data.user.bookmarks.filter(bookmark => bookmark.recipe_id === payload.recipe_id)[0]
+    let position = state.data.user.bookmarks.indexOf(bookmark)
+    state.data.user.bookmarks.splice(position, 1)
+    console.log(`bookmarks: ${ state.data.user.bookmarks.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.bookmarks -= 1
+    saveToLocalStorage(state, 'UNBOOKMARK')
+  },
+
   LIKE: (state, payload) => {
     console.log(payload)
     // console.log(state)

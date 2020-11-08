@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <navbar />
     <main>
       <router-view />
@@ -12,7 +12,7 @@ import { isMobile } from 'mobile-device-detect'
 import Navbar from './vue/components/Navbar.vue'
 
 export default {
-  name: 'App',
+  name: 'app',
   data () {
     return {
       loading: false,

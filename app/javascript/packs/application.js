@@ -16,7 +16,7 @@ require('channels')
 
 import '../serviceworker-companion'
 
-require('data-confirm-modal')
+// require('data-confirm-modal')
 
 jQuery.htmlPrefilter = function( html ) {
   return html;

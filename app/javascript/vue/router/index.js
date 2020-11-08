@@ -14,7 +14,7 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
-const NotFound = { template: "<div>not found</div>" }
+const NotFound = () => import('../views/NotFound.vue')
 
 const ifAuthenticated = (to, from, next) => {
   const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))

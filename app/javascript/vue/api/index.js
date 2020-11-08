@@ -29,6 +29,51 @@ import axios from 'axios'
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
+export const bookmark = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `/api/v1/bookmarks`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      bookmark: {
+        recipe_id: payload.recipe_id,
+        user_id: payload.user_id,
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const unbookmark = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `/api/v1/bookmarks/${payload.recipe_id}`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {}
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const like = (context, payload) => {
   return axios({
     validateStatus: status => {
@@ -66,14 +111,7 @@ export const unlike = (context, payload) => {
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
-    data: {
-      // recipe_id: payload.recipe_id,
-      // user_id: payload.user_id,
-      // like: {
-      //   recipe_id: payload.recipe_id,
-      //   user_id: payload.user_id,
-      // }
-    }
+    data: {}
   })
   .catch(error => {
     console.log(error.toJSON());

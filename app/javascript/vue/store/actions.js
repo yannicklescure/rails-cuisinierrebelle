@@ -17,6 +17,34 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
 
 export default {
 
+  BOOKMARK: (context, payload) => {
+    // console.log(payload)
+    return api.bookmark(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("BOOKMARK", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  UNBOOKMARK: (context, payload) => {
+    // console.log(payload)
+        return api.unbookmark(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("UNBOOKMARK", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LIKE: (context, payload) => {
     // console.log(payload)
     return api.like(context, payload)

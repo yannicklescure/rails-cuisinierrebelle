@@ -18,4 +18,5 @@ class LikePolicy < ApplicationPolicy
     record.user == user || user.admin
     # true
   end
+
 end

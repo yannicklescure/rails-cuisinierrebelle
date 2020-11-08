@@ -16,9 +16,29 @@
     </div>
     <div
       v-if="isAuthenticated"
-      @click="logout"
-      class="mouse-pointer text-body mx-3 text-decoration-none"
-    >{{ $t('navbar.logout') }}</div>
+      class="d-flex align-items-center"
+    >
+      <div class="nav-item">
+        <i class="material-icons md-18">bookmarks</i>
+      </div>
+      <div class="nav-item dropdown">
+        <div class="nav-link text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="material-icons md-18">more_vert</i>
+        </div>
+        <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/r/new">New recipe</a>
+          <a class="dropdown-item" href="/u/yannicklescure/recipes">My recipes</a>
+          <a class="dropdown-item" href="/u/yannicklescure/following">My following</a>
+          <a class="dropdown-item" href="/u/yannicklescure/settings">Settings</a>
+          <div
+            @click="logout"
+            class="dropdown-item mouse-pointer"
+          >
+            {{ $t('navbar.logout') }}
+          </div>
+        </div>
+      </div>
+    </div>
     <div
       v-else
       class="d-flex align-items-center"
@@ -77,7 +97,33 @@ export default {
       return position
     },
     logout () {
-      this.$store.dispatch('LOG_OUT', {})
+      let message = "Are you sure?";
+
+      let options = {
+          // html: false, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
+          // loader: false, // set to true if you want the dailog to show a loader after click on "proceed"
+          // reverse: false, // switch the button positions (left to right, and vise versa)
+          okText: 'Continuer',
+          cancelText: 'Annuler',
+          // animation: 'zoom', // Available: "zoom", "bounce", "fade"
+          // type: 'basic', // coming soon: 'soft', 'hard'
+          // verification: 'continue', // for hard confirm, user will be prompted to type this to enable the proceed button
+          // verificationHelp: 'Type "[+:verification]" below to confirm', // Verification help text. [+:verification] will be matched with 'options.verification' (i.e 'Type "continue" below to confirm')
+          // clicksCount: 3, // for soft confirm, user will be asked to click on "proceed" btn 3 times before actually proceeding
+          backdropClose: true, // set to true to close the dialog when clicking outside of the dialog window, i.e. click landing on the mask
+          customClass: '' // Custom class to be injected into the parent node for the current dialog instance
+      };
+
+      this.$dialog
+        .confirm(message, options)
+        .then(dialog => {
+          console.log('Clicked on proceed')
+          console.log(dialog)
+          this.$store.dispatch('LOG_OUT', {})
+        })
+        .catch(() => {
+          console.log('Clicked on cancel')
+        });
     },
     forceRerender () {
       this.componentKey += 1;

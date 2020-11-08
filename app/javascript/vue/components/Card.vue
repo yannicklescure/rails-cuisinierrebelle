@@ -37,10 +37,7 @@
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center text-body">
-            <i class="material-icons md-18 align-icons">visibility</i>
-            <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.views }}</span>
-          </div>
+          <visit :item="item" />
           <like :item="item" />
         </div>
         <div class="d-flex align-items-center">
@@ -51,11 +48,7 @@
             <i class="material-icons md-18">comment</i>
             <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
           </router-link>
-          <div
-            class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center"
-          >
-            <i class="material-icons md-18 align-icons">bookmark</i>
-          </div>
+          <bookmark :item="item" />
         </div>
       </div>
       <div class="d-flex flex-column">
@@ -77,13 +70,17 @@
 </template>
 
 <script>
+import Bookmark from '../components/Bookmark.vue'
 import Like from '../components/Like.vue'
+import Visit from '../components/Visit.vue'
 
 export default {
   name: 'card',
   props: ['item'],
   components: {
+    Bookmark,
     Like,
+    Visit,
   },
   data () {
     return {
