@@ -14,6 +14,7 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
+const NotFound = { template: "<div>not found</div>" }
 
 const ifAuthenticated = (to, from, next) => {
   const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
@@ -37,99 +38,54 @@ const ifAuthenticated = (to, from, next) => {
   // })
 }
 
+const routes = [
+  { path: '/fr', redirect: '/' },
+  { path: '/en', redirect: '/' },
+  { path: '/es', redirect: '/' },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/r/:id',
+    name: 'Recipe',
+    component: Recipe,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  { path: "*", component: NotFound }
+]
+
 export const createRouter = () => {
   return new VueRouter({
     mode: 'history',
     fallback: false,
-    // base: '/p',
-    routes: [
-      // {
-      //   path: '/manifeste',
-      //   name: 'Manifeste',
-      //   redirect: '/p/manifeste',
-      // },
-      // { path: '/', redirect: '/status/top' },
-      { path: '/fr', redirect: '/' },
-      { path: '/en', redirect: '/' },
-      { path: '/es', redirect: '/' },
-      // { path: '/logout', redirect: '/' },
-      // {
-      //   path: '/hashtag/:query',
-      //   name: 'Hashtag',
-      //   component: Hashtag,
-      //   meta: {
-      //     auth: true // A protected route
-      //   },
-      //   beforeEnter: ifAuthenticated,
-      // },
-      // {
-      //   path: '/search',
-      //   name: 'Search',
-      //   component: Search,
-      //   meta: {
-      //     auth: true // A protected route
-      //   },
-      //   beforeEnter: ifAuthenticated,
-      // },
-      // {
-      //   path: '/u/:user_id',
-      //   redirect: '/:user_id'
-      // },
-      // {
-      //   path: '/:user_id',
-      //   name: 'User',
-      //   component: User,
-      //   meta: {
-      //     auth: true // A protected route
-      //   },
-      //   beforeEnter: ifAuthenticated,
-      // },
-      // {
-      //   path: '/:user_id/status/:id',
-      //   name: 'Post',
-      //   component: Post,
-      //   meta: {
-      //     auth: false // A protected route
-      //   },
-      //   beforeEnter: ifAuthenticated,
-      // },
-      {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-        meta: {
-          auth: true // A protected route
-        },
-        beforeEnter: ifAuthenticated,
-      },
-      {
-        path: '/signup',
-        name: 'Signup',
-        component: Signup,
-        meta: {
-          auth: false // A protected route
-        },
-        beforeEnter: ifAuthenticated,
-      },
-      {
-        path: '/r/:id',
-        name: 'Recipe',
-        component: Recipe,
-        meta: {
-          auth: false // A protected route
-        },
-        beforeEnter: ifAuthenticated,
-      },
-      {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: {
-          auth: false // A protected route
-        },
-        beforeEnter: ifAuthenticated,
-      },
-    ],
+    routes: routes,
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
