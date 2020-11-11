@@ -18,8 +18,11 @@
       </div>
 
       <div class="mx-2 d-flex justify-content-start align-items-center">
-        <div class="btn btn-sm btn-dark">
-          Follow
+        <div v-if="user.slug === currentUser.slug">
+          <div class="btn btn-sm btn-info">Edit</div>
+        </div>
+        <div v-else>
+          <div class="btn btn-sm btn-dark">Follow</div>
         </div>
       </div>
     </div>
@@ -42,7 +45,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['usersFilter']),
+    ...mapGetters(['usersFilter', 'currentUser']),
     user () {
       return this.usersFilter(this.$route.params.id)
     },

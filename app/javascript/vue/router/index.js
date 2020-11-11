@@ -15,14 +15,24 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
+const RecipeNew = () => import('../views/RecipeNew.vue')
 const Signup = () => import('../views/Signup.vue')
 const Top100 = () => import('../views/Top100.vue')
 const UserFollowers = () => import('../views/UserFollowers.vue')
+const UserFollowing = () => import('../views/UserFollowing.vue')
+const UserSettings = () => import('../views/UserSettings.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
 
 const ifAuthenticated = async (to, from, next) => {
   const vueStore = await JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-  const isAuthenticated = vueStore ? vueStore.data.isAuthenticated : false
+  let isAuthenticated = false
+  if (vueStore) {
+    if (vueStore.data.authorization && vueStore.data.user.email) {
+      vueStore.data.isAuthenticated = true
+      localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: vueStore.data }))
+    }
+    isAuthenticated = vueStore.data.isAuthenticated
+  }
   console.log(`from: ${from.path}`)
   console.log(`to: ${to.path}`)
   // store
@@ -97,6 +107,33 @@ const routes = [
     component: UserFollowers,
     meta: {
       auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/u/:id/following',
+    name: 'UserFollowing',
+    component: UserFollowing,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/u/:id/settings',
+    name: 'UserSettings',
+    component: UserSettings,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/r/new',
+    name: 'RecipeNew',
+    component: RecipeNew,
+    meta: {
+      auth: true // A protected route
     },
     beforeEnter: ifAuthenticated,
   },

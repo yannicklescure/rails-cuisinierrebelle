@@ -29,7 +29,10 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'user']),
+    ...mapGetters(['isAuthenticated', 'currentUser']),
+    user () {
+      return this.currentUser
+    },
     liked () {
       if (this.isAuthenticated) {
         // console.log(this.user)

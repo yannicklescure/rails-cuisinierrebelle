@@ -16,24 +16,24 @@
     </div>
     <div class="d-flex align-items-center">
       <router-link to="/top100" class="nav-item mx-2 text-fire">
-        <i class="material-icons md-18">whatshot</i>
+        <i class="material-icons md-18 d-flex">whatshot</i>
       </router-link>
       <div
         v-if="isAuthenticated"
         class="d-flex align-items-center"
       >
         <router-link to="/bookmarks" class="nav-item mx-2 text-body">
-          <i class="material-icons md-18">bookmarks</i>
+          <i class="material-icons md-18 d-flex">bookmarks</i>
         </router-link>
         <div class="nav-item mx-2 dropdown">
           <div class="text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="material-icons md-18">more_vert</i>
+            <i class="material-icons md-18 d-flex">more_vert</i>
           </div>
           <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/r/new">New recipe</a>
-            <a class="dropdown-item" href="/u/yannicklescure/recipes">My recipes</a>
-            <a class="dropdown-item" href="/u/yannicklescure/following">My following</a>
-            <a class="dropdown-item" href="/u/yannicklescure/settings">Settings</a>
+            <router-link class="dropdown-item" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + user.slug + '/following'">{{ $t('navbar.following') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + user.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
             <div
               @click="logout"
               class="dropdown-item mouse-pointer"
@@ -53,7 +53,7 @@
         >{{ $t('navbar.login') }}</router-link>
         <router-link
           to="/signup"
-          class="btn btn-sm btn-dark"
+          class="btn btn-sm btn-dark mx-2"
         >{{ $t('navbar.getStarted') }}</router-link>
       </div>
     </div>
@@ -102,14 +102,14 @@ export default {
       return position
     },
     logout () {
-      let message = "Are you sure?";
+      let message = this.$t('navbar.are_you_sure')
 
       let options = {
           // html: false, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
           // loader: false, // set to true if you want the dailog to show a loader after click on "proceed"
           // reverse: false, // switch the button positions (left to right, and vise versa)
-          okText: 'Continuer',
-          cancelText: 'Annuler',
+          okText:  this.$t('navbar.logout'),
+          cancelText: this.$t('navbar.cancel'),
           // animation: 'zoom', // Available: "zoom", "bounce", "fade"
           // type: 'basic', // coming soon: 'soft', 'hard'
           // verification: 'continue', // for hard confirm, user will be prompted to type this to enable the proceed button
@@ -142,7 +142,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'user']),
+    ...mapGetters(['isAuthenticated', 'currentUser']),
+    user () {
+      return this.currentUser
+    },
     isScrollTop () {
       return true
     },

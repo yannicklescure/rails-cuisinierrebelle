@@ -73,9 +73,31 @@ export const fr = () => {
     },
     navbar: {
       brand: 'Cuisinier Rebelle',
+      cancel: 'Annuler',
       logout: 'Se déconnecter',
       login: 'Connexion',
       getStarted: 'Inscription',
+      // admin_html: <i class="material-icons md-18">settings</i>
+      are_you_sure: 'Êtes-vous sûr ?',
+      // bookmarks_html: <i class="material-icons md-18">bookmarks</i>
+      conversion: 'Table de conversion',
+      cuisinier_rebelle: 'Cuisinier rebelle',
+      english_html: 'English',
+      following: 'Mes abonnements',
+      french_html: 'Français',
+      inbox: 'Messages',
+      // languages_html: <i class="material-icons md-18">language</i>
+      log_out: 'Se déconnecter',
+      // menu_modal_html: <i class="material-icons md-18">more_vert</i>
+      new_recipe: 'Nouvelle recette',
+      // notifications_html: <i class="material-icons md-18">notifications</i>
+      recipes: 'Mes recettes',
+      settings: 'Paramètres',
+      sign_in: 'Connexion',
+      spanish_html: 'Español',
+      tools: 'Matériel de cuisine',
+      top_100: 'Top 100',
+      // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
       email: 'Adresse Courriel',

@@ -47,7 +47,7 @@ export default {
       return user.slug === keyword
     })[0];
   },
-  user (state) {
+  currentUser (state) {
     return state.data.user
   },
   // userPinnedPost (state) {
