@@ -2,14 +2,14 @@
   <div :style="{ marginTop: navbarHeight + 'px' }">
     <user-banner />
     <div class="container" ref="container">
-      <div id="recipes-cards">
+      <div class="px-3 px-md-5">
         <table class="table table-borderless">
           <tbody
             v-for="(item, index) in data"
             :key="item.id"
           >
-            <tr>
-              <td class="d-flex justify-md-content-start align-items-center">
+            <tr class="d-flex justify-content-between align-items-center">
+              <td class="d-flex justify-content-start align-items-center">
                 <img :src="item.image.thumb.url" :alt="item.name" class="rounded-circle" width="32" height="32" style="object-fit: cover;">
                 <router-link :to="'/u/' + item.slug" class="mx-2 text-capitalize text-decoration-none text-body d-flex align-items-center">
                   {{ item.name }}
@@ -18,7 +18,11 @@
                   </span>
                 </router-link>
               </td>
-              <td>FOLLOW</td>
+              <td>
+                <div class="btn btn-sm btn-dark">
+                  Follow
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

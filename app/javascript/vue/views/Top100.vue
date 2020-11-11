@@ -1,6 +1,5 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }">
-    <banner v-if="!isAuthenticated" />
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">
         <div id="root" class="d-flex flex-wrap justify-content-start py-3">
@@ -25,11 +24,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Banner from '../components/Banner.vue'
 import Card from '../components/Card.vue'
 
 export default {
-  name: 'Home',
+  name: 'Top100',
   data () {
     return {
       componentKey: 0,
@@ -40,7 +38,6 @@ export default {
   },
   components: {
     Card,
-    Banner,
   },
   methods: {
     // cardParams (value) {
@@ -67,9 +64,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
+    ...mapGetters(['navbarHeight', 'top100']),
     items () {
-      return this.recipes
+      return this.top100
     },
     // items () {
     //   const items = this.$store.getters.recipes

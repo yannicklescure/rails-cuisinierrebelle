@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import Unsplash, { toJson } from 'unsplash-js';
 
 // const logRequests = !!process.env.DEBUG_API
 // // console.log(logRequests)
@@ -194,6 +195,18 @@ export const logout = (context, user) => {
     console.log(error.response)
   })
 }
+
+// const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
+
+// export const fetchBannerPicture = (query) => {
+//   return unsplash.photos.getRandomPhoto({
+//     query: query
+//   })
+//   .then(toJson)
+//   .catch(error => {
+//     console.log(error.response)
+//   })
+// }
 
 export const fetchState = (context, {}) => {
   return axios({

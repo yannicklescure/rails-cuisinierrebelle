@@ -36,6 +36,9 @@ export default {
     })
     .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   },
+  top100 (state) {
+    return state.data.recipes.sort((a, b) => (a.recipe.views > b.recipe.views) ? 1 : -1).reverse().slice(0, 100)
+  },
   recipes (state) {
     return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   },

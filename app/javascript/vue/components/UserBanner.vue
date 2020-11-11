@@ -1,7 +1,7 @@
 <template>
   <div class="container p-3"  id="user-banner">
-    <div class="d-flex justify-content-center">
-      <div class="mx-2 d-flex justify-content-start align-items-center bg-light p-3 rounded">
+    <div class="d-flex justify-content-between p-3 bg-light rounded">
+      <div class="mx-2 d-flex justify-content-start align-items-center">
         <img :src="user.image.preview.url" :alt="user.name" class="rounded" width="64" height="64" style="object-fit: cover;">
         <div class="ml-3 d-flex flex-column">
           <router-link :to="'/u/' + user.slug" class="d-flex align-items-center text-capitalize text-body text-decoration-none">{{ user.name }}
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div class="mx-2 d-flex justify-content-start align-items-center bg-light p-3 rounded">
+      <div class="mx-2 d-flex justify-content-start align-items-center">
         <div class="btn btn-sm btn-dark">
           Follow
         </div>

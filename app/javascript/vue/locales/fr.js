@@ -84,9 +84,15 @@ export const fr = () => {
       signup: 'Inscription',
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
     },
+    banner: {
+      login: 'Connexion',
+      getStarted: 'Inscription',
+      introduction: 'Partagez vos recettes dès maintenant<br/>en toute simplicité',
+      seeRecipes: 'Voir les recettes',
+    },
     userBanner: {
       followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
       // apple: 'no apples | one apple | {count} apples',
-    }
+    },
   }
 }

@@ -16,6 +16,7 @@ const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const Signup = () => import('../views/Signup.vue')
+const Top100 = () => import('../views/Top100.vue')
 const UserFollowers = () => import('../views/UserFollowers.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
 
@@ -45,6 +46,15 @@ const routes = [
   { path: '/fr', redirect: '/' },
   { path: '/en', redirect: '/' },
   { path: '/es', redirect: '/' },
+  {
+    path: '/top100',
+    name: 'Top100',
+    component: Top100,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
   {
     path: '/login',
     name: 'Login',

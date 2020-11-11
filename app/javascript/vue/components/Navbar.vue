@@ -14,43 +14,48 @@
         <span>{{ $t('navbar.brand') }}</span>
       </router-link>
     </div>
-    <div
-      v-if="isAuthenticated"
-      class="d-flex align-items-center"
-    >
-      <router-link to="/bookmarks" class="nav-item text-body">
-        <i class="material-icons md-18">bookmarks</i>
+    <div class="d-flex align-items-center">
+      <router-link to="/top100" class="nav-item mx-2 text-fire">
+        <i class="material-icons md-18">whatshot</i>
       </router-link>
-      <div class="nav-item dropdown">
-        <div class="nav-link text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="material-icons md-18">more_vert</i>
-        </div>
-        <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/r/new">New recipe</a>
-          <a class="dropdown-item" href="/u/yannicklescure/recipes">My recipes</a>
-          <a class="dropdown-item" href="/u/yannicklescure/following">My following</a>
-          <a class="dropdown-item" href="/u/yannicklescure/settings">Settings</a>
-          <div
-            @click="logout"
-            class="dropdown-item mouse-pointer"
-          >
-            {{ $t('navbar.logout') }}
+      <div
+        v-if="isAuthenticated"
+        class="d-flex align-items-center"
+      >
+        <router-link to="/bookmarks" class="nav-item mx-2 text-body">
+          <i class="material-icons md-18">bookmarks</i>
+        </router-link>
+        <div class="nav-item mx-2 dropdown">
+          <div class="text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons md-18">more_vert</i>
+          </div>
+          <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/r/new">New recipe</a>
+            <a class="dropdown-item" href="/u/yannicklescure/recipes">My recipes</a>
+            <a class="dropdown-item" href="/u/yannicklescure/following">My following</a>
+            <a class="dropdown-item" href="/u/yannicklescure/settings">Settings</a>
+            <div
+              @click="logout"
+              class="dropdown-item mouse-pointer"
+            >
+              {{ $t('navbar.logout') }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      v-else
-      class="d-flex align-items-center"
-    >
-      <router-link
-        to="/login"
-        class="text-body mx-3 text-decoration-none"
-      >{{ $t('navbar.login') }}</router-link>
-      <router-link
-        to="/signup"
-        class="btn btn-sm btn-dark"
-      >{{ $t('navbar.getStarted') }}</router-link>
+      <div
+        v-else
+        class="d-flex align-items-center"
+      >
+        <router-link
+          to="/login"
+          class="btn btn-sm text-body mx-2 text-decoration-none"
+        >{{ $t('navbar.login') }}</router-link>
+        <router-link
+          to="/signup"
+          class="btn btn-sm btn-dark"
+        >{{ $t('navbar.getStarted') }}</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -122,7 +127,7 @@ export default {
           this.$store.dispatch('LOG_OUT', {})
             .then(response => {
               console.log(response)
-              if (response.status === 204) this.$router.push({ name: 'Home' })
+              if (response.status === 204 && this.$route.name != 'Home') this.$router.push({ name: 'Home' })
             })
         })
         .catch(() => {
