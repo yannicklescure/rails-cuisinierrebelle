@@ -71,6 +71,7 @@ gem 'simple_token_authentication'
 gem 'sitemap_generator'
 # gem 'whenever', require: false
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 # gem 'people'
 gem 'namae'
 gem 'gibbon'
