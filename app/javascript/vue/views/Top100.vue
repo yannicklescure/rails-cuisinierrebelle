@@ -81,11 +81,16 @@ export default {
     //   return false
     // },
   },
+  watch: {
+    top100 () {
+      this.loadMore()
+    }
+  },
   created () {
-    if (this.items && this.data.length === 0) this.loadMore()
     // if (this.$store.getters.recipes) this.loadMore()
   },
   beforeMount () {
+    if (this.items.length > 0 && this.data.length === 0) this.loadMore()
     // console.log(this.$store.getters.recipes)
   },
   mounted () {

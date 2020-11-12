@@ -27,18 +27,14 @@
           :class="['card-img-top d-flex justify-content-center align-items-center']"
           :style="{ backgroundImage: 'url(' + item.recipe.photo.card.url + ')' }"
         >
-          <div :class="['d-none text-danger display-3']">
-            heartFillBig
-          </div>
-          <div :class="['d-none text-body display-3']">
-            bookmarkFillBig
-          </div>
+          <div ref="heartFillBig"></div>
+          <div ref="bookmarkFillBig"></div>
         </div>
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
         <div class="d-flex justify-content-between align-items-center">
           <visit :item="item" />
-          <like :item="item" />
+          <like :item="item" @liked="heartFillBig" />
         </div>
         <div class="d-flex align-items-center">
           <router-link
@@ -48,7 +44,7 @@
             <i class="material-icons md-18">comment</i>
             <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
           </router-link>
-          <bookmark :item="item" />
+          <bookmark :item="item" @bookmarked="bookmarkFillBig" />
         </div>
       </div>
       <div class="d-flex flex-column">
@@ -94,24 +90,22 @@ export default {
     commentsCount () {
       return this.item.comments.length
     },
-    // user () {
-    //   if (this.currentUser) {
-    //     this.pin = true
-    //   }
-    //   return this.$store.getters.user
-    // },
-    // userPinnedPost () {
-    //   return this.data.filter(item => item.pin === true)[0] || null
-    // },
-    // items () {
-    //   console.log(this.data)
-    //   if (this.$route.name === 'user') {
-    //     return this.data.filter(item => item.pin === false)
-    //   }
-    //   else return this.data
-    // }
   },
   methods: {
+    heartFillBig () {
+      console.log('liked')
+      this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
+      setTimeout(() => {
+        this.$refs.heartFillBig.innerHTML = ''
+      }, 1000);
+    },
+    bookmarkFillBig () {
+      console.log('liked')
+      this.$refs.bookmarkFillBig.innerHTML = '<i class="material-icons md-96 text-body">bookmark</i>'
+      setTimeout(() => {
+        this.$refs.bookmarkFillBig.innerHTML = ''
+      }, 1000);
+    },
     // itemReadyLog (value) {
     //   if (value === this.items[this.items.length-1].id) {
     //     console.log(this.items[this.items.length-1].id)

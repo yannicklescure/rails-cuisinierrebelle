@@ -1,14 +1,24 @@
+import axios from 'axios'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import { createStore } from '../store'
+// import { createStore } from '../store'
 // import { createRouter } from '../router'
-import { sync } from 'vuex-router-sync'
+// import { sync } from 'vuex-router-sync'
 
 // create store and router instances
-const store = createStore()
-console.log(store)
+// const store = createStore()
+// console.log(store)
+
+// const router = createRouter()
+// console.log(router)
+
+// // sync the router with the vuex store.
+// // this registers `store.state.route`
+// const unsync = sync(store, router)
+// // console.log('router')
+// unsync()
 
 const Bookmarks = () => import('../views/Bookmarks.vue')
 const Home = () => import('../views/Home.vue')
@@ -24,15 +34,47 @@ const UserSettings = () => import('../views/UserSettings.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
 
 const ifAuthenticated = async (to, from, next) => {
-  const vueStore = await JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+  const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
   let isAuthenticated = false
   if (vueStore) {
-    if (vueStore.data.authorization && vueStore.data.user.email) {
-      vueStore.data.isAuthenticated = true
-      localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: vueStore.data }))
+    console.log(vueStore)
+    if (vueStore.data.authorization) {
+      // store
+      //   .dispatch('IS_AUTHENTICATED', {})
+      //   .then(response => {
+      //     console.log(response)
+      //     vueStore.data.isAuthenticated = response.isAuthenticated
+      //     isAuthenticated = response.isAuthenticated
+      //     localStorage.setItem('cuisinier_rebelle
+      //   })
+      await axios({
+        method: 'get',
+        url: `/api/v1/state`,
+        headers: {
+          'Authorization': `Bearer ${vueStore.data.authorization}`,
+        },
+        params: {
+          query: 'isAuthenticated',
+        }
+      })
+      .then(response => {
+        // console.log(response)
+        vueStore.data.isAuthenticated = response.data.isAuthenticated
+        if (response.data.isAuthenticated === false) {
+          vueStore.data.user = { email: null, authentication_token: null }
+          vueStore.data.authorization = null
+          vueStore.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+        }
+        isAuthenticated = response.data.isAuthenticated
+        localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: vueStore.data }))
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
     }
-    isAuthenticated = vueStore.data.isAuthenticated
   }
+  // const isAuthenticated = store.getters.isAuthenticated
+
   console.log(`from: ${from.path}`)
   console.log(`to: ${to.path}`)
   // store
@@ -172,12 +214,3 @@ export const createRouter = () => {
     }
   })
 }
-
-// const router = createRouter()
-// // console.log(router)
-
-// // sync the router with the vuex store.
-// // this registers `store.state.route`
-// const unsync = sync(store, router)
-// // console.log('router')
-// unsync()

@@ -113,23 +113,27 @@ export default {
     ...mapGetters(['navbarHeight', 'recipe']),
     item () {
       const item = this.recipe(this.$route.params.id)
-      if (item && this.log) {
-        this.recipeLog()
-        this.log = false
-      }
+      // if (item && this.log) {
+      //   this.recipeLog()
+      //   this.log = false
+      // }
       return item
+    },
+
+  },
+  watch: {
+    item () {
+      if (this.log) {
+        this.$store
+          .dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
+          .then(response => console.log(response))
+        this.log = false
+        return true
+      }
+      return false
     }
   },
   methods: {
-    recipeLog () {
-      // console.log(this.$store.getters.recipe(this.$route.params.id))
-      this.$store.dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
-    },
-
-    // getNavbarHeight () {
-    //   return this.$store.getters.navbarHeight
-    // },
-
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
       const target = this.$route.hash

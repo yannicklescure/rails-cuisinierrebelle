@@ -84,14 +84,23 @@ export default {
     //   return false
     // },
   },
+  watch: {
+    recipes () {
+      this.loadMore()
+    }
+  },
   created () {
-    if (this.items && this.data.length === 0) this.loadMore()
+    // if (this.items && this.data.length === 0) this.loadMore()
     // if (this.$store.getters.recipes) this.loadMore()
   },
   beforeMount () {
+    if (this.items.length > 0 && this.data.length === 0) this.loadMore()
     // console.log(this.$store.getters.recipes)
   },
   mounted () {
+    // while (this.data.length === 0){
+    //   if (this.recipes.length > 0 && this.data.length === 0) this.data = this.recipes.slice(0, 24)
+    // }
     this.$nextTick(() => {
       // this.navbarHeight = this.$store.getters.navbarHeight
       // console.log(this.$store.getters.navbarHeight)
@@ -101,6 +110,7 @@ export default {
         // this.loadMore()
         // while (!this.items && this.data.length === 0) this.loadMore()
       }, 1000)
+      // console.log(this.data)
     })
   }
 }

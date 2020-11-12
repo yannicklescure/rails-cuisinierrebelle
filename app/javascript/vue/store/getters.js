@@ -54,7 +54,7 @@ export default {
   //   return state.data.userShow.posts.filter(item => item.pin === true)
   // },
   // userShow (state, getters) {
-  //   const pin = getters.userPinnedPost.length > 0 ? getters.userPinnedPost[0] : false
+  //   const pin = getters.currentUserPinnedPost.length > 0 ? getters.currentUserPinnedPost[0] : false
   //   console.log(pin)
   //   let arr = state.data.userShow.posts
   //   console.log(arr)

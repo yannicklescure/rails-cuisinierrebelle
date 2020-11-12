@@ -76,9 +76,9 @@ export default {
   IS_AUTHENTICATED: (context, {}) => {
     console.log(context)
     return api.isAuthenticated(context, {})
-      .then((response) => {
+      .then(async response => {
         console.log(response)
-        context.commit("IS_AUTHENTICATED", response.data)
+        await context.commit("IS_AUTHENTICATED", response.data)
         return response.data
       })
     // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
@@ -92,7 +92,7 @@ export default {
 
   SET_STORE: (context, {}) => {
     const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore && !( vueStore.data.user === null || new Date().getTime() - vueStore.data.lastUpdated > 1000 * 60 * 3 )) {
+    if (vueStore && !( vueStore.data.user.email === null || new Date().getTime() - vueStore.data.lastUpdated > 1000 * 60 * 3 )) {
       console.log('vueStore')
       console.log(vueStore)
       // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
@@ -111,7 +111,7 @@ export default {
   },
 
   RECIPE_LOG: (context, payload) => {
-    // console.log(context.state.data)
+    console.log(context.state.data.user)
     return api.recipeLog(context, payload)
       .then(response => {
         if (response.status === 200) context.commit("RECIPE_LOG", { data: payload, views: response.data.views })

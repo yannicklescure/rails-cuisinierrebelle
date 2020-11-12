@@ -62,9 +62,14 @@ export default {
 
   IS_AUTHENTICATED: (state, payload) => {
     console.log(state)
-    console.log(state.data.isAuthenticated)
+    console.log(payload)
     state.data.isAuthenticated = payload.isAuthenticated
-    console.log(state)
+    if (payload.isAuthenticated === false) {
+      state.data.user = { email: null, authentication_token: null }
+      state.data.authorization = null
+      // state.data.isAuthenticated = false
+      state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+    }
     saveToLocalStorage(state, 'IS_AUTHENTICATED')
   },
 

@@ -45,7 +45,9 @@ export default {
     bookmark () {
       if (!this.bookmarked) {
         console.log('bookmark')
-        this.$store.dispatch('BOOKMARK', { user_id: this.user.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
+        this.$store
+          .dispatch('BOOKMARK', { user_id: this.user.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
+          .then(() => this.$emit('bookmarked', true))
       }
       else {
         console.log('unbookmark')

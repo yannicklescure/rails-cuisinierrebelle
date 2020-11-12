@@ -22,6 +22,12 @@ export default {
     Navbar
   },
   methods: {
+    async checkAuthentication () {
+      await this.$store
+        .dispatch('IS_AUTHENTICATED', {})
+        .then(result => console.log(result))
+    },
+
     fetchItems () {
       this.loading = true
       console.log('SET_STORE')
@@ -39,7 +45,7 @@ export default {
   },
   computed: {
     // user () {
-    //   return this.$store.getters.user
+    //   return this.$store.getters.currentUser
     // },
     // items () {
     //   return this.filter
@@ -52,7 +58,8 @@ export default {
       return isMobile
     }
   },
-  created () {
+  async beforeMount () {
+    await this.checkAuthentication()
     this.fetchItems()
   },
 }

@@ -15,14 +15,14 @@
       </router-link>
     </div>
     <div class="d-flex align-items-center">
-      <router-link to="/top100" class="nav-item mx-2 text-fire">
+      <router-link to="/top100" class="nav-item mx-2 text-fire text-decoration-none">
         <i class="material-icons md-18 d-flex">whatshot</i>
       </router-link>
       <div
         v-if="isAuthenticated"
         class="d-flex align-items-center"
       >
-        <router-link to="/bookmarks" class="nav-item mx-2 text-body">
+        <router-link to="/bookmarks" class="nav-item mx-2 text-body text-decoration-none">
           <i class="material-icons md-18 d-flex">bookmarks</i>
         </router-link>
         <div class="nav-item mx-2 dropdown">
@@ -137,6 +137,7 @@ export default {
     forceRerender () {
       this.componentKey += 1;
     },
+
     navbarHeight () {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
@@ -150,7 +151,7 @@ export default {
       return true
     },
     // user () {
-    //   return this.$store.getters.user
+    //   return this.$store.getters.currentUser
     // },
     // isAuthenticated () {
     //   // console.log(this.$store)

@@ -45,7 +45,9 @@ export default {
     like () {
       if (!this.liked) {
         console.log('like')
-        this.$store.dispatch('LIKE', { user_id: this.user.id, recipe_id: this.item.recipe.id })
+        this.$store
+          .dispatch('LIKE', { user_id: this.user.id, recipe_id: this.item.recipe.id })
+          .then(() => this.$emit('liked', true))
       }
       else {
         console.log('unlike')
