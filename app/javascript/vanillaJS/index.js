@@ -12,13 +12,6 @@
 // import { flashes } from "../components/flashes";
 
 const initLoader = async () => {
-  if ((/localhost/).test(document.domain)) document.domain = "localhost";
-  else console.log = function() {}
-
-  if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
-    document.domain = "cuisinierrebelle.com";
-  }
-  console.log(document.domain);
 
   // document.addEventListener('change', async () => {
     const notice = document.querySelector('.notice');

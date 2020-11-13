@@ -30,6 +30,8 @@ import axios from 'axios'
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
+const domain = 'https://www.cuisinierrebelle.com'
+
 export const bookmark = (context, payload) => {
   return axios({
     validateStatus: status => {
@@ -37,7 +39,7 @@ export const bookmark = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `/api/v1/bookmarks`,
+    url: `${domain}/api/v1/bookmarks`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
@@ -63,7 +65,7 @@ export const unbookmark = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `/api/v1/bookmarks/${payload.recipe_id}`,
+    url: `${domain}/api/v1/bookmarks/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
@@ -82,7 +84,7 @@ export const like = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `/api/v1/likes`,
+    url: `${domain}/api/v1/likes`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
@@ -108,7 +110,7 @@ export const unlike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `/api/v1/likes/${payload.recipe_id}`,
+    url: `${domain}/api/v1/likes/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
     },
@@ -129,7 +131,7 @@ export const recipeLog = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `/api/v1/recipe_logs`,
+    url: `${domain}/api/v1/recipe_logs`,
     headers: {
       // 'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
@@ -159,7 +161,7 @@ export const login = (context, user) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `/api/v1/users/sign_in`,
+    url: `${domain}/api/v1/users/sign_in`,
     headers: {
       'X-CSRF-Token': csrfToken,
     },
@@ -179,7 +181,7 @@ export const login = (context, user) => {
 export const logout = (context, user) => {
   return axios({
     method: 'delete',
-    url: `/api/v1/users/sign_out`,
+    url: `${domain}/api/v1/users/sign_out`,
     headers: {
       'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,
@@ -208,10 +210,11 @@ export const logout = (context, user) => {
 //   })
 // }
 
-export const fetchState = (context, {}) => {
-  return axios({
+export const fetchState = async (context, {}) => {
+  console.log(`${domain}/api/v1/state`)
+  return await axios({
     method: 'get',
-    url: `/api/v1/state`
+    url: `${domain}/api/v1/state`
   })
   .catch(error => {
     console.log(error.response)
@@ -223,10 +226,10 @@ export const isAuthenticated = (context, user) => {
   // console.log(context.getters.currentUser.email)
   // console.log( context.getters.currentUser.authentication_token)
   const token = context.state.data.authorization
-  console.log(token)
+  // console.log(token)
   return axios({
     method: 'get',
-    url: `/api/v1/state`,
+    url: `${domain}/api/v1/state`,
     headers: {
       // 'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,

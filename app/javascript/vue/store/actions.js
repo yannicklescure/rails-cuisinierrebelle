@@ -7,7 +7,7 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
   console.log('fetch state data')
   return api.fetchState({ commit, dispatch, state }, {})
     .then(response => {
-      console.log(response.data)
+      console.log(response)
       commit("SET_DATA", response.data)
       // localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
       // console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
@@ -93,13 +93,13 @@ export default {
   SET_STORE: (context, {}) => {
     const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
     if (vueStore) {
+      console.log('vueStore')
+      console.log(vueStore)
       if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
         localStorage.removeItem('cuisinier_rebelle')
         return fetchStore(context, {})
       }
-      if (vueStore.data.user.email != null || (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
-        console.log('vueStore')
-        console.log(vueStore)
+      if (vueStore.data.recipes.length > 0 && (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
         // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
         //   console.log('fetching server, refresh vueStore')
         //   return fetchStore(context, {})
@@ -109,6 +109,9 @@ export default {
           context.commit("SET_DATA", vueStore)
           return vueStore
         // }
+      } else {
+        console.log('fetching server, initiate vueStore')
+        return fetchStore(context, {})
       }
     } else {
       console.log('fetching server, initiate vueStore')
