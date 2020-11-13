@@ -93,7 +93,10 @@ export default {
   SET_STORE: (context, {}) => {
     const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
     if (vueStore) {
-      if (vueStore.timestamp) return fetchStore(context, {})
+      if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
+        localStorage.removeItem('cuisinier_rebelle')
+        return fetchStore(context, {})
+      }
       if (vueStore.data.user.email != null || (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
         console.log('vueStore')
         console.log(vueStore)
