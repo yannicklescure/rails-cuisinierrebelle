@@ -88,7 +88,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import Bookmark from '../components/Bookmark.vue'
-import CardSmall from '../components/CardSmall'
+import CardSmall from '../components/CardSmall.vue'
 import Like from '../components/Like.vue'
 import Print from '../components/Print.vue'
 import Visit from '../components/Visit.vue'

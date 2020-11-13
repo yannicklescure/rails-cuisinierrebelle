@@ -49,6 +49,7 @@ environment.config.merge()
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
 // environment.plugins.append("UglifyJs", new UglifyJsPlugin())
+environment.config.set('optimization.minimize', true);
 environment.config.set('optimization.minimizer', [new UglifyJsPlugin()]);
 
 // environment.loaders.prepend('sass', {

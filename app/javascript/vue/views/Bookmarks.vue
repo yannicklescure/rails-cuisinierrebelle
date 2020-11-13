@@ -68,37 +68,17 @@ export default {
     items () {
       return this.bookmarks
     },
-    // items () {
-    //   const items = this.$store.getters.recipes
-    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
-    //   return items
-    // },
-    // setData () {
-    //   if (this.items.length > 0 && this.data.length === 0) {
-    //     this.data = this.items.slice(0, 24)
-    //     return true
-    //   }
-    //   return false
-    // },
   },
   created () {
     if (this.items && this.data.length === 0) this.loadMore()
-    // if (this.$store.getters.recipes) this.loadMore()
   },
-  beforeMount () {
-    // console.log(this.$store.getters.recipes)
-  },
-  mounted () {
-    this.$nextTick(() => {
-      // this.navbarHeight = this.$store.getters.navbarHeight
-      // console.log(this.$store.getters.navbarHeight)
-      // console.log(this.$store.getters.recipes)
-      // if (this.items.length > 0) console.log('items ready')
-      setTimeout(() => {
-        // this.loadMore()
-        // while (!this.items && this.data.length === 0) this.loadMore()
-      }, 1000)
-    })
-  }
+  // beforeMount () {
+  // },
+  // mounted () {
+  //   this.$nextTick(() => {
+  //     setTimeout(() => {
+  //     }, 1000)
+  //   })
+  // }
 }
 </script>
