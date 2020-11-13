@@ -7,8 +7,15 @@ import getters from './getters'
 
 export const createStore = () => {
 
-  const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+  let vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
   let data = {}
+
+  if (vueStore) {
+    if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
+      localStorage.removeItem('cuisinier_rebelle')
+      vueStore = null
+    }
+  }
 
   if (vueStore) {
     console.log('loading vueStore from store')
