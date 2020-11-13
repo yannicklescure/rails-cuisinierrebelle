@@ -22,6 +22,16 @@ module RailsCuisinierRebelle
     # https://github.com/iain/http_accept_language
     config.i18n.available_locales = %w(en fr es)
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins %w[
+          http://www.cuisinierrebelle.com
+          https://www.cuisinierrebelle.com
+        ]
+        resource '/assets/*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
+
     config.assets.configure do |env|
       env.export_concurrent = false
     end
