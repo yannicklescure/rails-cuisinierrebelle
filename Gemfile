@@ -20,7 +20,7 @@ gem 'pg', '~> 0.21'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 5.13.0'
+# gem 'font-awesome-sass', '~> 5.13.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
