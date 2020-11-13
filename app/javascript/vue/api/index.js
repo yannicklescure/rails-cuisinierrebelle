@@ -30,8 +30,8 @@ import axios from 'axios'
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
-// const domain = 'https://www.cuisinierrebelle.com'
-const domain = ''
+const domain = 'https://www.cuisinierrebelle.com'
+// const domain = ''
 
 export const bookmark = (context, payload) => {
   return axios({
@@ -43,6 +43,7 @@ export const bookmark = (context, payload) => {
     url: `${domain}/api/v1/bookmarks`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -69,6 +70,7 @@ export const unbookmark = (context, payload) => {
     url: `${domain}/api/v1/bookmarks/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {}
   })
@@ -88,6 +90,7 @@ export const like = (context, payload) => {
     url: `${domain}/api/v1/likes`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -114,6 +117,7 @@ export const unlike = (context, payload) => {
     url: `${domain}/api/v1/likes/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {}
   })
@@ -134,6 +138,7 @@ export const recipeLog = (context, payload) => {
     method: 'post',
     url: `${domain}/api/v1/recipe_logs`,
     headers: {
+      // 'Accept-Encoding': 'gzip',
       // 'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
       // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null
@@ -165,6 +170,7 @@ export const login = (context, user) => {
     url: `${domain}/api/v1/users/sign_in`,
     headers: {
       'X-CSRF-Token': csrfToken,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {
       user: {
@@ -188,6 +194,7 @@ export const logout = (context, user) => {
       // 'X-User-Email': context.getters.currentUser.email,
       // 'X-User-Token': context.getters.currentUser.authentication_token
       'Authorization': `Bearer ${context.state.data.authorization}`,
+      // 'Accept-Encoding': 'gzip',
     },
     data: {
       // email: context.getters.currentUser.email,
@@ -215,7 +222,10 @@ export const fetchState = async (context, {}) => {
   console.log(`${domain}/api/v1/state`)
   return await axios({
     method: 'get',
-    url: `${domain}/api/v1/state`
+    url: `${domain}/api/v1/state`,
+    headers: {
+      // 'Accept-Encoding': 'gzip',
+    },
   })
   .catch(error => {
     console.log(error.response)
@@ -232,10 +242,8 @@ export const isAuthenticated = (context, user) => {
     method: 'get',
     url: `${domain}/api/v1/state`,
     headers: {
-      // 'X-CSRF-Token': csrfToken,
-      // 'X-User-Email': context.getters.currentUser.email,
-      // 'X-User-Token': context.getters.currentUser.authentication_token
       'Authorization': token != null ? `Bearer ${token}` : null,
+      // 'Accept-Encoding': 'gzip',
     },
     params: {
       query: 'isAuthenticated',

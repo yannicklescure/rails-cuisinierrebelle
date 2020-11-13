@@ -1,6 +1,8 @@
 require_relative 'boot'
-
 require 'rails/all'
+
+# require 'zlib'
+# require 'brotli'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,6 +18,7 @@ module RailsCuisinierRebelle
     # the framework and any gems in your application.
 
     config.middleware.use Rack::Deflater
+    # config.middleware.use Rack::Brotli
 
     config.middleware.delete ActionDispatch::Session::CookieStore
 
