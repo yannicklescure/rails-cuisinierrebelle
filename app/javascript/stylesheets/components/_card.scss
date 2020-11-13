@@ -2,12 +2,11 @@
   width: 100%;
   .card-img-top {
     border-radius: 4px;
-    height: calc(100vw / 1.62);
+    height: calc( 100vw / 1.62 );
     background-size: cover;
     background-position: center;
     object-fit: cover;
   }
-
 }
 
 .card-small {
@@ -15,50 +14,68 @@
 }
 
 @media (min-width: 576px) {
+  // #root {
+  //   padding-left: calc((( 100vw - 30px) / ( 2 * 2)) - ( 10 * 15px ));
+  // }
   .card {
     width: 50%;
     .card-img-top {
-      height: calc(100vw / ( 2 * 1.62));
+      height: calc( 100vw / ( 2 * 1.62 ));
     }
   }
 }
 @media (min-width: 768px) {
+  #root {
+    padding-left: calc((( 100vw - 30px) / ( 3 * 2)) - ( 5 * 15px ));
+  }
   .card {
     width: 31%;
     .card-img-top {
-      height: calc(100vw / ( 3 * 1.62));
+      height: calc( 100vw / ( 3 * 1.62 ));
     }
   }
 }
 @media (min-width: 992px) {
+  #root {
+    padding-left: calc((( 100vw - 30px) / ( 4 * 2)) - ( 4 * 15px ));
+  }
   .card {
     width: 23%;
     .card-img-top {
-      height: calc(100vw / ( 4 * 1.62));
+      height: calc( 100vw / ( 4 * 1.62 ));
     }
   }
 }
-@media (min-width: 1200px) {
-  .card {
-    width: 23%;
-    .card-img-top {
-      height: calc(100vw / ( 4 * 1.62));
-    }
-  }
-}
+// @media (min-width: 1200px) {
+//   #root {
+//     padding-left: calc((( 100vw - 30px) / ( 4 * 2)) - ( 4 * 15px ));
+//   }
+//   .card {
+//     width: 23%;
+//     .card-img-top {
+//       height: calc( 100vw / ( 4 * 1.62 ));
+//     }
+//   }
+// }
 @media (min-width: 1400px) {
+  #root {
+    padding-left: calc((( 100vw - 30px) / ( 5 * 2)) - ( 2 * 15px ));
+  }
   .card {
     width: 18%;
     .card-img-top {
-      height: calc(100vw / ( 5 * 1.62));
+      height: calc( 100vw / ( 5 * 1.62 ));
     }
   }
 }
 @media (min-width: 1600px) {
+  #root {
+    padding-left: calc((( 100vw - 30px) / ( 6 * 2)) - ( 0 * 15px ));
+  }
   .card {
     width: 15%;
     .card-img-top {
-      height: calc(100vw / ( 6 * 1.62));
+      height: calc( 100vw / ( 6 * 1.62 ));
     }
   }
 }

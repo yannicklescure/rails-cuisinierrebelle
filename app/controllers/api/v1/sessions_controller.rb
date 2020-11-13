@@ -27,7 +27,31 @@ class Api::V1::SessionsController < Devise::SessionsController
   # end
 
   def respond_with(resource, _opts = {})
-    render json: resource
+    # binding.pry
+    # resource.sessionIpAddress = request.remote_ip
+    render json: {
+      "id": resource.id,
+      "email": resource.email,
+      # "created_at": "2020-05-24T16:04:07.878Z",
+      # "updated_at": "2020-10-19T01:26:01.991Z",
+      "slug": resource.slug,
+      "first_name": resource.first_name,
+      "last_name": resource.last_name,
+      "name": resource.name,
+      "admin": resource.admin,
+      "authentication_token": resource.authentication_token,
+      # "provider": null,
+      # "uid": null,
+      "image": resource.image,
+      "checked": resource.checked,
+      "mailchimp": resource.mailchimp,
+      "notification": resource.notification,
+      "locale": resource.locale,
+      "moderator": resource.moderator,
+      "freemium": resource.freemium,
+      "likes": Like.where(user_id: resource.id),
+      "bookmarks": Bookmark.where(user_id: resource.id),
+    }
   end
 
   def respond_to_on_destroy

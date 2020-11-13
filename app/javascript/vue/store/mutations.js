@@ -1,45 +1,126 @@
 import Vue from 'vue'
 
+const saveToLocalStorage = (state, caller) => {
+  console.log(caller)
+  console.log(state)
+  localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: state.data }))
+}
+
 export default {
+
+  BOOKMARK: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    state.data.user.bookmarks.push(payload)
+    console.log(`bookmarks: ${ state.data.user.bookmarks.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    const position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.bookmarks += 1
+    saveToLocalStorage(state, 'BOOKMARK')
+  },
+
+  UNBOOKMARK: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const bookmark = state.data.user.bookmarks.filter(bookmark => bookmark.recipe_id === payload.recipe_id)[0]
+    let position = state.data.user.bookmarks.indexOf(bookmark)
+    state.data.user.bookmarks.splice(position, 1)
+    console.log(`bookmarks: ${ state.data.user.bookmarks.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.bookmarks -= 1
+    saveToLocalStorage(state, 'UNBOOKMARK')
+  },
+
+  LIKE: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    state.data.user.likes.push(payload)
+    console.log(`likes: ${ state.data.user.likes.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    const position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.likes += 1
+    saveToLocalStorage(state, 'LIKE')
+  },
+
+  UNLIKE: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const like = state.data.user.likes.filter(like => like.recipe_id === payload.recipe_id)[0]
+    let position = state.data.user.likes.indexOf(like)
+    state.data.user.likes.splice(position, 1)
+    console.log(`likes: ${ state.data.user.likes.length }`)
+
+    const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
+    position = state.data.recipes.indexOf(recipe)
+    state.data.recipes[position].recipe.likes -= 1
+    saveToLocalStorage(state, 'UNLIKE')
+  },
+
   IS_AUTHENTICATED: (state, payload) => {
-    console.log(state.data.isAuthenticated)
+    console.log(state)
+    console.log(payload)
     state.data.isAuthenticated = payload.isAuthenticated
-    console.log(state.data.isAuthenticated)
+    if (payload.isAuthenticated === false) {
+      state.data.user = { email: null, authentication_token: null }
+      state.data.authorization = null
+      // state.data.isAuthenticated = false
+      state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+    }
+    saveToLocalStorage(state, 'IS_AUTHENTICATED')
   },
 
   SET_DATA: (state, payload) => {
+    console.log(state)
     console.log(payload)
     for (const [key, value] of Object.entries(payload.data)) {
-      console.log(`${key}: ${value}`);
+      console.log(`${key}: ${value}`)
       state.data[key] = payload.data[key]
     }
     // state.data = payload.data
     console.log(state.data)
     state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'SET_DATA')
+  },
+
+  RECIPE_LOG: (state, payload) => {
+    console.log(payload)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    state.data.recipes[position].recipe.views = payload.views
+    // state.data.user.points.splice(position, 1)
+    saveToLocalStorage(state, 'RECIPE_LOG')
   },
 
   LOG_IN: (state, payload) => {
     console.log(payload)
     state.data.user = payload.data
+    state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
     state.data.isAuthenticated = true
     state.data.lastUpdated = new Date().getTime()
-    const storage = { data: state.data }
-    localStorage.setItem('cuisinier_rebelle', JSON.stringify(storage))
+    console.log(state)
+    saveToLocalStorage(state, 'LOG_IN')
   },
 
   LOG_OUT: (state, payload) => {
     console.log(payload)
     console.log(state)
-    state.data.user = null
+    state.data.user = { email: null, authentication_token: null }
+    state.data.authorization = null
     state.data.isAuthenticated = false
     state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
-    const storage = { data: state.data }
-    localStorage.setItem('cuisinier_rebelle', JSON.stringify(storage))
+    saveToLocalStorage(state, 'LOG_OUT')
   },
 
   NAVBAR_HEIGHT: (state, payload) => {
     state.data.render.navbarHeight = payload
     // context.commit("NAVBAR_HEIGHT", navbarHeight)
+    saveToLocalStorage(state, 'NAVBAR_HEIGHT')
   },
 
 

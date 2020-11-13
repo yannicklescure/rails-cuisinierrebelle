@@ -1,57 +1,103 @@
 import Vue from 'vue'
 import axios from 'axios'
 import * as api from '../api'
-// import { feedStore } from '../store'
-// import { addNewComment } from '../api'
-// import { addNewPost } from '../api'
-// import { deletePost } from '../api'
-// import { deleteComment } from '../api'
-// import { editPost } from '../api'
-// import { forwardPost } from '../api'
-// import { fetchUserPosts } from '../api'
-// import { liked } from '../api'
-// import { follow } from '../api'
-// import { fetchSearchQuery } from '../api'
-// import { pin } from '../api'
-// import { createVueStore } from '../util/store'
+import jwt from 'jsonwebtoken'
 
-const feedStore = ({ commit, dispatch, state }, {}) => {
+const fetchStore = ({ commit, dispatch, state }, {}) => {
   console.log('fetch state data')
   return api.fetchState({ commit, dispatch, state }, {})
     .then(response => {
       console.log(response.data)
       commit("SET_DATA", response.data)
-      localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
-      console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
+      // localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
+      // console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
       return response.data
     })
 }
 
 export default {
+
+  BOOKMARK: (context, payload) => {
+    // console.log(payload)
+    return api.bookmark(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("BOOKMARK", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  UNBOOKMARK: (context, payload) => {
+    // console.log(payload)
+        return api.unbookmark(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("UNBOOKMARK", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  LIKE: (context, payload) => {
+    // console.log(payload)
+    return api.like(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("LIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  UNLIKE: (context, payload) => {
+    // console.log(payload)
+        return api.unlike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("UNLIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   IS_AUTHENTICATED: (context, {}) => {
     console.log(context)
-    // return api.isAuthenticated(context, {})
-    //   .then((response) => {
-    //     console.log(response)
-    //     context.commit("IS_AUTHENTICATED", response.data)
-    //     return response.data
-    //   })
-    const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore) {
-      console.log(vueStore)
-      context.commit("IS_AUTHENTICATED", vueStore.data)
-      return vueStore.data
-    } else return false
+    return api.isAuthenticated(context, {})
+      .then(async response => {
+        console.log(response)
+        await context.commit("IS_AUTHENTICATED", response.data)
+        return response.data
+      })
+    // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+    // if (vueStore) {
+    //   console.log(vueStore)
+    //   // context.commit("IS_AUTHENTICATED", vueStore.data)
+    //   context.commit("SET_DATA", vueStore)
+    //   return vueStore.data.isAuthenticated
+    // } else return false
   },
 
   SET_STORE: (context, {}) => {
     const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore && !( vueStore.data.user === null || new Date().getTime() - vueStore.data.lastUpdated > 1000 * 60 * 3 )) {
+    if (vueStore && !( vueStore.data.user.email === null || new Date().getTime() - vueStore.data.lastUpdated > 1000 * 60 * 3 )) {
       console.log('vueStore')
       console.log(vueStore)
       // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
       //   console.log('fetching server, refresh vueStore')
-      //   return feedStore(context, {})
+      //   return fetchStore(context, {})
       // } else {
         console.log('loading vueStore...')
         // console.log(vueStore)
@@ -60,14 +106,30 @@ export default {
       // }
     } else {
       console.log('fetching server, initiate vueStore')
-      return feedStore(context, {})
+      return fetchStore(context, {})
     }
+  },
+
+  RECIPE_LOG: (context, payload) => {
+    console.log(context.state.data.user)
+    return api.recipeLog(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("RECIPE_LOG", { data: payload, views: response.data.views })
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
   },
 
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)
       .then(response => {
+        const token = response.headers.authorization.split('Bearer ')[1]
+        console.log(token)
+        console.log(jwt.decode(token))
         if (response.status === 200) context.commit("LOG_IN", response)
         return response
       })
@@ -80,9 +142,11 @@ export default {
   LOG_OUT: (context, {}) => {
     console.log(context.state.data)
     return api.logout(context, context.state.data.user.auth)
-    .then(() => {
-      context.commit("LOG_OUT", {})
-    })
+      .then(response => {
+        console.log(response)
+        if (response.status === 204) context.commit("LOG_OUT", {})
+        return response
+      })
   },
 
   NAVBAR_HEIGHT: (context, navbarHeight) => {

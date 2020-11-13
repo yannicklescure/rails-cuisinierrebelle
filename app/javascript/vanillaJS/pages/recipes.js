@@ -80,7 +80,7 @@ const setRecipes = async (init, lastRecipeTimestamp) => {
       else if (init.currentController === 'u' && !init.currentPage.match(/.*\/bookmarks/)) {
         init.url = `/api/v1/recipes?slug=${init.currentPage}`;
         console.log(init.currentPage.match(/\w+/)[0])
-        data = data.getters.users.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
+        data = data.getters.currentUsers.filter(user => user.slug === init.currentPage.match(/\w+/)[0])[0] || null
         init.dataRecipes = data.recipes;
         console.log(init.dataRecipes)
         setLazyLoad(init, data);

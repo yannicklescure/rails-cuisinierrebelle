@@ -1,5 +1,5 @@
 <template>
-  <div :ref="item.recipe.id">
+  <div :ref="`card${item.recipe.id}`">
     <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <router-link
@@ -27,28 +27,14 @@
           :class="['card-img-top d-flex justify-content-center align-items-center']"
           :style="{ backgroundImage: 'url(' + item.recipe.photo.card.url + ')' }"
         >
-          <div :class="['d-none text-danger display-3']">
-            heartFillBig
-          </div>
-          <div :class="['d-none text-body display-3']">
-            bookmarkFillBig
-          </div>
+          <div ref="heartFillBig"></div>
+          <div ref="bookmarkFillBig"></div>
         </div>
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center text-body">
-            <i class="material-icons md-18 align-icons">visibility</i>
-            <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.viewsCount }}</span>
-          </div>
-          <div class="d-flex align-items-center text-danger ml-2">
-            <div
-              class="p-0 text-danger text-decoration-none d-flex align-items-center"
-            >
-              <i class="material-icons md-18 align-icons">favorite</i>
-              <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likesCount }}</span>
-            </div>
-          </div>
+          <visit :item="item" />
+          <like :item="item" @liked="heartFillBig" />
         </div>
         <div class="d-flex align-items-center">
           <router-link
@@ -58,11 +44,7 @@
             <i class="material-icons md-18">comment</i>
             <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
           </router-link>
-          <div
-            class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center"
-          >
-            <i class="material-icons md-18 align-icons">bookmark</i>
-          </div>
+          <bookmark :item="item" @bookmarked="bookmarkFillBig" />
         </div>
       </div>
       <div class="d-flex flex-column">
@@ -84,13 +66,17 @@
 </template>
 
 <script>
-// import Item from '../components/Item.vue'
+import Bookmark from '../components/Bookmark.vue'
+import Like from '../components/Like.vue'
+import Visit from '../components/Visit.vue'
 
 export default {
   name: 'card',
   props: ['item'],
   components: {
-    // Item,
+    Bookmark,
+    Like,
+    Visit,
   },
   data () {
     return {
@@ -103,25 +89,23 @@ export default {
   computed: {
     commentsCount () {
       return this.item.comments.length
-    }
-    // user () {
-    //   if (this.currentUser) {
-    //     this.pin = true
-    //   }
-    //   return this.$store.getters.user
-    // },
-    // userPinnedPost () {
-    //   return this.data.filter(item => item.pin === true)[0] || null
-    // },
-    // items () {
-    //   console.log(this.data)
-    //   if (this.$route.name === 'user') {
-    //     return this.data.filter(item => item.pin === false)
-    //   }
-    //   else return this.data
-    // }
+    },
   },
   methods: {
+    heartFillBig () {
+      console.log('liked')
+      this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
+      setTimeout(() => {
+        this.$refs.heartFillBig.innerHTML = ''
+      }, 1000);
+    },
+    bookmarkFillBig () {
+      console.log('liked')
+      this.$refs.bookmarkFillBig.innerHTML = '<i class="material-icons md-96 text-body">bookmark</i>'
+      setTimeout(() => {
+        this.$refs.bookmarkFillBig.innerHTML = ''
+      }, 1000);
+    },
     // itemReadyLog (value) {
     //   if (value === this.items[this.items.length-1].id) {
     //     console.log(this.items[this.items.length-1].id)
@@ -178,6 +162,12 @@ export default {
     this.$nextTick(() => {
       // this.loading = false
       console.log('card ready')
+      // this.$emit('cardParams', {
+      //   params: {
+      //     height: this.$refs[`card${this.item.recipe.id}`].offsetHeight,
+      //     width: this.$refs[`card${this.item.recipe.id}`].offsetWidth
+      //   }
+      // })
     })
   }
 }

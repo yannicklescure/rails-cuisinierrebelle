@@ -6,11 +6,11 @@ class ReplyPolicy < ApplicationPolicy
   end
 
   def new?
-    return true
+    true
   end
 
   def create?
-    return true
+    true
   end
 
   def edit?

@@ -1,17 +1,22 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }">
-    <div class="container-fluid py-3">
+    <banner v-if="!isAuthenticated" />
+    <div class="container-fluid" ref="container">
       <div id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-center">
-          <div v-for="(item, index) in data" :key="item.id" class="card rounded border-0">
+        <div id="root" class="d-flex flex-wrap justify-content-start py-3">
+          <div
+            v-for="(item, index) in data"
+            :key="item.id"
+            class="card rounded border-0"
+          >
             <card :item="item" />
           </div>
         </div>
         <div
           v-infinite-scroll="loadMore"
-          :infinite-scroll-disabled="busy"
-          :infinite-scroll-distance="navbarHeight"
-          :infinite-scroll-immediate-check="true"
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="navbarHeight"
+          infinite-scroll-immediate-check="true"
         ></div>
       </div>
     </div>
@@ -19,6 +24,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import Banner from '../components/Banner.vue'
 import Card from '../components/Card.vue'
 
 export default {
@@ -26,15 +33,23 @@ export default {
   data () {
     return {
       componentKey: 0,
-      navbarHeight: 0,
+      // navbarHeight: 0,
       data: [],
       busy: false,
     }
   },
   components: {
-    Card
+    Card,
+    Banner,
   },
   methods: {
+    // cardParams (value) {
+    //   const cardWidth = value.params.width
+    //   console.log(cardWidth)
+    //   const containerWidth = this.$refs.container.offsetWidth
+    //   console.log(containerWidth)
+    //   console.log(containerWidth / cardWidth)
+    // },
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
@@ -52,16 +67,50 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
     items () {
-      return this.$store.getters.recipes
+      return this.recipes
     },
+    // items () {
+    //   const items = this.$store.getters.recipes
+    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
+    //   return items
+    // },
+    // setData () {
+    //   if (this.items.length > 0 && this.data.length === 0) {
+    //     this.data = this.items.slice(0, 24)
+    //     return true
+    //   }
+    //   return false
+    // },
+  },
+  watch: {
+    recipes () {
+      this.loadMore()
+    }
+  },
+  created () {
+    // if (this.items && this.data.length === 0) this.loadMore()
+    // if (this.$store.getters.recipes) this.loadMore()
+  },
+  beforeMount () {
+    if (this.items.length > 0 && this.data.length === 0) this.loadMore()
+    // console.log(this.$store.getters.recipes)
   },
   mounted () {
+    // while (this.data.length === 0){
+    //   if (this.recipes.length > 0 && this.data.length === 0) this.data = this.recipes.slice(0, 24)
+    // }
     this.$nextTick(() => {
-      this.navbarHeight = this.$store.getters.navbarHeight
+      // this.navbarHeight = this.$store.getters.navbarHeight
+      // console.log(this.$store.getters.navbarHeight)
+      // console.log(this.$store.getters.recipes)
+      // if (this.items.length > 0) console.log('items ready')
       setTimeout(() => {
-        if (this.items) this.loadMore()
+        // this.loadMore()
+        // while (!this.items && this.data.length === 0) this.loadMore()
       }, 1000)
+      // console.log(this.data)
     })
   }
 }

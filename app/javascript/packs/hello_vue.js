@@ -1,3 +1,6 @@
+import fetch from 'node-fetch';
+global.fetch = fetch;
+
 import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 Vue.use(Vuex)
@@ -47,6 +50,15 @@ const i18n = new VueI18n({
   locale: 'fr', // set locale
   messages: messages(), // set locale messages
 })
+
+import VuejsDialog from 'vuejs-dialog';
+// import VuejsDialogMixin from 'vuejs-dialog/dist/vuejs-dialog-mixin.min.js'; // only needed in custom components
+
+// include the default style
+// import 'vuejs-dialog/dist/vuejs-dialog.min.css';
+
+// Tell Vue to install the plugin.
+Vue.use(VuejsDialog);
 
 import * as utils from '../util'
 // register global utility utils.

@@ -21,24 +21,10 @@
           </div>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
         <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-          <div id="print" @click="print" class="mouse-pointer ml-3 text-decoration-none text-body">
-            <i class="material-icons md-18 d-flex text-body">print</i>
-          </div>
-          <div class="mouse-pointer ml-3 text-body text-decoration-none d-flex align-items-center">
-            <i class="material-icons md-18 align-icons">bookmark</i>
-          </div>
-          <div class="mouse-pointer ml-3 text-danger text-decoration-none d-flex align-items-center">
-            <i class="material-icons md-18 align-icons">favorite</i>
-            <span class="text-muted font-weight-lighter ml-1">
-              {{ item.recipe.likesCount }}
-            </span>
-          </div>
-          <div class="d-flex align-items-center ml-3">
-            <i class="material-icons md-18 align-icons">visibility</i>
-            <span class="text-muted font-weight-lighter ml-1">
-              {{ item.recipe.viewsCount }}
-            </span>
-          </div>
+          <print :item="item" />
+          <bookmark :item="item" />
+          <like :item="item" />
+          <visit :item="item" class="ml-2" />
         </div>
       </div>
     </div>
@@ -62,7 +48,13 @@
   <div v-if="item.recipe.video" class="row mt-5 d-print-none">
     <div class="col col-md-8 mx-auto">
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" :src="item.recipe.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <iframe
+          class="embed-responsive-item"
+          :src="item.recipe.video"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen=""
+        ></iframe>
       </div>
     </div>
   </div>
@@ -94,23 +86,54 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import Bookmark from '../components/Bookmark.vue'
 import CardSmall from '../components/CardSmall'
+import Like from '../components/Like.vue'
+import Print from '../components/Print.vue'
+import Visit from '../components/Visit.vue'
 
 export default {
   name: 'Recipe',
   data () {
     return {
       componentKey: 0,
-      navbarHeight: 0,
+      log: true,
+      // navbarHeight: 0,
     }
   },
   components: {
-    CardSmall
+    Bookmark,
+    CardSmall,
+    Like,
+    Print,
+    Visit,
+  },
+  computed: {
+    ...mapGetters(['navbarHeight', 'recipe']),
+    item () {
+      const item = this.recipe(this.$route.params.id)
+      // if (item && this.log) {
+      //   this.recipeLog()
+      //   this.log = false
+      // }
+      return item
+    },
+
+  },
+  watch: {
+    item () {
+      if (this.log) {
+        this.$store
+          .dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
+          .then(response => console.log(response))
+        this.log = false
+        return true
+      }
+      return false
+    }
   },
   methods: {
-    getNavbarHeight () {
-      return this.$store.getters.navbarHeight
-    },
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
       const target = this.$route.hash
@@ -129,30 +152,14 @@ export default {
         window.history.pushState("object or string", "Title", this.$route.path);
       }
     },
-    googleAdsNoPrint () {
-      const googleAutoPlacedAds = this.$el.querySelectorAll('.google-auto-placed');
-      if (googleAutoPlacedAds) {
-        googleAutoPlacedAds.forEach(googleAutoPlacedAd => {
-          googleAutoPlacedAd.classList.add('d-print-none')
-        })
-      } else {
-        console.log('no ads')
-      }
-    },
-    print () {
-      this.googleAdsNoPrint()
-      window.print()
-    }
   },
-  computed: {
-    item () {
-      return this.$store.getters.recipe(this.$route.params.id)
-    }
-  },
-  mounted () {
+  async mounted () {
     this.$nextTick(() => {
-      this.navbarHeight = this.getNavbarHeight()
+      // this.navbarHeight = await this.getNavbarHeight()
       this.scroll2Anchor()
+      setTimeout(() => {
+        // this.recipeLog()
+      }, 1000)
     })
   }
 }

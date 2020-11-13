@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import Unsplash, { toJson } from 'unsplash-js';
 
 // const logRequests = !!process.env.DEBUG_API
 // // console.log(logRequests)
@@ -28,6 +29,126 @@ import axios from 'axios'
 
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
+
+export const bookmark = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `/api/v1/bookmarks`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      bookmark: {
+        recipe_id: payload.recipe_id,
+        user_id: payload.user_id,
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const unbookmark = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `/api/v1/bookmarks/${payload.recipe_id}`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {}
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const like = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `/api/v1/likes`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      like: {
+        recipe_id: payload.recipe_id,
+        user_id: payload.user_id,
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const unlike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `/api/v1/likes/${payload.recipe_id}`,
+    headers: {
+      'Authorization': `Bearer ${context.state.data.authorization}`,
+    },
+    data: {}
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const recipeLog = (context, payload) => {
+  console.log(context)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `/api/v1/recipe_logs`,
+    headers: {
+      // 'X-CSRF-Token': csrfToken,
+      // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
+      // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null
+    },
+    data: {
+      recipe_id: payload.recipe.id,
+      user_id: context.getters.currentUser ? context.getters.currentUser.id : null,
+      recipe_log: {
+        recipe_id: payload.recipe.id,
+        user_id: context.getters.currentUser ? context.getters.currentUser.id : null,
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
 
 export const login = (context, user) => {
   // console.log(user)
@@ -61,18 +182,31 @@ export const logout = (context, user) => {
     url: `/api/v1/users/sign_out`,
     headers: {
       'X-CSRF-Token': csrfToken,
-      // 'X-User-Email': context.getters.user.email,
-      // 'X-User-Token': context.getters.user.authentication_token
+      // 'X-User-Email': context.getters.currentUser.email,
+      // 'X-User-Token': context.getters.currentUser.authentication_token
+      'Authorization': `Bearer ${context.state.data.authorization}`,
     },
     data: {
-      // email: context.getters.user.email,
-      // authentication_token: context.getters.user.authentication_token
+      // email: context.getters.currentUser.email,
+      // authentication_token: context.getters.currentUser.authentication_token
     }
   })
   .catch(error => {
     console.log(error.response)
   })
 }
+
+// const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
+
+// export const fetchBannerPicture = (query) => {
+//   return unsplash.photos.getRandomPhoto({
+//     query: query
+//   })
+//   .then(toJson)
+//   .catch(error => {
+//     console.log(error.response)
+//   })
+// }
 
 export const fetchState = (context, {}) => {
   return axios({
@@ -85,21 +219,24 @@ export const fetchState = (context, {}) => {
 }
 
 export const isAuthenticated = (context, user) => {
-  console.log('isAuthenticated?')
-  console.log(context.getters.user.email)
-  console.log( context.getters.user.authentication_token)
+  // console.log(`isAuthenticated? ${context.getters.currentUser.email}`)
+  // console.log(context.getters.currentUser.email)
+  // console.log( context.getters.currentUser.authentication_token)
+  const token = context.state.data.authorization
+  console.log(token)
   return axios({
     method: 'get',
     url: `/api/v1/state`,
     headers: {
-      'X-CSRF-Token': csrfToken,
-      'X-User-Email': context.getters.user.email,
-      'X-User-Token': context.getters.user.authentication_token
+      // 'X-CSRF-Token': csrfToken,
+      // 'X-User-Email': context.getters.currentUser.email,
+      // 'X-User-Token': context.getters.currentUser.authentication_token
+      'Authorization': token != null ? `Bearer ${token}` : null,
     },
     params: {
       query: 'isAuthenticated',
-      email: context.getters.user.email,
-      authentication_token: context.getters.user.authentication_token
+      // email: context.getters.currentUser.email,
+      // authentication_token: context.getters.currentUser.authentication_token
     }
   })
   .catch(error => {
@@ -112,8 +249,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'post',
 //     url: `/api/v1/user/${id}/${type}`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       id: id,
@@ -130,8 +267,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'post',
 //     url: `/api/v1/points`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       post_id: id
@@ -147,8 +284,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'patch',
 //     url: `/api/v1/pin/${id}`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       id: id
@@ -208,8 +345,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'post',
 //     url: url,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       content: post.content,
@@ -226,8 +363,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'post',
 //     url: '/api/v1/status',
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       content: post.content,
@@ -244,8 +381,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'post',
 //     url: `/api/v1/status/${post.id}/forward`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       content: post.id,
@@ -262,8 +399,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'patch',
 //     url: `/api/v1/status/${post.id}`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     data: {
 //       content: post.content,
@@ -280,8 +417,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'delete',
 //     url: `/api/v1/status/${id}`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     // data: {
 //     //   // content: post.content,
@@ -298,8 +435,8 @@ export const isAuthenticated = (context, user) => {
 //     method: 'delete',
 //     url: `/api/v1/comments/${id}`,
 //     headers: {
-//       'X-User-Email': context.getters.user.email,
-//       'X-User-Token': context.getters.user.token
+//       'X-User-Email': context.getters.currentUser.email,
+//       'X-User-Token': context.getters.currentUser.token
 //     },
 //     // data: {
 //     //   // content: post.content,

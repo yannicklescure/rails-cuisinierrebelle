@@ -51,7 +51,7 @@ export default {
       this.$store.dispatch('LOG_IN', user)
         .then(result => {
           console.log(result)
-          if (result.status === 200) this.$router.push({name: 'Home'})
+          if (result.status === 200) this.$router.push({ name: 'Home' })
           else if (result.response) {
             // client received an error response (5xx, 4xx)
             this.error = result.status

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <navbar />
     <main>
       <router-view />
@@ -12,7 +12,7 @@ import { isMobile } from 'mobile-device-detect'
 import Navbar from './vue/components/Navbar.vue'
 
 export default {
-  name: 'App',
+  name: 'app',
   data () {
     return {
       loading: false,
@@ -22,6 +22,12 @@ export default {
     Navbar
   },
   methods: {
+    async checkAuthentication () {
+      await this.$store
+        .dispatch('IS_AUTHENTICATED', {})
+        .then(result => console.log(result))
+    },
+
     fetchItems () {
       this.loading = true
       console.log('SET_STORE')
@@ -39,20 +45,21 @@ export default {
   },
   computed: {
     // user () {
-    //   return this.$store.getters.user
+    //   return this.$store.getters.currentUser
     // },
     // items () {
     //   return this.filter
     // },
     timestamp () {
-      if (this.$store.state.data.timestamp === null) this.fetchItems()
+      // if (this.$store.state.data.timestamp === null) this.fetchItems()
       return this.$store.state.data.timestamp
     },
     mobile () {
       return isMobile
     }
   },
-  mounted () {
+  async beforeMount () {
+    await this.checkAuthentication()
     this.fetchItems()
   },
 }

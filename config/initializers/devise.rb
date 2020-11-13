@@ -72,6 +72,7 @@ Devise.setup do |config|
   # enable it only for database authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
+  config.http_authenticatable = true
 
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -283,6 +284,11 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :jwt
   # end
 
+#   config.warden do |manager|
+# ￼   manager.strategies.add(:jwt, Devise::Strategies::JWT)
+#     manager.default_strategies(scope: :user).unshift :jwt
+# ￼ end
+
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.
@@ -322,5 +328,27 @@ Devise.setup do |config|
     jwt.revocation_requests = [
       ['DELETE', %r{^/api/v1/users/sign_out$}],
     ]
+    jwt.expiration_time = 1.day.to_i
+    # jwt.expiration_time = 1.minutes.to_i
   end
 end
+
+# module Devise
+#   module Strategies
+#     class JWT < Base
+#       def valid?
+#         request.headers["Authorization"].present?
+#       end
+
+#       def authenticate!
+#         token   = request.headers.fetch("Authorization", "").split(" ").last
+#         payload = JWT.decode(token)
+#         success! User.find(payload[0]["sub"])
+#       rescue ::JWT::ExpiredSignature
+#         fail! "Auth token has expired"
+#       rescue ::JWT::DecodeError
+#         fail! "Auth token is invalid"
+#       end
+#     end
+#   end
+# end

@@ -12,28 +12,49 @@ export default {
   //   return state.data.searchPosts.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   // },
   isAuthenticated (state, getters) {
-    return state.data.isAuthenticated
+    // return state.data.isAuthenticated
+    console.log(state.data.user)
+    return state.data.user.email != null
   },
   navbarHeight (state) {
     console.log(state)
     return state.data.render.navbarHeight
   },
-  recipe(state) {
-    return keyword => state.data.recipes.filter(item => {
+  recipe (state) {
+    return keyword => state.data.recipes.filter( item => {
       return item.recipe.slug === keyword
     })[0];
   },
-  recipes (state) {
-    return state.data.recipes
+  bookmarks (state) {
+    return state.data.user.bookmarks
+      .sort((a, b) => (new Date(a.created_at).getTime() > new Date(b.created_at).getTime()) ? 1 : -1).reverse()
+      .map(bookmark => state.data.recipes.filter(item => item.recipe.id === bookmark.recipe_id)[0])
   },
-  user (state) {
+  userRecipes (state) {
+    return keyword => state.data.recipes.filter( item => {
+      return item.user.slug === keyword
+    })
+    .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+  },
+  top100 (state) {
+    return state.data.recipes.sort((a, b) => (a.recipe.views > b.recipe.views) ? 1 : -1).reverse().slice(0, 100)
+  },
+  recipes (state) {
+    return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+  },
+  usersFilter (state) {
+    return keyword => state.data.users.filter( user => {
+      return user.slug === keyword
+    })[0];
+  },
+  currentUser (state) {
     return state.data.user
   },
   // userPinnedPost (state) {
   //   return state.data.userShow.posts.filter(item => item.pin === true)
   // },
   // userShow (state, getters) {
-  //   const pin = getters.userPinnedPost.length > 0 ? getters.userPinnedPost[0] : false
+  //   const pin = getters.currentUserPinnedPost.length > 0 ? getters.currentUserPinnedPost[0] : false
   //   console.log(pin)
   //   let arr = state.data.userShow.posts
   //   console.log(arr)

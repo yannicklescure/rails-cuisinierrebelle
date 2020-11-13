@@ -1,0 +1,183 @@
+//@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+body.dg-open {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dg-container * {
+  box-sizing: border-box;
+}
+
+.dg-container [disabled] {
+  cursor: not-allowed;
+  opacity: .3;
+}
+
+.dg-backdrop {
+  background-color: rgba(0, 0, 0, .8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+}
+
+.dg-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+}
+
+.dg-content-cont {
+  width: 100%;
+  //font-family: 'Noto Sans', sans-serif;
+  font-family: inherit;
+}
+
+.dg-main-content {
+  width: 98%;
+  /*width: calc(98% - 30px);*/
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 25px auto;
+  background-color: $white;
+}
+
+.dg-content {
+  font-size: 16px;
+  line-height: 1.3em;
+}
+
+.dg-title {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.dg-content-body {
+  border-bottom: 2px solid $light-white;
+  padding-bottom: 15px;
+}
+
+.dg-content-footer {
+  position: relative;
+  padding: 15px 0 0;
+}
+
+.dg-form {
+  background-color: $white;
+  padding: 10px;
+  margin-bottom: -15px;
+}
+
+.dg-content-cont--floating {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-70%);
+  margin-top: 0;
+}
+
+@media all and (max-height: 700px) {
+  .dg-content-cont--floating {
+    position: relative;
+    top: 10%;
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+.dg-btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.dg-btn:focus,
+.dg-btn:active,
+.dg-btn:link {
+  outline: none;
+}
+
+.dg-btn::-moz-focus-inner {
+  border: 0;
+}
+
+.dg-btn--ok {
+  color: $white;
+  background-color: $gray-800;
+}
+
+.dg-btn--cancel {
+  color: $gray-800;
+  background-color: $white;
+  border-color: $gray-800;
+}
+
+.dg-pull-right {
+  float: right;
+}
+
+.dg-btn.dg-btn--loading .dg-btn-content {
+  visibility: hidden;
+}
+
+.dg-clear:before {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.dg-content-body--has-title {
+  .dg-content {
+    font-size: 14px;
+  }
+}
+
+.dg-container--has-input {
+  .dg-main-content {
+    max-width: 500px;
+  }
+
+  .dg-content {
+    margin-bottom: 15px;
+  }
+
+  .dg-content-body {
+    border-bottom: none;
+  }
+
+  .dg-form {
+    border: 1px solid $light-white;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  .dg-content-footer {
+    background-color: $white;
+    border: 1px solid $light-white;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 0 10px 10px;
+  }
+}
