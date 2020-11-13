@@ -111,8 +111,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.public_file_server.headers = {
-    'Access-Control-Allow-Origin' => '*'
-  }
 end
