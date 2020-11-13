@@ -92,18 +92,21 @@ export default {
 
   SET_STORE: (context, {}) => {
     const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore && !( vueStore.data.user.email === null || new Date().getTime() - vueStore.data.lastUpdated > 1000 * 60 * 3 )) {
-      console.log('vueStore')
-      console.log(vueStore)
-      // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
-      //   console.log('fetching server, refresh vueStore')
-      //   return fetchStore(context, {})
-      // } else {
-        console.log('loading vueStore...')
-        // console.log(vueStore)
-        context.commit("SET_DATA", vueStore)
-        return vueStore
-      // }
+    if (vueStore) {
+      if (vueStore.timestamp) return fetchStore(context, {})
+      if (vueStore.data.user.email != null || (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
+        console.log('vueStore')
+        console.log(vueStore)
+        // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
+        //   console.log('fetching server, refresh vueStore')
+        //   return fetchStore(context, {})
+        // } else {
+          console.log('loading vueStore...')
+          // console.log(vueStore)
+          context.commit("SET_DATA", vueStore)
+          return vueStore
+        // }
+      }
     } else {
       console.log('fetching server, initiate vueStore')
       return fetchStore(context, {})
