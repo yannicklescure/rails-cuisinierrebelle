@@ -65,19 +65,21 @@
   </div>
 
   <div id="comments" ref="comments" class="d-print-none">
-  <hr>
-    <div id="comments-count" class="d-flex">
-      No comment
-    </div>
-    <div class="input-group my-3">
-      <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
-    </div>
-    <div class="input-group my-3">
-      <a href="/users/sign_up" class="btn btn-light">Comment</a>
-      <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
-    </div>
-    <div id="comments-list">
-      <div class="d-flex flex-column">
+    <div class="d-none">
+      <hr>
+      <div id="comments-count" class="d-flex">
+        No comment
+      </div>
+      <div class="input-group my-3">
+        <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
+      </div>
+      <div class="input-group my-3">
+        <a href="/users/sign_up" class="btn btn-light">Comment</a>
+        <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
+      </div>
+      <div id="comments-list">
+        <div class="d-flex flex-column">
+        </div>
       </div>
     </div>
   </div>
