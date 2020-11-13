@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-global.fetch = fetch;
+import fetch from 'node-fetch'
+global.fetch = fetch
 
 import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
@@ -51,7 +51,7 @@ const i18n = new VueI18n({
   messages: messages(), // set locale messages
 })
 
-import VuejsDialog from 'vuejs-dialog';
+import VuejsDialog from 'vuejs-dialog'
 // import VuejsDialogMixin from 'vuejs-dialog/dist/vuejs-dialog-mixin.min.js'; // only needed in custom components
 
 // include the default style
