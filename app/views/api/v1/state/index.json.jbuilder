@@ -1,6 +1,7 @@
 json.data do
   json.isAuthenticated user_signed_in?
-  json.lastUpdated (Time.now.to_f * 1000).to_i
+  # json.lastUpdated (Time.now.to_f * 1000).to_i
+  json.lastUpdated (Recipe.last.created_at.to_f * 1000).to_i
   # if user_signed_in?
   #   json.user do
   #     json.auth current_user, :id, :email, :slug, :name, :checked
