@@ -1,6 +1,6 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }">
-    <div v-if="item" class="container py-3 mb-5 recipe" style="height: auto !important;">
+    <div v-if="loading === false" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
@@ -19,76 +19,77 @@
               </div>
             </div>
           </div>
-      <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
-        <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-          <print :item="item" />
-          <bookmark :item="item" />
-          <like :item="item" />
-          <visit :item="item" class="ml-2" />
+          <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
+            <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
+              <print :item="item" />
+              <bookmark :item="item" />
+              <like :item="item" />
+              <visit :item="item" class="ml-2" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
+          <div class="text-center">
+            <div class="h1">{{ item.recipe.title }}</div>
+            <div v-if="item.recipe.subtitle" class="h2 text-secondary">{{ item.recipe.subtitle }}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
-      <div class="text-center">
-        <div class="h1">{{ item.recipe.title }}</div>
-        <div v-if="item.recipe.subtile" class="h2 text-secondary">{{ item.recipe.subtile }}</div>
+      <div class="my-3 my-md-5 d-print-none">
+        <div
+          class="recipe-image"
+          :style="{ backgroundImage: 'url(' + item.recipe.photo.full.url + ')' }"
+        ></div>
       </div>
-    </div>
-  </div>
-  <div class="my-3 my-md-5 d-print-none">
-    <div
-      class="recipe-image"
-      :style="{ backgroundImage: 'url(' + item.recipe.photo.full.url + ')' }"
-    ></div>
-  </div>
-  <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
+      <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
 
-  <vue-markdown :source="item.recipe.direction" />
+      <vue-markdown :source="item.recipe.direction" />
 
-  <div v-if="item.recipe.video" class="row mt-5 d-print-none">
-    <div class="col col-md-8 mx-auto">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe
-          class="embed-responsive-item"
-          :src="item.recipe.video"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen=""
-        ></iframe>
+      <div v-if="item.recipe.video" class="row mt-5 d-print-none">
+        <div class="col col-md-8 mx-auto">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe
+              class="embed-responsive-item"
+              :src="item.recipe.video"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen=""
+            ></iframe>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="d-print-none">
-  <hr>
-  <div class="h4 mb-3">Other recipes</div>
-    <card-small v-for="index in 5" :key="index" :componentKey="index" />
-  </div>
-
-  <div id="comments" ref="comments" class="d-print-none">
-    <div class="d-none">
+      <div class="d-print-none">
       <hr>
-      <div id="comments-count" class="d-flex">
-        No comment
+      <div class="h4 mb-3">Other recipes</div>
+        <card-small v-for="index in 5" :key="index" :componentKey="index" />
       </div>
-      <div class="input-group my-3">
-        <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
-      </div>
-      <div class="input-group my-3">
-        <a href="/users/sign_up" class="btn btn-light">Comment</a>
-        <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
-      </div>
-      <div id="comments-list">
-        <div class="d-flex flex-column">
+
+      <div id="comments" ref="comments" class="d-print-none">
+        <div class="d-none">
+          <hr>
+          <div id="comments-count" class="d-flex">
+            No comment
+          </div>
+          <div class="input-group my-3">
+            <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
+          </div>
+          <div class="input-group my-3">
+            <a href="/users/sign_up" class="btn btn-light">Comment</a>
+            <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
+          </div>
+          <div id="comments-list">
+            <div class="d-flex flex-column">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 import Bookmark from '../components/Bookmark.vue'
 import CardSmall from '../components/CardSmall.vue'
 import Like from '../components/Like.vue'
@@ -102,6 +103,20 @@ export default {
     return {
       componentKey: 0,
       log: true,
+      item: {
+        recipe: {
+          title: null,
+          subtitle: null,
+          direction: null,
+          photo: {
+            full: {
+              url: null
+            }
+          },
+          video: null,
+        }
+      },
+      loading: true,
     }
   },
   components: {
@@ -114,29 +129,26 @@ export default {
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
-    item () {
-      const item = this.recipe(this.$route.params.id)
-      // if (item && this.log) {
-      //   this.recipeLog()
-      //   this.log = false
-      // }
-      return item
-    },
+    // item () {
+    //   const item = this.recipe(this.$route.params.id)
+    //   console.log(item)
+    //   // if (item && this.log) {
+    //   //   this.recipeLog()
+    //   //   this.log = false
+    //   // }
+    //   return item
+    // },
 
   },
-  watch: {
-    item () {
+  methods: {
+    recipeLog () {
       if (this.log) {
         this.$store
           .dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
           .then(response => console.log(response))
         this.log = false
-        return true
       }
-      return false
-    }
-  },
-  methods: {
+    },
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
       const target = this.$route.hash
@@ -155,15 +167,35 @@ export default {
         window.history.pushState("object or string", "Title", this.$route.path);
       }
     },
+    fetchItem () {
+      console.log('fetching recipe data')
+      axios({
+        method: 'get',
+        url: `/api/v1/recipes/${this.$route.params.id}`,
+      })
+      .then( response => {
+        console.log(response)
+        this.item = response.data
+        this.loading = false
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
+    },
+  },
+  beforeMount () {
+    this.fetchItem()
   },
   async mounted () {
+    console.log(this.$el)
     this.$nextTick(() => {
-      // this.navbarHeight = await this.getNavbarHeight()
+      this.recipeLog()
       this.scroll2Anchor()
-      setTimeout(() => {
-        // this.recipeLog()
-      }, 1000)
+      // setTimeout(() => {
+      // }, 1000)
     })
-  }
+  },
+  updated () {
+  },
 }
 </script>

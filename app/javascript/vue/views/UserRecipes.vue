@@ -84,15 +84,17 @@ export default {
     //   return false
     // },
   },
-  created () {
-    if (this.items && this.data.length === 0) this.loadMore()
-    // if (this.$store.getters.recipes) this.loadMore()
+  watch: {
+    items () {
+      this.loadMore()
+    }
   },
   beforeMount () {
     // console.log(this.$store.getters.recipes)
   },
   mounted () {
     this.$nextTick(() => {
+      this.loadMore()
       // this.navbarHeight = this.$store.getters.navbarHeight
       // console.log(this.$store.getters.navbarHeight)
       // console.log(this.$store.getters.recipes)

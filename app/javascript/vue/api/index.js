@@ -30,8 +30,8 @@ import axios from 'axios'
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
 
-const domain = 'https://www.cuisinierrebelle.com'
-// const domain = ''
+// const domain = 'https://www.cuisinierrebelle.com'
+const domain = ''
 
 export const bookmark = (context, payload) => {
   return axios({

@@ -97,4 +97,5 @@ gem 'impressionist'
 gem 'rails_same_site_cookie'
 gem 'newrelic_rpm'
 # gem 'brotli'
-gem 'heroku-deflater', :group => :production
+# gem 'heroku-deflater', :group => :production
+gem 'bullet', group: 'development'

@@ -74,6 +74,63 @@ class Api::V1::RecipesController < Api::V1::BaseController
   end
 
   def show
+    recipe = @recipe
+    render json: {
+      timestamp: (recipe.created_at.to_f * 1000).to_i,
+      recipe: {
+        id: recipe.id,
+        slug: recipe.slug,
+        title: recipe.title,
+        subtitle: recipe.subtitle,
+        video: recipe.video,
+        direction: recipe.direction,
+        description: recipe.description,
+        likes: Like.where(recipe: recipe).count,
+        bookmarks: Bookmark.where(recipe: recipe).count,
+        views: RecipeLog.where(recipe: recipe).count,
+        photo: {
+          card: {
+            url: recipe.photo.url(:card)
+          },
+          full: {
+            url: recipe.photo.url(:full)
+          },
+          preview: {
+            url: recipe.photo.url(:preview)
+          },
+          thumb: {
+            url: recipe.photo.url(:thumb)
+          }
+        }
+      },
+      user: {
+        checked: recipe.user.checked,
+        id: recipe.user.id,
+        image: {
+          full: {
+            url: recipe.user.image.url(:full)
+          },
+          preview: {
+            url: recipe.user.image.url(:preview)
+          },
+          thumb: {
+            url: recipe.user.image.url(:thumb)
+          }
+        },
+        name: recipe.user.name,
+        slug: recipe.user.slug
+      },
+      comments: recipe.comments.map { |comment| {
+          id: comment.id,
+          content: comment.content,
+          replies: comment.replies.map { |reply| {
+              id: reply.id,
+              content: reply.content
+            }
+          }
+        }
+      }
+    }
   end
 
   def update
@@ -91,7 +148,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
   end
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    # binding.pry
+    @recipe = Recipe.find_by(slug: params[:id])
     authorize @recipe  # For Pundit
   end
 end

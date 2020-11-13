@@ -89,6 +89,9 @@ GEM
       premailer-rails (~> 1.9)
       rails (>= 3)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     carrierwave (2.1.0)
       activemodel (>= 5.0.0)
@@ -188,8 +191,6 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
-    heroku-deflater (0.6.3)
-      rack (>= 1.4.5)
     highline (2.0.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
@@ -437,6 +438,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.7.0)
+    uniform_notifier (1.13.0)
     unsplash (2.1.0)
       httparty (~> 0.16)
       oauth2 (~> 1)
@@ -476,6 +478,7 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1)
   bootsnap
   bootstrap-email
+  bullet
   carrierwave
   carrierwave-aws
   carrierwave-i18n
@@ -492,7 +495,6 @@ DEPENDENCIES
   font-awesome-sass (~> 5.13.0)
   friendly_id (~> 5.2.4)
   gibbon
-  heroku-deflater
   http_accept_language
   i18n-js
   i18n-tasks (~> 0.9.31)
