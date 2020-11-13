@@ -22,4 +22,4 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 end
 
-Rails.application.config.hosts << "www.cuisinierrebelle.com"
+Rails.application.config.hosts << "cuisinierrebelle.com"
