@@ -14,7 +14,7 @@
                       <i class="material-icons md-16">check_circle</i>
                     </span>
                   </div>
-                  <div class="mr-3 btn btn-dark btn-sm py-0">Follow</div>
+                  <div class="d-none mr-3 btn btn-dark btn-sm py-0">Follow</div>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
   </div>
   <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
 
-  {{ item.recipe.direction }}
+  <vue-markdown :source="item.recipe.direction" />
 
   <div v-if="item.recipe.video" class="row mt-5 d-print-none">
     <div class="col col-md-8 mx-auto">
@@ -92,6 +92,7 @@ import CardSmall from '../components/CardSmall.vue'
 import Like from '../components/Like.vue'
 import Print from '../components/Print.vue'
 import Visit from '../components/Visit.vue'
+import VueMarkdown from 'vue-markdown'
 
 export default {
   name: 'Recipe',
@@ -99,7 +100,6 @@ export default {
     return {
       componentKey: 0,
       log: true,
-      // navbarHeight: 0,
     }
   },
   components: {
@@ -108,6 +108,7 @@ export default {
     Like,
     Print,
     Visit,
+    VueMarkdown,
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
