@@ -60,7 +60,7 @@
       </div>
       <div class="d-print-none">
       <hr>
-      <div class="h4 mb-3">Other recipes</div>
+      <div v-if="item" class="h4 mb-3">Other recipes</div>
         <card-small v-for="index in 5" :key="index" :componentKey="index" />
       </div>
 
@@ -144,7 +144,7 @@ export default {
     recipeLog () {
       if (this.log) {
         this.$store
-          .dispatch('RECIPE_LOG', this.$store.getters.recipe(this.$route.params.id))
+          .dispatch('RECIPE_LOG', this.item)
           .then(response => console.log(response))
         this.log = false
       }
@@ -176,6 +176,9 @@ export default {
       .then( response => {
         console.log(response)
         this.item = response.data
+        this.$store
+          .dispatch('SET_STORE', {})
+          .then(() => this.recipeLog())
         this.loading = false
       })
       .catch(error => {
@@ -189,7 +192,6 @@ export default {
   async mounted () {
     console.log(this.$el)
     this.$nextTick(() => {
-      this.recipeLog()
       this.scroll2Anchor()
       // setTimeout(() => {
       // }, 1000)
