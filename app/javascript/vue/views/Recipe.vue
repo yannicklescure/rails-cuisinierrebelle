@@ -75,6 +75,10 @@
         </div>
         <div v-for="comment, index in comments" :key="index" class="d-flex flex-column">
           <comment :item="comment" />
+          <div v-for="reply, index in comment.replies" :key="index" class="d-flex align-items-start">
+            <span class="material-icons md-18 mt-2">subdirectory_arrow_right</span>
+            <comment :item="reply" class="pl-3 flex-grow-1" />
+          </div>
         </div>
       </div>
     </div>
