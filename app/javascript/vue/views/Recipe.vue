@@ -1,6 +1,6 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }">
-    <div v-if="loading === false" class="container py-3 mb-5 recipe" style="height: auto !important;">
+  <div :style="{ marginTop: navbarHeight + 'px' }" :key="$route.params.id">
+    <div class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
@@ -129,9 +129,9 @@ export default {
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
-    // item () {
-    //   return this.recipe(this.$route.params.id)
-    // },
+    item () {
+      return this.recipe(this.$route.params.id)
+    },
   },
   methods: {
     recipeLog () {
@@ -183,17 +183,18 @@ export default {
     },
   },
   watch: {
-    '$route.params.id': function (id) {
-      console.log(id)
-      this.fetchItem()
+    '$route' () {
+      console.log(this.$route.params.id)
+      // this.fetchItem()
     }
+  },
+  beforeMount () {
+    // console.log(this.$el)
   },
   created () {
     this.fetchItem()
-    console.log(this.$el)
   },
-  async mounted () {
-    console.log(this.$el)
+  mounted () {
     this.$nextTick(() => {
       this.scroll2Anchor()
       // setTimeout(() => {

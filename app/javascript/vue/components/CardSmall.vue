@@ -36,14 +36,16 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['recipes']),
     item () {
       const getRandomInt = (max) => {
+        max = max > 0 ? max - 1 : 0
         const result = Math.floor(Math.random() * Math.floor(max))
         console.log(result)
         return result
       }
-      const num = getRandomInt(this.$store.getters.recipes.length -1)
-      const randomRecipe = this.$store.getters.recipes[num]
+      const num = getRandomInt(this.recipes.length)
+      const randomRecipe = this.recipes[num]
       console.log(randomRecipe)
       return randomRecipe
     },
