@@ -1,6 +1,6 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
-    <div class="container py-3 mb-5 recipe" style="height: auto !important;">
+    <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
@@ -60,7 +60,7 @@
       </div>
       <div class="d-print-none">
       <hr>
-      <div v-if="item.recipe.title" class="h4 mb-3">Other recipes</div>
+      <div class="h4 mb-3">Other recipes</div>
         <card-small v-for="index in 5" :key="index" />
       </div>
 
