@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }" :key="$route.params.id">
+  <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
@@ -126,7 +126,7 @@ export default {
           checked: null,
         }
       },
-      loading: true,
+      loading: false,
     }
   },
   components: {
@@ -185,6 +185,7 @@ export default {
             .dispatch('SET_STORE', {})
             .then(() => this.recipeLog())
         }
+        this.componentKey += 1
         this.loading = false
       })
       .catch(error => {
