@@ -8,7 +8,7 @@
       <router-link v-else to="/login" class="text-body align-items">
         <i class="material-icons md-18 align-icons">favorite_border</i>
       </router-link>
-      <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.likes }}</span>
+      <span class="text-muted font-weight-lighter ml-1">{{ likes }}</span>
     </div>
   </div>
 </template>
@@ -26,7 +26,9 @@ export default {
   name: 'like',
   props: ['item'],
   data () {
-    return {}
+    return {
+      likes: this.item.recipe.likes
+    }
   },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser']),
@@ -45,12 +47,14 @@ export default {
     like () {
       if (!this.liked) {
         console.log('like')
+        this.likes += 1
         this.$store
           .dispatch('LIKE', { user_id: this.user.id, recipe_id: this.item.recipe.id })
           .then(() => this.$emit('liked', true))
       }
       else {
         console.log('unlike')
+        this.likes -= 1
         this.$store.dispatch('UNLIKE', { user_id: this.user.id, recipe_id: this.item.recipe.id })
       }
     },

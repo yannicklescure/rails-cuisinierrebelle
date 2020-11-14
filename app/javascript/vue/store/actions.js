@@ -50,6 +50,7 @@ export default {
     return api.like(context, payload)
       .then(response => {
         console.log(`response.status ${response.status}`)
+        console.log(response)
         if (response.status === 200) context.commit("LIKE", payload)
         return response
       })
@@ -64,6 +65,7 @@ export default {
         return api.unlike(context, payload)
       .then(response => {
         console.log(`response.status ${response.status}`)
+        console.log(response)
         if (response.status === 204) context.commit("UNLIKE", payload)
         return response
       })

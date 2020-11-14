@@ -145,12 +145,10 @@ export default {
   },
   methods: {
     recipeLog () {
-      if (this.log) {
-        this.$store
-          .dispatch('RECIPE_LOG', this.item)
-          .then(response => console.log(response))
-        this.log = false
-      }
+      this.$store
+        .dispatch('RECIPE_LOG', this.item)
+        .then(response => console.log(response))
+      this.log = false
     },
     scroll2Anchor () {
       const currentPage = this.$route.fullpath
@@ -194,9 +192,10 @@ export default {
     },
   },
   watch: {
-    '$route' () {
+    async '$route' () {
       console.log(this.$route.params.id)
-      this.fetchItem()
+      await this.fetchItem()
+      this.recipeLog()
     }
   },
   beforeMount () {

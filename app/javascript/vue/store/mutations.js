@@ -38,7 +38,7 @@ export default {
     console.log(payload)
     // console.log(state)
     state.data.user.likes.push(payload)
-    console.log(`likes: ${ state.data.user.likes.length }`)
+    console.log(`user's likes: ${ state.data.user.likes.length }`)
 
     const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
     const position = state.data.recipes.indexOf(recipe)
@@ -52,7 +52,7 @@ export default {
     const like = state.data.user.likes.filter(like => like.recipe_id === payload.recipe_id)[0]
     let position = state.data.user.likes.indexOf(like)
     state.data.user.likes.splice(position, 1)
-    console.log(`likes: ${ state.data.user.likes.length }`)
+    console.log(`user's likes: ${ state.data.user.likes.length }`)
 
     const recipe = state.data.recipes.filter(recipe => recipe.recipe.id === payload.recipe_id)[0]
     position = state.data.recipes.indexOf(recipe)
