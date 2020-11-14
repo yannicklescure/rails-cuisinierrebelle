@@ -118,6 +118,7 @@ export const fr = () => {
     },
     recipe: {
       otherRecipes: 'Autres recettes',
+      comments: '0 Commentaires | 1 Commentaire | {count} Commentaires',
     },
   }
 }
