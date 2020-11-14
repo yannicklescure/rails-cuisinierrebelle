@@ -42,6 +42,25 @@ export default {
     Card,
     Banner,
   },
+
+  computed: {
+    ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
+    items () {
+      return this.recipes
+    },
+    // items () {
+    //   const items = this.$store.getters.recipes
+    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
+    //   return items
+    // },
+    // setData () {
+    //   if (this.items.length > 0 && this.data.length === 0) {
+    //     this.data = this.items.slice(0, 24)
+    //     return true
+    //   }
+    //   return false
+    // },
+  },
   methods: {
     // cardParams (value) {
     //   const cardWidth = value.params.width
@@ -65,37 +84,27 @@ export default {
         }, 0);
       }
     },
-  },
-  computed: {
-    ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
-    items () {
-      return this.recipes
+    fetchItem () {
+      console.log('fetching recipes data')
+      axios({
+        method: 'get',
+        url: `/api/v1/recipes`,
+      })
+      .then( response => {
+        console.log(response)
+        this.data = response.data
+        this.$store
+          .dispatch('SET_STORE', {})
+          .then(() => this.recipeLog())
+        this.loading = false
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
     },
-    // items () {
-    //   const items = this.$store.getters.recipes
-    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
-    //   return items
-    // },
-    // setData () {
-    //   if (this.items.length > 0 && this.data.length === 0) {
-    //     this.data = this.items.slice(0, 24)
-    //     return true
-    //   }
-    //   return false
-    // },
-  },
-  watch: {
-    recipes () {
-      this.loadMore()
-    }
-  },
-  created () {
-    // if (this.items && this.data.length === 0) this.loadMore()
-    // if (this.$store.getters.recipes) this.loadMore()
   },
   beforeMount () {
-    if (this.items.length > 0 && this.data.length === 0) this.loadMore()
-    // console.log(this.$store.getters.recipes)
+    this.fetchItem()
   },
   mounted () {
     // while (this.data.length === 0){
