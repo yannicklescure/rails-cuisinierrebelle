@@ -4,8 +4,6 @@
 // import(/* webpackPreload: true */ "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2")
 
 const { environment } = require('@rails/webpacker')
-const { VueLoaderPlugin } = require('vue-loader')
-const vue = require('./loaders/vue')
 const webpack = require('webpack')
 
 const dotenv = require('dotenv')
@@ -33,6 +31,9 @@ environment.plugins.prepend('Provide',
 )
 
 environment.config.merge()
+
+const { VueLoaderPlugin } = require('vue-loader')
+const vue = require('./loaders/vue')
 
 // const Critters = require('critters-webpack-plugin');
 

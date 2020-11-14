@@ -61,7 +61,7 @@
       <div class="d-print-none">
       <hr>
       <div v-if="item" class="h4 mb-3">Other recipes</div>
-        <card-small v-for="index in 5" :key="index" :componentKey="index" />
+        <card-small v-for="index in 5" :key="index" />
       </div>
 
       <div id="comments" ref="comments" class="d-print-none">
@@ -130,15 +130,8 @@ export default {
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
     // item () {
-    //   const item = this.recipe(this.$route.params.id)
-    //   console.log(item)
-    //   // if (item && this.log) {
-    //   //   this.recipeLog()
-    //   //   this.log = false
-    //   // }
-    //   return item
+    //   return this.recipe(this.$route.params.id)
     // },
-
   },
   methods: {
     recipeLog () {
@@ -163,12 +156,13 @@ export default {
           left: 0,
           behavior: 'smooth'
         };
-        window.scrollTo(scrollOptions);
-        window.history.pushState("object or string", "Title", this.$route.path);
+        window.scrollTo(scrollOptions)
+        window.history.pushState("object or string", "Title", this.$route.path)
       }
     },
     fetchItem () {
       console.log('fetching recipe data')
+      this.loading = true
       axios({
         method: 'get',
         url: `/api/v1/recipes/${this.$route.params.id}`,
@@ -176,9 +170,11 @@ export default {
       .then( response => {
         console.log(response)
         this.item = response.data
-        this.$store
-          .dispatch('SET_STORE', {})
-          .then(() => this.recipeLog())
+        if (this.log) {
+          this.$store
+            .dispatch('SET_STORE', {})
+            .then(() => this.recipeLog())
+        }
         this.loading = false
       })
       .catch(error => {
@@ -186,8 +182,15 @@ export default {
       })
     },
   },
-  beforeMount () {
+  watch: {
+    '$route.params.id': function (id) {
+      console.log(id)
+      this.fetchItem()
+    }
+  },
+  created () {
     this.fetchItem()
+    console.log(this.$el)
   },
   async mounted () {
     console.log(this.$el)
@@ -196,8 +199,6 @@ export default {
       // setTimeout(() => {
       // }, 1000)
     })
-  },
-  updated () {
   },
 }
 </script>
