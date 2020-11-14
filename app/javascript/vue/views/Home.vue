@@ -92,8 +92,8 @@ export default {
         url: `/api/v1/recipes`,
       })
       .then( response => {
-        console.log(response)
-        this.data = response.data
+        console.log(response.data.data.recipes)
+        this.data = response.data.data.recipes
       })
       .catch(error => {
         console.log(error.response)
