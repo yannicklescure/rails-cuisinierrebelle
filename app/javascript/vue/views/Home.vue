@@ -25,6 +25,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 import Banner from '../components/Banner.vue'
 import Card from '../components/Card.vue'
 
