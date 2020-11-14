@@ -127,6 +127,10 @@ export default {
     }
   },
 
+  RECIPE: (context, payload) => {
+
+  },
+
   RECIPE_LOG: (context, payload) => {
     console.log(context.state.data.user)
     return api.recipeLog(context, payload)
