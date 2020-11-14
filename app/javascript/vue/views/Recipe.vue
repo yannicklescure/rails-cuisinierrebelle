@@ -114,6 +114,16 @@ export default {
             }
           },
           video: null,
+        },
+        user: {
+          image: {
+            thumb: {
+              url: null
+            }
+          },
+          slug: null,
+          name: null,
+          checked: null,
         }
       },
       loading: true,
