@@ -64,8 +64,8 @@
         <card-small v-for="index in 5" :key="index" />
       </div>
 
-      <div ref="comments" class="d-print-none mt-5">
-        <div class="h4 mb-3">{{ $tc('recipe.comments', comments) }}</div>
+      <div id="comments" ref="comments" class="d-print-none mt-5">
+        <div class="h4 mb-3">{{ $tc('recipe.comments', comments.length) }}</div>
         <div class="input-group my-3">
           <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
         </div>
@@ -73,7 +73,7 @@
           <div class="btn btn-light">Comment</div>
           <div class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></div>
         </div>
-        <div v-for="comment, index in item.comments" :key="index" class="d-flex flex-column">
+        <div v-for="comment, index in comments" :key="index" class="d-flex flex-column">
           <comment :item="comment" />
         </div>
       </div>
@@ -137,11 +137,8 @@ export default {
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
     comments () {
-      return this.item.comments.length
-    }
-    // item () {
-    //   return this.recipe(this.$route.params.id)
-    // },
+      return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+    },
   },
   methods: {
     recipeLog () {
@@ -151,7 +148,7 @@ export default {
       this.log = false
     },
     scroll2Anchor () {
-      const currentPage = this.$route.fullpath
+      // const currentPage = this.$route.fullpath
       const target = this.$route.hash
       console.log(this.$route)
       console.log(target)
@@ -184,6 +181,9 @@ export default {
           this.componentKey += 1
           this.loading = false
         })
+        .finally(() => {
+          this.scroll2Anchor()
+        })
     },
   },
   watch: {
@@ -196,12 +196,12 @@ export default {
   beforeMount () {
     // console.log(this.$el)
   },
-  created () {
+  beforeMount () {
     this.fetchItem()
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll2Anchor()
+      // this.scroll2Anchor()
       // setTimeout(() => {
       // }, 1000)
     })
