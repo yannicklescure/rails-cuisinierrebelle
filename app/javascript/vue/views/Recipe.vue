@@ -60,7 +60,7 @@
       </div>
       <div class="d-print-none">
       <hr>
-      <div v-if="item" class="h4 mb-3">Other recipes</div>
+      <div v-if="item.recipe.title" class="h4 mb-3">Other recipes</div>
         <card-small v-for="index in 5" :key="index" />
       </div>
 
@@ -139,9 +139,9 @@ export default {
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
-    item () {
-      return this.recipe(this.$route.params.id)
-    },
+    // item () {
+    //   return this.recipe(this.$route.params.id)
+    // },
   },
   methods: {
     recipeLog () {
@@ -196,7 +196,7 @@ export default {
   watch: {
     '$route' () {
       console.log(this.$route.params.id)
-      // this.fetchItem()
+      this.fetchItem()
     }
   },
   beforeMount () {
