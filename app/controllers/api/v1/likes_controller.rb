@@ -10,7 +10,7 @@ class Api::V1::LikesController < Api::V1::BaseController
     @like = Like.new(like_params)
     authorize @like
     @like.save
-    render json: {}
+    render json: MultiJson.dump({})
   end
 
   def destroy

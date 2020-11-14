@@ -29,7 +29,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   def respond_with(resource, _opts = {})
     # binding.pry
     # resource.sessionIpAddress = request.remote_ip
-    render json: {
+    render json: MultiJson.dump({
       "id": resource.id,
       "email": resource.email,
       # "created_at": "2020-05-24T16:04:07.878Z",
@@ -51,7 +51,7 @@ class Api::V1::SessionsController < Devise::SessionsController
       "freemium": resource.freemium,
       "likes": Like.where(user_id: resource.id),
       "bookmarks": Bookmark.where(user_id: resource.id),
-    }
+    })
   end
 
   def respond_to_on_destroy

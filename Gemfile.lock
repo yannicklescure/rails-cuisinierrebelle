@@ -502,6 +502,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mini_magick
+  multi_json
   namae
   newrelic_rpm
   nokogiri (>= 1.10.8)

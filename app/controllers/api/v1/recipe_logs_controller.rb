@@ -34,7 +34,7 @@ class Api::V1::RecipeLogsController < Api::V1::BaseController
       end
     end
     authorize @recipe_log
-    render json: { views: @recipe.views }
+    render json: MultiJson.dump({ views: @recipe.views })
   end
 
   private

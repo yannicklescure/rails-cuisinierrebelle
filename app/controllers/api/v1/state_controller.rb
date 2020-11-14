@@ -18,7 +18,7 @@ class Api::V1::StateController < Api::V1::BaseController
       @last_update = (Recipe.last.created_at.to_f * 1000).to_i
       @timestamp = @last_update < force_update ? force_update : @last_update
       # request.env['HTTP_ACCEPT_ENCODING'] = 'gzip'
-      render json: {
+      render json:  MultiJson.dump({
         data: {
           isAuthenticated: user_signed_in?,
           lastUpdated: (Recipe.last.created_at.to_f * 1000).to_i,
@@ -178,7 +178,7 @@ class Api::V1::StateController < Api::V1::BaseController
             }
           }
         }
-      }
+      })
     end
   end
 end

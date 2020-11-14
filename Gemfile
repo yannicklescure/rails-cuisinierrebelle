@@ -99,3 +99,4 @@ gem 'newrelic_rpm'
 # gem 'brotli'
 # gem 'heroku-deflater', :group => :production
 gem 'bullet', group: 'development'
+gem 'multi_json'

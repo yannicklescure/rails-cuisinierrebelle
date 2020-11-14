@@ -10,7 +10,7 @@ class Api::V1::BookmarksController < Api::V1::BaseController
     @bookmark = Bookmark.new(bookmark_params)
     authorize @bookmark
     @bookmark.save
-    render json: {}
+    render json: MultiJson.dump({})
   end
 
   def destroy
