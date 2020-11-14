@@ -32,13 +32,17 @@ export default {
   },
   methods: {
     timeAgo (time) {
-      const between = (Date.now() - Number(time)) / 1000
+      const between = Math.trunc((new Date().getTime() - time) / 1000)
       if (between < 3600) {
-        return 'il y a ' + pluralize(~~(between / 60), ' minute')
+        return this.$tc('comment.minutes', Math.trunc(between / 60))
       } else if (between < 86400) {
-        return 'il y a ' + pluralize(~~(between / 3600), ' heure')
+        return this.$tc('comment.hours', Math.trunc(between / 3600))
+      } else if (between < 2592000) {
+        return this.$tc('comment.days', Math.trunc(between / 86400))
+      } else if (between < 31104000) {
+        return this.$tc('comment.months', Math.trunc(between / 2592000))
       } else {
-        return 'il y a ' + pluralize(~~(between / 86400), ' jour')
+        return this.$tc('comment.years', Math.trunc(between / 311004000))
       }
     }
   },

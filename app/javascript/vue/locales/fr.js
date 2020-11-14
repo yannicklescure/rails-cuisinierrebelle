@@ -120,5 +120,12 @@ export const fr = () => {
       otherRecipes: 'Autres recettes',
       comments: '0 Commentaires | 1 Commentaire | {count} Commentaires',
     },
+    comment: {
+      minutes: 'il y a 0 minutes | il y a 1 minute | il y a {count} minutes',
+      hours: 'il y a 0 heures | il y a 1 heure | il y a {count} heures',
+      days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
+      months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
+      years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
+    },
   }
 }
