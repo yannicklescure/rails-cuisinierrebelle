@@ -43,27 +43,29 @@ json.data do
         end
         json.checked recipe.user.checked
       end
-      if recipe.comments.any?
-        json.comments recipe.comments do |comment|
-          json.extract! comment, :id, :content
-          if comment.replies.any?
-            json.replies comment.replies do |reply|
-              json.extract! reply, :id, :content
-            end
-          end
-        end
-      else
-        json.comments []
-      end
+      # if recipe.comments.any?
+      #   json.comments recipe.comments do |comment|
+      #     json.extract! comment, :id, :content
+      #     if comment.replies.any?
+      #       json.replies comment.replies do |reply|
+      #         json.extract! reply, :id, :content
+      #       end
+      #     end
+      #   end
+      # else
+      #   json.comments []
+      # end
+      json.comments []
     end
   end
 
   json.users do
     json.array! @users do |user|
       json.extract! user, :id, :slug, :name, :checked
+      json.followers []
       # json.followers user.followers.map{ |f| {
       #     name: f.name,
-      #     slug: f.slug,
+      #     slug: fjson.followers.slug,
       #     checked: f.checked,
       #     image: {
       #       thumb: {
@@ -72,6 +74,7 @@ json.data do
       #     }
       #   }
       # }
+      json.following []
       # json.following user.following.map{ |f| {
       #     name: f.name,
       #     slug: f.slug,
