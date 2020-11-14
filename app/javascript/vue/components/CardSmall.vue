@@ -1,6 +1,6 @@
 <template>
   <div class="card card-small border-0 mb-3" :key="componentKey">
-    <div class="d-flex">
+    <div v-if="item" class="d-flex">
       <div class="d-block" style="height: 64px;">
         <img
           secure="true" height="64px" width="64px" class="rounded" style="object-fit: cover;"
