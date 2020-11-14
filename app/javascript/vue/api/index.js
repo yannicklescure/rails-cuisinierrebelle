@@ -43,7 +43,6 @@ export const bookmark = (context, payload) => {
     url: `${domain}/api/v1/bookmarks`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
-      // 'Accept-Encoding': 'gzip',
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -70,7 +69,6 @@ export const unbookmark = (context, payload) => {
     url: `${domain}/api/v1/bookmarks/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
-      // 'Accept-Encoding': 'gzip',
     },
     data: {}
   })
@@ -90,7 +88,6 @@ export const like = (context, payload) => {
     url: `${domain}/api/v1/likes`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
-      // 'Accept-Encoding': 'gzip',
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -117,9 +114,23 @@ export const unlike = (context, payload) => {
     url: `${domain}/api/v1/likes/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${context.state.data.authorization}`,
-      // 'Accept-Encoding': 'gzip',
     },
     data: {}
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const recipe = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'get',
+    url: `/api/v1/recipes/${payload}`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -138,7 +149,6 @@ export const recipeLog = (context, payload) => {
     method: 'post',
     url: `${domain}/api/v1/recipe_logs`,
     headers: {
-      // 'Accept-Encoding': 'gzip',
       // 'X-CSRF-Token': csrfToken,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
       // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null

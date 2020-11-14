@@ -128,7 +128,16 @@ export default {
   },
 
   RECIPE: (context, payload) => {
-
+    // console.log(context.state.data.user)
+    return api.recipe(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("RECIPE", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
   },
 
   RECIPE_LOG: (context, payload) => {

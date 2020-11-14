@@ -171,24 +171,19 @@ export default {
     fetchItem () {
       console.log('fetching recipe data')
       this.loading = true
-      axios({
-        method: 'get',
-        url: `/api/v1/recipes/${this.$route.params.id}`,
-      })
-      .then( response => {
-        console.log(response)
-        this.item = response.data
-        if (this.log) {
-          this.$store
-            .dispatch('SET_STORE', {})
-            .then(() => this.recipeLog())
-        }
-        this.componentKey += 1
-        this.loading = false
-      })
-      .catch(error => {
-        console.log(error.response)
-      })
+      this.$store
+        .dispatch('RECIPE', this.$route.params.id)
+        .then( response => {
+          console.log(response)
+          this.item = response.data
+          if (this.log) {
+            this.$store
+              .dispatch('SET_STORE', {})
+              .then(() => this.recipeLog())
+          }
+          this.componentKey += 1
+          this.loading = false
+        })
     },
   },
   watch: {

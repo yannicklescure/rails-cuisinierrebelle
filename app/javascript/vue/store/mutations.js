@@ -86,6 +86,20 @@ export default {
     saveToLocalStorage(state, 'SET_DATA')
   },
 
+  RECIPE: (state, payload) => {
+    console.log('### RECIPE ###')
+    console.log(state)
+    console.log(payload)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    state.data.recipes[position] = payload.data
+    // console.log(state.data)
+    state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'RECIPE')
+  },
+
   RECIPE_LOG: (state, payload) => {
     console.log(payload)
     const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]

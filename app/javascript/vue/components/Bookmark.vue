@@ -8,7 +8,7 @@
       <router-link v-else to="/login" class="text-body align-items">
         <i class="material-icons md-18">bookmark_border</i>
       </router-link>
-      <span class="text-muted font-weight-lighter ml-1">{{ item.recipe.bookmarks }}</span>
+      <span class="text-muted font-weight-lighter ml-1">{{ bookmarks }}</span>
     </div>
   </div>
 </template>
@@ -26,7 +26,9 @@ export default {
   name: 'bookmark',
   props: ['item'],
   data () {
-    return {}
+    return {
+      bookmarks: this.item.recipe.bookmarks
+    }
   },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser']),
@@ -45,12 +47,14 @@ export default {
     bookmark () {
       if (!this.bookmarked) {
         console.log('bookmark')
+        this.bookmarks += 1
         this.$store
           .dispatch('BOOKMARK', { user_id: this.user.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
           .then(() => this.$emit('bookmarked', true))
       }
       else {
         console.log('unbookmark')
+        this.bookmarks -= 1
         this.$store.dispatch('UNBOOKMARK', { user_id: this.user.id, recipe_id: this.item.recipe.id })
       }
     },
