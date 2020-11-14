@@ -87,17 +87,12 @@ export default {
     },
     fetchItem () {
       console.log('fetching recipes data')
-      axios({
-        method: 'get',
-        url: `/api/v1/recipes`,
-      })
-      .then( response => {
-        console.log(response.data.data.recipes)
-        this.data = response.data.data.recipes
-      })
-      .catch(error => {
-        console.log(error.response)
-      })
+      this.$store
+        .dispatch('RECIPES', {})
+        .then( response => {
+          console.log(response.data.data.recipes)
+          this.data = response.data.data.recipes
+        })
     },
   },
   beforeMount () {

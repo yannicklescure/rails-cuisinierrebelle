@@ -130,7 +130,22 @@ export const recipe = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `/api/v1/recipes/${payload}`,
+    url: `${domain}/api/v1/recipes/${payload}`,
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const recipes = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'get',
+    url: `${domain}/api/v1/recipes`,
   })
   .catch(error => {
     console.log(error.toJSON());

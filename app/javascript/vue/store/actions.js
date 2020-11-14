@@ -140,6 +140,19 @@ export default {
       })
   },
 
+  RECIPES: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.recipes(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("RECIPES", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE_LOG: (context, payload) => {
     console.log(context.state.data.user)
     return api.recipeLog(context, payload)

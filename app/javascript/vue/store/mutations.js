@@ -100,6 +100,17 @@ export default {
     saveToLocalStorage(state, 'RECIPE')
   },
 
+  RECIPES: (state, payload) => {
+    console.log('### RECIPES ###')
+    console.log(state)
+    console.log(payload)
+    if (state.data.recipes.length === 0) {
+      state.data.recipes = payload.data
+      state.data.lastUpdated = new Date().getTime()
+      saveToLocalStorage(state, 'RECIPES')
+    }
+  },
+
   RECIPE_LOG: (state, payload) => {
     console.log(payload)
     const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
