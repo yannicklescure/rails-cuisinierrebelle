@@ -94,10 +94,6 @@ export default {
       .then( response => {
         console.log(response)
         this.data = response.data
-        this.$store
-          .dispatch('SET_STORE', {})
-          .then(() => this.recipeLog())
-        this.loading = false
       })
       .catch(error => {
         console.log(error.response)
