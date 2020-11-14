@@ -95,7 +95,13 @@ export default {
     if (vueStore) {
       console.log('vueStore')
       console.log(vueStore)
+      // Remove localStorage prior VueJS
       if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
+        localStorage.removeItem('cuisinier_rebelle')
+        return fetchStore(context, {})
+      }
+      // Force Update
+      if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) {
         localStorage.removeItem('cuisinier_rebelle')
         return fetchStore(context, {})
       }
