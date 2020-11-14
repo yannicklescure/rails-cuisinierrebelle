@@ -116,5 +116,8 @@ export const fr = () => {
       followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
       // apple: 'no apples | one apple | {count} apples',
     },
+    recipe: {
+      otherRecipes: 'Autres recettes',
+    },
   }
 }

@@ -45,7 +45,7 @@
 
       <vue-markdown :source="item.recipe.direction" />
 
-      <div v-if="item.recipe.video" class="row mt-5 d-print-none">
+      <div v-if="item.recipe.video" class="row my-5 d-print-none">
         <div class="col col-md-8 mx-auto">
           <div class="embed-responsive embed-responsive-16by9">
             <iframe
@@ -59,27 +59,23 @@
         </div>
       </div>
       <div class="d-print-none">
-      <hr>
-      <div class="h4 mb-3">Other recipes</div>
+        <div class="h4 mb-3">{{ $t('recipe.otherRecipes') }}</div>
         <card-small v-for="index in 5" :key="index" />
       </div>
 
       <div id="comments" ref="comments" class="d-print-none">
-        <div class="d-none">
-          <hr>
-          <div id="comments-count" class="d-flex">
-            No comment
-          </div>
-          <div class="input-group my-3">
-            <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
-          </div>
-          <div class="input-group my-3">
-            <a href="/users/sign_up" class="btn btn-light">Comment</a>
-            <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
-          </div>
-          <div id="comments-list">
-            <div class="d-flex flex-column">
-            </div>
+        <div id="comments-count" class="d-flex">
+          No comment
+        </div>
+        <div class="input-group my-3">
+          <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
+        </div>
+        <div class="input-group my-3">
+          <a href="/users/sign_up" class="btn btn-light">Comment</a>
+          <a href="/users/sign_up" class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></a>
+        </div>
+        <div id="comments-list">
+          <div class="d-flex flex-column">
           </div>
         </div>
       </div>
@@ -104,6 +100,7 @@ export default {
       componentKey: 0,
       log: true,
       item: {
+        comments: [],
         recipe: {
           title: null,
           subtitle: null,

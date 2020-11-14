@@ -110,63 +110,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
                 url: user.image.url(:thumb)
               }
             },
-            # recipes: @recipes.map { |recipe| {
-            #     timestamp: (recipe.created_at.to_f * 1000).to_i,
-            #     recipe: {
-            #       id: recipe.id,
-            #       slug: recipe.slug,
-            #       title: recipe.title,
-            #       subtitle: recipe.subtitle,
-            #       video: recipe.video,
-            #       direction: recipe.direction,
-            #       description: recipe.description,
-            #       likes: Like.where(recipe: recipe).count,
-            #       bookmarks: Bookmark.where(recipe: recipe).count,
-            #       views: RecipeLog.where(recipe: recipe).count,
-            #       photo: {
-            #         card: {
-            #           url: recipe.photo.url(:card)
-            #         },
-            #         full: {
-            #           url: recipe.photo.url(:full)
-            #         },
-            #         preview: {
-            #           url: recipe.photo.url(:preview)
-            #         },
-            #         thumb: {
-            #           url: recipe.photo.url(:thumb)
-            #         }
-            #       }
-            #     },
-            #     user: {
-            #       checked: recipe.user.checked,
-            #       id: recipe.user.id,
-            #       image: {
-            #         full: {
-            #           url: recipe.user.image.url(:full)
-            #         },
-            #         preview: {
-            #           url: recipe.user.image.url(:preview)
-            #         },
-            #         thumb: {
-            #           url: recipe.user.image.url(:thumb)
-            #         }
-            #       },
-            #       name: recipe.user.name,
-            #       slug: recipe.user.slug
-            #     },
-            #     comments: recipe.comments.map { |comment| {
-            #         id: comment.id,
-            #         content: comment.content,
-            #         replies: comment.replies.map { |reply| {
-            #             id: reply.id,
-            #             content: reply.content
-            #           }
-            #         }
-            #       }
-            #     }
-            #   }
-            # }
           }
         }
       }
@@ -222,10 +165,28 @@ class Api::V1::RecipesController < Api::V1::BaseController
       },
       comments: recipe.comments.map { |comment| {
           id: comment.id,
+          user: {
+            name: comment.user.name,
+            slug: comment.user.slug,
+            image: {
+              thumb: {
+                url: comment.user.image.url(:thumb)
+              }
+            }
+          },
           content: comment.content,
           replies: comment.replies.map { |reply| {
               id: reply.id,
-              content: reply.content
+              content: reply.content,
+              user: {
+                name: reply.user.name,
+                slug: reply.user.slug,
+                image: {
+                  thumb: {
+                    url: reply.user.image.url(:thumb)
+                  }
+                }
+              },
             }
           }
         }
