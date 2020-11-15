@@ -2,6 +2,10 @@
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
+        <Adsense
+          data-ad-client="ca-pub-9223566768445571"
+          data-ad-slot="4726766855">
+        </Adsense>
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
             <div class="d-flex flex-grow-1 m-0 align-items-center">

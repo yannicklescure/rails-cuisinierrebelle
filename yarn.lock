@@ -8650,6 +8650,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-google-adsense@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/vue-google-adsense/-/vue-google-adsense-1.9.0.tgz#6b2790190a4da730468c9b598f179a40a68f7b0b"
+  integrity sha512-OI9DcVvPpC5bt2DPnudkJSzylqSrFS3Al2jS/5BfOBMY2XYtZ2jsPuwFtrQCe6okk06obwndGNimZMkUfTiJ+g==
+
 vue-gtag@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/vue-gtag/-/vue-gtag-1.10.0.tgz#787d62eb4f1135dfa2997b465f1b11e5cf8fb0c9"
@@ -8711,6 +8716,11 @@ vue-router@^3.4.7:
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.9.tgz#c016f42030ae2932f14e4748b39a1d9a0e250e66"
   integrity sha512-CGAKWN44RqXW06oC+u4mPgHLQQi2t6vLD/JbGRDAXm0YpMv0bgpKuU5bBd7AvMgfTz9kXVRIWKHqRwGEb8xFkA==
+
+vue-script2@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-script2/-/vue-script2-2.1.0.tgz#8e480dc6052c8cdf2aa0ec112efc80f31ddc3522"
+  integrity sha512-EDUOjQBFvhkJXwmWuUR9ijlF7/4JtmvjXSKaHSa/LNTMy9ltjgKgYB68aqlxgq8ORdSxowd5eo24P1syjZJnBA==
 
 vue-social-sharing@^3.0.2:
   version "3.0.3"

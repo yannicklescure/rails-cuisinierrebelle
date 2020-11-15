@@ -38,6 +38,14 @@ Vue.use(VueGtag, {
   config: { id: "UA-155962082-1" }
 }, router)
 
+import Ads from 'vue-google-adsense'
+
+Vue.use(require('vue-script2'))
+
+Vue.use(Ads.Adsense)
+// Vue.use(Ads.InArticleAdsense)
+// Vue.use(Ads.InFeedAdsense)
+
 // import VueSocialSharing from 'vue-social-sharing'
 // Vue.use(VueSocialSharing)
 
