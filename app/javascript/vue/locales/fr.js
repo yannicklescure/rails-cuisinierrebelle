@@ -97,6 +97,7 @@ export const fr = () => {
       spanish_html: 'Español',
       tools: 'Matériel de cuisine',
       top_100: 'Top 100',
+      bookmarks: 'Mes favoris',
       // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
