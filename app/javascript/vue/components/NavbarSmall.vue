@@ -15,7 +15,7 @@
           <span>{{ $t('navbar.brand') }}</span>
         </router-link>
       </div>
-      <div v-on:click="show = !show">
+      <div v-on:click="show = !show" v-click-outside="collapse">
         <i class="material-icons md-24 d-flex">menu</i>
       </div>
     </div>
@@ -55,6 +55,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
+import ClickOutside from 'vue-click-outside'
 
 export default {
   name: 'NavbarSmall',
@@ -63,6 +64,9 @@ export default {
       componentKey: 0,
       show: false,
     }
+  },
+  directives: {
+    ClickOutside
   },
   // components: {
   //   // Navbar
@@ -92,6 +96,7 @@ export default {
       }
     },
     handleScroll (event) {
+      this.collapse()
       // Code to be executed when the window is scrolled
       const position = window.scrollY != 0
       // console.log(position)
