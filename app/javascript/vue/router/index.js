@@ -219,7 +219,7 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/recipes/:id',
+    path: '/:locale?/recipes/:id',
     redirect: '/r/:id'
   },
   {
