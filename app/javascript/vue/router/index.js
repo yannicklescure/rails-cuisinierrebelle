@@ -170,6 +170,10 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: '/users/:id',
+    redirect: '/u/:id'
+  },
+  {
     path: '/u/:id/followers',
     name: 'UserFollowers',
     component: UserFollowers,
@@ -213,6 +217,10 @@ const routes = [
       auth: false // A protected route
     },
     beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/recipes/:id',
+    redirect: '/r/:id'
   },
   {
     path: '/:locale/:controller/:id',
