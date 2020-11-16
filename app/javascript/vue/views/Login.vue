@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="d-flex vh-100 justify-content-center align-items-center">
-      <div class="d-flex flex-column w-50">
+      <div class="d-flex flex-column w-md-50">
         <div v-if="error" class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Saperlipopette !</strong> {{ error }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">

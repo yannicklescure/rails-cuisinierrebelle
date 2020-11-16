@@ -2,12 +2,6 @@
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
-        <div class="my-3">
-          <Adsense
-            data-ad-client="ca-pub-9223566768445571"
-            data-ad-slot="4726766855">
-          </Adsense>
-        </div>
         <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
           <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
             <div class="d-flex flex-grow-1 m-0 align-items-center">
@@ -48,7 +42,12 @@
         ></div>
       </div>
       <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
-
+      <div class="my-3 d-print-none">
+        <Adsense
+          data-ad-client="ca-pub-9223566768445571"
+          data-ad-slot="4726766855">
+        </Adsense>
+      </div>
       <vue-markdown :source="item.recipe.direction" />
 
       <div v-if="item.recipe.video" class="row mt-5 d-print-none">
@@ -151,12 +150,6 @@ export default {
     },
   },
   methods: {
-    recipeLog () {
-      this.$store
-        .dispatch('RECIPE_LOG', this.item)
-        .then(response => console.log(response))
-      this.log = false
-    },
     scroll2Anchor () {
       // const currentPage = this.$route.fullpath
       const target = this.$route.hash
@@ -183,11 +176,11 @@ export default {
         .then( response => {
           console.log(response)
           this.item = response.data
-          if (this.log) {
-            this.$store
-              .dispatch('SET_STORE', {})
-              .then(() => this.recipeLog())
-          }
+          // if (this.log) {
+          //   this.$store
+          //     .dispatch('SET_STORE', {})
+          //     .then(() => this.log = false)
+          // }
           this.componentKey += 1
           this.loading = false
         })
@@ -200,7 +193,7 @@ export default {
     async '$route' () {
       console.log(this.$route.params.id)
       await this.fetchItem()
-      this.recipeLog()
+      // this.recipeLog()
     }
   },
   beforeMount () {

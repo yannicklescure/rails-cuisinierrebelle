@@ -27,8 +27,8 @@ import axios from 'axios'
 //   return fetch(URI)
 // }
 
-const metaCsrf = document.querySelector("meta[name='csrf-token']")
-const csrfToken = metaCsrf.getAttribute('content')
+// const metaCsrf = document.querySelector("meta[name='csrf-token']")
+// const csrfToken = metaCsrf.getAttribute('content')
 
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
@@ -164,7 +164,7 @@ export const recipeLog = (context, payload) => {
     method: 'post',
     url: `${domain}/api/v1/recipe_logs`,
     headers: {
-      // 'X-CSRF-Token': csrfToken,
+      'X-CSRF-Token': context.getters.csrfToken,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
       // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null
     },

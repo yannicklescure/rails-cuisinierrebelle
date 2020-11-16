@@ -1,6 +1,9 @@
 // import { sortItemsDesc } from '../util/filters'
 // import { filterDate } from '../util/filters'
 
+const metaCsrf = document.querySelector("meta[name='csrf-token']")
+const csrfToken = metaCsrf.getAttribute('content')
+
 export default {
   // pages (state) {
   //   // state.data.pages.filter(page => page.id === this.$route.params.id )[0]
@@ -11,6 +14,9 @@ export default {
   //   // console.log(state.data.searchPosts)
   //   return state.data.searchPosts.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   // },
+  csrfToken (state) {
+    return csrfToken
+  },
   isAuthenticated (state, getters) {
     // return state.data.isAuthenticated
     console.log(state.data.user)
