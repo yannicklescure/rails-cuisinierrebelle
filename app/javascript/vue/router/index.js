@@ -170,7 +170,7 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/users/:id',
+    path: '/:locale?/users/:id',
     redirect: '/u/:id'
   },
   {
