@@ -18,7 +18,7 @@
       <input
         v-model="searchQuery"
         v-on:keyup.enter="validSearchQuery"
-        type="text"
+        type="search"
         class="form-control"
         :placeholder="$t('navbar.search')"
         ref="searchInput"
