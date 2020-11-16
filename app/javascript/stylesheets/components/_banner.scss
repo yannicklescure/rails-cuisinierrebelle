@@ -1,5 +1,5 @@
 .banner-height {
-  min-height: calc(100vh - 58px);
+  min-height: calc(100vh - 104px);
 }
 
 .banner-background {
@@ -17,14 +17,14 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .banner-height {
-    min-height: calc(100vh - 58px);
+    min-height: calc(100vh - 104px);
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .banner-height {
-    min-height: calc(100vh - 58px);
+    min-height: calc(100vh - 104px);
   }
 }
 

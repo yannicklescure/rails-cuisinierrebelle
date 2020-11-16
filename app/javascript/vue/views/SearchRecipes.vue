@@ -1,6 +1,6 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
-    <div v-if="!busy" class="container-fluid" ref="container">
+    <div v-if="busy === false" class="container-fluid" ref="container">
       <div v-if="data.length > 0" id="recipes-cards">
         <div id="root" class="d-flex flex-wrap justify-content-start">
           <div
@@ -34,7 +34,7 @@ export default {
       componentKey: 0,
       // navbarHeight: 0,
       data: [],
-      busy: false,
+      busy: true,
     }
   },
   components: {

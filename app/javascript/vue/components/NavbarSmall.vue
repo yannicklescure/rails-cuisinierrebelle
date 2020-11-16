@@ -20,7 +20,17 @@
       </div>
     </div>
     <transition name="fade">
-      <div v-if="show" class="d-flex flex-column w-100">
+      <div v-if="!show" class="mt-2 input-group d-flex w-100">
+        <input
+          v-model="searchQuery"
+          v-on:keyup.enter="validSearchQuery"
+          type="text"
+          class="form-control"
+          :placeholder="$t('navbar.search')"
+          ref="searchInput"
+        >
+      </div>
+      <div v-if="show" class="mt-2 d-flex flex-column w-100">
         <div class="d-flex flex-column">
           <router-link v-on:click.native="collapse" to="/top100" class="text-fire my-2 text-decoration-none">
             Top 100
@@ -63,6 +73,7 @@ export default {
     return {
       componentKey: 0,
       show: false,
+      searchQuery: '',
     }
   },
   directives: {
@@ -78,6 +89,15 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    validSearchQuery () {
+      this.$refs.searchInput.value = ''
+      console.log(this.searchQuery)
+      this.$store.dispatch('SEARCH', { query: this.searchQuery })
+        .then(response => {
+          console.log(response)
+          if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
+        })
+    },
     collapse () {
       this.show = false
     },
