@@ -98,6 +98,7 @@ export const fr = () => {
       tools: 'Matériel de cuisine',
       top_100: 'Top 100',
       bookmarks: 'Mes favoris',
+      search: 'Rechercher',
       // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
@@ -127,6 +128,9 @@ export const fr = () => {
       days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
       months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
       years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
+    },
+    search: {
+      noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Veuillez essayer de nouveau avec un autre mot-clé.`
     },
   }
 }

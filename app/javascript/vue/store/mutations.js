@@ -74,10 +74,10 @@ export default {
   },
 
   SET_DATA: (state, payload) => {
-    console.log(state)
-    console.log(payload)
+    // console.log(state)
+    // console.log(payload)
     for (const [key, value] of Object.entries(payload.data)) {
-      console.log(`${key}: ${value}`)
+      // console.log(`${key}: ${value}`)
       state.data[key] = payload.data[key]
     }
     // state.data = payload.data
@@ -109,6 +109,15 @@ export default {
       state.data.lastUpdated = new Date().getTime()
       saveToLocalStorage(state, 'RECIPES')
     }
+  },
+
+  SEARCH: (state, payload) => {
+    console.log('### SEARCH ###')
+    console.log(state)
+    console.log(payload)
+    state.data.search.recipes = payload.data.recipes
+    state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'SEARCH')
   },
 
   RECIPE_LOG: (state, payload) => {

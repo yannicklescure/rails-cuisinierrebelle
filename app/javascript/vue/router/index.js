@@ -27,6 +27,7 @@ const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
 const Signup = () => import('../views/Signup.vue')
+const SearchRecipes = () => import('../views/SearchRecipes.vue')
 const Top100 = () => import('../views/Top100.vue')
 const UserFollowers = () => import('../views/UserFollowers.vue')
 const UserFollowing = () => import('../views/UserFollowing.vue')
@@ -124,6 +125,11 @@ const routes = [
   //     }
   //   }
   // },
+  {
+    path: '/s',
+    name: 'Search',
+    component: SearchRecipes,
+  },
   {
     path: '/top100',
     name: 'Top100',

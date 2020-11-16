@@ -243,6 +243,20 @@ export const logout = (context, user) => {
 //   })
 // }
 
+export const search = async (context, payload) => {
+  // console.log(`${domain}/api/v1/search`)
+  return await axios({
+    method: 'get',
+    url: `${domain}/api/v1/search`,
+    params: {
+      query: payload.query
+    },
+  })
+  .catch(error => {
+    console.log(error.response)
+  })
+}
+
 export const fetchState = async (context, {}) => {
   console.log(`${domain}/api/v1/state`)
   return await axios({

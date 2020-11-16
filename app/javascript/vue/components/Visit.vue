@@ -36,7 +36,7 @@ export default {
     },
   },
   beforeMount () {
-    this.recipeLog()
+    // this.recipeLog()
   },
   updated () {
     // this.recipeLog()

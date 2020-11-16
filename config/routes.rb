@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [ :index ]
       resources :state, only: [ :index ]
+      resources :search, only: [ :index ]
       resources :recipes, only: [ :index, :show, :update ]
       resources :recipe_logs, only: [ :create ]
       resources :bookmarks, only: [ :create, :destroy ]

@@ -17,6 +17,21 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
 
 export default {
 
+  SEARCH: (context, payload) => {
+    // console.log(payload)
+    return api.search(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("SEARCH", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+
   BOOKMARK: (context, payload) => {
     // console.log(payload)
     return api.bookmark(context, payload)

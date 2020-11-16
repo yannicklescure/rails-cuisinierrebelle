@@ -22,6 +22,9 @@ export default {
     console.log(state.data.user)
     return state.data.user.email != null
   },
+  search (state) {
+    return state.data.search
+  },
   navbarHeight (state) {
     console.log(state)
     return state.data.render.navbarHeight
@@ -32,9 +35,9 @@ export default {
     })[0];
   },
   bookmarks (state) {
-    return state.data.user.bookmarks
+    return state.data.user.authentication_token ? state.data.user.bookmarks
       .sort((a, b) => (new Date(a.created_at).getTime() > new Date(b.created_at).getTime()) ? 1 : -1).reverse()
-      .map(bookmark => state.data.recipes.filter(item => item.recipe.id === bookmark.recipe_id)[0])
+      .map(bookmark => state.data.recipes.filter(item => item.recipe.id === bookmark.recipe_id)[0]) : []
   },
   userRecipes (state) {
     return keyword => state.data.recipes.filter( item => {

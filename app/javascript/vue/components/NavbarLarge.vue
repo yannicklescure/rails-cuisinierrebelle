@@ -14,6 +14,16 @@
         <span>{{ $t('navbar.brand') }}</span>
       </router-link>
     </div>
+    <div class="input-group d-flex w-25">
+      <input
+        v-model="searchQuery"
+        v-on:keyup.enter="validSearchQuery"
+        type="text"
+        class="form-control"
+        :placeholder="$t('navbar.search')"
+        ref="searchInput"
+      >
+    </div>
     <div class="d-flex align-items-center">
       <router-link to="/top100" class="nav-item mx-2 text-fire text-decoration-none">
         <i class="material-icons md-18 d-flex">whatshot</i>
@@ -69,6 +79,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      searchQuery: '',
     }
   },
   // components: {
@@ -81,6 +92,15 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    validSearchQuery () {
+      this.$refs.searchInput.value = ''
+      console.log(this.searchQuery)
+      this.$store.dispatch('SEARCH', { query: this.searchQuery })
+        .then(response => {
+          console.log(response)
+          if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
+        })
+    },
     scroll2Top (event) {
       // console.log(this.$route.name)
       if (this.$route.name === 'Home' && window.scrollY > 0) {
