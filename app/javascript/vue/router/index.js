@@ -95,9 +95,35 @@ const ifAuthenticated = async (to, from, next) => {
 }
 
 const routes = [
-  { path: '/fr', redirect: '/' },
-  { path: '/en', redirect: '/' },
-  { path: '/es', redirect: '/' },
+  // {
+  //   path: '/:locale',
+  //   children: []
+  // },
+  // {
+  //   // Include the locales you support between ()
+  //   path: '/:locale(en|es|fr)?/:id?',
+  //   // path: '/fr/r/:id',
+  //   // component: {
+  //   //   beforeRouteEnter: setLocale,
+  //   //   beforeRouteUpdate: setLocale,
+  //   //   // render(h) { return h('router-view'); }
+  //   // },
+  //   redirect: to => {
+  //     console.log(to)
+  //     const { hash, params, query } = to
+  //     // if (query.to === 'foo') {
+  //     //   return { path: '/foo', query: null }
+  //     // }
+  //     // if (hash === '#baz') {
+  //     //   return { name: 'baz', hash: '' }
+  //     // }
+  //     if (params.id) {
+  //       return '/r/:id'
+  //     } else {
+  //       return '/'
+  //     }
+  //   }
+  // },
   {
     path: '/top100',
     name: 'Top100',
@@ -189,13 +215,19 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/',
+    path: '/:locale/:controller/:id',
+    redirect: '/:controller/:id'
+  },
+  {
+    path: '/:locale?',
     name: 'Home',
     component: Home,
     meta: {
       auth: false // A protected route
     },
     beforeEnter: ifAuthenticated,
+    children: [
+    ]
   },
   { path: "*", component: NotFound }
 ]
