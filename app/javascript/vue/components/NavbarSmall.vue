@@ -91,6 +91,7 @@ export default {
   methods: {
     validSearchQuery () {
       this.$refs.searchInput.value = ''
+      this.$refs.searchInput.inputMode = 'none'
       console.log(this.searchQuery)
       this.$store.dispatch('SEARCH', { query: this.searchQuery })
         .then(response => {
