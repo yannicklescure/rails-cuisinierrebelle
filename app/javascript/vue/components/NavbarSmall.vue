@@ -23,7 +23,6 @@
       <div v-if="!show" class="mt-2 input-group d-flex w-100">
         <input
           v-model="searchQuery"
-          v-on:click="inputMode"
           v-on:keyup.enter="validSearchQuery"
           type="search"
           class="form-control"
@@ -101,7 +100,9 @@ export default {
         .then(response => {
           console.log(response)
           if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
-        })
+        }
+        .finally(() => this.inputMode())
+      )
     },
     collapse () {
       this.show = false
