@@ -3,6 +3,7 @@
     :key="componentKey"
     ref="navbar"
     :class="['navbar fixed-top d-flex flex-column px-3 py-2 bg-white']"
+    v-click-outside="collapse"
     >
     <div class="d-flex w-100 justify-content-between align-items-center">
       <div class="d-flex align-items-center">
@@ -15,7 +16,7 @@
           <span>{{ $t('navbar.brand') }}</span>
         </router-link>
       </div>
-      <div v-on:click="show = !show" v-click-outside="collapse">
+      <div v-on:click="collapseMenu">
         <i class="material-icons md-24 d-flex">menu</i>
       </div>
     </div>
@@ -90,22 +91,31 @@ export default {
   },
   methods: {
     inputMode () {
-      this.$refs.searchInput.inputMode = 'search'
+      // this.$refs.searchInput.inputMode = 'search'
+      // this.$refs.searchInput.inputMode = 'none'
+      if (this.show === false) {
+        console.log('inputMode')
+        // this.$refs.searchInput.value = ''
+        this.searchQuery = ''
+        this.$refs.searchInput.blur()
+      }
     },
     validSearchQuery () {
-      this.$refs.searchInput.value = ''
-      // this.$refs.searchInput.inputMode = 'none'
-      this.$refs.searchInput.blur()
       console.log(this.searchQuery)
       this.$store.dispatch('SEARCH', { query: this.searchQuery })
         .then(response => {
           console.log(response)
           if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
-        }
-        // .finally(() => this.inputMode())
-      )
+        })
+        .finally(() => this.inputMode())
+      // this.inputMode()
     },
-    collapse () {
+    async collapseMenu () {
+      await this.inputMode()
+      this.show = !this.show
+    },
+    async collapse () {
+      await this.inputMode()
       this.show = false
     },
     scroll2Top (event) {
