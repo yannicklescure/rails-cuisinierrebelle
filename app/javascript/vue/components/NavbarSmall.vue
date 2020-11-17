@@ -94,14 +94,15 @@ export default {
     },
     validSearchQuery () {
       this.$refs.searchInput.value = ''
-      this.$refs.searchInput.inputMode = 'none'
+      // this.$refs.searchInput.inputMode = 'none'
+      this.$refs.searchInput.blur()
       console.log(this.searchQuery)
       this.$store.dispatch('SEARCH', { query: this.searchQuery })
         .then(response => {
           console.log(response)
           if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
         }
-        .finally(() => this.inputMode())
+        // .finally(() => this.inputMode())
       )
     },
     collapse () {
