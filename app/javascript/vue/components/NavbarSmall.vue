@@ -23,6 +23,7 @@
       <div v-if="!show" class="mt-2 input-group d-flex w-100">
         <input
           v-model="searchQuery"
+          v-on:click="inputMode"
           v-on:keyup.enter="validSearchQuery"
           type="search"
           class="form-control"
@@ -89,6 +90,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    inputMode () {
+      this.$refs.searchInput.inputMode = 'search'
+    },
     validSearchQuery () {
       this.$refs.searchInput.value = ''
       this.$refs.searchInput.inputMode = 'none'
