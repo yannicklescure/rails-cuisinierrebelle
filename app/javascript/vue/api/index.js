@@ -28,7 +28,7 @@ import axios from 'axios'
 // }
 
 // const metaCsrf = document.querySelector("meta[name='csrf-token']")
-// const csrfToken = metaCsrf.getAttribute('content')
+// const context.getters.csrfToken = metaCsrf.getAttribute('content')
 
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
@@ -194,7 +194,7 @@ export const login = (context, user) => {
     method: 'post',
     url: `${domain}/api/v1/users/sign_in`,
     headers: {
-      'X-CSRF-Token': csrfToken,
+      'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
     },
     data: {
@@ -215,7 +215,7 @@ export const logout = (context, user) => {
     method: 'delete',
     url: `${domain}/api/v1/users/sign_out`,
     headers: {
-      'X-CSRF-Token': csrfToken,
+      'X-CSRF-Token': context.getters.csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,
       // 'X-User-Token': context.getters.currentUser.authentication_token
       'Authorization': `Bearer ${context.state.data.authorization}`,

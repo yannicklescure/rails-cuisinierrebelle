@@ -9,16 +9,16 @@
           </button>
         </div>
         <form>
-          <div class="form-group">
+          <div class="form-group my-2">
             <label for="inputEmail">{{ $t('login.email') }}</label>
             <input v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">{{ $t('login.disclaimer') }}</small>
           </div>
-          <div class="form-group">
+          <div class="form-group my-2">
             <label for="inputPassword">{{ $t('login.password') }}</label>
             <input v-model="password" type="password" class="form-control" id="inputPassword">
           </div>
-          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark">{{ $t('login.submit') }}</button>
+          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2">{{ $t('login.submit') }}</button>
         </form>
         <div class="my-3">
           <router-link to="/signup">{{ $t('login.signup') }}</router-link>
