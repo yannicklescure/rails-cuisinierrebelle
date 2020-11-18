@@ -1,9 +1,17 @@
 class Recipe < ApplicationRecord
+
   belongs_to :user
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :recipe_logs, dependent: :destroy
+
+  def self.cache_key(recipes)
+    {
+      serializer: 'recipes',
+      stat_record: recipes.maximum(:updated_at)
+    }
+  end
 
   mount_uploader :photo, PhotoUploader
 
@@ -39,6 +47,9 @@ class Recipe < ApplicationRecord
   searchkick
 
   before_save :sanitize_youtube_video_link
+  after_save :create_json_cache
+
+  private
 
   def sanitize_youtube_video_link
     # params_recipe_video = params[:recipe][:video]
@@ -60,5 +71,9 @@ class Recipe < ApplicationRecord
       # binding.pry
       self.video = "https://www.youtube.com/embed/#{params_recipe_video}"
     end
+  end
+
+  def create_json_cache
+    CreateRecipesJsonCacheJob.perform_later
   end
 end

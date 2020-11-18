@@ -1,4 +1,4 @@
 class CommentLike < ApplicationRecord
-  belongs_to :user
-  belongs_to :comment
+  belongs_to :user, touch: true
+  belongs_to :comment, touch: true
 end

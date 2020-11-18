@@ -46,6 +46,20 @@ export default {
       })
   },
 
+  FOLLOWERS: (context, payload) => {
+    // console.log(payload)
+    return api.followers(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        // if (response.status === 200) context.commit("FOLLOWERS", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   UNBOOKMARK: (context, payload) => {
     // console.log(payload)
         return api.unbookmark(context, payload)

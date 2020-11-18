@@ -1,4 +1,4 @@
 class Bookmark < ApplicationRecord
-  belongs_to :user
-  belongs_to :recipe
+  belongs_to :user, touch: true
+  belongs_to :recipe, touch: true
 end

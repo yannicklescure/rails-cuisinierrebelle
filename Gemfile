@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'oj'
 gem 'pg', '~> 0.21'
 gem 'redis'
+gem 'hiredis'
 
 gem 'autoprefixer-rails'
 # gem 'font-awesome-sass', '~> 5.13.0'
@@ -99,4 +100,5 @@ gem 'newrelic_rpm'
 # gem 'brotli'
 # gem 'heroku-deflater', :group => :production
 gem 'bullet', group: 'development'
+# gem 'spyke'
 gem 'multi_json'

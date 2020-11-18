@@ -64,6 +64,13 @@ export default {
     //   console.log(containerWidth)
     //   console.log(containerWidth / cardWidth)
     // },
+    getFollowers () {
+      this.$store
+        .dispatch('FOLLOWERS', this.$route.params.id)
+        .then(response => {
+          console.log(response)
+        })
+    },
     loadMore () {
       if (this.data.length < this.followers.length) {
         console.log('loadMore')
@@ -83,7 +90,7 @@ export default {
   computed: {
     ...mapGetters(['navbarHeight', 'usersFilter']),
     followers () {
-      return this.usersFilter(this.$route.params.id).followers
+      return this.usersFilter(this.$route.params.id).followers.data
     }
   },
   created () {

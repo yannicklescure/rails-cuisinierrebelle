@@ -62,6 +62,12 @@ export default {
     //   return false
     // },
   },
+  watch: {
+    items () {
+      // this.loadMore()
+      console.log('items loaded')
+    }
+  },
   methods: {
     // cardParams (value) {
     //   const cardWidth = value.params.width
@@ -96,7 +102,8 @@ export default {
     },
   },
   beforeMount () {
-    this.fetchItem()
+    // this.fetchItem()
+    this.loadMore()
   },
   mounted () {
     // while (this.data.length === 0){
