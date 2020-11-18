@@ -12,7 +12,7 @@ class Api::V1::StateController < Api::V1::BaseController
       end
     else
       # @recipes = policy_scope(Recipe).includes([:user, :comments]).sort_by {|k,v| k.id}.reverse[0...24]
-      @recipes = policy_scope(Recipe)
+      @recipes = policy_scope(Recipe).includes([:user])
       @users = User.all
       force_update = 1600607465638
       @last_update = (Recipe.last.created_at.to_f * 1000).to_i
@@ -85,7 +85,7 @@ class Api::V1::StateController < Api::V1::BaseController
               name: user.name,
               checked: user.checked,
               followers: {
-                count: user.followers.count,
+                count: user.followers.length,
                 data: [],
               },
               # followers: user.followers.map{ |f| {
@@ -100,7 +100,7 @@ class Api::V1::StateController < Api::V1::BaseController
               #   }
               # },
               following: {
-                count: user.following.count,
+                count: user.following.length,
                 data: [],
               },
               # following: user.following.map{ |f| {
