@@ -8,7 +8,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def followers
-    binding.pry
+    # binding.pry
     render @user.followers.map{ |f| {
         name: f.name,
         slug: f.slug,
@@ -19,7 +19,7 @@ class Api::V1::UsersController < Api::V1::BaseController
           }
         }
       }
-    },
+    }
   end
 
   private
