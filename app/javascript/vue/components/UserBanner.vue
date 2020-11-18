@@ -50,7 +50,7 @@ export default {
       return this.usersFilter(this.$route.params.id)
     },
     followers () {
-      return this.user.followers.length
+      return this.user.followers.count
     }
   },
   methods: {

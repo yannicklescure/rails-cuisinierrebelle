@@ -75,7 +75,10 @@ class Api::V1::RecipesController < Api::V1::BaseController
             slug: user.slug,
             name: user.name,
             checked: user.checked,
-            followers: [],
+            followers: {
+              count: user.followers.count,
+              data: [],
+            },
             # followers: user.followers.map{ |f| {
             #     name: f.name,
             #     slug: f.slug,
@@ -87,7 +90,10 @@ class Api::V1::RecipesController < Api::V1::BaseController
             #     }
             #   }
             # },
-            following: [],
+            following: {
+              count: user.following.count,
+              data: [],
+            },
             # following: user.following.map{ |f| {
             #     name: f.name,
             #     slug: f.slug,
