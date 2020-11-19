@@ -3,7 +3,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user, only: [ :followers, :following ]
 
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).includes([:followers, :following])
     # @device = DeviceDetector.new(request.user_agent).device_type
     json = Rails.cache.fetch(User.cache_key(@users)) do
       MultiJson.dump({

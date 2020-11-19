@@ -2,7 +2,7 @@ class CreateUsersJsonCacheJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    users = User.all
+    users = User.all.includes([:followers, :following])
     Rails.cache.fetch(User.cache_key(users)) do
       MultiJson.dump({
         data: {

@@ -153,6 +153,21 @@ export const recipe = (context, payload) => {
   });
 }
 
+export const users = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'get',
+    url: `${domain}/api/v1/users`,
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const recipes = (context, payload) => {
   return axios({
     validateStatus: status => {

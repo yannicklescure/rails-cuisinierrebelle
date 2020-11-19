@@ -64,6 +64,13 @@ export default {
     //   console.log(containerWidth)
     //   console.log(containerWidth / cardWidth)
     // },
+    getUsers () {
+      this.$store
+        .dispatch('USERS', {})
+        .then(response => {
+          console.log(response)
+        })
+    },
     loadMore () {
       if (this.data.length < this.following.length) {
         console.log('loadMore')
@@ -83,7 +90,12 @@ export default {
   computed: {
     ...mapGetters(['navbarHeight', 'usersFilter']),
     following () {
-      return this.usersFilter(this.$route.params.id).following
+      return this.usersFilter(this.$route.params.id).following.data
+    }
+  },
+  watch: {
+    following () {
+      this.loadMore()
     }
   },
   created () {
@@ -92,6 +104,7 @@ export default {
   },
   beforeMount () {
     // console.log(this.$store.getters.recipes)
+    this.getUsers()
   },
   mounted () {
     this.$nextTick(() => {

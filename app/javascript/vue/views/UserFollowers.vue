@@ -64,9 +64,9 @@ export default {
     //   console.log(containerWidth)
     //   console.log(containerWidth / cardWidth)
     // },
-    getFollowers () {
+    getUsers () {
       this.$store
-        .dispatch('FOLLOWERS', this.$route.params.id)
+        .dispatch('USERS', {})
         .then(response => {
           console.log(response)
         })
@@ -93,12 +93,18 @@ export default {
       return this.usersFilter(this.$route.params.id).followers.data
     }
   },
+  watch: {
+    followers () {
+      this.loadMore()
+    }
+  },
   created () {
     if (this.followers && this.data.length === 0) this.loadMore()
     // if (this.$store.getters.recipes) this.loadMore()
   },
   beforeMount () {
     // console.log(this.$store.getters.recipes)
+    this.getUsers()
   },
   mounted () {
     this.$nextTick(() => {

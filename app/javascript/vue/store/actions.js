@@ -156,6 +156,19 @@ export default {
     }
   },
 
+  USERS: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.users(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("USERS", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE: (context, payload) => {
     // console.log(context.state.data.user)
     return api.recipe(context, payload)

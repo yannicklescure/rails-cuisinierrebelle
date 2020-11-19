@@ -100,6 +100,14 @@ export default {
     saveToLocalStorage(state, 'RECIPE')
   },
 
+  USERS: (state, payload) => {
+    console.log('### USERS ###')
+    console.log(payload)
+    state.data.users = payload.data.data.users
+    state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'USERS')
+  },
+
   RECIPES: (state, payload) => {
     console.log('### RECIPES ###')
     console.log(state)
