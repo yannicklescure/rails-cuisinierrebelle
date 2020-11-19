@@ -2,7 +2,7 @@
   <div :style="{ marginTop: navbarHeight + 'px' }">
     <user-banner />
     <div class="container" ref="container">
-      <div class="px-3 px-md-5">
+      <div class="px-md-3 px-md-5">
         <table class="table table-borderless">
           <tbody
             v-for="(item, index) in data"

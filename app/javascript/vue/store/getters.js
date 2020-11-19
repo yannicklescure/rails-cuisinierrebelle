@@ -19,14 +19,14 @@ export default {
   },
   isAuthenticated (state, getters) {
     // return state.data.isAuthenticated
-    console.log(state.data.user)
+    // console.log(state.data.user)
     return state.data.user.email != null
   },
   search (state) {
     return state.data.search
   },
   navbarHeight (state) {
-    console.log(state)
+    // console.log(state)
     return state.data.render.navbarHeight
   },
   recipe (state) {

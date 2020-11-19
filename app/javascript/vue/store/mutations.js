@@ -34,6 +34,24 @@ export default {
     saveToLocalStorage(state, 'UNBOOKMARK')
   },
 
+  FOLLOW: (state, payload) => {
+    console.log(payload)
+    state.data.user.following.count += 1
+    state.data.user.following.data.push(payload.data.user)
+    saveToLocalStorage(state, 'FOLLOW')
+  },
+
+  UNFOLLOW: (state, payload) => {
+    console.log(payload)
+    state.data.user.following.count -= 1
+    const user = state.data.user.following.data.filter(user => user.slug === payload.user)[0]
+    console.log(user)
+    const position = state.data.user.following.data.indexOf(user)
+    console.log(position)
+    state.data.user.following.data.splice(position, 1)
+    saveToLocalStorage(state, 'UNFOLLOW')
+  },
+
   LIKE: (state, payload) => {
     console.log(payload)
     // console.log(state)

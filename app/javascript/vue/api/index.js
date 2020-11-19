@@ -42,7 +42,7 @@ export const bookmark = (context, payload) => {
     method: 'post',
     url: `${domain}/api/v1/bookmarks`,
     headers: {
-      'Authorization': `Bearer ${context.state.data.authorization}`,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -68,9 +68,51 @@ export const unbookmark = (context, payload) => {
     method: 'delete',
     url: `${domain}/api/v1/bookmarks/${payload.recipe_id}`,
     headers: {
-      'Authorization': `Bearer ${context.state.data.authorization}`,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
     },
     data: {}
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const follow = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/users/${ payload.user }/follow`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    params: {
+      user_slug: payload.user
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const unfollow = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/users/${ payload.user }/unfollow`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    params: {
+      user_slug: payload.user
+    }
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -87,7 +129,7 @@ export const like = (context, payload) => {
     method: 'post',
     url: `${domain}/api/v1/likes`,
     headers: {
-      'Authorization': `Bearer ${context.state.data.authorization}`,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -113,7 +155,7 @@ export const unlike = (context, payload) => {
     method: 'delete',
     url: `${domain}/api/v1/likes/${payload.recipe_id}`,
     headers: {
-      'Authorization': `Bearer ${context.state.data.authorization}`,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
     },
     data: {}
   })
@@ -248,7 +290,7 @@ export const logout = (context, user) => {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,
       // 'X-User-Token': context.getters.currentUser.authentication_token
-      'Authorization': `Bearer ${context.state.data.authorization}`,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
       // 'Accept-Encoding': 'gzip',
     },
     data: {

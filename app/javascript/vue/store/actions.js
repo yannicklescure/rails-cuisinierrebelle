@@ -74,6 +74,36 @@ export default {
       })
   },
 
+  FOLLOW: (context, payload) => {
+    // console.log(payload)
+    return api.follow(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        console.log(response)
+        if (response.status === 200) context.commit("FOLLOW", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  UNFOLLOW: (context, payload) => {
+    // console.log(payload)
+    return api.unfollow(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        console.log(response)
+        if (response.status === 200) context.commit("UNFOLLOW", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LIKE: (context, payload) => {
     // console.log(payload)
     return api.like(context, payload)

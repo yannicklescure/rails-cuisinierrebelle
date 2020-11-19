@@ -61,13 +61,28 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def follow
-    binding.pry
-    current_user.follow(@user.id)
+    # binding.pry
+    if current_user.follow(@user.id)
+      render json: MultiJson.dump({
+        user: {
+          name: @user.name,
+          slug: @user.slug,
+          checked: @user.checked,
+          image: {
+            thumb: {
+              url: @user.image.url(:thumb)
+            }
+          }
+        }
+      })
+    end
   end
 
   def unfollow
-    binding.pry
-    current_user.unfollow(@user.id)
+    # binding.pry
+    if current_user.unfollow(@user.id)
+      render json: {}
+    end
   end
 
   def followers
@@ -114,7 +129,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def set_user
     # binding.pry
-    @user = User.find_by(slug: params[:user_id])
+    @user = User.find_by(slug: params[:user_slug])
     authorize @user  # For Pundit
     # binding.pry
   end

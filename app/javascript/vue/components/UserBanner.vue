@@ -24,7 +24,7 @@
           </div>
         </div>
         <div v-else>
-          <follow item="user" />
+          <follow :item="user" />
         </div>
       </div>
     </div>

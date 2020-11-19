@@ -35,9 +35,13 @@ export default {
   methods: {
     follow () {
       console.log('follow')
+      this.$store
+        .dispatch('FOLLOW', { user: this.item.slug })
     },
     unfollow () {
       console.log('unfollow')
+      this.$store
+        .dispatch('UNFOLLOW', { user: this.item.slug })
     },
   }
 }
