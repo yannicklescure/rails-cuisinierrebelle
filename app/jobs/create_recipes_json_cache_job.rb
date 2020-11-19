@@ -2,8 +2,9 @@ class CreateRecipesJsonCacheJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    recipes = Recipe.includes([:user])
+    recipes = Recipe.includes([:user, :comments])
     Rails.cache.fetch(Recipe.cache_key(recipes)) do
+      # recipes.to_json(include: :user, :comments)
       MultiJson.dump({
         data: {
           isAuthenticated: user_signed_in?,

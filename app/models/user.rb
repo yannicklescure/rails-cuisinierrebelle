@@ -31,12 +31,12 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
-  # def self.cache_key(users)
-  #   {
-  #     serializer: 'users',
-  #     stat_record: users.maximum(:updated_at)
-  #   }
-  # end
+  def self.cache_key(users)
+    {
+      serializer: 'users',
+      stat_record: users.maximum(:updated_at)
+    }
+  end
 
   mount_uploader :image, ImageUploader
 
@@ -64,6 +64,7 @@ class User < ApplicationRecord
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
   before_commit :sanitize_user_slug, :sanitize_user_image
+  after_save :create_json_cache
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -78,6 +79,10 @@ class User < ApplicationRecord
   searchkick
 
   private
+
+  def create_json_cache
+    CreateUsersJsonCacheJob.perform_later
+  end
 
   def sanitize_user_slug
     # binding.pry

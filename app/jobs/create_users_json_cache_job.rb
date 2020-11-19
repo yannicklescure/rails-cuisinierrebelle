@@ -1,14 +1,12 @@
-class Api::V1::UsersController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [ :index, :show, :followers, :following ]
-  before_action :set_user, only: [ :followers, :following ]
+class CreateUsersJsonCacheJob < ApplicationJob
+  queue_as :default
 
-  def index
-    @users = policy_scope(User)
-    # @device = DeviceDetector.new(request.user_agent).device_type
-    json = Rails.cache.fetch(User.cache_key(@users)) do
+  def perform(*_args)
+    users = User.all
+    Rails.cache.fetch(User.cache_key(users)) do
       MultiJson.dump({
         data: {
-          users: @users.map { |user| {
+          users: users.map { |user| {
               id: user.id,
               slug: user.slug,
               name: user.name,
@@ -57,56 +55,5 @@ class Api::V1::UsersController < Api::V1::BaseController
         }
       })
     end
-    render json: json
   end
-
-  def followers
-    # binding.pry
-    json = MultiJson.dump({
-      data: {
-        users: @user.followers.map { |f| {
-            name: f.name,
-            slug: f.slug,
-            checked: f.checked,
-            image: {
-              thumb: {
-                url: f.image.url(:thumb)
-              }
-            }
-          }
-        }
-      }
-    })
-    render json: json
-  end
-
-  def following
-    # binding.pry
-    json = MultiJson.dump({
-      data: {
-        users: @user.following.map { |f| {
-            name: f.name,
-            slug: f.slug,
-            checked: f.checked,
-            image: {
-              thumb: {
-                url: f.image.url(:thumb)
-              }
-            }
-          }
-        }
-      }
-    })
-    render json: json
-  end
-
-  private
-
-  def set_user
-    # binding.pry
-    @user = User.find_by(slug: params[:user_id])
-    authorize @user  # For Pundit
-    # binding.pry
-  end
-
 end
