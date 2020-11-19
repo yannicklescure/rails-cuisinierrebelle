@@ -1,6 +1,6 @@
 <template>
   <div :ref="`card${item.recipe.id}`">
-    <div class="card-header bg-white px-2 pt-2 pb-0 border-0">
+    <div class="card-header bg-white px-0 px-md-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <router-link
           :to="'/u/' + item.user.slug"
@@ -21,7 +21,7 @@
         </span>
       </div>
     </div>
-    <div class="card-body bg-white p-2">
+    <div class="card-body bg-white px-0 px-md-2 py-2">
       <router-link :to="'/r/' + item.recipe.slug">
         <div
           :class="['card-img-top d-flex justify-content-center align-items-center']"

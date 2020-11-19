@@ -132,5 +132,11 @@ export const fr = () => {
     search: {
       noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Veuillez essayer de nouveau avec un autre mot-clé.`
     },
+    follow: {
+      followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
+      following: '0 Abonnements | 1 Abonnement | {count} Abonnements',
+      follow: `S'abonner`,
+      unfollow: `Se désabonner`,
+    }
   }
 }

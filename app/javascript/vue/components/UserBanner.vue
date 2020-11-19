@@ -1,7 +1,7 @@
 <template>
   <div class="container p-3"  id="user-banner">
-    <div v-if="currentUser" class="d-flex justify-content-between p-3 bg-light rounded">
-      <div class="mx-2 d-flex justify-content-start align-items-center">
+    <div v-if="currentUser" class="d-flex justify-content-between p-md-3 bg-light rounded">
+      <div class="mx-md-2 d-flex justify-content-start align-items-center">
         <img :src="user.image.preview.url" :alt="user.name" class="rounded" width="64" height="64" style="object-fit: cover;">
         <div class="ml-3 d-flex flex-column">
           <router-link :to="'/u/' + user.slug" class="d-flex align-items-center text-capitalize text-body text-decoration-none">{{ user.name }}
@@ -17,12 +17,14 @@
         </div>
       </div>
 
-      <div class="mx-2 d-flex justify-content-start align-items-center">
+      <div class="mx-md-2 d-flex justify-content-start align-items-center">
         <div v-if="user.slug === currentUser.slug">
-          <div class="btn btn-sm btn-info">Edit</div>
+          <div class="btn">
+            <span class="material-icons md-24">settings</span>
+          </div>
         </div>
         <div v-else>
-          <div class="btn btn-sm btn-dark">Follow</div>
+          <follow item="user" />
         </div>
       </div>
     </div>
@@ -37,12 +39,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Follow from '../components/Follow.vue'
 
 export default {
   name: 'UserBanner',
   // props: ['user'],
   data () {
     return {}
+  },
+  components: {
+    Follow,
   },
   computed: {
     ...mapGetters(['usersFilter', 'currentUser']),

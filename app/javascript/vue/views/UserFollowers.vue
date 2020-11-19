@@ -8,22 +8,7 @@
             v-for="(item, index) in data"
             :key="item.id"
           >
-            <tr class="d-flex justify-content-between align-items-center">
-              <td class="d-flex justify-content-start align-items-center">
-                <img :src="item.image.thumb.url" :alt="item.name" class="rounded-circle" width="32" height="32" style="object-fit: cover;">
-                <router-link :to="'/u/' + item.slug" class="mx-2 text-capitalize text-decoration-none text-body d-flex align-items-center">
-                  {{ item.name }}
-                  <span v-if="item.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
-                    <i class="material-icons md-16">check_circle</i>
-                  </span>
-                </router-link>
-              </td>
-              <td>
-                <div class="btn btn-sm btn-dark">
-                  Follow
-                </div>
-              </td>
-            </tr>
+            <user-card :item="item" />
           </tbody>
         </table>
         <div
@@ -40,7 +25,9 @@
 <script>
 import { mapGetters } from 'vuex'
 import Card from '../components/Card.vue'
+import Follow from '../components/Follow.vue'
 import UserBanner from '../components/UserBanner.vue'
+import UserCard from '../components/UserCard.vue'
 
 export default {
   name: 'UserFollowers',
@@ -54,7 +41,9 @@ export default {
   },
   components: {
     Card,
+    Follow,
     UserBanner,
+    UserCard,
   },
   methods: {
     // cardParams (value) {

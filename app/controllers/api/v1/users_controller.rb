@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate_user!, except: [ :index, :show, :followers, :following ]
-  before_action :set_user, only: [ :followers, :following ]
+  before_action :set_user, only: [ :follow, :unfollow, :followers, :following ]
 
   def index
     @users = policy_scope(User).includes([:followers, :following])
@@ -58,6 +58,16 @@ class Api::V1::UsersController < Api::V1::BaseController
       })
     end
     render json: json
+  end
+
+  def follow
+    binding.pry
+    current_user.follow(@user.id)
+  end
+
+  def unfollow
+    binding.pry
+    current_user.unfollow(@user.id)
   end
 
   def followers

@@ -37,6 +37,14 @@ export const createStore = () => {
         email: null,
         authentication_token: null,
         bookmarks: [],
+        followers: {
+          count: 0,
+          data: [],
+        },
+        following: {
+          count: 0,
+          data: [],
+        }
       },
       users: [],
       render: {
