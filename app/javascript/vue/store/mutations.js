@@ -38,17 +38,23 @@ export default {
     console.log(payload)
     state.data.user.following.count += 1
     state.data.user.following.data.push(payload.data.user)
+    const user = state.data.users.filter(user => user.slug === payload.data.user.slug)[0]
+    const position = state.data.users.indexOf(user)
+    state.data.users[position].followers.count += 1
+    state.data.users[position].followers.data.push(payload.data.user)
     saveToLocalStorage(state, 'FOLLOW')
   },
 
   UNFOLLOW: (state, payload) => {
     console.log(payload)
     state.data.user.following.count -= 1
-    const user = state.data.user.following.data.filter(user => user.slug === payload.user)[0]
-    console.log(user)
-    const position = state.data.user.following.data.indexOf(user)
-    console.log(position)
+    let user = state.data.user.following.data.filter(user => user.slug === payload.user)[0]
+    let position = state.data.user.following.data.indexOf(user)
     state.data.user.following.data.splice(position, 1)
+    user = state.data.users.filter(user => user.slug === payload.user)[0]
+    position = state.data.users.indexOf(user)
+    state.data.users[position].followers.count -= 1
+    state.data.users[position].followers.data.splice(position, 1)
     saveToLocalStorage(state, 'UNFOLLOW')
   },
 
