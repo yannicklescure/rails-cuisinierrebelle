@@ -255,6 +255,53 @@ export const recipeLog = (context, payload) => {
   });
 }
 
+export const confirmRegistration = (context, payload) => {
+  // console.log(`${domain}/api/v1/search`)
+  return axios({
+    method: 'get',
+    url: `${domain}/api/v1/users/confirmation`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+    },
+    params: {
+      confirmation_token: payload.token
+    },
+  })
+  .catch(error => {
+    console.log(error.response)
+  })
+}
+
+export const signUp = (context, user) => {
+  console.log(user)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/users`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      // 'Accept-Encoding': 'gzip',
+    },
+    data: {
+      "user": {
+        "first_name": user.firstName,
+        "last_name": user.lastName,
+        "email": user.email,
+        "password": user.password,
+        "password_confirmation": user.confirmation
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const login = (context, user) => {
   // console.log(user)
   // console.log($('meta[name="csrf-token"]').attr('content'))

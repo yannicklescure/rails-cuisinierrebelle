@@ -55,7 +55,8 @@ class User < ApplicationRecord
 
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
-    self.locale = I18n.locale
+    self.locale = I18n.default_locale
+    # self.locale = :fr
     async_update
     self.save
     send_welcome_email

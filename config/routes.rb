@@ -2,16 +2,19 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 
-  # devise_for :users, as: :api, defaults: { format: :json }
-  devise_for :users,
-    defaults: { format: :json },
-    # class_name: 'Api::V1::Users',
-    controllers: {
-     sessions: 'api/v1/sessions',
-     registrations: 'api/v1/registrations'
-    },
-    path_prefix: '/api/v1'
-    # as: :api
+  scope '(:locale)', locale: /en|es|fr/ do
+    # devise_for :users, as: :api, defaults: { format: :json }
+    devise_for :users,
+      defaults: { format: :json },
+      # class_name: 'Api::V1::Users',
+      controllers: {
+       sessions: 'api/v1/sessions',
+       registrations: 'api/v1/registrations',
+       confirmations: 'api/v1/confirmations',
+      },
+      path_prefix: '/api/v1'
+      # as: :api
+  end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

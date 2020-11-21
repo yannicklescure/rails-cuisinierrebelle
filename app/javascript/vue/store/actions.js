@@ -238,6 +238,35 @@ export default {
       })
   },
 
+  REGISTRATION_CONFIRMATION: (context, payload) => {
+    return api.confirmRegistration(context, payload)
+      .then(response => {
+        console.log(response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  SIGN_UP: (context, user) => {
+    console.log(context.state.data)
+    return api.signUp(context, user)
+      .then(response => {
+        console.log(response)
+        // const token = response.headers.authorization.split('Bearer ')[1]
+        // console.log(token)
+        // console.log(jwt.decode(token))
+        // if (response.status === 200) context.commit("SIGN_UP", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)

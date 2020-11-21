@@ -2,9 +2,21 @@ class AppController < ActionController::Base
   before_action :authenticate_user!, :set_locale
   include Pundit
 
+  # def set_locale
+  #   I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+  #   session[:locale] = I18n.locale
+  # end
+
   def set_locale
-    I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
-    session[:locale] = I18n.locale
+    # binding.pry
+    # session[:locale] = params.fetch(:locale, I18n.default_locale).to_sym
+    # https://github.com/iain/http_accept_language
+    if session[:locale].nil?
+      I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+    else
+      I18n.locale = session[:locale]
+    end
+    # session[:locale] = I18n.locale
   end
 
   def default_url_options(options = {})

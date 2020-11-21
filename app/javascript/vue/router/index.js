@@ -26,13 +26,14 @@ const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
-const Signup = () => import('../views/Signup.vue')
+const RegistrationConfirmation = () => import('../views/RegistrationConfirmation.vue')
 const SearchRecipes = () => import('../views/SearchRecipes.vue')
+const Signup = () => import('../views/Signup.vue')
 const Top100 = () => import('../views/Top100.vue')
 const UserFollowers = () => import('../views/UserFollowers.vue')
 const UserFollowing = () => import('../views/UserFollowing.vue')
-const UserSettings = () => import('../views/UserSettings.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
+const UserSettings = () => import('../views/UserSettings.vue')
 
 const ifAuthenticated = async (to, from, next) => {
   const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
@@ -125,6 +126,11 @@ const routes = [
   //     }
   //   }
   // },
+  {
+    path: '/confirmation',
+    name: 'RegistrationConfirmation',
+    component: RegistrationConfirmation,
+  },
   {
     path: '/s',
     name: 'Search',

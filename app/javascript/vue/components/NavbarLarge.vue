@@ -25,13 +25,13 @@
       >
     </div>
     <div class="d-flex align-items-center">
-      <router-link to="/top100" class="nav-item mx-2 text-fire text-decoration-none">
-        <i class="material-icons md-18 d-flex">whatshot</i>
-      </router-link>
       <div
         v-if="isAuthenticated"
         class="d-flex align-items-center"
       >
+        <router-link to="/top100" class="nav-item mx-2 text-fire text-decoration-none">
+          <i class="material-icons md-18 d-flex">whatshot</i>
+        </router-link>
         <router-link to="/bookmarks" class="nav-item mx-2 text-body text-decoration-none">
           <i class="material-icons md-18 d-flex">bookmarks</i>
         </router-link>

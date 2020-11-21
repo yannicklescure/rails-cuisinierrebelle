@@ -32,12 +32,8 @@
         >
       </div>
       <div v-if="show" class="mt-2 d-flex flex-column w-100">
-        <div class="d-flex flex-column">
-          <router-link v-on:click.native="collapse" to="/top100" class="text-fire my-2 text-decoration-none">
-            Top 100
-          </router-link>
-        </div>
         <div v-if="isAuthenticated" class="d-flex flex-column">
+          <router-link v-on:click.native="collapse" to="/top100" class="text-fire my-2 text-decoration-none">Top 100</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" to="/bookmarks">{{ $t('navbar.bookmarks') }}</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>

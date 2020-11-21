@@ -75,8 +75,8 @@ export const fr = () => {
       brand: 'Cuisinier Rebelle',
       cancel: 'Annuler',
       logout: 'Se déconnecter',
-      login: 'Connexion',
-      getStarted: 'Inscription',
+      login: 'Se connecter',
+      getStarted: `Créer un compte`,
       // admin_html: <i class="material-icons md-18">settings</i>
       are_you_sure: 'Êtes-vous sûr ?',
       // bookmarks_html: <i class="material-icons md-18">bookmarks</i>
@@ -93,7 +93,7 @@ export const fr = () => {
       // notifications_html: <i class="material-icons md-18">notifications</i>
       recipes: 'Mes recettes',
       settings: 'Paramètres',
-      sign_in: 'Connexion',
+      sign_in: 'Se connecter',
       spanish_html: 'Español',
       tools: 'Matériel de cuisine',
       top_100: 'Top 100',
@@ -104,13 +104,35 @@ export const fr = () => {
     login: {
       email: 'Adresse Courriel',
       password: 'Mot de passe',
-      submit: 'Connexion',
-      signup: 'Inscription',
+      submit: 'Se connecter',
+      signup: `Créer un compte`,
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
+      welcome: 'Bienvenue, {firstName} !',
+    },
+    signUp: {
+      confirmation: 'Confirmation du mot de passe',
+      disclaimer: "Nous ne partagerons jamais vos données personnelles.",
+      email: 'Adresse Courriel',
+      firstName: 'Prénom',
+      lastName: 'Nom de famille',
+      login: 'Se connecter',
+      password: 'Mot de passe',
+      signup: `S'inscrire`,
+      submit: `S'inscrire`,
+      success: 'Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.',
+      errors: {
+        email: `L'adresse courriel est obligatoire.`,
+        emailFormat: `Ceci n'est pas une adresse courriel.`,
+        firstName: 'Le prénom est obligatoire.',
+        lastName: 'Le nom de famille est obligatoire.',
+        password: 'Le mot de passe est obligatoire.',
+        confirmation: 'Le mot de passe saisi ne correspond pas à la confirmation.',
+        passwordLength: 'Veuillez saisir au moins 8 caractères.'
+      },
     },
     banner: {
-      login: 'Connexion',
-      getStarted: 'Inscription',
+      login: 'Se connecter',
+      getStarted: `Créer un compte`,
       introduction: 'Partagez vos recettes dès maintenant<br/>en toute simplicité',
       seeRecipes: 'Voir les recettes',
     },
@@ -137,6 +159,9 @@ export const fr = () => {
       following: '0 Abonnements | 1 Abonnement | {count} Abonnements',
       follow: `S'abonner`,
       unfollow: `Se désabonner`,
+    },
+    RegistrationConfirmation: {
+      success: '{firstName}, votre compte est maintenant actif.',
     }
   }
 }

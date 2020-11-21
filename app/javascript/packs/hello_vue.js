@@ -68,6 +68,13 @@ import VuejsDialog from 'vuejs-dialog'
 // Tell Vue to install the plugin.
 Vue.use(VuejsDialog);
 
+import VueToast from 'vue-toast-notification'
+// Import one of the available themes
+//import 'vue-toast-notification/dist/theme-default.css'
+import 'vue-toast-notification/dist/theme-sugar.css'
+
+Vue.use(VueToast)
+
 import * as utils from '../util'
 // register global utility utils.
 Object.keys(utils).forEach(key => {
