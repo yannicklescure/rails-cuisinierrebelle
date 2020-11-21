@@ -57,7 +57,7 @@ export default {
         this.$refs.passwordIcon.innerText = "visibility"
         setTimeout(() => {
           this.showPassword()
-        }, 1500)
+        }, 3000)
       }
     },
     validateEmail (email) {
