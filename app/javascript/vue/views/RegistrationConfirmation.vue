@@ -29,7 +29,7 @@ export default {
       this.$store.dispatch('REGISTRATION_CONFIRMATION', { token: this.$route.query.confirmation_token })
         .then(response => {
           console.log(response)
-          if (response.status === 200) {
+          if (result.status && response.status === 200) {
             this.$toast.open({
               message: this.$t('RegistrationConfirmation.success', { firstName: capitalize(response.data.first_name) }),
               type: 'info', // success, info, warning, error, default
