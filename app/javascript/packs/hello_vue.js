@@ -74,6 +74,13 @@ import VueToast from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
 
 Vue.use(VueToast)
+// //Vue.$toast.open({/* options */});
+// let instance = Vue.$toast.open('You did it!');
+
+// // Force dismiss specific toast
+// instance.dismiss();
+// // Dismiss all opened toast immediately
+// Vue.$toast.clear();
 
 import * as utils from '../util'
 // register global utility utils.
