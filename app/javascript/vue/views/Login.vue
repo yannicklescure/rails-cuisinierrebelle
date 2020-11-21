@@ -105,9 +105,9 @@ export default {
                 message: this.$t('login.welcome', { firstName: capitalize(result.data.first_name) }),
                 type: 'success', // success, info, warning, error, default
                 // all of other options may go here
-                // position: 'bottom-right', // top, bottom, top-right, bottom-right,top-left, bottom-left
-                // duration: 3000, // Visibility duration in milliseconds
-                // dismissible: true,
+                position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+                duration: 3000, // Visibility duration in milliseconds
+                dismissible: true,
               })
               this.$router.push({ name: 'Home' })
             }
@@ -131,9 +131,9 @@ export default {
                   message: this.errors[0],
                   type: 'error', // success, info, warning, error, default
                   // all of other options may go here
-                  // position: 'bottom-right', // top, bottom, top-right, bottom-right,top-left, bottom-left
-                  // duration: 3000, // Visibility duration in milliseconds
-                  // dismissible: true,
+                  position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+                  duration: 3000, // Visibility duration in milliseconds
+                  dismissible: true,
               })
             }
           })
