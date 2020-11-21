@@ -55,6 +55,9 @@ export default {
       else {
         this.$refs.password.type = "text"
         this.$refs.passwordIcon.innerText = "visibility"
+        setTimeout(() => {
+          this.showPassword()
+        }, 3000)
       }
     },
     validateEmail (email) {

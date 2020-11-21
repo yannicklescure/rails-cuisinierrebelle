@@ -75,6 +75,9 @@ export default {
       else {
         this.$refs.password1.type = "text"
         this.$refs.password1Icon.innerText = "visibility"
+        setTimeout(() => {
+          this.showPassword1()
+        }, 3000)
       }
     },
     showPassword2 () {
@@ -85,6 +88,9 @@ export default {
       else {
         this.$refs.password2.type = "text"
         this.$refs.password2Icon.innerText = "visibility"
+        setTimeout(() => {
+          this.showPassword2()
+        }, 3000)
       }
     },
     validateEmail (email) {
