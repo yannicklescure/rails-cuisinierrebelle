@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="d-flex vh-100 justify-content-center align-items-center">
+  <div :style="{ paddingTop: navbarHeight + 'px' }" class="container d-flex vh-100">
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
       <div class="d-flex flex-column w-md-50">
         <form>
           <div class="form-group my-2">
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return ''
@@ -46,6 +47,9 @@ export default {
   // components: {
   //   // Navbar
   // },
+  computed: {
+    ...mapGetters(['navbarHeight']),
+  },
   methods: {
     showPassword () {
       if (this.$refs.password.type === "text") {
