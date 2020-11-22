@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="d-flex vh-100 justify-content-center align-items-center">
+  <div class="container" :style="{ marginTop: navbarHeight + 'px' }">
+    <div class="d-flex py-3 justify-content-center align-items-center">
       <div class="d-flex flex-column w-md-50">
         <form>
           <div class="form-group mb-3">
@@ -27,14 +27,14 @@
           </div>
           <label for="inputPassword">{{ $t('signUp.confirmation') }}</label>
           <div class="input-group mb-3">
-            <input v-model="confirmation" ref="password2" type="password" class="form-control" aria-describedby="button-password2">
+            <input v-model="confirmation" v-on:input="allowPost" v-on:touchend="allowPost" ref="password2" type="password" class="form-control" aria-describedby="button-password2">
             <div class="input-group-append">
               <button v-on:click="showPassword2" class="btn btn-outline-form" type="button" id="button-password2">
                 <i ref="password2Icon" class="material-icons md-18 d-flex">visibility_off</i>
               </button>
             </div>
           </div>
-          <button v-on:click.stop.prevent="signUp" type="submit" class="btn btn-dark mb-3">{{ $t('signUp.submit') }}</button>
+          <button v-on:click.stop.prevent="signUp" type="submit" class="btn btn-dark mb-3" :disabled="disabled">{{ $t('signUp.submit') }}</button>
         </form>
         <div class="my-3">
           <router-link to="/login">{{ $t('signUp.login') }}</router-link>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return ''
@@ -55,6 +56,7 @@ export default {
   name: 'Signup',
   data () {
     return {
+      disabled: true,
       firstName: null,
       lastName: null,
       email: null,
@@ -66,7 +68,14 @@ export default {
   // components: {
   //   // Navbar
   // },
+  computed: {
+    ...mapGetters(['navbarHeight']),
+  },
   methods: {
+    allowPost () {
+      if (this.password && this.confirmation) this.disabled = false
+      else this.disabled = true
+    },
     showPassword1 () {
       if (this.$refs.password1.type === "text") {
         this.$refs.password1.type = "password"

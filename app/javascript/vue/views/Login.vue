@@ -10,14 +10,14 @@
           </div>
           <label for="inputPassword">{{ $t('signUp.password') }}</label>
           <div class="input-group mb-3">
-            <input v-model="password" ref="password" type="password" class="form-control" aria-describedby="button-password">
+            <input v-model="password" v-on:input="allowPost" v-on:touchend="allowPost" ref="password" type="password" class="form-control" aria-describedby="button-password">
             <div class="input-group-append">
               <button v-on:click="showPassword" class="btn btn-outline-form" type="button" id="button-password">
                 <i ref="passwordIcon" class="material-icons md-18 d-flex">visibility_off</i>
               </button>
             </div>
           </div>
-          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2">{{ $t('login.submit') }}</button>
+          <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2" :disabled="disabled">{{ $t('login.submit') }}</button>
         </form>
         <div class="my-3">
           <router-link to="/signup">{{ $t('login.signup') }}</router-link>
@@ -39,6 +39,7 @@ export default {
   name: 'Login',
   data () {
     return {
+      disabled: true,
       email: null,
       password: null,
       errors: [],
@@ -51,6 +52,10 @@ export default {
     ...mapGetters(['navbarHeight']),
   },
   methods: {
+    allowPost () {
+      if (this.email && this.password) this.disabled = false
+      else this.disabled = true
+    },
     showPassword () {
       if (this.$refs.password.type === "text") {
         this.$refs.password.type = "password"
