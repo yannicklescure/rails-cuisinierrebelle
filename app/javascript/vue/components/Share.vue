@@ -49,7 +49,7 @@ export default {
         // title: 'MDN',
         // text: 'Learn web development on MDN!',
         // url: 'https://developer.mozilla.org',
-        url: `${ window.location.origin }/r/${this.item.slug}`
+        url: `${ window.location.origin }/r/${this.item.recipe.slug}`
       }
       // Must be triggered some kind of "user activation"
       try {
