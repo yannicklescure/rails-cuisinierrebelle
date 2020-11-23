@@ -82,6 +82,10 @@ Vue.use(VueToast)
 // // Dismiss all opened toast immediately
 // Vue.$toast.clear();
 
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing);
+
 import * as utils from '../util'
 // register global utility utils.
 Object.keys(utils).forEach(key => {

@@ -8718,7 +8718,7 @@ vue-script2@^2.1.0:
   resolved "https://registry.yarnpkg.com/vue-script2/-/vue-script2-2.1.0.tgz#8e480dc6052c8cdf2aa0ec112efc80f31ddc3522"
   integrity sha512-EDUOjQBFvhkJXwmWuUR9ijlF7/4JtmvjXSKaHSa/LNTMy9ltjgKgYB68aqlxgq8ORdSxowd5eo24P1syjZJnBA==
 
-vue-social-sharing@^3.0.2:
+vue-social-sharing@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/vue-social-sharing/-/vue-social-sharing-3.0.3.tgz#06fe22d4f1de70e4515c5447b92de07b0a0e41b0"
   integrity sha512-7MbbVhhzMYM+mPGJjKc+L2EYudCDqavKP2nJTZeV/KQfJqbKsnK6e0nzSd/8Ir4JSQ+AQoY9D9yP0t4gXV0FgA==
