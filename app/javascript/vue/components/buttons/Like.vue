@@ -1,6 +1,6 @@
 <template>
   <div :class="['d-flex align-items-center text-danger', mobile ? 'mr-2' : 'ml-2']">
-    <div class="p-0 text-decoration-none d-flex align-items-center">
+    <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
       <div v-if="isAuthenticated" class="mouse-pointer align-items" @click="like">
         <i v-if="liked" :class="['material-icons text-danger align-items', mobile ? 'md-32' : 'md-18']">favorite</i>
         <i v-else :class="['material-icons align-items', mobile ? 'md-32' : 'md-18']">favorite_border</i>
@@ -8,7 +8,7 @@
       <router-link v-else to="/login" class="text-body align-items">
         <i :class="['material-icons align-items', mobile ? 'md-32' : 'md-18']">favorite_border</i>
       </router-link>
-      <span class="text-muted font-weight-lighter ml-1">{{ likes }}</span>
+      <span :class="['text-muted font-weight-lighter small', { 'ml-1': !mobile }]">{{ likes }}</span>
     </div>
   </div>
 </template>

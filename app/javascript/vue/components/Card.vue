@@ -32,18 +32,12 @@
         </div>
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
-        <div :class="['d-flex justify-content-between align-items-center', {'ml-n2': !mobile}]">
+        <div :class="['d-flex justify-content-between', mobile ? 'align-items-start' : 'align-items-center ml-n2']">
           <like :item="item" @liked="heartFillBig" />
-          <router-link
-            :class="[ mobile ? 'mr-2' : 'ml-2','p-0 text-body text-decoration-none d-flex align-items-center']"
-            :to="'/r/' + item.recipe.slug + '#comments'"
-          >
-            <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">comment</i>
-            <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
-          </router-link>
+          <comment :item="item" />
           <share :item="item" />
         </div>
-        <div class="d-flex align-items-center">
+        <div :class="['d-flex', mobile ? 'align-items-start' : 'align-items-center']">
           <visit :item="item" />
           <bookmark :item="item" @bookmarked="bookmarkFillBig" />
         </div>
@@ -68,16 +62,18 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
-import Bookmark from '../components/Bookmark.vue'
-import Like from '../components/Like.vue'
-import Share from '../components/Share.vue'
-import Visit from '../components/Visit.vue'
+import Bookmark from '../components/buttons/Bookmark.vue'
+import Comment from '../components/buttons/Comment.vue'
+import Like from '../components/buttons/Like.vue'
+import Share from '../components/buttons/Share.vue'
+import Visit from '../components/buttons/Visit.vue'
 
 export default {
   name: 'card',
   props: ['item'],
   components: {
     Bookmark,
+    Comment,
     Like,
     Share,
     Visit,
@@ -93,9 +89,6 @@ export default {
   computed: {
     mobile () {
       return isMobile
-    },
-    commentsCount () {
-      return this.item.comments.length
     },
   },
   methods: {

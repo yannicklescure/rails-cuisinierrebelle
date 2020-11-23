@@ -21,7 +21,7 @@
 import VueMarkdown from 'vue-markdown'
 
 export default {
-  name: 'Comment',
+  name: 'UserComment',
   props: ['item'],
   // data () {
   //   return {

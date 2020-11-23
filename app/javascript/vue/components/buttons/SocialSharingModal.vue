@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SocialSharing from '../components/SocialSharing.vue'
+import SocialSharing from './SocialSharing.vue'
 
 export default {
   name: 'social-sharing-modal',
