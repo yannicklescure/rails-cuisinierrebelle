@@ -12,7 +12,7 @@
       <small>{{ timeAgo(item.timestamp) }}</small>
     </div>
     <div class="mt-2 bg-light border rounded p-3">
-      <vue-markdown :source="item.content" />
+      <vue-markdown :source="item.content" class="text-break" />
     </div>
   </div>
 </template>

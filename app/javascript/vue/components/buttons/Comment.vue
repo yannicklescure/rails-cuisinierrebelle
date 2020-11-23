@@ -5,7 +5,7 @@
       :to="'/r/' + item.recipe.slug + '#comments'"
     >
       <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">comment</i>
-      <span :class="['text-muted font-weight-lighter small', mobile ? 'align-items' : 'ml-1']">{{ commentsCount }}</span>
+      <span :class="['text-muted font-weight-lighter small', mobile ? 'align-items' : 'ml-1']">{{ countRecipeComments(item) }}</span>
     </router-link>
   </div>
 </template>
@@ -18,16 +18,15 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'comment',
   props: ['item'],
   computed: {
+    ...mapGetters(['countRecipeComments']),
     mobile () {
       return isMobile
-    },
-    commentsCount () {
-      return this.item.comments.length
     },
   }
 }

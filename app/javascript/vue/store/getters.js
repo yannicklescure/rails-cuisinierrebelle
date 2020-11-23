@@ -29,6 +29,15 @@ export default {
     // console.log(state)
     return state.data.render.navbarHeight
   },
+  countRecipeComments (state) {
+    return item => {
+      const counts = item.comments.map(comment => comment.replies.length)
+      let sum = counts.length
+      counts.map(res => sum += res)
+      return sum
+    }
+  },
+
   recipe (state) {
     return keyword => state.data.recipes.filter( item => {
       return item.recipe.slug === keyword

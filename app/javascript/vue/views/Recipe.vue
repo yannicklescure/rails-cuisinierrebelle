@@ -91,7 +91,7 @@
       </div>
 
       <div id="comments" ref="comments" class="d-print-none mt-5">
-        <div class="h4 mb-3">{{ $tc('recipe.comments', comments.length) }}</div>
+        <div class="h4 mb-3">{{ $tc('recipe.comments', countRecipeComments(item)) }}</div>
         <div class="input-group my-3">
           <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
         </div>
@@ -170,12 +170,9 @@ export default {
     VueMarkdown,
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipe']),
+    ...mapGetters(['navbarHeight', 'countRecipeComments']),
     comments () {
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
-    },
-    commentsCount () {
-      return this.item.comments.length
     },
     mobile () {
       return isMobile
