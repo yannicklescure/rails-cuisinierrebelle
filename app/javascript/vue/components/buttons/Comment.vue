@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link
-      :class="['text-body d-flex align-items-center justify-content-center', { 'flex-column': mobile }, mobile ? 'mr-2' : 'ml-2']"
+      :class="['text-body text-decoration-none d-flex align-items-center justify-content-center', { 'flex-column': mobile }, mobile ? 'mr-2' : 'ml-2']"
       :to="'/r/' + item.recipe.slug + '#comments'"
     >
       <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">comment</i>
