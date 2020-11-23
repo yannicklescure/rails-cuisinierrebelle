@@ -32,10 +32,10 @@
         </div>
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
-        <div class="d-flex justify-content-between align-items-center">
+        <div :class="['d-flex justify-content-between align-items-center', {'ml-n2': !mobile}]">
           <like :item="item" @liked="heartFillBig" />
           <router-link
-            class="p-0 mr-2 text-body text-decoration-none d-flex align-items-center"
+            :class="[ mobile ? 'mr-2' : 'ml-2','p-0 text-body text-decoration-none d-flex align-items-center']"
             :to="'/r/' + item.recipe.slug + '#comments'"
           >
             <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">comment</i>
