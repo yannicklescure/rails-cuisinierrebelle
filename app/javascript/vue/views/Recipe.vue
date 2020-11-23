@@ -2,26 +2,53 @@
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column">
-        <div class="d-flex order-0 order-md-0 flex-column align-items-center flex-md-row justify-content-md-between align-items-md-start mb-3 mb-md-0 d-print-none">
-          <div id="recipe-user" class="d-flex w-100 align-items-center order-0">
-            <div class="d-flex flex-grow-1 m-0 align-items-center">
-              <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
-                <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
-                <div class="d-flex order-0 justify-content-between justify-content-md-start flex-grow-1 align-items-center" data-user="1">
-                  <div class="mr-md-2 d-flex align-items-center">
-                    <router-link class="text-body" :to="'/u/' + item.user.slug">{{ item.user.name }}</router-link>
-                    <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex ml-1">
-                      <i class="material-icons md-16">check_circle</i>
-                    </span>
-                  </div>
-                  <div class="d-none mr-3 btn btn-dark btn-sm py-0">Follow</div>
+        <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex w-100 align-items-center order-0']">
+          <div class="d-flex flex-grow-1 m-0 align-items-center">
+            <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
+              <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
+              <div class="d-flex order-0 justify-content-between justify-content-md-start flex-grow-1 align-items-center" data-user="1">
+                <div class="mr-md-2 d-flex align-items-center">
+                  <router-link class="text-body" :to="'/u/' + item.user.slug">{{ item.user.name }}</router-link>
+                  <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex ml-1">
+                    <i class="material-icons md-16">check_circle</i>
+                  </span>
                 </div>
+                <div class="d-none mr-3 btn btn-dark btn-sm py-0">Follow</div>
               </div>
             </div>
           </div>
-          <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
-            <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-              <print v-if="!mobile" :item="item" />
+        </div>
+        <div v-if="mobile" class="py-2">
+          <div
+            class="recipe-image d-flex justify-content-center align-items-center"
+            :style="{ backgroundImage: 'url(' + item.recipe.photo.card.url + ')' }"
+          >
+            <div ref="heartFillBig"></div>
+            <div ref="bookmarkFillBig"></div>
+          </div>
+        </div>
+        <div v-if="mobile" class="d-flex order-0 align-items-center justify-content-between mb-3 mb-md-0 d-print-none">
+          <div class="d-flex order-0 align-items-start">
+            <like :item="item" @liked="heartFillBig" />
+            <router-link
+              class="p-0 mr-2 text-body text-decoration-none d-flex align-items-center"
+              :to="'/r/' + item.recipe.slug + '#comments'"
+            >
+              <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">comment</i>
+              <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
+            </router-link>
+            <share :item="item" />
+          </div>
+          <div class="d-flex order-1 align-items-end">
+            <visit :item="item" class="ml-2" />
+            <bookmark :item="item" @bookmarked="bookmarkFillBig" />
+          </div>
+        </div>
+        <div v-else class="d-flex order-0 justify-content-between d-print-none">
+          <div class="d-flex align-items-center justify-content-end order-1 w-100">
+            <div class="d-flex order-1 align-items-center">
+              <print :item="item" />
+              <share :item="item" />
               <like :item="item" />
               <bookmark :item="item" />
               <visit :item="item" class="ml-2" />
@@ -35,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="my-3 my-md-5 d-print-none">
+      <div v-if="!mobile" class="my-5 d-print-none">
         <div
           class="recipe-image"
           :style="{ backgroundImage: 'url(' + item.recipe.photo.full.url + ')' }"
@@ -99,6 +126,7 @@ import CardSmall from '../components/CardSmall.vue'
 import Comment from '../components/Comment.vue'
 import Like from '../components/Like.vue'
 import Print from '../components/Print.vue'
+import Share from '../components/Share.vue'
 import Visit from '../components/Visit.vue'
 import VueMarkdown from 'vue-markdown'
 
@@ -141,6 +169,7 @@ export default {
     Comment,
     Like,
     Print,
+    Share,
     Visit,
     VueMarkdown,
   },
@@ -149,11 +178,28 @@ export default {
     comments () {
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
     },
+    commentsCount () {
+      return this.item.comments.length
+    },
     mobile () {
       return isMobile
     },
   },
   methods: {
+    heartFillBig () {
+      console.log('liked')
+      this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
+      setTimeout(() => {
+        this.$refs.heartFillBig.innerHTML = ''
+      }, 1000);
+    },
+    bookmarkFillBig () {
+      console.log('liked')
+      this.$refs.bookmarkFillBig.innerHTML = '<i class="material-icons md-96 text-body">bookmark</i>'
+      setTimeout(() => {
+        this.$refs.bookmarkFillBig.innerHTML = ''
+      }, 1000);
+    },
     scroll2Anchor () {
       // const currentPage = this.$route.fullpath
       const target = this.$route.hash

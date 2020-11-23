@@ -1,5 +1,5 @@
 <template>
-  <div :class="['d-flex align-items-center mr-2 text-danger']">
+  <div :class="['d-flex align-items-center text-danger', mobile ? 'mr-2' : 'ml-2']">
     <div class="p-0 text-decoration-none d-flex align-items-center">
       <div v-if="isAuthenticated" class="mouse-pointer align-items" @click="like">
         <i v-if="liked" :class="['material-icons text-danger align-items', mobile ? 'md-32' : 'md-18']">favorite</i>
