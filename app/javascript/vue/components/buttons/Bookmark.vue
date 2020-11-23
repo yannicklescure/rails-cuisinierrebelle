@@ -2,11 +2,11 @@
   <div :class="['d-flex align-items-center ml-2 text-body']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
       <div v-if="isAuthenticated" class="mouse-pointer align-items" @click="bookmark">
-        <i v-if="bookmarked" :class="['material-icons text-body', mobile ? 'md-32' : 'md-18']">bookmark</i>
-        <i v-else :class="['material-icons', mobile ? 'md-32' : 'md-18']">bookmark_border</i>
+        <i v-if="bookmarked" :class="['material-icons text-body', mobile ? 'md-24' : 'md-18']">bookmark</i>
+        <i v-else :class="['material-icons', mobile ? 'md-24' : 'md-18']">bookmark_border</i>
       </div>
       <router-link v-else to="/login" class="text-body align-items">
-        <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">bookmark_border</i>
+        <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">bookmark_border</i>
       </router-link>
       <span :class="['text-muted font-weight-lighter small', { 'ml-1': !mobile }]">{{ bookmarks }}</span>
     </div>

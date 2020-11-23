@@ -1,6 +1,6 @@
 <template>
   <div :class="['text-body d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
-    <i :class="['material-icons align-items', mobile ? 'md-32' : 'md-18']">visibility</i>
+    <i :class="['material-icons align-items', mobile ? 'md-24' : 'md-18']">visibility</i>
     <span :class="['text-muted font-weight-lighter small', { 'ml-1': !mobile }]">{{ views }}</span>
   </div>
 </template>
