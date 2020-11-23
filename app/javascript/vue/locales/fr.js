@@ -142,7 +142,10 @@ export const fr = () => {
     },
     recipe: {
       otherRecipes: 'Autres recettes',
-      comments: '0 Commentaires | 1 Commentaire | {count} Commentaires',
+      comments: {
+        counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',
+        addPublicComment: 'Ajouter un commentaire public...'
+      }
     },
     comment: {
       minutes: 'il y a 0 minutes | il y a 1 minute | il y a {count} minutes',
@@ -150,6 +153,9 @@ export const fr = () => {
       days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
       months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
       years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
+    },
+    commentForm: {
+      comment: 'Publier',
     },
     search: {
       noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Veuillez essayer de nouveau avec un autre mot-clé.`
@@ -162,6 +168,6 @@ export const fr = () => {
     },
     RegistrationConfirmation: {
       success: '{firstName}, votre compte est maintenant actif.',
-    }
+    },
   }
 }

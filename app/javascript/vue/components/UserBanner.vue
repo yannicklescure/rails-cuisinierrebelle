@@ -4,11 +4,12 @@
       <div class="mx-md-2 d-flex justify-content-start align-items-center">
         <img :src="user.image.preview.url" :alt="user.name" class="rounded" width="64" height="64" style="object-fit: cover;">
         <div class="ml-3 d-flex flex-column">
-          <router-link :to="'/u/' + user.slug" class="d-flex align-items-center text-capitalize text-body text-decoration-none">{{ user.name }}
+          <div class="d-flex align-items-center">
+            <router-link :to="'/u/' + user.slug" class="text-capitalize text-body">{{ user.name }}</router-link>
             <span v-if="user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
               <i class="material-icons md-16">check_circle</i>
             </span>
-          </router-link>
+          </div>
           <div>
             <router-link :to="'/u/' + user.slug + '/followers'" class="d-flex align-items-center text-decoration-none text-muted">
               <small>{{ $tc('userBanner.followers', followers) }}</small>

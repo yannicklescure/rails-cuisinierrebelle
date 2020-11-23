@@ -8,8 +8,12 @@
         height="24"
         class="rounded-circle"
       >
-      <span class="mx-2 text-capitalize">{{ item.user.name }}</span>
-      <small>{{ timeAgo(item.timestamp) }}</small>
+      <router-link
+        :to="`/u/${ item.user.slug }`"
+        class="mx-2 text-capitalize text-body"
+        style="font-size: 90%"
+      >{{ item.user.name }}</router-link>
+      <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
     </div>
     <div class="mt-2 bg-light border rounded p-3">
       <vue-markdown :source="item.content" class="text-break" />

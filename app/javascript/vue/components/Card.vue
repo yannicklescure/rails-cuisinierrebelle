@@ -2,18 +2,18 @@
   <div :ref="`card${item.recipe.id}`">
     <div class="card-header bg-white px-0 px-md-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
+        <img
+          :src="item.user.image.thumb.url"
+          width="24px"
+          height="24px"
+          class="rounded-circle mr-2"
+          style="object-fit: cover;"
+        >
         <router-link
           :to="'/u/' + item.user.slug"
-          class="card-link text-body d-flex align-items-center"
+          class="text-body d-flex align-items-center"
           style="font-size: 90%"
         >
-          <img
-            :src="item.user.image.thumb.url"
-            width="24px"
-            height="24px"
-            class="rounded-circle mr-2"
-            style="object-fit: cover;"
-          >
           <div class="text-capitalize">{{ item.user.name }}</div>
         </router-link>
         <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">

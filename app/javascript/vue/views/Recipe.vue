@@ -8,7 +8,11 @@
               <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
               <div class="d-flex order-0 justify-content-between justify-content-md-start flex-grow-1 align-items-center" data-user="1">
                 <div class="mr-md-2 d-flex align-items-center">
-                  <router-link class="text-body" :to="'/u/' + item.user.slug">{{ item.user.name }}</router-link>
+                  <router-link
+                    :to="'/u/' + item.user.slug"
+                    class="text-body text-capitalize"
+                    style="font-size: 90%"
+                  >{{ item.user.name }}</router-link>
                   <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex ml-1">
                     <i class="material-icons md-16">check_circle</i>
                   </span>
@@ -91,14 +95,8 @@
       </div>
 
       <div id="comments" ref="comments" class="d-print-none mt-5">
-        <div class="h4 mb-3">{{ $tc('recipe.comments', countRecipeComments(item)) }}</div>
-        <div class="input-group my-3">
-          <textarea id="new-user-registration" class="form-control" placeholder="Add a public comment..." aria-label="With textarea"></textarea>
-        </div>
-        <div class="input-group my-3">
-          <div class="btn btn-light">Comment</div>
-          <div class="btn btn-light comment-photo-btn" style="padding: 6px;"><i class="material-icons d-flex">add_photo_alternate</i></div>
-        </div>
+        <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
+        <comment-form />
         <div v-for="comment, index in comments" :key="index" class="d-flex flex-column">
           <user-comment :item="comment" />
           <div v-for="reply, index in comment.replies" :key="index" class="d-flex align-items-start">
@@ -119,6 +117,7 @@ import VueMarkdown from 'vue-markdown'
 import Bookmark from '../components/buttons/Bookmark.vue'
 import Comment from '../components/buttons/Comment.vue'
 import CardSmall from '../components/CardSmall.vue'
+import CommentForm from '../components/CommentForm.vue'
 import UserComment from '../components/UserComment.vue'
 import Like from '../components/buttons/Like.vue'
 import Print from '../components/buttons/Print.vue'
@@ -162,6 +161,7 @@ export default {
     Bookmark,
     CardSmall,
     Comment,
+    CommentForm,
     Like,
     Print,
     Share,
