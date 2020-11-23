@@ -7,7 +7,7 @@
       </div>
       <div class="input-group my-3">
         <button class="btn btn-light" type="button" :disabled="disabled">{{ $t('commentForm.comment') }}</button>
-        <button class="btn btn-light comment-photo-btn cr-p-6" :disabled="disabled">
+        <button class="btn btn-light comment-photo-btn cr-p-6 ml-3" :disabled="disabled">
           <i class="material-icons d-flex">add_photo_alternate</i>
         </button>
       </div>
