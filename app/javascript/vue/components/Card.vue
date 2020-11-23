@@ -41,7 +41,7 @@
             class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center"
             :to="'/r/' + item.recipe.slug + '#comments'"
           >
-            <i class="material-icons md-18">comment</i>
+            <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">comment</i>
             <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
           </router-link>
           <bookmark :item="item" @bookmarked="bookmarkFillBig" />
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect'
 import Bookmark from '../components/Bookmark.vue'
 import Like from '../components/Like.vue'
 import Visit from '../components/Visit.vue'
@@ -87,6 +88,9 @@ export default {
     }
   },
   computed: {
+    mobile () {
+      return isMobile
+    },
     commentsCount () {
       return this.item.comments.length
     },

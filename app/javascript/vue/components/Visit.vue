@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-items-center text-body">
-    <i class="material-icons md-18 align-items">visibility</i>
+    <i :class="['material-icons align-items', mobile ? 'md-24' : 'md-18']">visibility</i>
     <span class="text-muted font-weight-lighter ml-1">{{ views }}</span>
   </div>
 </template>
@@ -13,6 +13,7 @@
 
 <script>
 // import { mapGetters } from 'vuex'
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   name: 'Visit',
@@ -24,6 +25,9 @@ export default {
   },
   computed: {
     // ...mapGetters(['isAuthenticated', 'user']),
+    mobile () {
+      return isMobile
+    },
   },
   methods: {
     recipeLog () {
