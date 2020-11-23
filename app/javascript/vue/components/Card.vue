@@ -33,18 +33,18 @@
       </router-link>
       <div class="d-flex justify-content-between align-items-center my-2">
         <div class="d-flex justify-content-between align-items-center">
-          <visit :item="item" />
           <like :item="item" @liked="heartFillBig" />
-        </div>
-        <div class="d-flex align-items-center">
-          <share :item="item" />
           <router-link
-            class="p-0 ml-2 text-body text-decoration-none d-flex align-items-center"
+            class="p-0 mr-2 text-body text-decoration-none d-flex align-items-center"
             :to="'/r/' + item.recipe.slug + '#comments'"
           >
             <i :class="['material-icons', mobile ? 'md-32' : 'md-18']">comment</i>
             <span class="text-muted font-weight-lighter ml-1">{{ commentsCount }}</span>
           </router-link>
+          <share :item="item" />
+        </div>
+        <div class="d-flex align-items-center">
+          <visit :item="item" />
           <bookmark :item="item" @bookmarked="bookmarkFillBig" />
         </div>
       </div>

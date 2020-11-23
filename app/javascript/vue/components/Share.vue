@@ -1,6 +1,6 @@
 <template>
   <div :ref="`share${item.recipe.id}`">
-    <div v-if="mobile" @click="shareItemMobile" class="d-flex mouse-pointer ml-3">
+    <div v-if="mobile" @click="shareItemMobile" class="d-flex">
       <span :class="['material-icons align-items', mobile ? 'md-32' : 'md-18']">share</span>
     </div>
     <div v-else>
