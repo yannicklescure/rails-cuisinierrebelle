@@ -21,9 +21,9 @@
           </div>
           <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-end order-1 w-100">
             <div class="order-0 order-md-1 d-flex align-items-center mt-3 mt-md-0">
-              <print :item="item" />
-              <bookmark :item="item" />
+              <print v-if="!mobile" :item="item" />
               <like :item="item" />
+              <bookmark :item="item" />
               <visit :item="item" class="ml-2" />
             </div>
           </div>
@@ -91,6 +91,7 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
 import axios from 'axios'
 import Bookmark from '../components/Bookmark.vue'
@@ -147,6 +148,9 @@ export default {
     ...mapGetters(['navbarHeight', 'recipe']),
     comments () {
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+    },
+    mobile () {
+      return isMobile
     },
   },
   methods: {
