@@ -31,7 +31,7 @@
 import SocialSharing from './SocialSharing.vue'
 
 export default {
-  name: 'social-sharing-modal',
+  name: 'SocialSharingModal',
   data () {
     return {
       contentCopy: 'content_copy',

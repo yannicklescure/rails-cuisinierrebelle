@@ -21,7 +21,7 @@ import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'comment',
+  name: 'BtnComment',
   props: ['item'],
   computed: {
     ...mapGetters(['countRecipeComments']),

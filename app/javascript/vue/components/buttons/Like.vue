@@ -24,7 +24,7 @@ import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'like',
+  name: 'BtnLike',
   props: ['item'],
   data () {
     return {

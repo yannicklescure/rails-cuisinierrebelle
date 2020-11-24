@@ -14,7 +14,7 @@
 // import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Print',
+  name: 'BtnPrint',
   props: ['item'],
   data () {
     return {}

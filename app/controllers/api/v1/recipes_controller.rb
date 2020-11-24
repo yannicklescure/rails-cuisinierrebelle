@@ -151,7 +151,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
         name: recipe.user.name,
         slug: recipe.user.slug
       },
-      comments: recipe.comments.map { |comment| {
+      comments: recipe.comments.includes([:user]).map { |comment| {
           id: comment.id,
           timestamp: (comment.created_at.to_f * 1000).to_i,
           user: {
@@ -164,7 +164,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
             }
           },
           content: comment.content,
-          replies: comment.replies.map { |reply| {
+          replies: comment.replies.includes([:user]).map { |reply| {
               id: reply.id,
               timestamp: (reply.created_at.to_f * 1000).to_i,
               content: reply.content,

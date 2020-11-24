@@ -33,23 +33,23 @@
         </div>
         <div v-if="mobile" class="d-flex order-0 align-items-center justify-content-between mb-3 mb-md-0 d-print-none">
           <div class="d-flex order-0 align-items-start">
-            <like :item="item" @liked="heartFillBig" />
-            <comment :item="item" />
-            <share :item="item" />
+            <btn-like :item="item" @liked="heartFillBig" />
+            <btn-comment :item="item" />
+            <btn-share :item="item" />
           </div>
           <div class="d-flex order-1 align-items-end">
-            <visit :item="item" class="ml-2" />
-            <bookmark :item="item" @bookmarked="bookmarkFillBig" />
+            <btn-visit :item="item" class="ml-2" />
+            <btn-bookmark :item="item" @bookmarked="bookmarkFillBig" />
           </div>
         </div>
         <div v-else class="d-flex order-0 justify-content-between d-print-none">
           <div class="d-flex align-items-center justify-content-end order-1 w-100">
             <div class="d-flex order-1 align-items-center">
-              <print :item="item" />
-              <share :item="item" />
-              <like :item="item" />
-              <bookmark :item="item" />
-              <visit :item="item" class="ml-2" />
+              <btn-print :item="item" />
+              <btn-share :item="item" />
+              <btn-like :item="item" />
+              <btn-bookmark :item="item" />
+              <btn-visit :item="item" class="ml-2" />
             </div>
           </div>
         </div>
@@ -94,17 +94,7 @@
         <card-small v-for="index in 5" :key="index" />
       </div>
 
-      <div id="comments" ref="comments" class="d-print-none mt-5">
-        <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
-        <comment-form />
-        <div v-for="comment, index in comments" :key="index" class="d-flex flex-column">
-          <user-comment :item="comment" />
-          <div v-for="reply, index in comment.replies" :key="index" class="d-flex align-items-start">
-            <span class="material-icons md-18 mt-2">subdirectory_arrow_right</span>
-            <user-comment :item="reply" class="pl-3 flex-grow-1" />
-          </div>
-        </div>
-      </div>
+      <comments :item="item" />
     </div>
   </div>
 </template>
@@ -112,17 +102,16 @@
 <script>
 import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
-import Bookmark from '../components/buttons/Bookmark.vue'
-import Comment from '../components/buttons/Comment.vue'
+import BtnBookmark from '../components/buttons/Bookmark.vue'
+import BtnComment from '../components/buttons/Comment.vue'
+import BtnLike from '../components/buttons/Like.vue'
+import BtnPrint from '../components/buttons/Print.vue'
+import BtnShare from '../components/buttons/Share.vue'
+import BtnVisit from '../components/buttons/Visit.vue'
 import CardSmall from '../components/CardSmall.vue'
-import CommentForm from '../components/CommentForm.vue'
-import UserComment from '../components/UserComment.vue'
-import Like from '../components/buttons/Like.vue'
-import Print from '../components/buttons/Print.vue'
-import Share from '../components/buttons/Share.vue'
-import Visit from '../components/buttons/Visit.vue'
+import Comments from '../components/Comments.vue'
 
 export default {
   name: 'Recipe',
@@ -158,22 +147,18 @@ export default {
     }
   },
   components: {
-    Bookmark,
+    BtnBookmark,
+    BtnComment,
+    BtnLike,
+    BtnPrint,
+    BtnShare,
+    BtnVisit,
     CardSmall,
-    Comment,
-    CommentForm,
-    Like,
-    Print,
-    Share,
-    UserComment,
-    Visit,
+    Comments,
     VueMarkdown,
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'countRecipeComments']),
-    comments () {
-      return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
-    },
+    ...mapGetters(['navbarHeight']),
     mobile () {
       return isMobile
     },

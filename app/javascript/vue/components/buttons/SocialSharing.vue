@@ -23,7 +23,7 @@
 <script>
 
 export default {
-  name: 'social-sharing',
+  name: 'SocialSharing',
   props: ['item'],
   data () {
     return {

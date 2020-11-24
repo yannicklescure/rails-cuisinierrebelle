@@ -144,7 +144,8 @@ export const fr = () => {
       otherRecipes: 'Autres recettes',
       comments: {
         counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',
-        addPublicComment: 'Ajouter un commentaire public...'
+        addPublicComment: 'Ajouter un commentaire public...',
+        viewReplies: 'Voir 0 réponses | Voir la réponse | Voir les {count} réponses',
       }
     },
     comment: {

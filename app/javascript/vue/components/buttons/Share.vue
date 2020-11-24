@@ -27,7 +27,7 @@ import { isMobile } from 'mobile-device-detect'
 import SocialSharingModal from './SocialSharingModal.vue'
 
 export default {
-  name: 'Share',
+  name: 'BtnShare',
   props: ['item'],
   components: {
     SocialSharingModal,

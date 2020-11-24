@@ -16,7 +16,7 @@
 import { isMobile } from 'mobile-device-detect'
 
 export default {
-  name: 'Visit',
+  name: 'BtnVisit',
   props: ['item'],
   data () {
     return {
