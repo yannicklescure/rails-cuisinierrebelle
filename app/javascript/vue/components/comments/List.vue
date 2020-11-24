@@ -17,7 +17,7 @@
       <transition name="fade">
         <div v-show="show[i]">
           <div v-for="reply, j in comment.replies" :key="'c' + i + 'r' + j" class="d-flex align-items-start">
-            <span class="material-icons md-18 mt-2">subdirectory_arrow_right</span>
+            <span class="material-icons md-18 mt-3">subdirectory_arrow_right</span>
             <user-comment :item="reply" class="pl-3 flex-grow-1" />
           </div>
         </div>
