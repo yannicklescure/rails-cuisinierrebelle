@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <navbar />
+    <app-header />
     <main>
       <router-view />
     </main>
+    <app-footer />
   </div>
 </template>
 
 <script>
 import { isMobile } from 'mobile-device-detect'
 import Navbar from './vue/components/Navbar.vue'
+import Footer from './vue/components/Footer.vue'
 
 export default {
   name: 'app',
@@ -19,7 +21,8 @@ export default {
     }
   },
   components: {
-    Navbar
+    'app-footer': Footer,
+    'app-header': Navbar,
   },
   methods: {
     async checkAuthentication () {

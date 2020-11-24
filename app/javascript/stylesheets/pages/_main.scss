@@ -1,0 +1,22 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: calc(100vh - 113px);
+}
+
+main {
+  min-height: calc(100vh - 113px - 168px);
+}
+
+@media (min-width: 768px) {
+  body {
+    min-height: calc(100vh - 58px);
+  }
+
+  main {
+    min-height: calc(100vh - 58px - 168px);
+  }
+}
