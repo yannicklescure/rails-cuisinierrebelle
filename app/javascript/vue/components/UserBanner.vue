@@ -20,8 +20,8 @@
 
       <div class="mx-md-2 d-flex justify-content-start align-items-center">
         <div v-if="user.slug === currentUser.slug">
-          <div class="btn">
-            <span class="material-icons md-24">settings</span>
+          <div class="btn" v-on:click="userSettings">
+            <span class="material-icons md-24 d-flex">settings</span>
           </div>
         </div>
         <div v-else>
@@ -61,6 +61,9 @@ export default {
     }
   },
   methods: {
+    userSettings () {
+      this.$router.push({ name: 'UserSettings' })
+    }
   },
 }
 </script>
