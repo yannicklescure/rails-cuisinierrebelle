@@ -111,7 +111,7 @@ import BtnPrint from '../components/buttons/Print.vue'
 import BtnShare from '../components/buttons/Share.vue'
 import BtnVisit from '../components/buttons/Visit.vue'
 import CardSmall from '../components/CardSmall.vue'
-import Comments from '../components/Comments.vue'
+import Comments from '../components/comments/List.vue'
 
 export default {
   name: 'Recipe',

@@ -37,11 +37,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CommentForm from '../components/CommentForm.vue'
-import UserComment from '../components/UserComment.vue'
+import CommentForm from './Form.vue'
+import UserComment from './Show.vue'
 
 export default {
-  name: 'Comments',
+  name: 'List',
   data () {
     return {
       show: [],

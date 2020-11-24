@@ -25,7 +25,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'CommentForm',
+  name: 'Form',
   // props: ['user'],
   data () {
     return {

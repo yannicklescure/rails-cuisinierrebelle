@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Follow from '../components/Follow.vue'
+import Follow from '../components/buttons/Follow.vue'
 
 export default {
   name: 'UserCard',
