@@ -25,7 +25,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import Card from '../components/Card.vue'
-import Follow from '../components/Follow.vue'
+import Follow from '../components/buttons/Follow.vue'
 import UserBanner from '../components/UserBanner.vue'
 import UserCard from '../components/UserCard.vue'
 
