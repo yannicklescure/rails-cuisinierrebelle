@@ -119,30 +119,30 @@ export default {
     return {
       componentKey: 0,
       log: true,
-      // item: {
-      //   comments: [],
-      //   recipe: {
-      //     title: null,
-      //     subtitle: null,
-      //     direction: null,
-      //     photo: {
-      //       full: {
-      //         url: null
-      //       }
-      //     },
-      //     video: null,
-      //   },
-      //   user: {
-      //     image: {
-      //       thumb: {
-      //         url: null
-      //       }
-      //     },
-      //     slug: null,
-      //     name: null,
-      //     checked: null,
-      //   }
-      // },
+      item: {
+        comments: [],
+        recipe: {
+          title: null,
+          subtitle: null,
+          direction: null,
+          photo: {
+            full: {
+              url: null
+            }
+          },
+          video: null,
+        },
+        user: {
+          image: {
+            thumb: {
+              url: null
+            }
+          },
+          slug: null,
+          name: null,
+          checked: null,
+        }
+      },
       loading: false,
     }
   },
@@ -159,9 +159,9 @@ export default {
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe']),
-    item () {
-      return this.recipe(this.$route.params.id)
-    },
+    // item () {
+    //   return this.recipe(this.$route.params.id)
+    // },
     mobile () {
       return isMobile
     },
@@ -231,16 +231,13 @@ export default {
     }
   },
   beforeMount () {
-    // console.log(this.$el)
-  },
-  beforeMount () {
-    // this.fetchItem()
+    this.fetchItem()
   },
   mounted () {
     this.$nextTick(() => {
-      this.componentKey += 1
+      // this.componentKey += 1
       // this.loading = false
-      this.scroll2Anchor()
+      // this.scroll2Anchor()
       // setTimeout(() => {
       // }, 1000)
     })
