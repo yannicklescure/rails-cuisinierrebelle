@@ -32,10 +32,8 @@ class Api::V1::CommentsController < Api::V1::BaseController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
-    @user = current_user
-    @comment = Comment.find_by(user: @user, recipe: @recipe)
     # binding.pry
+    @comment = Comment.find(params[:id])
     authorize @comment
     @comment.destroy
     head :no_content

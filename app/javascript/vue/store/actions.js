@@ -31,6 +31,20 @@ export default {
       })
   },
 
+  DELETE_COMMENT: (context, payload) => {
+    // console.log(payload)
+    return api.deleteComment(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("DELETE_COMMENT", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   COMMENT: (context, payload) => {
     // console.log(payload)
     return api.comment(context, payload)

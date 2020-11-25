@@ -38,7 +38,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Comment',
-  props: ['item'],
+  props: ['item', 'type'],
   // data () {
   //   return {
   //   }
@@ -51,7 +51,18 @@ export default {
   },
   methods: {
     destroy () {
-      console.log(`delete comment ${ this.item.id }`)
+      if (this.type === 'comment') {
+        console.log(`delete comment ${ this.item.id }`)
+        const payload = {
+          comment_id: this.item.id,
+          recipe_id: this.item.recipe.id,
+        }
+        this.$store
+          .dispatch('DELETE_COMMENT', payload)
+          .then( response => {
+            console.log(response)
+          })
+      }
     },
     timeAgo (time) {
       const between = Math.trunc((new Date().getTime() - time) / 1000)

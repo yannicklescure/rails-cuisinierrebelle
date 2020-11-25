@@ -3,7 +3,7 @@
     <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
     <comment-form :item="item" />
     <div v-for="comment, i in comments" class="d-flex flex-column">
-      <user-comment :item="comment" :key="'c' + i" />
+      <user-comment :item="comment" :type="'comment'" :key="'c' + i" />
       <div
         v-if="comment.replies.length"
         v-on:click="showReplies(i)"
@@ -18,7 +18,7 @@
         <div v-show="show[i]">
           <div v-for="reply, j in comment.replies" class="d-flex align-items-start">
             <span class="material-icons md-18 mt-3">subdirectory_arrow_right</span>
-            <user-comment :item="reply" :key="'c' + i + 'r' + j" class="pl-3 flex-grow-1" />
+            <user-comment :item="reply" :type="'reply'" :key="'c' + i + 'r' + j" class="pl-3 flex-grow-1" />
           </div>
         </div>
       </transition>
