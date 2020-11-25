@@ -1,5 +1,5 @@
 <template>
-  <div ref="footer" class="mt-5 py-5 px-3 bg-dark text-light d-flex justify-content-center">
+  <div ref="footer" class="d-print-none mt-5 py-5 px-3 bg-dark text-light d-flex justify-content-center">
     <div class="d-flex align-items-center">
       <div>Fait avec</div>
       <div class="px-1 text-danger">
