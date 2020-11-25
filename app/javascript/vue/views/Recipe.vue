@@ -225,7 +225,7 @@ export default {
   watch: {
     async '$route' () {
       console.log(this.$route.params.id)
-      // await this.fetchItem()
+      await this.fetchItem()
       // this.recipeLog()
     }
   },
