@@ -14,7 +14,7 @@ class Api::V1::StateController < Api::V1::BaseController
       # @recipes = policy_scope(Recipe).includes([:user, :comments]).sort_by {|k,v| k.id}.reverse[0...24]
       @recipes = policy_scope(Recipe).includes([:user])
       @users = User.all.includes([:follower_relationships, :followers, :following])
-      force_update = 1600607465638
+      force_update = 1606330015013
       @last_update = (Recipe.last.created_at.to_f * 1000).to_i
       @timestamp = @last_update < force_update ? force_update : @last_update
       json = Rails.cache.fetch(Recipe.cache_key(@recipes)) do
