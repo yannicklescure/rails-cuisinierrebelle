@@ -85,7 +85,7 @@ class Api::V1::StateController < Api::V1::BaseController
                     },
                     content: comment.content,
                     timestamp: (comment.created_at.to_f * 1000).to_i,
-                    replies: comment.replies.map { |reply| {
+                    replies: comment.replies.includes([:user]).map { |reply| {
                         id: reply.id,
                         timestamp: (reply.created_at.to_f * 1000).to_i,
                         content: reply.content,

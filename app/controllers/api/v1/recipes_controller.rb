@@ -77,7 +77,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
                   },
                   content: comment.content,
                   timestamp: (comment.created_at.to_f * 1000).to_i,
-                  replies: comment.replies.map { |reply| {
+                  replies: comment.replies.includes([:user]).map { |reply| {
                       id: reply.id,
                       timestamp: (reply.created_at.to_f * 1000).to_i,
                       content: reply.content,
@@ -177,31 +177,36 @@ class Api::V1::RecipesController < Api::V1::BaseController
         slug: recipe.user.slug
       },
       comments: recipe.comments.includes([:user]).map { |comment| {
-          id: comment.id,
-          timestamp: (comment.created_at.to_f * 1000).to_i,
-          user: {
-            name: comment.user.name,
-            slug: comment.user.slug,
-            image: {
-              thumb: {
-                url: comment.user.image.url(:thumb)
-              }
-            }
-          },
-          content: comment.content,
-          replies: comment.replies.includes([:user]).map { |reply| {
-              id: reply.id,
-              timestamp: (reply.created_at.to_f * 1000).to_i,
-              content: reply.content,
-              user: {
-                name: reply.user.name,
-                slug: reply.user.slug,
-                image: {
-                  thumb: {
-                    url: reply.user.image.url(:thumb)
-                  }
+            id: comment.id,
+            recipe: {
+              id: comment.recipe_id,
+            },
+            user: {
+              id: comment.user.id,
+              image: {
+                thumb: {
+                  url: comment.user.image.url(:thumb)
                 }
               },
+              name: comment.user.name,
+              slug: comment.user.slug,
+            },
+            content: comment.content,
+            timestamp: (comment.created_at.to_f * 1000).to_i,
+            replies: comment.replies.includes([:user]).map { |reply| {
+                id: reply.id,
+                timestamp: (reply.created_at.to_f * 1000).to_i,
+                content: reply.content,
+                user: {
+                  id: reply.user.id,
+                  name: reply.user.name,
+                  slug: reply.user.slug,
+                  image: {
+                    thumb: {
+                      url: reply.user.image.url(:thumb)
+                    }
+                  }
+                },
             }
           }
         }
@@ -225,7 +230,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   def set_recipe
     # binding.pry
-    @recipe = Recipe.includes([:user, :comments]).find_by(slug: params[:id])
+    @recipe = Recipe.includes([:user]).find_by(slug: params[:id])
     authorize @recipe  # For Pundit
   end
 end

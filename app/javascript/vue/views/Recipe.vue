@@ -190,7 +190,6 @@ export default {
       console.log(this.$route)
       console.log(target)
       if(target) {
-        console.log(this.$refs.comments)
         let element = this.$el.querySelector(target)
 
         const scrollOptions = {
