@@ -33,6 +33,34 @@ import axios from 'axios'
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
 
+export const comment = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/comments`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      content: payload.content,
+      // comment: {
+      //   recipe_id: payload.recipe_id,
+      //   user_id: payload.user_id,
+      //   content: payload.content,
+      // }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const bookmark = (context, payload) => {
   return axios({
     validateStatus: status => {

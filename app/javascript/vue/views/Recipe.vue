@@ -67,7 +67,7 @@
         ></div>
       </div>
       <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
-      <div class="my-3 d-print-none">
+      <div v-if="!localhost" class="my-3 d-print-none">
         <Adsense
           data-ad-client="ca-pub-9223566768445571"
           data-ad-slot="4726766855">
@@ -91,7 +91,7 @@
 
       <div class="d-print-none mt-5">
         <div class="h4 mb-3">{{ $t('recipe.otherRecipes') }}</div>
-        <card-small v-for="index in 5" :key="index" />
+        <card-small v-for="index in 5" :key="'cs' + index" />
       </div>
 
       <comments :item="item" />
@@ -119,30 +119,30 @@ export default {
     return {
       componentKey: 0,
       log: true,
-      item: {
-        comments: [],
-        recipe: {
-          title: null,
-          subtitle: null,
-          direction: null,
-          photo: {
-            full: {
-              url: null
-            }
-          },
-          video: null,
-        },
-        user: {
-          image: {
-            thumb: {
-              url: null
-            }
-          },
-          slug: null,
-          name: null,
-          checked: null,
-        }
-      },
+      // item: {
+      //   comments: [],
+      //   recipe: {
+      //     title: null,
+      //     subtitle: null,
+      //     direction: null,
+      //     photo: {
+      //       full: {
+      //         url: null
+      //       }
+      //     },
+      //     video: null,
+      //   },
+      //   user: {
+      //     image: {
+      //       thumb: {
+      //         url: null
+      //       }
+      //     },
+      //     slug: null,
+      //     name: null,
+      //     checked: null,
+      //   }
+      // },
       loading: false,
     }
   },
@@ -158,10 +158,16 @@ export default {
     VueMarkdown,
   },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters(['navbarHeight', 'recipe']),
+    item () {
+      return this.recipe(this.$route.params.id)
+    },
     mobile () {
       return isMobile
     },
+    localhost () {
+      return window.location.hostname === 'localhost'
+    }
   },
   methods: {
     heartFillBig () {
@@ -220,7 +226,7 @@ export default {
   watch: {
     async '$route' () {
       console.log(this.$route.params.id)
-      await this.fetchItem()
+      // await this.fetchItem()
       // this.recipeLog()
     }
   },
@@ -228,11 +234,13 @@ export default {
     // console.log(this.$el)
   },
   beforeMount () {
-    this.fetchItem()
+    // this.fetchItem()
   },
   mounted () {
     this.$nextTick(() => {
-      // this.scroll2Anchor()
+      this.componentKey += 1
+      // this.loading = false
+      this.scroll2Anchor()
       // setTimeout(() => {
       // }, 1000)
     })

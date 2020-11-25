@@ -31,6 +31,19 @@ export default {
       })
   },
 
+  COMMENT: (context, payload) => {
+    // console.log(payload)
+    return api.comment(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("COMMENT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
 
   BOOKMARK: (context, payload) => {
     // console.log(payload)

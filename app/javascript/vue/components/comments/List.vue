@@ -1,9 +1,9 @@
 <template>
   <div id="comments" ref="comments" class="d-print-none mt-5">
     <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
-    <comment-form />
-    <div v-for="comment, i in comments" :key="'c' + i" class="d-flex flex-column">
-      <user-comment :item="comment" />
+    <comment-form :item="item" />
+    <div v-for="comment, i in comments" class="d-flex flex-column">
+      <user-comment :item="comment" :key="'c' + i" />
       <div
         v-if="comment.replies.length"
         v-on:click="showReplies(i)"
@@ -16,9 +16,9 @@
       </div>
       <transition name="fade">
         <div v-show="show[i]">
-          <div v-for="reply, j in comment.replies" :key="'c' + i + 'r' + j" class="d-flex align-items-start">
+          <div v-for="reply, j in comment.replies" class="d-flex align-items-start">
             <span class="material-icons md-18 mt-3">subdirectory_arrow_right</span>
-            <user-comment :item="reply" class="pl-3 flex-grow-1" />
+            <user-comment :item="reply" :key="'c' + i + 'r' + j" class="pl-3 flex-grow-1" />
           </div>
         </div>
       </transition>
@@ -37,11 +37,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CommentForm from './Form.vue'
+import CommentForm from './New.vue'
 import UserComment from './Show.vue'
 
 export default {
-  name: 'List',
+  name: 'Comments',
   data () {
     return {
       show: [],
@@ -53,8 +53,9 @@ export default {
   },
   props: ['item'],
   computed: {
-    ...mapGetters(['countRecipeComments']),
+    ...mapGetters(['countRecipeComments', 'recipe']),
     comments () {
+      // return this.recipe(this.$route.params.id).comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
     },
   },
@@ -66,7 +67,8 @@ export default {
       this.$set(this.show, index, !this.show[index])
     },
     initShow () {
-      this.show = Array(this.item.comments.length).fill(false)
+      // this.show = Array(this.item.comments.length).fill(false)
+      this.show = [...new Array(this.item.comments.length)].map(() => false)
     }
   },
   mounted () {

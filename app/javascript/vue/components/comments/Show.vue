@@ -18,14 +18,26 @@
     <div class="mt-2 bg-light border rounded p-3">
       <vue-markdown :source="item.content" class="text-break" />
     </div>
+    <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
+      <div class="small text-muted mx-2">
+        <span class="material-icons md-16">thumb_up</span>
+      </div>
+      <div v-if="item.user.id === currentUser.id" class="small text-muted mx-2">
+        <span class="material-icons md-16">edit</span>
+      </div>
+      <div v-if="item.user.id === currentUser.id" v-on:click="destroy" class="small text-muted mx-2 mouse-pointer">
+        <span class="material-icons md-16">delete</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'UserComment',
+  name: 'Comment',
   props: ['item'],
   // data () {
   //   return {
@@ -34,7 +46,13 @@ export default {
   components: {
     VueMarkdown,
   },
+  computed: {
+    ...mapGetters(['isAuthenticated', 'currentUser']),
+  },
   methods: {
+    destroy () {
+      console.log(`delete comment ${ this.item.id }`)
+    },
     timeAgo (time) {
       const between = Math.trunc((new Date().getTime() - time) / 1000)
       if (between < 3600) {

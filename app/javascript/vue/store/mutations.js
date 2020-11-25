@@ -8,6 +8,17 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  COMMENT: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    state.data.recipes[position].comments.push(payload.data)
+    saveToLocalStorage(state, 'COMMENT')
+  },
+
   BOOKMARK: (state, payload) => {
     console.log(payload)
     // console.log(state)
@@ -111,9 +122,9 @@ export default {
   },
 
   RECIPE: (state, payload) => {
-    console.log('### RECIPE ###')
-    console.log(state)
-    console.log(payload)
+    // console.log('### RECIPE ###')
+    // console.log(state)
+    // console.log(payload)
     const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
     console.log(recipe)
     const position = state.data.recipes.indexOf(recipe)

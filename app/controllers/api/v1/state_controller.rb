@@ -68,12 +68,37 @@ class Api::V1::StateController < Api::V1::BaseController
                   name: recipe.user.name,
                   slug: recipe.user.slug
                 },
-                comments: recipe.comments.includes(:replies).map { |comment| {
+                comments: recipe.comments.includes([:user, :replies]).map { |comment| {
                     id: comment.id,
+                    recipe: {
+                      id: comment.recipe_id,
+                    },
+                    user: {
+                      id: comment.user.id,
+                      image: {
+                        thumb: {
+                          url: comment.user.image.url(:thumb)
+                        }
+                      },
+                      name: comment.user.name,
+                      slug: comment.user.slug,
+                    },
                     content: comment.content,
+                    timestamp: (comment.created_at.to_f * 1000).to_i,
                     replies: comment.replies.map { |reply| {
                         id: reply.id,
-                        content: reply.content
+                        timestamp: (reply.created_at.to_f * 1000).to_i,
+                        content: reply.content,
+                        user: {
+                          id: reply.user.id,
+                          name: reply.user.name,
+                          slug: reply.user.slug,
+                          image: {
+                            thumb: {
+                              url: reply.user.image.url(:thumb)
+                            }
+                          }
+                        },
                       }
                     }
                   }

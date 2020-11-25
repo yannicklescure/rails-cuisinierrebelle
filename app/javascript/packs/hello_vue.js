@@ -32,22 +32,22 @@ const unsync = sync(store, router)
 // console.log('router')
 unsync()
 
-import VueGtag from 'vue-gtag'
+console.log(window.location)
+// if (window.location.hostname != 'localhost') {
+  import VueGtag from 'vue-gtag'
 
-Vue.use(VueGtag, {
-  config: { id: "UA-155962082-1" }
-}, router)
+  Vue.use(VueGtag, {
+    config: { id: "UA-155962082-1" }
+  }, router)
 
-import Ads from 'vue-google-adsense'
+  import Ads from 'vue-google-adsense'
 
-Vue.use(require('vue-script2'))
+  Vue.use(require('vue-script2'))
 
-Vue.use(Ads.Adsense)
-// Vue.use(Ads.InArticleAdsense)
-// Vue.use(Ads.InFeedAdsense)
-
-// import VueSocialSharing from 'vue-social-sharing'
-// Vue.use(VueSocialSharing)
+  Vue.use(Ads.Adsense)
+  // Vue.use(Ads.InArticleAdsense)
+  // Vue.use(Ads.InFeedAdsense)
+// }
 
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
