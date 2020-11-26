@@ -34,7 +34,9 @@
               </button>
             </div>
           </div>
-          <button v-on:click.stop.prevent="signUp" type="submit" class="btn btn-dark mb-3" :disabled="disabled">{{ $t('signUp.submit') }}</button>
+          <div class="d-flex justify-content-end">
+            <button v-on:click.stop.prevent="signUp" type="submit" class="btn btn-dark mb-3 w-100" :disabled="disabled">{{ $t('signUp.submit') }}</button>
+          </div>
         </form>
         <div class="my-3">
           <router-link to="/login">{{ $t('signUp.login') }}</router-link>

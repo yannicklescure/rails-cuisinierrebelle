@@ -146,6 +146,18 @@ export const fr = () => {
         counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',
         addPublicComment: 'Ajouter un commentaire public...',
         viewReplies: 'Voir 0 réponses | Voir la réponse | Voir les {count} réponses',
+      },
+      new: {
+        title: 'Titre',
+        subtitle: 'Sous-titre',
+        video: 'YouTube video url',
+        direction: 'Description',
+        tags: 'Tags',
+        tagsHelp: 'Séparer chaque tag par une virgule.',
+        browse: 'Ajouter une photo',
+        chooseFile: 'Chercher',
+        photo: 'Photo',
+        submit: 'Publier',
       }
     },
     comment: {
