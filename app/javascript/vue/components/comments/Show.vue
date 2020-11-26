@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3 mb-2">
+  <div :id="'comment' + item.id" class="mt-3 mb-2">
     <div class="d-flex align-items-center">
       <img
         :src="item.user.image.thumb.url"
