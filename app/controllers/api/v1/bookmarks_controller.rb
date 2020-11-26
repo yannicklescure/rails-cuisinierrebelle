@@ -3,7 +3,7 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   # protect_from_forgery with: :null_session
 
   def create
-    binding.pry
+    # binding.pry
     # token   = request.headers.fetch("Authorization", "").split(" ").last
     # payload = JWT.decode(token, nil, false)
     # @user = User.find(payload[0]["sub"])
@@ -13,9 +13,9 @@ class Api::V1::BookmarksController < Api::V1::BaseController
     render json: MultiJson.dump({})
   end
 
-  def update
-    binding.pry
-  end
+  # def update
+  #   # binding.pry
+  # end
 
   def destroy
     @recipe = Recipe.find(params[:id])
