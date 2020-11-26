@@ -20,11 +20,11 @@ class UserMailer < ApplicationMailer
   end
 
   def comment
-    @recipe = params[:recipe]
+    # binding.pry
     @comment = params[:comment]
-    I18n.with_locale(@recipe.user.locale) do
+    I18n.with_locale(@comment.recipe.user.locale) do
       # mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
-      make_bootstrap_mail(to: @recipe.user.email, subject: t('.subject', recipe: @recipe.title))
+      make_bootstrap_mail(to: @comment.recipe.user.email, subject: t('.subject', recipe: @comment.recipe.title))
       # This will render a view in `app/views/comment`!
     end
   end

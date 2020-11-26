@@ -76,4 +76,5 @@ class Recipe < ApplicationRecord
   def create_json_cache
     CreateRecipesJsonCacheJob.perform_later
   end
+
 end

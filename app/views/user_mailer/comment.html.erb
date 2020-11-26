@@ -1,23 +1,20 @@
 <div class="container">
-  <div class="py-3"><%= t('.greeting', recipient: @recipe.user.first_name.capitalize) %></div>
+  <div class="py-3"><%= t('.greeting', recipient: @comment.recipe.user.first_name.capitalize) %></div>
   <div class="pb-3">
     <div class="pb-3">
       <div class="pb-3"><%= t('.new_comment', author: @comment.user.name) %></div>
       <div class="row pb-3">
         <div class="col-6">
-          <% image_url = '' %>
-          <% image_url += root_url[0...-1] if Rails.env.development? %>
-          <% image_url += @recipe.photo.url(:full) %>
-          <%= image_tag image_url, style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @recipe.title %>
+          <%= image_tag root_url + @comment.recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @comment.recipe.title %>
         </div>
       </div>
     </div>
     <strong><%= t('.author', author: @comment.user.name) %></strong>
     <div class="pb-3"><%= t('.new_comment_content', content: @comment.content) %></div>
-    <div class="pb-3"><%= link_to t('.reply'), "#{recipe_url(id: @recipe)}#comment-#{@comment.id}", class: 'btn btn-primary', target: '_blank' %></div>
+    <div class="pb-3"><%= link_to t('.reply'), "#{root_url}r/#{@comment.recipe.slug}#comment#{@comment.id}", class: 'btn btn-primary', target: '_blank' %></div>
   </div>
   <div class="py-5 text-center">
-    <div class="text-muted"><small><%= t('.disable_comment_html', url: user_url(id: @recipe.user)) %></small></div>
+    <div class="text-muted"><small><%= t('.disable_comment_html', url: "#{root_url}u/#{@comment.recipe.user.slug}") %></small></div>
     <div class="text-muted"><small><%= t('.copyright_html', year: Date.current.year) %></small></div>
   </div>
 </div>

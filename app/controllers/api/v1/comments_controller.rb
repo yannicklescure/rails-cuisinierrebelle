@@ -1,4 +1,6 @@
 class Api::V1::CommentsController < Api::V1::BaseController
+  include Rails.application.routes.url_helpers
+
   before_action :authenticate_user!
   # protect_from_forgery with: :null_session
 
@@ -9,7 +11,10 @@ class Api::V1::CommentsController < Api::V1::BaseController
     # @user = User.find(payload[0]["sub"])
     @comment = Comment.new(comment_params)
     authorize @comment
-    @comment.save
+    if @comment.save
+      # binding.pry
+      UserMailer.with(comment: @comment).comment.deliver_later if @comment.recipe.user.notification
+    end
     render json: MultiJson.dump({
       id: @comment.id,
       recipe: {
