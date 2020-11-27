@@ -1,6 +1,6 @@
 <template>
   <div class="container" :style="{ marginTop: navbarHeight + 'px' }">
-    <div class="p-3">
+    <div class="py-3">
       <form v-on:input="allowPost" v-on:touchend="allowPost">
         <div class="form-group mb-3">
           <label for="inputRecipeTitle">{{ $t('recipe.new.title') }}</label>
