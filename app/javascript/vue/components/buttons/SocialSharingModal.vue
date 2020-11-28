@@ -65,8 +65,8 @@ export default {
   },
   computed: {
     itemCurrentUrl () {
-      // const url = `${ window.location.origin }/r/${ this.item.recipe.slug }`
-      const url = 'https://www.cuisinierrebelle.com/r/plat-facile-2-viandes-4-legumes-pour-lendemain-de-fetes'
+      const url = `${ window.location.origin }/r/${ this.item.recipe.slug }`
+      // const url = 'https://www.cuisinierrebelle.com/r/plat-facile-2-viandes-4-legumes-pour-lendemain-de-fetes'
       return url.length >= 68 ? `${ url.substring(0, 65) }...` : url
     },
   }
