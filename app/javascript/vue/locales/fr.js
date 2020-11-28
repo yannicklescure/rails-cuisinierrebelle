@@ -150,8 +150,8 @@ export const fr = () => {
       new: {
         title: 'Titre',
         subtitle: 'Sous-titre',
-        video: 'YouTube video url',
-        direction: 'Description',
+        video: 'Adresse vidéo YouTube',
+        direction: 'Contenu de publication',
         tags: 'Tags',
         tagsHelp: 'Séparer chaque tag par une virgule.',
         browse: 'Ajouter une photo',
@@ -159,7 +159,13 @@ export const fr = () => {
         photo: 'Photo',
         submit: 'Publier',
         description: 'Description',
-        descriptionHelp: '{count} caractères restant.'
+        descriptionHelp: '{count} caractères restant.',
+        errors: {
+          youtubeVideoUrl: 'Le lien doit être un lien YouTube.',
+          title: 'Le titre est obligatoire.',
+          direction: 'Le contenu de publication est obligatoire.',
+          photo: 'La photo est obligatoire.',
+        },
       }
     },
     comment: {

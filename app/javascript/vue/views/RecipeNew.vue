@@ -57,7 +57,6 @@ export default {
     return {
       // componentKey: 0,
       // navbarHeight: 0,
-      max: 280,
       title: null,
       subtitle: null,
       video: null,
@@ -67,6 +66,8 @@ export default {
       photo: null,
       tag_list: null,
       disabled: true,
+      max: 280,
+      errors: [],
     }
   },
   methods: {
@@ -95,33 +96,71 @@ export default {
         this.disabled = true
       }
     },
-    postRecipe () {
-      // console.log(this)
-      this.disabled = true
-      const payload = {
-        title: this.title,
-        subtitle: this.subtitle,
-        video: this.video,
-        direction: this.direction,
-        // description: null,
-        // image: null,
-        // user_id: 0,
-        photo: this.photo,
-        tag_list: this.tag_list,
+    validateYoutubeVideoUrl (url) {
+      const re = /(^$|^.*@.*\..*$)|youtu.?be/
+      return re.test(String(url).toLowerCase())
+    },
+    checkForm () {
+      this.errors = []
+      if (!this.title) {
+        this.errors.push(this.$t('recipe.new.errors.title'))
+        return false
       }
-      console.log(payload)
-      this.$store.dispatch('RECIPE_NEW', payload)
-        .then(response => {
-          console.log(response)
-          if (response.status === 200) {
-            this.$router.push({
-              name: 'Recipe',
-              params: {
-                id: response.data.recipe.slug
-              }
-            })
-          }
+      if (!this.direction) {
+        this.errors.push(this.$t('recipe.new.errors.direction'))
+        return false
+      }
+      if (!this.photo) {
+        this.errors.push(this.$t('recipe.new.errors.photo'))
+        return false
+      }
+      if (!this.validateYoutubeVideoUrl(this.video)) {
+        this.errors.push(this.$t('recipe.new.errors.youtubeVideoUrl'))
+        return false
+      }
+      return true
+    },
+    postRecipe () {
+      const checkForm = this.checkForm()
+      if (checkForm) {
+        // console.log(this)
+        this.disabled = true
+        const payload = {
+          title: this.title,
+          subtitle: this.subtitle,
+          video: this.video,
+          direction: this.direction,
+          // description: null,
+          // image: null,
+          // user_id: 0,
+          photo: this.photo,
+          tag_list: this.tag_list,
+        }
+        console.log(payload)
+        this.$store.dispatch('RECIPE_NEW', payload)
+          .then(response => {
+            console.log(response)
+            if (response.status === 200) {
+              this.$router.push({
+                name: 'Recipe',
+                params: {
+                  id: response.data.recipe.slug
+                }
+              })
+            }
+          })
+      }
+      else {
+        console.log(this.errors)
+        this.$toast.open({
+            message: this.errors[0],
+            type: 'error', // success, info, warning, error, default
+            // all of other options may go here
+            position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+            duration: 3000, // Visibility duration in milliseconds
+            dismissible: true,
         })
+      }
     },
     // getNavbarHeight () {
     //   return this.$store.getters.navbarHeight
