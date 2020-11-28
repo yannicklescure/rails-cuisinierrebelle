@@ -226,6 +226,19 @@ export default {
       })
   },
 
+  RECIPE_NEW: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.recipeNew(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("RECIPE_NEW", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE: (context, payload) => {
     // console.log(context.state.data.user)
     return api.recipe(context, payload)

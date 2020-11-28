@@ -215,6 +215,81 @@ class Api::V1::RecipesController < Api::V1::BaseController
     })
   end
 
+  def create
+    # binding.pry
+    params[:recipe] = {
+      title: clean_params(params[:title]),
+      subtitle: clean_params(params[:subtitle]),
+      video: clean_params(params[:video]),
+      direction: clean_params(params[:direction]),
+      description: clean_params(params[:description]),
+      photo: clean_params(params[:photo]),
+      image: clean_params(params[:image]),
+      tag_list: clean_params(params[:tag_list])
+    }
+
+    @recipe = Recipe.new(recipe_params)
+    authorize @recipe  # For Pundit
+    @recipe.user_id = current_user.id
+    # unless @recipe.description.length.positive?
+    if @recipe.description.nil?
+      @recipe.description = @recipe.direction.truncate(280)
+    end
+    # binding.pry
+    if @recipe.save
+      @recipe.user.followers.where(notification: true).each do |user|
+        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
+      end
+      render json:  MultiJson.dump({
+        timestamp: (@recipe.created_at.to_f * 1000).to_i,
+        recipe: {
+          id: @recipe.id,
+          slug: @recipe.slug,
+          title: @recipe.title,
+          subtitle: @recipe.subtitle,
+          video: @recipe.video,
+          direction: @recipe.direction,
+          description: @recipe.description,
+          likes: 0,
+          bookmarks: 0,
+          views: 0,
+          photo: {
+            card: {
+              url: @recipe.photo.url(:card)
+            },
+            full: {
+              url: @recipe.photo.url(:full)
+            },
+            preview: {
+              url: @recipe.photo.url(:preview)
+            },
+            thumb: {
+              url: @recipe.photo.url(:thumb)
+            }
+          }
+        },
+        user: {
+          checked: @recipe.user.checked,
+          id: @recipe.user.id,
+          image: {
+            full: {
+              url: @recipe.user.image.url(:full)
+            },
+            preview: {
+              url: @recipe.user.image.url(:preview)
+            },
+            thumb: {
+              url: @recipe.user.image.url(:thumb)
+            }
+          },
+          name: @recipe.user.name,
+          slug: @recipe.user.slug
+        },
+        comments: []
+      })
+    end
+  end
+
   def update
     if @recipe.update(recipe_params)
       render :show
@@ -225,7 +300,12 @@ class Api::V1::RecipesController < Api::V1::BaseController
 
   private
 
+  def clean_params(params)
+    params === "null" ? nil : params
+  end
+
   def recipe_params
+    # binding.pry
     params.require(:recipe).permit(:title, :subtitle, :video, :direction, :description, :photo, :image, :tag_list)
   end
 

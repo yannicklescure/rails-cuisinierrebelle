@@ -134,6 +134,12 @@ export default {
     saveToLocalStorage(state, 'SET_DATA')
   },
 
+  RECIPE_NEW: (state, payload) => {
+    state.data.recipes.push(payload.data)
+    state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'RECIPE_NEW')
+  },
+
   RECIPE: (state, payload) => {
     // console.log('### RECIPE ###')
     // console.log(state)

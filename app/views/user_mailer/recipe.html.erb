@@ -1,18 +1,15 @@
 <div class="container">
-  <div class="py-3"><%= t('.greeting', recipient: @recipe.user.first_name.capitalize) %></div>
+  <div class="py-3"><%= t('.greeting', recipient: @user.first_name.capitalize) %></div>
   <div class="pb-3">
-    <div class="pb-3"><%= t('.author', author: @recipe.user.name) %> <%= t('.new_recipe', title: @recipe.title) %></div>
+    <div class="pb-3"><%= t('.author', author: @recipe.user.name.capitalize) %> <%= t('.new_recipe', title: @recipe.title) %></div>
     <div class="pb-3"><%= t('.new_recipe_content', content: @recipe.description) %></div>
-    <div class="pb-3"><%= link_to t('.see_recipe'), "#{recipe_url(id: @recipe)}", class: "btn btn-primary", target: "_blank" %></div>
+    <div class="pb-3"><%= link_to t('.see_recipe'), "#{root_url}r/#{@recipe.slug}", class: "btn btn-primary", target: "_blank" %></div>
     <div class="pt-5">
-      <% image_url = '' %>
-      <% image_url += root_url[0...-1] if Rails.env.development? %>
-      <% image_url += @recipe.photo.url(:full) %>
-      <%= image_tag image_url, class: 'mx-auto', style: 'max-width: 100%' %>
+      <%= image_tag @recipe.photo.url(:full), class: 'mx-auto', style: 'max-width: 100%' %>
     </div>
   </div>
   <div class="py-5 text-center">
-    <div class="text-muted"><small><%= t('.disable_comment_html', url: user_settings_url(user_id: @user)) %></small></div>
+    <div class="text-muted"><small><%= t('.disable_comment_html', url: "#{root_url}u/#{@user.slug}/settings") %></small></div>
     <div class="text-muted"><small><%= t('.copyright_html', year: Date.current.year) %></small></div>
   </div>
 </div>

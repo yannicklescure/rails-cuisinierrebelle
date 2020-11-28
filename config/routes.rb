@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
       resources :state, only: [ :index ]
       resources :search, only: [ :index ]
-      resources :recipes, only: [ :index, :show, :update ]
+      resources :recipes, only: [ :index, :show, :create, :update ]
       resources :recipe_logs, only: [ :create ]
       resources :comments, only: [ :create, :destroy, :update ]
       resources :bookmarks, only: [ :create, :destroy ]

@@ -3,14 +3,15 @@ class CreateRecipesJsonCacheJob < ApplicationJob
 
   def perform(*_args)
     recipes = Recipe.includes([:user, :comments])
+    timestamp = (Recipe.last.created_at.to_f * 1000).to_i
     Rails.cache.fetch(Recipe.cache_key(recipes)) do
       # recipes.to_json(include: :user, :comments)
       MultiJson.dump({
         data: {
-          isAuthenticated: user_signed_in?,
-          lastUpdated: (Recipe.last.created_at.to_f * 1000).to_i,
-          timestamp: @timestamp,
-          recipes: @recipes.map { |recipe| {
+          isAuthenticated: false,
+          lastUpdated: timestamp,
+          timestamp: timestamp,
+          recipes: recipes.map { |recipe| {
               timestamp: (recipe.created_at.to_f * 1000).to_i,
               recipe: {
                 id: recipe.id,
@@ -91,7 +92,7 @@ class CreateRecipesJsonCacheJob < ApplicationJob
               }
             }
           },
-          users: @users.map { |user| {
+          users: User.all.map { |user| {
               id: user.id,
               slug: user.slug,
               name: user.name,

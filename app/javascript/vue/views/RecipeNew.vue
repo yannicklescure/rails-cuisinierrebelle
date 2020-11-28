@@ -11,8 +11,11 @@
           <input v-model="subtitle" type="text" class="form-control" id="inputRecipeSubtitle">
         </div>
         <div class="form-group mb-3">
-          <label for="inputRecipeVideo">{{ $t('recipe.new.video') }}</label>
-          <input v-model="video" type="url" class="form-control" id="inputRecipeVideo">
+          <label for="inputRecipedescription">{{ $t('recipe.new.description') }}</label>
+          <textarea v-model="description" :maxlength="max" class="form-control" id="inputRecipedescription" rows="3"></textarea>
+          <small id="descriptionHelpBlock" class="form-text text-muted">
+            {{ $tc('recipe.new.descriptionHelp', (max - description.length)) }}
+          </small>
         </div>
         <div class="form-group mb-3">
           <label for="inputRecipeDirection">{{ $t('recipe.new.direction') }}</label>
@@ -26,6 +29,10 @@
           </div>
         </div>
         <div ref="preview"></div>
+        <div class="form-group mb-3">
+          <label for="inputRecipeVideo">{{ $t('recipe.new.video') }}</label>
+          <input v-model="video" type="url" class="form-control" id="inputRecipeVideo">
+        </div>
         <label for="inputRecipeTags">{{ $t('recipe.new.tags') }}</label>
         <div class="form-group mb-3">
           <textarea v-model="tag_list" class="form-control" id="inputRecipeTags" rows="3"></textarea>
@@ -50,15 +57,15 @@ export default {
     return {
       // componentKey: 0,
       // navbarHeight: 0,
+      max: 280,
       title: null,
       subtitle: null,
       video: null,
-      direction: null,
-      // description: null,
+      direction: '',
+      description: '',
       // image: null,
-      // user_id: 0,
       photo: null,
-      tag_list: [],
+      tag_list: null,
       disabled: true,
     }
   },
@@ -89,7 +96,32 @@ export default {
       }
     },
     postRecipe () {
-      console.log(this)
+      // console.log(this)
+      this.disabled = true
+      const payload = {
+        title: this.title,
+        subtitle: this.subtitle,
+        video: this.video,
+        direction: this.direction,
+        // description: null,
+        // image: null,
+        // user_id: 0,
+        photo: this.photo,
+        tag_list: this.tag_list,
+      }
+      console.log(payload)
+      this.$store.dispatch('RECIPE_NEW', payload)
+        .then(response => {
+          console.log(response)
+          if (response.status === 200) {
+            this.$router.push({
+              name: 'Recipe',
+              params: {
+                id: response.data.recipe.slug
+              }
+            })
+          }
+        })
     },
     // getNavbarHeight () {
     //   return this.$store.getters.navbarHeight

@@ -158,6 +158,8 @@ export const fr = () => {
         chooseFile: 'Chercher',
         photo: 'Photo',
         submit: 'Publier',
+        description: 'Description',
+        descriptionHelp: '{count} caractères restant.'
       }
     },
     comment: {

@@ -259,6 +259,50 @@ export const users = (context, payload) => {
   });
 }
 
+export const recipeNew = (context, payload) => {
+  console.log(payload)
+  const FormData = require('form-data');
+  const formData = new FormData();
+  formData.append('title', payload.title);
+  formData.append('subtitle', payload.subtitle);
+  formData.append('video', payload.video);
+  formData.append('direction', payload.direction);
+  formData.append('photo', payload.photo);
+  formData.append('tag_list', payload.tag_list);
+  // formData.append('image', payload.photo);
+  // for (let value of formData.values()) {
+  //   console.log(value);
+  // }
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/recipes`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData
+    // data: {
+    //   "recipe": {
+    //     "title": payload.title,
+    //     "subtitle": payload.subtitle,
+    //     "video": payload.video,
+    //     "direction": payload.direction,
+    //     "photo": payload.photo,
+    //     "tag_list": payload.tag_list,
+    //     "image": payload.photo,
+    //   }
+    // },
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const recipes = (context, payload) => {
   return axios({
     validateStatus: status => {
