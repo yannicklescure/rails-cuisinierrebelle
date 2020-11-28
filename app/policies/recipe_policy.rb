@@ -18,13 +18,13 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user.id == user.id
     # - record: the restaurant passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
 
   def destroy?
-    record.user == user || user.admin
+    record.user.id == user.id || user.admin
   end
 
   def tagged?

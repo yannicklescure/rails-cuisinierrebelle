@@ -21,6 +21,7 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                 video: recipe.video,
                 direction: recipe.direction,
                 description: recipe.description,
+                tagList: recipe.tag_list,
                 likes: Like.where(recipe: recipe).count,
                 bookmarks: Bookmark.where(recipe: recipe).count,
                 views: RecipeLog.where(recipe: recipe).count,

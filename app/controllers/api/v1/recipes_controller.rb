@@ -1,7 +1,7 @@
 class Api::V1::RecipesController < Api::V1::BaseController
 
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_recipe, only: [ :show, :update ]
+  before_action :set_recipe, only: [ :show ]
 
   def index
     # @recipes = policy_scope(Recipe).includes([:user, :comments]).sort_by {|k,v| k.id}.reverse[0...24]
@@ -26,6 +26,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
                 video: recipe.video,
                 direction: recipe.direction,
                 description: recipe.description,
+                tagList: recipe.tag_list,
                 likes: Like.where(recipe: recipe).count,
                 bookmarks: Bookmark.where(recipe: recipe).count,
                 views: RecipeLog.where(recipe: recipe).count,
@@ -142,6 +143,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
         video: recipe.video,
         direction: recipe.direction,
         description: recipe.description,
+        tagList: @recipe.tag_list,
         likes: Like.where(recipe: recipe).count,
         bookmarks: Bookmark.where(recipe: recipe).count,
         views: RecipeLog.where(recipe: recipe).count,
@@ -250,6 +252,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
           video: @recipe.video,
           direction: @recipe.direction,
           description: @recipe.description,
+          tagList: @recipe.tag_list,
           likes: 0,
           bookmarks: 0,
           views: 0,
@@ -291,10 +294,73 @@ class Api::V1::RecipesController < Api::V1::BaseController
   end
 
   def update
+    # binding.pry
+    @recipe = Recipe.includes([:user]).find_by(id: params[:id])
+    authorize @recipe  # For Pundit
+    params[:recipe] = {
+      title: clean_params(params[:title]),
+      subtitle: clean_params(params[:subtitle]),
+      video: clean_params(params[:video]),
+      direction: clean_params(params[:direction]),
+      description: clean_params(params[:description]),
+      photo: clean_params(params[:photo]),
+      image: clean_params(params[:image]),
+      tag_list: clean_params(params[:tag_list])
+    }
+
+    # binding.pry
+    if params[:recipe][:photo] == "[object Object]"
+      params[:recipe][:photo] = @recipe.photo
+    end
     if @recipe.update(recipe_params)
-      render :show
-    else
-      render_error
+      render json:  MultiJson.dump({
+        timestamp: (@recipe.created_at.to_f * 1000).to_i,
+        recipe: {
+          id: @recipe.id,
+          slug: @recipe.slug,
+          title: @recipe.title,
+          subtitle: @recipe.subtitle,
+          video: @recipe.video,
+          direction: @recipe.direction,
+          description: @recipe.description,
+          tagList: @recipe.tag_list,
+          likes: 0,
+          bookmarks: 0,
+          views: 0,
+          photo: {
+            card: {
+              url: @recipe.photo.url(:card)
+            },
+            full: {
+              url: @recipe.photo.url(:full)
+            },
+            preview: {
+              url: @recipe.photo.url(:preview)
+            },
+            thumb: {
+              url: @recipe.photo.url(:thumb)
+            }
+          }
+        },
+        user: {
+          checked: @recipe.user.checked,
+          id: @recipe.user.id,
+          image: {
+            full: {
+              url: @recipe.user.image.url(:full)
+            },
+            preview: {
+              url: @recipe.user.image.url(:preview)
+            },
+            thumb: {
+              url: @recipe.user.image.url(:thumb)
+            }
+          },
+          name: @recipe.user.name,
+          slug: @recipe.user.slug
+        },
+        comments: []
+      })
     end
   end
 

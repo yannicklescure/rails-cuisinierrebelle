@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{ marginTop: navbarHeight + 'px' }">
+  <div class="container" :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div class="py-3">
       <form v-on:input="allowPost" v-on:touchend="allowPost">
         <div class="form-group mb-3">
@@ -28,7 +28,9 @@
             <label class="custom-file-label" for="photoFileLangHTML" :data-browse="$t('recipe.new.chooseFile')">{{ $t('recipe.new.browse') }}</label>
           </div>
         </div>
-        <div ref="preview"></div>
+        <div ref="preview">
+          <div class="mb-3"><img :src="item.recipe.photo.full.url" class="rounded img-fluid" :alt="item.recipe.title"></div>
+        </div>
         <div class="form-group mb-3">
           <label for="inputRecipeVideo">{{ $t('recipe.new.video') }}</label>
           <input v-model="video" type="url" class="form-control" id="inputRecipeVideo">
@@ -52,11 +54,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'RecipeNew',
+  name: 'RecipeEdit',
+  // props: ['item'],
   data () {
     return {
-      // componentKey: 0,
+      componentKey: 0,
       // navbarHeight: 0,
+      id: 0,
       title: null,
       subtitle: null,
       video: null,
@@ -65,12 +69,38 @@ export default {
       // image: null,
       photo: null,
       tagList: null,
-      disabled: true,
+      // disabled: true,
+      disabled: false,
       max: 280,
       errors: [],
     }
   },
+  computed: {
+    ...mapGetters(['navbarHeight', 'recipe']),
+    item () {
+      return this.recipe(this.$route.params.id)
+    }
+  },
+  // watch: {
+  //   'item' () {
+  //   }
+  // },
   methods: {
+    setData () {
+      if (this.item) {
+        console.log(this.item)
+        this.componentKey += 1
+        this.id = this.item.recipe.id
+        this.title = this.item.recipe.title
+        this.subtitle = this.item.recipe.subtitle
+        this.video = this.item.recipe.video
+        this.direction = this.item.recipe.direction
+        this.description = this.item.recipe.description
+        // this.image = this.item.recipe.image
+        this.photo = this.item.recipe.photo
+        this.tagList = this.item.recipe.tagList.join(', ')
+      }
+    },
     processFile (event) {
       console.log(event)
       this.photo = event.target.files[0]
@@ -89,12 +119,12 @@ export default {
       this.allowPost()
     },
     allowPost () {
-      if (this.title && this.direction && this.photo) {
-        this.disabled = false
-      }
-      else {
-        this.disabled = true
-      }
+      // if (this.title && this.direction && this.photo) {
+      //   this.disabled = false
+      // }
+      // else {
+      //   this.disabled = true
+      // }
     },
     validateYoutubeVideoUrl (url) {
       const re = /(^$|^.*@.*\..*$)|youtu.?be/
@@ -126,6 +156,7 @@ export default {
         // console.log(this)
         this.disabled = true
         const payload = {
+          id: this.id,
           title: this.title,
           subtitle: this.subtitle,
           video: this.video,
@@ -137,7 +168,7 @@ export default {
           tagList: this.tagList,
         }
         console.log(payload)
-        this.$store.dispatch('RECIPE_NEW', payload)
+        this.$store.dispatch('RECIPE_EDIT', payload)
           .then(response => {
             console.log(response)
             if (response.status === 200) {
@@ -166,11 +197,9 @@ export default {
     //   return this.$store.getters.navbarHeight
     // },
   },
-  computed: {
-    ...mapGetters(['navbarHeight']),
-  },
   mounted () {
     // this.navbarHeight = this.getNavbarHeight()
+    this.setData()
   }
 }
 </script>

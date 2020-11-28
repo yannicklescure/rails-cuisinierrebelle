@@ -141,6 +141,7 @@ export const fr = () => {
       // apple: 'no apples | one apple | {count} apples',
     },
     recipe: {
+      edit: 'Éditer cette recette',
       otherRecipes: 'Autres recettes',
       comments: {
         counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',

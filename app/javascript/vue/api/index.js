@@ -259,6 +259,36 @@ export const users = (context, payload) => {
   });
 }
 
+export const recipeEdit = (context, payload) => {
+  console.log(payload)
+  const FormData = require('form-data');
+  const formData = new FormData();
+  formData.append('title', payload.title);
+  formData.append('subtitle', payload.subtitle);
+  formData.append('video', payload.video);
+  formData.append('direction', payload.direction);
+  formData.append('description', payload.description);
+  formData.append('photo', payload.photo);
+  formData.append('tag_list', payload.tagList);
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'patch',
+    url: `${domain}/api/v1/recipes/${ payload.id }`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const recipeNew = (context, payload) => {
   console.log(payload)
   const FormData = require('form-data');
@@ -267,12 +297,9 @@ export const recipeNew = (context, payload) => {
   formData.append('subtitle', payload.subtitle);
   formData.append('video', payload.video);
   formData.append('direction', payload.direction);
+  formData.append('description', payload.description);
   formData.append('photo', payload.photo);
-  formData.append('tag_list', payload.tag_list);
-  // formData.append('image', payload.photo);
-  // for (let value of formData.values()) {
-  //   console.log(value);
-  // }
+  formData.append('tag_list', payload.tagList);
   return axios({
     validateStatus: status => {
       console.log(status)
@@ -285,17 +312,6 @@ export const recipeNew = (context, payload) => {
       'Content-Type': 'multipart/form-data',
     },
     data: formData
-    // data: {
-    //   "recipe": {
-    //     "title": payload.title,
-    //     "subtitle": payload.subtitle,
-    //     "video": payload.video,
-    //     "direction": payload.direction,
-    //     "photo": payload.photo,
-    //     "tag_list": payload.tag_list,
-    //     "image": payload.photo,
-    //   }
-    // },
   })
   .catch(error => {
     console.log(error.toJSON());

@@ -1,8 +1,8 @@
 <template>
   <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
-      <div class="d-flex flex-column">
-        <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex w-100 align-items-center order-0']">
+      <div class="d-flex flex-column flex-md-row justify-content-between">
+        <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex align-items-center order-0']">
           <div class="d-flex flex-grow-1 m-0 align-items-center">
             <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
               <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
@@ -21,6 +21,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div v-if="!mobile && (item.user.id === currentUser.id)">
+          <router-link :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none" >{{ $t('recipe.edit') }}</router-link>
         </div>
         <div v-if="mobile" class="py-2">
           <div
@@ -53,11 +56,11 @@
             </div>
           </div>
         </div>
-        <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
-          <div class="text-center">
-            <div class="h1">{{ item.recipe.title }}</div>
-            <div v-if="item.recipe.subtitle" class="h2 text-secondary">{{ item.recipe.subtitle }}</div>
-          </div>
+      </div>
+      <div class="mt-md-5 order-1 order-md-1 d-flex flex-column justify-content-center align-items-center">
+        <div class="text-center">
+          <div class="h1">{{ item.recipe.title }}</div>
+          <div v-if="item.recipe.subtitle" class="h2 text-secondary">{{ item.recipe.subtitle }}</div>
         </div>
       </div>
       <div v-if="!mobile" class="my-5 d-print-none">
@@ -158,7 +161,7 @@ export default {
     VueMarkdown,
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipe']),
+    ...mapGetters(['navbarHeight', 'recipe', 'currentUser']),
     // item () {
     //   return this.recipe(this.$route.params.id)
     // },

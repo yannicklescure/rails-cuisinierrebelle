@@ -25,6 +25,7 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Recipe = () => import('../views/Recipe.vue')
+const RecipeEdit = () => import('../views/RecipeEdit.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
 const RegistrationConfirmation = () => import('../views/RegistrationConfirmation.vue')
 const SearchRecipes = () => import('../views/SearchRecipes.vue')
@@ -207,6 +208,16 @@ const routes = [
     path: '/u/:id/settings',
     name: 'UserSettings',
     component: UserSettings,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/r/:id/edit',
+    name: 'RecipeEdit',
+    component: RecipeEdit,
+    props: true,
     meta: {
       auth: true // A protected route
     },
