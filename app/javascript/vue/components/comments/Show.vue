@@ -15,7 +15,7 @@
       >{{ item.user.name }}</router-link>
       <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
     </div>
-    <div class="mt-2 bg-light border rounded p-3">
+    <div class="mt-2 bg-light rounded p-3">
       <vue-markdown :source="item.content" class="text-break" />
     </div>
     <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
