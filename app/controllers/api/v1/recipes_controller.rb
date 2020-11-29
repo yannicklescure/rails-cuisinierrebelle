@@ -40,6 +40,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
                   preview: {
                     url: recipe.photo.url(:preview)
                   },
+                  openGraph: {
+                    url: recipe.photo.url(:open_graph)
+                  },
                   thumb: {
                     url: recipe.photo.url(:thumb)
                   }
@@ -157,6 +160,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
           preview: {
             url: recipe.photo.url(:preview)
           },
+          openGraph: {
+            url: recipe.photo.url(:open_graph)
+          },
           thumb: {
             url: recipe.photo.url(:thumb)
           }
@@ -266,6 +272,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
             preview: {
               url: @recipe.photo.url(:preview)
             },
+            openGraph: {
+              url: recipe.photo.url(:open_graph)
+            },
             thumb: {
               url: @recipe.photo.url(:thumb)
             }
@@ -336,6 +345,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
             },
             preview: {
               url: @recipe.photo.url(:preview)
+            },
+            openGraph: {
+              url: recipe.photo.url(:open_graph)
             },
             thumb: {
               url: @recipe.photo.url(:thumb)

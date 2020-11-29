@@ -1,7 +1,10 @@
 import axios from 'axios'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Meta from 'vue-meta'
+
 Vue.use(VueRouter)
+Vue.use(Meta)
 
 // import { createStore } from '../store'
 // import { createRouter } from '../router'

@@ -39,11 +39,15 @@ export default {
       busy: false,
     }
   },
+  metaInfo: {
+    title: 'Cuisinier Rebelle',
+    // override the parent template and just use the above title only
+    titleTemplate: null
+  },
   components: {
     Card,
     Banner,
   },
-
   computed: {
     ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
     items () {
