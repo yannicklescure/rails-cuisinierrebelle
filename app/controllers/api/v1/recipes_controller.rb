@@ -273,7 +273,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
               url: @recipe.photo.url(:preview)
             },
             openGraph: {
-              url: recipe.photo.url(:open_graph)
+              url: @recipe.photo.url(:open_graph)
             },
             thumb: {
               url: @recipe.photo.url(:thumb)
@@ -306,6 +306,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
     # binding.pry
     @recipe = Recipe.includes([:user]).find_by(id: params[:id])
     authorize @recipe  # For Pundit
+    if params[:photo] == "[object Object]"
+      params[:photo] = @recipe.photo
+    end
     params[:recipe] = {
       title: clean_params(params[:title]),
       subtitle: clean_params(params[:subtitle]),
@@ -316,12 +319,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
       image: clean_params(params[:image]),
       tag_list: clean_params(params[:tag_list])
     }
-
-    # binding.pry
-    if params[:recipe][:photo] == "[object Object]"
-      params[:recipe][:photo] = @recipe.photo
-    end
     if @recipe.update(recipe_params)
+      # binding.pry
       render json:  MultiJson.dump({
         timestamp: (@recipe.created_at.to_f * 1000).to_i,
         recipe: {
@@ -347,7 +346,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
               url: @recipe.photo.url(:preview)
             },
             openGraph: {
-              url: recipe.photo.url(:open_graph)
+              url: @recipe.photo.url(:open_graph)
             },
             thumb: {
               url: @recipe.photo.url(:thumb)
