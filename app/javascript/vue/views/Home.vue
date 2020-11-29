@@ -96,15 +96,20 @@ export default {
       }
     },
     fetchItem () {
-      console.log('fetching recipes data')
-      this.$store
-        .dispatch('RECIPES', {})
-        .then( response => {
-          console.log(response.data.data.recipes)
-          this.data = response.data.data.recipes
-            .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
-            .splice(0, 24)
-        })
+      if (this.recipes.length === 0) {
+        console.log('fetching recipes data')
+        this.$store
+          .dispatch('RECIPES', {})
+          .then( response => {
+            console.log(response.data.data.recipes)
+            this.data = response.data.data.recipes
+              .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+              .splice(0, 24)
+          })
+      }
+      else {
+        this.loadMore()
+      }
     },
   },
   beforeMount () {
