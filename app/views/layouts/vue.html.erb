@@ -6,6 +6,36 @@
     <title><%= t('.cuisinier_rebelle_social_recipe') %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <meta property="fb:app_id" content="<%= ENV['FB_APP_ID'] %>" />
+    <% if @recipe.nil? %>
+    <meta property="og:site_name" content="Cuisinier Rebelle" />
+    <meta property="og:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>" />
+    <meta property="og:description" content="<%= t('.cooking_recipes_and_more') %>" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cuisinierrebelle">
+    <meta name="twitter:creator" content="@cuisinierrebelle">
+    <meta name="twitter:title" content="<%= t('.cuisinier_rebelle_social_recipe') %>">
+    <meta name="twitter:description" content="<%= t('.cooking_recipes_and_more') %>">
+    <meta name="twitter:image" content="https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg">
+    <% else %>
+    <meta property="og:site_name" content="Cuisinier Rebelle" />
+    <meta property="og:title" content="<%= "#{ @recipe.title } | Cuisinier Rebelle" %>" />
+    <meta property="og:description" content="<%= @recipe.description %>" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= @recipe.photo.open_graph.url %>" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cuisinierrebelle">
+    <meta name="twitter:creator" content="@cuisinierrebelle">
+    <meta name="twitter:title" content="<%= "#{ @recipe.title } | Cuisinier Rebelle" %>">
+    <meta name="twitter:description" content="<%= @recipe.description %>">
+    <meta name="twitter:image" content="<%= @recipe.photo.open_graph.url %>">
+    <% end %>
     <!-- Languages for Google SEO -->
     <link rel="canonical" href="<%= request.original_url %>" />
     <link rel="alternate" hreflang="en" href="/en" />
