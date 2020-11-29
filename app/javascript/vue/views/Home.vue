@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }">
     <banner v-if="!isAuthenticated" />
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">

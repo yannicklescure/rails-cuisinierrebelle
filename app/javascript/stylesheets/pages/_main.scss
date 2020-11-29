@@ -4,19 +4,25 @@ body, html {
 }
 
 body {
-  min-height: calc(100vh - 104px);
+  // min-height: calc(100vh - 104px);
+  min-height: 100vh;
 }
 
 main {
-  min-height: calc(100vh - 104px - 168px);
+  min-height: calc(100vh - 168px);
+  // min-height: calc(100vh - 104px);
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
 }
 
 @media (min-width: 768px) {
   body {
-    min-height: calc(100vh - 58px);
+    // min-height: calc(100vh - 58px);
   }
 
   main {
-    min-height: calc(100vh - 58px - 168px);
+    min-height: calc(100vh - 168px);
+    // min-height: calc(100vh - 58px);
   }
 }

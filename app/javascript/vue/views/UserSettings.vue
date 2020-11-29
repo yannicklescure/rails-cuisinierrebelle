@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }">
     <p>UserSettings</p>
   </div>
 </template>

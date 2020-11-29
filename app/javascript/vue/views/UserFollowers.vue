@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }">
     <user-banner />
     <div class="container" ref="container">
       <div class="px-md-3 px-md-5">

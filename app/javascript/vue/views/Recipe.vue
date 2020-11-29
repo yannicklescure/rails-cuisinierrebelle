@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }" :key="componentKey">
+  <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column flex-md-row justify-content-between">
         <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex align-items-center order-0']">

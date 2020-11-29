@@ -17,7 +17,7 @@ export default {
   name: 'app',
   data () {
     return {
-      loading: false,
+      loading: true,
     }
   },
   metaInfo: {

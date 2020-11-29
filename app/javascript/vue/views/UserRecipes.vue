@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ marginTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }">
     <user-banner />
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">

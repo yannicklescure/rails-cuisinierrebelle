@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{ marginTop: navbarHeight + 'px' }">
+  <div class="container" :style="{ paddingTop: navbarHeight + 'px' }">
     <div class="py-3">
       <form v-on:input="allowPost" v-on:touchend="allowPost">
         <div class="form-group mb-3">
