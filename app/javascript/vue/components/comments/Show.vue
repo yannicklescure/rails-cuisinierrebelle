@@ -15,17 +15,26 @@
       >{{ item.user.name }}</router-link>
       <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
     </div>
-    <div class="mt-2 bg-light rounded p-3">
+    <div v-if="edit">
+      <comment-form
+        :item="item"
+        :actionAttr="'COMMENT_EDIT'"
+        :text="item.content"
+        v-on:commentEditResponse="commentEditResponse"
+        v-on:commentEditDrop="commentEditDrop"
+      />
+    </div>
+    <div v-else class="mt-2 bg-light rounded p-3">
       <vue-markdown :source="item.content" class="text-break" />
     </div>
     <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
       <div class="small text-muted mx-2">
         <span class="material-icons md-16">thumb_up</span>
       </div>
-      <div v-if="item.user.id === currentUser.id" class="small text-muted mx-2">
+      <div v-if="item.user.id === currentUser.id" v-on:click="commentEdit" class="small text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">edit</span>
       </div>
-      <div v-if="item.user.id === currentUser.id" v-on:click="destroy" class="small text-muted mx-2 mouse-pointer">
+      <div v-if="item.user.id === currentUser.id" v-on:click="commentDestroy" class="small text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">delete</span>
       </div>
     </div>
@@ -35,22 +44,36 @@
 <script>
 import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
+import CommentForm from './Form.vue'
 
 export default {
   name: 'Comment',
   props: ['item', 'type'],
-  // data () {
-  //   return {
-  //   }
-  // },
+  data () {
+    return {
+      edit: false,
+    }
+  },
   components: {
+    CommentForm,
     VueMarkdown,
   },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser']),
   },
   methods: {
-    destroy () {
+    commentEdit () {
+      this.edit = true
+    },
+    commentEditDrop () {
+      this.edit = false
+    },
+    commentEditResponse (value) {
+      this.edit = false
+      console.log(value.data.content)
+      this.item.content = value.data.content
+    },
+    commentDestroy () {
       if (this.type === 'comment') {
         console.log(`delete comment ${ this.item.id }`)
         const payload = {
@@ -58,7 +81,7 @@ export default {
           recipe_id: this.item.recipe.id,
         }
         this.$store
-          .dispatch('DELETE_COMMENT', payload)
+          .dispatch('COMMENT_DELETE', payload)
           .then( response => {
             console.log(response)
           })

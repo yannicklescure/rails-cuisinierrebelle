@@ -1,24 +1,11 @@
 <template>
   <div>
     <div v-if="isAuthenticated">
-      <form>
-        <div class="input-group my-3">
-          <textarea
-            id="new-user-registration"
-            class="form-control"
-            v-on:input="allowPost"
-            v-model="content"
-            :placeholder="$t('recipe.comments.addPublicComment')"
-            aria-label="With textarea"
-          ></textarea>
-        </div>
-        <div class="input-group my-3">
-          <button v-on:click.stop.prevent="comment" class="btn btn-light" type="submit" :disabled="disabled">{{ $t('commentForm.comment') }}</button>
-          <button class="btn btn-light comment-photo-btn cr-p-6 ml-3" :disabled="disabled">
-            <i class="material-icons d-flex">add_photo_alternate</i>
-          </button>
-        </div>
-      </form>
+      <comment-form
+        :item="item"
+        :actionAttr="'COMMENT_NEW'"
+        :text="null"
+      />
     </div>
     <div v-else>
       <div class="input-group my-3">
@@ -42,9 +29,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import CommentForm from './Form.vue'
 
 export default {
-  name: 'CommentFormNew',
+  name: 'CommentNew',
   props: ['item'],
   data () {
     return {
@@ -52,9 +40,9 @@ export default {
       content: null,
     }
   },
-  // components: {
-  //   Follow,
-  // },
+  components: {
+    CommentForm,
+  },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser']),
   },

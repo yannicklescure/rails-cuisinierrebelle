@@ -15,25 +15,18 @@ class Api::V1::CommentsController < Api::V1::BaseController
       # binding.pry
       UserMailer.with(comment: @comment).comment.deliver_later if @comment.recipe.user.notification
     end
-    render json: MultiJson.dump({
-      id: @comment.id,
-      recipe: {
-        id: @comment.recipe_id,
-      },
-      user: {
-        id: @comment.user_id,
-        image: {
-          thumb: {
-            url: @comment.user.image.url(:thumb)
-          }
-        },
-        name: @comment.user.name,
-        slug: @comment.user.slug,
-      },
-      content: @comment.content,
-      replies: [],
-      timestamp: (@comment.created_at.to_f * 1000).to_i,
-    })
+    render json: render_comment(@comment)
+  end
+
+  def update
+    # binding.pry
+    @comment = Comment.find(params[:id])
+    authorize @comment
+    if @comment.update(comment_params)
+      # binding.pry
+      # UserMailer.with(comment: @comment).comment.deliver_later if @comment.recipe.user.notification
+    end
+    render json: render_comment(@comment)
   end
 
   def destroy
@@ -45,6 +38,28 @@ class Api::V1::CommentsController < Api::V1::BaseController
   end
 
   private
+
+  def render_comment(comment)
+    MultiJson.dump({
+          id: comment.id,
+          recipe: {
+            id: comment.recipe_id,
+          },
+          user: {
+            id: comment.user_id,
+            image: {
+              thumb: {
+                url: comment.user.image.url(:thumb)
+              }
+            },
+            name: comment.user.name,
+            slug: comment.user.slug,
+          },
+          content: comment.content,
+          replies: [],
+          timestamp: (comment.created_at.to_f * 1000).to_i,
+        })
+  end
 
   def comment_params
     params.require(:comment).permit(:recipe_id, :user_id, :content)

@@ -8,7 +8,7 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
-  DELETE_COMMENT: (state, payload) => {
+  COMMENT_DELETE: (state, payload) => {
     console.log(payload)
     // console.log(state)
     const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
@@ -18,10 +18,23 @@ export default {
     const comment = state.data.recipes[position].comments.filter(c => c.id === payload.comment_id)[0]
     const pos = state.data.recipes[position].comments.indexOf(comment)
     state.data.recipes[position].comments.splice(pos, 1)
-    saveToLocalStorage(state, 'DELETE_COMMENT')
+    saveToLocalStorage(state, 'COMMENT_DELETE')
   },
 
-  COMMENT: (state, payload) => {
+  COMMENT_EDIT: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    const comment = state.data.recipes[position].comments.filter(comment => comment.id === payload.data.id)[0]
+    const pos = state.data.recipes[position].comments.indexOf(comment)
+    state.data.recipes[position].comments[pos] = payload.data
+    saveToLocalStorage(state, 'COMMENT_EDIT')
+  },
+
+  COMMENT_NEW: (state, payload) => {
     console.log(payload)
     // console.log(state)
     const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
@@ -29,7 +42,7 @@ export default {
     const position = state.data.recipes.indexOf(recipe)
     console.log(position)
     state.data.recipes[position].comments.push(payload.data)
-    saveToLocalStorage(state, 'COMMENT')
+    saveToLocalStorage(state, 'COMMENT_NEW')
   },
 
   BOOKMARK: (state, payload) => {

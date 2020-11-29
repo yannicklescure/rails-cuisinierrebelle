@@ -178,6 +178,7 @@ export const fr = () => {
     },
     commentForm: {
       comment: 'Publier',
+      cancel: 'Annuler',
     },
     search: {
       noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Veuillez essayer de nouveau avec un autre mot-clé.`

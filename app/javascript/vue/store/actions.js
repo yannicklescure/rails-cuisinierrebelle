@@ -31,12 +31,12 @@ export default {
       })
   },
 
-  DELETE_COMMENT: (context, payload) => {
+  COMMENT_DELETE: (context, payload) => {
     // console.log(payload)
-    return api.deleteComment(context, payload)
+    return api.commentDelete(context, payload)
       .then(response => {
         console.log(`response.status ${response.status}`)
-        if (response.status === 204) context.commit("DELETE_COMMENT", payload)
+        if (response.status === 204) context.commit("COMMENT_DELETE", payload)
         return response
       })
       .catch(error => {
@@ -45,12 +45,26 @@ export default {
       })
   },
 
-  COMMENT: (context, payload) => {
+  COMMENT_EDIT: (context, payload) => {
     // console.log(payload)
-    return api.comment(context, payload)
+    return api.commentEdit(context, payload)
       .then(response => {
         console.log(`response.status ${response.status}`)
-        if (response.status === 200) context.commit("COMMENT", response)
+        if (response.status === 200) context.commit("COMMENT_EDIT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  COMMENT_NEW: (context, payload) => {
+    // console.log(payload)
+    return api.commentNew(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("COMMENT_NEW", response)
         return response
       })
       .catch(error => {

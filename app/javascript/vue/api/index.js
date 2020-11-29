@@ -33,14 +33,14 @@ import axios from 'axios'
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
 
-export const deleteComment = (context, payload) => {
+export const commentDelete = (context, payload) => {
   return axios({
     validateStatus: status => {
       console.log(status)
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${domain}/api/v1/comments/${payload.comment_id}`,
+    url: `${domain}/api/v1/comments/${ payload.comment_id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization }`,
     },
@@ -54,7 +54,35 @@ export const deleteComment = (context, payload) => {
   });
 }
 
-export const comment = (context, payload) => {
+export const commentEdit = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'patch',
+    url: `${domain}/api/v1/comments/${ payload.id }`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      content: payload.content,
+      // comment: {
+      //   recipe_id: payload.recipe_id,
+      //   user_id: payload.user_id,
+      //   content: payload.content,
+      // }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const commentNew = (context, payload) => {
   return axios({
     validateStatus: status => {
       console.log(status)
