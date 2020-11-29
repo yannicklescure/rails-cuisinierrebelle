@@ -102,12 +102,14 @@ export default {
         .then( response => {
           console.log(response.data.data.recipes)
           this.data = response.data.data.recipes
+            .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+            .splice(0, 24)
         })
     },
   },
   beforeMount () {
-    // this.fetchItem()
-    this.loadMore()
+    this.fetchItem()
+    // this.loadMore()
   },
   mounted () {
     // while (this.data.length === 0){
