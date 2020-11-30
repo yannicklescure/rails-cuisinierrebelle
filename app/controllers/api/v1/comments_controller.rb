@@ -74,7 +74,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
             },
             content: reply.content,
             timestamp: (reply.created_at.to_f * 1000).to_i,
-          },
+          }},
           timestamp: (comment.created_at.to_f * 1000).to_i,
         })
   end
