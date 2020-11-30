@@ -28,7 +28,9 @@ Rails.application.routes.draw do
       resources :search, only: [ :index ]
       resources :recipes, only: [ :index, :show, :create, :update ]
       resources :recipe_logs, only: [ :create ]
-      resources :comments, only: [ :create, :destroy, :update ]
+      resources :comments, only: [ :create, :destroy, :update ] do
+        resources :replies, only: [ :create, :destroy, :update ]
+      end
       resources :bookmarks, only: [ :create, :destroy ]
       resources :likes, only: [ :create, :destroy ]
       resources :mailchimp, only: [ :show, :update ]

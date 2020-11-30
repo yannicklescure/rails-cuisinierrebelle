@@ -8,6 +8,34 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  REPLY_DELETE: (state, payload) => {
+    console.log(payload)
+    console.log(state)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    const comment = state.data.recipes[position].comments.filter(c => c.id === payload.comment_id)[0]
+    const pos = state.data.recipes[position].comments.indexOf(comment)
+    const reply = state.data.recipes[position].comments[pos].replies.filter(r => r.id === payload.id)[0]
+    const p = state.data.recipes[position].comments[pos].replies.indexOf(reply)
+    state.data.recipes[position].comments[pos].replies.splice(p, 1)
+    saveToLocalStorage(state, 'REPLY_DELETE')
+  },
+
+  REPLY_NEW: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    const comment = state.data.recipes[position].comments.filter(comment => comment.id === payload.data.id)[0]
+    const pos = state.data.recipes[position].comments.indexOf(comment)
+    state.data.recipes[position].comments[pos] = payload.data
+    saveToLocalStorage(state, 'REPLY_NEW')
+  },
+
   COMMENT_DELETE: (state, payload) => {
     console.log(payload)
     // console.log(state)

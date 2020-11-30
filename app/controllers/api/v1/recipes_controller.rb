@@ -84,6 +84,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
                   timestamp: (comment.created_at.to_f * 1000).to_i,
                   replies: comment.replies.includes([:user]).map { |reply| {
                       id: reply.id,
+                      commentId: comment.id,
+                      recipeId: recipe.id,
                       timestamp: (reply.created_at.to_f * 1000).to_i,
                       content: reply.content,
                       user: {
@@ -204,6 +206,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
             timestamp: (comment.created_at.to_f * 1000).to_i,
             replies: comment.replies.includes([:user]).map { |reply| {
                 id: reply.id,
+                commentId: comment.id,
+                recipeId: recipe.id,
                 timestamp: (reply.created_at.to_f * 1000).to_i,
                 content: reply.content,
                 user: {

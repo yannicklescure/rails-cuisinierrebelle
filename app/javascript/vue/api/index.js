@@ -54,6 +54,56 @@ export const commentDelete = (context, payload) => {
   });
 }
 
+export const replyDelete = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      // comment_id: payload.comment_id,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const replyNew = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/replies`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      recipe_id: payload.recipe_id,
+      user_id: payload.user_id,
+      comment_id: payload.comment_id,
+      content: payload.content,
+      // comment: {
+      //   recipe_id: payload.recipe_id,
+      //   user_id: payload.user_id,
+      //   content: payload.content,
+      // }
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const commentEdit = (context, payload) => {
   return axios({
     validateStatus: status => {

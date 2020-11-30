@@ -1,9 +1,18 @@
 <template>
-  <div id="comments" ref="comments" class="d-print-none mt-5">
+  <div id="comments" ref="comments" class="d-print-none mt-5" :key="componentKey">
     <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
-    <comment-form :item="item" />
+    <comment-form
+      :item="item"
+      v-on:commentNew="commentNew"
+    />
     <div v-for="comment, i in comments" class="d-flex flex-column">
-      <user-comment :item="comment" :type="'comment'" :key="'c' + i" />
+      <comment
+        :item="comment"
+        :type="'comment'"
+        :key="'c' + i"
+        v-on:commentDestroyed="commentDestroyed"
+        v-on:commentReplyNew="commentReplyNew"
+      />
       <div
         v-if="comment.replies.length"
         v-on:click="showReplies(i)"
@@ -18,7 +27,14 @@
         <div v-show="show[i]">
           <div v-for="reply, j in comment.replies" class="d-flex align-items-start">
             <span class="material-icons md-18 mt-3">subdirectory_arrow_right</span>
-            <user-comment :item="reply" :type="'reply'" :key="'c' + i + 'r' + j" class="pl-3 flex-grow-1" />
+            <comment
+              :item="reply"
+              :type="'reply'"
+              :key="'c' + i + 'r' + j"
+              class="pl-3 flex-grow-1"
+              v-on:commentDestroyed="commentDestroyed"
+              v-on:commentReplyNew="commentReplyNew"
+            />
           </div>
         </div>
       </transition>
@@ -38,18 +54,19 @@
 <script>
 import { mapGetters } from 'vuex'
 import CommentForm from './New.vue'
-import UserComment from './Show.vue'
+import Comment from './Show.vue'
 
 export default {
   name: 'Comments',
   data () {
     return {
+      componentKey: 0,
       show: [],
     }
   },
   components: {
     CommentForm,
-    UserComment,
+    Comment,
   },
   props: ['item'],
   computed: {
@@ -60,6 +77,42 @@ export default {
     },
   },
   methods: {
+    commentNew (payload) {
+      console.log(payload)
+      // this.item.comments.push(payload.data)
+      this.componentKey += 1
+    },
+    commentReplyNew (payload) {
+      console.log(this.item)
+      console.log(payload)
+      const comment = this.item.comments.filter(c => c.id === payload.data.id)[0]
+      const position = this.item.comments.indexOf(comment)
+      this.item.comments[position] = payload.data
+      this.componentKey += 1
+    },
+    commentDestroyed (payload) {
+      console.log(this.item)
+      console.log(payload)
+      this.componentKey += 1
+
+      if (payload.type === 'comment') {
+        const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
+        const pos = this.item.comments.indexOf(comment)
+        this.item.comments[pos].splice(pos, 1)
+      }
+
+      if (payload.type === 'reply') {
+        // const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+        // console.log(recipe)
+        // const position = state.data.recipes.indexOf(recipe)
+        // console.log(position)
+        const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
+        const pos = this.item.comments.indexOf(comment)
+        const reply = this.item.comments[pos].replies.filter(r => r.id === payload.id)[0]
+        const p = this.item.comments[pos].replies.indexOf(reply)
+        this.item.comments[pos].replies.splice(p, 1)
+      }
+    },
     showReplies (index) {
       console.log(`comment ${index} ${this.show[index]}`)
       // this.show[index] = !this.show[index]

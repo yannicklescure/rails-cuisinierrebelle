@@ -30,12 +30,13 @@ class UserMailer < ApplicationMailer
   end
 
   def reply
-    @user = params[:user]
-    @recipe = params[:recipe]
+    # binding.pry
+    # @user = params[:user]
+    # @recipe = params[:recipe]
     @reply = params[:reply]
-    I18n.with_locale(@user.locale) do
+    I18n.with_locale(@reply.user.locale) do
       # mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
-      make_bootstrap_mail(to: @user.email, subject: t('.subject', user: @reply.user.name))
+      make_bootstrap_mail(to: @reply.comment.user.email, subject: t('.subject', user: @reply.user.name))
       # This will render a view in `app/views/reply`!
     end
   end

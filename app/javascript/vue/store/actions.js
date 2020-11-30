@@ -31,12 +31,40 @@ export default {
       })
   },
 
+  REPLY_DELETE: (context, payload) => {
+    // console.log(payload)
+    return api.replyDelete(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("REPLY_DELETE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   COMMENT_DELETE: (context, payload) => {
     // console.log(payload)
     return api.commentDelete(context, payload)
       .then(response => {
         console.log(`response.status ${response.status}`)
         if (response.status === 204) context.commit("COMMENT_DELETE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  REPLY_NEW: (context, payload) => {
+    // console.log(payload)
+    return api.replyNew(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("REPLY_NEW", response)
         return response
       })
       .catch(error => {

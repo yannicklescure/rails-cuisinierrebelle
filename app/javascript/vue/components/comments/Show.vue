@@ -21,7 +21,7 @@
         :actionAttr="'COMMENT_EDIT'"
         :text="item.content"
         v-on:commentEditResponse="commentEditResponse"
-        v-on:commentEditDrop="commentEditDrop"
+        v-on:commentDrop="commentDrop"
       />
     </div>
     <div v-else class="mt-2 bg-light rounded p-3">
@@ -37,6 +37,18 @@
       <div v-if="item.user.id === currentUser.id" v-on:click="commentDestroy" class="small text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">delete</span>
       </div>
+      <div v-on:click="commentReply" class="small text-muted mx-2 mouse-pointer">
+        <span class="material-icons md-16">reply</span>
+      </div>
+    </div>
+    <div v-if="reply">
+      <comment-form
+        :item="item"
+        :actionAttr="'REPLY_NEW'"
+        :text="null"
+        v-on:commentReplyNew="commentReplyNew"
+        v-on:commentDrop="commentDrop"
+      />
     </div>
   </div>
 </template>
@@ -52,6 +64,7 @@ export default {
   data () {
     return {
       edit: false,
+      reply: false,
     }
   },
   components: {
@@ -62,30 +75,59 @@ export default {
     ...mapGetters(['isAuthenticated', 'currentUser']),
   },
   methods: {
+    commentReply () {
+      console.log('reply')
+      this.reply = true
+    },
     commentEdit () {
       this.edit = true
     },
-    commentEditDrop () {
+    commentDrop () {
       this.edit = false
+      this.reply = false
+      return false
     },
-    commentEditResponse (value) {
+    commentReplyNew (payload) {
+      console.log(payload)
+      this.$emit('commentReplyNew', payload)
+      this.reply = false
+      // this.item.content = value.data.content
+    },
+    commentEditResponse (payload) {
       this.edit = false
-      console.log(value.data.content)
-      this.item.content = value.data.content
+      console.log(payload.data.content)
+      this.item.content = payload.data.content
     },
     commentDestroy () {
+      let actionAttr = ''
+      let payload = {}
       if (this.type === 'comment') {
-        console.log(`delete comment ${ this.item.id }`)
-        const payload = {
+        // console.log(`delete comment ${ this.item.id }`)
+        payload = {
           comment_id: this.item.id,
           recipe_id: this.item.recipe.id,
+          type: this.type,
         }
-        this.$store
-          .dispatch('COMMENT_DELETE', payload)
-          .then( response => {
-            console.log(response)
-          })
+        actionAttr = 'COMMENT_DELETE'
       }
+      if (this.type === 'reply') {
+        // console.log(`delete comment ${ this.item.id }`)
+        payload = {
+          comment_id: this.item.commentId,
+          recipe_id: this.item.recipeId,
+          id: this.item.id,
+          type: this.type,
+        }
+        actionAttr = 'REPLY_DELETE'
+      }
+      this.$store
+        .dispatch(actionAttr, payload)
+        .then( response => {
+          console.log(response)
+          if (response.status === 204) {
+            this.$emit('commentDestroyed', payload)
+          }
+        })
     },
     timeAgo (time) {
       const between = Math.trunc((new Date().getTime() - time) / 1000)

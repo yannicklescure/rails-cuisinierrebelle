@@ -5,6 +5,7 @@
         :item="item"
         :actionAttr="'COMMENT_NEW'"
         :text="null"
+        v-on:commentNew="commentNew"
       />
     </div>
     <div v-else>
@@ -47,6 +48,9 @@ export default {
     ...mapGetters(['isAuthenticated', 'currentUser']),
   },
   methods: {
+    commentNew (payload) {
+      this.$emit('commentNew', payload)
+    },
     comment () {
       console.log('comment')
       const payload = {
