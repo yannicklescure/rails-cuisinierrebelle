@@ -69,7 +69,7 @@ class Api::V1::StateController < Api::V1::BaseController
                   name: recipe.user.name,
                   slug: recipe.user.slug
                 },
-                comments: recipe.comments.includes([:user, :replies, :comment_likes]).map { |comment| {
+                comments: recipe.comments.includes([:user, :comment_likes]).map { |comment| {
                     id: comment.id,
                     likes: comment.comment_likes.length,
                     recipe: {
