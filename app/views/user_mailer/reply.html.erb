@@ -4,15 +4,15 @@
     <div class="pb-3">
       <span class="pb-3"><%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %></span><br>
       <div class="row pb-3">
-        <%= image_tag @reply.recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @reply.recipe.title %>
+        <%= image_tag @reply.comment.recipe.photo.url(:preview), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @reply.comment.recipe.title %>
       </div>
     </div>
     <strong><%= t('.author', author: @reply.user.name) %></strong>
     <div class="pb-3"><%= t('.new_reply_content', content: @reply.content) %></div>
-    <div class="pb-3"><%= link_to t('.reply'), "#{root_url}r/#{@reply.recipe.slug}#comment#{@reply.comment.id}", class: 'btn btn-primary' %></div>
+    <div class="pb-3"><%= link_to t('.reply'), "#{root_url}r/#{@reply.comment.recipe.slug}#comment#{@reply.comment.id}", class: 'btn btn-primary' %></div>
   </div>
   <div class="py-5 text-center">
-    <div class="text-muted"><small><%= t('.disable_comment_html', url: "#{root_url}u/#{@reply.comment.user.slug}" %></small></div>
+    <div class="text-muted"><small><%= t('.disable_comment_html', url: "#{root_url}u/#{@reply.comment.user.slug}") %></small></div>
     <div class="text-muted"><small><%= t('.copyright_html', year: Date.current.year) %></small></div>
   </div>
 </div>

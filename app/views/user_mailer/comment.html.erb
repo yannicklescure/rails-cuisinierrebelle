@@ -5,7 +5,7 @@
       <div class="pb-3"><%= t('.new_comment', author: @comment.user.name) %></div>
       <div class="row pb-3">
         <div class="col-6">
-          <%= image_tag @comment.recipe.photo.url(:full), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @comment.recipe.title %>
+          <%= image_tag @comment.recipe.photo.url(:preview), style: 'display:inline-block;max-height:58px;max-width:96px;vertical-align:middle' %> <%= @comment.recipe.title %>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
     <div class="pb-3"><%= t('.new_recipe_content', content: @recipe.description) %></div>
     <div class="pb-3"><%= link_to t('.see_recipe'), "#{root_url}r/#{@recipe.slug}", class: "btn btn-primary", target: "_blank" %></div>
     <div class="pt-5">
-      <%= image_tag @recipe.photo.url(:full), class: 'mx-auto', style: 'max-width: 100%' %>
+      <%= image_tag @recipe.photo.url(:preview), class: 'mx-auto', style: 'max-width: 100%' %>
     </div>
   </div>
   <div class="py-5 text-center">

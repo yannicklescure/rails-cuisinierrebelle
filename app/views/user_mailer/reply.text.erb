@@ -1,9 +1,9 @@
 <%= t('.greeting', recipient: @reply.comment.user.first_name.capitalize) %>
 
-<%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %> <%= @reply.recipe.title %></span>
+<%= t('.new_reply', user: @reply.user.name, author: @reply.comment.user.name) %> <%= @reply.comment.recipe.title %></span>
 
 <%= t('.author', author: @reply.user.name) %>
 
 <%= t('.new_reply_content', content: @reply.content) %>
 
-<%= "#{root_url}r/#{@reply.recipe.slug}#comment#{@reply.comment.id}" %>
+<%= "#{root_url}r/#{@reply.comment.recipe.slug}#comment#{@reply.comment.id}" %>
