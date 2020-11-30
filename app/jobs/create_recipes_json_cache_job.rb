@@ -60,8 +60,9 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                 name: recipe.user.name,
                 slug: recipe.user.slug
               },
-              comments: recipe.comments.includes([:user, :replies]).map { |comment| {
+              comments: recipe.comments.includes([:user, :comment_likes]).map { |comment| {
                   id: comment.id,
+                  likes: comment.comment_likes.length,
                   recipe: {
                     id: comment.recipe_id,
                   },
@@ -79,7 +80,9 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                   timestamp: (comment.created_at.to_f * 1000).to_i,
                   replies: comment.replies.includes([:user]).map { |reply| {
                       id: reply.id,
-                      commentId: comment.id,
+                      likes: reply.reply_likes.length,
+                      commentId: reply.comment.id,
+                      recipeId: reply.comment.recipe.id,
                       timestamp: (reply.created_at.to_f * 1000).to_i,
                       content: reply.content,
                       user: {

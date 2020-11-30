@@ -28,16 +28,17 @@
       <vue-markdown :source="item.content" class="text-break" />
     </div>
     <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
-      <div class="small text-muted mx-2">
+      <div class="d-flex align-items-center text-muted mx-2">
         <span class="material-icons md-16">thumb_up</span>
+        <span v-if="item.likes > 0" :class="['font-weight-lighter small', { 'ml-1': !mobile }]">{{ item.likes }}</span>
       </div>
-      <div v-if="item.user.id === currentUser.id" v-on:click="commentEdit" class="small text-muted mx-2 mouse-pointer">
+      <div v-if="item.user.id === currentUser.id" v-on:click="commentEdit" class="d-flex text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">edit</span>
       </div>
-      <div v-if="item.user.id === currentUser.id" v-on:click="commentDestroy" class="small text-muted mx-2 mouse-pointer">
+      <div v-if="item.user.id === currentUser.id" v-on:click="commentDestroy" class="d-flex text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">delete</span>
       </div>
-      <div v-on:click="commentReply" class="small text-muted mx-2 mouse-pointer">
+      <div v-on:click="commentReply" class="d-flex text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">reply</span>
       </div>
     </div>
@@ -57,6 +58,7 @@
 import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
 import CommentForm from './Form.vue'
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   name: 'Comment',
@@ -73,6 +75,9 @@ export default {
   },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser']),
+    mobile () {
+      return isMobile
+    },
   },
   methods: {
     editActionAttr () {

@@ -65,8 +65,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
                 name: recipe.user.name,
                 slug: recipe.user.slug
               },
-              comments: recipe.comments.includes([:user, :replies]).map { |comment| {
+              comments: recipe.comments.includes([:user, :comment_likes]).map { |comment| {
                   id: comment.id,
+                  likes: comment.comment_likes.length,
                   recipe: {
                     id: comment.recipe_id,
                   },
@@ -82,10 +83,11 @@ class Api::V1::RecipesController < Api::V1::BaseController
                   },
                   content: comment.content,
                   timestamp: (comment.created_at.to_f * 1000).to_i,
-                  replies: comment.replies.includes([:user]).map { |reply| {
+                  replies: comment.replies.includes([:user, :reply_likes]).map { |reply| {
                       id: reply.id,
-                      commentId: comment.id,
-                      recipeId: recipe.id,
+                      likes: reply.reply_likes.length,
+                      commentId: reply.comment.id,
+                      recipeId: reply.comment.recipe.id,
                       timestamp: (reply.created_at.to_f * 1000).to_i,
                       content: reply.content,
                       user: {
@@ -187,8 +189,9 @@ class Api::V1::RecipesController < Api::V1::BaseController
         name: recipe.user.name,
         slug: recipe.user.slug
       },
-      comments: recipe.comments.includes([:user]).map { |comment| {
+      comments: recipe.comments.includes([:user, :comment_likes]).map { |comment| {
             id: comment.id,
+            likes: comment.comment_likes.length,
             recipe: {
               id: comment.recipe_id,
             },
@@ -204,10 +207,11 @@ class Api::V1::RecipesController < Api::V1::BaseController
             },
             content: comment.content,
             timestamp: (comment.created_at.to_f * 1000).to_i,
-            replies: comment.replies.includes([:user]).map { |reply| {
+            replies: comment.replies.includes([:user, :reply_likes]).map { |reply| {
                 id: reply.id,
-                commentId: comment.id,
-                recipeId: recipe.id,
+                likes: reply.reply_likes.length,
+                commentId: reply.comment.id,
+                recipeId: reply.comment.recipe.id,
                 timestamp: (reply.created_at.to_f * 1000).to_i,
                 content: reply.content,
                 user: {
@@ -374,7 +378,45 @@ class Api::V1::RecipesController < Api::V1::BaseController
           name: @recipe.user.name,
           slug: @recipe.user.slug
         },
-        comments: []
+        comments: @recipe.comments.includes([:user, :comment_likes]).map { |comment| {
+            id: comment.id,
+            likes: comment.comment_likes.length,
+            recipe: {
+              id: comment.recipe_id,
+            },
+            user: {
+              id: comment.user.id,
+              image: {
+                thumb: {
+                  url: comment.user.image.url(:thumb)
+                }
+              },
+              name: comment.user.name,
+              slug: comment.user.slug,
+            },
+            content: comment.content,
+            timestamp: (comment.created_at.to_f * 1000).to_i,
+            replies: comment.replies.includes([:user, :reply_likes]).map { |reply| {
+                id: reply.id,
+                likes: reply.reply_likes.length,
+                commentId: reply.comment.id,
+                recipeId: reply.comment.recipe.id,
+                timestamp: (reply.created_at.to_f * 1000).to_i,
+                content: reply.content,
+                user: {
+                  id: reply.user.id,
+                  name: reply.user.name,
+                  slug: reply.user.slug,
+                  image: {
+                    thumb: {
+                      url: reply.user.image.url(:thumb)
+                    }
+                  }
+                },
+              }
+            }
+          }
+        }
       })
     end
   end

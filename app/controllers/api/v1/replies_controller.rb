@@ -42,6 +42,7 @@ class Api::V1::RepliesController < Api::V1::BaseController
   def render_reply(reply)
     MultiJson.dump({
           id: reply.comment.id,
+          likes: reply.comment.comment_likes.length,
           recipe: {
             id: reply.comment.recipe_id,
           },
@@ -58,6 +59,7 @@ class Api::V1::RepliesController < Api::V1::BaseController
           content: reply.comment.content,
           replies: reply.comment.replies.includes([:user]).map { |reply| {
               id: reply.id,
+              likes: reply.reply_likes.length,
               commentId: reply.comment.id,
               recipeId: reply.comment.recipe.id,
               user: {

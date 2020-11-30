@@ -42,6 +42,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
   def render_comment(comment)
     MultiJson.dump({
           id: comment.id,
+          likes: comment.comment_likes.length,
           recipe: {
             id: comment.recipe_id,
           },
@@ -56,7 +57,24 @@ class Api::V1::CommentsController < Api::V1::BaseController
             slug: comment.user.slug,
           },
           content: comment.content,
-          replies: [],
+          replies: comment.replies.includes([:user]).map { |reply| {
+            id: reply.id,
+            likes: reply.reply_likes.length,
+            commentId: reply.comment.id,
+            recipeId: reply.comment.recipe.id,
+            user: {
+              id: reply.user_id,
+              image: {
+                thumb: {
+                  url: reply.user.image.url(:thumb)
+                }
+              },
+              name: reply.user.name,
+              slug: reply.user.slug,
+            },
+            content: reply.content,
+            timestamp: (reply.created_at.to_f * 1000).to_i,
+          },
           timestamp: (comment.created_at.to_f * 1000).to_i,
         })
   end

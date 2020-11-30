@@ -69,8 +69,9 @@ class Api::V1::StateController < Api::V1::BaseController
                   name: recipe.user.name,
                   slug: recipe.user.slug
                 },
-                comments: recipe.comments.includes([:user, :replies]).map { |comment| {
+                comments: recipe.comments.includes([:user, :replies, :comment_likes]).map { |comment| {
                     id: comment.id,
+                    likes: comment.comment_likes.length,
                     recipe: {
                       id: comment.recipe_id,
                     },
@@ -86,9 +87,10 @@ class Api::V1::StateController < Api::V1::BaseController
                     },
                     content: comment.content,
                     timestamp: (comment.created_at.to_f * 1000).to_i,
-                    replies: comment.replies.includes([:user]).map { |reply| {
+                    replies: comment.replies.includes([:user, :reply_likes]).map { |reply| {
                         id: reply.id,
-                        commentId: comment.id,
+                        likes: reply.reply_likes.length,
+                        commentId: reply.comment.id,
                         recipeId: recipe.id,
                         timestamp: (reply.created_at.to_f * 1000).to_i,
                         content: reply.content,
