@@ -19,7 +19,7 @@ class Api::V1::RepliesController < Api::V1::BaseController
   end
 
   def update
-    binding.pry
+    # binding.pry
     @reply = Reply.find(params[:id])
     authorize @reply
     if @reply.update(reply_params)

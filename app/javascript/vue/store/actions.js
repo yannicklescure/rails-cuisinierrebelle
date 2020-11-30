@@ -31,6 +31,20 @@ export default {
       })
   },
 
+  REPLY_EDIT: (context, payload) => {
+    // console.log(payload)
+    return api.replyEdit(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("REPLY_EDIT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   REPLY_DELETE: (context, payload) => {
     // console.log(payload)
     return api.replyDelete(context, payload)

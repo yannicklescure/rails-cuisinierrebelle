@@ -18,7 +18,7 @@
     <div v-if="edit">
       <comment-form
         :item="item"
-        :actionAttr="'COMMENT_EDIT'"
+        :actionAttr="editActionAttr()"
         :text="item.content"
         v-on:commentEditResponse="commentEditResponse"
         v-on:commentDrop="commentDrop"
@@ -75,6 +75,10 @@ export default {
     ...mapGetters(['isAuthenticated', 'currentUser']),
   },
   methods: {
+    editActionAttr () {
+      if (this.item.commentId) return 'REPLY_EDIT'
+      else return 'COMMENT_EDIT'
+    },
     commentReply () {
       console.log('reply')
       this.reply = true
@@ -95,8 +99,18 @@ export default {
     },
     commentEditResponse (payload) {
       this.edit = false
-      console.log(payload.data.content)
-      this.item.content = payload.data.content
+      if (this.item.commentId) {
+        console.log(payload)
+        console.log(this.item)
+        // reply id : this.item.id
+        // reply content : this.item.content
+        // reply comment : this.item.commentId
+        const reply = payload.data.replies.filter(r => r.id === this.item.id)[0]
+        this.item.content = reply.content
+      }
+      else {
+        this.item.content = payload.data.content
+      }
     },
     commentDestroy () {
       let actionAttr = ''

@@ -85,9 +85,9 @@ export default {
     commentReplyNew (payload) {
       console.log(this.item)
       console.log(payload)
-      const comment = this.item.comments.filter(c => c.id === payload.data.id)[0]
-      const position = this.item.comments.indexOf(comment)
-      this.item.comments[position] = payload.data
+      // const comment = this.item.comments.filter(c => c.id === payload.data.id)[0]
+      // const position = this.item.comments.indexOf(comment)
+      // this.item.comments[position] = payload.data
       this.componentKey += 1
     },
     commentDestroyed (payload) {
@@ -95,23 +95,25 @@ export default {
       console.log(payload)
       this.componentKey += 1
 
-      if (payload.type === 'comment') {
-        const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
-        const pos = this.item.comments.indexOf(comment)
-        this.item.comments[pos].splice(pos, 1)
-      }
+      // if (payload.type === 'comment') {
+      //   console.log(`destroy comment ${ payload.comment_id }`)
+      //   const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
+      //   const pos = this.item.comments.indexOf(comment)
+      //   this.item.comments[pos].splice(pos, 1)
+      // }
 
-      if (payload.type === 'reply') {
-        // const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
-        // console.log(recipe)
-        // const position = state.data.recipes.indexOf(recipe)
-        // console.log(position)
-        const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
-        const pos = this.item.comments.indexOf(comment)
-        const reply = this.item.comments[pos].replies.filter(r => r.id === payload.id)[0]
-        const p = this.item.comments[pos].replies.indexOf(reply)
-        this.item.comments[pos].replies.splice(p, 1)
-      }
+      // if (payload.type === 'reply') {
+      //   // const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+      //   // console.log(recipe)
+      //   // const position = state.data.recipes.indexOf(recipe)
+      //   // console.log(position)
+      //   console.log(`destroy reply ${ payload.id }`)
+      //   const comment = this.item.comments.filter(c => c.id === payload.comment_id)[0]
+      //   const pos = this.item.comments.indexOf(comment)
+      //   const reply = this.item.comments[pos].replies.filter(r => r.id === payload.id)[0]
+      //   const p = this.item.comments[pos].replies.indexOf(reply)
+      //   this.item.comments[pos].replies.splice(p, 1)
+      // }
     },
     showReplies (index) {
       console.log(`comment ${index} ${this.show[index]}`)

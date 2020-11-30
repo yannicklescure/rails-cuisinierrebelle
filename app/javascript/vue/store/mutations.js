@@ -8,6 +8,19 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  REPLY_EDIT: (state, payload) => {
+    console.log(payload)
+    // console.log(state)
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    console.log(recipe)
+    const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
+    const comment = state.data.recipes[position].comments.filter(comment => comment.id === payload.data.id)[0]
+    const pos = state.data.recipes[position].comments.indexOf(comment)
+    state.data.recipes[position].comments[pos] = payload.data
+    saveToLocalStorage(state, 'REPLY_EDIT')
+  },
+
   REPLY_DELETE: (state, payload) => {
     console.log(payload)
     console.log(state)

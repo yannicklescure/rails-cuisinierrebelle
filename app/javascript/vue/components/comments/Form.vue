@@ -70,9 +70,17 @@ export default {
         payload.id = this.item.id
       }
 
+      if (this.actionAttr === 'REPLY_EDIT') {
+        payload.id = this.item.id
+        payload.comment_id = this.item.commentId
+      }
+
       if (this.actionAttr === 'REPLY_NEW') {
         payload.comment_id = this.item.commentId ? this.item.commentId : this.item.id
       }
+
+      console.log(this.actionAttr)
+      console.log(payload)
 
       this.$store
         .dispatch(this.actionAttr, payload)
@@ -82,7 +90,7 @@ export default {
             if (this.actionAttr === 'REPLY_NEW') {
               this.$emit('commentReplyNew', response)
             }
-            if (this.actionAttr === 'COMMENT_EDIT') {
+            if ((/.+_EDIT/).test(this.actionAttr)) {
               this.$emit('commentEditResponse', response)
             }
             if (this.actionAttr === 'COMMENT_NEW') {
