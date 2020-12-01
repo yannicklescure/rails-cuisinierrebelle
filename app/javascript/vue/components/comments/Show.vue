@@ -28,10 +28,7 @@
       <vue-markdown :source="item.content" class="text-break" />
     </div>
     <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
-      <div class="d-flex align-items-center text-muted mx-2">
-        <span class="material-icons md-16">thumb_up</span>
-        <span v-if="item.likes > 0" :class="['font-weight-lighter small', { 'ml-1': !mobile }]">{{ item.likes }}</span>
-      </div>
+      <comment-like :item="item" :type="type" />
       <div v-if="item.user.id === currentUser.id" v-on:click="commentEdit" class="d-flex text-muted mx-2 mouse-pointer">
         <span class="material-icons md-16">edit</span>
       </div>
@@ -58,6 +55,7 @@
 import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
 import CommentForm from './Form.vue'
+import CommentLike from '../buttons/CommentLike.vue'
 import { isMobile } from 'mobile-device-detect'
 
 export default {
@@ -71,6 +69,7 @@ export default {
   },
   components: {
     CommentForm,
+    CommentLike,
     VueMarkdown,
   },
   computed: {

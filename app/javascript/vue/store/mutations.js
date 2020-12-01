@@ -170,7 +170,7 @@ export default {
       state.data.user = { email: null, authentication_token: null }
       state.data.authorization = null
       // state.data.isAuthenticated = false
-      state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+      // state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
     }
     saveToLocalStorage(state, 'IS_AUTHENTICATED')
   },
@@ -184,13 +184,13 @@ export default {
     }
     // state.data = payload.data
     console.log(state.data)
-    state.data.lastUpdated = new Date().getTime()
+    // state.data.lastUpdated = new Date().getTime()
     saveToLocalStorage(state, 'SET_DATA')
   },
 
   RECIPE_NEW: (state, payload) => {
     state.data.recipes.push(payload.data)
-    state.data.lastUpdated = new Date().getTime()
+    // state.data.lastUpdated = new Date().getTime()
     saveToLocalStorage(state, 'RECIPE_NEW')
   },
 
@@ -205,7 +205,7 @@ export default {
       console.log(position)
       state.data.recipes[position] = payload.data
       // console.log(state.data)
-      state.data.lastUpdated = new Date().getTime()
+      // state.data.lastUpdated = new Date().getTime()
       saveToLocalStorage(state, 'RECIPE')
     }
   },
@@ -214,7 +214,7 @@ export default {
     console.log('### USERS ###')
     console.log(payload)
     state.data.users = payload.data.data.users
-    state.data.lastUpdated = new Date().getTime()
+    // state.data.lastUpdated = new Date().getTime()
     saveToLocalStorage(state, 'USERS')
   },
 
@@ -224,7 +224,7 @@ export default {
     console.log(payload)
     if (state.data.recipes.length === 0) {
       state.data.recipes = payload.data
-      state.data.lastUpdated = new Date().getTime()
+      // state.data.lastUpdated = new Date().getTime()
       saveToLocalStorage(state, 'RECIPES')
     }
   },
@@ -234,7 +234,7 @@ export default {
     console.log(state)
     console.log(payload)
     state.data.search.recipes = payload.data.recipes
-    state.data.lastUpdated = new Date().getTime()
+    // state.data.lastUpdated = new Date().getTime()
     saveToLocalStorage(state, 'SEARCH')
   },
 
@@ -254,7 +254,7 @@ export default {
     state.data.user = payload.data
     state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
     state.data.isAuthenticated = true
-    state.data.lastUpdated = new Date().getTime()
+    // state.data.lastUpdated = new Date().getTime()
     console.log(state)
     saveToLocalStorage(state, 'LOG_IN')
   },
@@ -265,7 +265,7 @@ export default {
     state.data.user = { email: null, authentication_token: null }
     state.data.authorization = null
     state.data.isAuthenticated = false
-    state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+    // state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
     saveToLocalStorage(state, 'LOG_OUT')
   },
 

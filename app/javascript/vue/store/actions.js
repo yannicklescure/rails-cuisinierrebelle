@@ -235,38 +235,39 @@ export default {
   },
 
   SET_STORE: (context, {}) => {
-    const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    if (vueStore) {
-      console.log('vueStore')
-      console.log(vueStore)
-      // Remove localStorage prior VueJS
-      if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
-        localStorage.removeItem('cuisinier_rebelle')
-        return fetchStore(context, {})
-      }
-      // Force Update
-      if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) {
-        localStorage.removeItem('cuisinier_rebelle')
-        return fetchStore(context, {})
-      }
-      if (vueStore.data.recipes.length > 0 && (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
-        // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
-        //   console.log('fetching server, refresh vueStore')
-        //   return fetchStore(context, {})
-        // } else {
-          console.log('loading vueStore...')
-          // console.log(vueStore)
-          context.commit("SET_DATA", vueStore)
-          return vueStore
-        // }
-      } else {
-        console.log('fetching server, initiate vueStore')
-        return fetchStore(context, {})
-      }
-    } else {
-      console.log('fetching server, initiate vueStore')
-      return fetchStore(context, {})
-    }
+    // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+    // if (vueStore) {
+    //   console.log('vueStore')
+    //   console.log(vueStore)
+    //   // Remove localStorage prior VueJS
+    //   if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
+    //     localStorage.removeItem('cuisinier_rebelle')
+    //     return fetchStore(context, {})
+    //   }
+    //   // Force Update
+    //   if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) {
+    //     localStorage.removeItem('cuisinier_rebelle')
+    //     return fetchStore(context, {})
+    //   }
+    //   if (vueStore.data.recipes.length > 0 && (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
+    //     // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
+    //     //   console.log('fetching server, refresh vueStore')
+    //     //   return fetchStore(context, {})
+    //     // } else {
+    //       console.log('loading vueStore...')
+    //       // console.log(vueStore)
+    //       context.commit("SET_DATA", vueStore)
+    //       return vueStore
+    //     // }
+    //   } else {
+    //     console.log('fetching server, initiate vueStore')
+    //     return fetchStore(context, {})
+    //   }
+    // } else {
+    //   console.log('fetching server, initiate vueStore')
+    //   return fetchStore(context, {})
+    // }
+    return fetchStore(context, {})
   },
 
   USERS: (context, payload) => {

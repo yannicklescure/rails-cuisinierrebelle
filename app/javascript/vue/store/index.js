@@ -11,18 +11,24 @@ export const createStore = () => {
   let data = {}
 
   if (vueStore) {
+    // Remove localStorage prior VueJS
     if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
+      localStorage.removeItem('cuisinier_rebelle')
+      vueStore = null
+    }
+    // Force Update
+    if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) {
       localStorage.removeItem('cuisinier_rebelle')
       vueStore = null
     }
   }
 
   if (vueStore) {
-    console.log('loading vueStore from store')
+    console.log('loading vueStore')
     data = vueStore.data
   }
   else {
-    console.log('initiate vueStore from store')
+    console.log('initiate vuex store')
     data = {
       authorization: null,
       isAuthenticated: false,
