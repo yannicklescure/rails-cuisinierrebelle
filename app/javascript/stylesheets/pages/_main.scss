@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
 }
 
-main {
+main, .cr-vh100 {
   min-height: calc(100vh - 168px);
   // min-height: calc(100vh - 104px);
   // display: flex;

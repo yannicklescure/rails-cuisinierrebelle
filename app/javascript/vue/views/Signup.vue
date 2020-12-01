@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{ paddingTop: navbarHeight + 'px' }">
+  <div class="container d-flex cr-vh100 justify-content-center align-items-center" :style="{ paddingTop: navbarHeight + 'px' }">
     <div class="d-flex py-3 justify-content-center align-items-center">
       <div class="d-flex flex-column w-md-50">
         <form>
