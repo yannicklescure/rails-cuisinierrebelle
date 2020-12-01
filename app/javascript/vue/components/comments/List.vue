@@ -56,7 +56,7 @@ import { mapGetters } from 'vuex'
 // import CommentForm from './New.vue'
 // import Comment from './Show.vue'
 const CommentForm = () => import('./New.vue')
-const Comment = () => import('./Comment.vue')
+const Comment = () => import('./Show.vue')
 
 export default {
   name: 'Comments',
