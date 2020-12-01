@@ -1,12 +1,12 @@
 <template>
   <div :ref="`share${item.recipe.id}`">
     <div v-if="mobile" @click="shareItemMobile" class="d-flex">
-      <span :class="['material-icons align-items', mobile ? 'md-24' : 'md-18']">share</span>
+      <span :class="['material-icons btn-share', mobile ? 'md-24' : 'md-18']">share</span>
     </div>
     <div v-else>
       <!-- Button trigger modal -->
       <div :ref="`share-btn-${item.recipe.id}`" class="d-flex align-items-center mouse-pointer text-body ml-2" data-toggle="modal" :data-target="`#modal-${item.recipe.id}`">
-        <span :class="['material-icons align-items', mobile ? 'md-24' : 'md-18']">share</span>
+        <span :class="['material-icons btn-share', mobile ? 'md-24' : 'md-18']">share</span>
       </div>
 
       <!-- Modal -->
@@ -16,9 +16,9 @@
 </template>
 
 <style scoped>
-.align-items {
+/*.btn-share {
   margin-bottom: 2px;
-}
+}*/
 </style>
 
 <script>

@@ -5,15 +5,15 @@
       :to="'/r/' + item.recipe.slug + '#comments'"
     >
       <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">comment</i>
-      <span :class="['text-muted font-weight-lighter small', mobile ? 'align-items' : 'ml-1']">{{ countRecipeComments(item) }}</span>
+      <span :class="['text-muted font-weight-lighter small', mobile ? 'btn-comment' : 'ml-1']">{{ countRecipeComments(item) }}</span>
     </router-link>
   </div>
 </template>
 
 <style scoped>
-.align-items {
+/*.btn-comment {
   margin-top: 2px;
-}
+}*/
 </style>
 
 <script>

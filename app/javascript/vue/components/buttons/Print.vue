@@ -1,13 +1,13 @@
 <template>
   <div id="print" @click="print" class="mouse-pointer ml-2 text-decoration-none text-body">
-    <i class="material-icons md-18 d-flex align-items">print</i>
+    <i class="material-icons md-18 d-flex btn-print">print</i>
   </div>
 </template>
 
 <style scoped>
-.align-items {
+/*.btn-print {
   margin-bottom: 3px;
-}
+}*/
 </style>
 
 <script>
