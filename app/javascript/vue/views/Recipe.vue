@@ -71,10 +71,10 @@
       </div>
       <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
       <div v-if="!localhost" class="my-3 d-print-none">
-        <Adsense
+        <InArticleAdsense
           data-ad-client="ca-pub-9223566768445571"
           data-ad-slot="4726766855">
-        </Adsense>
+        </InArticleAdsense>
       </div>
       <vue-markdown :source="item.recipe.direction" />
 
