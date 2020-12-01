@@ -12,7 +12,7 @@
           class="navbar-brand d-flex align-items-center text-body"
           @click.native="scroll2Top"
         >
-          <img src="https://media.cuisinierrebelle.com/favicon-32x32.png" width="32" height="32" class="mr-1">
+          <img v-lazy="'https://media.cuisinierrebelle.com/brand-icon.jpg'" width="32" height="32" class="mr-1">
           <span>{{ $t('navbar.brand') }}</span>
         </router-link>
       </div>
