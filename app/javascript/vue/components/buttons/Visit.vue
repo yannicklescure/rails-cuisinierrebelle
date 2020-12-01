@@ -5,12 +5,6 @@
   </div>
 </template>
 
-<style scoped>
-/*.btn-visit {
-  margin-bottom: 2px;
-}*/
-</style>
-
 <script>
 // import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'

@@ -50,15 +50,6 @@
   </div>
 </template>
 
-<style scoped>
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
-</style>
-
 <script>
 import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'

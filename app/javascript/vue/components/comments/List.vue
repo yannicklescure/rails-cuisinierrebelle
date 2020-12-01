@@ -1,5 +1,5 @@
 <template>
-  <div id="comments" ref="comments" class="d-print-none mt-5" :key="componentKey">
+  <div class="d-print-none mt-5" :key="componentKey">
     <div class="h4 mb-3">{{ $tc('recipe.comments.counts', countRecipeComments(item)) }}</div>
     <comment-form
       :item="item"
@@ -41,15 +41,6 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
-</style>
 
 <script>
 import { mapGetters } from 'vuex'

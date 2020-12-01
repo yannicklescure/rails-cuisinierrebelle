@@ -97,7 +97,7 @@
         <card-small v-for="index in 5" :key="'cs' + index" />
       </div>
 
-      <comments :item="item" />
+      <comments :item="item" id="comments" ref="comments" />
     </div>
   </div>
 </template>

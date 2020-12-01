@@ -15,12 +15,6 @@
   </div>
 </template>
 
-<style scoped>
-/*.btn-share {
-  margin-bottom: 2px;
-}*/
-</style>
-
 <script>
 // import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'

@@ -13,12 +13,6 @@
   </div>
 </template>
 
-<style scoped>
-/*.btn-like {
-  margin-bottom: -5px;
-}*/
-</style>
-
 <script>
 import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'

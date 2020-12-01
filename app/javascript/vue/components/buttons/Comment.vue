@@ -10,12 +10,6 @@
   </div>
 </template>
 
-<style scoped>
-/*.btn-comment {
-  margin-top: 2px;
-}*/
-</style>
-
 <script>
 import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'

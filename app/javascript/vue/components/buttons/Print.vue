@@ -4,12 +4,6 @@
   </div>
 </template>
 
-<style scoped>
-/*.btn-print {
-  margin-bottom: 3px;
-}*/
-</style>
-
 <script>
 // import { mapGetters } from 'vuex'
 
