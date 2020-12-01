@@ -54,9 +54,11 @@
 <script>
 import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
-import CommentForm from './Form.vue'
-import CommentLike from '../buttons/CommentLike.vue'
 import { isMobile } from 'mobile-device-detect'
+// import CommentForm from './Form.vue'
+// import CommentLike from '../buttons/CommentLike.vue'
+const CommentForm = () => import('./Form.vue')
+const CommentLike = () => import('../buttons/CommentLike.vue')
 
 export default {
   name: 'Comment',

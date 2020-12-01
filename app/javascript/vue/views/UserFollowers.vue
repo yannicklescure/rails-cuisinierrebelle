@@ -24,10 +24,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Card from '../components/Card.vue'
-import Follow from '../components/buttons/Follow.vue'
-import UserBanner from '../components/UserBanner.vue'
-import UserCard from '../components/UserCard.vue'
+// import Card from '../components/Card.vue'
+// import Follow from '../components/buttons/Follow.vue'
+// import UserBanner from '../components/UserBanner.vue'
+// import UserCard from '../components/UserCard.vue'
+const Card = () => import('../components/Card.vue')
+const Follow = () => import('../components/buttons/Follow.vue')
+const UserBanner = () => import('../components/UserBanner.vue')
+const UserCard = () => import('../components/UserCard.vue')
 
 export default {
   name: 'UserFollowers',

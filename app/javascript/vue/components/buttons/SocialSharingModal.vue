@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import SocialSharing from './SocialSharing.vue'
+// import SocialSharing from './SocialSharing.vue'
+const SocialSharing = () => import('./SocialSharing.vue')
 
 export default {
   name: 'SocialSharingModal',

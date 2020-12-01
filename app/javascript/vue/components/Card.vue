@@ -62,11 +62,16 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
-import Bookmark from '../components/buttons/Bookmark.vue'
-import Comment from '../components/buttons/Comment.vue'
-import Like from '../components/buttons/Like.vue'
-import Share from '../components/buttons/Share.vue'
-import Visit from '../components/buttons/Visit.vue'
+// import Bookmark from '../components/buttons/Bookmark.vue'
+// import Comment from '../components/buttons/Comment.vue'
+// import Like from '../components/buttons/Like.vue'
+// import Share from '../components/buttons/Share.vue'
+// import Visit from '../components/buttons/Visit.vue'
+const Bookmark = () => import('../components/buttons/Bookmark.vue')
+const Comment = () => import('../components/buttons/Comment.vue')
+const Like = () => import('../components/buttons/Like.vue')
+const Share = () => import('../components/buttons/Share.vue')
+const Visit = () => import('../components/buttons/Visit.vue')
 
 export default {
   name: 'card',

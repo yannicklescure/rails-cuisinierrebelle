@@ -24,7 +24,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Card from '../components/Card.vue'
+// import Card from '../components/Card.vue'
+const Card = () => import('../components/Card.vue')
 
 export default {
   name: 'Bookmarks',

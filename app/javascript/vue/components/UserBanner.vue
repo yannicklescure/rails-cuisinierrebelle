@@ -40,7 +40,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Follow from '../components/buttons/Follow.vue'
+// import Follow from '../components/buttons/Follow.vue'
+const Follow = () => import('../components/buttons/Follow.vue')
 
 export default {
   name: 'UserBanner',

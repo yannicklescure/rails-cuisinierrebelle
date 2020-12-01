@@ -26,8 +26,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import axios from 'axios'
-import Banner from '../components/Banner.vue'
-import Card from '../components/Card.vue'
+// import Banner from '../components/Banner.vue'
+// import Card from '../components/Card.vue'
+const Banner = () => import('../components/Banner.vue')
+const Card = () => import('../components/Card.vue')
+
 
 export default {
   name: 'Home',

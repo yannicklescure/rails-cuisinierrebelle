@@ -24,7 +24,8 @@
 <script>
 // import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
-import SocialSharingModal from './SocialSharingModal.vue'
+// import SocialSharingModal from './SocialSharingModal.vue'
+const SocialSharingModal = () => import('./SocialSharingModal.vue')
 
 export default {
   name: 'BtnShare',

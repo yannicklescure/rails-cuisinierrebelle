@@ -7,8 +7,10 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
-import NavbarLarge from '../components/NavbarLarge.vue'
-import NavbarSmall from '../components/NavbarSmall.vue'
+// import NavbarLarge from '../components/NavbarLarge.vue'
+// import NavbarSmall from '../components/NavbarSmall.vue'
+const NavbarLarge = () => import('../components/NavbarLarge.vue')
+const NavbarSmall = () => import('../components/NavbarSmall.vue')
 
 export default {
   name: 'Navbar',

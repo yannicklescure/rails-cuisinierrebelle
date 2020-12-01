@@ -107,14 +107,23 @@ import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
 // import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
-import BtnBookmark from '../components/buttons/Bookmark.vue'
-import BtnComment from '../components/buttons/Comment.vue'
-import BtnLike from '../components/buttons/Like.vue'
-import BtnPrint from '../components/buttons/Print.vue'
-import BtnShare from '../components/buttons/Share.vue'
-import BtnVisit from '../components/buttons/Visit.vue'
-import CardSmall from '../components/CardSmall.vue'
-import Comments from '../components/comments/List.vue'
+
+// import BtnBookmark from '../components/buttons/Bookmark.vue'
+// import BtnComment from '../components/buttons/Comment.vue'
+// import BtnLike from '../components/buttons/Like.vue'
+// import BtnPrint from '../components/buttons/Print.vue'
+// import BtnShare from '../components/buttons/Share.vue'
+// import BtnVisit from '../components/buttons/Visit.vue'
+// import CardSmall from '../components/CardSmall.vue'
+// import Comments from '../components/comments/List.vue'
+const BtnBookmark = () => import('../components/buttons/Bookmark.vue')
+const BtnComment = () => import('../components/buttons/Comment.vue')
+const BtnLike = () => import('../components/buttons/Like.vue')
+const BtnPrint = () => import('../components/buttons/Print.vue')
+const BtnShare = () => import('../components/buttons/Share.vue')
+const BtnVisit = () => import('../components/buttons/Visit.vue')
+const CardSmall = () => import('../components/CardSmall.vue')
+const Comments = () => import('../components/comments/List.vue')
 
 export default {
   name: 'Recipe',

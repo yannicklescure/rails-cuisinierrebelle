@@ -25,8 +25,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Card from '../components/Card.vue'
-import UserBanner from '../components/UserBanner.vue'
+// import Card from '../components/Card.vue'
+// import UserBanner from '../components/UserBanner.vue'
+const Card = () => import('../components/Card.vue')
+const UserBanner = () => import('../components/UserBanner.vue')
 
 export default {
   name: 'UserRecipes',
