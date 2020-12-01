@@ -111,7 +111,7 @@ environment.plugins.insert(
 )
 
 
-environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('vue', vue)
 environment.config.resolve.alias = { 'vue$': 'vue/dist/vue.esm.js' }
+environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 module.exports = environment
