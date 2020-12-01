@@ -13,7 +13,9 @@
       class="mouse-pointer btn m-2 text-white d-flex flex-column"
     >
       <div class="d-flex justify-content-center align-items-center rounded rounded-circle mb-2" :style="`width:64px;height:64px;backgroundColor: ${ network.color }`">
-        <i :class="network.icon"></i>
+        <font-awesome-layers class="fa-lg">
+          <font-awesome-icon :icon="network.icon" />
+        </font-awesome-layers>
       </div>
       <span class="text-body">{{ network.name }}</span>
     </ShareNetwork>
@@ -21,10 +23,19 @@
 </template>
 
 <script>
+import { FontAwesomeLayers, FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faFacebookF, faTelegramPlane, faTwitter, faVk, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+library.add(faEnvelope, faFacebookF, faTelegramPlane, faTwitter, faVk, faWhatsapp)
 
 export default {
   name: 'SocialSharing',
   props: ['item'],
+  components: {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+  },
   data () {
     return {
       sharing: {
@@ -36,12 +47,12 @@ export default {
         // twitterUser: ''
       },
       networks: [
-        { network: 'email', name: 'Email', icon: 'far fah fa-lg fa-envelope', color: '#333333' },
-        { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f', color: '#1877f2' },
-        { network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane', color: '#0088cc' },
-        { network: 'twitter', name: 'Twitter', icon: 'fab fah fa-lg fa-twitter', color: '#1da1f2' },
-        { network: 'vk', name: 'Vk', icon: 'fab fah fa-lg fa-vk', color: '#4a76a8' },
-        { network: 'whatsapp', name: 'Whatsapp', icon: 'fab fah fa-lg fa-whatsapp', color: '#25d366' },
+        { network: 'email', name: 'Email', icon: ['far', 'envelope'], color: '#333333' },
+        { network: 'facebook', name: 'Facebook', icon: ['fab', 'facebook-f'], color: '#1877f2' },
+        { network: 'telegram', name: 'Telegram', icon: ['fab', 'telegram-plane'], color: '#0088cc' },
+        { network: 'twitter', name: 'Twitter', icon: ['fab', 'twitter'], color: '#1da1f2' },
+        { network: 'vk', name: 'Vk', icon: ['fab', 'vk'], color: '#4a76a8' },
+        { network: 'whatsapp', name: 'Whatsapp', icon: ['fab', 'whatsapp'], color: '#25d366' },
       ]
     }
   },
