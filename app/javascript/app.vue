@@ -10,8 +10,10 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
-import Navbar from './vue/components/Navbar.vue'
-import Footer from './vue/components/Footer.vue'
+// import Navbar from './vue/components/Navbar.vue'
+// import Footer from './vue/components/Footer.vue'
+const Navbar = () => import('./vue/components/Navbar.vue')
+const Footer = () => import('./vue/components/Footer.vue')
 
 export default {
   name: 'app',
