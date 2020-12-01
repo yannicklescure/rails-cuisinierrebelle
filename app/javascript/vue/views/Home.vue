@@ -66,12 +66,12 @@ export default {
     //   return false
     // },
   },
-  watch: {
-    items () {
-      // this.loadMore()
-      console.log('items loaded')
-    }
-  },
+  // watch: {
+  //   items () {
+  //     // this.loadMore()
+  //     console.log('items loaded')
+  //   }
+  // },
   methods: {
     // cardParams (value) {
     //   const cardWidth = value.params.width
