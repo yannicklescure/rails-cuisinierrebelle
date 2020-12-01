@@ -3,7 +3,7 @@
     <div class="card-header bg-white px-0 px-md-2 pt-2 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <img
-          :src="item.user.image.thumb.url"
+          v-lazy="item.user.image.thumb.url"
           width="24px"
           height="24px"
           class="rounded-circle mr-2"

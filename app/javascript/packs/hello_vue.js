@@ -92,6 +92,10 @@ Object.keys(utils).forEach(key => {
   Vue.filter(key, utils[key])
 })
 
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload)
+
 // Vue.filter('truncate', truncate)
 
 document.addEventListener('DOMContentLoaded', () => {

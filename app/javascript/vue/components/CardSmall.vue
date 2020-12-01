@@ -3,8 +3,9 @@
     <div v-if="item" class="d-flex">
       <div class="d-block" style="height: 64px;">
         <img
+          v-lazy="item.recipe.photo.preview.url"
           secure="true" height="64px" width="64px" class="rounded" style="object-fit: cover;"
-          :src="item.recipe.photo.preview.url">
+        >
       </div>
       <div class="ml-3 d-flex flex-column">
         <router-link

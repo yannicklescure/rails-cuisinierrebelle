@@ -5,7 +5,7 @@
         <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex align-items-center order-0']">
           <div class="d-flex flex-grow-1 m-0 align-items-center">
             <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
-              <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
+              <img v-lazy="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
               <div class="d-flex order-0 justify-content-between justify-content-md-start flex-grow-1 align-items-center" data-user="1">
                 <div class="mr-md-2 d-flex align-items-center">
                   <router-link

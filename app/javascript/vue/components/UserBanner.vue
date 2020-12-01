@@ -2,7 +2,7 @@
   <div class="container p-3"  id="user-banner">
     <div v-if="currentUser" class="d-flex justify-content-between p-2 p-md-3 bg-light rounded">
       <div class="mx-md-2 d-flex justify-content-start align-items-center">
-        <img :src="user.image.preview.url" :alt="user.name" class="rounded" width="64" height="64" style="object-fit: cover;">
+        <img v-lazy="user.image.preview.url" :alt="user.name" class="rounded" width="64" height="64" style="object-fit: cover;">
         <div class="ml-3 d-flex flex-column">
           <div class="d-flex align-items-center">
             <router-link :to="'/u/' + user.slug" class="text-capitalize text-body">{{ user.name }}</router-link>
