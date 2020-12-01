@@ -25,6 +25,17 @@ jQuery.htmlPrefilter = function( html ) {
 import 'jquery'
 import '../src/plugins'
 // import '../src/fonts'
+//require webfontloader
+const WebFont = require('webfontloader');
+// @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+WebFont.load({
+    google: {
+      families: ['Raleway:300,400,700', 'Roboto:300,400,700', 'Material Icons']
+    }
+  });
+
 import '../stylesheets/application'
 
 // import '../vanillaJS'

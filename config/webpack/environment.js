@@ -96,9 +96,9 @@ environment.plugins.append('compression',
 
 // config/webpack/environment.js
 const splitChunks = require('./split_chunks')
-const WebpackAssetsManifest = require('webpack-assets-manifest')
-
 environment.config.merge(splitChunks)
+
+const WebpackAssetsManifest = require('webpack-assets-manifest')
 
 // Should override the existing manifest plugin
 environment.plugins.insert(
