@@ -10,6 +10,7 @@
 //     })
 //   ]
 // }
+
 module.exports = {
   test: /\.css$/,
   use: [
@@ -26,4 +27,3 @@ module.exports = {
     }),
   ],
 };
-

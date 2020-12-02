@@ -32,9 +32,6 @@ environment.plugins.prepend('Provide',
 
 environment.config.merge()
 
-const { VueLoaderPlugin } = require('vue-loader')
-const vue = require('./loaders/vue')
-
 // const Critters = require('critters-webpack-plugin');
 
 // environment.plugins.append('critters',
@@ -110,8 +107,13 @@ environment.plugins.insert(
   })
 )
 
-
+const vue = require('./loaders/vue')
 environment.loaders.prepend('vue', vue)
 environment.config.resolve.alias = { 'vue$': 'vue/dist/vue.esm.js' }
+const { VueLoaderPlugin } = require('vue-loader')
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
+
+// const sass = require('./loaders/sass')
+// environment.loaders.prepend('sass', sass)
+
 module.exports = environment
