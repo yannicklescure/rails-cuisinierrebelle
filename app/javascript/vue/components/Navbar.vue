@@ -28,5 +28,8 @@ export default {
       return isMobile
     }
   },
+  mounted () {
+    document.querySelector('#preload').remove()
+  }
 }
 </script>
