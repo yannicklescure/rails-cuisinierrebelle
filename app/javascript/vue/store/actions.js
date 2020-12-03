@@ -59,6 +59,62 @@ export default {
       })
   },
 
+  REPLY_LIKE: (context, payload) => {
+    // console.log(payload)
+    return api.replyLike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("REPLY_LIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  REPLY_UNLIKE: (context, payload) => {
+    // console.log(payload)
+    return api.replyUnlike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("REPLY_UNLIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  COMMENT_LIKE: (context, payload) => {
+    // console.log(payload)
+    return api.commentLike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("COMMENT_LIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  COMMENT_UNLIKE: (context, payload) => {
+    // console.log(payload)
+    return api.commentUnlike(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 204) context.commit("COMMENT_UNLIKE", payload)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   COMMENT_DELETE: (context, payload) => {
     // console.log(payload)
     return api.commentDelete(context, payload)

@@ -15,7 +15,7 @@ class LikePolicy < ApplicationPolicy
 
   def destroy?
     # binding.pry
-    record.user == user || user.admin
+    record.user.id == user.id || user.admin
     # true
   end
 

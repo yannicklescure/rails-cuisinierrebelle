@@ -29,7 +29,10 @@ Rails.application.routes.draw do
       resources :recipes, only: [ :index, :show, :create, :update ]
       resources :recipe_logs, only: [ :create ]
       resources :comments, only: [ :create, :destroy, :update ] do
-        resources :replies, only: [ :create, :destroy, :update ]
+        resources :likes, only: [ :create, :destroy ], controller:  :comment_likes
+        resources :replies, only: [ :create, :destroy, :update ] do
+          resources :likes, only: [ :create, :destroy ], controller:  :reply_likes
+        end
       end
       resources :bookmarks, only: [ :create, :destroy ]
       resources :likes, only: [ :create, :destroy ]

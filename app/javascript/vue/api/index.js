@@ -33,6 +33,48 @@ import axios from 'axios'
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
 
+export const commentLike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/likes`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      // comment_id: payload.comment_id,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const commentUnlike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/likes/0`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      // comment_id: payload.comment_id,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const commentDelete = (context, payload) => {
   return axios({
     validateStatus: status => {
@@ -46,6 +88,54 @@ export const commentDelete = (context, payload) => {
     },
     data: {
       // comment_id: payload.comment_id,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const replyLike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      // recipe_id: payload.recipe_id,
+      // comment_id: payload.comment_id,
+      // user_id: payload.user_id,
+      // content: payload.content,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const replyUnlike = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `${domain}/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes/0`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      // recipe_id: payload.recipe_id,
+      // comment_id: payload.comment_id,
+      // user_id: payload.user_id,
+      // content: payload.content,
     }
   })
   .catch(error => {

@@ -22,7 +22,7 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin || record.user == user
+    record.user.id == user.id || user.admin
   end
 
   def spam?

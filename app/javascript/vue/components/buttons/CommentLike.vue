@@ -1,6 +1,7 @@
 <template>
-  <div class="d-flex align-items-center text-muted mx-2">
-    <span :class="['material-icons md-16', { 'text-primary': isUserLiked }]">thumb_up</span>
+  <div class="d-flex align-items-center text-muted mx-2 mouse-pointer">
+    <span v-if="isUserLiked" @click="unlike" :class="['material-icons md-16 text-primary']">thumb_up</span>
+    <span v-else @click="like" :class="['material-icons md-16']">thumb_up</span>
     <span v-if="item.likes > 0" :class="['font-weight-lighter small ml-1']">{{ item.likes }}</span>
   </div>
 </template>
@@ -27,6 +28,49 @@ export default {
       else return false
     },
   },
-  methods: {},
+  methods: {
+    like () {
+      if (this.type === 'comment') {
+        const payload = {
+          comment_id: this.item.id,
+          recipe_id: this.item.recipe.id
+        }
+        console.log(payload)
+        this.$store
+          .dispatch('COMMENT_LIKE', payload)
+      }
+      if (this.type === 'reply') {
+        const payload = {
+          reply_id: this.item.id,
+          comment_id: this.item.commentId,
+          recipe_id: this.item.recipeId
+        }
+        console.log(payload)
+        this.$store
+          .dispatch('REPLY_LIKE', payload)
+      }
+    },
+    unlike () {
+      if (this.type === 'comment') {
+        const payload = {
+          comment_id: this.item.id,
+          recipe_id: this.item.recipe.id
+        }
+        console.log(payload)
+        this.$store
+          .dispatch('COMMENT_UNLIKE', payload)
+      }
+      if (this.type === 'reply') {
+        const payload = {
+          reply_id: this.item.id,
+          comment_id: this.item.commentId,
+          recipe_id: this.item.recipeId
+        }
+        console.log(payload)
+        this.$store
+          .dispatch('REPLY_UNLIKE', payload)
+      }
+    },
+  },
 }
 </script>

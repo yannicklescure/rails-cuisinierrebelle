@@ -8,6 +8,59 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  COMMENT_LIKE: (state, payload) => {
+    // console.log('COMMENT_LIKE')
+    state.data.user.commentLikes.push(payload.comment_id)
+
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+    const recipePosition = state.data.recipes.indexOf(recipe)
+    const comment = state.data.recipes[recipePosition].comments.filter(r => r.id === payload.comment_id)[0]
+    const commentPosition = state.data.recipes[recipePosition].comments.indexOf(comment)
+    state.data.recipes[recipePosition].comments[commentPosition].likes += 1
+    saveToLocalStorage(state, 'COMMENT_LIKE')
+  },
+
+  COMMENT_UNLIKE: (state, payload) => {
+    const el = state.data.user.commentLikes.filter(r => r === payload.comment_id)[0]
+    const position = state.data.user.commentLikes.indexOf(el)
+    state.data.user.commentLikes.splice(position, 1)
+
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+    const recipePosition = state.data.recipes.indexOf(recipe)
+    const comment = state.data.recipes[recipePosition].comments.filter(r => r.id === payload.comment_id)[0]
+    const commentPosition = state.data.recipes[recipePosition].comments.indexOf(comment)
+    state.data.recipes[recipePosition].comments[commentPosition].likes -= 1
+    saveToLocalStorage(state, 'COMMENT_UNLIKE')
+  },
+
+  REPLY_LIKE: (state, payload) => {
+    state.data.user.replyLikes.push(payload.reply_id)
+
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+    const recipePosition = state.data.recipes.indexOf(recipe)
+    const comment = state.data.recipes[recipePosition].comments.filter(r => r.id === payload.comment_id)[0]
+    const commentPosition = state.data.recipes[recipePosition].comments.indexOf(comment)
+    const reply = state.data.recipes[recipePosition].comments[commentPosition].replies.filter(r => r.id === payload.reply_id)[0]
+    const replyPosition = state.data.recipes[recipePosition].comments[commentPosition].replies.indexOf(reply)
+    state.data.recipes[recipePosition].comments[commentPosition].replies[replyPosition].likes += 1
+    saveToLocalStorage(state, 'REPLY_LIKE')
+  },
+
+  REPLY_UNLIKE: (state, payload) => {
+    const el = state.data.user.replyLikes.filter(r => r === payload.reply_id)[0]
+    const position = state.data.user.replyLikes.indexOf(el)
+    state.data.user.replyLikes.splice(position, 1)
+
+    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.recipe_id)[0]
+    const recipePosition = state.data.recipes.indexOf(recipe)
+    const comment = state.data.recipes[recipePosition].comments.filter(r => r.id === payload.comment_id)[0]
+    const commentPosition = state.data.recipes[recipePosition].comments.indexOf(comment)
+    const reply = state.data.recipes[recipePosition].comments[commentPosition].replies.filter(r => r.id === payload.reply_id)[0]
+    const replyPosition = state.data.recipes[recipePosition].comments[commentPosition].replies.indexOf(reply)
+    state.data.recipes[recipePosition].comments[commentPosition].replies[replyPosition].likes -= 1
+    saveToLocalStorage(state, 'REPLY_UNLIKE')
+  },
+
   REPLY_EDIT: (state, payload) => {
     console.log(payload)
     // console.log(state)
