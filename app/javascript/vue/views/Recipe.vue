@@ -97,7 +97,9 @@
         <card-small v-for="index in 5" :key="'cs' + index" />
       </div>
 
-      <comments :item="item" id="comments" ref="comments" />
+      <div id="comments" ref="comments">
+        <comments :item="item" />
+      </div>
     </div>
   </div>
 </template>
@@ -227,8 +229,10 @@ export default {
       const target = this.$route.hash
       console.log(this.$route)
       console.log(target)
+      console.log(target.match(/(?:#)(.+)/)[1])
       if(target) {
-        let element = this.$el.querySelector(target)
+        // let element = this.$el.querySelector(target)
+        let element = this.$refs[target.match(/(?:#)(.+)/)[1]]
 
         const scrollOptions = {
           top: element.offsetTop - this.navbarHeight,
