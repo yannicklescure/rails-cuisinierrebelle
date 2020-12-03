@@ -16,7 +16,6 @@
     "bootstrap": "^4.5.2",
     "channels": "^0.0.4",
     "compression-webpack-plugin": "^6.0.2",
-    "critters-webpack-plugin": "^2.5.0",
     "css-loader": "^4.3.0",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
@@ -59,7 +58,8 @@
     "vuex-persistedstate": "^4.0.0-beta.1",
     "vuex-router-sync": "^5.0.0",
     "webfontloader": "^1.6.28",
-    "webpack-assets-manifest": "^3.1.1"
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-critical": "^1.1.1"
   },
   "devDependencies": {
     "webpack": "^4.41.4",

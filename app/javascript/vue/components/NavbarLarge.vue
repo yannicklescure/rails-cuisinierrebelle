@@ -35,6 +35,9 @@
         <router-link to="/bookmarks" class="nav-item mx-2 text-body text-decoration-none">
           <i class="material-icons md-18 d-flex">bookmarks</i>
         </router-link>
+        <router-link to="/notifications" class="nav-item mx-2 text-body text-decoration-none">
+          <i class="material-icons md-18 d-flex">notifications_none</i>
+        </router-link>
         <div class="nav-item mx-2 dropdown">
           <div class="text-body mouse-pointer" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons md-18 d-flex">more_vert</i>

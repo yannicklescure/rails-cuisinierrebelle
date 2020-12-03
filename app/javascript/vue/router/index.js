@@ -27,6 +27,7 @@ const Bookmarks = () => import('../views/Bookmarks.vue')
 const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
+const Notifications = () => import('../views/Notifications.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
@@ -164,6 +165,15 @@ const routes = [
     component: Signup,
     meta: {
       auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/notifications',
+    name: 'Notifications',
+    component: Notifications,
+    meta: {
+      auth: true // A protected route
     },
     beforeEnter: ifAuthenticated,
   },

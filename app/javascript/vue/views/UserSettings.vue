@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ paddingTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <p>UserSettings</p>
   </div>
 </template>

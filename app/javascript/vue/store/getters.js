@@ -37,12 +37,6 @@ export default {
       return sum
     }
   },
-
-  recipe (state) {
-    return keyword => state.data.recipes.filter( item => {
-      return item.recipe.slug === keyword
-    })[0];
-  },
   bookmarks (state) {
     return state.data.user.authentication_token ? state.data.user.bookmarks
       .sort((a, b) => (new Date(a.created_at).getTime() > new Date(b.created_at).getTime()) ? 1 : -1).reverse()
@@ -56,6 +50,11 @@ export default {
   },
   top100 (state) {
     return state.data.recipes.sort((a, b) => (a.recipe.views > b.recipe.views) ? 1 : -1).reverse().slice(0, 100)
+  },
+  recipe (state) {
+    return keyword => state.data.recipes.filter( item => {
+      return item.recipe.slug === keyword
+    })[0];
   },
   recipes (state) {
     return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()

@@ -30,19 +30,58 @@ environment.plugins.prepend('Provide',
   })
 )
 
-environment.config.merge()
 
-// const Critters = require('critters-webpack-plugin');
+// module.exports = {
+//   entry: 'index.js',
+//   output: {
+//     path: __dirname + '/dist',
+//     filename: 'index_bundle.js'
+//   },
+//   plugins: [
+//     new HtmlWebpackPlugin()
+//   ]
+// }
 
-// environment.plugins.append('critters',
-//   new Critters({
-//     // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
-//     preload: 'swap',
+// environment.config.set('entry', 'index.js')
+// environment.config.set('output', {
+//   path: __dirname + '/dist',
+//   filename: 'index_bundle.js'
+// })
 
-//     // Don't inline critical font-face rules, but preload the font URLs:
-//     preloadFonts: true
-//   })
-// );
+// const { resolve } = require('path');
+// const HTML = require('html-webpack-plugin');
+// const WebpackCritical = require('webpack-critical');
+
+// const dist = resolve('build');
+
+// environment.config.set('output.path', dist)
+// // environment.plugins.prepend(
+// //   'WebpackCritical',
+// //   new WebpackCritical({
+// //     // context: dist,
+// //     // ignore: [/bootstrap/, '@font-face']
+// //   })
+// // )
+
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// environment.plugins.prepend(
+//   'HtmlWebpackPlugin',
+//   new HtmlWebpackPlugin()
+// )
+
+// module.exports = {
+//   output: {
+//     path: dist
+//   },
+//   // ...
+//   plugins: [
+//     new HTML({ ... })
+//     new WebpackCritical({
+//       context: dist,
+//       ignore: [/bootstrap/, '@font-face']
+//     })
+//   ]
+// }
 
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 // environment.plugins.delete("UglifyJs")
@@ -92,8 +131,6 @@ environment.plugins.append('compression',
 );
 
 // config/webpack/environment.js
-const splitChunks = require('./split_chunks')
-environment.config.merge(splitChunks)
 
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
@@ -116,4 +153,8 @@ environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 // const sass = require('./loaders/sass')
 // environment.loaders.prepend('sass', sass)
 
+const splitChunks = require('./split_chunks')
+environment.config.merge(splitChunks)
+
+environment.config.merge()
 module.exports = environment

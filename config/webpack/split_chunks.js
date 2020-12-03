@@ -19,7 +19,13 @@ module.exports = {
           minChunks: 2,
           priority: -20,
           reuseExistingChunk: true
-        }
+        },
+        styles: {
+          name: 'styles',
+          test: /\.(sass|scss|css)$/,
+          chunks: 'all',
+          enforce: true,
+        },
       }
     }
   }
