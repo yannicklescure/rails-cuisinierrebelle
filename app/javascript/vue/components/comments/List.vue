@@ -9,9 +9,11 @@
       <comment
         :item="comment"
         :type="'comment'"
+        :lastCommentId="lastCommentId"
         :key="'c' + i"
         v-on:commentDestroyed="commentDestroyed"
         v-on:commentReplyNew="commentReplyNew"
+        v-on:lastCommentMounted="lastCommentMounted"
       />
       <div
         v-if="comment.replies.length"
@@ -68,8 +70,14 @@ export default {
       // return this.recipe(this.$route.params.id).comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
     },
+    lastCommentId () {
+      return this.comments[this.comments.length-1].id
+    },
   },
   methods: {
+    lastCommentMounted (value) {
+      this.$emit('lastCommentMounted', value)
+    },
     commentNew (payload) {
       console.log(payload)
       // this.item.comments.push(payload.data)
@@ -120,7 +128,10 @@ export default {
     }
   },
   mounted () {
-    this.initShow()
+    this.$nextTick(() => {
+      this.initShow()
+      this.$emit('commentsReady', true)
+    })
   }
 }
 </script>

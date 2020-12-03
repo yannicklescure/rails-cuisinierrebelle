@@ -98,7 +98,10 @@
       </div>
 
       <div id="comments" ref="comments">
-        <comments :item="item" />
+        <comments
+          :item="item"
+          v-on:lastCommentMounted="lastCommentMounted"
+        />
       </div>
     </div>
   </div>
@@ -224,23 +227,29 @@ export default {
         this.$refs.bookmarkFillBig.innerHTML = ''
       }, 1000);
     },
+    lastCommentMounted (payload) {
+      console.log(`lastCommentMounted ${payload}`)
+      // this.scroll2Anchor(payload)
+    },
     scroll2Anchor () {
       // const currentPage = this.$route.fullpath
       const target = this.$route.hash
-      console.log(this.$route)
-      console.log(target)
-      console.log(target.match(/(?:#)(.+)/)[1])
-      if(target) {
-        // let element = this.$el.querySelector(target)
-        let element = this.$refs[target.match(/(?:#)(.+)/)[1]]
-
-        const scrollOptions = {
-          top: element.offsetTop - this.navbarHeight,
-          left: 0,
-          behavior: 'smooth'
-        };
-        window.scrollTo(scrollOptions)
-        window.history.pushState("object or string", "Title", this.$route.path)
+      if(target && target === '#comments') {
+        // console.log(this.$route)
+        console.log(target)
+        // console.log(target.match(/(?:#)(.+)/)[1])
+        let element = this.$el.querySelector(target)
+        // if (target.match(/(?:#)(.+)/)[1] === 'comments') element = this.$refs.comments
+        console.log(element)
+        if (element) {
+          const scrollOptions = {
+            top: element.offsetTop - this.navbarHeight,
+            left: 0,
+            behavior: 'smooth'
+          };
+          window.scrollTo(scrollOptions)
+          window.history.pushState("object or string", "Title", this.$route.path)
+        }
       }
     },
     fetchItem () {

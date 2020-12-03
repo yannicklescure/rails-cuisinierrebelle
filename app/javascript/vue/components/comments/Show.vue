@@ -1,5 +1,5 @@
 <template>
-  <div :id="'comment' + item.id" class="mt-3 mb-2">
+  <div :id="'comment' + item.id" :ref="type + item.id" class="mt-3 mb-2">
     <div class="d-flex align-items-center">
       <img
         :src="item.user.image.thumb.url"
@@ -62,7 +62,7 @@ const CommentLike = () => import('../buttons/CommentLike.vue')
 
 export default {
   name: 'Comment',
-  props: ['item', 'type'],
+  props: ['item', 'type', 'lastCommentId'],
   data () {
     return {
       edit: false,
@@ -75,7 +75,7 @@ export default {
     VueMarkdown,
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters(['isAuthenticated', 'currentUser', 'navbarHeight']),
     mobile () {
       return isMobile
     },
@@ -162,7 +162,40 @@ export default {
       } else {
         return this.$tc('comment.years', Math.trunc(between / 311004000))
       }
-    }
+    },
+    scroll2Anchor () {
+      // const currentPage = this.$route.fullpath
+      const target = this.$route.hash
+      if(target) {
+        console.log(this.$refs)
+        console.log(this.$route)
+        console.log(target)
+        console.log(target.match(/(?:#)(.+)/)[1])
+        let element = this.$refs[target.match(/(?:#)(.+)/)[1]]
+        // let element = this.$el.querySelector(target)
+        // let element = this.$el
+        // if (target.match(/(?:#)(.+)/)[1] === 'comments') element = this.$refs.comments
+        console.log(element)
+        if (element) {
+          const scrollOptions = {
+            top: element.offsetTop - this.navbarHeight,
+            left: 0,
+            behavior: 'smooth'
+          };
+          window.scrollTo(scrollOptions)
+          window.history.pushState("object or string", "Title", this.$route.path)
+        }
+      }
+    },
   },
+  mounted () {
+    console.log(`${this.type} ${this.item.id}`)
+    if (this.$route.hash && this.item.id === parseInt(this.$route.hash.match(/(?:#comment)(.+)/)[1])) this.scroll2Anchor()
+    // if (this.type === 'comment' && this.item.id === this.lastCommentId) {
+    //   console.log('all comments mounted')
+    //   console.log(this.$route)
+    //   this.$emit('lastCommentMounted', true)
+    // }
+  }
 }
 </script>
