@@ -21,6 +21,9 @@
 # /node_modules
 # /yarn-error.log
 
+/build
+/config/webpack/dist
+
 /public/assets
 .byebug_history
 
