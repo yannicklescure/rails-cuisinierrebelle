@@ -39,6 +39,9 @@ export const createStore = () => {
         recipes: [],
       },
       timestamp: null,
+      notifications: {
+        data: []
+      },
       user: {
         email: null,
         authentication_token: null,

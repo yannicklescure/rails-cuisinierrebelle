@@ -4,8 +4,8 @@
       <div class="d-flex justify-content-start align-items-center">
         <img
           v-lazy="item.user.image.thumb.url"
-          width="24px"
-          height="24px"
+          width="24"
+          height="24"
           class="rounded-circle mr-2"
           style="object-fit: cover;"
         >

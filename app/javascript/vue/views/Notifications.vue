@@ -1,6 +1,35 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <p>Notifications</p>
+    <div class="container">
+      <div v-for="item, i in data" class="d-flex flex-column">
+        <div class="d-flex align-items-start rounded bg-light my-2 p-2">
+          <img
+            v-lazy="item.user.image.thumb.url"
+            class="rounded-circle"
+            width="32"
+            height="32"
+            style="object-fit: cover;"
+          >
+          <div class="ml-3 d-flex flex-column">
+            <div class="d-flex align-items-center" style="font-size: 90%;">
+              <div v-if="item.type === 'recipe'">{{ item.user.name }} aime votre recette.</div>
+              <div v-if="item.type === 'comment'">{{ item.user.name }} aime votre commentaire.</div>
+              <div v-if="item.type === 'reply'">{{ item.user.name }} aime votre réponse.</div>
+            </div>
+            <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
+            <div class="small text-muted">
+              {{ item.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="busy"
+      infinite-scroll-distance="0"
+      infinite-scroll-immediate-check="true"
+    ></div>
   </div>
 </template>
 
@@ -13,23 +42,64 @@ export default {
     return {
       componentKey: 0,
       // navbarHeight: 0,
+      loading: false,
+      busy: false,
+      data: [],
+      // items: {
+      //   data: []
+      // },
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'currentUser']),
-    notifications () {
-      return this.currentUser.notifications
+    ...mapGetters(['navbarHeight', 'currentUser', 'notifications']),
+    // notifications () {
+    //   return this.currentUser.notifications
+    // }
+    items () {
+      return this.notifications.data
+        .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
     }
   },
   methods: {
+    timeAgo (time) {
+      const between = Math.trunc((new Date().getTime() - time) / 1000)
+      if (between < 3600) {
+        return this.$tc('comment.minutes', Math.trunc(between / 60))
+      } else if (between < 86400) {
+        return this.$tc('comment.hours', Math.trunc(between / 3600))
+      } else if (between < 2592000) {
+        return this.$tc('comment.days', Math.trunc(between / 86400))
+      } else if (between < 31104000) {
+        return this.$tc('comment.months', Math.trunc(between / 2592000))
+      } else {
+        return this.$tc('comment.years', Math.trunc(between / 311004000))
+      }
+    },
+    loadMore () {
+      if (this.data.length < this.items.length) {
+        console.log('loadMore')
+        this.busy = true;
+        setTimeout(() => {
+          const cards = 24
+          const min = this.data.length
+          const max = min + cards <= this.items.length ? min + cards : this.items.length
+          for (let i = min, j = max; i < j; i++) {
+            this.data.push(this.items[i]);
+          }
+          this.busy = false;
+        }, 0);
+      }
+    },
     fetchItem () {
       console.log('fetching notifications data')
       this.loading = true
       this.$store
-        .dispatch('RECIPE', this.$route.params.id)
+        .dispatch('NOTIFICATIONS', {})
         .then( response => {
           console.log(response)
-          this.item = response.data
+          this.data = response.data.data
+            .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
+            .splice(0, 24)
           // if (this.log) {
           //   this.$store
           //     .dispatch('SET_STORE', {})
@@ -50,7 +120,7 @@ export default {
     }
   },
   beforeMount () {
-    // this.fetchItem()
+    this.fetchItem()
   },
   mounted () {
     this.$nextTick(() => {})

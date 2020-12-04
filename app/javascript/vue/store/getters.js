@@ -64,6 +64,9 @@ export default {
       return user.slug === keyword
     })[0];
   },
+  notifications (state) {
+    return state.data.notifications
+  },
   currentUser (state) {
     return state.data.user
   },

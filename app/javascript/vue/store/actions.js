@@ -17,6 +17,21 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
 
 export default {
 
+  NOTIFICATIONS: (context, payload) => {
+    // console.log(payload)
+    return api.notifications(context, payload)
+      .then(response => {
+        console.log(`response.status ${response.status}`)
+        if (response.status === 200) context.commit("NOTIFICATIONS", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+
   SEARCH: (context, payload) => {
     // console.log(payload)
     return api.search(context, payload)

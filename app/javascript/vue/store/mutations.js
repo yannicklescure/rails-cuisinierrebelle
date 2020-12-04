@@ -8,6 +8,11 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  NOTIFICATIONS: (state, payload) => {
+    console.log(payload)
+    state.data.notifications = payload.data
+  },
+
   COMMENT_LIKE: (state, payload) => {
     // console.log('COMMENT_LIKE')
     state.data.user.commentLikes.push(payload.comment_id)

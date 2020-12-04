@@ -16,8 +16,13 @@
           <span>{{ $t('navbar.brand') }}</span>
         </router-link>
       </div>
-      <div v-on:click="collapseMenu">
-        <i class="material-icons md-24 d-flex">menu</i>
+      <div class="d-flex align-items-center">
+        <router-link to="/notifications" class="nav-item mx-2 text-body text-decoration-none">
+          <i class="material-icons md-24 d-flex">notifications_none</i>
+        </router-link>
+        <div v-on:click="collapseMenu">
+          <i class="material-icons md-24 d-flex">menu</i>
+        </div>
       </div>
     </div>
     <transition name="fade">
