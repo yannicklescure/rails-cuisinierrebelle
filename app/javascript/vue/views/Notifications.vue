@@ -18,17 +18,17 @@
                 v-if="item.type === 'recipe'"
                 :to="item.slug"
                 class="text-body"
-              >{{ item.user.name }} a aimé votre recette.</router-link>
+              >{{ $t('notifications.like.recipe', { user: item.user.name }) }}</router-link>
               <router-link
                 v-if="item.type === 'comment'"
                 :to="item.slug"
                 class="text-body"
-              >{{ item.user.name }} a aimé votre commentaire.</router-link>
+              >{{ $t('notifications.like.comment', { user: item.user.name }) }}</router-link>
               <router-link
                 v-if="item.type === 'reply'"
                 :to="item.slug"
                 class="text-body"
-              >{{ item.user.name }} a aimé votre réponse.</router-link>
+              >{{ $t('notifications.like.reply', { user: item.user.name }) }}</router-link>
             </div>
             <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
             <div class="small text-muted">
@@ -90,8 +90,8 @@ export default {
       }
     },
     loadMore () {
-      console.log('loadMore')
       if (this.data.length < this.items.length) {
+        console.log('loadMore')
         this.busy = true;
         setTimeout(() => {
           const cards = 24

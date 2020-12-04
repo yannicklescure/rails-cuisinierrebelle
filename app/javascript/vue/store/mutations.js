@@ -10,7 +10,11 @@ export default {
 
   NOTIFICATIONS: (state, payload) => {
     console.log(payload)
-    state.data.notifications = payload.data
+    // state.data.notifications = payload.data
+    for (const [key, value] of Object.entries(payload.data)) {
+      // console.log(`${key}: ${value}`)
+      state.data.notifications[key] = payload.data[key]
+    }
   },
 
   COMMENT_LIKE: (state, payload) => {

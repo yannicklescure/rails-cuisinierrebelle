@@ -198,5 +198,12 @@ export const fr = () => {
     RegistrationConfirmation: {
       success: '{firstName}, votre compte est maintenant actif.',
     },
+    notifications: {
+      like: {
+        recipe: '{user} a aimé votre recette.',
+        comment: '{user} a aimé votre commentaire.',
+        reply: '{user} a aimé votre réponse.',
+      }
+    }
   }
 }
