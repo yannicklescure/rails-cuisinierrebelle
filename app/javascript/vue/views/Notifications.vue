@@ -1,20 +1,34 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <div class="container">
+    <div class="container py-2">
       <div v-for="item, i in data" class="d-flex flex-column">
         <div class="d-flex align-items-start rounded bg-light my-2 p-2">
-          <img
-            v-lazy="item.user.image.thumb.url"
-            class="rounded-circle"
-            width="32"
-            height="32"
-            style="object-fit: cover;"
-          >
+          <router-link :to="'/u/' + item.user.slug">
+            <img
+              v-lazy="item.user.image.thumb.url"
+              class="rounded-circle"
+              width="32"
+              height="32"
+              style="object-fit: cover;"
+            >
+           </router-link>
           <div class="ml-3 d-flex flex-column">
             <div class="d-flex align-items-center" style="font-size: 90%;">
-              <div v-if="item.type === 'recipe'">{{ item.user.name }} aime votre recette.</div>
-              <div v-if="item.type === 'comment'">{{ item.user.name }} aime votre commentaire.</div>
-              <div v-if="item.type === 'reply'">{{ item.user.name }} aime votre réponse.</div>
+              <router-link
+                v-if="item.type === 'recipe'"
+                :to="item.slug"
+                class="text-body"
+              >{{ item.user.name }} a aimé votre recette.</router-link>
+              <router-link
+                v-if="item.type === 'comment'"
+                :to="item.slug"
+                class="text-body"
+              >{{ item.user.name }} a aimé votre commentaire.</router-link>
+              <router-link
+                v-if="item.type === 'reply'"
+                :to="item.slug"
+                class="text-body"
+              >{{ item.user.name }} a aimé votre réponse.</router-link>
             </div>
             <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
             <div class="small text-muted">
@@ -27,7 +41,7 @@
     <div
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="busy"
-      infinite-scroll-distance="0"
+      infinite-scroll-distance="navbarHeight"
       infinite-scroll-immediate-check="true"
     ></div>
   </div>
@@ -76,8 +90,8 @@ export default {
       }
     },
     loadMore () {
+      console.log('loadMore')
       if (this.data.length < this.items.length) {
-        console.log('loadMore')
         this.busy = true;
         setTimeout(() => {
           const cards = 24
@@ -105,7 +119,7 @@ export default {
           //     .dispatch('SET_STORE', {})
           //     .then(() => this.log = false)
           // }
-          this.componentKey += 1
+          // this.componentKey += 1
           this.loading = false
         })
         .finally(() => {
@@ -113,12 +127,12 @@ export default {
         })
     },
   },
-  watch: {
-    async '$route' () {
-      console.log(this.$route.params.id)
-      // await this.fetchItem()
-    }
-  },
+  // watch: {
+  //   async '$route' () {
+  //     console.log(this.$route.params.id)
+  //     await this.fetchItem()
+  //   }
+  // },
   beforeMount () {
     this.fetchItem()
   },

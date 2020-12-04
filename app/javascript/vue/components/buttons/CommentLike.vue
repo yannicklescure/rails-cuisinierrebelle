@@ -1,7 +1,13 @@
 <template>
   <div class="d-flex align-items-center text-muted mx-2 mouse-pointer">
     <span v-if="isUserLiked" @click="unlike" :class="['material-icons md-16 text-primary']">thumb_up</span>
-    <span v-else @click="like" :class="['material-icons md-16']">thumb_up</span>
+    <span
+      v-else @click="like"
+      :class="['material-icons md-16']"
+      data-toggle="tooltip"
+      data-placement="bottom"
+      :title="$t('comment.like')"
+    >thumb_up</span>
     <span v-if="item.likes > 0" :class="['font-weight-lighter small ml-1']">{{ item.likes }}</span>
   </div>
 </template>

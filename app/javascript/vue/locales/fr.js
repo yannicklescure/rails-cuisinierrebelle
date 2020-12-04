@@ -175,6 +175,12 @@ export const fr = () => {
       days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
       months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
       years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
+      are_you_sure: 'Êtes-vous sûr ?',
+      destroy: 'Supprimer',
+      cancel: 'Annuler',
+      edit: 'Éditer',
+      reply: 'Répondre',
+      like: 'Aimer',
     },
     commentForm: {
       comment: 'Publier',

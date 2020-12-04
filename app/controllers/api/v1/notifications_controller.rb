@@ -5,7 +5,7 @@ class Api::V1::NotificationsController < Api::V1::BaseController
   def index
     # binding.pry
     @user = policy_scope(User).find(current_user.id)
-    likes = @user.recipes.filter_map { |r| Like.find_by(recipe: r) }.map { |e| {
+    likes = Like.where(recipe: @user.recipes).reject { |s| s.user_id == current_user.id }.map { |e| {
         user: User.find(e.user_id),
         recipe: Recipe.find(e.recipe_id),
         timestamp: (e.created_at.to_f * 1000).to_i
@@ -21,14 +21,16 @@ class Api::V1::NotificationsController < Api::V1::BaseController
           }
         },
         title: e[:recipe].title,
+        slug: "/r/#{e[:recipe].slug}",
         timestamp: e[:timestamp],
         type: 'recipe'
       }
     }
 
-    commentLikes = @user.comments.filter_map { |r| CommentLike.find_by(comment: r) }.map { |e| {
+    commentLikes = CommentLike.where(comment: @user.comments).reject { |s| s.user_id == current_user.id }.map { |e| {
         user: User.find(e.user_id),
         comment: Comment.find(e.comment_id),
+        recipe: Comment.find(e.comment_id).recipe,
         timestamp: (e.created_at.to_f * 1000).to_i
       }
     }.map { |e| {
@@ -42,14 +44,16 @@ class Api::V1::NotificationsController < Api::V1::BaseController
           }
         },
         title: e[:comment].content,
+        slug: "/r/#{e[:recipe].slug}#comment#{e[:comment].id}",
         timestamp: e[:timestamp],
         type: 'comment'
       }
     }
 
-    replyLikes = @user.replies.filter_map { |r| ReplyLike.find_by(reply: r) }.map { |e| {
+    replyLikes = ReplyLike.where(reply: @user.replies).reject { |s| s.user_id == current_user.id }.map { |e| {
         user: User.find(e.user_id),
         reply: Reply.find(e.reply_id),
+        recipe: Reply.find(e.reply_id).comment.recipe,
         timestamp: (e.created_at.to_f * 1000).to_i
       }
     }.map { |e| {
@@ -63,6 +67,7 @@ class Api::V1::NotificationsController < Api::V1::BaseController
           }
         },
         title: e[:reply].content,
+        slug: "/r/#{e[:recipe].slug}#reply#{e[:reply].id}",
         timestamp: e[:timestamp],
         type: 'reply'
       }

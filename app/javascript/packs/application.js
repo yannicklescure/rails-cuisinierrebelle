@@ -40,14 +40,14 @@ import '../stylesheets/application'
 
 // import '../vanillaJS'
 
-import { flashes } from "../vanillaJS/components/flashes";
+// import { flashes } from "../vanillaJS/components/flashes";
 
-const notice = document.querySelector('.notice');
-if(notice != null) {
-  // const { flashes } = await import("../vanillaJS/components/flashes");
-  flashes();
-  $('[data-toggle="tooltip"]').tooltip();
-}
+// const notice = document.querySelector('.notice');
+// if(notice != null) {
+//   // const { flashes } = await import("../vanillaJS/components/flashes");
+//   flashes();
+// }
+$('[data-toggle="tooltip"]').tooltip();
 
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}
