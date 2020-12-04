@@ -97,6 +97,13 @@
         <card-small v-for="index in 5" :key="'cs' + index" />
       </div>
 
+      <div v-if="!localhost" class="my-3 d-print-none">
+        <InArticleAdsense
+          data-ad-client="ca-pub-9223566768445571"
+          data-ad-slot="4726766855">
+        </InArticleAdsense>
+      </div>
+
       <div id="comments" ref="comments">
         <comments
           :item="item"
