@@ -1,5 +1,5 @@
 <template>
-  <div :id="'comment' + item.id" :ref="type + item.id" class="mt-3 mb-2">
+  <div :id="type + item.id" :ref="type + item.id" class="mt-3 mb-2">
     <div class="d-flex align-items-center">
       <img
         :src="item.user.image.thumb.url"
@@ -239,7 +239,7 @@ export default {
   },
   mounted () {
     console.log(`${this.type} ${this.item.id}`)
-    if (this.$route.hash && this.item.id === parseInt(this.$route.hash.match(/(?:#comment)(.+)/)[1])) this.scroll2Anchor()
+    if (this.$route.hash && this.item.id === parseInt(this.$route.hash.match(/(?:#comment|#reply?)(.+)/)[1])) this.scroll2Anchor()
     // if (this.type === 'comment' && this.item.id === this.lastCommentId) {
     //   console.log('all comments mounted')
     //   console.log(this.$route)
