@@ -76,7 +76,7 @@
           data-ad-slot="4726766855">
         </InArticleAdsense>
       </div>
-      <vue-markdown :source="item.recipe.direction" />
+      <vue-markdown-plus :source="item.recipe.direction" />
 
       <div v-if="item.recipe.video" class="row mt-5 d-print-none">
         <div class="col col-md-8 mx-auto">
@@ -118,7 +118,7 @@
 import { isMobile } from 'mobile-device-detect'
 import { mapGetters } from 'vuex'
 // import axios from 'axios'
-import VueMarkdown from 'vue-markdown'
+import VueMarkdownPlus from 'vue-markdown-plus'
 
 // import BtnBookmark from '../components/buttons/Bookmark.vue'
 // import BtnComment from '../components/buttons/Comment.vue'
@@ -205,7 +205,7 @@ export default {
     BtnVisit,
     CardSmall,
     Comments,
-    VueMarkdown,
+    VueMarkdownPlus,
   },
   computed: {
     ...mapGetters(['navbarHeight', 'recipe', 'currentUser']),

@@ -25,7 +25,7 @@
       />
     </div>
     <div v-else class="mt-2 bg-light rounded p-3">
-      <vue-markdown :source="item.content" class="text-break" />
+      <vue-markdown-plus :source="item.content" class="text-break" />
     </div>
     <comment-buttons
       :item="item"
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
+import VueMarkdownPlus from 'vue-markdown-plus'
 import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
 // import CommentForm from './Form.vue'
@@ -68,7 +68,7 @@ export default {
     CommentButtons,
     CommentForm,
     // CommentLike,
-    VueMarkdown,
+    VueMarkdownPlus,
   },
   computed: {
     ...mapGetters(['isAuthenticated', 'currentUser', 'navbarHeight']),
