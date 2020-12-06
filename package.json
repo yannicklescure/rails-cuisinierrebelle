@@ -58,8 +58,7 @@
     "vuex-persistedstate": "^4.0.0-beta.1",
     "vuex-router-sync": "^5.0.0",
     "webfontloader": "^1.6.28",
-    "webpack-assets-manifest": "^3.1.1",
-    "webpack-critical": "^1.1.1"
+    "webpack-assets-manifest": "^3.1.1"
   },
   "devDependencies": {
     "webpack": "^4.41.4",
