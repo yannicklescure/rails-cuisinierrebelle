@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         post :unfollow
       end
       resources :notifications, only: [ :index ]
+      resources :analytics, only: [ :index ]
       resources :state, only: [ :index ]
       resources :search, only: [ :index ]
       resources :recipes, only: [ :index, :show, :create, :update ]

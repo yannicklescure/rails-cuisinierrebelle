@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cuisinier-rebelle",
+  "private_key_id": "b05e87863f39082a1464cdecd3129371caefa131",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDOB6hOKo2CoySD\nulTX1NGAsLAjM6KgJm2CbVVIJkLnr6aqkDdtShroPGE0i9uZg74ccwSYS/QQD7yR\nm+LF4H3lCBiVhzuSgizvdvnnMiLXuVz9DEXfRPSVr19se1FEQPry7adptv8rp6Kc\nWs9FH2WqCUpZSSxTsJmmMKCOofEVUezyzTKavzp7G6FKXJe7ld8Va9WceQR8seXK\nCbKf4mwTOt7L4dpd5ZCVab5d9McO6+JjJonlCmREtdCYIIqECsoiiVGRkOYOSm7T\nulRFQW6ARA82Kve6S8FaPCPRNqNZ9whx4MuWzREMMLgtlH2fIwx3hBLgwPDN+Vpo\nBF4Q0PIjAgMBAAECggEAH5leD2sIXC5wZcG4zIeIAFBZG3UKbrymFBh3uYKgxU8T\n5VoMHjd86/yCvh/rNN7XVB6x6DfR/XqkZcK+Y7H8LRnyR1C/6scLZEjfqD1wyZxU\n7jypJMa7KpAEtyssuiarNoILqLOX7FagIpHs80GPAqa9H/eQlF9kGXCg129v/eBV\nyVjXkmPkJUO1Nmv70oidl5qY6kWemC9Mag31WEUXXN+v2quKLMBHTmfgm5fmh4b+\nmVw6Qr8bmieUBxf1T9a6uq/BkdVoLmVywHjVeRucpBo8Tzi27hsRl/Ts4XbtUMsy\nZrEb8RnGE/7/RwXo7ak2Kpdw+R/apnEHDoY1vIP8jQKBgQDxefrRkx2yrM5eB8o9\nFE7EpnaJdsDiZI/5xM4xk9HamcP0GTogPPXeoybvDAc459K80OvAAplu507ZGa/Q\n9wMbnBn37a0N/BEhWA7NgTom3XvZ01YiZjDkWTk318pkQkbqvjnsQUBPvLYZWMAB\nkeHVJwNfpLeG38G3H1Im0r56jQKBgQDaa+fjt5vc3ijumSxorG/P3im8v5aencux\n1zNlE5emzjX3J+DRxOFhUe4THmrBx6c1bePZAD49ulVZtcjS7EuN8J1qsHWglGEH\nwF65/26tTU/R0RXZ9KkWxEFJTsLVVx4mL4tzqMoKk9KbuUFW8R7wfZr09IZRlmi0\nHhe9nDzLbwKBgBxSyWehkN8vQ7llwoPtiNuqBsdS5YbocrbCLclE5F12obRU7Stw\n2wn1KxDo4UP8dQxumOhZpbOLcAUo7SVeg7/OTIF3IFA+m6fEk1/pY2/BlNBU6Ip6\nYAu4p2x0ZCnkWDsaeuLKOIfhw54veb31ZX7B57RlNp2cSzV2eAVTvMHVAoGBAJBi\nKCW1p8h26uPeSSbgZgEowLpOg4hSkuX6dbTpIKRZR/8bU1gXJ00n1ZK51qRGEFgX\nTjiSGpK/a9AjhJ85KDCpz8VI5FjD/Ogc2AFnwoe4xXzTE/jB7ExqayXEdLKGJh3j\n6/EGsJgRY3UhHvoT5fnfbeFjCq9AF/KIufTTJLTtAoGBAJQBBk8HLapsHB6+wvHA\nOfXrfxK8977KUZoT3dMY36AghbBhnqsqsvqFfH6oN7HKyr/jx3oPD6DZgdFXDeoz\nfKpq5HJUbgjCNAnUd7qr9+ksGZbDNT2hCwTdZHpW8d5ELSyfJCulYXI1/TUNzKFS\nmmDp5TENmfHu1UL65C1Zva0u\n-----END PRIVATE KEY-----\n",
+  "client_email": "cuisinier-rebelle@cuisinier-rebelle.iam.gserviceaccount.com",
+  "client_id": "110743899486040382230",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cuisinier-rebelle%40cuisinier-rebelle.iam.gserviceaccount.com"
+}
