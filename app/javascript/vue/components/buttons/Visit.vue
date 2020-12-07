@@ -1,7 +1,7 @@
 <template>
   <div :class="['text-body d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
     <i :class="['material-icons btn-visit', mobile ? 'md-24' : 'md-18']">visibility</i>
-    <span :class="['text-muted font-weight-lighter small', { 'ml-1': !mobile }]">{{ views }}</span>
+    <span :class="['text-muted font-weight-lighter small', { 'ml-1': !mobile }]">{{ item.recipe.views }}</span>
   </div>
 </template>
 

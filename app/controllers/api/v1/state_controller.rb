@@ -36,7 +36,7 @@ class Api::V1::StateController < Api::V1::BaseController
                   tagList: recipe.tag_list,
                   likes: Like.where(recipe: recipe).count,
                   bookmarks: Bookmark.where(recipe: recipe).count,
-                  views: RecipeLog.where(recipe: recipe).count,
+                  views: recipe.views,
                   photo: {
                     card: {
                       url: recipe.photo.url(:card)
