@@ -21,7 +21,7 @@ class Api::V1::SearchController < Api::V1::BaseController
               description: recipe.description,
               likes: Like.where(recipe: recipe).count,
               bookmarks: Bookmark.where(recipe: recipe).count,
-              views: RecipeLog.where(recipe: recipe).count,
+              views: recipe.views,
               photo: {
                 card: {
                   url: recipe.photo.url(:card)
