@@ -5,4 +5,12 @@ class Analytics < ApplicationRecord
       stat_record: Analytics.maximum(:updated_at)
     }
   end
+
+  after_save :create_json_cache
+
+  private
+
+  def create_json_cache
+    CreateAnalyticsJsonCacheJob.perform_later
+  end
 end
