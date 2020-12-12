@@ -30,7 +30,7 @@ const router = createRouter()
 // this registers `store.state.route`
 const unsync = sync(store, router)
 // console.log('router')
-unsync()
+// unsync()
 
 console.log(window.location)
 // if (window.location.hostname != 'localhost') {
