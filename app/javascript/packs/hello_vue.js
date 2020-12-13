@@ -37,8 +37,7 @@ console.log(window.location)
   import VueGtag from 'vue-gtag'
 
   Vue.use(VueGtag, {
-    // config: { id: "UA-155962082-1" }
-    config: { id: "G-2C8PM5HZP0" }
+    config: { id: "UA-155962082-1" }
   }, router)
 
   import Ads from 'vue-google-adsense'
