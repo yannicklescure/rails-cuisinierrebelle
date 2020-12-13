@@ -10,10 +10,10 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    # binding.pry
     # super
     build_resource(sign_up_params)
 
+    binding.pry
     resource.save
     render json: MultiJson.dump({ message: 'Confirmation email sent.' })
     # render_resource(resource)

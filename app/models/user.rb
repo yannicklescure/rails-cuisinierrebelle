@@ -100,7 +100,7 @@ class User < ApplicationRecord
       end
       puts self.slug
       # binding.pry
-      self.save
+      # self.save
     # end
   end
 
@@ -119,7 +119,7 @@ class User < ApplicationRecord
     # binding.pry
     if self.image.file.nil?
       self.remote_image_url = 'https://media.cuisinierrebelle.com/profile/default.jpg'
-      self.save
+      # self.save
     end
   end
 

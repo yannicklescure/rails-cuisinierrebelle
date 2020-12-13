@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ paddingTop: navbarHeight + 'px' }">
+  <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <banner v-if="!isAuthenticated" />
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">
@@ -69,12 +69,13 @@ export default {
     //   return false
     // },
   },
-  // watch: {
-  //   items () {
-  //     // this.loadMore()
-  //     console.log('items loaded')
-  //   }
-  // },
+  watch: {
+    async '$route' () {
+      console.log(this.$route.params.id)
+      await this.fetchItem()
+      // this.recipeLog()
+    }
+  },
   methods: {
     // cardParams (value) {
     //   const cardWidth = value.params.width
@@ -105,6 +106,7 @@ export default {
           .dispatch('RECIPES', {})
           .then( response => {
             console.log(response.data.data.recipes)
+            this.componentKey += 1
             this.data = response.data.data.recipes
               .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
               .splice(0, 24)
