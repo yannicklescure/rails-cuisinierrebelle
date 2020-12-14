@@ -24,7 +24,7 @@
       <div class="pl-md-2 d-flex align-items-center">
         <%= link_to @user.name.titlecase, user_path(@user), class: 'text-body' %>
         <% if @user.checked %>
-          <span data-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex pl-1"><%= t('.verified_html') %></span>
+          <span data-bs-toggle="tooltip" data-placement="top" title="<%= t('.verified') %>" class="d-flex pl-1"><%= t('.verified_html') %></span>
         <% end %>
       </div>
     </div>

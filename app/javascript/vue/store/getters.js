@@ -59,6 +59,14 @@ export default {
   recipes (state) {
     return state.data.recipes.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   },
+  page (state) {
+    return keyword => state.data.pages.filter( item => {
+      return item.slug === keyword
+    })[0];
+  },
+  pages (state) {
+    return state.data.pages.sort((a, b) => (a.title > b.title) ? 1 : -1)
+  },
   usersFilter (state) {
     return keyword => state.data.users.filter( user => {
       return user.slug === keyword

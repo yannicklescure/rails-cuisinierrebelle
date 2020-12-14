@@ -3,7 +3,7 @@
   <%= simple_form_for(@recipe) do |f| %>
     <div class="d-flex justify-content-between align-items-center">
       <%= f.label :photo, t('.photo'), class: 'm-0' %>
-      <button id="recipe-button-options" class="btn btn-sm btn-light d-flex align-items-center" type="button" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
+      <button id="recipe-button-options" class="btn btn-sm btn-light d-flex align-items-center" type="button" data-bs-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
         <span class="material-icons md-18">expand_more</span>
         <%= t('.advanced_options') %>
       </button>

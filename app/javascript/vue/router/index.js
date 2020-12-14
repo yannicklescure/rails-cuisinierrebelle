@@ -28,6 +28,8 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Notifications = () => import('../views/Notifications.vue')
+const Page = () => import('../views/Page.vue')
+const Pages = () => import('../views/Pages.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
@@ -261,6 +263,24 @@ const routes = [
   {
     path: '/:locale/:controller/:id',
     redirect: '/:controller/:id'
+  },
+  {
+    path: '/p/:id',
+    name: 'Page',
+    component: Page,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/pages',
+    name: 'Pages',
+    component: Pages,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/:locale?',

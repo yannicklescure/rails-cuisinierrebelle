@@ -6,7 +6,7 @@
         <div class="ml-3 d-flex flex-column">
           <div class="d-flex align-items-center">
             <router-link :to="'/u/' + user.slug" class="text-capitalize text-body">{{ user.name }}</router-link>
-            <span v-if="user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
+            <span v-if="user.checked" data-bs-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
               <i class="material-icons md-16">check_circle</i>
             </span>
           </div>

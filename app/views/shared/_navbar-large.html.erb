@@ -19,7 +19,7 @@
         <% if user_signed_in? %>
           <%# if current_user.locale.nil? %>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.languages_html') %>
             </a>
             <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
@@ -38,7 +38,7 @@
             <a href="<%= top_100_path %>" class="nav-link text-fire"><%= t(".top_100_html") %></a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.menu_modal_html') %>
             </a>
             <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
@@ -53,7 +53,7 @@
           </li>
         <% else %>
           <li class="nav-item dropdown d-flex">
-            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t('.languages_html') %>
             </a>
             <a href="<%= top_100_path %>" class="nav-link text-fire"><%= t(".top_100_html") %></a>

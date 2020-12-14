@@ -16,7 +16,7 @@
         >
           <div class="text-capitalize">{{ item.user.name }}</div>
         </router-link>
-        <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
+        <span v-if="item.user.checked" data-bs-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
           <i class="material-icons md-16">check_circle</i>
         </span>
       </div>

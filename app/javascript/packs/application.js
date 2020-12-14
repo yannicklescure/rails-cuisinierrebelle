@@ -47,7 +47,11 @@ import '../stylesheets/application'
 //   // const { flashes } = await import("../vanillaJS/components/flashes");
 //   flashes();
 // }
-$('[data-toggle="tooltip"]').tooltip();
+// $('[data-bs-toggle="tooltip"]').tooltip();
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
 
 if ((/localhost/).test(document.domain)) document.domain = "localhost";
 else console.log = function() {}

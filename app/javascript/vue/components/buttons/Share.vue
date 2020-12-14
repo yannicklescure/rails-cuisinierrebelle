@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <!-- Button trigger modal -->
-      <div :ref="`share-btn-${item.recipe.id}`" class="d-flex align-items-center mouse-pointer text-body ml-2" data-toggle="modal" :data-target="`#modal-${item.recipe.id}`">
+      <div :ref="`share-btn-${item.recipe.id}`" class="d-flex align-items-center mouse-pointer text-body ml-2" data-bs-toggle="modal" :data-target="`#modal-${item.recipe.id}`">
         <span :class="['material-icons btn-share', mobile ? 'md-24' : 'md-18']">share</span>
       </div>
 

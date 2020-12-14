@@ -6,7 +6,7 @@
         v-if="item.user.id === currentUser.id"
         v-on:click="commentEdit"
         class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
+        data-bs-toggle="tooltip"
         data-placement="bottom"
         :title="$t('comment.edit')"
       >
@@ -16,7 +16,7 @@
         v-if="item.user.id === currentUser.id"
         v-on:click="isComment2Destroy"
         class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
+        data-bs-toggle="tooltip"
         data-placement="bottom"
         :title="$t('comment.destroy')"
       >
@@ -25,7 +25,7 @@
       <div
         v-on:click="commentReply"
         class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
+        data-bs-toggle="tooltip"
         data-placement="bottom"
         :title="$t('comment.reply')"
       >
@@ -36,7 +36,7 @@
       <div
         v-on:click="login"
         class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
+        data-bs-toggle="tooltip"
         data-placement="bottom"
         :title="$t('comment.like')"
       >
@@ -45,7 +45,7 @@
       <div
         v-on:click="login"
         class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
+        data-bs-toggle="tooltip"
         data-placement="bottom"
         :title="$t('comment.reply')"
       >

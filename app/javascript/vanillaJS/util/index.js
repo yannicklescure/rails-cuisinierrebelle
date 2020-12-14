@@ -216,7 +216,7 @@ export const userParams = (checked, locale) => {
       default:
         result.verified = `Verified`;
     }
-    result.checked = `<span data-toggle="tooltip" data-placement="top" title="${result.verified}" class="ml-1">
+    result.checked = `<span data-bs-toggle="tooltip" data-placement="top" title="${result.verified}" class="ml-1">
       <i class="material-icons md-16 d-flex" style="font-size: 90%">check_circle</i>
     </span>`;
   }

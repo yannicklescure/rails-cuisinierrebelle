@@ -204,6 +204,10 @@ export const fr = () => {
         comment: '{user} a aimé votre commentaire.',
         reply: '{user} a aimé votre réponse.',
       }
+    },
+    pages: {
+      locale: 'Langue',
+      title: 'Titre',
     }
   }
 }

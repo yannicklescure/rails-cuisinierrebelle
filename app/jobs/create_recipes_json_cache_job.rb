@@ -124,7 +124,15 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                   url: user.image.url(:thumb)
                 }
               },
-            }
+            },
+            pages:Page.all.map { |page| {
+                id: page.id,
+                title: page.title,
+                slug: page.slug,
+                locale: page.locale,
+                content: page.content,
+              }
+            },
           }
         }
       })
