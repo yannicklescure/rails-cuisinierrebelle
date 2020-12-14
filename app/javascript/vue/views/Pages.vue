@@ -3,8 +3,8 @@
     <h1>Pages</h1>
     <table class="table table-sm table-striped">
       <thead>
-        <tr class="d-flex">
-          <th scope="col-2">{{ $t('pages.locale') }}</th>
+        <tr>
+          <th scope="col">{{ $t('pages.locale') }}</th>
           <th scope="col">{{ $t('pages.title') }}</th>
         </tr>
       </thead>
