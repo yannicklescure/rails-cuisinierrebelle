@@ -4,7 +4,9 @@
     class="container"
     :key="componentKey"
   >
-    <h1>{{ data.title }}</h1>
+    <div v-if="!mobile && currentUser.admin" class="d-flex justify-content-center align-items-center my-3">
+      <router-link :to="`/p/${$route.params.id}/edit`" class="text-body text-capitalize text-decoration-none" >{{ $t('pages.edit') }}</router-link>
+    </div>
     <div>
       <vue-markdown-plus :source="data.content" />
     </div>
@@ -14,6 +16,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import VueMarkdownPlus from 'vue-markdown-plus'
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   name: 'Page',
@@ -33,7 +36,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'page']),
+    ...mapGetters(['navbarHeight', 'page', 'currentUser']),
+    mobile () {
+      return isMobile
+    },
   },
   watch: {
     async '$route' () {

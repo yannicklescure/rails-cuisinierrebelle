@@ -354,6 +354,19 @@ export default {
       })
   },
 
+  PAGE_EDIT: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.pageEdit(context, payload)
+      .then(response => {
+        if (response.status === 200) context.commit("PAGE_EDIT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE_EDIT: (context, payload) => {
     // console.log(context.state.data.user)
     return api.recipeEdit(context, payload)

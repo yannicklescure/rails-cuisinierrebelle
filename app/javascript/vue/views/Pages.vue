@@ -36,7 +36,15 @@ export default {
   methods: {
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'pages']),
+    ...mapGetters(['navbarHeight', 'pages', 'currentUser']),
+  },
+  beforeMount () {
+    if (!this.currentUser.admin) {
+      console.log('ALERT')
+      this.$router.push({
+        name: 'Home'
+      })
+    }
   },
   mounted () {
   }

@@ -29,6 +29,7 @@ const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Notifications = () => import('../views/Notifications.vue')
 const Page = () => import('../views/Page.vue')
+const PageEdit = () => import('../views/PageEdit.vue')
 const Pages = () => import('../views/Pages.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
@@ -189,6 +190,34 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: '/p/:id/edit',
+    name: 'PageEdit',
+    component: PageEdit,
+    props: true,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/p/:id',
+    name: 'Page',
+    component: Page,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/pages',
+    name: 'Pages',
+    component: Pages,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
     path: '/u/:id',
     name: 'UserRecipes',
     component: UserRecipes,
@@ -263,24 +292,6 @@ const routes = [
   {
     path: '/:locale/:controller/:id',
     redirect: '/:controller/:id'
-  },
-  {
-    path: '/p/:id',
-    name: 'Page',
-    component: Page,
-    meta: {
-      auth: false // A protected route
-    },
-    beforeEnter: ifAuthenticated,
-  },
-  {
-    path: '/pages',
-    name: 'Pages',
-    component: Pages,
-    meta: {
-      auth: false // A protected route
-    },
-    beforeEnter: ifAuthenticated,
   },
   {
     path: '/:locale?',

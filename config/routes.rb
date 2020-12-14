@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :analytics, only: [ :index ]
       resources :state, only: [ :index ]
       resources :search, only: [ :index ]
+      resources :pages, only: [ :create, :update ]
       resources :recipes, only: [ :index, :show, :create, :update ]
       resources :recipe_logs, only: [ :create ]
       resources :comments, only: [ :create, :destroy, :update ] do

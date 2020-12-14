@@ -22,7 +22,7 @@
           <% end %>
           <% if !user_signed_in? %>
             <%# if current_user.locale.nil? %>
-              <a class="d-flex py-2 w-100 modal-menu-link text-decoration-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="d-flex py-2 w-100 modal-menu-link text-decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <%= t('.languages') %>
               </a>
               <div class="collapse" id="collapseExample">

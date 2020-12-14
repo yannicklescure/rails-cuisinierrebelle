@@ -1,6 +1,6 @@
 <template>
   <div class="container" :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <div class="py-3">
+    <div v-if="!loading" class="py-3">
       <form v-on:input="allowPost" v-on:touchend="allowPost">
         <div class="form-group mb-3">
           <label for="inputRecipeTitle">{{ $t('recipe.new.title') }}</label>
@@ -59,6 +59,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      loading: true,
       // navbarHeight: 0,
       id: 0,
       title: null,
@@ -76,7 +77,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipe']),
+    ...mapGetters(['navbarHeight', 'recipe', 'currentUser']),
     item () {
       return this.recipe(this.$route.params.id)
     }
@@ -197,9 +198,18 @@ export default {
     //   return this.$store.getters.navbarHeight
     // },
   },
-  mounted () {
+  beforeMount () {
+    if (this.currentUser.slug != this.item.user.slug) {
+      console.log('ALERT')
+      this.$router.push({
+        name: 'Home'
+      })
+    }
+  },
+  async mounted () {
     // this.navbarHeight = this.getNavbarHeight()
-    this.setData()
+    await this.setData()
+    this.loading = false
   }
 }
 </script>

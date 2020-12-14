@@ -47,8 +47,8 @@ import '../stylesheets/application'
 //   // const { flashes } = await import("../vanillaJS/components/flashes");
 //   flashes();
 // }
-// $('[data-bs-toggle="tooltip"]').tooltip();
-const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+// $('[data-toggle="tooltip"]').tooltip();
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
 const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })

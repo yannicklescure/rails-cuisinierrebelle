@@ -48,7 +48,7 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
     <div class="my-3">
-      <a href="javascript:void(0)" class="text-body" type="button" data-bs-toggle="collapse" data-target="#collapsePwd" aria-expanded="false" aria-controls="collapsePwd">
+      <a href="javascript:void(0)" class="text-body" type="button" data-toggle="collapse" data-target="#collapsePwd" aria-expanded="false" aria-controls="collapsePwd">
         <%= t('.change_my_password') %>
       </a>
     </div>
@@ -68,7 +68,7 @@
     <div class="form-actions">
       <%= f.button :submit, t(".update"), class: 'btn btn-light' %>
     </div>
-    <a href="javascript:void(0)" class="text-muted" type="button" data-bs-toggle="collapse" data-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
+    <a href="javascript:void(0)" class="text-muted" type="button" data-toggle="collapse" data-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
       <%= t(".cancel_my_account") %>
     </a>
   </div>

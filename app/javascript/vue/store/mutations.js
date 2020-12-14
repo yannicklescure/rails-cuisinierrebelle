@@ -256,6 +256,17 @@ export default {
     saveToLocalStorage(state, 'RECIPE_NEW')
   },
 
+  PAGE_EDIT: (state, payload) => {
+    const page = state.data.pages.filter(r => r.id === payload.data.id)[0]
+    console.log(page)
+    if (page) {
+      const position = state.data.pages.indexOf(page)
+      console.log(position)
+      state.data.pages[position] = payload.data
+      saveToLocalStorage(state, 'PAGE_EDIT')
+    }
+  },
+
   RECIPE: (state, payload) => {
     // console.log('### RECIPE ###')
     // console.log(state)

@@ -53,8 +53,26 @@ export const fr = () => {
     user: {
       publications: 'Publications',
     },
+    page: {
+      new: {
+        content: 'Contenu',
+        locale: 'Langue',
+        contentHelp: '{count} caractères restant.',
+        title: 'Titre',
+        submit: 'Publier',
+        errors: {
+          title: 'Le titre est obligatoire.',
+          content: 'Le contenu de publication est obligatoire.',
+        },
+      },
+      edit: {
+        select: 'Sélectionner une langue',
+      }
+    },
     pages: {
       edit: 'Editer',
+      locale: 'Langue',
+      title: 'Titre',
     },
     posts: {
       publications: 'Publications',
@@ -205,9 +223,5 @@ export const fr = () => {
         reply: '{user} a aimé votre réponse.',
       }
     },
-    pages: {
-      locale: 'Langue',
-      title: 'Titre',
-    }
   }
 }

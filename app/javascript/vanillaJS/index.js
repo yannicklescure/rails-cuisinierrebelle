@@ -18,7 +18,7 @@ const initLoader = async () => {
     if(notice != null) {
       const { flashes } = await import("../vanillaJS/components/flashes");
       flashes();
-      $('[data-bs-toggle="tooltip"]').tooltip();
+      $('[data-toggle="tooltip"]').tooltip();
     }
   // });
 

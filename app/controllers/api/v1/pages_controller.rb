@@ -1,0 +1,59 @@
+class Api::V1::PagesController < Api::V1::BaseController
+
+  def create
+    # binding.pry
+    params[:page] = {
+      title: clean_params(params[:title]),
+      content: clean_params(params[:content]),
+      locale: clean_params(params[:locale]),
+    }
+
+    @page = Page.new(page_params)
+    authorize @page  # For Pundit
+    @page.user_id = current_user.id
+    # binding.pry
+    if @page.save
+      render json:  MultiJson.dump({
+        id: @page.id,
+        slug: @page.slug,
+        title: @page.title,
+        content: @page.content,
+        locale: @page.locale,
+      })
+    end
+  end
+
+  def update
+    # binding.pry
+    @page = Page.find_by(id: params[:id])
+    authorize @page  # For Pundit
+    params[:page] = {
+      title: clean_params(params[:title]),
+      content: clean_params(params[:content]),
+      locale: clean_params(params[:locale]),
+    }
+
+    if @page.update(page_params)
+      # binding.pry
+      render json:  MultiJson.dump({
+        id: @page.id,
+        slug: @page.slug,
+        title: @page.title,
+        content: @page.content,
+        locale: @page.locale,
+      })
+    end
+  end
+
+  private
+
+  def clean_params(param)
+    param === "null" ? nil : param
+  end
+
+  def page_params
+    # binding.pry
+    params.require(:page).permit(:title, :content, :locale)
+  end
+
+end

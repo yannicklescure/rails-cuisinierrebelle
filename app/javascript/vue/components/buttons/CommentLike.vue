@@ -4,7 +4,7 @@
     <span
       v-else @click="like"
       :class="['material-icons md-16']"
-      data-bs-toggle="tooltip"
+      data-toggle="tooltip"
       data-placement="bottom"
       :title="$t('comment.like')"
     >thumb_up</span>
