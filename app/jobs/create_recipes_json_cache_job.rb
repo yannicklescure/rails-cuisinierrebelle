@@ -125,15 +125,15 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                 }
               },
             },
-            pages:Page.all.map { |page| {
-                id: page.id,
-                title: page.title,
-                slug: page.slug,
-                locale: page.locale,
-                content: page.content,
-              }
-            },
-          }
+          },
+          pages:Page.all.map { |page| {
+              id: page.id,
+              title: page.title,
+              slug: page.slug,
+              locale: page.locale,
+              content: page.content,
+            }
+          },
         }
       })
     end
