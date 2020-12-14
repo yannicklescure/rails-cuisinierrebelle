@@ -47,6 +47,7 @@
             <router-link class="dropdown-item" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + user.slug + '/following'">{{ $t('navbar.following') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + user.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
+            <router-link class="dropdown-item" :to="'/pages'" v-if="currentUser.admin">{{ $t('navbar.pages') }}</router-link>
             <div
               @click="logout"
               class="dropdown-item mouse-pointer"

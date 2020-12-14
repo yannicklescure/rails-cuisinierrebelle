@@ -90,6 +90,7 @@ export const fr = () => {
       all: `Depuis le début`,
     },
     navbar: {
+      pages: 'Pages',
       brand: 'Cuisinier Rebelle',
       cancel: 'Annuler',
       logout: 'Se déconnecter',

@@ -18,4 +18,12 @@ class About < ApplicationRecord
   #   with: /(https?:\/\/)?(www.)?(youtube.com\/channel\/)?(.+)/,
   #   message: I18n.t(".only_allows_url")
   # }
+
+  after_save :create_json_cache
+
+  private
+
+  def create_json_cache
+    CreateUsersJsonCacheJob.perform_later
+  end
 end
