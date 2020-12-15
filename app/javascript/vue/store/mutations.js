@@ -256,6 +256,20 @@ export default {
     saveToLocalStorage(state, 'SET_DATA')
   },
 
+  SET_PAGES: (state, payload) => {
+    // console.log(state)
+    console.log(payload)
+    // for (const [key, value] of Object.entries(payload.data)) {
+    //   // console.log(`${key}: ${value}`)
+    //   state.data.pages[key] = payload.data[key]
+    // }
+    state.data.pages = payload.data.pages
+    // state.data = payload.data
+    console.log(state.data)
+    // state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'SET_PAGES')
+  },
+
   RECIPE_NEW: (state, payload) => {
     state.data.recipes.push(payload.data)
     // state.data.lastUpdated = new Date().getTime()

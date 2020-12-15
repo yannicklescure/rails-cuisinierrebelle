@@ -1,5 +1,25 @@
 class Api::V1::PagesController < Api::V1::BaseController
 
+  def index
+    @pages = policy_scope(Page)
+    json = Rails.cache.fetch(Page.cache_key(@pages)) do
+      # recipes.to_json(include: :user, :comments)
+      MultiJson.dump({
+        data: {
+          pages: @pages.map { |page| {
+              id: page.id,
+              title: page.title,
+              slug: page.slug,
+              locale: page.locale,
+              content: page.content,
+            }
+          },
+        }
+      })
+    end
+    render json: json
+  end
+
   def create
     # binding.pry
     params[:page] = {

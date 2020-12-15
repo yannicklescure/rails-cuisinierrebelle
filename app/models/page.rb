@@ -6,6 +6,13 @@ class Page < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  def self.cache_key(pages)
+    {
+      serializer: 'pages',
+      stat_record: pages.maximum(:updated_at)
+    }
+  end
+
   # include PgSearch::Model
   # multisearchable against: [:title, :content]
   after_save :create_json_cache
@@ -13,6 +20,6 @@ class Page < ApplicationRecord
   private
 
   def create_json_cache
-    CreateRecipesJsonCacheJob.perform_later
+    CreatePagesJsonCacheJob.perform_later
   end
 end

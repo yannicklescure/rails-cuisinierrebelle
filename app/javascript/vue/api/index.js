@@ -490,6 +490,21 @@ export const users = (context, payload) => {
   });
 }
 
+export const fetchPages = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'get',
+    url: `${domain}/api/v1/pages`,
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const pageEdit = (context, payload) => {
   console.log(payload)
   const FormData = require('form-data');

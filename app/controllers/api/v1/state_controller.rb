@@ -137,14 +137,15 @@ class Api::V1::StateController < Api::V1::BaseController
                 },
               }
             },
-            pages: @pages.map { |page| {
-                id: page.id,
-                title: page.title,
-                slug: page.slug,
-                locale: page.locale,
-                content: page.content,
-              }
-            },
+            pages: []
+            # pages: @pages.map { |page| {
+            #     id: page.id,
+            #     title: page.title,
+            #     slug: page.slug,
+            #     locale: page.locale,
+            #     content: page.content,
+            #   }
+            # },
           }
         })
       end

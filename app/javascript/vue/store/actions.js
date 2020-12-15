@@ -353,6 +353,12 @@ export default {
     //   return fetchStore(context, {})
     // }
     return fetchStore(context, {})
+        .then(() => {
+          api.fetchPages(context, {})
+            .then(response => {
+              context.commit("SET_PAGES", response.data)
+            })
+        })
   },
 
   USERS: (context, payload) => {
@@ -372,7 +378,9 @@ export default {
     // console.log(context.state.data.user)
     return api.pageEdit(context, payload)
       .then(response => {
-        if (response.status === 200) context.commit("PAGE_EDIT", response)
+        if (response.status === 200) {
+          context.commit("PAGE_EDIT", response)
+        }
         return response
       })
       .catch(error => {
