@@ -21,7 +21,7 @@
     <table class="table table-sm">
       <thead>
         <tr>
-          <th scope="col" class="text-uppercase">{{ $t('pages.locale') }}</th>
+          <th scope="col">{{ $t('pages.locale') }}</th>
           <th scope="col">{{ $t('pages.title') }}</th>
         </tr>
       </thead>
@@ -30,7 +30,7 @@
         :key="page.id"
       >
         <tr v-if="page.locale === locale">
-          <th scope="row">{{ page.locale }}</th>
+          <th scope="row" class="text-uppercase">{{ page.locale }}</th>
           <td>
             <router-link :to="'/p/' + page.slug">{{ page.title }}</router-link>
           </td>
