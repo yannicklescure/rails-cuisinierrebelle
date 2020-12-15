@@ -18,7 +18,7 @@
         <label class="custom-control-label" for="localeRadioInlineEs">Es</label>
       </div>
     </div>
-    <table class="table table-striped">
+    <table class="table table-sm">
       <thead>
         <tr>
           <th scope="col">{{ $t('pages.locale') }}</th>
