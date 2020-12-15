@@ -224,5 +224,17 @@ export const fr = () => {
         reply: '{user} a aimé votre réponse.',
       }
     },
+    footer: {
+      madeWith: 'Fait avec',
+      brand: 'par Cuisinier Rebelle &copy; {year}',
+      sitemap: 'Plan du site',
+      privacyPolicy: 'Politique de confidentialité',
+      help: 'Aide',
+      url: {
+        sitemap: 'plan-du-site',
+        privacyPolicy: 'confidentialite',
+        help: 'aide',
+      }
+    }
   }
 }

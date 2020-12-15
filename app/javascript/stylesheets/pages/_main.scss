@@ -9,7 +9,7 @@ body {
 }
 
 main, .cr-vh100 {
-  min-height: calc(100vh - 168px);
+  min-height: calc(100vh - 176px);
   // min-height: calc(100vh - 104px);
   // display: flex;
   // flex-direction: column;
@@ -22,7 +22,7 @@ main, .cr-vh100 {
   }
 
   main {
-    min-height: calc(100vh - 168px);
+    min-height: calc(100vh - 152px);
     // min-height: calc(100vh - 58px);
   }
 }
