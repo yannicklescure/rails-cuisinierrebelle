@@ -8,6 +8,12 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  USER_NOTIFICATIONS: (state, payload) => {
+    console.log(payload.data.notification)
+    state.data.user.notification = payload.data.notification
+    saveToLocalStorage(state, 'USER_NOTIFICATIONS')
+  },
+
   NOTIFICATIONS: (state, payload) => {
     console.log(payload)
     // state.data.notifications = payload.data

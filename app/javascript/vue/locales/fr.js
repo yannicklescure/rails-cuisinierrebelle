@@ -235,6 +235,10 @@ export const fr = () => {
         privacyPolicy: 'confidentialite',
         help: 'aide',
       }
+    },
+    userSettings: {
+      title: 'Paramètres',
+      getEmailNotifications: 'Recevoir les notifications par courriel',
     }
   }
 }

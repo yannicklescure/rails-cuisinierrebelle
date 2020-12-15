@@ -1,11 +1,17 @@
 <template>
-  <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <p>UserSettings</p>
+  <div
+    :style="{ paddingTop: navbarHeight + 'px' }"
+    class="container"
+    :key="componentKey"
+  >
+    <h1>{{ $t('userSettings.title') }}</h1>
+    <user-notifications />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+const UserNotifications = () => import('../components/UserNotifications.vue')
 
 export default {
   name: 'UserSettings',
@@ -14,6 +20,9 @@ export default {
       componentKey: 0,
       // navbarHeight: 0,
     }
+  },
+  components: {
+    UserNotifications,
   },
   methods: {
     // getNavbarHeight () {

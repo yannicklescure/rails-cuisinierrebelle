@@ -15,7 +15,7 @@ export const createStore = () => {
     try {
       if (vueStore.timestamp && vueStore.timestamp < 1605233042272) vueStore = null
       else if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) vueStore = null
-      else if (vueStore.user.locale == undefined) vueStore = null
+      else if (!vueStore.data.user.hasOwnProperty('locale')) vueStore = null
       else console.log('Nothing to lose !')
     } catch (e) {
       console.log(e)
@@ -47,6 +47,7 @@ export const createStore = () => {
       user: {
         email: null,
         authentication_token: null,
+        locale: 'fr',
         bookmarks: [],
         followers: {
           count: 0,

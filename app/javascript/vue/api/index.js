@@ -33,6 +33,27 @@ import axios from 'axios'
 // const domain = 'https://www.cuisinierrebelle.com'
 const domain = ''
 
+export const userNotifications = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'patch',
+    url: `${domain}/api/v1/notification/${payload.id}`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      notification: payload.notification,
+    }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const notifications = (context, payload) => {
   return axios({
     validateStatus: status => {
