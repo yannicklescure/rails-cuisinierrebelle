@@ -2,7 +2,7 @@
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="item.recipe.title" class="container py-3 mb-5 recipe" style="height: auto !important;">
       <div class="d-flex flex-column flex-md-row justify-content-between">
-        <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-flex align-items-center order-0']">
+        <div id="recipe-user" :class="[{'mb-0': mobile}, 'd-print-none d-flex align-items-center order-0']">
           <div class="d-flex flex-grow-1 m-0 align-items-center">
             <div class="d-flex flex-grow-1 flex-grow-md-0 justify-content-between justify-md-content-start align-items-center">
               <img v-lazy="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div v-if="!mobile && (item.user.id === currentUser.id)">
+        <div v-if="!mobile && (item.user.id === currentUser.id)" class="d-print-none">
           <router-link :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none" >{{ $t('recipe.edit') }}</router-link>
         </div>
         <div v-if="mobile" class="py-2">
