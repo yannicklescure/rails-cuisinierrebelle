@@ -4,11 +4,13 @@
     class="container"
     :key="componentKey"
   >
-    <div v-if="!mobile && currentUser.admin" class="d-flex justify-content-center align-items-center my-3">
-      <router-link :to="`/p/${$route.params.id}/edit`" class="text-body text-capitalize text-decoration-none" >{{ $t('pages.edit') }}</router-link>
-    </div>
-    <div>
-      <vue-markdown-plus :source="data.content" />
+    <div v-if="data">
+      <div v-if="!mobile && currentUser.admin" class="d-flex justify-content-center align-items-center my-3">
+        <router-link :to="`/p/${$route.params.id}/edit`" class="text-body text-capitalize text-decoration-none" >{{ $t('pages.edit') }}</router-link>
+      </div>
+      <div>
+        <vue-markdown-plus :source="data.content" />
+      </div>
     </div>
   </div>
 </template>
@@ -23,9 +25,9 @@ export default {
   data () {
     return {
       componentKey: 0,
-      data: {
-        content: null,
-      },
+      // data: {
+      //   content: null,
+      // },
     }
   },
   components: {
@@ -33,25 +35,28 @@ export default {
   },
   methods: {
     fetchItem () {
-      this.data =  this.page(this.$route.params.id)
+      this.data = this.page(this.$route.params.id)
       this.componentKey += 1
-    }
+    },
   },
   computed: {
     ...mapGetters(['navbarHeight', 'page', 'currentUser']),
     mobile () {
       return isMobile
     },
+    data () {
+      return this.page(this.$route.params.id)
+    }
   },
   watch: {
     async '$route' () {
       console.log(this.$route.params.id)
-      await this.fetchItem()
+      // await this.fetchItem()
       // this.recipeLog()
     }
   },
   beforeMount () {
-    this.fetchItem()
+    // this.fetchItem()
   },
   // mounted () {
   // }
