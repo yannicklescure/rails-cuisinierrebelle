@@ -353,11 +353,12 @@ export default {
     //   return fetchStore(context, {})
     // }
     return fetchStore(context, {})
-        .then(() => {
+        .then(response => {
           api.fetchPages(context, {})
-            .then(response => {
-              context.commit("SET_PAGES", response.data)
+            .then(result => {
+              context.commit("SET_PAGES", result.data)
             })
+          return response.data
         })
   },
 
