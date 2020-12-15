@@ -58,6 +58,7 @@ export const createStore = () => {
           data: [],
         }
       },
+      pages: [],
       users: [],
       render: {
         navbarHeight: 0,

@@ -23,7 +23,9 @@ export default {
   data () {
     return {
       componentKey: 0,
-      data: null,
+      data: {
+        content: null,
+      },
     }
   },
   components: {
