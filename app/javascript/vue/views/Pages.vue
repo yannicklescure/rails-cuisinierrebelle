@@ -21,7 +21,7 @@
     <table class="table table-sm">
       <thead>
         <tr>
-          <th scope="col">{{ $t('pages.locale') }}</th>
+          <th scope="col" class="text-uppercase">{{ $t('pages.locale') }}</th>
           <th scope="col">{{ $t('pages.title') }}</th>
         </tr>
       </thead>
