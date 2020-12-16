@@ -111,33 +111,34 @@ class Api::V1::StateController < Api::V1::BaseController
                 }
               }
             },
-            users: @users.map { |user| {
-                id: user.id,
-                slug: user.slug,
-                name: user.name,
-                checked: user.checked,
-                followers: {
-                  count: user.followers.length,
-                  data: [],
-                },
-                following: {
-                  count: user.following.length,
-                  data: [],
-                },
-                image: {
-                  full: {
-                    url: user.image.url(:full)
-                  },
-                  preview: {
-                    url: user.image.url(:preview)
-                  },
-                  thumb: {
-                    url: user.image.url(:thumb)
-                  }
-                },
-              }
-            },
-            pages: []
+            users: [],
+            # users: @users.map { |user| {
+            #     id: user.id,
+            #     slug: user.slug,
+            #     name: user.name,
+            #     checked: user.checked,
+            #     followers: {
+            #       count: user.followers.length,
+            #       data: [],
+            #     },
+            #     following: {
+            #       count: user.following.length,
+            #       data: [],
+            #     },
+            #     image: {
+            #       full: {
+            #         url: user.image.url(:full)
+            #       },
+            #       preview: {
+            #         url: user.image.url(:preview)
+            #       },
+            #       thumb: {
+            #         url: user.image.url(:thumb)
+            #       }
+            #     },
+            #   }
+            # },
+            pages: [],
             # pages: @pages.map { |page| {
             #     id: page.id,
             #     title: page.title,

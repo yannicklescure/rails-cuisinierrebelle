@@ -358,6 +358,21 @@ export default {
             .then(result => {
               context.commit("SET_PAGES", result.data)
             })
+            .catch(error => {
+              // console.log(error)
+              return error
+            })
+          return response
+        })
+        .then(response => {
+          api.users(context, {})
+            .then(result => {
+              if (result.status === 200) context.commit("USERS", result)
+            })
+            .catch(error => {
+              // console.log(error)
+              return error
+            })
           return response.data
         })
   },
