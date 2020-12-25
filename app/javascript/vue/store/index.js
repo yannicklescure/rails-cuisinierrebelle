@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
+import { vuexLocal } from '../util/store';
 import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
@@ -11,19 +12,22 @@ export const createStore = () => {
   let data = {}
 
   if (vueStore) {
-    // Force Update
-    try {
-      if (vueStore.timestamp && vueStore.timestamp < 1605233042272) vueStore = null
-      else if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) vueStore = null
-      else if (!vueStore.data.user.hasOwnProperty('locale')) vueStore = null
-      else console.log('Nothing to lose !')
-    } catch (e) {
-      console.log(e)
-    }
+    // // Force Update
+    // try {
+    //   if (vueStore.timestamp && vueStore.timestamp < 1605233042272) vueStore = null
+    //   else if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) vueStore = null
+    //   else if (!vueStore.data.user.hasOwnProperty('locale')) vueStore = null
+    //   else console.log('Nothing to lose !')
+    // } catch (e) {
+    //   console.log(e)
+    // }
 
-    // Delete localStorage
-    if (vueStore == null) localStorage.removeItem('cuisinier_rebelle')
+    // // Delete localStorage
+    // if (vueStore == null) localStorage.removeItem('cuisinier_rebelle')
+    localStorage.removeItem('cuisinier_rebelle')
   }
+
+  vueStore = vuexLocal.storage.getItem()
 
   if (vueStore) {
     console.log('loading vueStore')
@@ -72,6 +76,7 @@ export const createStore = () => {
     },
     getters,
     mutations,
-    actions
+    actions,
+    plugins: [vuexLocal.plugin]
   });
 }

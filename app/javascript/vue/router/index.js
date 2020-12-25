@@ -6,6 +6,9 @@ import Meta from 'vue-meta'
 Vue.use(VueRouter)
 Vue.use(Meta)
 
+import { vuexLocal } from '../util/store'
+// console.log(vuexLocal.storage.getItem())
+
 // import { createStore } from '../store'
 // import { createRouter } from '../router'
 // import { sync } from 'vuex-router-sync'
@@ -46,7 +49,8 @@ const UserRecipes = () => import('../views/UserRecipes.vue')
 const UserSettings = () => import('../views/UserSettings.vue')
 
 const ifAuthenticated = async (to, from, next) => {
-  const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+  // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
+  let vueStore = vuexLocal.storage.getItem()
   let isAuthenticated = false
   if (vueStore) {
     console.log(vueStore)
@@ -78,7 +82,8 @@ const ifAuthenticated = async (to, from, next) => {
           vueStore.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
         }
         isAuthenticated = response.data.isAuthenticated
-        localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: vueStore.data }))
+        // localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: vueStore.data }))
+        vuexLocal.storage.setItem(vueStore)
       })
       .catch(error => {
         console.log(error.response)

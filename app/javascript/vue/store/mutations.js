@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
 const saveToLocalStorage = (state, caller) => {
-  console.log(caller)
-  console.log(state)
-  localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: state.data }))
+  // console.log(caller)
+  // console.log(state)
+  // localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: state.data }))
 }
 
 export default {
