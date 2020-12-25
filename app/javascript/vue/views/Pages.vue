@@ -1,6 +1,7 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" class="container">
     <h1>Pages</h1>
+    <router-link to="/p/new">Créer une nouvelle page</router-link>
     <div class="d-flex my-3">
       <div class="mr-3">
         <label for="inputPageLocale">{{ $t('page.new.locale') }}</label>

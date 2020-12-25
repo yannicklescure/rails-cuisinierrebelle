@@ -53,8 +53,7 @@ const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-if ((/localhost/).test(document.domain)) document.domain = "localhost";
-else console.log = function() {}
+if (!(/localhost|127\.0\.0\.1/).test(document.domain)) console.log = function() {}
 
 if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
   document.domain = "cuisinierrebelle.com";

@@ -276,6 +276,11 @@ export default {
     saveToLocalStorage(state, 'RECIPE_NEW')
   },
 
+  PAGE_NEW: (state, payload) => {
+    state.data.pages.push(payload.data)
+    saveToLocalStorage(state, 'PAGE_NEW')
+  },
+
   PAGE_EDIT: (state, payload) => {
     const page = state.data.pages.filter(r => r.id === payload.data.id)[0]
     console.log(page)

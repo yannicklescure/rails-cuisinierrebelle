@@ -23,6 +23,7 @@ Vue.use(Meta)
 // // console.log('router')
 // unsync()
 
+const Admin = () => import('../views/Admin.vue')
 const Bookmarks = () => import('../views/Bookmarks.vue')
 const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
@@ -30,6 +31,7 @@ const NotFound = () => import('../views/NotFound.vue')
 const Notifications = () => import('../views/Notifications.vue')
 const Page = () => import('../views/Page.vue')
 const PageEdit = () => import('../views/PageEdit.vue')
+const PageNew = () => import('../views/PageNew.vue')
 const Pages = () => import('../views/Pages.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
@@ -135,6 +137,16 @@ const routes = [
   //   }
   // },
   {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+
+  {
     path: '/confirmation',
     name: 'RegistrationConfirmation',
     component: RegistrationConfirmation,
@@ -190,6 +202,16 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: '/p/new',
+    name: 'PageNew',
+    component: PageNew,
+    props: true,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
     path: '/p/:id/edit',
     name: 'PageEdit',
     component: PageEdit,
@@ -209,7 +231,7 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/pages',
+    path: '/admin/pages',
     name: 'Pages',
     component: Pages,
     meta: {
@@ -294,7 +316,7 @@ const routes = [
     redirect: '/:controller/:id'
   },
   {
-    path: '/:locale?',
+    path: '/:locale(es|fr|en)?',
     name: 'Home',
     component: Home,
     meta: {

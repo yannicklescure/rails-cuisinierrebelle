@@ -30,7 +30,6 @@ class Api::V1::PagesController < Api::V1::BaseController
 
     @page = Page.new(page_params)
     authorize @page  # For Pundit
-    @page.user_id = current_user.id
     # binding.pry
     if @page.save
       render json:  MultiJson.dump({

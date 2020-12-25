@@ -505,6 +505,32 @@ export const fetchPages = (context, payload) => {
   });
 }
 
+export const pageNew = (context, payload) => {
+  console.log(payload)
+  const FormData = require('form-data');
+  const formData = new FormData();
+  formData.append('title', payload.title);
+  formData.append('content', payload.content);
+  formData.append('locale', payload.locale);
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${domain}/api/v1/pages/`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const pageEdit = (context, payload) => {
   console.log(payload)
   const FormData = require('form-data');

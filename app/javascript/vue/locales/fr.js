@@ -91,6 +91,7 @@ export const fr = () => {
     },
     navbar: {
       pages: 'Pages',
+      admin: 'Administration',
       brand: 'Cuisinier Rebelle',
       cancel: 'Annuler',
       logout: 'Se déconnecter',

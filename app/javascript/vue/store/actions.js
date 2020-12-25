@@ -390,6 +390,21 @@ export default {
       })
   },
 
+  PAGE_NEW: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.pageNew(context, payload)
+      .then(response => {
+        if (response.status === 200) {
+          context.commit("PAGE_NEW", response)
+        }
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   PAGE_EDIT: (context, payload) => {
     // console.log(context.state.data.user)
     return api.pageEdit(context, payload)
