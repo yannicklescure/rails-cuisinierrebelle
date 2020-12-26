@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
   #   mail to: "to@example.org"
   # end
   def welcome
-    binding.pry
+    # binding.pry
     @user = params[:user] # Instance variable => available in view
     I18n.with_locale(@user.locale) do
       # mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
