@@ -2,7 +2,7 @@ import Unsplash, { toJson } from 'unsplash-js';
 const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
 
 export const getBannerPicture = (state) => {
-  const query = "cooking, food, chef"
+  const query = "cooking, food, kitchen"
   // fetchBannerPicture(query)
   return unsplash.photos.getRandomPhoto({
       query: query
