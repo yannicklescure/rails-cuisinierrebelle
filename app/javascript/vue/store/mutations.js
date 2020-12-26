@@ -367,6 +367,10 @@ export default {
     saveToLocalStorage(state, 'LOG_OUT')
   },
 
+  USER_DELETE: (state, payload) => {
+    console.log('USER_DELETE')
+  },
+
   NAVBAR_HEIGHT: (state, payload) => {
     state.data.render.navbarHeight = payload
     // context.commit("NAVBAR_HEIGHT", navbarHeight)

@@ -43,11 +43,13 @@
             <i class="material-icons md-18 d-flex">more_vert</i>
           </div>
           <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+            <div class="border-bottom pb-2 mb-2" v-if="currentUser.admin">
+              <router-link class="dropdown-item" :to="'/admin'">{{ $t('navbar.admin') }}</router-link>
+            </div>
             <router-link class="dropdown-item" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + user.slug + '/following'">{{ $t('navbar.following') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + user.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
-            <router-link class="dropdown-item" :to="'/admin'" v-if="currentUser.admin">{{ $t('navbar.admin') }}</router-link>
             <div
               @click="logout"
               class="dropdown-item mouse-pointer"
@@ -130,7 +132,7 @@ export default {
 
       let options = {
           // html: false, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
-          // loader: false, // set to true if you want the dailog to show a loader after click on "proceed"
+          // loader: false, // set to true if you want the dialog to show a loader after click on "proceed"
           // reverse: false, // switch the button positions (left to right, and vise versa)
           okText:  this.$t('navbar.logout'),
           cancelText: this.$t('navbar.cancel'),

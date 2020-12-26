@@ -757,6 +757,23 @@ export const logout = (context, user) => {
   })
 }
 
+export const userDelete = (context, payload) => {
+  return axios({
+    method: 'delete',
+    url: `${domain}/api/v1/users`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+    },
+    data: {
+      content: payload.content
+    }
+  })
+  .catch(error => {
+    console.log(error.response)
+  })
+}
+
 // const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
 
 // export const fetchBannerPicture = (query) => {

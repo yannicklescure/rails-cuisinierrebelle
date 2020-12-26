@@ -13,10 +13,21 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     # super
     build_resource(sign_up_params)
 
-    binding.pry
+    # binding.pry
     resource.save
     render json: MultiJson.dump({ message: 'Confirmation email sent.' })
     # render_resource(resource)
+  end
+
+  def destroy
+    binding.pry
+    # async_update(resource)
+    resource.destroy
+    # Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    # set_flash_message! :notice, :destroyed
+    # yield resource if block_given?
+    # respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+    render json: MultiJson.dump({ message: 'User has been destroyed.' })
   end
 
   private

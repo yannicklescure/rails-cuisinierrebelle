@@ -240,6 +240,12 @@ export const fr = () => {
     userSettings: {
       title: 'Paramètres',
       getEmailNotifications: 'Recevoir les notifications par courriel',
+      deleteAccount: 'Supprimer mon compte',
+    },
+    userDelete: {
+      title: 'Supprimer mon compte',
+      email: 'Vérification de votre adresse courriel',
+      submit: 'Supprimer mon compte'
     }
   }
 }

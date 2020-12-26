@@ -43,6 +43,7 @@ const RegistrationConfirmation = () => import('../views/RegistrationConfirmation
 const SearchRecipes = () => import('../views/SearchRecipes.vue')
 const Signup = () => import('../views/Signup.vue')
 const Top100 = () => import('../views/Top100.vue')
+const UserDelete = () => import('../views/UserDelete.vue')
 const UserFollowers = () => import('../views/UserFollowers.vue')
 const UserFollowing = () => import('../views/UserFollowing.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
@@ -270,6 +271,15 @@ const routes = [
     path: '/u/:id/following',
     name: 'UserFollowing',
     component: UserFollowing,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/u/:id/delete',
+    name: 'UserDelete',
+    component: UserDelete,
     meta: {
       auth: true // A protected route
     },

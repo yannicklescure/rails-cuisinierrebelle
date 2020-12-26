@@ -3,9 +3,13 @@
     :style="{ paddingTop: navbarHeight + 'px' }"
     class="container"
     :key="componentKey"
+    v-if="!loading"
   >
     <h1>{{ $t('userSettings.title') }}</h1>
-    <user-notifications />
+    <div class="mb-3">
+      <user-notifications />
+    </div>
+    <router-link :to="`/u/${currentUser.slug}/delete`">{{ $t('userSettings.deleteAccount') }}</router-link>
   </div>
 </template>
 
@@ -18,6 +22,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      loading: true,
       // navbarHeight: 0,
     }
   },
@@ -30,7 +35,16 @@ export default {
     // },
   },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters(['navbarHeight', 'currentUser']),
+  },
+  beforeMount () {
+    if (this.$route.params.id === this.currentUser.slug) this.loading = false
+    else {
+      console.log('ALERT')
+      this.$router.push({
+        name: 'Home'
+      })
+    }
   },
   mounted () {
     // this.navbarHeight = this.getNavbarHeight()

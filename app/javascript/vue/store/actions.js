@@ -539,6 +539,16 @@ export default {
       })
   },
 
+  USER_DELETE: (context, payload) => {
+    console.log(context.state.data)
+    return api.userDelete(context, payload)
+      .then(response => {
+        console.log(response)
+        if (response.status === 204) context.commit("USER_DELETE", {})
+        return response
+      })
+  },
+
   NAVBAR_HEIGHT: (context, navbarHeight) => {
     context.commit("NAVBAR_HEIGHT", navbarHeight)
     // localStorage.setItem('cuisinier_rebelle', JSON.stringify(context.state.data))
