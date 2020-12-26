@@ -8,6 +8,12 @@ const saveToLocalStorage = (state, caller) => {
 
 export default {
 
+  SET_BANNER_IMAGE: (state, payload) => {
+    console.log(payload)
+    state.data.bannerImage = payload
+    saveToLocalStorage(state, 'SET_BANNER_IMAGE')
+  },
+
   USER_NOTIFICATIONS: (state, payload) => {
     console.log(payload.data.notification)
     state.data.user.notification = payload.data.notification

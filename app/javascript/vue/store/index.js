@@ -36,6 +36,17 @@ export const createStore = () => {
   else {
     console.log('initiate vuex store')
     data = {
+      bannerImage: {
+        id: null,
+        url: null,
+        link: {
+          download: null,
+        },
+        user: {
+          name: null,
+          username: null
+        }
+      },
       authorization: null,
       isAuthenticated: false,
       lastUpdated: 0,

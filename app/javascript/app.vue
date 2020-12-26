@@ -14,6 +14,7 @@ import { isMobile } from 'mobile-device-detect'
 // import Footer from './vue/components/Footer.vue'
 const Navbar = () => import('./vue/components/Navbar.vue')
 const Footer = () => import('./vue/components/Footer.vue')
+import { getBannerPicture } from './vue/util/unsplash'
 
 export default {
   name: 'app',
@@ -70,6 +71,13 @@ export default {
           this.loading = false
         })
     },
+
+    async getBannerPicture () {
+      const image = await getBannerPicture()
+      console.log(image)
+      this.$store
+        .dispatch('SET_BANNER_IMAGE', image)
+    },
   },
   computed: {
     // user () {
@@ -88,7 +96,8 @@ export default {
   },
   async beforeMount () {
     await this.checkAuthentication()
-    this.fetchItems()
+    await this.fetchItems()
+    this.getBannerPicture()
   },
 }
 </script>

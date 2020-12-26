@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import * as api from '../api'
 import jwt from 'jsonwebtoken'
+// import { getBannerPicture } from '../util/unsplash'
 
 const fetchStore = ({ commit, dispatch, state }, {}) => {
   console.log('fetch state data')
@@ -16,6 +17,16 @@ const fetchStore = ({ commit, dispatch, state }, {}) => {
 }
 
 export default {
+
+  SET_BANNER_IMAGE: (context, payload) => {
+    // getBannerPicture()
+    //   .then(image => {
+    //     console.log(image)
+    //     context.commit("SET_BANNER_IMAGE", image)
+    //   })
+    console.log(payload)
+    context.commit("SET_BANNER_IMAGE", payload)
+  },
 
   USER_NOTIFICATIONS: (context, payload) => {
     // console.log(payload)

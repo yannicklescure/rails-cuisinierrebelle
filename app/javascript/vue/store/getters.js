@@ -17,6 +17,9 @@ export default {
   csrfToken (state) {
     return csrfToken
   },
+  bannerImage (state) {
+    return state.data.bannerImage
+  },
   isAuthenticated (state, getters) {
     // return state.data.isAuthenticated
     // console.log(state.data.user)
