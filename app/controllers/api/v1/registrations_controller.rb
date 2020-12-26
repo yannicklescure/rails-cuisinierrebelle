@@ -1,5 +1,11 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :verify_authenticity_token, :only => :create
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
+
+  def jwt_with_denylist_user_auth_action
+    head :ok
+  end
+  before_action :authenticate_jwt_with_denylist_user!,
+                only: :jwt_with_denylist_user_auth_action
 
   # clear_respond_to
   respond_to :json
@@ -20,8 +26,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    binding.pry
-    # async_update(resource)
+    # binding.pry
+    async_update(resource)
     resource.destroy
     # Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     # set_flash_message! :notice, :destroyed

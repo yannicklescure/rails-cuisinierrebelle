@@ -245,7 +245,8 @@ export const fr = () => {
     userDelete: {
       title: 'Supprimer mon compte',
       email: 'Vérification de votre adresse courriel',
-      submit: 'Supprimer mon compte'
+      submit: 'Supprimer mon compte',
+      success: 'Votre compte a été supprimé.',
     }
   }
 }

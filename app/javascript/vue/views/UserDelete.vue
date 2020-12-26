@@ -22,7 +22,7 @@
         <input v-on:input="checkForm" v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
       </div>
       <div class="form-group mb-3">
-        <input v-on:click="checkForm" type="checkbox" id="checkbox" v-model="checked">
+        <input v-on:change="checkForm" type="checkbox" id="checkbox" v-model="checked">
         <label for="checkbox">Je comprends que les comptes supprimés ne sont pas récupérables.</label>
       </div>
       <div class="form-group mb-3">
@@ -59,8 +59,8 @@ export default {
       console.log(`checked ${!this.checked}`)
       // console.log(this.email)
       // console.log(this.currentUser.email)
-      console.log(!this.checked && (this.email === this.currentUser.email))
-      if (!this.checked === true && (this.email === this.currentUser.email)) {
+      console.log(this.checked && (this.email === this.currentUser.email))
+      if (this.checked === true && (this.email === this.currentUser.email)) {
         this.disabled = false
         return true
       }
