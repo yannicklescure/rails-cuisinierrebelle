@@ -50,7 +50,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'currentUser',
+    ]),
   },
   methods: {
 

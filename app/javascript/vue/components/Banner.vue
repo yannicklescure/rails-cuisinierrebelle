@@ -147,7 +147,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'bannerImage']),
+    ...mapGetters([
+      'navbarHeight',
+      'bannerImage',
+    ]),
     image () {
       return this.bannerImage
     }

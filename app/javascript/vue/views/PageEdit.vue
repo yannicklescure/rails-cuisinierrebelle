@@ -51,7 +51,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'page', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'page',
+      'currentUser',
+    ]),
     item () {
       return this.page(this.$route.params.id)
     }

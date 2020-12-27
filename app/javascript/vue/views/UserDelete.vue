@@ -125,7 +125,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'currentUser',
+    ]),
   },
   beforeMount () {
     if (this.$route.params.id === this.currentUser.slug) this.loading = false

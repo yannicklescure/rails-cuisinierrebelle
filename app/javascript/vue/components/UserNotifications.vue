@@ -24,7 +24,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentUser']),
+    ...mapGetters([
+      'currentUser',
+    ]),
     checked () {
       return this.currentUser.notification
     }

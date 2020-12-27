@@ -65,7 +65,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'currentUser', 'notifications']),
+    ...mapGetters([
+      'navbarHeight',
+      'currentUser',
+      'notifications',
+    ]),
     // notifications () {
     //   return this.currentUser.notifications
     // }

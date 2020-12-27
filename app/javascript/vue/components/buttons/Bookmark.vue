@@ -26,7 +26,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+    ]),
     user () {
       return this.currentUser
     },

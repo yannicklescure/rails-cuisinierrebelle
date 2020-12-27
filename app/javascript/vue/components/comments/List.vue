@@ -65,7 +65,10 @@ export default {
   },
   props: ['item'],
   computed: {
-    ...mapGetters(['countRecipeComments', 'recipe']),
+    ...mapGetters([
+      'countRecipeComments',
+      'recipe',
+    ]),
     comments () {
       // return this.recipe(this.$route.params.id).comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
       return this.item.comments.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()

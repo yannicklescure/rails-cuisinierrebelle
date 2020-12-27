@@ -65,7 +65,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'bookmarks']),
+    ...mapGetters([
+      'navbarHeight',
+      'bookmarks',
+    ]),
     items () {
       return this.bookmarks
     },

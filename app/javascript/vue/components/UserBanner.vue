@@ -53,7 +53,10 @@ export default {
     Follow,
   },
   computed: {
-    ...mapGetters(['usersFilter', 'currentUser']),
+    ...mapGetters([
+      'usersFilter',
+      'currentUser'
+    ]),
     user () {
       return this.usersFilter(this.$route.params.id)
     },

@@ -71,7 +71,11 @@ export default {
     VueMarkdownPlus,
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser', 'navbarHeight']),
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+      'navbarHeight',
+    ]),
     mobile () {
       return isMobile
     },

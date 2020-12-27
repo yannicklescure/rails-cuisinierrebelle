@@ -24,7 +24,10 @@ export default {
     // },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'currentUser',
+    ]),
   },
   beforeMount () {
     if (this.currentUser.admin) this.loading = false

@@ -40,10 +40,10 @@
         <div v-if="isAuthenticated" class="d-flex flex-column">
           <router-link v-on:click.native="collapse" to="/top100" class="text-fire my-2 text-decoration-none">Top 100</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" to="/bookmarks">{{ $t('navbar.bookmarks') }}</router-link>
-          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
+          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + currentUser.slug">{{ $t('navbar.recipes') }}</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>
-          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + user.slug + '/following'">{{ $t('navbar.following') }}</router-link>
-          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + user.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
+          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + currentUser.slug + '/following'">{{ $t('navbar.following') }}</router-link>
+          <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + currentUser.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
           <div @click="logout" class="text-body my-2 text-decoration-none">{{ $t('navbar.logout') }}</div>
         </div>
         <div v-else class="d-flex flex-column">
@@ -176,10 +176,13 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
-    user () {
-      return this.currentUser
-    },
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser'
+    ]),
+    // user () {
+    //   return this.currentUser
+    // },
     isScrollTop () {
       return true
     },

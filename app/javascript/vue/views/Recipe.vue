@@ -209,10 +209,14 @@ export default {
     VueMarkdownPlus,
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipe', 'currentUser']),
-    // item () {
-    //   return this.recipe(this.$route.params.id)
-    // },
+    ...mapGetters([
+      'navbarHeight',
+      'recipe',
+      'currentUser',
+    ]),
+    item () {
+      return this.recipe(this.$route.params.id)
+    },
     mobile () {
       return isMobile
     },

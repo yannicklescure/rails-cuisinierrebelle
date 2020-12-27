@@ -18,7 +18,9 @@ export default {
   name: 'BtnComment',
   props: ['item'],
   computed: {
-    ...mapGetters(['countRecipeComments']),
+    ...mapGetters([
+      'countRecipeComments',
+    ]),
     mobile () {
       return isMobile
     },

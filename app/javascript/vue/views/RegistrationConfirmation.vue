@@ -56,7 +56,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters([
+      'navbarHeight',
+    ]),
   },
   beforeMount () {
     this.confirmRegistration()

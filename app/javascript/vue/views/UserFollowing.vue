@@ -78,7 +78,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'usersFilter']),
+    ...mapGetters([
+      'navbarHeight',
+      'usersFilter',
+    ]),
     following () {
       return this.usersFilter(this.$route.params.id).following.data
     }

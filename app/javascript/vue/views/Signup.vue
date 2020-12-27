@@ -71,7 +71,9 @@ export default {
   //   // Navbar
   // },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters([
+      'navbarHeight',
+    ]),
   },
   methods: {
     allowPost () {

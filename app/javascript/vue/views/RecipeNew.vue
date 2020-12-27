@@ -167,7 +167,9 @@ export default {
     // },
   },
   computed: {
-    ...mapGetters(['navbarHeight']),
+    ...mapGetters([
+      'navbarHeight',
+    ]),
   },
   mounted () {
     // this.navbarHeight = this.getNavbarHeight()

@@ -39,7 +39,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['recipes']),
+    ...mapGetters([
+      'recipes',
+    ]),
     item () {
       const getRandomInt = (max) => {
         max = max > 0 ? max - 1 : 0

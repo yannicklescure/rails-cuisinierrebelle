@@ -24,7 +24,10 @@ export default {
   },
   props: ['item'],
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+    ]),
     // isFollower () {
     //   return this.currentUser.followers.data.filter(f => f.slug === this.item.slug).length > 0
     // },

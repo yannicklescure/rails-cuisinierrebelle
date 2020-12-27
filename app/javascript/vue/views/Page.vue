@@ -40,7 +40,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'page', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'page',
+      'currentUser',
+    ]),
     mobile () {
       return isMobile
     },

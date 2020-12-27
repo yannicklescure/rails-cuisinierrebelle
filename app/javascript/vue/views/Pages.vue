@@ -55,7 +55,11 @@ export default {
   methods: {
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'pages', 'currentUser']),
+    ...mapGetters([
+      'navbarHeight',
+      'pages',
+      'currentUser',
+    ]),
   },
   beforeMount () {
     if (!this.currentUser.admin) {

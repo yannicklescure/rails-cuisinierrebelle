@@ -52,22 +52,14 @@ export default {
     Banner,
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipes', 'isAuthenticated']),
+    ...mapGetters([
+      'navbarHeight',
+      'isAuthenticated',
+      'recipes',
+    ]),
     items () {
       return this.recipes
     },
-    // items () {
-    //   const items = this.$store.getters.recipes
-    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
-    //   return items
-    // },
-    // setData () {
-    //   if (this.items.length > 0 && this.data.length === 0) {
-    //     this.data = this.items.slice(0, 24)
-    //     return true
-    //   }
-    //   return false
-    // },
   },
   watch: {
     async '$route' () {

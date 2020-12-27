@@ -66,7 +66,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'search']),
+    ...mapGetters([
+      'navbarHeight',
+      'search',
+    ]),
     items () {
       return this.search.recipes
     },

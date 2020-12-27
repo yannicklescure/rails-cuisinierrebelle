@@ -47,9 +47,9 @@
               <router-link class="dropdown-item" :to="'/admin'">{{ $t('navbar.admin') }}</router-link>
             </div>
             <router-link class="dropdown-item" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>
-            <router-link class="dropdown-item" :to="'/u/' + user.slug">{{ $t('navbar.recipes') }}</router-link>
-            <router-link class="dropdown-item" :to="'/u/' + user.slug + '/following'">{{ $t('navbar.following') }}</router-link>
-            <router-link class="dropdown-item" :to="'/u/' + user.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + currentUser.slug">{{ $t('navbar.recipes') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + currentUser.slug + '/following'">{{ $t('navbar.following') }}</router-link>
+            <router-link class="dropdown-item" :to="'/u/' + currentUser.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
             <div
               @click="logout"
               class="dropdown-item mouse-pointer"
@@ -169,10 +169,13 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
-    user () {
-      return this.currentUser
-    },
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+    ]),
+    // user () {
+    //   return this.currentUser
+    // },
     isScrollTop () {
       return true
     },

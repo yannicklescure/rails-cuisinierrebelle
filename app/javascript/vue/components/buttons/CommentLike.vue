@@ -20,7 +20,10 @@ export default {
   name: 'CommentLike',
   props: ['item', 'type'],
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+    ]),
     mobile () {
       return isMobile
     },

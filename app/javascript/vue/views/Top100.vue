@@ -65,7 +65,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'top100']),
+    ...mapGetters([
+      'navbarHeight',
+      'top100',
+    ]),
     items () {
       return this.top100
     },

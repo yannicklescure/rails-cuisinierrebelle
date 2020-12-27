@@ -69,7 +69,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['navbarHeight', 'recipes', 'userRecipes']),
+    ...mapGetters([
+      'navbarHeight',
+      'recipes',
+      'userRecipes',
+    ]),
     items () {
       return this.userRecipes(this.$route.params.id)
     },

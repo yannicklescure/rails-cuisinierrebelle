@@ -44,7 +44,10 @@ export default {
   //   Follow,
   // },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser'
+    ]),
     isEdit () {
       return this.actionAttr === 'COMMENT_EDIT'
     },
