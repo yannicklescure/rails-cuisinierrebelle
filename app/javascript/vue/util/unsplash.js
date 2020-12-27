@@ -1,24 +1,32 @@
-import Unsplash, { toJson } from 'unsplash-js';
-const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
+// import Unsplash, { toJson } from 'unsplash-js';
+// const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
+
+import nodeFetch from 'node-fetch';
+import { createApi } from 'unsplash-js';
+
+export const unsplash = createApi({
+  accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs',
+  fetch: nodeFetch,
+});
 
 export const getBannerPicture = (viewport) => {
-  const query = "cooking, food, fruits"
   // fetchBannerPicture(query)
-  return unsplash.photos.getRandomPhoto({
-      query: query
+  return unsplash.photos.getRandom({
+      query: "food",
+      count: 1,
     })
-    .then(toJson)
     .then(response => {
       console.log(response)
+      const data = response.response[0]
       return {
-        id: response.id,
-        url: `${response.urls.raw}&w=${viewport.width}&h=${viewport.height}&fm=webp`,
+        id: data.id,
+        url: `${data.urls.raw}&w=${viewport.width}&h=${viewport.height}&fm=webp`,
         link: {
-          download: response.links.download,
+          download: data.links.download,
         },
         user: {
-          name: response.user.name,
-          username: response.user.username,
+          name: data.user.name,
+          username: data.user.username,
         }
       }
     })
