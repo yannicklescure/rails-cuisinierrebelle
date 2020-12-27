@@ -1,8 +1,8 @@
 import Unsplash, { toJson } from 'unsplash-js';
 const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
 
-export const getBannerPicture = (state) => {
-  const query = "cooking, food, kitchen"
+export const getBannerPicture = (viewport) => {
+  const query = "cooking, food, fruits"
   // fetchBannerPicture(query)
   return unsplash.photos.getRandomPhoto({
       query: query
@@ -12,7 +12,7 @@ export const getBannerPicture = (state) => {
       console.log(response)
       return {
         id: response.id,
-        url: `${response.urls.raw}&w=1600&h=900&fm=webp`,
+        url: `${response.urls.raw}&w=${viewport.width}&h=${viewport.height}&fm=webp`,
         link: {
           download: response.links.download,
         },

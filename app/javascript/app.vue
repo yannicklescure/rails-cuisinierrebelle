@@ -73,7 +73,13 @@ export default {
     },
 
     async getBannerPicture () {
-      const image = await getBannerPicture()
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      const viewport = {
+        height: vh,
+        width: vw,
+      }
+      const image = await getBannerPicture(viewport)
       console.log(image)
       this.$store
         .dispatch('SET_BANNER_IMAGE', image)
