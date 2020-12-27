@@ -55,10 +55,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { fetchBannerPicture } from '../api'
+// import { fetchBannerPicture } from '../api'
 // import Unsplash, { toJson } from 'unsplash-js';
 // const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
-import { unsplash } from '../util/unsplash'
+import { unsplash, getBannerPicture } from '../util/unsplash'
 
 export default {
   name: 'Banner',
@@ -79,6 +79,18 @@ export default {
     }
   },
   methods: {
+    async getBannerPicture () {
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      const viewport = {
+        height: vh,
+        width: vw,
+      }
+      const image = await getBannerPicture(viewport)
+      console.log(image)
+      this.$store
+        .dispatch('SET_BANNER_IMAGE', image)
+    },
     // getBannerPicture () {
     //   const query = "cooking, food, chef"
     //   // fetchBannerPicture(query)
@@ -140,15 +152,11 @@ export default {
       return this.bannerImage
     }
   },
-  beforeMount () {
-    // const picture = new Image()
-    // picture.src = this.image.url
+  created () {
+    // this.getBannerPicture()
   },
   mounted () {
-    // this.getBannerPicture()
-    // :style="'background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(' + image.url + ')'"
     this.$nextTick(() => {
-      this.setBannerImage()
       // this.setBannerImage()
     })
   }

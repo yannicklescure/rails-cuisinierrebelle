@@ -100,7 +100,7 @@ export default {
       return isMobile
     }
   },
-  async beforeMount () {
+  async created () {
     await this.checkAuthentication()
     await this.fetchItems()
     this.getBannerPicture()
