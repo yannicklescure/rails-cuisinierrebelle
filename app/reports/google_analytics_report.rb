@@ -66,7 +66,7 @@ class GoogleAnalyticsReport
     )
     # Build up our report request and a add country filter
     report_request = Google::Apis::AnalyticsreportingV4::ReportRequest.new(
-      view_id: ENV['GOOGLE_ANALYTICS_VIEW_ID'],
+      view_id: ENV['GOOGLE_VIEW_ID'],
       sampling_level: 'DEFAULT',
       # filters_expression: "ga:country==United Kingdom",
       date_ranges: [date_range],
