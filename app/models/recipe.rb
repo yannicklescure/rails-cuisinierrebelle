@@ -48,7 +48,7 @@ class Recipe < ApplicationRecord
 
   before_save :sanitize_youtube_video_link
   after_save :create_json_cache
-  after_destroy :create_json_cache
+  after_destroy :create_json_cache_after_destroy
 
   private
 
@@ -72,6 +72,14 @@ class Recipe < ApplicationRecord
       # binding.pry
       self.video = "https://www.youtube.com/embed/#{params_recipe_video}"
     end
+  end
+
+  def create_json_cache_after_destroy
+    # binding.pry
+    recipe = Recipe.last
+    recipe.updated_at = DateTime.now
+    recipe.save
+    create_json_cache
   end
 
   def create_json_cache

@@ -295,8 +295,10 @@ export default {
   RECIPE_DELETE: (state, payload) => {
     console.log(payload)
     console.log(state.data.recipes.length)
-    const recipe = state.data.recipes.filter(item => item.recipe.id === payload.data.recipe.id)[0]
+    const recipe = state.data.recipes.filter(item => item.recipe.id === parseInt(payload.data.recipe.id))[0]
+    console.log(recipe)
     const position = state.data.recipes.indexOf(recipe)
+    console.log(position)
     state.data.recipes.splice(position, 1)
     console.log(state.data.recipes.length)
     saveToLocalStorage(state, 'RECIPE_DELETE')
@@ -317,7 +319,7 @@ export default {
     // console.log('### RECIPE ###')
     // console.log(state)
     // console.log(payload)
-    const recipe = state.data.recipes.filter(r => r.recipe.id === payload.data.recipe.id)[0]
+    const recipe = state.data.recipes.filter(r => r.recipe.id === parseInt(payload.data.recipe.id))[0]
     console.log(recipe)
     if (recipe) {
       const position = state.data.recipes.indexOf(recipe)
@@ -342,7 +344,7 @@ export default {
     console.log(state)
     console.log(payload)
     if (state.data.recipes.length === 0) {
-      state.data.recipes = payload.data
+      state.data.recipes = payload.data.recipes
       // state.data.lastUpdated = new Date().getTime()
       saveToLocalStorage(state, 'RECIPES')
     }

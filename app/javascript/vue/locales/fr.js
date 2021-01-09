@@ -170,6 +170,9 @@ export const fr = () => {
       },
       delete: {
         submit: 'Supprimer',
+        are_you_sure: 'Êtes-vous sûr ?',
+        okText: 'Supprimer',
+        cancelText: 'Annuler',
       },
       new: {
         title: 'Titre',

@@ -489,7 +489,7 @@ export default {
     // console.log(context.state.data.user)
     return api.recipes(context, payload)
       .then(response => {
-        if (response.status === 200) context.commit("RECIPES", response)
+        if (response.status === 200) context.commit("RECIPES", response.data)
         return response
       })
       .catch(error => {

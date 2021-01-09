@@ -5,7 +5,7 @@
       <div id="recipes-cards">
         <div id="root" class="d-flex flex-wrap justify-content-start py-3">
           <div
-            v-for="(item, index) in items"
+            v-for="(item, index) in data"
             :key="item.id"
             class="card rounded border-0"
           >
@@ -68,17 +68,7 @@ export default {
       // this.recipeLog()
     },
     // 'recipes' () {
-    //   console.log(this.data.length)
-    //   if (this.$route.params.recipeId) {
-    //     console.log(this.$route.params.recipeId)
-    //     const recipe = this.data.filter(item => item.recipe.id === this.$route.params.recipeId)[0]
-    //     const position = this.data.indexOf(recipe)
-    //     this.data.splice(position, 1)
-    //   }
-    //   console.log(this.data.length)
-    //   console.log(this.recipes.length)
-    //   this.componentKey += 1
-    //   // this.fetchItem()
+    //   this.fetchItem()
     // }
   },
   methods: {
@@ -105,22 +95,15 @@ export default {
       }
     },
     fetchItem () {
-      // if (this.recipes.length === 0) {
+      if (this.recipes.length === 0) {
         console.log('fetching recipes data')
         this.data = []
         this.$store
           .dispatch('RECIPES', {})
-          .then( response => {
-            console.log(response.data.data.recipes)
-            this.componentKey += 1
-            this.data = response.data.data.recipes
-              .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
-              .splice(0, 24)
-          })
-      // }
-      // else {
-      //   this.loadMore()
-      // }
+      }
+      this.componentKey += 1
+      this.data = this.recipes
+        .slice(0, 24)
     },
   },
   beforeMount () {

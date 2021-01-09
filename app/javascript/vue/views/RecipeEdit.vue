@@ -28,7 +28,7 @@
             <label class="custom-file-label" for="photoFileLangHTML" :data-browse="$t('recipe.new.chooseFile')">{{ $t('recipe.new.browse') }}</label>
           </div>
         </div>
-        <div ref="preview">
+        <div v-if="item" ref="preview">
           <div class="mb-3"><img :src="item.recipe.photo.full.url" class="rounded img-fluid" :alt="item.recipe.title"></div>
         </div>
         <div class="form-group mb-3">
@@ -200,16 +200,40 @@ export default {
       }
     },
     deleteRecipe () {
-      const payload = {
-        id: this.id
-      }
-      this.$store.dispatch('RECIPE_DELETE', payload)
-        .then(response => {
-          this.$router.push({
-            name: 'Home',
-            params: { recipeId: this.id }
-          })
+      let message = this.$t('recipe.delete.are_you_sure')
+      let options = {
+          // html: false, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
+          // loader: false, // set to true if you want the dialog to show a loader after click on "proceed"
+          // reverse: false, // switch the button positions (left to right, and vise versa)
+          okText:  this.$t('recipe.delete.okText'),
+          cancelText: this.$t('recipe.delete.cancelText'),
+          // animation: 'zoom', // Available: "zoom", "bounce", "fade"
+          // type: 'basic', // coming soon: 'soft', 'hard'
+          // verification: 'continue', // for hard confirm, user will be prompted to type this to enable the proceed button
+          // verificationHelp: 'Type "[+:verification]" below to confirm', // Verification help text. [+:verification] will be matched with 'options.verification' (i.e 'Type "continue" below to confirm')
+          // clicksCount: 3, // for soft confirm, user will be asked to click on "proceed" btn 3 times before actually proceeding
+          backdropClose: true, // set to true to close the dialog when clicking outside of the dialog window, i.e. click landing on the mask
+          customClass: '' // Custom class to be injected into the parent node for the current dialog instance
+      };
+
+      this.$dialog
+        .confirm(message, options)
+        .then(dialog => {
+          console.log('Clicked on proceed')
+          const payload = {
+            id: this.id
+          }
+          this.$store.dispatch('RECIPE_DELETE', payload)
+            .then(response => {
+              this.$router.push({
+                name: 'Home',
+                params: { recipeId: this.id }
+              })
+            })
         })
+        .catch(() => {
+          console.log('Clicked on cancel')
+        });
     },
   },
   beforeMount () {
