@@ -168,6 +168,9 @@ export const fr = () => {
         addPublicComment: 'Ajouter un commentaire public...',
         viewReplies: 'Voir 0 réponses | Voir la réponse | Voir les {count} réponses',
       },
+      delete: {
+        submit: 'Supprimer',
+      },
       new: {
         title: 'Titre',
         subtitle: 'Sous-titre',

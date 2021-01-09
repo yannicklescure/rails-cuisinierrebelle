@@ -5,7 +5,7 @@
       <div id="recipes-cards">
         <div id="root" class="d-flex flex-wrap justify-content-start py-3">
           <div
-            v-for="(item, index) in data"
+            v-for="(item, index) in items"
             :key="item.id"
             class="card rounded border-0"
           >
@@ -62,11 +62,24 @@ export default {
     },
   },
   watch: {
-    async '$route' () {
+    '$route' () {
       console.log(this.$route.params.id)
-      await this.fetchItem()
+      this.fetchItem()
       // this.recipeLog()
-    }
+    },
+    // 'recipes' () {
+    //   console.log(this.data.length)
+    //   if (this.$route.params.recipeId) {
+    //     console.log(this.$route.params.recipeId)
+    //     const recipe = this.data.filter(item => item.recipe.id === this.$route.params.recipeId)[0]
+    //     const position = this.data.indexOf(recipe)
+    //     this.data.splice(position, 1)
+    //   }
+    //   console.log(this.data.length)
+    //   console.log(this.recipes.length)
+    //   this.componentKey += 1
+    //   // this.fetchItem()
+    // }
   },
   methods: {
     // cardParams (value) {
@@ -92,8 +105,9 @@ export default {
       }
     },
     fetchItem () {
-      if (this.recipes.length === 0) {
+      // if (this.recipes.length === 0) {
         console.log('fetching recipes data')
+        this.data = []
         this.$store
           .dispatch('RECIPES', {})
           .then( response => {
@@ -103,10 +117,10 @@ export default {
               .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
               .splice(0, 24)
           })
-      }
-      else {
-        this.loadMore()
-      }
+      // }
+      // else {
+      //   this.loadMore()
+      // }
     },
   },
   beforeMount () {

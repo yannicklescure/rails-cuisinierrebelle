@@ -557,6 +557,26 @@ export const pageEdit = (context, payload) => {
   });
 }
 
+export const recipeDelete = (context, payload) => {
+  console.log(payload)
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'delete',
+    url: `${domain}/api/v1/recipes/${ payload.id }`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const recipeEdit = (context, payload) => {
   console.log(payload)
   const FormData = require('form-data');

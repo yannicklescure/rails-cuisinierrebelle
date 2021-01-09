@@ -48,6 +48,7 @@ class Recipe < ApplicationRecord
 
   before_save :sanitize_youtube_video_link
   after_save :create_json_cache
+  after_destroy :create_json_cache
 
   private
 
@@ -74,6 +75,7 @@ class Recipe < ApplicationRecord
   end
 
   def create_json_cache
+    # binding.pry
     CreateRecipesJsonCacheJob.perform_later
   end
 

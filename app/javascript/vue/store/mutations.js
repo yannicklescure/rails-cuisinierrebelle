@@ -276,12 +276,6 @@ export default {
     saveToLocalStorage(state, 'SET_PAGES')
   },
 
-  RECIPE_NEW: (state, payload) => {
-    state.data.recipes.push(payload.data)
-    // state.data.lastUpdated = new Date().getTime()
-    saveToLocalStorage(state, 'RECIPE_NEW')
-  },
-
   PAGE_NEW: (state, payload) => {
     state.data.pages.push(payload.data)
     saveToLocalStorage(state, 'PAGE_NEW')
@@ -296,6 +290,27 @@ export default {
       state.data.pages[position] = payload.data
       saveToLocalStorage(state, 'PAGE_EDIT')
     }
+  },
+
+  RECIPE_DELETE: (state, payload) => {
+    console.log(payload)
+    console.log(state.data.recipes.length)
+    const recipe = state.data.recipes.filter(item => item.recipe.id === payload.data.recipe.id)[0]
+    const position = state.data.recipes.indexOf(recipe)
+    state.data.recipes.splice(position, 1)
+    console.log(state.data.recipes.length)
+    saveToLocalStorage(state, 'RECIPE_DELETE')
+  },
+
+  RECIPE_EDIT: (state, payload) => {
+    console.log(payload)
+    saveToLocalStorage(state, 'RECIPE_EDIT')
+  },
+
+  RECIPE_NEW: (state, payload) => {
+    state.data.recipes.push(payload.data)
+    // state.data.lastUpdated = new Date().getTime()
+    saveToLocalStorage(state, 'RECIPE_NEW')
   },
 
   RECIPE: (state, payload) => {

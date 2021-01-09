@@ -175,26 +175,28 @@ export default {
     }
   },
   metaInfo () {
-    return {
-      title: this.title,
-      componentKey: 0,
-      meta: [
-        { vmid: 'description', name: 'description', content: this.item.recipe.description },
-        { vmid: 'fb:app_id', property: 'fb:app_id', content: '570259036897585' },
-        { vmid: 'og:site_name', property: 'og:site_name', content: 'Cuisinier Rebelle' },
-        { vmid: 'og:title', property: 'og:title', content: `${ this.item.recipe.title } | Cuisinier Rebelle` },
-        { vmid: 'og:description', property: 'og:description', content: this.item.recipe.description },
-        { vmid: 'og:locale', property: 'og:locale', content: 'fr_FR' },
-        { vmid: 'og:type', property: 'og:type', content: 'website' },
-        { vmid: 'og:url', property: 'og:url', content: `https://www.cuisinierrebelle.com/r/${ this.$route.params.id }` },
-        { vmid: 'og:image', property: 'og:image', content: this.item.recipe.photo.openGraph.url },
-        { vmid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-        { vmid: 'twitter:site', name: 'twitter:site', content: '@cuisinierrebelle' },
-        { vmid: 'twitter:creator', name: 'twitter:creator', content: '@cuisinierrebelle' },
-        { vmid: 'twitter:title', name: 'twitter:title', content: `${ this.item.recipe.title } | Cuisinier Rebelle` },
-        { vmid: 'twitter:description', name: 'twitter:description', content: this.item.recipe.description },
-        { vmid: 'twitter:image', name: 'twitter:image', content: this.item.recipe.photo.openGraph.url },
-      ]
+    console.log(this.item)
+    if (this.item) {
+      return {
+        title: this.item.recipe.title,
+        meta: [
+          { vmid: 'description', name: 'description', content: this.item.recipe.description },
+          { vmid: 'fb:app_id', property: 'fb:app_id', content: '570259036897585' },
+          { vmid: 'og:site_name', property: 'og:site_name', content: 'Cuisinier Rebelle' },
+          { vmid: 'og:title', property: 'og:title', content: `${ this.item.recipe.title } | Cuisinier Rebelle` },
+          { vmid: 'og:description', property: 'og:description', content: this.item.recipe.description },
+          { vmid: 'og:locale', property: 'og:locale', content: 'fr_FR' },
+          { vmid: 'og:type', property: 'og:type', content: 'website' },
+          { vmid: 'og:url', property: 'og:url', content: `https://www.cuisinierrebelle.com/r/${ this.$route.params.id }` },
+          { vmid: 'og:image', property: 'og:image', content: this.item.recipe.photo.openGraph.url },
+          { vmid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+          { vmid: 'twitter:site', name: 'twitter:site', content: '@cuisinierrebelle' },
+          { vmid: 'twitter:creator', name: 'twitter:creator', content: '@cuisinierrebelle' },
+          { vmid: 'twitter:title', name: 'twitter:title', content: `${ this.item.recipe.title } | Cuisinier Rebelle` },
+          { vmid: 'twitter:description', name: 'twitter:description', content: this.item.recipe.description },
+          { vmid: 'twitter:image', name: 'twitter:image', content: this.item.recipe.photo.openGraph.url },
+        ]
+      }
     }
   },
   components: {
@@ -214,9 +216,9 @@ export default {
       'recipe',
       'currentUser',
     ]),
-    item () {
-      return this.recipe(this.$route.params.id)
-    },
+    // item () {
+    //   return this.recipe(this.$route.params.id)
+    // },
     mobile () {
       return isMobile
     },
@@ -288,12 +290,14 @@ export default {
   watch: {
     async '$route' () {
       console.log(this.$route.params.id)
-      await this.fetchItem()
+      // await this.fetchItem()
+      this.item = this.recipe(this.$route.params.id)
       // this.recipeLog()
     }
   },
   beforeMount () {
-    this.fetchItem()
+    // this.fetchItem()
+    this.item = this.recipe(this.$route.params.id)
   },
   mounted () {
     this.$nextTick(() => {

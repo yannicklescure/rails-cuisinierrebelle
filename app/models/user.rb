@@ -68,6 +68,7 @@ class User < ApplicationRecord
   # after_commit :async_update # Run on create & update
   before_commit :sanitize_user_slug, :sanitize_user_image, on: [:create, :update]
   after_save :create_json_cache
+  after_destroy :create_json_cache
 
   extend FriendlyId
   friendly_id :name, use: :slugged

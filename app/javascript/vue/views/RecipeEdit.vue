@@ -42,7 +42,8 @@
             {{ $t('recipe.new.tagsHelp') }}
           </small>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-between">
+          <button v-on:click.stop.prevent="deleteRecipe" type="submit" class="btn btn-link mb-3">{{ $t('recipe.delete.submit') }}</button>
           <button v-on:click.stop.prevent="postRecipe" type="submit" class="btn btn-dark mb-3" :disabled="disabled">{{ $t('recipe.new.submit') }}</button>
         </div>
       </form>
@@ -198,9 +199,18 @@ export default {
         })
       }
     },
-    // getNavbarHeight () {
-    //   return this.$store.getters.navbarHeight
-    // },
+    deleteRecipe () {
+      const payload = {
+        id: this.id
+      }
+      this.$store.dispatch('RECIPE_DELETE', payload)
+        .then(response => {
+          this.$router.push({
+            name: 'Home',
+            params: { recipeId: this.id }
+          })
+        })
+    },
   },
   beforeMount () {
     if (this.currentUser.slug != this.item.user.slug) {

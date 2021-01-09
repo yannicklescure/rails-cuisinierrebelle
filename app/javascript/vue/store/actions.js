@@ -431,11 +431,12 @@ export default {
       })
   },
 
-  RECIPE_EDIT: (context, payload) => {
+  RECIPE_DELETE: (context, payload) => {
     // console.log(context.state.data.user)
-    return api.recipeEdit(context, payload)
+    return api.recipeDelete(context, payload)
       .then(response => {
-        // if (response.status === 200) context.commit("RECIPE_EDIT", response)
+        console.log(response)
+        if (response.status === 200) context.commit("RECIPE_DELETE", response)
         return response
       })
       .catch(error => {
@@ -443,6 +444,21 @@ export default {
         return error
       })
   },
+
+  RECIPE_EDIT: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.recipeEdit(context, payload)
+      .then(response => {
+        console.log(response)
+        if (response.status === 200) context.commit("RECIPE_EDIT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE_NEW: (context, payload) => {
     // console.log(context.state.data.user)
     return api.recipeNew(context, payload)
