@@ -438,6 +438,8 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     signet (0.14.0)
       addressable (~> 2.3)
       faraday (>= 0.17.3, < 2.0)
@@ -568,6 +570,7 @@ DEPENDENCIES
   seed_dump
   serviceworker-rails
   sidekiq
+  sidekiq-failures (~> 1.0)
   simple_form
   sitemap_generator
   spring
