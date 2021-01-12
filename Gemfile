@@ -80,7 +80,7 @@ gem 'gibbon'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'http_accept_language'
-gem "nokogiri", ">= 1.10.8"
+gem "nokogiri", ">= 1.11.0.rc4"
 gem 'bootstrap-email'
 # gem "actionview", ">= 6.0.2.2"
 gem "actionview", ">= 6.0.3.2"
