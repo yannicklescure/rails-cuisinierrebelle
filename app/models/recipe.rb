@@ -46,11 +46,19 @@ class Recipe < ApplicationRecord
   #   )
   searchkick
 
+  after_commit :flush_cache!
   before_save :sanitize_youtube_video_link
   after_save :create_json_cache
   after_destroy :create_json_cache_after_destroy
 
   private
+
+  def flush_cache!
+    puts 'flushing the cache...'
+    Rails.cache.delete Recipe.cache_key(Recipe.all)
+    # Rails.cache.delete 'all_employees'
+    # Rails.cache.delete "employees_#{gender}"
+  end
 
   def sanitize_youtube_video_link
     # params_recipe_video = params[:recipe][:video]

@@ -67,6 +67,7 @@ class User < ApplicationRecord
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
   before_commit :sanitize_user_slug, :sanitize_user_image, on: [:create, :update]
+  after_commit :flush_cache!
   after_save :create_json_cache
   after_destroy :create_json_cache
 
@@ -83,6 +84,13 @@ class User < ApplicationRecord
   searchkick
 
   private
+
+  def flush_cache!
+    puts 'flushing the cache...'
+    Rails.cache.delete User.cache_key(User.all)
+    # Rails.cache.delete 'all_employees'
+    # Rails.cache.delete "employees_#{gender}"
+  end
 
   def create_json_cache
     CreateUsersJsonCacheJob.perform_later
