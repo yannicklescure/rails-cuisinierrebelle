@@ -559,9 +559,9 @@ export default {
     }
 
     return api.facebookLogin(context, payload)
-      .then(async response => {
+      .then(response => {
         console.log(response)
-        if (response.data.isUser && response.data.isFacebookUser) {
+        if (response.data.isUser) {
           console.log(response)
           const payload = {
             authResponse: response.data.authResponse,
@@ -571,10 +571,7 @@ export default {
             }
           }
           console.log(payload)
-          await loginUser(payload)
-            .then(response => {
-              return response
-            })
+          return loginUser(payload)
         }
         else {
           // CREATE USER
@@ -594,7 +591,7 @@ export default {
           }
           console.log(payload)
           return api.signUp(context, payload)
-            .then(async response => {
+            .then(response => {
               console.log(response)
               const payload = {
                 authResponse: response.data.authResponse,
@@ -603,10 +600,7 @@ export default {
                   password: null
                 }
               }
-              await loginUser(payload)
-                .then(response => {
-                  return response
-                })
+              return loginUser(payload)
             })
             .catch(error => {
               // console.log(error)

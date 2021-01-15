@@ -51,47 +51,49 @@ export default {
     login (response) {
       console.log('login')
       console.log(response)
-      this.$store.dispatch('FACEBOOK_LOG_IN', response)
-        .then(result => {
-          console.log(result)
-          if (result.status === 200) {
-            console.log(capitalize(result.data.first_name))
-            this.$toast.open({
-              message: this.$t('login.welcome', { firstName: capitalize(result.data.first_name) }),
-              type: 'success', // success, info, warning, error, default
-              // all of other options may go here
-              position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
-              duration: 3000, // Visibility duration in milliseconds
-              dismissible: true,
-            })
-            this.$router.push({ name: 'Home' })
-          }
-          else if (result.response) {
-            // client received an error response (5xx, 4xx)
-            this.errors.push(result.status)
-          }
-          else if (result.request) {
-            // client never received a response, or request never left
-            this.errors.push(result.status)
-          }
-          else {
-            // anything else
-            this.errors.push(result)
-          }
-        })
-        .then(() => {
-          if (this.errors.length > 0) {
-            console.log(this.errors)
-            this.$toast.open({
-                message: this.errors[0],
-                type: 'error', // success, info, warning, error, default
+      if (response) {
+        this.$store.dispatch('FACEBOOK_LOG_IN', response)
+          .then(result => {
+            console.log(result)
+            if (result.status === 200) {
+              console.log(capitalize(result.data.first_name))
+              this.$toast.open({
+                message: this.$t('login.welcome', { firstName: capitalize(result.data.first_name) }),
+                type: 'success', // success, info, warning, error, default
                 // all of other options may go here
                 position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
                 duration: 3000, // Visibility duration in milliseconds
                 dismissible: true,
-            })
-          }
-        })
+              })
+              this.$router.push({ name: 'Home' })
+            }
+            else if (result.response) {
+              // client received an error response (5xx, 4xx)
+              this.errors.push(result.status)
+            }
+            else if (result.request) {
+              // client never received a response, or request never left
+              this.errors.push(result.status)
+            }
+            else {
+              // anything else
+              this.errors.push(result)
+            }
+          })
+          .then(() => {
+            if (this.errors.length > 0) {
+              console.log(this.errors)
+              this.$toast.open({
+                  message: this.errors[0],
+                  type: 'error', // success, info, warning, error, default
+                  // all of other options may go here
+                  position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+                  duration: 3000, // Visibility duration in milliseconds
+                  dismissible: true,
+              })
+            }
+          })
+      }
     },
     logout () {
       let message = this.$t('navbar.are_you_sure')

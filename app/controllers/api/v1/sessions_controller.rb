@@ -14,7 +14,12 @@ class Api::V1::SessionsController < Devise::SessionsController
     # self.resource = warden.authenticate!(auth_options)
     self.resource = User.find_by(email: params[:user][:email])
     @facebookAuth = false
-    if (!params[:authResponse].nil? && resource.uid === params[:authResponse][:userID])
+    if (!params[:authResponse].nil?)
+      if resource.uid.nil?
+        resource.uid = params[:authResponse][:userID]
+        resource.provider = 'facebook'
+        resource.save
+      end
       # params[:user][:password] = ENV['FB_USER_PWD']
       # params[:session][:user][:password] = ENV['FB_USER_PWD']
       @facebookAuth = true
