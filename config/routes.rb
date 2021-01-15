@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         post :follow
         post :unfollow
       end
+      resources :facebook, only: [ :index ]
       resources :notification, only: [ :update ]
       resources :notifications, only: [ :index ]
       resources :analytics, only: [ :index ]

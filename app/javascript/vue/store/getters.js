@@ -25,6 +25,11 @@ export default {
     // console.log(state.data.user)
     return state.data.user.email != null
   },
+  facebookAuth (state, getters) {
+    // return state.data.isAuthenticated
+    // console.log(state.data.user)
+    return state.data.user.facebookAuth
+  },
   search (state) {
     return state.data.search
   },

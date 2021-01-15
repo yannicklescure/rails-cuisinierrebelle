@@ -540,13 +540,94 @@ export default {
       })
   },
 
+  FACEBOOK_LOG_IN: (context, payload) => {
+    const loginUser = payload => {
+      console.log(payload)
+      // LOGIN USER
+      return api.login(context, payload)
+        .then(response => {
+          const token = response.headers.authorization.split('Bearer ')[1]
+          console.log(token)
+          // console.log(jwt.decode(token))
+          if (response.status === 200) context.commit("LOG_IN", response)
+          return response
+        })
+        .catch(error => {
+          // console.log(error)
+          return error
+        })
+    }
+
+    return api.facebookLogin(context, payload)
+      .then(async response => {
+        console.log(response)
+        if (response.data.isUser && response.data.isFacebookUser) {
+          console.log(response)
+          const payload = {
+            authResponse: response.data.authResponse,
+            user: {
+              email: response.data.user.email,
+              password: null
+            }
+          }
+          console.log(payload)
+          await loginUser(payload)
+            .then(response => {
+              return response
+            })
+        }
+        else {
+          // CREATE USER
+          // response.data.isFacebookUser = true
+          // response.data.authResponse = response.data.authResponse
+          // response.data.user.password = { accessToken: response.data.authResponse.accessToken }
+          // console.log(response.data.user)
+          const payload = {
+            authResponse: response.data.authResponse,
+            user: {
+              first_name: response.data.user.firstName,
+              last_name: response.data.user.lastName,
+              email: response.data.user.email,
+              // password: response.data.user.password,
+              // confirmation: response.data.user.confirmation,
+            }
+          }
+          console.log(payload)
+          return api.signUp(context, payload)
+            .then(async response => {
+              console.log(response)
+              const payload = {
+                authResponse: response.data.authResponse,
+                user: {
+                  email: response.data.user.email,
+                  password: null
+                }
+              }
+              await loginUser(payload)
+                .then(response => {
+                  return response
+                })
+            })
+            .catch(error => {
+              // console.log(error)
+              return error
+            })
+        }
+        // return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)
       .then(response => {
         const token = response.headers.authorization.split('Bearer ')[1]
-        console.log(token)
-        console.log(jwt.decode(token))
+        // console.log(token)
+        // console.log(jwt.decode(token))
         if (response.status === 200) context.commit("LOG_IN", response)
         return response
       })

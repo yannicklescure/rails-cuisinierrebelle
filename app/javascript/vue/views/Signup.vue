@@ -149,8 +149,8 @@ export default {
       const checkForm = this.checkForm()
       if (checkForm) {
         const user = {
-          firstName: this.firstName,
-          lastName: this.lastName,
+          first_name: this.firstName,
+          last_name: this.lastName,
           email: this.email,
           password: this.password,
           confirmation: this.confirmation,

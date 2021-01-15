@@ -42,6 +42,8 @@
     "unsplash-js": "^7.0.2",
     "vue": "^2.6.12",
     "vue-click-outside": "^1.1.0",
+    "vue-cookie": "^1.1.4",
+    "vue-facebook-login-component": "^3.0.0",
     "vue-google-adsense": "^1.9.0",
     "vue-gtag": "^1.10.0",
     "vue-i18n": "^8.22.1",

@@ -50,12 +50,12 @@
             <router-link class="dropdown-item" :to="'/u/' + currentUser.slug">{{ $t('navbar.recipes') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + currentUser.slug + '/following'">{{ $t('navbar.following') }}</router-link>
             <router-link class="dropdown-item" :to="'/u/' + currentUser.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
+            <facebook-login v-if="facebookAuth" />
             <div
+              v-else
               @click="logout"
               class="dropdown-item mouse-pointer"
-            >
-              {{ $t('navbar.logout') }}
-            </div>
+            >{{ $t('navbar.logout') }}</div>
           </div>
         </div>
       </div>
@@ -79,6 +79,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
+const FacebookLogin = () => import('../components/buttons/Facebook.vue')
 
 export default {
   name: 'NavbarLarge',
@@ -88,14 +89,30 @@ export default {
       searchQuery: '',
     }
   },
-  // components: {
-  //   // Navbar
-  // },
+  components: {
+    FacebookLogin,
+  },
   created () {
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll);
+  },
+  computed: {
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+      'facebookAuth',
+    ]),
+    // user () {
+    //   return this.currentUser
+    // },
+    isScrollTop () {
+      return true
+    },
+    mobile () {
+      return isMobile
+    }
   },
   methods: {
     validSearchQuery () {
@@ -149,7 +166,7 @@ export default {
         .confirm(message, options)
         .then(dialog => {
           console.log('Clicked on proceed')
-          console.log(dialog)
+          // DELETE FACEBOOK COOKIES c_user xs
           this.$store.dispatch('LOG_OUT', {})
             .then(response => {
               console.log(response)
@@ -167,33 +184,6 @@ export default {
     navbarHeight () {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
-  },
-  computed: {
-    ...mapGetters([
-      'isAuthenticated',
-      'currentUser',
-    ]),
-    // user () {
-    //   return this.currentUser
-    // },
-    isScrollTop () {
-      return true
-    },
-    // user () {
-    //   return this.$store.getters.currentUser
-    // },
-    // isAuthenticated () {
-    //   // console.log(this.$store)
-    //   // console.log(this.$store.state.data.isAuthenticated)
-    //   // console.log(this.$store.getters.isAuthenticated)
-    //   return this.$store.getters.isAuthenticated
-    // },
-    // items () {
-    //   return this.filter
-    // },
-    mobile () {
-      return isMobile
-    }
   },
   beforeMount () {
     this.forceRerender()

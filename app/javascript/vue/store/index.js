@@ -62,6 +62,7 @@ export const createStore = () => {
       user: {
         email: null,
         authentication_token: null,
+        facebookAuth: false,
         locale: 'fr',
         bookmarks: [],
         followers: {

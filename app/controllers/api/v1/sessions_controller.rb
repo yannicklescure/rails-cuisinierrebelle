@@ -8,10 +8,28 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   respond_to :json
 
-  # def create
-  #   super
-  #   # binding.pry
-  # end
+  def create
+    # binding.pry
+    # super
+    # self.resource = warden.authenticate!(auth_options)
+    self.resource = User.find_by(email: params[:user][:email])
+    @facebookAuth = false
+    if (!params[:authResponse].nil? && resource.uid === params[:authResponse][:userID])
+      # params[:user][:password] = ENV['FB_USER_PWD']
+      # params[:session][:user][:password] = ENV['FB_USER_PWD']
+      @facebookAuth = true
+      # binding.pry
+      sign_in(:user, resource)
+      respond_with resource
+    elsif resource.valid_password?(params[:user][:password])
+      sign_in(:user, resource)
+      respond_with resource
+    else
+      # binding.pry
+      puts "Wrong password"
+      respond_with MultiJson.dump({ error: { password: true }})
+    end
+  end
 
   # def destroy
   #   # binding.pry
@@ -20,6 +38,10 @@ class Api::V1::SessionsController < Devise::SessionsController
   # end
 
   private
+
+  def sign_in_params
+    params.require(:user).permit(:email, :password)
+  end
 
   # def verify_jwt_token
   #   head :unauthorized if request.headers['Authorization'].nil? ||
@@ -30,6 +52,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     # binding.pry
     # resource.sessionIpAddress = request.remote_ip
     render json: MultiJson.dump({
+      facebookAuth: @facebookAuth,
       id: resource.id,
       email: resource.email,
       slug: resource.slug,

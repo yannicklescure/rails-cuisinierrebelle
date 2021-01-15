@@ -32,6 +32,10 @@ const unsync = sync(store, router)
 // console.log('router')
 // unsync()
 
+// Tell Vue to use the plugin
+Vue.use(require('vue-cookie'))
+console.log(document.cookie)
+
 console.log(window.location)
 // if (window.location.hostname != 'localhost') {
   import VueGtag from 'vue-gtag'

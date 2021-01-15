@@ -1,7 +1,10 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" class="container d-flex cr-vh100">
     <div class="d-flex flex-grow-1 justify-content-center align-items-center">
-      <div class="d-flex flex-column w-md-50">
+      <div class="d-flex flex-column align-items-center w-md-50">
+        <div class="mb-3">
+          <facebook-login />
+        </div>
         <form>
           <div class="form-group my-2">
             <label for="inputEmail">{{ $t('login.email') }}</label>
@@ -31,6 +34,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+const FacebookLogin = () => import('../components/buttons/Facebook.vue')
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return ''
@@ -47,9 +51,9 @@ export default {
       errors: [],
     }
   },
-  // components: {
-  //   // Navbar
-  // },
+  components: {
+    FacebookLogin,
+  },
   computed: {
     ...mapGetters([
       'navbarHeight',
@@ -105,11 +109,13 @@ export default {
       const checkForm = this.checkForm()
       if (checkForm) {
         console.log(this.email)
-        const user = {
-          email: this.email,
-          password: this.password
+        const payload = {
+          user: {
+            email: this.email,
+            password: this.password
+          }
         }
-        this.$store.dispatch('LOG_IN', user)
+        this.$store.dispatch('LOG_IN', payload)
           .then(result => {
             console.log(result)
             if (result.status === 200) {
