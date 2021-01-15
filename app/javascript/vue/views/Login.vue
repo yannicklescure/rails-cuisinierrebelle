@@ -2,7 +2,7 @@
   <div :style="{ paddingTop: navbarHeight + 'px' }" class="container d-flex cr-vh100">
     <div class="d-flex flex-grow-1 justify-content-center align-items-center">
       <div class="d-flex flex-column align-items-center w-md-50">
-        <div class="mb-3">
+        <div class="my-3">
           <facebook-login />
         </div>
         <form>
