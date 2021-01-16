@@ -15,7 +15,11 @@
       @sdk-init="handleSdkInit"
       @login="login"
       @logout="logout"
-    />
+    >
+      <template v-slot:login>{{ $t('login.facebook.login') }}</template>
+      <template v-slot:logout>{{ $t('login.facebook.logout') }}</template>
+      <template v-slot:working>{{ $t('login.facebook.working') }}</template>
+    </v-facebook-login>
   </div>
 </template>
 
@@ -35,6 +39,9 @@ export default {
     model: {},
     scope: {},
     errors: [],
+    text: {
+      login: 'test'
+    }
   }),
   components: {
     VFacebookLogin,

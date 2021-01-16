@@ -122,6 +122,11 @@ export const fr = () => {
       // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
+      facebook: {
+        login: 'Se connecter avec Facebook',
+        logout: 'Se déconnecter',
+        working: 'Chargement ...',
+      },
       email: 'Adresse Courriel',
       password: 'Mot de passe',
       submit: 'Se connecter',
