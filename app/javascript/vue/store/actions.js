@@ -546,10 +546,11 @@ export default {
       // LOGIN USER
       return api.login(context, payload)
         .then(response => {
-          const token = response.headers.authorization.split('Bearer ')[1]
-          console.log(token)
-          // console.log(jwt.decode(token))
-          if (response.status === 200) context.commit("LOG_IN", response)
+          if (response.status === 200) {
+            const token = response.headers.authorization.split('Bearer ')[1]
+            console.log(token)
+            context.commit("LOG_IN", response)
+          }
           return response
         })
         .catch(error => {
@@ -636,8 +637,10 @@ export default {
     return api.logout(context, context.state.data.user.auth)
       .then(response => {
         console.log(response)
-        if (response.status === 204) context.commit("LOG_OUT", {})
-        return response
+        if (response && response.status === 204) {
+          context.commit("LOG_OUT", {})
+          return response
+        }
       })
   },
 

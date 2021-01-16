@@ -20,8 +20,8 @@ class Api::V1::SessionsController < Devise::SessionsController
         resource.provider = 'facebook'
         resource.save
       end
-      # params[:user][:password] = ENV['FB_USER_PWD']
-      # params[:session][:user][:password] = ENV['FB_USER_PWD']
+      params[:user][:password] = ENV['FB_USER_PWD']
+      params[:session][:user][:password] = ENV['FB_USER_PWD']
       @facebookAuth = true
       # binding.pry
       sign_in(:user, resource)
