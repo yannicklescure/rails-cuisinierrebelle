@@ -24,8 +24,10 @@
             <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.submit') }}</button>
           </div>
         </form>
-        <div class="my-3">
+        <div class="my-3 d-flex flex-column justify-content-center align-items-center">
+          <router-link to="/users/password/new">{{ $t('login.forgetPassword') }}</router-link>
           <router-link to="/signup">{{ $t('login.signup') }}</router-link>
+          <p></p>
         </div>
       </div>
       </div>
@@ -128,6 +130,8 @@ export default {
                 duration: 3000, // Visibility duration in milliseconds
                 dismissible: true,
               })
+              this.email = null
+              this.password = null
               this.$router.push({ name: 'Home' })
             }
             else if (result.response) {

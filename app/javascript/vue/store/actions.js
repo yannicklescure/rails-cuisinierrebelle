@@ -616,6 +616,42 @@ export default {
       })
   },
 
+  PASSWORD_RESET: (context, payload) => {
+    return api.passwordReset(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  PASSWORD_RESET_VERIFICATION: (context, payload) => {
+    return api.passwordResetVerification(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  REQUEST_PASSWORD_RESET: (context, payload) => {
+    return api.requestPasswordReset(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)

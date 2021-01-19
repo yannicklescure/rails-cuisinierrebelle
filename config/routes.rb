@@ -16,8 +16,12 @@ Rails.application.routes.draw do
       # as: :api
   end
 
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
+      post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
+      post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
       resources :users, only: [ :index ] do
         # get :followers
         # get :following
@@ -34,9 +38,9 @@ Rails.application.routes.draw do
       resources :recipes, only: [ :index, :show, :create, :update, :destroy ]
       resources :recipe_logs, only: [ :create ]
       resources :comments, only: [ :create, :destroy, :update ] do
-        resources :likes, only: [ :create, :destroy ], controller:  :comment_likes
+        resources :likes, only: [ :create, :destroy ], controller: :comment_likes
         resources :replies, only: [ :create, :destroy, :update ] do
-          resources :likes, only: [ :create, :destroy ], controller:  :reply_likes
+          resources :likes, only: [ :create, :destroy ], controller: :reply_likes
         end
       end
       resources :bookmarks, only: [ :create, :destroy ]

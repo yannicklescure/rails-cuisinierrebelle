@@ -751,6 +751,90 @@ export const facebookLogin = (context, payload) => {
   });
 }
 
+export const passwordResetVerification = (context, payload) => {
+  // console.log(user)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${ domain }/api/v1/users/password/reset_verification`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      // 'Accept-Encoding': 'gzip',
+    },
+    data: payload
+    // data: {
+    //   user: {
+    //     email: payload.email,
+    //     password: payload.password
+    //   }
+    // }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const passwordReset = (context, payload) => {
+  // console.log(user)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${ domain }/api/v1/users/password/reset`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      // 'Accept-Encoding': 'gzip',
+    },
+    data: payload
+    // data: {
+    //   user: {
+    //     email: payload.email,
+    //     password: payload.password
+    //   }
+    // }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const requestPasswordReset = (context, payload) => {
+  // console.log(user)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${ domain }/api/v1/users/password/request`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      // 'Accept-Encoding': 'gzip',
+    },
+    data: payload
+    // data: {
+    //   user: {
+    //     email: payload.email,
+    //     password: payload.password
+    //   }
+    // }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const login = (context, payload) => {
   // console.log(user)
   // console.log($('meta[name="csrf-token"]').attr('content'))

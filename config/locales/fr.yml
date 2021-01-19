@@ -716,6 +716,11 @@ fr:
       welcome_message: Nous sommes heureux de vous accueillir dans notre famille de
         cuisiniers rebelles. N'hésitez pas à partager quelque chose de génial avec
         tous !
+      subject: Bienvenue, cuisinier rebelle !
+    reset_user_password:
+      greeting: Bonjour %{recipient},
+      reset_user_password_message: 'Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant:'
+      subject: Réinitialisation de votre mot de passe
   users:
     confirmations:
       new:

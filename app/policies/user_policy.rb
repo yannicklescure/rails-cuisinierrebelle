@@ -36,4 +36,16 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     user.admin
   end
+
+  def reset_user_password?
+    true
+  end
+
+  def reset_user_password_verification?
+    true
+  end
+
+  def request_user_password_reset?
+    true
+  end
 end
