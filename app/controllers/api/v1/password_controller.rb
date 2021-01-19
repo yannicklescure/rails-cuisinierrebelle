@@ -40,6 +40,7 @@ class Api::V1::PasswordController < Api::V1::BaseController
     if (@user.password_reset_timestamp === params[:user][:token])
       if (params[:user][:password] === params[:user][:confirmation])
         @user.password = params[:user][:password]
+        @user.password_reset_timestamp = '0'
         if @user.save
           render json: { success: true }
         else
