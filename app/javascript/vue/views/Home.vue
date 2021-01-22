@@ -62,11 +62,14 @@ export default {
     },
   },
   watch: {
-    async '$route' () {
+    '$route' () {
       console.log(this.$route.params.id)
-      await this.fetchItem()
+      this.fetchItem()
       // this.recipeLog()
-    }
+    },
+    // 'recipes' () {
+    //   this.fetchItem()
+    // }
   },
   methods: {
     // cardParams (value) {
@@ -94,19 +97,13 @@ export default {
     fetchItem () {
       if (this.recipes.length === 0) {
         console.log('fetching recipes data')
+        this.data = []
         this.$store
           .dispatch('RECIPES', {})
-          .then( response => {
-            console.log(response.data.data.recipes)
-            this.componentKey += 1
-            this.data = response.data.data.recipes
-              .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
-              .splice(0, 24)
-          })
       }
-      else {
-        this.loadMore()
-      }
+      this.componentKey += 1
+      this.data = this.recipes
+        .slice(0, 24)
     },
   },
   beforeMount () {

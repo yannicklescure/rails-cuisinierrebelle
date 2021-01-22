@@ -44,7 +44,8 @@
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" to="/r/new">{{ $t('navbar.new_recipe') }}</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + currentUser.slug + '/following'">{{ $t('navbar.following') }}</router-link>
           <router-link v-on:click.native="collapse" class="text-body my-2 text-decoration-none" :to="'/u/' + currentUser.slug + '/settings'">{{ $t('navbar.settings') }}</router-link>
-          <div @click="logout" class="text-body my-2 text-decoration-none">{{ $t('navbar.logout') }}</div>
+          <facebook-login v-if="facebookAuth" />
+          <div v-else @click="logout" class="text-body my-2 text-decoration-none">{{ $t('navbar.logout') }}</div>
         </div>
         <div v-else class="d-flex flex-column">
           <router-link v-on:click.native="collapse" to="/login" class="text-body my-2 text-decoration-none">{{ $t('navbar.login') }}</router-link>
@@ -59,6 +60,7 @@
 import { mapGetters } from 'vuex'
 import { isMobile } from 'mobile-device-detect'
 import ClickOutside from 'vue-click-outside'
+const FacebookLogin = () => import('../components/buttons/Facebook.vue')
 
 export default {
   name: 'NavbarSmall',
@@ -72,14 +74,27 @@ export default {
   directives: {
     ClickOutside
   },
-  // components: {
-  //   // Navbar
-  // },
+  components: {
+    FacebookLogin,
+  },
   created () {
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll);
+  },
+  computed: {
+    ...mapGetters([
+      'isAuthenticated',
+      'currentUser',
+      'facebookAuth',
+    ]),
+    isScrollTop () {
+      return true
+    },
+    mobile () {
+      return isMobile
+    }
   },
   methods: {
     inputMode () {
@@ -181,33 +196,6 @@ export default {
     navbarHeight () {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
-  },
-  computed: {
-    ...mapGetters([
-      'isAuthenticated',
-      'currentUser'
-    ]),
-    // user () {
-    //   return this.currentUser
-    // },
-    isScrollTop () {
-      return true
-    },
-    // user () {
-    //   return this.$store.getters.currentUser
-    // },
-    // isAuthenticated () {
-    //   // console.log(this.$store)
-    //   // console.log(this.$store.state.data.isAuthenticated)
-    //   // console.log(this.$store.getters.isAuthenticated)
-    //   return this.$store.getters.isAuthenticated
-    // },
-    // items () {
-    //   return this.filter
-    // },
-    mobile () {
-      return isMobile
-    }
   },
   beforeMount () {
     this.forceRerender()

@@ -13,7 +13,10 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'jwt'
 gem 'devise-jwt', '~> 0.7.0'
+# gem 'omniauth-facebook'
 # gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem "koala"
+
 gem 'jbuilder', '~> 2.0'
 gem 'oj'
 gem 'pg', '~> 0.21'
@@ -72,15 +75,13 @@ gem 'device_detector'
 # gem 'simple_token_authentication'
 gem 'sitemap_generator'
 # gem 'whenever', require: false
-gem 'omniauth-facebook'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
 # gem 'people'
 gem 'namae'
 gem 'gibbon'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'http_accept_language'
-gem "nokogiri", ">= 1.10.8"
+gem "nokogiri", ">= 1.11.0.rc4"
 gem 'bootstrap-email'
 # gem "actionview", ">= 6.0.2.2"
 gem "actionview", ">= 6.0.3.2"
@@ -104,3 +105,4 @@ gem 'bullet', group: 'development'
 gem 'multi_json'
 gem 'google-api-client', '~> 0.11', require: 'google/apis/analyticsreporting_v4'
 gem 'googleauth'
+gem 'truemail'

@@ -3,6 +3,7 @@
 
 const metaCsrf = document.querySelector("meta[name='csrf-token']")
 const csrfToken = metaCsrf.getAttribute('content')
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   // pages (state) {
@@ -14,6 +15,9 @@ export default {
   //   // console.log(state.data.searchPosts)
   //   return state.data.searchPosts.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   // },
+  mobile () {
+    return isMobile
+  },
   csrfToken (state) {
     return csrfToken
   },
@@ -24,6 +28,11 @@ export default {
     // return state.data.isAuthenticated
     // console.log(state.data.user)
     return state.data.user.email != null
+  },
+  facebookAuth (state, getters) {
+    // return state.data.isAuthenticated
+    // console.log(state.data.user)
+    return state.data.user.facebookAuth
   },
   search (state) {
     return state.data.search

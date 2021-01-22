@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
     @user = params[:user] # Instance variable => available in view
     I18n.with_locale(@user.locale) do
       # mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
-      make_bootstrap_mail(to: @user.email, subject: 'Bienvenue, cuisinier rebelle !')
+      make_bootstrap_mail(to: @user.email, subject: t('.subject'))
       # This will render a view in `app/views/user_mailer`!
     end
   end
@@ -49,6 +49,17 @@ class UserMailer < ApplicationMailer
     I18n.with_locale(@user.locale) do
       # mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
       make_bootstrap_mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
+      # This will render a view in `app/views/recipe`!
+    end
+  end
+
+  def reset_user_password
+    @user = params[:user]
+    @token = params[:token]
+    # binding.pry
+    I18n.with_locale(@user.locale) do
+      # mail(to: @user.email, subject: t('.subject', author: @recipe.user.name))
+      make_bootstrap_mail(to: @user.email, subject: t('.subject'))
       # This will render a view in `app/views/recipe`!
     end
   end

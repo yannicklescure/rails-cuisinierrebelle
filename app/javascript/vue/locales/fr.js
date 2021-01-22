@@ -122,12 +122,33 @@ export const fr = () => {
       // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
+      facebook: {
+        login: 'Se connecter avec Facebook',
+        logout: 'Se déconnecter',
+        working: 'Chargement ...',
+      },
       email: 'Adresse Courriel',
       password: 'Mot de passe',
       submit: 'Se connecter',
       signup: `Créer un compte`,
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
       welcome: 'Bienvenue, {firstName} !',
+      forgetPassword: 'Mot de passe oublié ?',
+      password: {
+        request: {
+          title: 'Retrouvez votre compte',
+          text: `Veuillez saisir l'adresse courriel de votre compte utilisateur et nous vous enverrons un lien de réinitialisation du mot de passe.`,
+          submit: 'Envoyer',
+        },
+        reset: {
+          title: 'Réinitialisation de votre mot de passe',
+          text0: `{firstName}, veuillez saisir votre nouveau mot de passe.`,
+          text1: `Token expiré. Veuillez renouveler votre demande de réinitialisation du mot de passe.`,
+          submit: 'Envoyer',
+          success: 'Votre mot de passe a été changé.'
+        },
+        email: 'Un courriel avec les instructions pour changer votre mot de passe vous a été envoyé !',
+      }
     },
     signUp: {
       confirmation: 'Confirmation du mot de passe',
@@ -167,6 +188,12 @@ export const fr = () => {
         counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',
         addPublicComment: 'Ajouter un commentaire public...',
         viewReplies: 'Voir 0 réponses | Voir la réponse | Voir les {count} réponses',
+      },
+      delete: {
+        submit: 'Supprimer',
+        are_you_sure: 'Êtes-vous sûr ?',
+        okText: 'Supprimer',
+        cancelText: 'Annuler',
       },
       new: {
         title: 'Titre',

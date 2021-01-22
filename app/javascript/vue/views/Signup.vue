@@ -76,10 +76,6 @@ export default {
     ]),
   },
   methods: {
-    allowPost () {
-      if (this.password && this.confirmation) this.disabled = false
-      else this.disabled = true
-    },
     showPassword1 () {
       if (this.$refs.password1.type === "text") {
         this.$refs.password1.type = "password"
@@ -105,6 +101,10 @@ export default {
           this.showPassword2()
         }, 3000)
       }
+    },
+    allowPost () {
+      if (this.password && this.confirmation) this.disabled = false
+      else this.disabled = true
     },
     validateEmail (email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -149,8 +149,8 @@ export default {
       const checkForm = this.checkForm()
       if (checkForm) {
         const user = {
-          firstName: this.firstName,
-          lastName: this.lastName,
+          first_name: this.firstName,
+          last_name: this.lastName,
           email: this.email,
           password: this.password,
           confirmation: this.confirmation,

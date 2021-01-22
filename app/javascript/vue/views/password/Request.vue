@@ -1,32 +1,19 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" class="container d-flex cr-vh100">
-    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="d-flex flex-grow-1 flex-column justify-content-center align-items-center">
+      <div :class="[mobile ? 'h2' : 'h1', 'text-center']">{{ $t('login.password.request.title') }}</div>
+      <p class="form-text text-body text-wrap">{{ $t('login.password.request.text') }}</p>
       <div class="d-flex flex-column align-items-center w-md-50">
-        <div class="my-3">
-          <facebook-login />
-        </div>
         <form>
           <div class="form-group my-2">
-            <label for="inputEmail">{{ $t('login.email') }}</label>
-            <input v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">{{ $t('login.disclaimer') }}</small>
-          </div>
-          <label for="inputPassword">{{ $t('signUp.password') }}</label>
-          <div class="input-group mb-3">
-            <input v-model="password" v-on:input="allowPost" v-on:touchend="allowPost" ref="password" type="password" class="form-control" aria-describedby="button-password">
-            <div class="input-group-append">
-              <button v-on:click="showPassword" class="btn btn-outline-form" type="button" id="button-password">
-                <i ref="passwordIcon" class="material-icons md-18 d-flex">visibility_off</i>
-              </button>
-            </div>
+            <input v-model="email" v-on:input="allowPost" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
           </div>
           <div class="d-flex justify-content-end">
-            <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.submit') }}</button>
+            <button v-on:click.stop.prevent="sendRequestEmail" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.password.request.submit') }}</button>
           </div>
         </form>
         <div class="my-3 d-flex flex-column justify-content-center align-items-center">
-          <router-link to="/users/password/new">{{ $t('login.forgetPassword') }}</router-link>
-          <router-link to="/signup">{{ $t('login.signup') }}</router-link>
+          <router-link to="/login">{{ $t('login.submit') }}</router-link>
           <p></p>
         </div>
       </div>
@@ -36,7 +23,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-const FacebookLogin = () => import('../components/buttons/Facebook.vue')
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return ''
@@ -44,40 +30,26 @@ const capitalize = (s) => {
 }
 
 export default {
-  name: 'Login',
+  name: 'PasswordResetRequest',
   data () {
     return {
       disabled: true,
       email: null,
-      password: null,
       errors: [],
     }
   },
   components: {
-    FacebookLogin,
   },
   computed: {
     ...mapGetters([
       'navbarHeight',
+      'mobile'
     ]),
   },
   methods: {
     allowPost () {
-      if (this.email && this.password) this.disabled = false
+      if (this.email) this.disabled = false
       else this.disabled = true
-    },
-    showPassword () {
-      if (this.$refs.password.type === "text") {
-        this.$refs.password.type = "password"
-        this.$refs.passwordIcon.innerText = "visibility_off"
-      }
-      else {
-        this.$refs.password.type = "text"
-        this.$refs.passwordIcon.innerText = "visibility"
-        setTimeout(() => {
-          this.showPassword()
-        }, 3000)
-      }
     },
     validateEmail (email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -93,37 +65,24 @@ export default {
         this.errors.push(this.$t('signUp.errors.emailFormat'))
         return false
       }
-      if (!this.password) {
-        this.errors.push(this.$t('signUp.errors.password'))
-        return false
-      }
-      if (this.password.split('').length < 3) {
-        this.errors.push(this.$t('signUp.errors.passwordLength'))
-        return false
-      }
-      // if (this.password != this.confirmation) {
-      //   this.errors.push(this.$t('signUp.errors.confirmation'))
-      //   return false
-      // }
       return true
     },
-    login () {
+    sendRequestEmail () {
       const checkForm = this.checkForm()
       if (checkForm) {
         console.log(this.email)
         const payload = {
           user: {
             email: this.email,
-            password: this.password
           }
         }
-        this.$store.dispatch('LOG_IN', payload)
-          .then(result => {
-            console.log(result)
-            if (result.status === 200) {
-              console.log(capitalize(result.data.first_name))
+        this.$store.dispatch('REQUEST_PASSWORD_RESET', payload)
+          .then(response => {
+            console.log(response)
+            if (response.status === 200) {
+              console.log(response.data.user.email)
               this.$toast.open({
-                message: this.$t('login.welcome', { firstName: capitalize(result.data.first_name) }),
+                message: this.$t('login.password.email', { email: response.data.user.email }),
                 type: 'success', // success, info, warning, error, default
                 // all of other options may go here
                 position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
@@ -131,20 +90,19 @@ export default {
                 dismissible: true,
               })
               this.email = null
-              this.password = null
-              this.$router.push({ name: 'Home' })
+              // this.$router.push({ name: 'Home' })
             }
-            else if (result.response) {
+            else if (response.response) {
               // client received an error response (5xx, 4xx)
-              this.errors.push(result.status)
+              this.errors.push(response.status)
             }
-            else if (result.request) {
+            else if (response.request) {
               // client never received a response, or request never left
-              this.errors.push(result.status)
+              this.errors.push(response.status)
             }
             else {
               // anything else
-              this.errors.push(result)
+              this.errors.push(response)
             }
           })
           .then(() => {

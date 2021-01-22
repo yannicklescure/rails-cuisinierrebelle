@@ -36,6 +36,8 @@ const Page = () => import('../views/Page.vue')
 const PageEdit = () => import('../views/PageEdit.vue')
 const PageNew = () => import('../views/PageNew.vue')
 const Pages = () => import('../views/Pages.vue')
+const PasswordResetRequest = () => import('../views/password/Request.vue')
+const PasswordReset = () => import('../views/password/Reset.vue')
 const Recipe = () => import('../views/Recipe.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
@@ -93,8 +95,9 @@ const ifAuthenticated = async (to, from, next) => {
   }
   // const isAuthenticated = store.getters.isAuthenticated
 
-  console.log(`from: ${from.path}`)
-  console.log(`to: ${to.path}`)
+  console.log(`isAuthenticated: ${ isAuthenticated }`)
+  console.log(`from: ${ from.path }`)
+  console.log(`to: ${ to.path }`)
   // store
   // .dispatch('IS_AUTHENTICATED', {})
   // .then(() => {
@@ -317,6 +320,24 @@ const routes = [
     path: '/r/:id',
     name: 'Recipe',
     component: Recipe,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/users/password/new',
+    name: 'PasswordResetRequest',
+    component: PasswordResetRequest,
+    meta: {
+      auth: false // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/users/password/reset',
+    name: 'PasswordReset',
+    component: PasswordReset,
     meta: {
       auth: false // A protected route
     },

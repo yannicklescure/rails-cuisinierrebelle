@@ -431,11 +431,12 @@ export default {
       })
   },
 
-  RECIPE_EDIT: (context, payload) => {
+  RECIPE_DELETE: (context, payload) => {
     // console.log(context.state.data.user)
-    return api.recipeEdit(context, payload)
+    return api.recipeDelete(context, payload)
       .then(response => {
-        // if (response.status === 200) context.commit("RECIPE_EDIT", response)
+        console.log(response)
+        if (response.status === 200) context.commit("RECIPE_DELETE", response)
         return response
       })
       .catch(error => {
@@ -443,6 +444,21 @@ export default {
         return error
       })
   },
+
+  RECIPE_EDIT: (context, payload) => {
+    // console.log(context.state.data.user)
+    return api.recipeEdit(context, payload)
+      .then(response => {
+        console.log(response)
+        if (response.status === 200) context.commit("RECIPE_EDIT", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   RECIPE_NEW: (context, payload) => {
     // console.log(context.state.data.user)
     return api.recipeNew(context, payload)
@@ -473,7 +489,7 @@ export default {
     // console.log(context.state.data.user)
     return api.recipes(context, payload)
       .then(response => {
-        if (response.status === 200) context.commit("RECIPES", response)
+        if (response.status === 200) context.commit("RECIPES", response.data)
         return response
       })
       .catch(error => {
@@ -524,13 +540,125 @@ export default {
       })
   },
 
+  FACEBOOK_LOG_IN: (context, payload) => {
+    const loginUser = payload => {
+      console.log(payload)
+      // LOGIN USER
+      return api.login(context, payload)
+        .then(response => {
+          if (response.status === 200) {
+            const token = response.headers.authorization.split('Bearer ')[1]
+            console.log(token)
+            context.commit("LOG_IN", response)
+          }
+          return response
+        })
+        .catch(error => {
+          // console.log(error)
+          return error
+        })
+    }
+
+    return api.facebookLogin(context, payload)
+      .then(response => {
+        console.log(response)
+        if (response.data.isUser) {
+          console.log(response)
+          const payload = {
+            authResponse: response.data.authResponse,
+            user: {
+              email: response.data.user.email,
+              password: null
+            }
+          }
+          console.log(payload)
+          return loginUser(payload)
+        }
+        else {
+          // CREATE USER
+          // response.data.isFacebookUser = true
+          // response.data.authResponse = response.data.authResponse
+          // response.data.user.password = { accessToken: response.data.authResponse.accessToken }
+          // console.log(response.data.user)
+          const payload = {
+            authResponse: response.data.authResponse,
+            user: {
+              first_name: response.data.user.firstName,
+              last_name: response.data.user.lastName,
+              email: response.data.user.email,
+              // password: response.data.user.password,
+              // confirmation: response.data.user.confirmation,
+            }
+          }
+          console.log(payload)
+          return api.signUp(context, payload)
+            .then(response => {
+              console.log(response)
+              const payload = {
+                authResponse: response.data.authResponse,
+                user: {
+                  email: response.data.user.email,
+                  password: null
+                }
+              }
+              return loginUser(payload)
+            })
+            .catch(error => {
+              // console.log(error)
+              return error
+            })
+        }
+        // return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  PASSWORD_RESET: (context, payload) => {
+    return api.passwordReset(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  PASSWORD_RESET_VERIFICATION: (context, payload) => {
+    return api.passwordResetVerification(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
+  REQUEST_PASSWORD_RESET: (context, payload) => {
+    return api.requestPasswordReset(context, payload)
+      .then(response => {
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
     console.log(context.state.data)
     return api.login(context, user)
       .then(response => {
         const token = response.headers.authorization.split('Bearer ')[1]
-        console.log(token)
-        console.log(jwt.decode(token))
+        // console.log(token)
+        // console.log(jwt.decode(token))
         if (response.status === 200) context.commit("LOG_IN", response)
         return response
       })
@@ -545,8 +673,10 @@ export default {
     return api.logout(context, context.state.data.user.auth)
       .then(response => {
         console.log(response)
-        if (response.status === 204) context.commit("LOG_OUT", {})
-        return response
+        if (response && response.status === 204) {
+          context.commit("LOG_OUT", {})
+          return response
+        }
       })
   },
 

@@ -9,8 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
-         # :omniauthable
-         # omniauth_providers: %i[facebook]
+         # :omniauthable, omniauth_providers: %i[facebook]
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
@@ -66,8 +65,11 @@ class User < ApplicationRecord
 
   # after_commit :create_default_image
   # after_commit :async_update # Run on create & update
+  before_commit :facebook, on: [:create]
   before_commit :sanitize_user_slug, :sanitize_user_image, on: [:create, :update]
+  after_commit :flush_cache!
   after_save :create_json_cache
+  after_destroy :create_json_cache
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -83,6 +85,17 @@ class User < ApplicationRecord
 
   private
 
+  def facebook
+    self.skip_confirmation! unless self.provider.nil?
+  end
+
+  def flush_cache!
+    puts 'flushing the cache...'
+    Rails.cache.delete User.cache_key(User.all)
+    # Rails.cache.delete 'all_employees'
+    # Rails.cache.delete "employees_#{gender}"
+  end
+
   def create_json_cache
     CreateUsersJsonCacheJob.perform_later
   end
@@ -92,23 +105,28 @@ class User < ApplicationRecord
     # if self.slug.match?(/\W/)
       # binding.pry
       # unless User.find_by(slug: self.slug).nil?
-      self.slug = I18n.transliterate("#{self.first_name}#{self.last_name}".downcase)
-      self.slug.gsub!(/\W/,'')
+      # self.slug.gsub!(/\W/,'')
       # binding.pry
-      if is_user_duplicate?
-        self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
+      self.slug = I18n.transliterate("#{ first_name }#{ last_name }".downcase)
+      if slug_exists?
+        # self.slug = "#{self.slug}#{Digest::SHA256.hexdigest(DateTime.now.strftime('%Q'))[0..32]}"
+        # binding.pry
+        arr = User.where("(lower(first_name) = ?) AND (lower(last_name) = ?)", first_name.downcase, last_name.downcase)
+        arr = arr.sort_by { |e| e.created_at }
+        position = arr.index(self) + 1
+        self.slug = "#{slug}#{position}"
       end
-      puts self.slug
+      puts slug
       # binding.pry
       # self.save
     # end
   end
 
-  def is_user_duplicate?
-    tmp = User.find_by(slug: self.slug)
+  def slug_exists?
+    tmp = User.find_by(slug: slug)
     if tmp.nil?
       false
-    elsif tmp.id === self.id
+    elsif tmp.id === id
       false
     else
       true

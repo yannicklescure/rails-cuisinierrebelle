@@ -10,6 +10,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     force_update = 1600607465638
     @last_update = (Recipe.last.created_at.to_f * 1000).to_i
     @timestamp = @last_update < force_update ? force_update : @last_update
+    # binding.pry
     json = Rails.cache.fetch(Recipe.cache_key(@recipes)) do
       MultiJson.dump({
         data: {
@@ -418,6 +419,21 @@ class Api::V1::RecipesController < Api::V1::BaseController
           }
         }
       })
+    end
+  end
+
+  def destroy
+    # binding.pry
+    @recipe = Recipe.find_by(id: params[:id])
+    authorize @recipe  # For Pundit
+    if @recipe.destroy
+      response = {
+        recipe: {
+          id: params[:id]
+        },
+        status: 'deleted'
+      }
+      render json: response.to_json
     end
   end
 
