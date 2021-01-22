@@ -36,7 +36,7 @@ WebFont.load({
   }
 });
 
-import '../stylesheets/application.scss'
+// import '../stylesheets/application.scss'
 
 // import '../vanillaJS'
 
@@ -60,3 +60,10 @@ if ((/.*cuisinierrebelle\.com/).test(document.domain)) {
 }
 console.log(document.domain);
 console.log(window.location.hostname);
+
+// import '../stylesheets/critical.scss'
+const stylesheetsApp = () => import('../stylesheets/application.scss');
+
+document.addEventListener('DOMContentLoaded', () => {
+  stylesheetsApp()
+})
