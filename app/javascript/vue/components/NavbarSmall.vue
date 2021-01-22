@@ -113,16 +113,23 @@ export default {
     scroll2Top (event) {
       this.collapse()
 
-      // console.log(this.$route.name)
-      if (this.$route.name === 'Home' && window.scrollY > 0) {
-        event.preventDefault()
-        const scrollOptions = {
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        };
-        window.scrollTo(scrollOptions);
+      if (this.$route.name === 'Home') {
+        this.$router.go({
+          path: '/',
+          force: true
+        })
       }
+
+      // console.log(this.$route.name)
+      // if (this.$route.name === 'Home' && window.scrollY > 0) {
+      //   event.preventDefault()
+      //   const scrollOptions = {
+      //     top: 0,
+      //     left: 0,
+      //     behavior: 'smooth'
+      //   };
+      //   window.scrollTo(scrollOptions);
+      // }
     },
     handleScroll (event) {
       this.collapse()
