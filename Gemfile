@@ -29,6 +29,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+# gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'postmark-rails'
 gem 'friendly_id', '~> 5.2.4'

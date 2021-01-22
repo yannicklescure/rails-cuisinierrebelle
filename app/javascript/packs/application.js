@@ -31,12 +31,12 @@ const WebFont = require('webfontloader');
 // @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 WebFont.load({
-    google: {
-      families: ['Raleway:300,400,700', 'Roboto:300,400,700', 'Material Icons']
-    }
-  });
+  google: {
+    families: ['Raleway:300,400,700', 'Roboto:300,400,700', 'Material Icons']
+  }
+});
 
-import '../stylesheets/application'
+import '../stylesheets/application.scss'
 
 // import '../vanillaJS'
 

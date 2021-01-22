@@ -14,5 +14,6 @@
     <%= yield %>
     <%= render 'shared/footer' %>
     <%#= javascript_include_tag 'application' %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
