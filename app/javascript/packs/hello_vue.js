@@ -38,19 +38,19 @@ console.log(document.cookie)
 
 console.log(window.location)
 // if (window.location.hostname != 'localhost') {
-  import VueGtag from 'vue-gtag'
+import VueGtag from 'vue-gtag'
 
-  Vue.use(VueGtag, {
-    config: { id: "UA-155962082-1" }
-  }, router)
+Vue.use(VueGtag, {
+  config: { id: "UA-155962082-1" }
+}, router)
 
-  import Ads from 'vue-google-adsense'
+import Ads from 'vue-google-adsense'
 
-  Vue.use(require('vue-script2'))
+Vue.use(require('vue-script2'))
 
-  // Vue.use(Ads.Adsense)
-  Vue.use(Ads.InArticleAdsense)
-  // Vue.use(Ads.InFeedAdsense)
+// Vue.use(Ads.Adsense)
+Vue.use(Ads.InArticleAdsense)
+// Vue.use(Ads.InFeedAdsense)
 // }
 
 import VueI18n from 'vue-i18n'
@@ -87,20 +87,17 @@ Vue.use(VueToast)
 // Vue.$toast.clear();
 
 import VueSocialSharing from 'vue-social-sharing'
-
 Vue.use(VueSocialSharing);
 
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
+// Vue.filter('truncate', truncate)
 import * as utils from '../util'
 // register global utility utils.
 Object.keys(utils).forEach(key => {
   Vue.filter(key, utils[key])
 })
-
-import VueLazyload from 'vue-lazyload'
-
-Vue.use(VueLazyload)
-
-// Vue.filter('truncate', truncate)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

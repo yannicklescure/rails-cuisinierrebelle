@@ -64,6 +64,6 @@ console.log(window.location.hostname);
 // import '../stylesheets/critical.scss'
 const stylesheetsApp = () => import('../stylesheets/application.scss');
 
-document.addEventListener('DOMContentLoaded', () => {
-  stylesheetsApp()
+document.addEventListener('DOMContentLoaded', async () => {
+  await stylesheetsApp()
 })
