@@ -63,12 +63,14 @@ export default {
       console.log('login')
       console.log(response)
       if (response) {
+        this.$emit('isConnecting', true)
         this.$store.dispatch('FACEBOOK_LOG_IN', response)
           .then(result => {
             console.log(result)
             if (result.status === 401) {
               console.log('Unauthorized!')
               this.scope.logout()
+              this.$emit('isConnecting', false)
             }
             if (result.status === 200) {
               console.log(capitalize(result.data.first_name))
@@ -108,6 +110,7 @@ export default {
                   duration: 3000, // Visibility duration in milliseconds
                   dismissible: true,
               })
+              this.$emit('isConnecting', false)
             }
           })
       }
@@ -152,6 +155,7 @@ export default {
     if (this.isAuthenticated === false && this.model.connected === true) {
       console.log('Unauthorized!')
       this.scope.logout()
+      this.$emit('isConnecting', false)
     }
   }
 }

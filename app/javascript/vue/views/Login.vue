@@ -3,31 +3,33 @@
     <div class="d-flex flex-grow-1 justify-content-center align-items-center">
       <div class="d-flex flex-column align-items-center w-md-50">
         <div class="my-3">
-          <facebook-login />
+          <facebook-login v-on:isConnecting="isConnecting"/>
         </div>
-        <form>
-          <div class="form-group my-2">
-            <label for="inputEmail">{{ $t('login.email') }}</label>
-            <input v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">{{ $t('login.disclaimer') }}</small>
-          </div>
-          <label for="inputPassword">{{ $t('signUp.password') }}</label>
-          <div class="input-group mb-3">
-            <input v-model="password" v-on:input="allowPost" v-on:touchend="allowPost" ref="password" type="password" class="form-control" aria-describedby="button-password">
-            <div class="input-group-append">
-              <button v-on:click="showPassword" class="btn btn-outline-form" type="button" id="button-password">
-                <i ref="passwordIcon" class="material-icons md-18 d-flex">visibility_off</i>
-              </button>
+        <div v-if="!connecting">
+          <form>
+            <div class="form-group my-2">
+              <label for="inputEmail">{{ $t('login.email') }}</label>
+              <input v-model="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">{{ $t('login.disclaimer') }}</small>
             </div>
+            <label for="inputPassword">{{ $t('signUp.password') }}</label>
+            <div class="input-group mb-3">
+              <input v-model="password" v-on:input="allowPost" v-on:touchend="allowPost" ref="password" type="password" class="form-control" aria-describedby="button-password">
+              <div class="input-group-append">
+                <button v-on:click="showPassword" class="btn btn-outline-form" type="button" id="button-password">
+                  <i ref="passwordIcon" class="material-icons md-18 d-flex">visibility_off</i>
+                </button>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.submit') }}</button>
+            </div>
+          </form>
+          <div class="my-3 d-flex flex-column justify-content-center align-items-center">
+            <router-link to="/users/password/new">{{ $t('login.forgetPassword') }}</router-link>
+            <router-link to="/signup">{{ $t('login.signup') }}</router-link>
+            <p></p>
           </div>
-          <div class="d-flex justify-content-end">
-            <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.submit') }}</button>
-          </div>
-        </form>
-        <div class="my-3 d-flex flex-column justify-content-center align-items-center">
-          <router-link to="/users/password/new">{{ $t('login.forgetPassword') }}</router-link>
-          <router-link to="/signup">{{ $t('login.signup') }}</router-link>
-          <p></p>
         </div>
       </div>
       </div>
@@ -47,6 +49,7 @@ export default {
   name: 'Login',
   data () {
     return {
+      connecting: false,
       disabled: true,
       email: null,
       password: null,
@@ -62,6 +65,9 @@ export default {
     ]),
   },
   methods: {
+    isConnecting (value) {
+      this.connecting = value
+    },
     allowPost () {
       if (this.email && this.password) this.disabled = false
       else this.disabled = true
