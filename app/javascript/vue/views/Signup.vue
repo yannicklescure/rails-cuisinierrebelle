@@ -148,14 +148,16 @@ export default {
       // console.log(this.email)
       const checkForm = this.checkForm()
       if (checkForm) {
-        const user = {
-          first_name: this.firstName,
-          last_name: this.lastName,
-          email: this.email,
-          password: this.password,
-          confirmation: this.confirmation,
+        const payload = {
+          user: {
+            first_name: this.firstName,
+            last_name: this.lastName,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.confirmation,
+          }
         }
-        this.$store.dispatch('SIGN_UP', user)
+        this.$store.dispatch('SIGN_UP', payload)
           .then(response => {
             console.log(response)
             if (response.status === 200) {
