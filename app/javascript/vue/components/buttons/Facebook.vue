@@ -147,6 +147,12 @@ export default {
           });
       }
     },
+  },
+  beforeMount () {
+    if (this.isAuthenticated === false && this.model.connected === true) {
+      console.log('Unauthorized!')
+      this.scope.logout()
+    }
   }
 }
 </script>
