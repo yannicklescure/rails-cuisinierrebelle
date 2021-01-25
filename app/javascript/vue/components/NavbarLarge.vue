@@ -127,7 +127,7 @@ export default {
         })
     },
     scroll2Top () {
-      if (this.$route.name === 'Home' && this.isAuthenticated) {
+      if (this.$route.name === 'Home') {
         if (window.scrollY > 0) {
           const scrollOptions = {
             top: 0,
