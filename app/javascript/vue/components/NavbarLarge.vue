@@ -126,30 +126,21 @@ export default {
           if (response.status === 200) this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
         })
     },
-    scroll2Top (event) {
-      // console.log(this.$route.name)
-      // if (this.$route.name === 'Home') {
-      //   this.$router.go({
-      //     path: '/',
-      //     force: true
-      //   })
-      // }
-      if (this.$route.name === 'Home' && window.scrollY > 0) {
-        event.preventDefault()
-        const scrollOptions = {
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        };
-        window.scrollTo(scrollOptions);
+    scroll2Top () {
+      if (this.$route.name === 'Home' && this.isAuthenticated) {
+        if (window.scrollY > 0) {
+          const scrollOptions = {
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          };
+          window.scrollTo(scrollOptions)
+        }
         this.loading = true
         this.$store
           .dispatch('RECIPES', {})
           .then(response => {
-            console.log(response)
             this.loading = false
-            // this.filter = this.$store.getters.posts
-            // this.posts = this.$store.getters.posts
           })
       }
     },
