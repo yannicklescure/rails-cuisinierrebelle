@@ -12,6 +12,7 @@
       >
         <img v-lazy="'https://media.cuisinierrebelle.com/brand-icon.jpg'" width="32" height="32" class="mr-1">
         <span>{{ $t('navbar.brand') }}</span>
+        <span v-if="loading" class="material-icons rotate ml-2 text-muted">cached</span>
       </router-link>
     </div>
     <div class="input-group d-flex w-25">
@@ -86,6 +87,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      loading: false,
       searchQuery: '',
     }
   },
@@ -126,21 +128,30 @@ export default {
     },
     scroll2Top (event) {
       // console.log(this.$route.name)
-      if (this.$route.name === 'Home') {
-        this.$router.go({
-          path: '/',
-          force: true
-        })
-      }
-      // if (this.$route.name === 'Home' && window.scrollY > 0) {
-        // event.preventDefault()
-        // const scrollOptions = {
-        //   top: 0,
-        //   left: 0,
-        //   behavior: 'smooth'
-        // };
-        // window.scrollTo(scrollOptions);
+      // if (this.$route.name === 'Home') {
+      //   this.$router.go({
+      //     path: '/',
+      //     force: true
+      //   })
       // }
+      if (this.$route.name === 'Home' && window.scrollY > 0) {
+        event.preventDefault()
+        const scrollOptions = {
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        };
+        window.scrollTo(scrollOptions);
+        this.loading = true
+        this.$store
+          .dispatch('RECIPES', {})
+          .then(response => {
+            console.log(response)
+            this.loading = false
+            // this.filter = this.$store.getters.posts
+            // this.posts = this.$store.getters.posts
+          })
+      }
     },
     handleScroll (event) {
       // Code to be executed when the window is scrolled
@@ -200,3 +211,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>

@@ -67,9 +67,11 @@ export default {
       this.fetchItem()
       // this.recipeLog()
     },
-    // 'recipes' () {
-    //   this.fetchItem()
-    // }
+    'recipes' () {
+      // this.fetchItem()
+      this.data = this.recipes
+        .slice(0, 24)
+    }
   },
   methods: {
     // cardParams (value) {
