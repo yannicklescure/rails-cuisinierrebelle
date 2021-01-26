@@ -127,9 +127,9 @@ export default {
       await this.inputMode()
       this.show = false
     },
-    scroll2Top () {
+    async scroll2Top () {
       if (this.$route.name === 'Home') {
-        if (window.scrollY > 0) {
+        const scroll = () => {
           const scrollOptions = {
             top: 0,
             left: 0,
@@ -137,12 +137,16 @@ export default {
           };
           window.scrollTo(scrollOptions)
         }
+        const refresh = () => {
+          this.$store
+            .dispatch('RECIPES', {})
+            .then(response => {
+              this.loading = false
+            })
+        }
+        if (window.scrollY > 0) await scroll()
+        await refresh()
         this.loading = true
-        this.$store
-          .dispatch('RECIPES', {})
-          .then(response => {
-            this.loading = false
-          })
       }
     },
     handleScroll (event) {
