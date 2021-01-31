@@ -1,6 +1,6 @@
-$material-icons-font-path: '~material-icons/iconfont/';
+$material-icons-font-path: 'material-icons/iconfont/';
 
-@import '~material-icons/iconfont/material-icons.scss';
+@import 'material-icons/iconfont/material-icons.scss';
 
 $material-icons-codepoints: () !default; /* Sass map of icon names and codepoints */
 $material-icons-font-path: '' !default;
