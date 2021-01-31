@@ -22,7 +22,7 @@ class Page < ApplicationRecord
 
   def flush_cache!
     puts 'flushing the cache...'
-    Rails.cache.delete Analytics.cache_key(Analytics.all)
+    Rails.cache.delete Page.cache_key(Page.all)
     # Rails.cache.delete 'all_employees'
     # Rails.cache.delete "employees_#{gender}"
   end

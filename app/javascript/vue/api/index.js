@@ -490,6 +490,21 @@ export const users = (context, payload) => {
   });
 }
 
+export const fetchBannerImage = (context, payload) => {
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'get',
+    url: `${ domain }/api/v1/unsplash_images`,
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
 export const fetchPages = (context, payload) => {
   return axios({
     validateStatus: status => {
@@ -912,6 +927,8 @@ export const userDelete = (context, payload) => {
 //     console.log(error.response)
 //   })
 // }
+
+
 
 export const search = async (context, payload) => {
   // console.log(`${ domain }/api/v1/search`)

@@ -9,6 +9,7 @@ class VueController < AppController
       # binding.pry
       @recipe = Recipe.find_by(slug: params[:path].match(/^(?:r\/)(.+)/)[1])
     end
+    # binding.pry
   end
 
 end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :analytics, only: [ :index ]
       resources :state, only: [ :index ]
       resources :search, only: [ :index ]
+      resources :unsplash_images, only: [ :index ]
       resources :pages, only: [ :index, :create, :update ]
       resources :recipes, only: [ :index, :show, :create, :update, :destroy ]
       resources :recipe_logs, only: [ :create ]

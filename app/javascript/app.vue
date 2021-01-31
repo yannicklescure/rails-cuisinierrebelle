@@ -103,7 +103,7 @@ export default {
   async created () {
     await this.checkAuthentication()
     await this.fetchItems()
-    this.getBannerPicture()
+    // this.getBannerPicture()
   },
 }
 </script>

@@ -10,7 +10,8 @@ export default {
 
   SET_BANNER_IMAGE: (state, payload) => {
     console.log(payload)
-    state.data.bannerImage = payload
+    // state.data.bannerImage = payload
+    state.data.bannerImage = payload.data.bannerImage
     saveToLocalStorage(state, 'SET_BANNER_IMAGE')
   },
 
@@ -269,6 +270,7 @@ export default {
     //   // console.log(`${key}: ${value}`)
     //   state.data.pages[key] = payload.data[key]
     // }
+    // state.data.bannerImage = payload.data.bannerImage
     state.data.pages = payload.data.pages
     // state.data = payload.data
     console.log(state.data)

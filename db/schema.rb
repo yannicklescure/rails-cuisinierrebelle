@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_202259) do
+ActiveRecord::Schema.define(version: 2021_01_31_170051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +263,16 @@ ActiveRecord::Schema.define(version: 2021_01_18_202259) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "unsplash_images", force: :cascade do |t|
+    t.string "image_id"
+    t.string "image_urls_raw"
+    t.string "image_links_download"
+    t.string "image_user_name"
+    t.string "image_user_username"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

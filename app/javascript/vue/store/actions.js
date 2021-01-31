@@ -4,19 +4,62 @@ import * as api from '../api'
 import jwt from 'jsonwebtoken'
 // import { getBannerPicture } from '../util/unsplash'
 
-const fetchStore = ({ commit, dispatch, state }, {}) => {
+const fetchBannerImage = (context, {}) => {
+  return api.fetchBannerImage(context, {})
+    .then(response => {
+      if (response.status === 200) context.commit("SET_BANNER_IMAGE", response.data)
+    })
+    .catch(error => {
+      // console.log(error)
+      return error
+    })
+}
+
+const fetchUsers = (context, {}) => {
+  return api.users(context, {})
+    .then(response => {
+      if (response.status === 200) context.commit("USERS", response)
+    })
+    .catch(error => {
+      // console.log(error)
+      return error
+    })
+}
+
+const fetchPages = (context, {}) => {
+  return api.fetchPages(context, {})
+    .then(response => {
+      context.commit("SET_PAGES", response.data)
+    })
+    .catch(error => {
+      // console.log(error)
+      return error
+    })
+}
+
+const fetchStore = (context, {}) => {
   console.log('fetch state data')
-  return api.fetchState({ commit, dispatch, state }, {})
+  return api.fetchState(context, {})
     .then(response => {
       console.log(response)
       commit("SET_DATA", response.data)
-      // localStorage.setItem('cuisinier_rebelle', JSON.stringify(response.data))
-      // console.log(JSON.parse(localStorage.getItem('cuisinier_rebelle')))
       return response.data
+    })
+    .catch(error => {
+      // console.log(error)
+      return error
     })
 }
 
 export default {
+
+  SET_STORE: async (context, {}) => {
+    await fetchBannerImage(context, {})
+    await fetchStore(context, {})
+    await fetchPages(context, {})
+    await fetchUsers(context, {})
+    return true
+  },
 
   SET_BANNER_IMAGE: (context, payload) => {
     // getBannerPicture()
@@ -328,64 +371,6 @@ export default {
     //   context.commit("SET_DATA", vueStore)
     //   return vueStore.data.isAuthenticated
     // } else return false
-  },
-
-  SET_STORE: (context, {}) => {
-    // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    // if (vueStore) {
-    //   console.log('vueStore')
-    //   console.log(vueStore)
-    //   // Remove localStorage prior VueJS
-    //   if (vueStore.timestamp && vueStore.timestamp < 1605233042272) {
-    //     localStorage.removeItem('cuisinier_rebelle')
-    //     return fetchStore(context, {})
-    //   }
-    //   // Force Update
-    //   if (vueStore.data.timestamp && vueStore.data.timestamp < 1605317110896) {
-    //     localStorage.removeItem('cuisinier_rebelle')
-    //     return fetchStore(context, {})
-    //   }
-    //   if (vueStore.data.recipes.length > 0 && (new Date().getTime() - vueStore.data.lastUpdated < 1000 * 60 * 3)) {
-    //     // if ( vueStore.data.user === null || new Date().getTime() - vueStore.lastUpdated > 1000 * 60 * 3 ) {
-    //     //   console.log('fetching server, refresh vueStore')
-    //     //   return fetchStore(context, {})
-    //     // } else {
-    //       console.log('loading vueStore...')
-    //       // console.log(vueStore)
-    //       context.commit("SET_DATA", vueStore)
-    //       return vueStore
-    //     // }
-    //   } else {
-    //     console.log('fetching server, initiate vueStore')
-    //     return fetchStore(context, {})
-    //   }
-    // } else {
-    //   console.log('fetching server, initiate vueStore')
-    //   return fetchStore(context, {})
-    // }
-    return fetchStore(context, {})
-        .then(response => {
-          api.fetchPages(context, {})
-            .then(result => {
-              context.commit("SET_PAGES", result.data)
-            })
-            .catch(error => {
-              // console.log(error)
-              return error
-            })
-          return response
-        })
-        .then(response => {
-          api.users(context, {})
-            .then(result => {
-              if (result.status === 200) context.commit("USERS", result)
-            })
-            .catch(error => {
-              // console.log(error)
-              return error
-            })
-          return response.data
-        })
   },
 
   USERS: (context, payload) => {

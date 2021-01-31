@@ -2,7 +2,7 @@
   <div
     class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column mb-3"
     ref="banner"
-    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ image.url }')`"
+    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ image.url }&w=${ viewport.width }&h=${ viewport.height }&fm=webp')`"
   >
     <div class="banner-height d-flex flex-column justify-content-between">
       <div class="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
@@ -58,13 +58,17 @@ import { mapGetters } from 'vuex'
 // import { fetchBannerPicture } from '../api'
 // import Unsplash, { toJson } from 'unsplash-js';
 // const unsplash = new Unsplash({ accessKey: 'nHSH2XMCvdAgrKbLMHs1M1u7vWUW8vxEmyHvDsTOLTs' });
-import { unsplash, getBannerPicture } from '../util/unsplash'
+// import { unsplash, getBannerPicture } from '../util/unsplash'
 
 export default {
   name: 'Banner',
   data () {
     return {
       loading: true,
+      // viewport: {
+      //   height: 0,
+      //   width: 0,
+      // },
       // image: {
       //   id: null,
       //   url: null,
@@ -79,56 +83,31 @@ export default {
     }
   },
   methods: {
-    async getBannerPicture () {
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-      const viewport = {
-        height: vh,
-        width: vw,
-      }
-      const image = await getBannerPicture(viewport)
-      console.log(image)
-      this.$store
-        .dispatch('SET_BANNER_IMAGE', image)
-    },
-    // getBannerPicture () {
-    //   const query = "cooking, food, chef"
-    //   // fetchBannerPicture(query)
-    //   unsplash.photos.getRandomPhoto({
-    //       query: query
-    //     })
-    //     .then(toJson)
-    //     .then(response => {
-    //       console.log(response)
-    //       this.image = {
-    //         id: response.id,
-    //         url: `${response.urls.raw}&w=1600&h=900&fm=webp`,
-    //         link: {
-    //           download: response.links.download,
-    //         },
-    //         user: {
-    //           name: response.user.name,
-    //           username: response.user.username,
-    //         }
-    //       }
-    //     })
-    //     .catch(error => {
-    //       console.log(error.response)
-    //     })
+    // async getBannerPicture () {
+    //   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    //   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    //   const viewport = {
+    //     height: vh,
+    //     width: vw,
+    //   }
+    //   const image = await getBannerPicture(viewport)
+    //   console.log(image)
+    //   this.$store
+    //     .dispatch('SET_BANNER_IMAGE', image)
     // },
 
     imageTrackDownload () {
-      console.log(`track download photo id ${this.image.id}`)
-      unsplash.photos.getPhoto(this.image.id)
-        .then(toJson)
-        .then(json => {
-          unsplash.photos.trackDownload(json);
-        })
-      // browser.downloads.download({
-      //   url : this.image.link.download,
-      //   filename : 'my-image-again.png',
-      //   conflictAction : 'uniquify'
-      // })
+    //   console.log(`track download photo id ${this.image.id}`)
+    //   unsplash.photos.getPhoto(this.image.id)
+    //     .then(toJson)
+    //     .then(json => {
+    //       unsplash.photos.trackDownload(json);
+    //     })
+    //   // browser.downloads.download({
+    //   //   url : this.image.link.download,
+    //   //   filename : 'my-image-again.png',
+    //   //   conflictAction : 'uniquify'
+    //   // })
     },
 
     scrollToCards () {
@@ -142,9 +121,9 @@ export default {
       window.scrollTo(scrollOptions);
     },
 
-    setBannerImage () {
-      // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`
-    }
+    // setBannerImage () {
+    //   // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`
+    // }
   },
   computed: {
     ...mapGetters([
@@ -153,6 +132,14 @@ export default {
     ]),
     image () {
       return this.bannerImage
+    },
+    viewport () {
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      return {
+        height: vh,
+        width: vw,
+      }
     }
   },
   created () {
