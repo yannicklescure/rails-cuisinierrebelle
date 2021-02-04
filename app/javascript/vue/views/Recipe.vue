@@ -176,7 +176,7 @@ export default {
   },
   metaInfo () {
     console.log(this.item)
-    if (this.item) {
+    if (this.item != undefined) {
       return {
         title: this.item.recipe.title,
         meta: [
@@ -279,7 +279,7 @@ export default {
           //     .dispatch('SET_STORE', {})
           //     .then(() => this.log = false)
           // }
-          this.componentKey += 1
+          // this.componentKey += 1
           this.loading = false
         })
         .finally(() => {
@@ -296,8 +296,8 @@ export default {
     }
   },
   beforeMount () {
-    // this.fetchItem()
-    this.item = this.recipe(this.$route.params.id)
+    this.fetchItem()
+    // this.item = this.recipe(this.$route.params.id)
   },
   mounted () {
     this.$nextTick(() => {
