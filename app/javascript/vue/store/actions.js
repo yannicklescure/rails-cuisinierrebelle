@@ -531,11 +531,7 @@ export default {
       // LOGIN USER
       return api.login(context, payload)
         .then(response => {
-          if (response.status === 200) {
-            const token = response.headers.authorization.split('Bearer ')[1]
-            console.log(token)
-            context.commit("LOG_IN", response)
-          }
+          if (response.status === 200) context.commit("LOG_IN", response)
           return response
         })
         .catch(error => {
@@ -637,11 +633,27 @@ export default {
       })
   },
 
+  RESEND_CONFIRMATION_INSTRUCTIONS: (context, payload) => {
+    // console.log(context.state.data)
+    return api.resendConfirmationInstructions(context, payload)
+      .then(response => {
+        // const token = response.headers.authorization.split('Bearer ')[1]
+        // console.log(token)
+        // console.log(jwt.decode(token))
+        // if (response.status === 200) context.commit("LOG_IN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+  },
+
   LOG_IN: (context, user) => {
-    console.log(context.state.data)
+    // console.log(context.state.data)
     return api.login(context, user)
       .then(response => {
-        const token = response.headers.authorization.split('Bearer ')[1]
+        // const token = response.headers.authorization.split('Bearer ')[1]
         // console.log(token)
         // console.log(jwt.decode(token))
         if (response.status === 200) context.commit("LOG_IN", response)

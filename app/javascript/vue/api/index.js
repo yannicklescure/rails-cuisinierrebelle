@@ -679,6 +679,7 @@ export const recipeLog = (context, payload) => {
     url: `${ domain }/api/v1/recipe_logs`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
+      'Authorization': `Bearer ${ context.state.data.authorization }`,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
       // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null
     },
@@ -832,6 +833,34 @@ export const requestPasswordReset = (context, payload) => {
     },
     method: 'post',
     url: `${ domain }/api/v1/users/password/request`,
+    headers: {
+      'X-CSRF-Token': context.getters.csrfToken,
+      // 'Accept-Encoding': 'gzip',
+    },
+    data: payload
+    // data: {
+    //   user: {
+    //     email: payload.email,
+    //     password: payload.password
+    //   }
+    // }
+  })
+  .catch(error => {
+    console.log(error.toJSON());
+    return error
+  });
+}
+
+export const resendConfirmationInstructions = (context, payload) => {
+  console.log(payload)
+  // console.log($('meta[name="csrf-token"]').attr('content'))
+  return axios({
+    validateStatus: status => {
+      console.log(status)
+      return status < 500; // Resolve only if the status code is less than 500
+    },
+    method: 'post',
+    url: `${ domain }/api/v1/users/resend_confirmation_instructions`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',

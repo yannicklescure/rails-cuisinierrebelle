@@ -37,14 +37,14 @@ class GoogleAnalyticsReport
     @analytics = Analytics.create(data: pages)
 
     pages.each do |page, value|
-      puts "#{page} #{value}"
+      # puts "#{page} #{value}"
       slug = page.match?(/(?:\/r\/)(.+)/) ? page.match(/(?:\/r\/)(.+)/)[1] : nil
       if page.match?(/(?:\/r\/)(.+)/)
         recipe = Recipe.find_by(slug: page.match(/(?:\/r\/)(.+)/)[1])
         # puts recipe.slug unless recipe.nil?
         unless recipe.nil?
-          recipe.views = value
-          recipe.save
+          recipe.update(views: value)
+          # recipe.save
         end
       end
     end

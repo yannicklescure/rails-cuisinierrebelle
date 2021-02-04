@@ -132,12 +132,14 @@ export const fr = () => {
       submit: 'Se connecter',
       signup: `Créer un compte`,
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
-      welcome: 'Bienvenue, {firstName} !',
+      welcome: 'Bienvenue, { firstName } !',
+      resendConfirmationInstructions: 'Nous avons envoyé une courriel à { email } !',
       forgetPassword: 'Mot de passe oublié ?',
       password: {
         request: {
           title: 'Retrouvez votre compte',
           text: `Veuillez saisir l'adresse courriel de votre compte utilisateur et nous vous enverrons un lien de réinitialisation du mot de passe.`,
+          resendConfirmationInstructions: 'Renvoyer les instructions de confirmation.',
           submit: 'Envoyer',
         },
         reset: {
@@ -145,7 +147,7 @@ export const fr = () => {
           text0: `{firstName}, veuillez saisir votre nouveau mot de passe.`,
           text1: `Token expiré. Veuillez renouveler votre demande de réinitialisation du mot de passe.`,
           submit: 'Envoyer',
-          success: 'Votre mot de passe a été changé.'
+          success: 'Votre mot de passe a été changé.',
         },
         email: 'Un courriel avec les instructions pour changer votre mot de passe vous a été envoyé !',
       }

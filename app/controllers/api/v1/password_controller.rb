@@ -1,4 +1,5 @@
 require 'digest'
+require 'json'
 
 class Api::V1::PasswordController < Api::V1::BaseController
   respond_to :json
@@ -87,4 +88,5 @@ class Api::V1::PasswordController < Api::V1::BaseController
       end
     end
   end
+
 end

@@ -2,6 +2,7 @@
 
 # class Devise::ConfirmationsController < DeviseController
 class Api::V1::ConfirmationsController < Devise::ConfirmationsController
+  skip_before_action :verify_authenticity_token, only: [:resend_confirmation_instructions]
 
   layout false
   respond_to :json
@@ -65,7 +66,20 @@ class Api::V1::ConfirmationsController < Devise::ConfirmationsController
     end
   end
 
+  def resend_confirmation_instructions
+    # binding.pry
+    # email = JSON.parse(params[:user])['email']
+    email = params[:user][:email]
+    resource = User.find_by(email: email)
+    resource.send_confirmation_instructions
+    render json: {
+      email: resource.email,
+      success: true
+    }
+  end
+
   protected
+
 
     # The path used after resending confirmation instructions.
     def after_resending_confirmation_instructions_path_for(resource_name)

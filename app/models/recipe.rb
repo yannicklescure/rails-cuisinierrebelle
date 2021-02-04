@@ -9,8 +9,9 @@ class Recipe < ApplicationRecord
   def self.cache_key(recipes)
     {
       serializer: 'recipes',
-      stat_record: recipes.maximum(:updated_at)
+      stat_record: recipes.maximum(:updated_at).to_i
     }
+    # "recipes/#{ (recipes.maximum(:updated_at).to_f * 1000).to_i }"
   end
 
   mount_uploader :photo, PhotoUploader
@@ -46,15 +47,16 @@ class Recipe < ApplicationRecord
   #   )
   searchkick
 
-  after_commit :flush_cache!
   before_save :sanitize_youtube_video_link
-  after_save :create_json_cache
-  after_destroy :create_json_cache_after_destroy
+  before_commit :flush_cache!
+  after_commit :create_json_cache
+  # after_destroy :create_json_cache_after_destroy
 
   private
 
   def flush_cache!
     puts 'flushing the cache...'
+    # Rails.cache.clear
     Rails.cache.delete Recipe.cache_key(Recipe.all)
     # Rails.cache.delete 'all_employees'
     # Rails.cache.delete "employees_#{gender}"
@@ -78,16 +80,23 @@ class Recipe < ApplicationRecord
         params_recipe_video = share_link[2]
       end
       # binding.pry
-      self.video = "https://www.youtube.com/embed/#{params_recipe_video}"
+      self.video = "https://www.youtube.com/embed/#{ params_recipe_video }"
     end
   end
 
-  def create_json_cache_after_destroy
+  # def create_json_cache_after_destroy
+  #   # binding.pry
+  #   recipe = Recipe.last
+  #   recipe.updated_at = DateTime.now
+  #   recipe.save
+  #   create_json_cache
+  # end
+
+  def self.create_json_cache
     # binding.pry
-    recipe = Recipe.last
-    recipe.updated_at = DateTime.now
-    recipe.save
-    create_json_cache
+    puts 'flushing the cache...'
+    Rails.cache.delete Recipe.cache_key(Recipe.all)
+    CreateRecipesJsonCacheJob.perform_later
   end
 
   def create_json_cache

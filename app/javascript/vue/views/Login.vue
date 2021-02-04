@@ -22,10 +22,20 @@
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <button v-on:click.stop.prevent="login" type="submit" class="btn btn-dark my-2 w-100" :disabled="disabled">{{ $t('login.submit') }}</button>
+              <button
+                @click.stop.prevent="login"
+                type="submit"
+                class="btn btn-dark my-2 w-100"
+                :disabled="disabled"
+              >{{ $t('login.submit') }}</button>
             </div>
           </form>
           <div class="my-3 d-flex flex-column justify-content-center align-items-center">
+            <button
+              v-if="error"
+              @click.stop.prevent="resendConfirmationInstructions"
+              class="btn btn-link"
+            >{{ $t('login.password.request.resendConfirmationInstructions') }}</button>
             <router-link to="/users/password/new">{{ $t('login.forgetPassword') }}</router-link>
             <router-link to="/signup">{{ $t('login.signup') }}</router-link>
             <p></p>
@@ -54,6 +64,7 @@ export default {
       email: null,
       password: null,
       errors: [],
+      error: false,
     }
   },
   components: {
@@ -113,6 +124,70 @@ export default {
       // }
       return true
     },
+    resendConfirmationInstructions () {
+      this.errors = []
+      if (!this.email) {
+        this.errors.push(this.$t('signUp.errors.email'))
+      }
+      if (!this.validateEmail(this.email)) {
+        this.errors.push(this.$t('signUp.errors.emailFormat'))
+      }
+      if (this.errors.length > 0) {
+        this.error = true
+        console.log(this.errors)
+        this.$toast.open({
+            message: this.errors[0],
+            type: 'error', // success, info, warning, error, default
+            // all of other options may go here
+            position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+            duration: 3000, // Visibility duration in milliseconds
+            dismissible: true,
+        })
+      }
+      else {
+        const payload = {
+          user: {
+            email: this.email,
+            // password: this.password
+          }
+        }
+        this.$store.dispatch('RESEND_CONFIRMATION_INSTRUCTIONS', payload)
+          .then(result => {
+            console.log(result)
+            if (result.status === 200) {
+              console.log(capitalize(result.data.first_name))
+              this.$toast.open({
+                message: this.$t('login.resendConfirmationInstructions', { email: result.data.email }),
+                type: 'success', // success, info, warning, error, default
+                // all of other options may go here
+                position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+                duration: 3000, // Visibility duration in milliseconds
+                dismissible: true,
+              })
+              this.email = null
+              this.password = null
+              this.$router.push({ name: 'Home' })
+            }
+            else {
+              this.errors.push(result.data.error)
+            }
+          })
+          .then(() => {
+            if (this.errors.length > 0) {
+              this.error = true
+              console.log(this.errors)
+              this.$toast.open({
+                  message: this.errors[0],
+                  type: 'error', // success, info, warning, error, default
+                  // all of other options may go here
+                  position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
+                  duration: 3000, // Visibility duration in milliseconds
+                  dismissible: true,
+              })
+            }
+          })
+      }
+    },
     login () {
       const checkForm = this.checkForm()
       if (checkForm) {
@@ -140,21 +215,13 @@ export default {
               this.password = null
               this.$router.push({ name: 'Home' })
             }
-            else if (result.response) {
-              // client received an error response (5xx, 4xx)
-              this.errors.push(result.status)
-            }
-            else if (result.request) {
-              // client never received a response, or request never left
-              this.errors.push(result.status)
-            }
             else {
-              // anything else
-              this.errors.push(result)
+              this.errors.push(result.data.error)
             }
           })
           .then(() => {
             if (this.errors.length > 0) {
+              this.error = true
               console.log(this.errors)
               this.$toast.open({
                   message: this.errors[0],

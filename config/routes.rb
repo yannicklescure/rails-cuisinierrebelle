@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       # as: :api
   end
 
+  devise_scope :user do
+    post 'api/v1/users/resend_confirmation_instructions', to: 'api/v1/confirmations#resend_confirmation_instructions', as: 'resend_confirmation_instructions'
+  end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

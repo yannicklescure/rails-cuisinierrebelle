@@ -28,11 +28,12 @@ class Api::V1::SessionsController < Devise::SessionsController
       respond_with resource
     elsif resource.valid_password?(params[:user][:password])
       sign_in(:user, resource)
+      # binding.pry
       respond_with resource
     else
       # binding.pry
       puts "Wrong password"
-      respond_with MultiJson.dump({ error: { password: true }})
+      render json: MultiJson.dump({ error: { password: true }})
     end
   end
 
