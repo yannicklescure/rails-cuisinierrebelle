@@ -166,7 +166,7 @@ export default {
               })
               this.email = null
               this.password = null
-              this.$router.push({ name: 'Home' })
+              this.$router.push({ name: 'Recipes' })
             }
             else {
               this.errors.push(result.data.error)
@@ -213,7 +213,7 @@ export default {
               })
               this.email = null
               this.password = null
-              this.$router.push({ name: 'Home' })
+              this.$router.push({ name: 'Recipes' })
             }
             else {
               this.errors.push(result.data.error)

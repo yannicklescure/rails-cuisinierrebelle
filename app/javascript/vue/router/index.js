@@ -39,6 +39,7 @@ const Pages = () => import('../views/Pages.vue')
 const PasswordResetRequest = () => import('../views/password/Request.vue')
 const PasswordReset = () => import('../views/password/Reset.vue')
 const Recipe = () => import('../views/Recipe.vue')
+const Recipes = () => import('../views/Recipes.vue')
 const RecipeEdit = () => import('../views/RecipeEdit.vue')
 const RecipeNew = () => import('../views/RecipeNew.vue')
 const RegistrationConfirmation = () => import('../views/RegistrationConfirmation.vue')
@@ -104,11 +105,17 @@ const ifAuthenticated = async (to, from, next) => {
     console.log(`isAuthenticated: ${ isAuthenticated }`)
     if(to.meta.auth) {
       // console.log(`auth: ${ to.meta.auth }`)
-      if (to.name === 'Login' && isAuthenticated) next({ name: 'Home' })
-      if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
+      console.log(`name: ${ to.name }`)
+
+      if (isAuthenticated) {
+        if (to.name === 'Login') next({ name: 'Recipes' })
+        else if (to.name === 'Home') next({ name: 'Recipes' })
+        else next()
+      }
       else {
-        // window.location.href = '/login'
-        next()
+        if (to.name === 'Home' || to.name === 'Recipes') next()
+        else if (to.name != 'Login') next({ name: 'Login' })
+        else next()
       }
     }
     else next()
@@ -317,6 +324,15 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: '/recipes',
+    name: 'Recipes',
+    component: Recipes,
+    meta: {
+      auth: true // A protected route
+    },
+    beforeEnter: ifAuthenticated,
+  },
+  {
     path: '/r/:id',
     name: 'Recipe',
     component: Recipe,
@@ -356,7 +372,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      auth: false // A protected route
+      auth: true // A protected route
     },
     beforeEnter: ifAuthenticated,
     children: [

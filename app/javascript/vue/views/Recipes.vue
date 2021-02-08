@@ -1,6 +1,24 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <banner v-if="!isAuthenticated" />
+    <div class="container-fluid" ref="container">
+      <div id="recipes-cards">
+        <div id="root" class="d-flex flex-wrap justify-content-start py-3">
+          <div
+            v-for="(item, index) in data"
+            :key="item.id"
+            class="card rounded border-0"
+          >
+            <card :item="item" />
+          </div>
+        </div>
+        <div
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="navbarHeight"
+          infinite-scroll-immediate-check="true"
+        ></div>
+      </div>
+    </div>
   </div>
 </template>
 

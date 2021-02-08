@@ -1,6 +1,6 @@
 <template>
   <div
-    class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column mb-3"
+    class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column mb-n5"
     ref="banner"
     :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ image.url }&w=${ viewport.width }&h=${ viewport.height }&fm=webp')`"
   >
@@ -21,7 +21,7 @@
             >{{ $t('banner.getStarted') }}</router-link>
           </div>
         </div>
-        <div class="btn btn-link m-3 text-muted" @click="scrollToCards">{{ $t('banner.seeRecipes') }}</div>
+        <div class="btn btn-link m-3 text-muted" @click="recipes">{{ $t('banner.seeRecipes') }}</div>
       </div>
       <div class="d-flex justify-content-center text-muted">
         <div class="d-block mb-3">
@@ -109,7 +109,9 @@ export default {
     //   //   conflictAction : 'uniquify'
     //   // })
     },
-
+    recipes () {
+      this.$router.push({ name: 'Recipes' })
+    },
     scrollToCards () {
       let element = document.querySelector('#recipes-cards')
       console.log(element)
