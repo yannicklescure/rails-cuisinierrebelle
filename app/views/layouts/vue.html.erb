@@ -55,9 +55,40 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_packs_with_chunks_tag 'application', media: 'all' %>
   </head>
-  <body
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<%= @unsplash.urls.raw %>&w=1920&h=1200&fm=webp');"
-  >
+  <body>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        background-size: auto;
+      }
+      /* fallback */
+      @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/materialicons/v76/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+      }
+
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <%#= user_signed_in? %>
     <%#= render 'shared/banner' %>
     <%= yield %>
     <%= javascript_packs_with_chunks_tag 'application' %>
