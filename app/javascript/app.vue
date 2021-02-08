@@ -10,11 +10,11 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect'
-// import Navbar from './vue/components/Navbar.vue'
+import Navbar from './vue/components/Navbar.vue'
 // import Footer from './vue/components/Footer.vue'
-const Navbar = () => import('./vue/components/Navbar.vue')
+// const Navbar = () => import('./vue/components/Navbar.vue')
 const Footer = () => import('./vue/components/Footer.vue')
-import { getBannerPicture } from './vue/util/unsplash'
+// import { getBannerPicture } from './vue/util/unsplash'
 
 export default {
   name: 'app',
@@ -72,18 +72,18 @@ export default {
         })
     },
 
-    async getBannerPicture () {
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-      const viewport = {
-        height: vh,
-        width: vw,
-      }
-      const image = await getBannerPicture(viewport)
-      console.log(image)
-      this.$store
-        .dispatch('SET_BANNER_IMAGE', image)
-    },
+    // async getBannerPicture () {
+    //   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    //   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    //   const viewport = {
+    //     height: vh,
+    //     width: vw,
+    //   }
+    //   const image = await getBannerPicture(viewport)
+    //   console.log(image)
+    //   this.$store
+    //     .dispatch('SET_BANNER_IMAGE', image)
+    // },
   },
   computed: {
     // user () {

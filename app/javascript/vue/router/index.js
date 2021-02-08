@@ -28,7 +28,8 @@ import { vuexLocal } from '../util/store'
 
 const Admin = () => import('../views/Admin.vue')
 const Bookmarks = () => import('../views/Bookmarks.vue')
-const Home = () => import('../views/Home.vue')
+// const Home = () => import('../views/Home.vue')
+import Home from '../views/Home.vue'
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Notifications = () => import('../views/Notifications.vue')
