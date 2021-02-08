@@ -1,6 +1,9 @@
 body, html {
   margin: 0;
   padding: 0;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 
 body {
@@ -18,6 +21,7 @@ main, .cr-vh100 {
 
 @media (min-width: 768px) {
   body {
+    // margin: 0;
     // min-height: calc(100vh - 58px);
   }
 

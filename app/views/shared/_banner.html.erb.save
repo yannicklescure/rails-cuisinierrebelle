@@ -1,0 +1,32 @@
+<div
+  class="banner d-flex justify-content-center justify-content-md-center align-items-center flex-column"
+  style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= @banner_bg %>');"
+>
+  <div id="credit" class="d-none d-flex h-100 flex-column justify-content-between">
+    <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+      <div class="container">
+        <div id="banner-cta-box" class="text-center">
+          <!-- <div id ="banner-cta-box-title" class="h2 text-white"><%= t('.banner_title') %></div> -->
+          <!-- <div class="lead text-white text-center"><%= t('.banner_subtitle') %></div> -->
+          <div class="lead text-white text-center"><%= t('.banner_text_html') %></div>
+        </div>
+        <div id="banner-cta-box-btn" class="d-flex mt-3 justify-content-center flex-column flex-md-row">
+          <!-- <a class="btn btn-warning mx-3 mt-md-0" href="#recipes-cards" role="button"><i class="fas fa-utensils"></i>&ensp;<%= t(".recipes") %></a> -->
+          <%= link_to t('.sign_in'), new_user_session_path, class: 'btn btn-warning mt-3 mx-3 mt-md-0' %>
+          <%= link_to t('.sign_up'), new_user_registration_path, class: 'btn btn-info mt-3 mx-3 mt-md-0' %>
+          <% if !client.device_type.nil? && client.device_type.match(/smartphone|phablet/) %>
+          <!-- <a rel="nofollow" data-method="post" href="/users/auth/facebook" class="btn btn-primary mt-3 mt-md-0 mx-3"><i class="fab fa-facebook-f"></i>&emsp;Sign in with Facebook</a> -->
+          <% end %>
+        </div>
+      </div>
+      <a class="btn btn-link m-3 text-muted" href="#recipes-cards" role="button"><%= t(".recipes") %></a>
+    </div>
+    <div class="d-flex justify-content-center text-muted">
+      <div class="d-block mb-3">
+        <div>
+          <small><%= @unsplash_search_result.user.name[0].match(/^(A|E|I|O|U|a|e|i|o|u)/) ? t(".photo_by_1") : t(".photo_by") %><a href="<%= @unsplash_search_result.user.links.html %>" target="_blank" class="text-light"><%= @unsplash_search_result.user.name %></a> <%= t(".photo_on") %> <a href="https://unsplash.com/?utm_source=cuisinier_rebelle&utm_medium=referral" target="_blank" class="text-light">Unsplash</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

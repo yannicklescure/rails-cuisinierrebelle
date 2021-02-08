@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted () {
-    document.querySelector('#preload').remove()
+    // document.querySelector('#preload').remove()
   }
 }
 </script>

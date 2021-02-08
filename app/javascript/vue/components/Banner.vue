@@ -146,10 +146,16 @@ export default {
   },
   created () {
     // this.getBannerPicture()
+    // const preload = document.querySelector('#banner-skeleton')
+    // if (preload) preload.remove()
+  },
+  beforeMount () {
   },
   mounted () {
     this.$nextTick(() => {
       // this.setBannerImage()
+      // const preload = document.querySelector('#banner-skeleton')
+      // if (preload) preload.replaceWith(this.$refs.banner)
     })
   }
 }

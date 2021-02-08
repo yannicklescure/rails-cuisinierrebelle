@@ -115,4 +115,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('app')
 
   // document.querySelector('#preload').remove()
+  // document.querySelector('#banner-skeleton').remove()
 })

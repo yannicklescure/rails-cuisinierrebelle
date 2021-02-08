@@ -55,7 +55,9 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_packs_with_chunks_tag 'application', media: 'all' %>
   </head>
-  <body>
+  <body
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<%= @unsplash.urls.raw %>&w=1920&h=1200&fm=webp');"
+  >
     <%#= render 'shared/banner' %>
     <%= yield %>
     <%= javascript_packs_with_chunks_tag 'application' %>

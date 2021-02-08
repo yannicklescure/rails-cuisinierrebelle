@@ -105,5 +105,10 @@ export default {
     await this.fetchItems()
     // this.getBannerPicture()
   },
+  mounted () {
+    this.$nextTick(() => {
+      document.querySelector('body').style.backgroundImage = 'none';
+    })
+  }
 }
 </script>
