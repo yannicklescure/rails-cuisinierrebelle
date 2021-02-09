@@ -107,7 +107,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      document.querySelector('body').style.backgroundColor = '#ffffff';
+      // document.querySelector('body').style.backgroundColor = '#ffffff';
     })
   }
 }

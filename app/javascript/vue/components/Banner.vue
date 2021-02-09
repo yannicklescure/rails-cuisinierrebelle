@@ -1,8 +1,8 @@
 <template>
   <div
+    if="pictureLoaded"
     class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
     ref="banner"
-    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ image.url }&w=${ viewport.width }&h=${ viewport.height }&fm=webp')`"
   >
     <div class="banner-height d-flex flex-column justify-content-between">
       <div class="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
@@ -65,6 +65,9 @@ export default {
   data () {
     return {
       loading: true,
+      picture: '',
+      pictureUrl: '',
+      pictureLoaded: false,
       // viewport: {
       //   height: 0,
       //   width: 0,
@@ -126,6 +129,26 @@ export default {
     // setBannerImage () {
     //   // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`
     // }
+    loadImg () {
+      this.pictureUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
+    },
+    setImage () {
+      // const highResImage = new Image()
+      // const that = this
+      // highResImage.onload = () => {
+      //   that.picture = that.pictureUrl
+      //   this.pictureLoaded = true
+      // }
+      // highResImage.src = this.pictureUrl
+
+      let preloaderImg = new Image()
+      preloaderImg.src = this.pictureUrl
+      preloaderImg.addEventListener('load', (event) => {
+        this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.pictureUrl }')`
+        preloaderImg = null
+        this.pictureLoaded = true
+      })
+    }
   },
   computed: {
     ...mapGetters([
@@ -144,16 +167,17 @@ export default {
       }
     }
   },
-  created () {
-    // this.getBannerPicture()
-    // const preload = document.querySelector('#banner-skeleton')
-    // if (preload) preload.remove()
+  created() {
+    this.loadImg()
   },
   beforeMount () {
+    // const preload = document.querySelector('#banner-skeleton')
+    // if (preload) preload.replaceWith(this.$refs.banner)
   },
   mounted () {
     this.$nextTick(() => {
       // this.setBannerImage()
+      this.setImage();
       // const preload = document.querySelector('#banner-skeleton')
       // if (preload) preload.replaceWith(this.$refs.banner)
     })
