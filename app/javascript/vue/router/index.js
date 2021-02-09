@@ -109,12 +109,11 @@ const ifAuthenticated = async (to, from, next) => {
       console.log(`name: ${ to.name }`)
 
       if (isAuthenticated) {
-        if (to.name === 'Login') next({ name: 'Recipes' })
-        else if (to.name === 'Home') next({ name: 'Recipes' })
+        if (to.name === 'Login') next({ name: 'Home' })
         else next()
       }
       else {
-        if (to.name === 'Home' || to.name === 'Recipes') next()
+        if (to.name === 'Home') next()
         else if (to.name != 'Login') next({ name: 'Login' })
         else next()
       }
