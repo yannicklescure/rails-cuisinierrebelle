@@ -1,5 +1,5 @@
 <template>
-  <div :key="componentKey">
+  <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">
         <div id="root" class="d-flex flex-wrap justify-content-start py-3">
