@@ -18,12 +18,13 @@ import '../serviceworker-companion'
 
 // require('data-confirm-modal')
 
+import 'jquery'
+import '../src/plugins'
+
 jQuery.htmlPrefilter = function( html ) {
   return html;
 };
 
-import 'jquery'
-import '../src/plugins'
 // import '../src/fonts'
 //require webfontloader
 // const WebFont = require('webfontloader');

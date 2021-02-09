@@ -4,12 +4,12 @@ body, html {
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-size: auto;
-  background-image: url();
 }
 
 body {
   // min-height: calc(100vh - 104px);
   min-height: 100vh;
+  font-weight: normal;
 }
 
 main, .cr-vh100 {

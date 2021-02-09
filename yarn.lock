@@ -833,6 +833,16 @@
   resolved "https://registry.yarnpkg.com/@csstools/sass-import-resolve/-/sass-import-resolve-1.0.0.tgz#32c3cdb2f7af3cd8f0dca357b592e7271f3831b5"
   integrity sha512-pH4KCsbtBLLe7eqUrw8brcuFO8IZlN36JjdKlOublibVdAIPHCzEnpBWOVUXK5sCf+DpBi8ZtuWtjF0srybdeA==
 
+"@fontsource/raleway@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/raleway/-/raleway-4.2.0.tgz#571f566e022fdc339ff86bb6357159864d95c6f4"
+  integrity sha512-SV8iPYk4GHHIghfO4wMGzrmptGwnTjICAeMhgFu7Zi21FBX5GFPs9R0ojFw8mSw1BSz6NtBOV9Qf2sfPVyC1mQ==
+
+"@fontsource/roboto@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.2.0.tgz#4f48e2aee60ca7b36c5fbbdaa3d06af89a0867f6"
+  integrity sha512-ToODF2lawS9DFmGEEoaEFXMwgA47c4EKWsfzEiJRHCujEORSaf5SNVTrKhVeZLdzF7v0h+5HgsQO5ZVbf1mA5A==
+
 "@fortawesome/fontawesome-common-types@^0.2.34":
   version "0.2.34"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.34.tgz#0a8c348bb23b7b760030f5b1d912e582be4ec915"

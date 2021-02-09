@@ -1,6 +1,6 @@
 <template>
   <div
-    if="pictureLoaded"
+    if="elementLoaded"
     class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
     ref="banner"
   >
@@ -8,7 +8,7 @@
       <div class="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
         <div class="container">
           <div id="banner-cta-box" class="text-center">
-            <div class="lead text-white text-center" v-html="$t('banner.introduction')"></div>
+            <div class="h4 text-white text-center" v-html="$t('banner.introduction')"></div>
           </div>
           <div id="banner-cta-box-btn" class="d-flex mt-3 justify-content-center flex-column flex-md-row">
             <router-link
@@ -67,7 +67,7 @@ export default {
       loading: true,
       picture: '',
       pictureUrl: '',
-      pictureLoaded: false,
+      elementLoaded: false,
       // viewport: {
       //   height: 0,
       //   width: 0,
@@ -133,20 +133,12 @@ export default {
       this.pictureUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
     },
     setImage () {
-      // const highResImage = new Image()
-      // const that = this
-      // highResImage.onload = () => {
-      //   that.picture = that.pictureUrl
-      //   this.pictureLoaded = true
-      // }
-      // highResImage.src = this.pictureUrl
-
       let preloaderImg = new Image()
       preloaderImg.src = this.pictureUrl
       preloaderImg.addEventListener('load', (event) => {
         this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.pictureUrl }')`
+        // this.$refs.banner.style.marginTop = this.navbarHeight + 'px'
         preloaderImg = null
-        this.pictureLoaded = true
       })
     }
   },
@@ -167,19 +159,18 @@ export default {
       }
     }
   },
-  created() {
-    this.loadImg()
+  async created() {
+    await this.loadImg()
+    this.setImage()
   },
   beforeMount () {
-    // const preload = document.querySelector('#banner-skeleton')
-    // if (preload) preload.replaceWith(this.$refs.banner)
   },
   mounted () {
     this.$nextTick(() => {
-      // this.setBannerImage()
-      this.setImage();
+      this.elementLoaded = true
       // const preload = document.querySelector('#banner-skeleton')
       // if (preload) preload.replaceWith(this.$refs.banner)
+      // if (preload) preload.insertAdjacentHTML('afterbegin', this.$refs.banner.innerHTML)
     })
   }
 }
