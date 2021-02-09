@@ -4,14 +4,14 @@
 @import "@fontsource/roboto/300.css";
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/700.css";
-@import "@fontsource/raleway/300.css";
-@import "@fontsource/raleway/400.css";
-@import "@fontsource/raleway/500.css";
-@import "@fontsource/raleway/700.css";
+// @import "@fontsource/raleway/300.css";
+// @import "@fontsource/raleway/400.css";
+// @import "@fontsource/raleway/500.css";
+// @import "@fontsource/raleway/700.css";
 
 // Define fonts for body and headers
 $body-font: 'Roboto', sans-serif;
-$headers-font: 'Raleway', sans-serif;
+$headers-font: 'Roboto', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
