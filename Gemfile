@@ -50,7 +50,7 @@ group :development, :test do
 end
 
 gem "rspec", "~> 3.9"
-gem 'carrierwave'
+gem "carrierwave", ">= 2.1.1"
 gem 'carrierwave-aws'
 gem 'carrierwave-i18n'
 # gem 'sprockets-webp'
