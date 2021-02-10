@@ -127,18 +127,18 @@ export default {
     // setBannerImage () {
     //   // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`
     // }
-    loadImg () {
-      this.imageUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
-    },
-    setImage () {
-      let preloaderImg = new Image()
-      preloaderImg.src = this.imageUrl
-      preloaderImg.addEventListener('load', (event) => {
-        this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ preloaderImg.src }')`
-        // this.$refs.banner.style.marginTop = this.navbarHeight + 'px'
-        preloaderImg = null
-      })
-    }
+  //   loadImg () {
+  //     this.imageUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
+  //   },
+  //   setImage () {
+  //     let preloaderImg = new Image()
+  //     preloaderImg.src = this.imageUrl
+  //     preloaderImg.addEventListener('load', (event) => {
+  //       this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ preloaderImg.src }')`
+  //       // this.$refs.banner.style.marginTop = this.navbarHeight + 'px'
+  //       preloaderImg = null
+  //     })
+  //   }
   },
   computed: {
     ...mapGetters([
@@ -160,19 +160,19 @@ export default {
       }
     }
   },
-  created() {
-    this.loadImg()
-  },
-  beforeMount () {
-  },
-  mounted () {
-    this.$nextTick(() => {
-      // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.imageUrl }')`
-      // this.setImage()
-      // const preload = document.querySelector('#banner-skeleton')
-      // if (preload) preload.replaceWith(this.$refs.banner)
-      // if (preload) preload.insertAdjacentHTML('afterbegin', this.$refs.banner.innerHTML)
-    })
-  }
+  // created() {
+  //   this.loadImg()
+  // },
+  // beforeMount () {
+  // },
+  // mounted () {
+  //   this.$nextTick(() => {
+  //     // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.imageUrl }')`
+  //     // this.setImage()
+  //     // const preload = document.querySelector('#banner-skeleton')
+  //     // if (preload) preload.replaceWith(this.$refs.banner)
+  //     // if (preload) preload.insertAdjacentHTML('afterbegin', this.$refs.banner.innerHTML)
+  //   })
+  // }
 }
 </script>
