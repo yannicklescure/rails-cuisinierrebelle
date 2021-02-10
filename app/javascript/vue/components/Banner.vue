@@ -1,8 +1,8 @@
 <template>
   <div
-    if="elementLoaded"
     class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
     ref="banner"
+    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.imageUrl }')`"
   >
     <div class="banner-height d-flex flex-column justify-content-between">
       <div class="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
@@ -65,9 +65,7 @@ export default {
   data () {
     return {
       loading: true,
-      picture: '',
-      pictureUrl: '',
-      elementLoaded: false,
+      // imageUrl: '',
       // viewport: {
       //   height: 0,
       //   width: 0,
@@ -130,13 +128,13 @@ export default {
     //   // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`
     // }
     loadImg () {
-      this.pictureUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
+      this.imageUrl = `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
     },
     setImage () {
       let preloaderImg = new Image()
-      preloaderImg.src = this.pictureUrl
+      preloaderImg.src = this.imageUrl
       preloaderImg.addEventListener('load', (event) => {
-        this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.pictureUrl }')`
+        this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ preloaderImg.src }')`
         // this.$refs.banner.style.marginTop = this.navbarHeight + 'px'
         preloaderImg = null
       })
@@ -147,6 +145,9 @@ export default {
       'navbarHeight',
       'bannerImage',
     ]),
+    imageUrl () {
+      return `${ this.image.url }&w=${ this.viewport.width }&h=${ this.viewport.height }&fm=webp`
+    },
     image () {
       return this.bannerImage
     },
@@ -159,15 +160,15 @@ export default {
       }
     }
   },
-  async created() {
-    await this.loadImg()
-    this.setImage()
+  created() {
+    this.loadImg()
   },
   beforeMount () {
   },
   mounted () {
     this.$nextTick(() => {
-      this.elementLoaded = true
+      // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.imageUrl }')`
+      // this.setImage()
       // const preload = document.querySelector('#banner-skeleton')
       // if (preload) preload.replaceWith(this.$refs.banner)
       // if (preload) preload.insertAdjacentHTML('afterbegin', this.$refs.banner.innerHTML)
