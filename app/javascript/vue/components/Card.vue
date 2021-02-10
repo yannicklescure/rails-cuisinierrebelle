@@ -25,7 +25,7 @@
       <router-link :to="'/r/' + item.recipe.slug">
         <div
           :class="['card-img-top d-flex justify-content-center align-items-center']"
-          :style="{ backgroundImage: 'url(' + item.recipe.photo.card.url + ')' }"
+          v-lazy:background-image.container="item.recipe.photo.card.url"
         >
           <div ref="heartFillBig"></div>
           <div ref="bookmarkFillBig"></div>

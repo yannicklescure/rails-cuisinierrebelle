@@ -28,7 +28,7 @@
         <div v-if="mobile" class="py-2">
           <div
             class="recipe-image d-flex justify-content-center align-items-center"
-            :style="{ backgroundImage: 'url(' + item.recipe.photo.card.url + ')' }"
+            v-lazy:background-image.container="item.recipe.photo.card.url"
           >
             <div ref="heartFillBig"></div>
             <div ref="bookmarkFillBig"></div>
