@@ -2,7 +2,7 @@
   <div
     class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
     ref="banner"
-    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.imageUrl }')`"
+    :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ imageUrl }')`"
   >
     <div class="banner-height d-flex flex-column justify-content-between">
       <div class="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
