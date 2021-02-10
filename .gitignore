@@ -16,15 +16,12 @@
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-/public/uploads/
 
-# /node_modules
-# /yarn-error.log
-
-/build
-/config/webpack/dist
+/node_modules
+/yarn-error.log
 
 /public/assets
+/public/uploads
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
@@ -33,7 +30,6 @@
 /public/packs
 /public/packs-test
 /node_modules
-node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
@@ -44,6 +40,3 @@ yarn-debug.log*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-
-# Ignore secret postmark API key
-config/secrets.yml
