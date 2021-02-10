@@ -7,7 +7,6 @@ Rails.application.configure do
 
   # In Heroku, serving static assets through the Rails container
   config.serve_static_assets = true
-  config.asset_host = "cdn.cuisinierrebelle.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
