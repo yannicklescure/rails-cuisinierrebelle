@@ -2,15 +2,9 @@
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <div v-if="busy === false" class="container-fluid" ref="container">
       <div v-if="data.length > 0" id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-start">
-          <div
-            v-for="(item, index) in data"
-            :key="item.id"
-            class="card rounded border-0"
-          >
-            <card :item="item" />
-          </div>
-        </div>
+        <cards
+          :items="data"
+        />
         <div
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="busy"
@@ -26,7 +20,7 @@
 <script>
 import { mapGetters } from 'vuex'
 // import Card from '../components/Card.vue'
-const Card = () => import('../components/Card.vue')
+const Cards = () => import('../components/Cards.vue')
 
 export default {
   name: 'Search',
@@ -39,7 +33,7 @@ export default {
     }
   },
   components: {
-    Card,
+    Cards,
   },
   methods: {
     // cardParams (value) {
@@ -49,6 +43,10 @@ export default {
     //   console.log(containerWidth)
     //   console.log(containerWidth / cardWidth)
     // },
+    fetchItem () {
+      this.data = this.search.recipes
+        .slice(0, 24)
+    },
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
@@ -87,19 +85,24 @@ export default {
     // },
   },
   watch: {
-    async '$route' () {
-      console.log(this.$route.query)
-      this.data = []
-      this.componentKey += 1
-      this.loadMore()
+    '$route' () {
+      console.log(this.$route.params.id)
+      // this.fetchItem()
+      // this.recipeLog()
+    },
+    'search' () {
+      // this.fetchItem()
+      this.data = this.search.recipes
+        .slice(0, 24)
     }
   },
   beforeMount () {
+    this.fetchItem()
     // console.log(this.$store.getters.recipes)
   },
   mounted () {
     this.$nextTick(() => {
-      this.loadMore()
+      // this.loadMore()
       // this.navbarHeight = this.$store.getters.navbarHeight
       // console.log(this.$store.getters.navbarHeight)
       // console.log(this.$store.getters.recipes)

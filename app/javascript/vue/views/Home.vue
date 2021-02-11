@@ -63,7 +63,7 @@ export default {
   watch: {
     '$route' () {
       console.log(this.$route.params.id)
-      this.fetchItem()
+      // this.fetchItem()
       // this.recipeLog()
     },
     'recipes' () {

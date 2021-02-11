@@ -118,14 +118,14 @@ export default {
   },
   methods: {
     validSearchQuery () {
-      this.$refs.searchInput.value = ''
+      // this.$refs.searchInput.value = ''
       console.log(this.searchQuery)
       this.$store.dispatch('SEARCH', { query: this.searchQuery })
         .then(response => {
           console.log(response)
           if (response.status === 200) {
-            this.searchQuery = ''
             this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
+            this.searchQuery = ''
           }
         })
     },
