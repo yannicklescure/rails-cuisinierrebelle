@@ -162,6 +162,7 @@ export default {
     this.$nextTick(() => {
       // this.loading = false
       console.log('card ready')
+      this.$emit('cardReady', this.item.id)
       // this.$emit('cardParams', {
       //   params: {
       //     height: this.$refs[`card${this.item.recipe.id}`].offsetHeight,

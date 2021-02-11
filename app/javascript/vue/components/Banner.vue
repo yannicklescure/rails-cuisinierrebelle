@@ -21,7 +21,7 @@
             >{{ $t('banner.getStarted') }}</router-link>
           </div>
         </div>
-        <div class="btn btn-link m-3 text-muted" @click="scrollToCards">{{ $t('banner.seeRecipes') }}</div>
+        <div class="btn btn-link m-3 text-muted" @click="recipes">{{ $t('banner.seeRecipes') }}</div>
       </div>
       <div class="d-flex justify-content-center text-muted">
         <div class="d-block mb-3">
@@ -62,6 +62,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Banner',
+  props: ['cardsLoaded'],
   data () {
     return {
       loading: true,
@@ -111,18 +112,20 @@ export default {
     //   // })
     },
     recipes () {
-      this.$router.push({ name: 'Recipes' })
+      // this.$router.push({ name: 'Recipes' })
+      if (this.cardsLoaded) this.$emit('scrollToCards', true)
+      else this.$emit('loadCards', true)
     },
-    scrollToCards () {
-      let element = document.querySelector('#recipes-cards')
-      console.log(element)
-      const scrollOptions = {
-        top: element.offsetTop - this.navbarHeight,
-        left: 0,
-        behavior: 'smooth'
-      };
-      window.scrollTo(scrollOptions);
-    },
+    // scrollToCards () {
+    //   let element = document.querySelector('#recipes-cards')
+    //   console.log(element)
+    //   const scrollOptions = {
+    //     top: element.offsetTop - this.navbarHeight,
+    //     left: 0,
+    //     behavior: 'smooth'
+    //   };
+    //   window.scrollTo(scrollOptions);
+    // },
 
     // setBannerImage () {
     //   // this.$refs.banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ this.image.url }')`

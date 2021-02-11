@@ -1,17 +1,17 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <banner v-if="!isAuthenticated" />
+    <banner
+      v-if="!isAuthenticated"
+      :cardsLoaded="displayCards"
+      v-on:loadCards="loadCards"
+      v-on:scrollToCards="scrollToCards"
+    />
     <div class="container-fluid" ref="container">
-      <div id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-start py-3">
-          <div
-            v-for="(item, index) in data"
-            :key="item.id"
-            class="card rounded border-0"
-          >
-            <card :item="item" />
-          </div>
-        </div>
+      <div v-if="displayCards" id="recipes-cards">
+        <cards
+          :items="data"
+          v-on:cardsReady="scrollToCards"
+        />
         <div
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="busy"
@@ -29,17 +29,16 @@ import axios from 'axios'
 // import Banner from '../components/Banner.vue'
 // import Card from '../components/Card.vue'
 const Banner = () => import('../components/Banner.vue')
-const Card = () => import('../components/Card.vue')
-
+const Cards = () => import('../components/Cards.vue')
 
 export default {
   name: 'Home',
   data () {
     return {
-      componentKey: 0,
-      // navbarHeight: 0,
-      data: [],
       busy: false,
+      componentKey: 0,
+      data: [],
+      displayCards: false,
     }
   },
   metaInfo: {
@@ -48,8 +47,8 @@ export default {
     titleTemplate: null
   },
   components: {
-    Card,
     Banner,
+    Cards,
   },
   computed: {
     ...mapGetters([
@@ -107,10 +106,28 @@ export default {
       this.data = this.recipes
         .slice(0, 24)
     },
+    loadCards () {
+      this.displayCards = true
+      // this.$nextTick(() => {
+      //   this.scrollToCards()
+      // })
+    },
+    scrollToCards () {
+      // let element = document.querySelector('#recipes-cards')
+      let element = this.$refs.container
+      console.log(element)
+      const scrollOptions = {
+        top: element.offsetTop - this.navbarHeight,
+        left: 0,
+        behavior: 'smooth'
+      };
+      window.scrollTo(scrollOptions);
+    },
   },
   beforeMount () {
     this.fetchItem()
     // this.loadMore()
+    if (this.isAuthenticated) this.displayCards = true
   },
   mounted () {
     // while (this.data.length === 0){
