@@ -9,13 +9,13 @@
     // flex-grow: 0;
   }
 
-  .navbar-brand img {
-    height: 24px;
-    width: 24px;
-  }
-
   .navbar-brand {
     padding-bottom: 8px;
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
   }
 
   a.nav-link {
@@ -32,6 +32,18 @@
   .dropdown-item.active, .dropdown-item:active {
     // background-color: $gray-600 !important;
     color: $gray-600;
+  }
+}
+
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
 

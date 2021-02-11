@@ -203,9 +203,10 @@ export default {
           .then(result => {
             console.log(result)
             if (result.status === 200) {
-              console.log(capitalize(result.data.first_name))
+              const firstName = capitalize(result.data.first_name)
+              console.log(firstName)
               this.$toast.open({
-                message: this.$t('login.welcome', { firstName: capitalize(result.data.first_name) }),
+                message: this.$t('login.welcome', { firstName: firstName }),
                 type: 'success', // success, info, warning, error, default
                 // all of other options may go here
                 position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left

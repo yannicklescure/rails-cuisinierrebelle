@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 // import Banner from '../components/Banner.vue'
 // import Card from '../components/Card.vue'
 const Banner = () => import('../components/Banner.vue')
@@ -66,8 +66,6 @@ export default {
   watch: {
     '$route' () {
       console.log(this.$route.params.id)
-      // this.fetchItem()
-      // this.recipeLog()
     },
     'recipes' () {
       // this.fetchItem()
@@ -140,9 +138,12 @@ export default {
     handleScroll (event) {
       if (this.displayCards == false) {
         this.displayCards = true
-        this.fetchItem
+        this.fetchItem()
       }
-    }
+    },
+    forceRerender () {
+      this.componentKey += 1;
+    },
   },
   created () {
     window.addEventListener('scroll', this.handleScroll);
@@ -154,7 +155,7 @@ export default {
     // this.loadMore()
     if (this.isAuthenticated) {
       this.displayCards = true
-      this.fetchItem
+      this.fetchItem()
     }
   },
   mounted () {

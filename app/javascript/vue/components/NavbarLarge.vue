@@ -195,7 +195,6 @@ export default {
     forceRerender () {
       this.componentKey += 1;
     },
-
     navbarHeight () {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
@@ -209,17 +208,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.rotate {
-  animation: rotation 2s infinite linear;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-</style>
