@@ -146,9 +146,11 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   beforeMount () {
-    // this.fetchItem()
     // this.loadMore()
-    if (this.isAuthenticated) this.displayCards = true
+    if (this.isAuthenticated) {
+      this.displayCards = true
+      this.fetchItem()
+    }
   },
   mounted () {
     // while (this.data.length === 0){
