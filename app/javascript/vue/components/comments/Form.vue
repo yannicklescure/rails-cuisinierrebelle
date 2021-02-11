@@ -22,12 +22,6 @@
   </div>
 </template>
 
-<style scoped>
-.cr-p-6 {
-  padding: 6px;
-}
-</style>
-
 <script>
 import { mapGetters } from 'vuex'
 
