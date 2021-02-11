@@ -94,14 +94,16 @@ export default {
           const cards = 24
           const min = this.data.length
           const max = min + cards <= this.items.length ? min + cards : this.items.length
-          for (let i = min, j = max; i < j; i++) {
-            this.data.push(this.items[i]);
-          }
+          // for (let i = min, j = max; i < j; i++) {
+          //   this.data.push(this.items[i])
+          // }
+          this.data = this.data.concat(this.items.slice(min, max))
           this.busy = false;
         }, 0);
       }
     },
     fetchItem () {
+      console.log('fetchItem')
       if (this.recipes.length === 0) {
         console.log('fetching recipes data')
         this.data = []
@@ -138,7 +140,7 @@ export default {
     handleScroll (event) {
       if (this.displayCards == false) {
         this.displayCards = true
-        this.fetchItem()
+        this.fetchItem
       }
     }
   },
@@ -152,7 +154,7 @@ export default {
     // this.loadMore()
     if (this.isAuthenticated) {
       this.displayCards = true
-      this.fetchItem()
+      this.fetchItem
     }
   },
   mounted () {
