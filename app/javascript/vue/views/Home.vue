@@ -108,7 +108,7 @@ export default {
         this.$store
           .dispatch('RECIPES', {})
       }
-      this.componentKey += 1
+      // this.componentKey += 1
       this.data = this.recipes
         .slice(0, 24)
     },
@@ -136,7 +136,10 @@ export default {
       }
     },
     handleScroll (event) {
-      if (this.displayCards == false) this.displayCards = true
+      if (this.displayCards == false) {
+        this.displayCards = true
+        this.fetchItem()
+      }
     }
   },
   created () {
