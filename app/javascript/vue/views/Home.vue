@@ -2,15 +2,16 @@
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
     <banner
       v-if="!isAuthenticated"
-      :cardsLoaded="displayCards"
+      :displayCards="displayCards"
       v-on:loadCards="loadCards"
       v-on:scrollToCards="scrollToCards"
     />
     <div class="container-fluid" ref="container">
-      <div v-if="displayCards" id="recipes-cards">
+      <div id="recipes-cards">
         <cards
+          v-if="displayCards"
           :items="data"
-          v-on:cardsReady="scrollToCards"
+          v-on:cardsReady="cardsLoaded"
         />
         <div
           v-infinite-scroll="loadMore"
@@ -37,8 +38,10 @@ export default {
     return {
       busy: false,
       componentKey: 0,
+      cardsReady: false,
       data: [],
       displayCards: false,
+      clickToSroll: false,
     }
   },
   metaInfo: {
@@ -68,8 +71,7 @@ export default {
     },
     'recipes' () {
       // this.fetchItem()
-      this.data = this.recipes
-        .slice(0, 24)
+      if (this.displayCards) this.data = this.recipes.slice(0, 24)
     }
   },
   methods: {
@@ -80,6 +82,10 @@ export default {
     //   console.log(containerWidth)
     //   console.log(containerWidth / cardWidth)
     // },
+    cardsLoaded () {
+      this.cardsReady = true
+      if (this.clickToSroll) this.scrollToCards()
+    },
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
@@ -108,24 +114,39 @@ export default {
     },
     loadCards () {
       this.displayCards = true
+      this.clickToSroll = true
       // this.$nextTick(() => {
       //   this.scrollToCards()
       // })
     },
     scrollToCards () {
-      // let element = document.querySelector('#recipes-cards')
-      let element = this.$refs.container
-      console.log(element)
-      const scrollOptions = {
-        top: element.offsetTop - this.navbarHeight,
-        left: 0,
-        behavior: 'smooth'
-      };
-      window.scrollTo(scrollOptions);
+      if (this.clickToSroll) {
+        // let element = document.querySelector('#recipes-cards')
+        let element = this.$refs.container
+        console.log(element)
+        const scrollOptions = {
+          top: element.offsetTop - this.navbarHeight,
+          left: 0,
+          behavior: 'smooth'
+        };
+        window.scrollTo(scrollOptions);
+      }
+      else {
+        this.clickToSroll = true
+      }
     },
+    handleScroll (event) {
+      if (this.displayCards == false) this.displayCards = true
+    }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   beforeMount () {
-    this.fetchItem()
+    // this.fetchItem()
     // this.loadMore()
     if (this.isAuthenticated) this.displayCards = true
   },

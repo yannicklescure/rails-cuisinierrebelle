@@ -12,16 +12,11 @@
           </div>
           <div id="banner-cta-box-btn" class="d-flex mt-3 justify-content-center flex-column flex-md-row">
             <router-link
-              to="/login"
-              class="btn btn-warning mt-3 mx-3 mt-md-0"
-            >{{ $t('banner.login') }}</router-link>
-            <router-link
               to="/signup"
               class="btn btn-info mt-3 mx-3 mt-md-0"
             >{{ $t('banner.getStarted') }}</router-link>
           </div>
         </div>
-        <div class="btn btn-link m-3 text-muted" @click="recipes">{{ $t('banner.seeRecipes') }}</div>
       </div>
       <div class="d-flex justify-content-center text-muted">
         <div class="d-block mb-3">
@@ -62,7 +57,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Banner',
-  props: ['cardsLoaded'],
+  props: ['displayCards'],
   data () {
     return {
       loading: true,
@@ -113,7 +108,7 @@ export default {
     },
     recipes () {
       // this.$router.push({ name: 'Recipes' })
-      if (this.cardsLoaded) this.$emit('scrollToCards', true)
+      if (this.displayCards) this.$emit('scrollToCards', true)
       else this.$emit('loadCards', true)
     },
     // scrollToCards () {

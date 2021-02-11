@@ -26,6 +26,7 @@ export default {
   name: 'Search',
   data () {
     return {
+      busy: false,
       componentKey: 0,
       // navbarHeight: 0,
       data: [],
@@ -49,6 +50,7 @@ export default {
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
+        this.busy = true;
         setTimeout(() => {
           const cards = 24
           const min = this.data.length
@@ -56,6 +58,7 @@ export default {
           for (let i = min, j = max; i < j; i++) {
             this.data.push(this.items[i]);
           }
+          this.busy = false;
         }, 0);
       }
     },

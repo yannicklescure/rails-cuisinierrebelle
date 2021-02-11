@@ -6,7 +6,7 @@
     >
       <card
         :item="item"
-        :key="'card-' + item.id"
+        :key="'card-' + item.recipe.id"
         v-on:cardReady="cardsReady"
       />
     </div>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     cardsReady (value) {
-      if (value === this.items[this.items.length-1].id) {
+      if (value === this.items[this.items.length-1].recipe.id) {
         this.$emit('cardsReady', true)
       }
     },
