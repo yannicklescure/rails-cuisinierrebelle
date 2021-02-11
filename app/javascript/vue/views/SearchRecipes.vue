@@ -1,6 +1,6 @@
 <template>
   <div :style="{ paddingTop: navbarHeight + 'px' }" :key="componentKey">
-    <div v-if="busy === false" class="container-fluid" ref="container">
+    <div class="container-fluid" ref="container">
       <div v-if="data.length > 0" id="recipes-cards">
         <cards
           :items="data"
@@ -29,7 +29,6 @@ export default {
       componentKey: 0,
       // navbarHeight: 0,
       data: [],
-      busy: true,
     }
   },
   components: {
@@ -50,7 +49,6 @@ export default {
     loadMore () {
       if (this.data.length < this.items.length) {
         console.log('loadMore')
-        this.busy = true;
         setTimeout(() => {
           const cards = 24
           const min = this.data.length
@@ -58,9 +56,20 @@ export default {
           for (let i = min, j = max; i < j; i++) {
             this.data.push(this.items[i]);
           }
-          this.busy = false;
         }, 0);
       }
+    },
+    validSearchQuery () {
+      // this.$refs.searchInput.value = ''
+      console.log(this.searchQuery)
+      this.$store.dispatch('SEARCH', { query: this.searchQuery })
+        .then(response => {
+          console.log(response)
+          if (response.status === 200) {
+            this.$router.push({ name: 'Search', query: { r: this.searchQuery } })
+            // this.searchQuery = ''
+          }
+        })
     },
   },
   computed: {
@@ -70,6 +79,9 @@ export default {
     ]),
     items () {
       return this.search.recipes
+    },
+    searchQuery () {
+      return this.$route.query.r
     },
     // items () {
     //   const items = this.$store.getters.recipes
@@ -86,9 +98,11 @@ export default {
   },
   watch: {
     '$route' () {
-      console.log(this.$route.params.id)
-      // this.fetchItem()
-      // this.recipeLog()
+      console.log(this.searchQuery)
+      this.data = this.search.recipes
+        .slice(0, 24)
+      // this.componentKey += 1
+      // this.validSearchQuery()
     },
     'search' () {
       // this.fetchItem()
