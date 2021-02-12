@@ -104,7 +104,11 @@
         </InArticleAdsense>
       </div>
 
-      <div id="comments" ref="comments">
+      <div
+        id="comments"
+        ref="comments"
+        v-if="loadComments"
+      >
         <comments
           :item="item"
           v-on:lastCommentMounted="lastCommentMounted"
@@ -142,6 +146,7 @@ export default {
   data () {
     return {
       loadAdsense: false,
+      loadComments: false,
       componentKey: 0,
       log: true,
       item: {
@@ -299,6 +304,7 @@ export default {
     handleScroll (event) {
       // console.log(this.loadAdsense)
       if (this.loadAdsense == false) this.loadAdsense = true
+      if (this.loadComments == false) this.loadComments = true
     },
   },
   created () {
