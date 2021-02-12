@@ -50,7 +50,7 @@ Vue.use(VS2)
 // import Ads from 'vue-google-adsense'
 import InArticleAdsense from 'vue-google-adsense/dist/InArticleAdsense.min.js'
 // Vue.use(Ads.Adsense)
-Vue.use(Ads.InArticleAdsense)
+Vue.use(InArticleAdsense)
 // Vue.use(Ads.InFeedAdsense)
 // }
 
