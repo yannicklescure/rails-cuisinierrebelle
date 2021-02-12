@@ -70,7 +70,7 @@
         ></div>
       </div>
       <div class="d-none d-print-block mt-3 mb-5 text-center">∾&nbsp;www.CuisinierRebelle.com&nbsp;∾</div>
-      <div v-if="!localhost" class="my-3 d-print-none">
+      <div v-if="localhost && loadAdsense" class="my-3 d-print-none">
         <InArticleAdsense
           data-ad-client="ca-pub-9223566768445571"
           data-ad-slot="4726766855">
@@ -97,7 +97,7 @@
         <card-small v-for="index in 5" :key="'cs' + index" />
       </div>
 
-      <div v-if="!localhost" class="my-3 d-print-none">
+      <div v-if="localhost && loadAdsense" class="my-3 d-print-none">
         <InArticleAdsense
           data-ad-client="ca-pub-9223566768445571"
           data-ad-slot="4726766855">
@@ -141,6 +141,7 @@ export default {
   name: 'Recipe',
   data () {
     return {
+      loadAdsense: false,
       componentKey: 0,
       log: true,
       item: {
@@ -223,7 +224,16 @@ export default {
       return isMobile
     },
     localhost () {
-      return window.location.hostname === 'localhost'
+      return (/(?:www\.)?cuisinierrebelle.com/).test(window.location.hostname)
+    }
+  },
+  watch: {
+    async '$route' () {
+      console.log(this.$route.params.id)
+      // await this.fetchItem()
+      this.item = this.recipe(this.$route.params.id)
+      this.loadAdsense = false
+      // this.recipeLog()
     }
   },
   methods: {
@@ -286,14 +296,16 @@ export default {
           this.scroll2Anchor()
         })
     },
+    handleScroll (event) {
+      // console.log(this.loadAdsense)
+      if (this.loadAdsense == false) this.loadAdsense = true
+    },
   },
-  watch: {
-    async '$route' () {
-      console.log(this.$route.params.id)
-      // await this.fetchItem()
-      this.item = this.recipe(this.$route.params.id)
-      // this.recipeLog()
-    }
+  created () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   beforeMount () {
     this.fetchItem()
