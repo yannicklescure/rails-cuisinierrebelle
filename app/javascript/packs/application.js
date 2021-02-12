@@ -69,4 +69,4 @@ console.log(window.location.hostname);
 //   await stylesheetsApp()
 // })
 
-import '../packs/hello_vue'
+import '../packs/vue'

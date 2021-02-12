@@ -44,10 +44,11 @@ Vue.use(VueGtag, {
   config: { id: "UA-155962082-1" }
 }, router)
 
-import Ads from 'vue-google-adsense'
+import VS2 from 'vue-script2'
+Vue.use(VS2)
 
-Vue.use(require('vue-script2'))
-
+// import Ads from 'vue-google-adsense'
+import InArticleAdsense from 'vue-google-adsense/dist/InArticleAdsense.min.js'
 // Vue.use(Ads.Adsense)
 Vue.use(Ads.InArticleAdsense)
 // Vue.use(Ads.InFeedAdsense)
