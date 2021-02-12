@@ -68,3 +68,5 @@ console.log(window.location.hostname);
 // document.addEventListener('DOMContentLoaded', async () => {
 //   await stylesheetsApp()
 // })
+
+import '../packs/hello_vue'

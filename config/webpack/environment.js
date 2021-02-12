@@ -20,4 +20,7 @@ environment.config.resolve.alias = { 'vue$': 'vue/dist/vue.esm.js' }
 const { VueLoaderPlugin } = require('vue-loader')
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 
+const splitChunks = require('./split_chunks')
+environment.config.merge(splitChunks)
+
 module.exports = environment

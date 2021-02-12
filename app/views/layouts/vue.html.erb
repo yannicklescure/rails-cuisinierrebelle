@@ -53,6 +53,7 @@
     <meta name="msapplication-config" content="https://media.cuisinierrebelle.com/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#343940">
     <%= render 'layouts/preload' %>
+    <%#= stylesheet_packs_with_chunks_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_packs_with_chunks_tag 'application', media: 'all' %>
   </head>
@@ -60,7 +61,7 @@
     <%#= user_signed_in? %>
     <%#= render 'shared/banner' %>
     <%= yield %>
-    <%= javascript_packs_with_chunks_tag 'application' %>
-    <%= javascript_packs_with_chunks_tag 'hello_vue' %>
+    <%= javascript_packs_with_chunks_tag "application" %>
+    <%#= javascript_packs_with_chunks_tag 'hello_vue' %>
   </body>
 </html>
