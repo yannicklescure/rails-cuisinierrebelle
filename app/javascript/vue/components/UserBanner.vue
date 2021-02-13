@@ -32,12 +32,6 @@
   </div>
 </template>
 
-<style scoped>
-.align-items {
-  margin-bottom: 3px;
-}
-</style>
-
 <script>
 import { mapGetters } from 'vuex'
 // import Follow from '../components/buttons/Follow.vue'

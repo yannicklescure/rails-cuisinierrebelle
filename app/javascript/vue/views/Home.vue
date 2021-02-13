@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 // import Banner from '../components/Banner.vue'
 // import Card from '../components/Card.vue'
 const Banner = () => import('../components/Banner.vue')
@@ -66,8 +66,6 @@ export default {
   watch: {
     '$route' () {
       console.log(this.$route.params.id)
-      // this.fetchItem()
-      // this.recipeLog()
     },
     'recipes' () {
       // this.fetchItem()
@@ -94,21 +92,23 @@ export default {
           const cards = 24
           const min = this.data.length
           const max = min + cards <= this.items.length ? min + cards : this.items.length
-          for (let i = min, j = max; i < j; i++) {
-            this.data.push(this.items[i]);
-          }
+          // for (let i = min, j = max; i < j; i++) {
+          //   this.data.push(this.items[i])
+          // }
+          this.data = this.data.concat(this.items.slice(min, max))
           this.busy = false;
         }, 0);
       }
     },
     fetchItem () {
+      console.log('fetchItem')
       if (this.recipes.length === 0) {
         console.log('fetching recipes data')
         this.data = []
         this.$store
           .dispatch('RECIPES', {})
       }
-      this.componentKey += 1
+      // this.componentKey += 1
       this.data = this.recipes
         .slice(0, 24)
     },
@@ -136,8 +136,14 @@ export default {
       }
     },
     handleScroll (event) {
-      if (this.displayCards == false) this.displayCards = true
-    }
+      if (this.displayCards == false) {
+        this.displayCards = true
+        this.fetchItem()
+      }
+    },
+    forceRerender () {
+      this.componentKey += 1;
+    },
   },
   created () {
     window.addEventListener('scroll', this.handleScroll);

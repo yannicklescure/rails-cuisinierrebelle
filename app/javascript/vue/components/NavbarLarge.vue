@@ -153,7 +153,7 @@ export default {
     },
     handleScroll (event) {
       // Code to be executed when the window is scrolled
-      const position = window.scrollY != 0
+      const position = window.scrollY > 0
       // console.log(position)
       if (position) this.$refs.navbar.classList.add('border-bottom')
       else this.$refs.navbar.classList.remove('border-bottom')
@@ -195,7 +195,6 @@ export default {
     forceRerender () {
       this.componentKey += 1;
     },
-
     navbarHeight () {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
@@ -209,17 +208,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.rotate {
-  animation: rotation 2s infinite linear;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-</style>

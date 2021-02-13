@@ -132,8 +132,8 @@ export const fr = () => {
       submit: 'Se connecter',
       signup: `Créer un compte`,
       disclaimer: "Nous ne partagerons jamais vos données personnelles.",
-      welcome: 'Bienvenue, { firstName } !',
-      resendConfirmationInstructions: 'Nous avons envoyé une courriel à { email } !',
+      welcome: 'Bienvenue, {firstName} !',
+      resendConfirmationInstructions: 'Nous avons envoyé une courriel à {email} !',
       forgetPassword: 'Mot de passe oublié ?',
       password: {
         request: {
