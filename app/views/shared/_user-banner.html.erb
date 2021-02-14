@@ -1,5 +1,0 @@
-<% if !client.device_type.nil? && client.device_type.match(/desktop/) %>
-  <%= render 'shared/user-banner-large', user: @user %>
-<% else %>
-  <%= render 'shared/user-banner-small', user: @user %>
-<% end %>

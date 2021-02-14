@@ -1,7 +1,0 @@
-<div class="container mt-3 mb-5">
-  <% followings.sort_by { |date| date.created_at }.reverse.each do |following| %>
-  <div class="d-flex <%= 'w-50 mx-auto' if !client.device_type.nil? && client.device_type.match(/desktop/) %> align-items-center mb-3">
-      <img src="<%= following.image.thumb.url %>" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;"><%= render following %>
-    </div>
-  <% end %>
-</div>

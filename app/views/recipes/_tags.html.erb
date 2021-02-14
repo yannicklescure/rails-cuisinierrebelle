@@ -1,8 +1,0 @@
-<% @recipes.each do |recipe| %>
-  <h2><%= recipe.title %></h2>
-  <p>
-    <% recipe.tag_list.each do |tag| %>
-      <%= link_to tag, tagged_path(tag: tag) %>
-    <% end %>
-  </p>
-<% end %>
