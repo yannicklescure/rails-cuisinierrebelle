@@ -1,7 +1,0 @@
-<div class="container-fluid">
-  <div id="recipes-cards" class="row py-3">
-    <% @recipes.order('created_at DESC').each do |recipe| %>
-      <%= render 'shared/card', recipe: recipe %>
-    <% end %>
-  </div>
-</div>

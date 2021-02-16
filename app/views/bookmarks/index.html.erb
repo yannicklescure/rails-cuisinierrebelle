@@ -1,9 +1,0 @@
-<% if @bookmarks.size.positive? %>
-  <%= render 'shared/recipes', recipes: @bookmarks %>
-<% else %>
-<div class="container-fluid">
-  <div class="row py-3">
-    <p class="mx-auto mt-5"><%= t('.no_bookmarks_html') %></p>
-  </div>
-</div>
-<% end %>

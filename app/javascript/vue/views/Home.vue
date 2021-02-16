@@ -170,8 +170,8 @@ export default {
       setTimeout(() => {
         // this.loadMore()
         // while (!this.items && this.data.length === 0) this.loadMore()
+        // console.log(this.data)
       }, 1000)
-      // console.log(this.data)
     })
   }
 }
