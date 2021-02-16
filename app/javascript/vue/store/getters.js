@@ -15,6 +15,9 @@ export default {
   //   // console.log(state.data.searchPosts)
   //   return state.data.searchPosts.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
   // },
+  timestamp () {
+    return state.data.timestamp
+  },
   mobile () {
     return isMobile
   },

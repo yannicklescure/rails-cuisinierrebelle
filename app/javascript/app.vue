@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect'
-import Navbar from './vue/components/Navbar.vue'
+import { bootstrap } from 'vue-gtag'
+import { mapGetters } from 'vuex'
+// import Navbar from './vue/components/Navbar.vue'
 // import Footer from './vue/components/Footer.vue'
-// const Navbar = () => import('./vue/components/Navbar.vue')
+const Navbar = () => import('./vue/components/Navbar.vue')
 const Footer = () => import('./vue/components/Footer.vue')
 // import { getBannerPicture } from './vue/util/unsplash'
 
@@ -56,7 +57,11 @@ export default {
         .dispatch('IS_AUTHENTICATED', {})
         .then(result => console.log(result))
     },
-
+    enableGtag () {
+      bootstrap().then(gtag => {
+        // all done!
+      })
+    },
     fetchItems () {
       this.loading = true
       console.log('SET_STORE')
@@ -86,19 +91,23 @@ export default {
     // },
   },
   computed: {
+    ...mapGetters([
+      'mobile',
+      'timestamp',
+    ]),
     // user () {
     //   return this.$store.getters.currentUser
     // },
     // items () {
     //   return this.filter
     // },
-    timestamp () {
-      // if (this.$store.state.data.timestamp === null) this.fetchItems()
-      return this.$store.state.data.timestamp
-    },
-    mobile () {
-      return isMobile
-    }
+    // timestamp () {
+    //   // if (this.$store.state.data.timestamp === null) this.fetchItems()
+    //   return this.$store.state.data.timestamp
+    // },
+    // mobile () {
+    //   return isMobile
+    // }
   },
   async created () {
     await this.checkAuthentication()
@@ -107,7 +116,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      // document.querySelector('body').style.backgroundColor = '#ffffff';
+      this.enableGtag()
     })
   }
 }

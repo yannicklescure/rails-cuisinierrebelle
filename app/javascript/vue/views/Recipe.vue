@@ -119,7 +119,6 @@
 </template>
 
 <script>
-import { bootstrap } from 'vue-gtag'
 import { mapGetters } from 'vuex'
 // import axios from 'axios'
 import VueMarkdownPlus from 'vue-markdown-plus'
@@ -240,11 +239,6 @@ export default {
     }
   },
   methods: {
-    enableGtag () {
-      bootstrap().then(gtag => {
-        // all done!
-      })
-    },
     heartFillBig () {
       console.log('liked')
       this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
@@ -320,15 +314,14 @@ export default {
     this.fetchItem()
     // this.item = this.recipe(this.$route.params.id)
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.enableGtag()
-      // this.componentKey += 1
-      // this.loading = false
-      // this.scroll2Anchor()
-      // setTimeout(() => {
-      // }, 1000)
-    })
-  },
+  // mounted () {
+  //   this.$nextTick(() => {
+  //     // this.componentKey += 1
+  //     // this.loading = false
+  //     // this.scroll2Anchor()
+  //     // setTimeout(() => {
+  //     // }, 1000)
+  //   })
+  // },
 }
 </script>
