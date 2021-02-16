@@ -14,15 +14,15 @@ require('@rails/ujs').start()
 require('@rails/activestorage').start()
 require('channels')
 
-import '../serviceworker-companion'
+require('../serviceworker-companion')
 
 // require('data-confirm-modal')
 
 // import '../src/plugins'
-
-jQuery.htmlPrefilter = function( html ) {
-  return html;
-};
+const plugins = () => require('../src/plugins');
+// import '../packs/vue'
+const vueJs = () => require('../packs/vue');
+vueJs()
 
 // import '../src/fonts'
 //require webfontloader
@@ -64,8 +64,13 @@ console.log(window.location.hostname);
 // import '../stylesheets/critical.scss'
 // const stylesheetsApp = () => import('../stylesheets/application.scss');
 
-// document.addEventListener('DOMContentLoaded', async () => {
-//   await stylesheetsApp()
-// })
+document.addEventListener('DOMContentLoaded', async () => {
+  // await stylesheetsApp()
 
-import '../packs/vue'
+  await plugins()
+  // require('data-confirm-modal')
+  jQuery.htmlPrefilter = function( html ) {
+    return html;
+  };
+})
+

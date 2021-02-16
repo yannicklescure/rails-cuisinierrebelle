@@ -1,7 +1,7 @@
 import { fr } from '../locales/fr'
 
 export const messages = () => {
-  console.log('messages')
+  // console.log('messages')
   return {
     // en: {
     //   message: {

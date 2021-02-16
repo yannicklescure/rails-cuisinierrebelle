@@ -34,9 +34,9 @@ const unsync = sync(store, router)
 
 // Tell Vue to use the plugin
 Vue.use(require('vue-cookie'))
-console.log(document.cookie)
+// console.log(document.cookie)
 
-console.log(window.location)
+// console.log(window.location)
 // if (window.location.hostname != 'localhost') {
 import VueGtag from 'vue-gtag'
 
@@ -58,7 +58,7 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 
 import { messages } from '../vue/locales'
-console.log(messages())
+// console.log(messages())
 const i18n = new VueI18n({
   locale: 'fr', // set locale
   messages: messages(), // set locale messages
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
     render: h => h(App)
   })
-  console.log('app')
+  // console.log('app')
 
   // document.querySelector('#preload').remove()
   // document.querySelector('#banner-skeleton').remove()

@@ -1,5 +1,5 @@
 export const fr = () => {
-  console.log('french')
+  // console.log('french')
   return {
     init: {
       loading: 'Chargement...',
