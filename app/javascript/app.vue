@@ -116,7 +116,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.enableGtag()
+      setTimeout(() => {
+        this.enableGtag()
+      }, 1000)
     })
   }
 }
