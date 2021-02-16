@@ -18,8 +18,7 @@ import '../serviceworker-companion'
 
 // require('data-confirm-modal')
 
-import 'jquery'
-import '../src/plugins'
+// import '../src/plugins'
 
 jQuery.htmlPrefilter = function( html ) {
   return html;
@@ -49,10 +48,10 @@ jQuery.htmlPrefilter = function( html ) {
 //   flashes();
 // }
 // $('[data-toggle="tooltip"]').tooltip();
-const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+// const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+// const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+//   return new bootstrap.Tooltip(tooltipTriggerEl)
+// })
 
 if (!(/localhost|127\.0\.0\.1/).test(document.domain)) console.log = function() {}
 
