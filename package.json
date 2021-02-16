@@ -15,6 +15,7 @@
     "axios": "^0.21.0",
     "babel-runtime": "^6.26.0",
     "bootstrap": "^4.5.2",
+    "browser-image-compression": "^1.0.14",
     "channels": "^0.0.4",
     "compression-webpack-plugin": "^6.0.2",
     "crypto-js": "^4.0.0",

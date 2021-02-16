@@ -50,6 +50,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import imageCompression from 'browser-image-compression'
 
 export default {
   name: 'RecipeNew',
@@ -71,21 +72,44 @@ export default {
     }
   },
   methods: {
-    processFile (event) {
-      console.log(event)
-      this.photo = event.target.files[0]
-      console.log(this.photo)
-      console.log(this.$refs.photo)
-      // console.log(URL.createObjectURL(this.photo))
-      // this.$refs.photo.src = URL.createObjectURL(this.photo)
-      const reader = new FileReader()
-      reader.onload = () => {
-        // console.log(reader.result)
-        this.$refs.preview.innerHTML = ''
-        this.$refs.preview.insertAdjacentHTML('afterbegin', `<div class="mb-3"><img src="${reader.result}" class="rounded img-fluid" alt="${this.photo.name}"></div>`);
-        // this.$refs.photo.src = reader.result
+    // processFile (event) {
+    //   this.photo = event.target.files[0]
+    //   const reader = new FileReader()
+    //   reader.onload = () => {
+    //     this.$refs.preview.innerHTML = ''
+    //     this.$refs.preview.insertAdjacentHTML('afterbegin', `<div class="mb-3"><img src="${reader.result}" class="rounded img-fluid" alt="${this.photo.name}"></div>`);
+    //   }
+    //   reader.readAsDataURL(this.photo)
+    //   this.allowPost()
+    // },
+    async processFile (event) {
+      const imageFile = event.target.files[0];
+      console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+      console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: false
       }
-      reader.readAsDataURL(this.photo)
+      try {
+        const compressedFile = await imageCompression(imageFile, options);
+        console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+        console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+
+        this.photo = await new File([compressedFile], imageFile.name, {
+          lastModifiedDate: imageFile.lastModified,
+          type: imageFile.type
+        })
+        const reader = new FileReader()
+        reader.onload = () => {
+          this.$refs.preview.innerHTML = ''
+          this.$refs.preview.insertAdjacentHTML('afterbegin', `<div class="mb-3"><img src="${ reader.result }" width="1920" height="1080" class="rounded img-fluid" alt="${ this.photo.name }"></div>`);
+        }
+        reader.readAsDataURL(this.photo)
+      } catch (error) {
+        console.log(error);
+      }
       this.allowPost()
     },
     allowPost () {
