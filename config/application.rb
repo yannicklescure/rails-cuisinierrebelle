@@ -23,7 +23,7 @@ module RailsCuisinierRebelle
     config.active_job.queue_adapter = :sidekiq
 
     config.middleware.use Rack::Deflater
-    # config.middleware.use Rack::Brotli
+    config.middleware.use Rack::Brotli
 
     config.middleware.delete ActionDispatch::Session::CookieStore
 

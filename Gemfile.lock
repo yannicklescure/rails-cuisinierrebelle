@@ -88,6 +88,7 @@ GEM
       nokogiri (~> 1.6)
       premailer-rails (~> 1.9)
       rails (>= 3)
+    brotli (0.4.0)
     builder (3.2.4)
     bullet (6.1.3)
       activesupport (>= 3.0.0)
@@ -190,6 +191,7 @@ GEM
     gibbon (3.3.4)
       faraday (>= 0.16.0)
       multi_json (>= 1.11.0)
+    git-version-bump (0.17.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.53.0)
@@ -350,6 +352,10 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-brotli (1.0.0)
+      brotli (>= 0.1.7)
+      git-version-bump (>= 0.15)
+      rack (>= 1.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-proxy (0.6.5)
@@ -527,6 +533,7 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1)
   bootsnap
   bootstrap-email
+  brotli
   bullet
   carrierwave (>= 2.1.1)
   carrierwave-aws
@@ -570,6 +577,7 @@ DEPENDENCIES
   pry-rails
   puma (>= 4.3.5)
   pundit
+  rack-brotli
   rack-cors
   rails (= 6.0.3.3)
   rails-i18n
