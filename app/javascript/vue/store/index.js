@@ -71,7 +71,7 @@ export const createStore = () => {
   let vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
   if (vueStore) localStorage.removeItem('cuisinier_rebelle')
 
-  console.log('initiate vuex store')
+  // console.log('initiate vuex store')
   const data = dataObj()
 
   return setStore(data)
