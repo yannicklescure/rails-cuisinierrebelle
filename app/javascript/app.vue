@@ -118,7 +118,7 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.enableGtag()
-      }, 1000)
+      }, 3500)
     })
   }
 }
