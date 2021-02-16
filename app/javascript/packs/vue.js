@@ -41,7 +41,8 @@ Vue.use(require('vue-cookie'))
 import VueGtag from 'vue-gtag'
 
 Vue.use(VueGtag, {
-  config: { id: "UA-155962082-1" }
+  config: { id: "UA-155962082-1" },
+  bootstrap: false
 }, router)
 
 import VS2 from 'vue-script2'

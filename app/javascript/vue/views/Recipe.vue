@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect'
+import { bootstrap } from 'vue-gtag'
 import { mapGetters } from 'vuex'
 // import axios from 'axios'
 import VueMarkdownPlus from 'vue-markdown-plus'
@@ -132,14 +132,14 @@ import VueMarkdownPlus from 'vue-markdown-plus'
 // import BtnVisit from '../components/buttons/Visit.vue'
 // import CardSmall from '../components/CardSmall.vue'
 // import Comments from '../components/comments/List.vue'
-const BtnBookmark = () => import('../components/buttons/Bookmark.vue')
-const BtnComment = () => import('../components/buttons/Comment.vue')
-const BtnLike = () => import('../components/buttons/Like.vue')
-const BtnPrint = () => import('../components/buttons/Print.vue')
-const BtnShare = () => import('../components/buttons/Share.vue')
-const BtnVisit = () => import('../components/buttons/Visit.vue')
-const CardSmall = () => import('../components/CardSmall.vue')
-const Comments = () => import('../components/comments/List.vue')
+const BtnBookmark = () => require('../components/buttons/Bookmark.vue')
+const BtnComment = () => require('../components/buttons/Comment.vue')
+const BtnLike = () => require('../components/buttons/Like.vue')
+const BtnPrint = () => require('../components/buttons/Print.vue')
+const BtnShare = () => require('../components/buttons/Share.vue')
+const BtnVisit = () => require('../components/buttons/Visit.vue')
+const CardSmall = () => require('../components/CardSmall.vue')
+const Comments = () => require('../components/comments/List.vue')
 
 export default {
   name: 'Recipe',
@@ -221,13 +221,11 @@ export default {
       'navbarHeight',
       'recipe',
       'currentUser',
+      'mobile',
     ]),
     // item () {
     //   return this.recipe(this.$route.params.id)
     // },
-    mobile () {
-      return isMobile
-    },
     localhost () {
       return (/(?:www\.)?cuisinierrebelle.com/).test(window.location.hostname)
     }
@@ -242,6 +240,11 @@ export default {
     }
   },
   methods: {
+    enableGtag () {
+      bootstrap().then(gtag => {
+        // all done!
+      })
+    },
     heartFillBig () {
       console.log('liked')
       this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
@@ -319,6 +322,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
+      this.enableGtag()
       // this.componentKey += 1
       // this.loading = false
       // this.scroll2Anchor()
