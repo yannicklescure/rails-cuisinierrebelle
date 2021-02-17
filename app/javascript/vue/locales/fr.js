@@ -7,10 +7,24 @@ export const fr = () => {
     error: {
       failed: 'Nous sommes désolés, nous ne sommes pas en mesure de récupérer ces informations pour le moment, veuillez réessayer plus tard',
     },
-    comment: {
+    comments: {
+      minutes: 'il y a 0 minutes | il y a 1 minute | il y a {count} minutes',
+      hours: 'il y a 0 heures | il y a 1 heure | il y a {count} heures',
+      days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
+      months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
+      years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
+      are_you_sure: 'Êtes-vous sûr ?',
+      destroy: 'Supprimer',
+      cancel: 'Annuler',
+      edit: 'Éditer',
+      reply: 'Répondre',
+      like: 'Aimer',
       delete: 'Supprimer',
+      reply: 'Répondre',
     },
     commentForm: {
+      comment: 'Publier',
+      cancel: 'Annuler',
       comment: `Commenter`,
       reply: 'Répondre',
     },
@@ -217,23 +231,6 @@ export const fr = () => {
           photo: 'La photo est obligatoire.',
         },
       }
-    },
-    comment: {
-      minutes: 'il y a 0 minutes | il y a 1 minute | il y a {count} minutes',
-      hours: 'il y a 0 heures | il y a 1 heure | il y a {count} heures',
-      days: 'il y a 0 jours | il y a 1 jour | il y a {count} jours',
-      months: 'il y a 0 mois | il y a 1 mois | il y a {count} mois',
-      years: 'il y a 0 ans | il y a 1 an | il y a {count} ans',
-      are_you_sure: 'Êtes-vous sûr ?',
-      destroy: 'Supprimer',
-      cancel: 'Annuler',
-      edit: 'Éditer',
-      reply: 'Répondre',
-      like: 'Aimer',
-    },
-    commentForm: {
-      comment: 'Publier',
-      cancel: 'Annuler',
     },
     search: {
       noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Veuillez essayer de nouveau avec un autre mot-clé.`

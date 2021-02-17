@@ -356,21 +356,17 @@ export default {
       })
   },
 
-  IS_AUTHENTICATED: (context, {}) => {
-    console.log(context)
-    return api.isAuthenticated(context, {})
-      .then(async response => {
+  IS_AUTHENTICATED: (context, payload) => {
+    return api.isAuthenticated(payload)
+      .then(response => {
         console.log(response)
-        await context.commit("IS_AUTHENTICATED", response.data)
-        return response.data
+        context.commit("IS_AUTHENTICATED", response)
+        return response
       })
-    // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-    // if (vueStore) {
-    //   console.log(vueStore)
-    //   // context.commit("IS_AUTHENTICATED", vueStore.data)
-    //   context.commit("SET_DATA", vueStore)
-    //   return vueStore.data.isAuthenticated
-    // } else return false
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
   },
 
   USERS: (context, payload) => {
@@ -670,11 +666,26 @@ export default {
     return api.logout(context, context.state.data.user.auth)
       .then(response => {
         console.log(response)
-        if (response && response.status === 204) {
+        if (response && response.status === 200) {
           context.commit("LOG_OUT", {})
           return response
         }
       })
+  },
+
+  REFRESH_ACCESS_TOKEN: (context, payload) =>  {
+    return api.refreshAccessToken(context, {})
+      .then(response => {
+        console.log(response.data.message)
+        context.commit("REFRESH_ACCESS_TOKEN", response)
+        return response
+      })
+      .catch(error => {
+        // console.log(error)
+        return error
+      })
+    // refreshAccessToken
+    // parseInt(new Date().getTime()/1000)
   },
 
   USER_DELETE: (context, payload) => {

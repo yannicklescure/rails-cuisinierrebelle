@@ -1,7 +1,8 @@
 require "base64"
 
 class Api::V1::RecipeLogsController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [ :create ]
+  before_action :authenticate_and_set_user, except: [ :create ]
+  # before_action :authenticate_user!, except: [ :create ]
 
   def create
     @recipe = Recipe.find(params[:recipe_id])

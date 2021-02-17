@@ -2,6 +2,26 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 
+  scope path: 'api' do
+    # api_guard_routes for: 'users'
+    api_guard_routes for: 'users', controller: {
+      registration: 'users/registration',
+      authentication: 'users/authentication',
+      passwords: 'users/passwords',
+      tokens: 'users/tokens'
+    }
+  end
+
+  constraints subdomain: 'api' do
+    # api_guard_routes for: 'users'
+    api_guard_routes for: 'users', controller: {
+      registration: 'users/registration',
+      authentication: 'users/authentication',
+      passwords: 'users/passwords',
+      tokens: 'users/tokens'
+    }
+  end
+
   scope '(:locale)', locale: /en|es|fr/ do
     # devise_for :users, as: :api, defaults: { format: :json }
     devise_for :users,
@@ -25,6 +45,8 @@ Rails.application.routes.draw do
       post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
       post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
       post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
+      get '/users/status', to: 'users#is_authenticated'
+
       resources :users, only: [ :index ] do
         # get :followers
         # get :following

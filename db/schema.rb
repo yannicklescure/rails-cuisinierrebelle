@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_170051) do
+ActiveRecord::Schema.define(version: 2021_02_17_144015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body"], name: "index_authentication_tokens_on_body"
     t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
+  end
+
+  create_table "blacklisted_tokens", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id", null: false
+    t.datetime "expire_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_blacklisted_tokens_on_user_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -131,12 +140,6 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
-  end
-
-  create_table "jwt_denylist", force: :cascade do |t|
-    t.string "jti", null: false
-    t.datetime "exp", null: false
-    t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -207,6 +210,15 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
     t.integer "views", default: 0
     t.index ["slug"], name: "index_recipes_on_slug", unique: true
     t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "refresh_tokens", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token"], name: "index_refresh_tokens_on_token", unique: true
+    t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -303,6 +315,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
     t.boolean "moderator", default: false
     t.boolean "freemium", default: false
     t.string "password_reset_timestamp", default: "0"
+    t.datetime "token_issued_at"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -312,6 +325,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
   add_foreign_key "abouts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_tokens", "users"
+  add_foreign_key "blacklisted_tokens", "users"
   add_foreign_key "bookmarks", "recipes"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comment_likes", "comments"
@@ -322,6 +336,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_170051) do
   add_foreign_key "likes", "users"
   add_foreign_key "recipe_logs", "recipes"
   add_foreign_key "recipes", "users"
+  add_foreign_key "refresh_tokens", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
   add_foreign_key "reply_likes", "replies"

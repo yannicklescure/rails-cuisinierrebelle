@@ -12,7 +12,6 @@
       >
         <img v-lazy="'https://media.cuisinierrebelle.com/brand-icon.jpg'" width="32" height="32" class="mr-1">
         <span>{{ $t('navbar.brand') }}</span>
-        <span v-if="loading" class="material-icons rotate ml-2 text-muted">cached</span>
       </router-link>
     </div>
     <div class="input-group d-flex w-25">
@@ -102,6 +101,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'authorization',
       'isAuthenticated',
       'currentUser',
       'facebookAuth',
@@ -148,6 +148,14 @@ export default {
         }
         if (window.scrollY > 0) await scroll()
         await refresh()
+        if (this.isAuthenticated) {
+          this.$store
+            .dispatch('REFRESH_ACCESS_TOKEN', {
+              authorizationToken: this.authorization.authorizationToken,
+              refreshToken: this.authorization.refreshToken,
+              expireAt: this.authorization.expireAt
+            })
+        }
         this.loading = true
       }
     },
@@ -185,7 +193,7 @@ export default {
           this.$store.dispatch('LOG_OUT', {})
             .then(response => {
               console.log(response)
-              if (response.status === 204 && this.$route.name != 'Home') this.$router.push({ name: 'Home' })
+              if (response.status === 200 && this.$route.name != 'Home') this.$router.push({ name: 'Home' })
             })
         })
         .catch(() => {

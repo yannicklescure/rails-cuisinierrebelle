@@ -19,7 +19,11 @@ const dataObj = () => {
         username: null
       }
     },
-    authorization: null,
+    authorization: {
+      authorizationToken: null,
+      refreshToken: null,
+      expireAt: null
+    },
     isAuthenticated: false,
     lastUpdated: 0,
     recipes: [],

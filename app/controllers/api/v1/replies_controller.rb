@@ -1,7 +1,8 @@
 class Api::V1::RepliesController < Api::V1::BaseController
   include Rails.application.routes.url_helpers
 
-  before_action :authenticate_user!
+  before_action :authenticate_and_set_user
+  # before_action :authenticate_user!
   # protect_from_forgery with: :null_session
 
   def create

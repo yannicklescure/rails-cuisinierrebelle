@@ -317,21 +317,21 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  config.jwt do |jwt|
-    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-    jwt.request_formats = {
-      user: [nil, :json],
-    }
-    jwt.dispatch_requests = [
-      ['POST', %r{^/api/v1/users/sign_in$}],
-      ['GET', %r{^/$}]
-    ]
-    jwt.revocation_requests = [
-      ['DELETE', %r{^/api/v1/users/sign_out$}],
-    ]
-    jwt.expiration_time = 1.week.to_i
-    # jwt.expiration_time = 1.minutes.to_i
-  end
+#   config.jwt do |jwt|
+#     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+#     jwt.request_formats = {
+#       user: [nil, :json],
+#     }
+#     jwt.dispatch_requests = [
+#       ['POST', %r{^/api/v1/users/sign_in$}],
+#       ['GET', %r{^/$}]
+#     ]
+#     jwt.revocation_requests = [
+#       ['DELETE', %r{^/api/v1/users/sign_out$}],
+#     ]
+#     jwt.expiration_time = 1.week.to_i
+#     # jwt.expiration_time = 1.minutes.to_i
+#   end
 end
 
 # module Devise

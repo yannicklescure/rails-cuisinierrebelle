@@ -2,6 +2,8 @@
 es:
   '':
     only_allows_youtube_video: Solo permite videos de youtube
+  RegistrationConfirmation:
+    success: Success
   about:
     edit:
       add_a_public_content: Agregar un contenido público
@@ -132,10 +134,34 @@ es:
       likes: Gustos
       locale: Idioma
       published_recipes: Recetas publicadas
+  api_guard:
+    authentication:
+      signed_in: 'Signed in successfully'
+      signed_out: 'Signed out successfully'
+      invalid_login_credentials: 'Invalid login credentials'
+    password:
+      changed: 'Password changed successfully'
+    registration:
+      signed_up: 'Signed up successfully'
+      account_deleted: 'Account deleted successfully'
+    access_token:
+      refreshed: 'Token refreshed successfully'
+      missing: 'Access token is missing in the request'
+      invalid: 'Invalid access token'
+      expired: 'Access token expired'
+    refresh_token:
+      invalid: 'Invalid refresh token'
+      missing: 'Refresh token is missing in the request'
+    response:
+      success: 'success'
+      error: 'error'
   application:
     user_not_authorized:
       you_are_not_authorized_to_perform_this_action: No tienes autorización para realizar
         esta acción
+  banner:
+    getStarted: Getstarted
+    introduction: Introduction
   bookmarks:
     index:
       no_bookmarks_html: Sin favoritos...&nbsp;<i class="far fa-grin-beam-sweat"></i>
@@ -144,6 +170,16 @@ es:
   buttons:
     cancel: Anular
     ok: Seguir
+  comment:
+    are_you_sure: Are you sure
+    cancel: Cancel
+    destroy: Destroy
+    edit: Edit
+    like: Like
+    reply: Reply
+  commentForm:
+    cancel: Cancel
+    comment: Comment
   comments:
     create:
       comments: Comentarios
@@ -268,12 +304,23 @@ es:
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+  follow:
+    follow: Follow
+    unfollow: Unfollow
   followers:
     index:
       followers: Seguidores
   following:
     index:
       following: Siguiendo
+  footer:
+    brand: Brand
+    madeWith: Madewith
+    privacyPolicy: Privacypolicy
+    sitemap: Sitemap
+    url:
+      privacyPolicy: Privacypolicy
+      sitemap: Sitemap
   index:
     form:
       search: Buscar
@@ -284,9 +331,14 @@ es:
       recent_recipes: Recetas publicadas recientemente
       result_not_found: Lo sentimos, no pudimos encontrar ningún resultado que coincida
         con "%{query}". Por favor intente con otra palabra clave
+  item:
+    copy_to_clipboard: Copy to clipboard
+    share: Share
   layouts:
     about:
       cooking_recipes_and_more: Cooking recipes and more
+      cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+    devise:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
     recipes:
       cuisinier_rebelle_social_recipe: Cuisinier rebelle receta social
@@ -296,9 +348,63 @@ es:
     vue:
       cooking_recipes_and_more: Cooking recipes and more
       cuisinier_rebelle_social_recipe: Cuisinier rebelle social recipe
+  login:
+    disclaimer: Disclaimer
+    email: Email
+    facebook:
+      login: Login
+      logout: Logout
+      working: Working
+    forgetPassword: Forgetpassword
+    password:
+      email: Email
+      request:
+        resendConfirmationInstructions: Resendconfirmationinstructions
+        submit: Submit
+        text: Text
+        title: Title
+      reset:
+        submit: Submit
+        success: Success
+        text0: Text0
+        text1: Text1
+        title: Title
+    resendConfirmationInstructions: Resendconfirmationinstructions
+    signup: Signup
+    submit: Submit
+    welcome: Welcome
+  navbar:
+    admin: Admin
+    are_you_sure: Are you sure
+    bookmarks: Bookmarks
+    brand: Brand
+    cancel: Cancel
+    following: Following
+    getStarted: Getstarted
+    login: Login
+    logout: Logout
+    new_recipe: New recipe
+    recipes: Recipes
+    search: Search
+    settings: Settings
   notifications:
     index:
       liked_your_recipe: le gustó tu receta.
+    like:
+      comment: Comment
+      recipe: Recipe
+      reply: Reply
+  page:
+    edit:
+      select: Select
+    new:
+      content: Content
+      errors:
+        content: Content
+        title: Title
+      locale: Locale
+      submit: Submit
+      title: Title
   pages:
     conversion:
       all_purpose_flour_t55: Harina para todo uso t55
@@ -324,14 +430,17 @@ es:
       unsalted_butter: Mantequilla sin sal
       water: Agua
       white_granulated_sugar: Azúcar blanca granulada
+    edit: Edit
     form:
       are_you_sure: "¿Estas seguro?"
       content: Contenido público
       create_page: Guardar
       delete: Eliminar
       title: Título
+    locale: Locale
     show:
       edit: Editar
+    title: Title
     tools:
       disclaimer: Descargo de responsabilidad
       disclaimer_html: Esta página contiene enlaces de afiliados. Si hace clic y realiza
@@ -353,6 +462,33 @@ es:
       photo: Photo
       title: Title
       url: Url
+  recipe:
+    comments:
+      addPublicComment: Addpubliccomment
+    delete:
+      are_you_sure: Are you sure
+      cancelText: Canceltext
+      okText: Oktext
+      submit: Submit
+    edit: Edit
+    new:
+      browse: Browse
+      chooseFile: Choosefile
+      description: Description
+      direction: Direction
+      errors:
+        direction: Direction
+        photo: Photo
+        title: Title
+        youtubeVideoUrl: Youtubevideourl
+      photo: Photo
+      submit: Submit
+      subtitle: Subtitle
+      tags: Tags
+      tagsHelp: Tagshelp
+      title: Title
+      video: Video
+    otherRecipes: Otherrecipes
   recipes:
     edit:
       add_tags: Agregar etiquetas
@@ -433,6 +569,8 @@ es:
       years_ago: Hace años que
     update:
       comments: Comments
+  search:
+    noResult: Noresult
   settings:
     index:
       communication: Comunicación
@@ -553,6 +691,33 @@ es:
       followers: Seguidores
       following: Siguiendo
       recipes: Recetas
+  signUp:
+    confirmation: Confirmation
+    disclaimer: Disclaimer
+    email: Email
+    errors:
+      confirmation: Confirmation
+      email: Email
+      emailFormat: Emailformat
+      firstName: Firstname
+      lastName: Lastname
+      password: Password
+      passwordLength: Passwordlength
+    firstName: Firstname
+    lastName: Lastname
+    login: Login
+    password: Password
+    submit: Submit
+    success: Success
+  userDelete:
+    email: Email
+    submit: Submit
+    success: Success
+    title: Title
+  userSettings:
+    deleteAccount: Deleteaccount
+    getEmailNotifications: Getemailnotifications
+    title: Title
   user_mailer:
     comment:
       author: "%{author}:"
@@ -587,9 +752,15 @@ es:
       new_reply_content: "%{content}"
       reply: Respuesta
       subject: "%{user} te respondió"
+    reset_user_password:
+      greeting: Bonjour %{recipient},
+      reset_user_password_message: 'Pour réinitialiser votre mot de passe, veuillez
+        cliquer sur le lien suivant:'
+      subject: Réinitialisation de votre mot de passe
     welcome:
       greeting: Bienvenido %{recipient}
       see_ya: Nos vemos
+      subject: Bienvenue, cuisinier rebelle !
       welcome_message: Nos complace darle la bienvenida a nuestra familia de cocineros
         rebeldes. Siéntete libre de compartir algo genial con todo!
   users:

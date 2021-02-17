@@ -19,11 +19,11 @@ const Footer = () => import('./vue/components/Footer.vue')
 
 export default {
   name: 'app',
-  data () {
-    return {
-      loading: true,
-    }
-  },
+  // data () {
+  //   return {
+  //     loading: true,
+  //   }
+  // },
   metaInfo: {
     // if no subcomponents specify a metaInfo.title, this title will be used
     title: 'Cuisinier Rebelle',
@@ -52,31 +52,11 @@ export default {
     'app-header': Navbar,
   },
   methods: {
-    async checkAuthentication () {
-      await this.$store
-        .dispatch('IS_AUTHENTICATED', {})
-        .then(result => console.log(result))
-    },
     enableGtag () {
       bootstrap().then(gtag => {
         // all done!
       })
     },
-    fetchItems () {
-      this.loading = true
-      console.log('SET_STORE')
-      this.$store
-        .dispatch('SET_STORE', {})
-        .then(response => {
-          console.log(response)
-          // this.filter = this.$store.getters.posts
-          // this.posts = this.$store.getters.posts
-        })
-        .finally(()=> {
-          this.loading = false
-        })
-    },
-
     // async getBannerPicture () {
     //   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     //   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
@@ -92,8 +72,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'mobile',
-      'timestamp',
+      'authorization',
     ]),
     // user () {
     //   return this.$store.getters.currentUser
@@ -109,11 +88,16 @@ export default {
     //   return isMobile
     // }
   },
-  created () {
-    this.checkAuthentication()
+  async created () {
+    await this.$store
+      .dispatch('SET_STORE', {})
   },
   beforeMount () {
-    this.fetchItems()
+    this.$store
+      .dispatch('IS_AUTHENTICATED', {
+        authorizationToken: this.authorization.authorizationToken,
+        refreshToken: this.authorization.refreshToken
+      })
   },
   mounted () {
     this.$nextTick(() => {

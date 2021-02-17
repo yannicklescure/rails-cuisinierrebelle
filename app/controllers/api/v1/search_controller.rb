@@ -1,5 +1,6 @@
 class Api::V1::SearchController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [ :index ]
+  # before_action :authenticate_and_set_user
+  # before_action :authenticate_user!, except: [ :index ]
 
   def index
       @search_recipes = policy_scope(Recipe).includes([:comments, :user]).search(params[:query])

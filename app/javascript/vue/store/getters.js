@@ -27,6 +27,13 @@ export default {
   bannerImage (state) {
     return state.data.bannerImage
   },
+  authorization (state, getters) {
+    return {
+      authorizationToken: state.data.authorization.authorizationToken,
+      refreshToken: state.data.authorization.refreshToken,
+      expireAt: state.data.authorization.expireAt,
+    }
+  },
   isAuthenticated (state, getters) {
     return state.data.isAuthenticated
     // console.log(state.data.user)

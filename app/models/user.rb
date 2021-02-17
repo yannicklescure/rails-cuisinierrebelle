@@ -7,8 +7,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable,
-         :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
+         :recoverable, :rememberable, :validatable, :confirmable
+         # :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
          # :omniauthable, omniauth_providers: %i[facebook]
 
   # validates :first_name, presence: true
@@ -74,6 +74,12 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  # api_guard_associations refresh_token: 'refresh_tokens'
+  # api_guard_associations blacklisted_token: 'blacklisted_tokens'
+  api_guard_associations refresh_token: 'refresh_tokens', blacklisted_token: 'blacklisted_tokens'
+  has_many :refresh_tokens, dependent: :delete_all
+  has_many :blacklisted_tokens, dependent: :delete_all
+
   # include PgSearch::Model
   # # PgSearch.multisearch_options = {
   #   # using: [:tsearch, :trigram],
@@ -82,6 +88,13 @@ class User < ApplicationRecord
   # multisearchable against: [:name, :first_name, :last_name]
 
   searchkick
+
+  # has_secure_password
+  # API Guard authentication with Devise
+  # See https://github.com/Gokul595/api_guard/wiki/Using-API-Guard-with-Devise
+  def authenticate(password)
+    valid_password?(password)
+  end
 
   private
 

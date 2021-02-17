@@ -48,4 +48,12 @@ class UserPolicy < ApplicationPolicy
   def request_user_password_reset?
     true
   end
+
+  def process_token?
+    true
+  end
+
+  def is_authenticated?
+    true
+  end
 end

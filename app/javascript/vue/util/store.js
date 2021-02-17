@@ -9,6 +9,7 @@ const oldStore = [
   'cuisinier_rebelle',
   'vueStore',
   'storageKey',
+  'cr_sk_20210216',
 ]
 let oldStoreFlag = false
 oldStore.forEach(store => {
@@ -24,7 +25,7 @@ if (oldStoreFlag) {
 
 const cookieName = 'cr_cn';
 
-const storageKey = 'cr_sk_20210216';
+const storageKey = 'cr_sk_20210217';
 
 // Get the encryption token from cookie or generate a new one.
 const encryptionToken = Cookie.get(cookieName) || uuidv4();

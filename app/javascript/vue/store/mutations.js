@@ -6,6 +6,32 @@ const saveToLocalStorage = (state, caller) => {
   // localStorage.setItem('cuisinier_rebelle', JSON.stringify({ data: state.data }))
 }
 
+const clearUserData = (state) => {
+  state.data.user = {
+    email: null,
+    authentication_token: null,
+    facebookAuth: false,
+    locale: 'fr',
+    bookmarks: [],
+    followers: {
+      count: 0,
+      data: [],
+    },
+    following: {
+      count: 0,
+      data: [],
+    }
+  }
+  state.data.authorization = {
+    authorizationToken: null,
+    refreshToken: null,
+    expireAt: null
+  }
+  state.data.isAuthenticated = false
+
+  return state
+}
+
 export default {
 
   SET_BANNER_IMAGE: (state, payload) => {
@@ -237,19 +263,6 @@ export default {
     saveToLocalStorage(state, 'UNLIKE')
   },
 
-  IS_AUTHENTICATED: (state, payload) => {
-    console.log(state)
-    console.log(payload)
-    state.data.isAuthenticated = payload.isAuthenticated
-    if (payload.isAuthenticated === false) {
-      state.data.user = { email: null, authentication_token: null }
-      state.data.authorization = null
-      // state.data.isAuthenticated = false
-      // state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
-    }
-    saveToLocalStorage(state, 'IS_AUTHENTICATED')
-  },
-
   SET_DATA: (state, payload) => {
     // console.log(state)
     // console.log(payload)
@@ -345,11 +358,8 @@ export default {
     console.log('### RECIPES ###')
     console.log(state)
     console.log(payload)
-    if (state.data.recipes.length === 0) {
-      state.data.recipes = payload.data.recipes
-      // state.data.lastUpdated = new Date().getTime()
-      saveToLocalStorage(state, 'RECIPES')
-    }
+    state.data.recipes = payload.data.recipes
+    saveToLocalStorage(state, 'RECIPES')
   },
 
   SEARCH: (state, payload) => {
@@ -374,22 +384,60 @@ export default {
 
   LOG_IN: (state, payload) => {
     console.log(payload)
+    // for (const [key, value] of Object.entries(payload.data)) {
+    //   // console.log(`${key}: ${value}`);
+    //   state.data[key] = payload.data[key]
+    // }
     state.data.user = payload.data
-    state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
+
+    // console.log(payload.headers['access-token'])
+    // console.log(payload.headers['refresh-token'])
+    state.data.authorization = {
+      authorizationToken: payload.headers['access-token'],
+      refreshToken: payload.headers['refresh-token'],
+      expireAt: payload.headers['expire-at']
+    }
     state.data.isAuthenticated = true
-    // state.data.lastUpdated = new Date().getTime()
-    console.log(state)
     saveToLocalStorage(state, 'LOG_IN')
   },
 
   LOG_OUT: (state, payload) => {
     console.log(payload)
-    console.log(state)
-    state.data.user = { email: null, authentication_token: null }
-    state.data.authorization = null
-    state.data.isAuthenticated = false
-    // state.data.lastUpdated = new Date().getTime() + (1000 * 60 * 3)
+    // console.log(state)
+    state = clearUserData(state)
     saveToLocalStorage(state, 'LOG_OUT')
+  },
+
+  IS_AUTHENTICATED: (state, payload) => {
+    console.log(payload)
+    state.data.isAuthenticated = payload.data.isAuthenticated
+    if (payload.data.isAuthenticated) {
+      console.log('User is authenticated.')
+    }
+    else {
+      state = clearUserData(state)
+      saveToLocalStorage(state, 'IS_AUTHENTICATED')
+    }
+  },
+
+  REFRESH_ACCESS_TOKEN: (state, payload) => {
+    // console.log(payload)
+    // for (const [key, value] of Object.entries(payload.data)) {
+    //   console.log(`${key}: ${value}`);
+    //   state.data[key] = payload.data[key]
+    // }
+    // state.data.user = payload.data
+    // state.data.authorization = payload.headers.authorization.split('Bearer ')[1]
+    // console.log(payload.headers['access-token'])
+    // console.log(payload.headers['refresh-token'])
+    // console.log(payload.headers['expire-at'])
+    state.data.authorization = {
+      authorizationToken: payload.headers['access-token'],
+      refreshToken: payload.headers['refresh-token'],
+      expireAt: payload.headers['expire-at']
+    }
+    state.data.isAuthenticated = true
+    saveToLocalStorage(state, 'REFRESH_ACCESS_TOKEN')
   },
 
   USER_DELETE: (state, payload) => {

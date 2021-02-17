@@ -1,5 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [ :index, :show, :followers, :following ]
+  before_action :authenticate_and_set_user, only: [ :follow, :unfollow ]
+  # before_action :authenticate_user!, except: [ :index, :show, :followers, :following ]
   before_action :set_user, only: [ :follow, :unfollow, :followers, :following ]
 
   def index
@@ -123,6 +124,14 @@ class Api::V1::UsersController < Api::V1::BaseController
       }
     })
     render json: json
+  end
+
+  def is_authenticated
+    process_token
+    # binding.pry
+    render json: {
+      isAuthenticated: user_signed_in?
+    }
   end
 
   private

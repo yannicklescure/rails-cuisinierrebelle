@@ -42,7 +42,8 @@ export const userNotifications = (context, payload) => {
     method: 'patch',
     url: `${ domain }/api/v1/notification/${payload.id}`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       notification: payload.notification,
@@ -63,7 +64,8 @@ export const notifications = (context, payload) => {
     method: 'get',
     url: `${ domain }/api/v1/notifications`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
   })
   .catch(error => {
@@ -81,7 +83,8 @@ export const commentLike = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/likes`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // comment_id: payload.comment_id,
@@ -102,7 +105,8 @@ export const commentUnlike = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/likes/0`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // comment_id: payload.comment_id,
@@ -123,7 +127,8 @@ export const commentDelete = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // comment_id: payload.comment_id,
@@ -144,7 +149,8 @@ export const replyLike = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // recipe_id: payload.recipe_id,
@@ -168,7 +174,8 @@ export const replyUnlike = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes/0`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // recipe_id: payload.recipe_id,
@@ -192,7 +199,8 @@ export const replyEdit = (context, payload) => {
     method: 'patch',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -216,7 +224,8 @@ export const replyDelete = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       // comment_id: payload.comment_id,
@@ -237,7 +246,8 @@ export const replyNew = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -266,7 +276,8 @@ export const commentEdit = (context, payload) => {
     method: 'patch',
     url: `${ domain }/api/v1/comments/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -294,7 +305,8 @@ export const commentNew = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/comments`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -322,7 +334,8 @@ export const bookmark = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/bookmarks`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -348,7 +361,8 @@ export const unbookmark = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/bookmarks/${payload.recipe_id}`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {}
   })
@@ -367,7 +381,8 @@ export const follow = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/users/${ payload.user }/follow`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     params: {
       user_slug: payload.user
@@ -388,7 +403,8 @@ export const unfollow = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/users/${ payload.user }/unfollow`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     params: {
       user_slug: payload.user
@@ -409,7 +425,8 @@ export const like = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/likes`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       recipe_id: payload.recipe_id,
@@ -435,7 +452,8 @@ export const unlike = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/likes/${payload.recipe_id}`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {}
   })
@@ -535,7 +553,8 @@ export const pageNew = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/pages/`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       'Content-Type': 'multipart/form-data',
     },
     data: formData
@@ -561,7 +580,8 @@ export const pageEdit = (context, payload) => {
     method: 'patch',
     url: `${ domain }/api/v1/pages/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       'Content-Type': 'multipart/form-data',
     },
     data: formData
@@ -582,7 +602,8 @@ export const recipeDelete = (context, payload) => {
     method: 'delete',
     url: `${ domain }/api/v1/recipes/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       'Content-Type': 'multipart/form-data',
     },
   })
@@ -611,7 +632,8 @@ export const recipeEdit = (context, payload) => {
     method: 'patch',
     url: `${ domain }/api/v1/recipes/${ payload.id }`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       'Content-Type': 'multipart/form-data',
     },
     data: formData
@@ -641,7 +663,8 @@ export const recipeNew = (context, payload) => {
     method: 'post',
     url: `${ domain }/api/v1/recipes`,
     headers: {
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       'Content-Type': 'multipart/form-data',
     },
     data: formData
@@ -679,7 +702,8 @@ export const recipeLog = (context, payload) => {
     url: `${ domain }/api/v1/recipe_logs`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       // 'X-User-Email': context.getters.currentUser ? context.getters.currentUser.email : null,
       // 'X-User-Token': context.getters.currentUser ? context.getters.currentUser.authentication_token : null
     },
@@ -757,7 +781,8 @@ export const facebookLogin = (context, payload) => {
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
-      // 'Authorization': `Bearer ${ context.state.data.authorization }`,
+      // 'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     params: payload
   })
@@ -879,6 +904,24 @@ export const resendConfirmationInstructions = (context, payload) => {
   });
 }
 
+export const refreshAccessToken = (context, payload) => {
+  // console.log(payload)
+  return axios({
+    method: 'post',
+    url: `${domain}/api/users/tokens`,
+    headers: {
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken
+    },
+    // params: {
+    //   // query: 'isAuthenticated',
+    // }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
 export const login = (context, payload) => {
   // console.log(user)
   // console.log($('meta[name="csrf-token"]').attr('content'))
@@ -888,7 +931,7 @@ export const login = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/sign_in`,
+    url: `${ domain }/api/users/sign_in`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -910,12 +953,13 @@ export const login = (context, payload) => {
 export const logout = (context, user) => {
   return axios({
     method: 'delete',
-    url: `${ domain }/api/v1/users/sign_out`,
+    url: `${ domain }/api/users/sign_out`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,
       // 'X-User-Token': context.getters.currentUser.authentication_token
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
       // 'Accept-Encoding': 'gzip',
     },
     data: {
@@ -934,7 +978,8 @@ export const userDelete = (context, payload) => {
     url: `${ domain }/api/v1/users`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
-      'Authorization': `Bearer ${ context.state.data.authorization }`,
+      'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     data: {
       content: payload.content
@@ -987,27 +1032,23 @@ export const fetchState = async (context, {}) => {
   })
 }
 
-export const isAuthenticated = (context, payload) => {
-  // console.log(`isAuthenticated? ${context.getters.currentUser.email}`)
-  // console.log(context.getters.currentUser.email)
-  // console.log( context.getters.currentUser.authentication_token)
-  const token = context.state.data.authorization
-  // console.log(token)
+export const isAuthenticated = (payload) => {
+  console.log(payload)
+  console.log(payload.authorizationToken)
+  console.log(payload.refreshToken)
   return axios({
     method: 'get',
-    url: `${ domain }/api/v1/state`,
+    url: `${domain}/api/v1/users/status`,
     headers: {
-      'Authorization': token != null ? `Bearer ${ token }` : null,
-      // 'Accept-Encoding': 'gzip',
+      'Authorization': `Bearer ${ payload.authorizationToken }`,
+      'Refresh-Token': payload.refreshToken
     },
-    params: {
-      query: 'isAuthenticated',
-      // email: context.getters.currentUser.email,
-      // authentication_token: context.getters.currentUser.authentication_token
-    }
+    // params: {
+    //   query: 'isAuthenticated',
+    // }
   })
   .catch(error => {
-    console.log(error.response)
+    console.log(error)
   })
 }
 

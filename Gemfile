@@ -11,8 +11,11 @@ gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-gem 'jwt'
-gem 'devise-jwt', '~> 0.7.0'
+# gem 'jwt'
+# gem 'devise-jwt', '~> 0.7.0'
+gem 'api_guard'
+gem 'bcrypt', '~> 3.1.7'
+
 # gem 'omniauth-facebook'
 # gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem "koala"

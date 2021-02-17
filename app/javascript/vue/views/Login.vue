@@ -194,10 +194,10 @@ export default {
         this.disabled = true
         console.log(this.email)
         const payload = {
-          user: {
+          // user: {
             email: this.email,
             password: this.password
-          }
+          // }
         }
         this.$store.dispatch('LOG_IN', payload)
           .then(result => {

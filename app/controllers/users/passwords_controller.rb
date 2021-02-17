@@ -1,34 +1,25 @@
-# frozen_string_literal: true
+module Users
+  class PasswordsController < ApiGuard::PasswordsController
+    # before_action :authenticate_resource, only: [:update]
 
-class Users::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
-  # def new
-  #   super
-  # end
+    # def update
+    #   invalidate_old_jwt_tokens(current_resource)
+    #
+    #   if current_resource.update_attributes(password_params)
+    #     blacklist_token unless ApiGuard.invalidate_old_tokens_on_password_change
+    #     destroy_all_refresh_tokens(current_resource)
+    #
+    #     create_token_and_set_header(current_resource, resource_name)
+    #     render_success(message: I18n.t('api_guard.password.changed'))
+    #   else
+    #     render_error(422, object: current_resource)
+    #   end
+    # end
 
-  # POST /resource/password
-  # def create
-  #   super
-  # end
+    # private
 
-  # GET /resource/password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource/password
-  # def update
-  #   super
-  # end
-
-  # protected
-
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sending reset password instructions
-  # def after_sending_reset_password_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+    # def password_params
+    #   params.permit(:password, :password_confirmation)
+    # end
+  end
 end

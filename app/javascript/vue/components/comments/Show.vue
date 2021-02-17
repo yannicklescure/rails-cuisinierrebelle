@@ -121,15 +121,15 @@ export default {
     timeAgo (time) {
       const between = Math.trunc((new Date().getTime() - time) / 1000)
       if (between < 3600) {
-        return this.$tc('comment.minutes', Math.trunc(between / 60))
+        return this.$tc('comments.minutes', Math.trunc(between / 60))
       } else if (between < 86400) {
-        return this.$tc('comment.hours', Math.trunc(between / 3600))
+        return this.$tc('comments.hours', Math.trunc(between / 3600))
       } else if (between < 2592000) {
-        return this.$tc('comment.days', Math.trunc(between / 86400))
+        return this.$tc('comments.days', Math.trunc(between / 86400))
       } else if (between < 31104000) {
-        return this.$tc('comment.months', Math.trunc(between / 2592000))
+        return this.$tc('comments.months', Math.trunc(between / 2592000))
       } else {
-        return this.$tc('comment.years', Math.trunc(between / 311004000))
+        return this.$tc('comments.years', Math.trunc(between / 311004000))
       }
     },
     scroll2Anchor () {

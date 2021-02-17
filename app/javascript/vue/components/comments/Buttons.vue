@@ -8,7 +8,7 @@
         class="d-flex text-muted mx-2 mouse-pointer"
         data-toggle="tooltip"
         data-placement="bottom"
-        :title="$t('comment.edit')"
+        :title="$t('comments.edit')"
       >
         <span class="material-icons md-16">edit</span>
       </div>
@@ -18,7 +18,7 @@
         class="d-flex text-muted mx-2 mouse-pointer"
         data-toggle="tooltip"
         data-placement="bottom"
-        :title="$t('comment.destroy')"
+        :title="$t('comments.destroy')"
       >
         <span class="material-icons md-16">delete</span>
       </div>
@@ -27,9 +27,10 @@
         class="d-flex text-muted mx-2 mouse-pointer"
         data-toggle="tooltip"
         data-placement="bottom"
-        :title="$t('comment.reply')"
+        :title="$t('comments.reply')"
       >
-        <span class="material-icons md-16">reply</span>
+        {{ $t('comments.reply') }}
+        <!-- <span class="material-icons md-16">reply</span> -->
       </div>
     </div>
     <div v-else class="mt-2 d-flex align-items-center">
@@ -38,7 +39,7 @@
         class="d-flex text-muted mx-2 mouse-pointer"
         data-toggle="tooltip"
         data-placement="bottom"
-        :title="$t('comment.like')"
+        :title="$t('comments.like')"
       >
         <span class="material-icons md-16">thumb_up</span>
       </div>
@@ -47,9 +48,10 @@
         class="d-flex text-muted mx-2 mouse-pointer"
         data-toggle="tooltip"
         data-placement="bottom"
-        :title="$t('comment.reply')"
+        :title="$t('comments.reply')"
       >
-        <span class="material-icons md-16">reply</span>
+        {{ $t('comments.reply') }}
+        <!-- <span class="material-icons md-16">reply</span> -->
       </div>
     </div>
   </div>
