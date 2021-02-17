@@ -1,84 +1,23 @@
 <template>
   <div class="mx-0 mx-md-2 py-2" :ref="`card${item.recipe.id}`">
-    <div class="card-header bg-white px-0 pb-0 border-0">
-      <div class="d-flex justify-content-start align-items-center">
-        <img
-          :src="item.user.image.thumb.url"
-          width="24"
-          height="24"
-          class="rounded-circle mr-2"
-          style="object-fit: cover;"
-        >
-        <router-link
-          :to="'/u/' + item.user.slug"
-          class="text-body d-flex align-items-center"
-          style="font-size: 90%"
-        >
-          <div class="text-capitalize">{{ item.user.name }}</div>
-        </router-link>
-        <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
-          <i class="material-icons md-16">check_circle</i>
-        </span>
-      </div>
-    </div>
-    <div class="card-body bg-white px-0 py-2">
-      <router-link :to="'/r/' + item.recipe.slug">
-        <div
-          :class="['card-img-top d-flex justify-content-center align-items-center']"
-          v-lazy:background-image.container="item.recipe.photo.card.url"
-        >
-          <div ref="heartFillBig"></div>
-          <div ref="bookmarkFillBig"></div>
-        </div>
-      </router-link>
-    </div>
-    <div class="card-footer border-0 bg-white p-0">
-      <div class="d-flex justify-content-between align-items-center my-2">
-        <div :class="['d-flex justify-content-between', mobile ? 'align-items-start' : 'align-items-center ml-n2']">
-          <like :item="item" @liked="heartFillBig" />
-          <comment :item="item" />
-          <share :item="item" />
-        </div>
-        <div :class="['d-flex', mobile ? 'align-items-start' : 'align-items-center']">
-          <visit :item="item" />
-          <bookmark :item="item" @bookmarked="bookmarkFillBig" />
-        </div>
-      </div>
-      <div class="d-flex flex-column">
-        <router-link
-          :to="'/r/' + item.recipe.slug"
-          class="card-link text-body text-uppercase"
-        >
-          {{ item.recipe.title }}
-        </router-link>
-        <div
-          class="card-text font-weight-lighter"
-          style="font-size: 90%"
-        >
-          {{ item.recipe.description }}
-        </div>
-      </div>
-    </div>
+    <card-head :item="item" />
+    <card-body :item="item" />
+    <card-footer :item="item" />
   </div>
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect'
-const Bookmark = () => import('../components/buttons/Bookmark.vue')
-const Comment = () => import('../components/buttons/Comment.vue')
-const Like = () => import('../components/buttons/Like.vue')
-const Share = () => import('../components/buttons/Share.vue')
-const Visit = () => import('../components/buttons/Visit.vue')
+const CardBody = () => import('../components/cards/CardBody.vue')
+const CardHead = () => import('../components/cards/CardHead.vue')
+const CardFooter = () => import('../components/cards/CardFooter.vue')
 
 export default {
   name: 'card',
   props: ['item'],
   components: {
-    Bookmark,
-    Comment,
-    Like,
-    Share,
-    Visit,
+    CardBody,
+    CardHead,
+    CardFooter,
   },
   data () {
     return {
@@ -89,25 +28,9 @@ export default {
     }
   },
   computed: {
-    mobile () {
-      return isMobile
-    },
+
   },
   methods: {
-    heartFillBig () {
-      console.log('liked')
-      this.$refs.heartFillBig.innerHTML = '<i class="material-icons md-96 text-danger">favorite</i>'
-      setTimeout(() => {
-        this.$refs.heartFillBig.innerHTML = ''
-      }, 1000);
-    },
-    bookmarkFillBig () {
-      console.log('liked')
-      this.$refs.bookmarkFillBig.innerHTML = '<i class="material-icons md-96 text-body">bookmark</i>'
-      setTimeout(() => {
-        this.$refs.bookmarkFillBig.innerHTML = ''
-      }, 1000);
-    },
     // itemReadyLog (value) {
     //   if (value === this.items[this.items.length-1].id) {
     //     console.log(this.items[this.items.length-1].id)
