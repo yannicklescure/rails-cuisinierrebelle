@@ -6,6 +6,8 @@ import Meta from 'vue-meta'
 Vue.use(VueRouter)
 Vue.use(Meta)
 
+import store from '../store'
+
 import { vuexLocal } from '../util/store'
 // console.log(vuexLocal.storage.getItem())
 
@@ -53,7 +55,30 @@ const UserFollowing = () => import('../views/UserFollowing.vue')
 const UserRecipes = () => import('../views/UserRecipes.vue')
 const UserSettings = () => import('../views/UserSettings.vue')
 
+const nextAction = (to, from, next, isAuthenticated) => {
+  if(to.meta.auth) {
+    // console.log(`auth: ${ to.meta.auth }`)
+    console.log(`name: ${ to.name }`)
+
+    if (isAuthenticated) {
+      if (to.name === 'Login') next({ name: 'Home' })
+      else next()
+    }
+    else {
+      if (to.name === 'Home') next()
+      else if (to.name != 'Login') next({ name: 'Login' })
+      else next()
+    }
+  }
+  else next()
+}
+
 const ifAuthenticated = async (to, from, next) => {
+  const isAuthenticated = store.getters.isAuthenticated
+  nextAction(to, from, next, isAuthenticated)
+}
+
+const ifAuthenticatedEx = async (to, from, next) => {
   // const vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
   let vueStore = vuexLocal.storage.getItem()
   let isAuthenticated = false
@@ -381,17 +406,17 @@ const routes = [
   { path: "*", component: NotFound }
 ]
 
-export const createRouter = () => {
-  return new VueRouter({
-    mode: 'history',
-    fallback: false,
-    routes: routes,
-    scrollBehavior (to, from, savedPosition) {
-      if (savedPosition) {
-        return savedPosition
-      } else {
-        return { x: 0, y: 0 }
-      }
+const router = new VueRouter({
+  mode: 'history',
+  fallback: false,
+  routes: routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
     }
-  })
-}
+  }
+})
+
+export default router

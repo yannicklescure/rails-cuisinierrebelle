@@ -5,9 +5,26 @@ import Cookie from 'js-cookie';
 // import uuid from 'uuid';
 import { v4 as uuidv4 } from 'uuid';
 
-const cookieName = 'cookieName';
+const oldStore = [
+  'cuisinier_rebelle',
+  'vueStore',
+  'storageKey',
+]
+let oldStoreFlag = false
+oldStore.forEach(store => {
+  if (localStorage.getItem(store) != null) {
+    localStorage.removeItem(store)
+    oldStoreFlag = true
+  }
+})
 
-const storageKey = 'storageKey';
+if (oldStoreFlag) {
+  location.reload()
+}
+
+const cookieName = 'cr_cn';
+
+const storageKey = 'cr_sk_20210216';
 
 // Get the encryption token from cookie or generate a new one.
 const encryptionToken = Cookie.get(cookieName) || uuidv4();

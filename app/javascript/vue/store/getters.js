@@ -28,9 +28,9 @@ export default {
     return state.data.bannerImage
   },
   isAuthenticated (state, getters) {
-    // return state.data.isAuthenticated
+    return state.data.isAuthenticated
     // console.log(state.data.user)
-    return state.data.user.email != null
+    // return state.data.user.email != null
   },
   facebookAuth (state, getters) {
     // return state.data.isAuthenticated

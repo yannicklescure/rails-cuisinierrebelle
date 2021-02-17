@@ -109,10 +109,11 @@ export default {
     //   return isMobile
     // }
   },
-  async created () {
-    await this.checkAuthentication()
-    await this.fetchItems()
-    // this.getBannerPicture()
+  created () {
+    this.checkAuthentication()
+  },
+  beforeMount () {
+    this.fetchItems()
   },
   mounted () {
     this.$nextTick(() => {

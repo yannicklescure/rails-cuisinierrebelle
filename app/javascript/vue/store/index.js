@@ -6,18 +6,6 @@ import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
 
-const setStore = data => {
-  return new Vuex.Store({
-    state: {
-      data: data
-    },
-    getters,
-    mutations,
-    actions,
-    plugins: [vuexLocal.plugin]
-  })
-}
-
 const dataObj = () => {
   return {
     bannerImage: {
@@ -66,13 +54,14 @@ const dataObj = () => {
   }
 }
 
-export const createStore = () => {
+const store = new Vuex.Store({
+  state: {
+    data: dataObj()
+  },
+  getters,
+  mutations,
+  actions,
+  plugins: [vuexLocal.plugin]
+})
 
-  let vueStore = JSON.parse(localStorage.getItem('cuisinier_rebelle'))
-  if (vueStore) localStorage.removeItem('cuisinier_rebelle')
-
-  // console.log('initiate vuex store')
-  const data = dataObj()
-
-  return setStore(data)
-}
+export default store

@@ -20,10 +20,12 @@ Vue.use(infiniteScroll)
 
 import App from '../app.vue'
 
+import store from '../vue/store'
+import router from '../vue/router'
 // create store and router instances
-const store = createStore()
+// const store = createStore()
 // console.log(store)
-const router = createRouter()
+// const router = createRouter()
 // console.log(router)
 
 // sync the router with the vuex store.

@@ -987,7 +987,7 @@ export const fetchState = async (context, {}) => {
   })
 }
 
-export const isAuthenticated = (context, user) => {
+export const isAuthenticated = (context, payload) => {
   // console.log(`isAuthenticated? ${context.getters.currentUser.email}`)
   // console.log(context.getters.currentUser.email)
   // console.log( context.getters.currentUser.authentication_token)
@@ -997,7 +997,7 @@ export const isAuthenticated = (context, user) => {
     method: 'get',
     url: `${ domain }/api/v1/state`,
     headers: {
-      'Authorization': token != null ? `Bearer ${token}` : null,
+      'Authorization': token != null ? `Bearer ${ token }` : null,
       // 'Accept-Encoding': 'gzip',
     },
     params: {
