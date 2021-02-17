@@ -79,12 +79,6 @@ export default {
   components: {
     FacebookLogin,
   },
-  created () {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
   computed: {
     ...mapGetters([
       'isAuthenticated',
@@ -108,6 +102,7 @@ export default {
         this.searchQuery = ''
         this.$refs.searchInput.blur()
       }
+      return true
     },
     validSearchQuery () {
       console.log(this.searchQuery)
@@ -122,12 +117,12 @@ export default {
         .finally(() => this.inputMode())
       // this.inputMode()
     },
-    async collapseMenu () {
-      await this.inputMode()
+    collapseMenu () {
+      this.inputMode()
       this.show = !this.show
     },
-    async collapse () {
-      await this.inputMode()
+    collapse () {
+      this.inputMode()
       this.show = false
     },
     async scroll2Top () {
@@ -203,12 +198,18 @@ export default {
       this.$store.dispatch('NAVBAR_HEIGHT', parseInt(this.$refs.navbar.offsetHeight))
     },
   },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   beforeMount () {
     this.forceRerender()
   },
   mounted () {
     this.navbarHeight()
-    this.handleScroll()
+    // this.handleScroll()
   }
 }
 </script>

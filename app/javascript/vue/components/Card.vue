@@ -1,9 +1,9 @@
 <template>
-  <div :ref="`card${item.recipe.id}`">
-    <div class="card-header bg-white px-0 px-md-2 pt-2 pb-0 border-0">
+  <div class="mx-0 mx-md-2 py-2" :ref="`card${item.recipe.id}`">
+    <div class="card-header bg-white px-0 pb-0 border-0">
       <div class="d-flex justify-content-start align-items-center">
         <img
-          v-lazy="item.user.image.thumb.url"
+          :src="item.user.image.thumb.url"
           width="24"
           height="24"
           class="rounded-circle mr-2"
@@ -21,7 +21,7 @@
         </span>
       </div>
     </div>
-    <div class="card-body bg-white px-0 px-md-2 py-2">
+    <div class="card-body bg-white px-0 py-2">
       <router-link :to="'/r/' + item.recipe.slug">
         <div
           :class="['card-img-top d-flex justify-content-center align-items-center']"
@@ -31,6 +31,8 @@
           <div ref="bookmarkFillBig"></div>
         </div>
       </router-link>
+    </div>
+    <div class="card-footer border-0 bg-white p-0">
       <div class="d-flex justify-content-between align-items-center my-2">
         <div :class="['d-flex justify-content-between', mobile ? 'align-items-start' : 'align-items-center ml-n2']">
           <like :item="item" @liked="heartFillBig" />
