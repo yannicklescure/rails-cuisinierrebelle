@@ -57,7 +57,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Banner',
-  props: ['displayCards'],
+  // props: ['displayCards'],
   data () {
     return {
       loading: true,
@@ -108,8 +108,8 @@ export default {
     },
     recipes () {
       // this.$router.push({ name: 'Recipes' })
-      if (this.displayCards) this.$emit('scrollToCards', true)
-      else this.$emit('loadCards', true)
+      // if (this.displayCards) this.$emit('scrollToCards', true)
+      // else this.$emit('loadCards', true)
     },
     // scrollToCards () {
     //   let element = document.querySelector('#recipes-cards')
