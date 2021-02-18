@@ -103,21 +103,18 @@ Object.keys(utils).forEach(key => {
   Vue.filter(key, utils[key])
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    el: '#app',
-    i18n,
-    store,
-    router,
-    // template: '<App/>',
-    // components: {
-    //   App,
-    //   // MarkdownItVue
-    // }
-    render: h => h(App)
-  })
-  // console.log('app')
-
-  // document.querySelector('#preload').remove()
-  // document.querySelector('#banner-skeleton').remove()
+const app = new Vue({
+  el: '#app',
+  i18n,
+  store,
+  router,
+  render: h => h(App)
 })
+
+// const renderer = require('vue-server-renderer').createRenderer()
+
+// renderer.renderToString(app, (err, html) => {
+//   if (err) throw err
+//   console.log(html)
+//   // => <div data-server-rendered="true">Hello World</div>
+// })

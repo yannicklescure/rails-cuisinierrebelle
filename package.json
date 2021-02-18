@@ -60,6 +60,7 @@
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.7",
     "vue-script2": "^2.1.0",
+    "vue-server-renderer": "^2.6.12",
     "vue-social-sharing": "^3.0.3",
     "vue-template-compiler": "^2.6.12",
     "vue-toast-notification": "^0.6.0",
