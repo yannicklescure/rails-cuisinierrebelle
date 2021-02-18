@@ -17,9 +17,9 @@
     <div
       id="comments"
       ref="comments"
-      v-if="loadComments"
     >
       <comments
+        v-if="loadComments"
         :item="item"
         v-on:lastCommentMounted="lastCommentMounted"
       />
@@ -172,7 +172,7 @@ export default {
           this.loading = true
         })
         .finally(() => {
-          this.scroll2Anchor()
+          // this.scroll2Anchor()
         })
     },
     handleScroll (event) {
@@ -183,12 +183,15 @@ export default {
   },
   created () {
     window.addEventListener('scroll', this.handleScroll)
+    this.item = this.recipe(this.$route.params.id)
+    // this.fetchItem()
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   },
   beforeMount () {
-    this.fetchItem()
+    this.loading = true
+    // this.fetchItem()
     // this.item = this.recipe(this.$route.params.id)
   },
   mounted () {
@@ -196,7 +199,7 @@ export default {
       this.loadComments = true
   //     // this.componentKey += 1
   //     // this.loading = false
-  //     // this.scroll2Anchor()
+      // this.scroll2Anchor()
   //     // setTimeout(() => {
   //     // }, 1000)
     })
