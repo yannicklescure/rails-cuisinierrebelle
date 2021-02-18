@@ -1,5 +1,5 @@
 <template>
-  <div class="card-body bg-white px-0 py-2">
+  <div class="card-body bg-white p-0">
     <router-link :to="'/r/' + item.recipe.slug">
       <div
         :class="['card-img-top d-flex justify-content-center align-items-center']"

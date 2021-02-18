@@ -2,7 +2,7 @@
   <div id="root" class="d-flex flex-wrap justify-content-start">
     <div
       v-for="(item, index) in items"
-      class="card rounded border-0"
+      class="card rounded my-2 mx-md-2"
     >
       <card
         :item="item"

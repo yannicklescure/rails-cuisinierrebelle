@@ -1,5 +1,5 @@
 <template>
-  <div class="card-footer border-0 bg-white p-0">
+  <div class="card-footer border-0 bg-white p-2">
     <div v-if="mobile" class="d-flex justify-content-between align-items-center my-2">
       <div :class="['d-flex justify-content-between', mobile ? 'align-items-start' : 'align-items-center ml-n2']">
         <like :item="item" />

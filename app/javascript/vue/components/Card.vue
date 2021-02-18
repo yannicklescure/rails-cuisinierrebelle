@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-0 mx-md-2 py-2" :ref="`card${item.recipe.id}`">
+  <div :ref="`card${item.recipe.id}`">
     <card-head :item="item" />
     <card-body :item="item" />
     <card-footer :item="item" />
