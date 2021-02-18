@@ -1,8 +1,8 @@
 <template>
   <div :class="['d-flex align-items-center text-danger', mobile ? 'mr-2' : 'ml-2']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
-      <div v-if="isAuthenticated" class="mouse-pointer btn-like" @click="like">
-        <i :class="['material-icons', liked ? 'text-danger' : 'text-body', mobile ? 'md-24' : 'md-18']">{{ heart }}</i>
+      <div v-if="isAuthenticated" class="mouse-pointer btn-like" @click="likeIt">
+        <i :class="['material-icons', liked ? 'text-danger' : 'text-body', mobile ? 'md-24' : 'md-18']">{{ like }}</i>
       </div>
       <router-link v-else to="/login" class="text-body btn-like">
         <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">favorite_border</i>
@@ -36,16 +36,16 @@ export default {
     liked () {
       if (this.isAuthenticated) {
         // console.log(this.user)
-        return this.user.likes.findIndex(like => like.recipe_id === this.item.recipe.id) > 0
+        return this.user.likes.findIndex(like => like.recipe_id === this.item.recipe.id) > -1
       }
       else return false
     },
-    heart () {
+    like () {
       return this.liked ? 'favorite' : 'favorite_border'
     },
   },
   methods: {
-    like () {
+    likeIt () {
       if (!this.liked) {
         console.log('like')
         this.likes += 1

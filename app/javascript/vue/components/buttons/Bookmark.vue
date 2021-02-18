@@ -36,7 +36,7 @@ export default {
     bookmarked () {
       if (this.isAuthenticated) {
         // console.log(this.user)
-        return this.user.bookmarks.filter(bookmark => bookmark.recipe_id === this.item.recipe.id).length > 0
+        return this.user.bookmarks.findIndex(bookmark => bookmark.recipe_id === this.item.recipe.id) > -1
       }
       else return false
     },

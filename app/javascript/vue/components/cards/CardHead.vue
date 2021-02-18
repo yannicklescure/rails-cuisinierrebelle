@@ -1,5 +1,5 @@
 <template>
-  <div class="card-header bg-white px-0 pb-0 border-0">
+  <div v-if="false" class="card-header bg-white px-0 pb-0 border-0">
     <div class="d-flex justify-content-start align-items-center">
       <img
         :src="item.user.image.thumb.url"
