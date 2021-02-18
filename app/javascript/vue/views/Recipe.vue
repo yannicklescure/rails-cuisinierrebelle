@@ -155,45 +155,56 @@ export default {
         }
       }
     },
-    fetchItem () {
-      console.log('fetching recipe data')
-      // this.loading = true
-      this.$store
-        .dispatch('RECIPE', this.$route.params.id)
-        .then( response => {
-          console.log(response)
-          this.item = response.data
-          // if (this.log) {
-          //   this.$store
-          //     .dispatch('SET_STORE', {})
-          //     .then(() => this.log = false)
-          // }
-          // this.componentKey += 1
-          this.loading = true
-        })
-        .finally(() => {
-          // this.scroll2Anchor()
-        })
-    },
+    // fetchItem () {
+    //   console.log('fetching recipe data')
+    //   // this.loading = true
+    //   this.$store
+    //     .dispatch('RECIPE', this.$route.params.id)
+    //     .then( response => {
+    //       console.log(response)
+    //       this.item = response.data
+    //       // if (this.log) {
+    //       //   this.$store
+    //       //     .dispatch('SET_STORE', {})
+    //       //     .then(() => this.log = false)
+    //       // }
+    //       // this.componentKey += 1
+    //       this.loading = true
+    //     })
+    //     .finally(() => {
+    //       // this.scroll2Anchor()
+    //     })
+    // },
     handleScroll (event) {
       // console.log(this.loadAdsense)
       if (this.loadAdsense == false) this.loadAdsense = true
       // if (this.loadComments == false) this.loadComments = true
     },
   },
+  beforeCreate () {
+    // this.fetchItem()
+    console.log('fetching recipe data')
+    // this.loading = true
+    this.$store
+      .dispatch('RECIPE', this.$route.params.id)
+      .then( response => {
+        console.log(response)
+        this.item = response.data
+        this.loading = true
+      })
+  },
   created () {
     window.addEventListener('scroll', this.handleScroll)
-    this.fetchItem()
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   },
-  beforeMount () {
-    // this.fetchItem()
-    // this.item = this.recipe(this.$route.params.id)
-    // this.loading = true
-    // this.item = this.recipe(this.$route.params.id)
-  },
+  // beforeMount () {
+  //   // this.fetchItem()
+  //   // this.item = this.recipe(this.$route.params.id)
+  //   // this.loading = true
+  //   // this.item = this.recipe(this.$route.params.id)
+  // },
   mounted () {
     this.$nextTick(() => {
       this.loadComments = true
