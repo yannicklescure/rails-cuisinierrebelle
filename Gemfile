@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.7.2'
 
-gem 'rails', '6.0.3.3'
+gem 'rails', '6.1.3'
 gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem "i18n-js"
 gem 'i18n-tasks', '~> 0.9.31'
@@ -22,7 +22,7 @@ gem "koala"
 
 gem 'jbuilder', '~> 2.0'
 gem 'oj'
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1'
 gem 'redis'
 gem 'hiredis'
 
@@ -69,7 +69,7 @@ gem "fog-aws"
 gem "mini_magick"
 gem 'redcarpet'
 gem 'pundit'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 7.0'
 gem 'time_difference'
 # gem 'pg_search'
 gem 'elasticsearch-model'
