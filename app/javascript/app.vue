@@ -88,21 +88,21 @@ export default {
     //   return isMobile
     // }
   },
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      // access to component's instance using `vm` .
-      // this is done because this navigation guard is called before the component is created.
-      // clear your previously populated search results.
-      // re-populate search results
-      vm.$store.dispatch('SET_STORE', {})
-      next()
-    })
-  },
-  // async created () {
-  //   await this.$store
-  //     .dispatch('SET_STORE', {})
+  // beforeRouteEnter (to, from, next) {
+  //   next(vm => {
+  //     // access to component's instance using `vm` .
+  //     // this is done because this navigation guard is called before the component is created.
+  //     // clear your previously populated search results.
+  //     // re-populate search results
+  //     store.dispatch('SET_STORE', {})
+  //     next()
+  //   })
   // },
-  created () {
+  async created () {
+    await this.$store
+      .dispatch('SET_STORE', {})
+  },
+  beforeMount () {
     this.$store
       .dispatch('IS_AUTHENTICATED', {
         authorizationToken: this.authorization.authorizationToken,

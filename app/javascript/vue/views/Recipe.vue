@@ -183,15 +183,15 @@ export default {
   },
   created () {
     window.addEventListener('scroll', this.handleScroll)
-    this.item = this.recipe(this.$route.params.id)
-    // this.fetchItem()
+    this.fetchItem()
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   },
   beforeMount () {
-    this.loading = true
     // this.fetchItem()
+    // this.item = this.recipe(this.$route.params.id)
+    // this.loading = true
     // this.item = this.recipe(this.$route.params.id)
   },
   mounted () {

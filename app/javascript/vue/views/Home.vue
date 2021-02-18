@@ -136,7 +136,7 @@ export default {
     //   this.componentKey += 1;
     // },
   },
-  created () {
+  beforeMount () {
     this.fetchItem()
   },
   mounted () {
