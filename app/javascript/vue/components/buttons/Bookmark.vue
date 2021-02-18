@@ -1,9 +1,8 @@
 <template>
   <div :class="['d-flex align-items-center ml-2 text-body']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
-      <div v-if="isAuthenticated" class="mouse-pointer btn-bookmark" @click="bookmark">
-        <i v-if="bookmarked" :class="['material-icons text-body', mobile ? 'md-24' : 'md-18']">bookmark</i>
-        <i v-else :class="['material-icons', mobile ? 'md-24' : 'md-18']">bookmark_border</i>
+      <div v-if="isAuthenticated" class="mouse-pointer btn-bookmark" @click="bookmarkIt">
+        <i :class="['material-icons text-body', mobile ? 'md-24' : 'md-18']">{{ bookmark }}</i>
       </div>
       <router-link v-else to="/login" class="text-body btn-bookmark">
         <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">bookmark_border</i>
@@ -29,6 +28,7 @@ export default {
     ...mapGetters([
       'isAuthenticated',
       'currentUser',
+      'mobile',
     ]),
     user () {
       return this.currentUser
@@ -40,12 +40,12 @@ export default {
       }
       else return false
     },
-    mobile () {
-      return isMobile
+    bookmark () {
+      return this.bookmarked ? 'bookmark' : 'bookmark_border'
     },
   },
   methods: {
-    bookmark () {
+    bookmarkIt () {
       if (!this.bookmarked) {
         console.log('bookmark')
         this.bookmarks += 1

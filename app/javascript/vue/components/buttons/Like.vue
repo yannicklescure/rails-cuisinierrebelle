@@ -2,8 +2,7 @@
   <div :class="['d-flex align-items-center text-danger', mobile ? 'mr-2' : 'ml-2']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': mobile }]">
       <div v-if="isAuthenticated" class="mouse-pointer btn-like" @click="like">
-        <i v-if="liked" :class="['material-icons text-danger', mobile ? 'md-24' : 'md-18']">favorite</i>
-        <i v-else :class="['material-icons', mobile ? 'md-24' : 'md-18']">favorite_border</i>
+        <i :class="['material-icons', liked ? 'text-danger' : 'text-body', mobile ? 'md-24' : 'md-18']">{{ heart }}</i>
       </div>
       <router-link v-else to="/login" class="text-body btn-like">
         <i :class="['material-icons', mobile ? 'md-24' : 'md-18']">favorite_border</i>
@@ -29,6 +28,7 @@ export default {
     ...mapGetters([
       'isAuthenticated',
       'currentUser',
+      'mobile',
     ]),
     user () {
       return this.currentUser
@@ -40,8 +40,8 @@ export default {
       }
       else return false
     },
-    mobile () {
-      return isMobile
+    heart () {
+      return this.liked ? 'favorite' : 'favorite_border'
     },
   },
   methods: {
