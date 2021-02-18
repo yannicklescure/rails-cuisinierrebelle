@@ -36,7 +36,7 @@ export default {
     liked () {
       if (this.isAuthenticated) {
         // console.log(this.user)
-        return this.user.likes.filter(like => like.recipe_id === this.item.recipe.id).length > 0
+        return this.user.likes.findIndex(like => like.recipe_id === this.item.recipe.id) > 0
       }
       else return false
     },

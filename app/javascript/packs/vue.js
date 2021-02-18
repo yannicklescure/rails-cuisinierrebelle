@@ -103,13 +103,25 @@ Object.keys(utils).forEach(key => {
   Vue.filter(key, utils[key])
 })
 
-const app = new Vue({
-  el: '#app',
-  i18n,
-  store,
-  router,
-  render: h => h(App)
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    el: '#app',
+    i18n,
+    store,
+    router,
+    components: { App }
+  })
 })
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     el: '#hello',
+//     data: {
+//       message: "Can you say hello?"
+//     },
+//     components: { App }
+//   })
+// })
 
 // const renderer = require('vue-server-renderer').createRenderer()
 
