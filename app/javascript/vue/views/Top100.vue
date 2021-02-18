@@ -2,15 +2,9 @@
   <div :style="{ paddingTop: navbarHeight + 'px' }">
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-start py-3">
-          <div
-            v-for="(item, index) in data"
-            :key="item.id"
-            class="card rounded border-0"
-          >
-            <card :item="item" />
-          </div>
-        </div>
+        <cards
+          :items="data"
+        />
         <div
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="busy"
@@ -24,8 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import Card from '../components/Card.vue'
-const Card = () => import('../components/Card.vue')
+const Cards = () => import('../components/Cards.vue')
 
 export default {
   name: 'Top100',
@@ -38,7 +31,7 @@ export default {
     }
   },
   components: {
-    Card,
+    Cards,
   },
   methods: {
     // cardParams (value) {

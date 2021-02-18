@@ -3,15 +3,9 @@
     <user-banner />
     <div class="container-fluid" ref="container">
       <div id="recipes-cards">
-        <div id="root" class="d-flex flex-wrap justify-content-start">
-          <div
-            v-for="(item, index) in data"
-            :key="item.id"
-            class="card rounded border-0"
-          >
-            <card :item="item" />
-          </div>
-        </div>
+        <cards
+          :items="data"
+        />
         <div
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="busy"
@@ -27,7 +21,7 @@
 import { mapGetters } from 'vuex'
 // import Card from '../components/Card.vue'
 // import UserBanner from '../components/UserBanner.vue'
-const Card = () => import('../components/Card.vue')
+const Cards = () => import('../components/Cards.vue')
 const UserBanner = () => import('../components/UserBanner.vue')
 
 export default {
@@ -41,7 +35,7 @@ export default {
     }
   },
   components: {
-    Card,
+    Cards,
     UserBanner,
   },
   methods: {
