@@ -8,6 +8,7 @@
       <div id="recipes-cards">
         <cards
           :items="data"
+          v-if="displayCards"
         />
         <div
           v-infinite-scroll="loadMore"
