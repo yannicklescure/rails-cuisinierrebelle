@@ -1,5 +1,5 @@
 <template>
-  <div id="root" class="d-flex flex-wrap justify-content-start">
+  <div id="root" class="d-flex flex-wrap justify-content-start mt-2">
     <div
       v-for="(item, index) in items"
       class="card rounded my-2 mx-md-2 border-0"

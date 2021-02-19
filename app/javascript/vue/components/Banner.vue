@@ -1,6 +1,6 @@
 <template>
   <div
-    class="banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
+    class="mb-2 banner-background banner-height d-flex justify-content-center justify-content-md-center align-items-center flex-column"
     ref="banner"
     :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ imageUrl }')`"
   >
