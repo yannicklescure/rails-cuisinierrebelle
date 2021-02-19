@@ -86,7 +86,7 @@ export default {
         console.log('loadMore')
         this.busy = true;
         setTimeout(() => {
-          const cards = 24
+          const cards = 12
           const min = this.data.length
           const max = min + cards <= this.items.length ? min + cards : this.items.length
           // for (let i = min, j = max; i < j; i++) {
@@ -107,7 +107,7 @@ export default {
       }
       // this.componentKey += 1
       this.data = this.recipes
-        .slice(0, 24)
+        .slice(0, 12)
     },
     // loadCards () {
     //   this.displayCards = true

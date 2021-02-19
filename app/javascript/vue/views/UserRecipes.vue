@@ -51,12 +51,13 @@ export default {
         console.log('loadMore')
         this.busy = true;
         setTimeout(() => {
-          const cards = 24
+          const cards = 12
           const min = this.data.length
           const max = min + cards <= this.items.length ? min + cards : this.items.length
-          for (let i = min, j = max; i < j; i++) {
-            this.data.push(this.items[i]);
-          }
+          // for (let i = min, j = max; i < j; i++) {
+          //   this.data.push(this.items[i])
+          // }
+          this.data = this.data.concat(this.items.slice(min, max))
           this.busy = false;
         }, 0);
       }
@@ -73,12 +74,12 @@ export default {
     },
     // items () {
     //   const items = this.$store.getters.recipes
-    //   // if (items && this.data.length === 0) this.data = items.slice(0, 24)
+    //   // if (items && this.data.length === 0) this.data = items.slice(0, 12)
     //   return items
     // },
     // setData () {
     //   if (this.items.length > 0 && this.data.length === 0) {
-    //     this.data = this.items.slice(0, 24)
+    //     this.data = this.items.slice(0, 12)
     //     return true
     //   }
     //   return false
