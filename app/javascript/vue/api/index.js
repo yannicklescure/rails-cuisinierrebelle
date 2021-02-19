@@ -539,7 +539,7 @@ export const fetchPages = (context, payload) => {
 }
 
 export const pageNew = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   const FormData = require('form-data');
   const formData = new FormData();
   formData.append('title', payload.title);
@@ -566,7 +566,7 @@ export const pageNew = (context, payload) => {
 }
 
 export const pageEdit = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   const FormData = require('form-data');
   const formData = new FormData();
   formData.append('title', payload.title);
@@ -593,7 +593,7 @@ export const pageEdit = (context, payload) => {
 }
 
 export const recipeDelete = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   return axios({
     validateStatus: status => {
       console.log(status)
@@ -614,7 +614,7 @@ export const recipeDelete = (context, payload) => {
 }
 
 export const recipeEdit = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   const FormData = require('form-data');
   const formData = new FormData();
   formData.append('title', payload.title);
@@ -645,7 +645,7 @@ export const recipeEdit = (context, payload) => {
 }
 
 export const recipeNew = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   const FormData = require('form-data');
   const formData = new FormData();
   formData.append('title', payload.title);
@@ -691,7 +691,7 @@ export const recipes = (context, payload) => {
 }
 
 export const recipeLog = (context, payload) => {
-  console.log(context)
+  // console.log(context)
   // console.log($('meta[name="csrf-token"]').attr('content'))
   return axios({
     validateStatus: status => {
@@ -740,7 +740,7 @@ export const confirmRegistration = (context, payload) => {
 }
 
 export const signUp = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   // console.log($('meta[name="csrf-token"]').attr('content'))
   return axios({
     validateStatus: status => {
@@ -782,7 +782,7 @@ export const facebookLogin = (context, payload) => {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
       // 'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
-'Refresh-Token': context.state.data.authorization.refreshToken,
+      'Refresh-Token': context.state.data.authorization.refreshToken,
     },
     params: payload
   })
@@ -877,7 +877,7 @@ export const requestPasswordReset = (context, payload) => {
 }
 
 export const resendConfirmationInstructions = (context, payload) => {
-  console.log(payload)
+  // console.log(payload)
   // console.log($('meta[name="csrf-token"]').attr('content'))
   return axios({
     validateStatus: status => {
@@ -950,7 +950,7 @@ export const login = (context, payload) => {
   });
 }
 
-export const logout = (context, user) => {
+export const logout = (context, payload) => {
   return axios({
     method: 'delete',
     url: `${ domain }/api/users/sign_out`,
@@ -1004,9 +1004,9 @@ export const userDelete = (context, payload) => {
 
 
 
-export const search = async (context, payload) => {
+export const search = (context, payload) => {
   // console.log(`${ domain }/api/v1/search`)
-  return await axios({
+  return axios({
     method: 'get',
     url: `${ domain }/api/v1/search`,
     params: {
@@ -1018,9 +1018,9 @@ export const search = async (context, payload) => {
   })
 }
 
-export const fetchState = async (context, {}) => {
-  console.log(`${ domain }/api/v1/state`)
-  return await axios({
+export const fetchState = (context, {}) => {
+  // console.log(`${ domain }/api/v1/state`)
+  return axios({
     method: 'get',
     url: `${ domain }/api/v1/state`,
     headers: {
@@ -1033,9 +1033,9 @@ export const fetchState = async (context, {}) => {
 }
 
 export const isAuthenticated = (payload) => {
-  console.log(payload)
-  console.log(payload.authorizationToken)
-  console.log(payload.refreshToken)
+  // console.log(payload)
+  // console.log(payload.authorizationToken)
+  // console.log(payload.refreshToken)
   return axios({
     method: 'get',
     url: `${domain}/api/v1/users/status`,

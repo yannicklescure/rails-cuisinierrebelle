@@ -6,7 +6,7 @@
       :class="['material-icons md-16']"
       data-toggle="tooltip"
       data-placement="bottom"
-      :title="$t('comment.like')"
+      :title="$t('comments.like')"
     >thumb_up</span>
     <span v-if="item.likes > 0" :class="['font-weight-lighter small ml-1']">{{ item.likes }}</span>
   </div>
