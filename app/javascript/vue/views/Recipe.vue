@@ -155,30 +155,8 @@ export default {
         }
       }
     },
-    // fetchItem () {
-    //   console.log('fetching recipe data')
-    //   // this.loading = true
-    //   this.$store
-    //     .dispatch('RECIPE', this.$route.params.id)
-    //     .then( response => {
-    //       console.log(response)
-    //       this.item = response.data
-    //       // if (this.log) {
-    //       //   this.$store
-    //       //     .dispatch('SET_STORE', {})
-    //       //     .then(() => this.log = false)
-    //       // }
-    //       // this.componentKey += 1
-    //       this.loading = true
-    //     })
-    //     .finally(() => {
-    //       // this.scroll2Anchor()
-    //     })
-    // },
     handleScroll (event) {
-      // console.log(this.loadAdsense)
       if (this.loadAdsense == false) this.loadAdsense = true
-      // if (this.loadComments == false) this.loadComments = true
     },
   },
   beforeCreate () {
@@ -194,25 +172,14 @@ export default {
       })
   },
   created () {
-    window.addEventListener('scroll', this.handleScroll)
+    // window.addEventListener('scroll', this.handleScroll)
   },
   destroyed () {
-    window.removeEventListener('scroll', this.handleScroll)
+    // window.removeEventListener('scroll', this.handleScroll)
   },
-  // beforeMount () {
-  //   // this.fetchItem()
-  //   // this.item = this.recipe(this.$route.params.id)
-  //   // this.loading = true
-  //   // this.item = this.recipe(this.$route.params.id)
-  // },
   mounted () {
     this.$nextTick(() => {
       this.loadComments = true
-  //     // this.componentKey += 1
-  //     // this.loading = false
-      // this.scroll2Anchor()
-  //     // setTimeout(() => {
-  //     // }, 1000)
     })
   },
 }
