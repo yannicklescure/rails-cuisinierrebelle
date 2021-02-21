@@ -91,14 +91,14 @@ export default {
       this.$emit('commentReply', true)
     },
     isComment2Destroy () {
-      let message = this.$t('comment.are_you_sure')
+      let message = this.$t('comments.are_you_sure')
 
       let options = {
           // html: false, // set to true if your message contains HTML tags. eg: "Delete <b>Foo</b> ?"
           // loader: false, // set to true if you want the dailog to show a loader after click on "proceed"
           // reverse: false, // switch the button positions (left to right, and vise versa)
-          okText:  this.$t('comment.destroy'),
-          cancelText: this.$t('comment.cancel'),
+          okText:  this.$t('comments.destroy'),
+          cancelText: this.$t('comments.cancel'),
           // animation: 'zoom', // Available: "zoom", "bounce", "fade"
           // type: 'basic', // coming soon: 'soft', 'hard'
           // verification: 'continue', // for hard confirm, user will be prompted to type this to enable the proceed button
