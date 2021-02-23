@@ -40,41 +40,44 @@ Rails.application.routes.draw do
     post 'api/v1/users/resend_confirmation_instructions', to: 'api/v1/confirmations#resend_confirmation_instructions', as: 'resend_confirmation_instructions'
   end
 
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
-      post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
-      post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
-      get '/users/status', to: 'users#is_authenticated'
+  constraints subdomain: 'api' do
+    namespace :api, path: nil, defaults: {format: 'json'} do
+    # namespace :api, defaults: { format: :json } do
+      namespace :v1 do
+        post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
+        post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
+        post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
+        get '/users/status', to: 'users#is_authenticated'
 
-      resources :users, only: [ :index ] do
-        # get :followers
-        # get :following
-        post :follow
-        post :unfollow
-      end
-      resources :facebook, only: [ :index ]
-      resources :notification, only: [ :update ]
-      resources :notifications, only: [ :index ]
-      resources :analytics, only: [ :index ]
-      resources :state, only: [ :index ]
-      resources :search, only: [ :index ]
-      resources :unsplash_images, only: [ :index ]
-      resources :pages, only: [ :index, :create, :update ]
-      resources :recipes, only: [ :index, :show, :create, :update, :destroy ]
-      resources :recipe_logs, only: [ :create ]
-      resources :comments, only: [ :create, :destroy, :update ] do
-        resources :likes, only: [ :create, :destroy ], controller: :comment_likes
-        resources :replies, only: [ :create, :destroy, :update ] do
-          resources :likes, only: [ :create, :destroy ], controller: :reply_likes
+        resources :users, only: [ :index ] do
+          # get :followers
+          # get :following
+          post :follow
+          post :unfollow
         end
+        resources :facebook, only: [ :index ]
+        resources :notification, only: [ :update ]
+        resources :notifications, only: [ :index ]
+        resources :analytics, only: [ :index ]
+        resources :state, only: [ :index ]
+        resources :search, only: [ :index ]
+        resources :unsplash_images, only: [ :index ]
+        resources :pages, only: [ :index, :create, :update ]
+        resources :recipes, only: [ :index, :show, :create, :update, :destroy ]
+        resources :recipe_logs, only: [ :create ]
+        resources :comments, only: [ :create, :destroy, :update ] do
+          resources :likes, only: [ :create, :destroy ], controller: :comment_likes
+          resources :replies, only: [ :create, :destroy, :update ] do
+            resources :likes, only: [ :create, :destroy ], controller: :reply_likes
+          end
+        end
+        resources :bookmarks, only: [ :create, :destroy ]
+        resources :likes, only: [ :create, :destroy ]
+        resources :mailchimp, only: [ :show, :update ]
+        resources :notification, only: [ :show, :update ]
+        resources :freemium, only: [ :show, :update ]
+        # resources :session, only: [ :create, :destroy ]
       end
-      resources :bookmarks, only: [ :create, :destroy ]
-      resources :likes, only: [ :create, :destroy ]
-      resources :mailchimp, only: [ :show, :update ]
-      resources :notification, only: [ :show, :update ]
-      resources :freemium, only: [ :show, :update ]
-      # resources :session, only: [ :create, :destroy ]
     end
   end
 

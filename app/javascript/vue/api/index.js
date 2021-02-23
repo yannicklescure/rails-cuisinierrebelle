@@ -30,8 +30,8 @@ import axios from 'axios'
 // const metaCsrf = document.querySelector("meta[name='csrf-token']")
 // const context.getters.csrfToken = metaCsrf.getAttribute('content')
 
-// const domain = 'https://www.cuisinierrebelle.com'
-const domain = ''
+const domain = 'https://api.cuisinierrebelle.com'
+// const domain = ''
 
 export const userNotifications = (context, payload) => {
   return axios({
@@ -40,7 +40,7 @@ export const userNotifications = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'patch',
-    url: `${ domain }/api/v1/notification/${payload.id}`,
+    url: `${ domain }/v1/notification/${payload.id}`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -62,7 +62,7 @@ export const notifications = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/notifications`,
+    url: `${ domain }/v1/notifications`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -81,7 +81,7 @@ export const commentLike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/likes`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/likes`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -103,7 +103,7 @@ export const commentUnlike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/likes/0`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/likes/0`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -125,7 +125,7 @@ export const commentDelete = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -147,7 +147,7 @@ export const replyLike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -172,7 +172,7 @@ export const replyUnlike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes/0`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/replies/${ payload.reply_id }/likes/0`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -197,7 +197,7 @@ export const replyEdit = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'patch',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -222,7 +222,7 @@ export const replyDelete = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/replies/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -244,7 +244,7 @@ export const replyNew = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/comments/${ payload.comment_id }/replies`,
+    url: `${ domain }/v1/comments/${ payload.comment_id }/replies`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -274,7 +274,7 @@ export const commentEdit = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'patch',
-    url: `${ domain }/api/v1/comments/${ payload.id }`,
+    url: `${ domain }/v1/comments/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -303,7 +303,7 @@ export const commentNew = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/comments`,
+    url: `${ domain }/v1/comments`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -332,7 +332,7 @@ export const bookmark = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/bookmarks`,
+    url: `${ domain }/v1/bookmarks`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -359,7 +359,7 @@ export const unbookmark = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/bookmarks/${payload.recipe_id}`,
+    url: `${ domain }/v1/bookmarks/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -379,7 +379,7 @@ export const follow = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/${ payload.user }/follow`,
+    url: `${ domain }/v1/users/${ payload.user }/follow`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -401,7 +401,7 @@ export const unfollow = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/${ payload.user }/unfollow`,
+    url: `${ domain }/v1/users/${ payload.user }/unfollow`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -423,7 +423,7 @@ export const like = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/likes`,
+    url: `${ domain }/v1/likes`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -450,7 +450,7 @@ export const unlike = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/likes/${payload.recipe_id}`,
+    url: `${ domain }/v1/likes/${payload.recipe_id}`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -470,7 +470,7 @@ export const followers = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/users/${payload}/followers`,
+    url: `${ domain }/v1/users/${payload}/followers`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -485,7 +485,7 @@ export const recipe = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/recipes/${payload}`,
+    url: `${ domain }/v1/recipes/${payload}`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -500,7 +500,7 @@ export const users = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/users`,
+    url: `${ domain }/v1/users`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -515,7 +515,7 @@ export const fetchBannerImage = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/unsplash_images`,
+    url: `${ domain }/v1/unsplash_images`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -530,7 +530,7 @@ export const fetchPages = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/pages`,
+    url: `${ domain }/v1/pages`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -551,7 +551,7 @@ export const pageNew = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/pages/`,
+    url: `${ domain }/v1/pages/`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -578,7 +578,7 @@ export const pageEdit = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'patch',
-    url: `${ domain }/api/v1/pages/${ payload.id }`,
+    url: `${ domain }/v1/pages/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -600,7 +600,7 @@ export const recipeDelete = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'delete',
-    url: `${ domain }/api/v1/recipes/${ payload.id }`,
+    url: `${ domain }/v1/recipes/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -630,7 +630,7 @@ export const recipeEdit = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'patch',
-    url: `${ domain }/api/v1/recipes/${ payload.id }`,
+    url: `${ domain }/v1/recipes/${ payload.id }`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -661,7 +661,7 @@ export const recipeNew = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/recipes`,
+    url: `${ domain }/v1/recipes`,
     headers: {
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
       'Refresh-Token': context.state.data.authorization.refreshToken,
@@ -682,7 +682,7 @@ export const recipes = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/recipes`,
+    url: `${ domain }/v1/recipes`,
   })
   .catch(error => {
     console.log(error.toJSON());
@@ -699,7 +699,7 @@ export const recipeLog = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/recipe_logs`,
+    url: `${ domain }/v1/recipe_logs`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
@@ -723,10 +723,10 @@ export const recipeLog = (context, payload) => {
 }
 
 export const confirmRegistration = (context, payload) => {
-  // console.log(`${ domain }/api/v1/search`)
+  // console.log(`${ domain }/v1/search`)
   return axios({
     method: 'get',
-    url: `${ domain }/api/v1/users/confirmation`,
+    url: `${ domain }/v1/users/confirmation`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
     },
@@ -748,7 +748,7 @@ export const signUp = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users`,
+    url: `${ domain }/v1/users`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -777,7 +777,7 @@ export const facebookLogin = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'get',
-    url: `${ domain }/api/v1/facebook`,
+    url: `${ domain }/v1/facebook`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -801,7 +801,7 @@ export const passwordResetVerification = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/password/reset_verification`,
+    url: `${ domain }/v1/users/password/reset_verification`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -829,7 +829,7 @@ export const passwordReset = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/password/reset`,
+    url: `${ domain }/v1/users/password/reset`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -857,7 +857,7 @@ export const requestPasswordReset = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/password/request`,
+    url: `${ domain }/v1/users/password/request`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -885,7 +885,7 @@ export const resendConfirmationInstructions = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/v1/users/resend_confirmation_instructions`,
+    url: `${ domain }/v1/users/resend_confirmation_instructions`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -931,7 +931,7 @@ export const login = (context, payload) => {
       return status < 500; // Resolve only if the status code is less than 500
     },
     method: 'post',
-    url: `${ domain }/api/users/sign_in`,
+    url: `${ domain }/users/sign_in`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'Accept-Encoding': 'gzip',
@@ -953,7 +953,7 @@ export const login = (context, payload) => {
 export const logout = (context, payload) => {
   return axios({
     method: 'delete',
-    url: `${ domain }/api/users/sign_out`,
+    url: `${ domain }/users/sign_out`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       // 'X-User-Email': context.getters.currentUser.email,
@@ -975,7 +975,7 @@ export const logout = (context, payload) => {
 export const userDelete = (context, payload) => {
   return axios({
     method: 'delete',
-    url: `${ domain }/api/v1/users`,
+    url: `${ domain }/v1/users`,
     headers: {
       'X-CSRF-Token': context.getters.csrfToken,
       'Authorization': `Bearer ${ context.state.data.authorization.authorizationToken }`,
@@ -1005,10 +1005,10 @@ export const userDelete = (context, payload) => {
 
 
 export const search = (context, payload) => {
-  // console.log(`${ domain }/api/v1/search`)
+  // console.log(`${ domain }/v1/search`)
   return axios({
     method: 'get',
-    url: `${ domain }/api/v1/search`,
+    url: `${ domain }/v1/search`,
     params: {
       query: payload.query
     },
@@ -1019,10 +1019,10 @@ export const search = (context, payload) => {
 }
 
 export const fetchState = (context, {}) => {
-  // console.log(`${ domain }/api/v1/state`)
+  // console.log(`${ domain }/v1/state`)
   return axios({
     method: 'get',
-    url: `${ domain }/api/v1/state`,
+    url: `${ domain }/v1/state`,
     headers: {
       // 'Accept-Encoding': 'gzip',
     },

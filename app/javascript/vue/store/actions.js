@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import axios from 'axios'
+// import Vue from 'vue'
+// import axios from 'axios'
 import * as api from '../api'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 // import { getBannerPicture } from '../util/unsplash'
 
 const fetchBannerImage = (context, {}) => {
