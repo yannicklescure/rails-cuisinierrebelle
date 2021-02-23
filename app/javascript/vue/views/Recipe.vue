@@ -3,7 +3,7 @@
     <recipe-head :item="item" />
     <recipe-body :item="item" />
 
-    <div v-if="localhost && loadAdsense" class="my-3 d-print-none">
+    <div v-if="production && loadAdsense" class="my-3 d-print-none">
       <InArticleAdsense
         data-ad-client="ca-pub-9223566768445571"
         data-ad-slot="4726766855">
@@ -116,7 +116,7 @@ export default {
     // item () {
     //   return this.recipe(this.$route.params.id)
     // },
-    localhost () {
+    production () {
       return (/(?:www\.)?cuisinierrebelle.com/).test(window.location.hostname)
     }
   },
@@ -155,9 +155,6 @@ export default {
         }
       }
     },
-    handleScroll (event) {
-      if (this.loadAdsense == false) this.loadAdsense = true
-    },
   },
   beforeCreate () {
     // this.fetchItem()
@@ -171,15 +168,10 @@ export default {
         this.loading = true
       })
   },
-  created () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
   mounted () {
     this.$nextTick(() => {
       this.loadComments = true
+      if (this.loadAdsense == false) this.loadAdsense = true
     })
   },
 }
