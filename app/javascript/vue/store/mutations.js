@@ -346,6 +346,11 @@ export default {
     }
   },
 
+  USER: (state, payload) => {
+    state.data.users.push(payload.data.data.user)
+    saveToLocalStorage(state, 'USER')
+  },
+
   USERS: (state, payload) => {
     // console.log('### USERS ###')
     // console.log(payload)

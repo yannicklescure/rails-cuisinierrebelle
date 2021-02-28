@@ -15,8 +15,19 @@ const fetchBannerImage = (context, {}) => {
     })
 }
 
-const fetchUsers = (context, {}) => {
-  return api.users(context, {})
+const fetchUser = (context, payload) => {
+  return api.user(context, payload)
+    .then(response => {
+      if (response.status === 200) context.commit("USER", response)
+    })
+    .catch(error => {
+      // console.log(error)
+      return error
+    })
+}
+
+const fetchUsers = (context, payload) => {
+  return api.users(context, payload)
     .then(response => {
       if (response.status === 200) context.commit("USERS", response)
     })
@@ -54,10 +65,11 @@ const fetchStore = (context, {}) => {
 export default {
 
   SET_STORE: async (context, {}) => {
+    console.log('### SET_STORE ###')
     await fetchBannerImage(context, {})
     await fetchStore(context, {})
     await fetchPages(context, {})
-    await fetchUsers(context, {})
+    // await fetchUsers(context, {})
     return true
   },
 
@@ -369,17 +381,12 @@ export default {
       })
   },
 
+  USER: (context, payload) => {
+    fetchUser(context, payload)
+  },
+
   USERS: (context, payload) => {
-    // console.log(context.state.data.user)
-    return api.users(context, payload)
-      .then(response => {
-        if (response.status === 200) context.commit("USERS", response)
-        return response
-      })
-      .catch(error => {
-        // console.log(error)
-        return error
-      })
+    fetchUsers(context, payload)
   },
 
   PAGE_NEW: (context, payload) => {

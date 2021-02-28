@@ -98,11 +98,8 @@ export default {
   //     next()
   //   })
   // },
-  async beforeCreate () {
-    await this.$store
-      .dispatch('SET_STORE', {})
-  },
-  created () {
+  async created () {
+    await this.$store.dispatch('SET_STORE', {})
     this.$store
       .dispatch('IS_AUTHENTICATED', {
         authorizationToken: this.authorization.authorizationToken,

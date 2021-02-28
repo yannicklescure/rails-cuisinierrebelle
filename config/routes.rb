@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
       get '/users/status', to: 'users#is_authenticated'
 
-      resources :users, only: [ :index ] do
+      resources :users, only: [ :index, :show ] do
         # get :followers
         # get :following
         post :follow

@@ -86,12 +86,16 @@ export default {
     // },
   },
   watch: {
-    items () {
-      this.loadMore()
+    'userRecipes' () {
+      return this.userRecipes(this.$route.params.id)
     }
   },
-  beforeMount () {
-    // console.log(this.$store.getters.recipes)
+  // async beforeCreate () {
+  //   await this.$store.dispatch('SET_STORE', {})
+  // },
+  async created () {
+    console.log(this.$route.params.id)
+    await this.$store.dispatch('USER', { slug: this.$route.params.id })
   },
   mounted () {
     this.$nextTick(() => {

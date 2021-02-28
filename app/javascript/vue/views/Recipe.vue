@@ -43,39 +43,39 @@ export default {
       loadComments: false,
       componentKey: 0,
       log: true,
-      item: {
-        comments: [],
-        recipe: {
-          title: null,
-          subtitle: null,
-          direction: null,
-          description: null,
-          photo: {
-            full: {
-              url: null
-            },
-            openGraph: {
-              url: null
-            },
-          },
-          video: null,
-        },
-        user: {
-          image: {
-            thumb: {
-              url: null
-            }
-          },
-          slug: null,
-          name: null,
-          checked: null,
-        }
-      },
+      // item: {
+      //   comments: [],
+      //   recipe: {
+      //     title: null,
+      //     subtitle: null,
+      //     direction: null,
+      //     description: null,
+      //     photo: {
+      //       full: {
+      //         url: null
+      //       },
+      //       openGraph: {
+      //         url: null
+      //       },
+      //     },
+      //     video: null,
+      //   },
+      //   user: {
+      //     image: {
+      //       thumb: {
+      //         url: null
+      //       }
+      //     },
+      //     slug: null,
+      //     name: null,
+      //     checked: null,
+      //   }
+      // },
       loading: false,
     }
   },
   metaInfo () {
-    console.log(this.item)
+    // console.log(this.item)
     if (this.item != undefined) {
       return {
         title: this.item.recipe.title,
@@ -113,9 +113,9 @@ export default {
       'currentUser',
       'mobile',
     ]),
-    // item () {
-    //   return this.recipe(this.$route.params.id)
-    // },
+    item () {
+      return this.recipe(this.$route.params.id)
+    },
     production () {
       return (/(?:www\.)?cuisinierrebelle.com/).test(window.location.hostname)
     }
@@ -124,7 +124,7 @@ export default {
     async '$route' () {
       console.log(this.$route.params.id)
       // await this.fetchItem()
-      this.item = this.recipe(this.$route.params.id)
+      // this.item = this.recipe(this.$route.params.id)
       this.loadAdsense = false
       // this.recipeLog()
     }
@@ -156,20 +156,24 @@ export default {
       }
     },
   },
-  beforeCreate () {
-    // this.fetchItem()
-    console.log('fetching recipe data')
-    // this.loading = true
-    this.$store
-      .dispatch('RECIPE', this.$route.params.id)
-      .then( response => {
-        console.log(response)
-        this.item = response.data
-        this.loading = true
-      })
+  async created () {
+    await this.$store.dispatch('RECIPE', this.$route.params.id)
   },
+  // beforeCreate () {
+  //   // this.fetchItem()
+  //   console.log('fetching recipe data')
+  //   // this.loading = true
+  //   this.$store
+  //     .dispatch('RECIPE', this.$route.params.id)
+  //     .then( response => {
+  //       console.log(response)
+  //       this.item = response.data
+  //       this.loading = true
+  //     })
+  // },
   mounted () {
     this.$nextTick(() => {
+      this.loading = true
       this.loadComments = true
       if (this.loadAdsense == false) this.loadAdsense = true
     })
