@@ -1,4 +1,5 @@
 class Api::V1::PagesController < Api::V1::BaseController
+  before_action :authenticate_and_set_user
 
   def index
     @pages = policy_scope(Page)
