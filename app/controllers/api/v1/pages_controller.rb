@@ -1,5 +1,5 @@
 class Api::V1::PagesController < Api::V1::BaseController
-  before_action :authenticate_and_set_user
+  before_action :authenticate_and_set_user, except: [ :index ]
 
   def index
     @pages = policy_scope(Page)
@@ -68,8 +68,8 @@ class Api::V1::PagesController < Api::V1::BaseController
 
   private
 
-  def clean_params(param)
-    param === "null" ? nil : param
+  def clean_params(params)
+    params === "null" ? nil : params
   end
 
   def page_params
