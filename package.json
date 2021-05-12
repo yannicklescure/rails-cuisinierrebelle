@@ -34,7 +34,7 @@
     "mobile-device-detect": "^0.4.3",
     "node-fetch": "^2.6.1",
     "popper.js": "^1.16.1",
-    "postcss": "^7",
+    "postcss": "^8",
     "postcss-preset-env": "^6.7.0",
     "postcss-purgecss": "^2.0.3",
     "precss": "^4.0.0",
